@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>Starter Template for Bootstrap</title>
+    <title>TEDxKowloon</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/tedxkowloon.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,29 +24,121 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">TEDxKowloon</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="#">主頁</a></li>
+            <li><a href="#">影片重溫</a></li>
+            <li><a href="#">電子報</a></li>
+            <li><a href="#">工作團隊</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-    <div class="container">
+    <div class="container body-content">
 
-      <div class="starter-template">
-        <h1>Bootstrap starter template 123</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+      <!-- top banner -->
+      <div class="banner-top">
+        <a href=""><img src="http://placehold.it/1024x160/ff2b06/ffffff/&text=TEDxKowloon+2014+Early+Register" alt=""></a>
       </div>
+
+      <!-- video archive -->
+      <div class="video-archive">
+        <!-- choose year -->
+        <nav class="video-archive-nav">
+          <div class="btn-group btn-group-justified">
+            <a class="btn btn-primary">2013 重組生活</a>
+            <a class="btn btn-default">2012 話說福地</a>
+          </div>
+        </nav>
+
+        <ul class="video-archive-list">
+          <li class="video-item">
+            <a href="#"><img src="http://placehold.it/500x250&text=Video+1" alt=""></a>
+          </li>
+          <li class="video-item">
+            <a href="#"><img src="http://placehold.it/500x250&text=Video+2" alt=""></a>
+          </li>
+          <li class="video-item">
+            <a href="#"><img src="http://placehold.it/500x250&text=Video+3" alt=""></a>
+          </li>
+          <li class="video-item">
+            <a href="#"><img src="http://placehold.it/500x250&text=Video+4" alt=""></a>
+          </li>
+          <li class="video-item">
+            <a href="#"><img src="http://placehold.it/500x250&text=Video+5" alt=""></a>
+          </li>
+          <li class="video-item">
+            <a href="#"><img src="http://placehold.it/500x250&text=Video+6" alt=""></a>
+          </li>
+        </ul>
+        
+        <!-- pagination -->
+        <ul class="pagination video-archive-page">
+          <li><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+
+      </div><!-- /.video-archive -->
+
+      <!-- Blog Post -->
+      <div class="blog-post">
+        <ul class="blog-post-list">
+          <li class="blog-item">
+            <img src="http://placehold.it/220x100&text=Blog+1" alt="" class="blog-post-thumbnail">
+            <div class="blog-info">
+              <h3 class="blog-title">／叫做／才／生活／甚麼／重組</h3>
+              <div class="blog-description">重組句子，要根據一定語意邏輯，
+但跳出邏輯，那可能就是詩句；
+重組案情，要根據手上資訊與前因後果，
+但跳出現場，那可能見到破案關鍵； 
+重組生活？要根據甚麼？又要跳出哪裏？</div>
+            </div>
+          </li>
+          <li class="blog-item">
+            <img src="http://placehold.it/220x100&text=Blog+2" alt="" class="blog-post-thumbnail">
+            <div class="blog-info">
+              <h3 class="blog-title">／生活／如何／可以／重組／我們的</h3>
+              <div class="blog-description">TEDxKowloon 在年頭設下「重組生活」主題，我們希望提倡個人生活的改變，牽動社會的改變。時代，卻急遽地把我們拋後。今年，多次大型社會事件顯示，香港人各自的身體力行，竟在琢磨出城市的新貌。</div>
+            </div>
+          </li>
+          <li class="blog-item">
+            <img src="http://placehold.it/220x100&text=Blog+3" alt="" class="blog-post-thumbnail">
+            <div class="blog-info">
+              <h3 class="blog-title">2014 年度大會義工招募</h3>
+              <div class="blog-description">去年【年度大會】，講者告訴我們，香港是一片福地，至今我們仍然堅信。【愛】、【改變】、【城市】三場沙龍，講者告訴我們，不少人為香港更美好而迸發創意。</div>
+            </div>
+          </li>
+        </ul>
+      </div> <!-- /.blog-post -->
+
+      <!-- About -->
+      <div class="about-us">
+        <h2>TEDxKowloon宗旨</h2>
+        <article>香港是全球最多元化的城市之一，一場精彩的TEDx活動不但盡展此地獨特之處，更為各形各色的意念擦出火花。TEDx貴在百花齊放，今年TEDx Kowloon聚焦扎根本土的力量，將環保先鋒、社企領袖、青年學生共聚一堂，多角度、全方位，呈現出香港你容或錯失鮮為人知的一面。就由講者現身說法，向大家分享身在福地自強不息的動人故事！</article>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <ul class="nav nav-pills">
+          <li><a href="#">關於 TED/TEDx</a></li>
+          <li><a href="#">TEDxKowloon 團隊</a></li>
+          <li><a href="#">贊助夥伴</a></li>
+        </ul>
+      </footer>
 
     </div><!-- /.container -->
 
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="javascripts/bootstrap.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
   </body>
 </html>
