@@ -86,15 +86,22 @@ img {
 	margin-bottom: $section-margin;
 	.blog-item {
 		@extend .clearfix;
-		margin-bottom: $section-inner-margin;
+		margin-bottom: 15px;
 		.blog-post-thumbnail {
 			@extend .img-thumbnail;
-			float: left;
+			width: 100%;
 			margin-right: $section-inner-margin;
+			@media (min-width: $screen-sm-min) {
+				float: left;
+				width: auto;
+			}
 		}
 	}
 	.blog-title {
-		margin-top: 0;
+		margin-top: 5px;
+		@media (min-width: $screen-sm-min) {
+			margin-top: 0;
+		}
 	}
 }
 
