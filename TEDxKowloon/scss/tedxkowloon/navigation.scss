@@ -1,0 +1,130 @@
+//
+// Navigation
+// --------------------------------------------------
+
+// header
+.header {
+	position: relative;
+	height: 100px;
+	margin: 0 0 20px 0;
+	@media (min-width: $screen-sm-min) {
+		margin-top: 40px;
+	}
+	.container {
+		position: relative;
+	}
+	.mobile-nav  {
+		@extend .visible-xs;
+		position: absolute;
+		display: inline-block;
+		left: 0;
+		top: 0;
+		.mobile-nav-icon {
+			display: block;
+			background: $red;
+			width: 80px;
+			height: 100px;
+			text-align: center;
+			&:hover {
+				background: darken($red, 10%);
+			}
+		}
+		.fa {
+			color: $white;
+			font-size: 40px;
+			line-height: 100px;
+		}
+	}
+	.logo-main {
+		display: inline-block;
+		position: absolute;
+		left: 90px;
+		top: 0;
+		a {
+			display: inline-block;
+			height: 101px;
+			width: 397px;
+			background: url('/img/logo-ted.png') no-repeat;
+		}
+		@media (min-width: $screen-sm-min) {
+			left: 0;
+		}
+	}
+	.logo-side {
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 101px;
+		width: 55px;
+		background: url('/img/logo-kowloon.png') no-repeat;
+	}
+}
+
+
+// navbar
+.navbar {
+	@extend .hidden-xs;
+}
+.navbar-collapse {
+	padding: 0;
+}
+.nav.navbar-nav {
+	width: 100%;
+	border-bottom: $red 3px solid;
+	li > a {
+		color: $gray-text;
+		padding: 5px 0;
+		margin-right: 20px;
+		font-weight: bold;
+		font-size: 18px;
+	}
+	li > a:hover, li.active > a {
+		background: inherit;
+		color: $red;
+	}
+}
+
+// footer
+.footer {
+	margin: 20px 0;
+	padding: 10px 0;
+}
+.footer-bar {
+	@include clearfix;
+	border-top: $red 3px solid;
+	padding-top: 10px;
+}
+.social-link {
+	float: left;
+	.fa {
+		font-size: 24px;
+		color: $red;
+		margin-right: 10px;
+		&:hover {
+			text-decoration: none;
+			color: darken($red, 10%);
+		}
+	}
+}
+.footer-link {
+	float: right;
+	list-style: none;
+	.link-item {
+		float: left;
+		margin-right: 10px;
+		a {
+			color: $gray-text;
+			font-size: 14px;
+		}
+		a:hover {
+			color: $red;
+			text-decoration: none;
+		}
+	}
+}
+.copyright {
+	@include clearfix;
+	text-align: right;
+	font-size: 12px;
+	color: $gray-light;
+}

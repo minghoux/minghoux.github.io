@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>TEDxKowloon</title>
+
+    <!-- TED core CSS -->
+    <link href="/css/ted.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>    
+    <!-- Header logo -->
+    <div class="header"></div>
+
+    <!-- Navigation bar -->
+    <div class="navbar" role="navigation"></div>
+
+    <!-- Content start -->
+    <div class="container">
+      <div class="wrap">
+
+        <!-- feature slides -->
+        <div class="feature"></div>
+        <!-- / feature slides -->
+
+        <!-- video -->
+        <div class="video"></div>
+        <!-- / video -->
+
+        <!-- article -->
+        <div class="article"></div>
+        <!-- / article -->
+
+        <!-- news -->
+        <div class="news"></div>
+        <!-- / news -->
+
+        <!-- subscribe -->
+        <div class="subscribe"></div>
+        <!-- / subscribe -->
+
+      </div><!-- /.wrap -->
+    </div><!-- /.container -->
+
+    <!-- Footer -->
+    <div class="footer"></div>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- Load Module HTML -->
+    <script>
+      $('.header').load("/module/common/header.html");
+      $('.navbar').load("/module/common/navigation.html");
+      $('.feature').load("/module/homepage/feature.html");
+      $('.video').load("/module/homepage/video.html");
+      $('.article').load("/module/homepage/article.html");
+      $('.news').load("/module/homepage/news.html");
+      $('.subscribe').load("/module/common/subscribe.html");
+      $('.footer').load("/module/common/footer.html");
+    </script>
+  </body>
+</html>
