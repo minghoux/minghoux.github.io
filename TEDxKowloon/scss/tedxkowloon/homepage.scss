@@ -19,7 +19,7 @@
 	}
 }
 .feature-thumb {
-	@include make-xs-column(12);
+	@extend .hidden-xs;
 	@include make-md-column(3);
 	padding: 0 20px;
 	img {
