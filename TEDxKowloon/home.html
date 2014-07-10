@@ -28,21 +28,21 @@
 
   <body>    
     <!-- Header logo -->
-    <div class="header"></div>
+    <div class="header wow fadeInDown"></div>
 
     <!-- Navigation bar -->
-    <div class="navbar" role="navigation"></div>
+    <div data-wow-delay="0.3s" class="navbar wow flipInX" role="navigation"></div>
 
     <!-- Content start -->
     <div class="container">
       <div class="wrap">
 
         <!-- feature slides -->
-        <div class="feature wow fadeInUp"></div>
+        <div data-wow-delay="0.5s" class="feature wow fadeInUp"></div>
         <!-- / feature slides -->
 
         <!-- video -->
-        <div class="video wow fadeInUp"></div>
+        <div data-wow-delay="0.8s" class="video wow fadeInUp"></div>
         <!-- / video -->
 
         <div class="row">
@@ -83,7 +83,10 @@
         $('.news').load("./module/homepage/news.html");
         $('.subscribe').load("./module/common/subscribe.html");
         $('.footer').load("./module/common/footer.html");
-        new WOW().init();
+
+        setTimeout(function() {
+          new WOW().init();
+        }, 10);
       });
     </script>
   </body>
