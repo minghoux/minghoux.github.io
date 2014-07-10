@@ -10,6 +10,9 @@
 
     <title>TEDxKowloon</title>
 
+    <!-- Animate.css -->
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css">
+
     <!-- TED core CSS -->
     <link href="/css/ted.css" rel="stylesheet">
 
@@ -35,45 +38,53 @@
       <div class="wrap">
 
         <!-- feature slides -->
-        <div class="feature"></div>
+        <div class="feature wow fadeInUp"></div>
         <!-- / feature slides -->
 
         <!-- video -->
-        <div class="video"></div>
+        <div class="video wow fadeInUp"></div>
         <!-- / video -->
 
-        <!-- article -->
-        <div class="article"></div>
-        <!-- / article -->
+        <div class="row">
+          <!-- article -->
+          <div class="article wow fadeInLeft"></div>
+          <!-- / article -->
 
-        <!-- news -->
-        <div class="news"></div>
-        <!-- / news -->
+          <!-- news -->
+          <div class="news wow fadeInRight"></div>
+          <!-- / news -->
+        </div>
 
         <!-- subscribe -->
-        <div class="subscribe"></div>
+        <div class="subscribe wow flipInX"  data-wow-delay="0.5s"></div>
         <!-- / subscribe -->
 
       </div><!-- /.wrap -->
     </div><!-- /.container -->
 
     <!-- Footer -->
-    <div class="footer"></div>
+    <div class="footer wow fadeInUp"></div>
 
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 
+    <!-- WOW.js -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
+
     <!-- Load Module HTML -->
     <script>
-      $('.header').load("/module/common/header.html");
-      $('.navbar').load("/module/common/navigation.html");
-      $('.feature').load("/module/homepage/feature.html");
-      $('.video').load("/module/homepage/video.html");
-      $('.article').load("/module/homepage/article.html");
-      $('.news').load("/module/homepage/news.html");
-      $('.subscribe').load("/module/common/subscribe.html");
-      $('.footer').load("/module/common/footer.html");
+      $(document).ready(function(){
+        $('.header').load("./module/common/header.html");
+        $('.navbar').load("./module/common/navigation.html");
+        $('.feature').load("./module/homepage/feature.html");
+        $('.video').load("./module/homepage/video.html");
+        $('.article').load("./module/homepage/article.html");
+        $('.news').load("./module/homepage/news.html");
+        $('.subscribe').load("./module/common/subscribe.html");
+        $('.footer').load("./module/common/footer.html");
+        new WOW().init();
+      });
     </script>
   </body>
 </html>
