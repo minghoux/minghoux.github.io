@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h1>Particle Animation</h1>
+	<canvas id="canv"></canvas>
+
+	<script>
+		window.requestAnimFrame = (function() {
+  return window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    function(callback) {
+      window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
+var c = document.getElementById('canv');
+var $ = c.getContext('2d');
+
+var col = [
+  "hsl(28, 80%, 52%)",
+  "hsl(24, 100%, 41%)",
+  "hsl(6, 78%, 57%)",
+  "hsl(6, 63%, 45%)",
+  "hsl(192, 15%, 94%)",
+  "hsl(204, 8%, 76%)",
+  "hsl(184, 9%, 62%)",
+  "hsl(184, 6%, 53%)",
+  "hsl(168, 76%, 42%)",
+  "hsl(168, 76%, 36%)",
+  "hsl(145, 63%, 49%)",
+  "hsl(145, 63%, 42%)",
+  "hsl(204, 70%, 53%)",
+  "hsl(204, 64%, 44%)",
+  "hsl(283, 39%, 53%)",
+  "hsl(282, 44%, 47%)",
+  "hsl(48, 89%, 50%)",
+  "hsl(47, 90%, 51%)",
+  "hsl(210, 29%, 29%)"
+];
+
+ang = .15;
+
+w = c.width = window.innerWidth;
+h = c.height = window.innerHeight;
+
+function _col(n) {
+  n = (n) % 400
+  var i = Math.floor(n / 19);
+  if (i > 18) i = 0;
+  return col[i];
+};
+
+function _d(s, aa, n) {
+  r = s * Math.sqrt(n);
+  t = (Math.PI * 2) * aa * n;
+
+  x = r * Math.cos(t)
+  y = r * Math.sin(t)
+
+  $.beginPath();
+  $.arc(x, y, Math.random() * 7, 0, 2 * Math.PI);;
+  $.fillStyle = _col(n);
+  $.fill();
+};
+
+(function anim() {
+  window.requestAnimFrame(anim);
+  $.save();
+  $.fillStyle = 'hsla(0,0%,0%,1)';
+  $.fillRect(0, 0, w, h);
+  $.translate(w / 2, h / 2);
+  for (var i = 0; i < 400; i++) _d(19, ang += 0.000000022, i);
+  $.restore();
+})();
+
+window.addEventListener('resize', function() {
+  c.width = w = window.innerWidth;
+  c.height = h = window.innerHeight;
+  c.style.position = 'absolute';
+  c.style.left = (window.innerWidth - w) *
+    .01 + 'px';
+  c.style.top = (window.innerHeight - h) *
+    .01 + 'px';
+});
+	</script>
+</body>
+</html>
