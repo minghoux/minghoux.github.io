@@ -26,7 +26,7 @@ particlesJS('particles-js',
       "value": "#ffffff"
     },
     "shape": {
-      "type": "circle",
+      "type": "image",
       "stroke": {
         "width": 6,
         "color": "#fffcfc"
@@ -35,9 +35,9 @@ particlesJS('particles-js',
         "nb_sides": 7
       },
       "image": {
-        "src": "https://assets.codepen.io/assets/logos/codepen-logo.svg",
-        "width": 100,
-        "height": 100
+        "src": "img/logo-blue.png",
+        "width": 200,
+        "height": 200
       }
     },
     "opacity": {
@@ -69,7 +69,7 @@ particlesJS('particles-js',
     },
     "move": {
       "enable": true,
-      "speed": 6,
+      "speed": 2,
       "direction": "none",
       "random": true,
       "straight": false,
