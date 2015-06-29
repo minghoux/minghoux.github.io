@@ -1,0 +1,92 @@
+{ 
+  "fathers" : [ 
+    { 
+      "id" : 0,
+      "married" : false,
+      "name" : "Michael Thompson",
+      "sons" : null,
+      "daughters" : [
+        ]
+      },
+    { 
+      "id" : 1,
+      "married" : true,
+      "name" : "Larry Miller",
+      "sons" : null,
+      "daughters" : [
+        ]
+      },
+    { 
+      "id" : 2,
+      "married" : true,
+      "name" : "Jeffrey Lee",
+      "sons" : null,
+      "daughters" : [ 
+        { 
+          "age" : 18,
+          "name" : "Lisa"
+          },
+        { 
+          "age" : 10,
+          "name" : "Mary"
+          }
+        ]
+      },
+    { 
+      "id" : 3,
+      "married" : false,
+      "name" : "Joseph Lopez",
+      "sons" : null,
+      "daughters" : [ 
+        { 
+          "age" : 24,
+          "name" : "Barbara"
+          },
+        { 
+          "age" : 29,
+          "name" : "Melissa"
+          },
+        { 
+          "age" : 19,
+          "name" : "Cynthia"
+          }
+        ]
+      },
+    { 
+      "id" : 4,
+      "married" : true,
+      "name" : "Eric Walker",
+      "sons" : null,
+      "daughters" : [ 
+        { 
+          "age" : 4,
+          "name" : "Sarah"
+          },
+        { 
+          "age" : 29,
+          "name" : "Angela"
+          }
+        ]
+      },
+    { 
+      "id" : 5,
+      "married" : true,
+      "name" : "George Lewis",
+      "sons" : null,
+      "daughters" : [ 
+        { 
+          "age" : 19,
+          "name" : "Margaret"
+          },
+        { 
+          "age" : 6,
+          "name" : "Karen"
+          },
+        { 
+          "age" : 3,
+          "name" : "Jessica"
+          }
+        ]
+      }
+    ]
+  }

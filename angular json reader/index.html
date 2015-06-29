@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular json reader</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+</head>
+<body ng-app="MyApp">
+
+	<h1>Angular json Reader</h1>
+
+	<div ng-controller="userlist">
+
+		<!-- simple json -->
+		<h2>Read simple json</h2>
+		<ul>
+			<li ng-repeat="user in users">
+				<b>{{user.FirstName}} {{user.LastName}}</b> - {{user.Email}}
+			</li>
+		</ul>
+		
+		<!-- layered json -->
+		<h2>Read layered json</h2>
+		<ul>
+			<li ng-repeat="father in fathers">
+				{{father.id}}. {{father.name}}
+			</li>
+		</ul>
+
+	</div>
+
+
+
+<script>
+
+var app = angular.module("MyApp", []);
+
+app.controller("userlist", function($scope, $http) {
+
+	$http.get('user.json').success(function(data) {
+  	$scope.users = data;
+	});
+
+	$http.get('data.json').success(function(data) {
+  	$scope.fathers = data.fathers;
+	});
+
+});
+
+</script>
+</body>
+</html>
