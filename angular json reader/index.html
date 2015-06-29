@@ -21,7 +21,7 @@
 		<!-- simple json -->
 		<h2>Read simple json</h2>
 		<ol>
-			<li ng-repeat="user in users | limitTo: 12">
+			<li ng-repeat="user in users | limitTo: 12 | orderBy:random ">
 				<b>{{user.FirstName}} {{user.LastName}}</b> - {{user.Email}}
 			</li>
 		</ol>
@@ -50,6 +50,9 @@ app.controller("UserController", function($scope, $http) {
 
 	$http.get('data.json').success(function(data) {
   	$scope.fathers = data.fathers;
+  	$scope.random = function() {
+	    return 0.5 - Math.random();
+    }
 	});
 
 });
