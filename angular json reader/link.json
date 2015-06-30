@@ -1,0 +1,27 @@
+[
+  {
+    "name": "A List Apart",
+    "url": "http://alistapart.com/",
+    "category": "article"
+  },
+  {
+    "name": "Smashing Magazine",
+    "url": "http://www.smashingmagazine.com/",
+    "category": "article"
+  },
+  {
+    "name": "Codepen",
+    "url": "http://codepen.io/",
+    "category": "html"
+  },
+  {
+    "name": "Codrops",
+    "url": "http://tympanus.net/codrops/",
+    "category": "css"
+  },
+  {
+    "name": "CSS Tricks",
+    "url": "http://css-tricks.com/",
+    "category": "css"
+  }
+]

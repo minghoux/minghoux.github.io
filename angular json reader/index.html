@@ -36,6 +36,22 @@
 
 	</div>
 
+	<div ng-controller="UXLinkController">
+		<h2>{{title}}</h2>
+		<input type="text" ng-model="linkSearch">
+		<div>
+			<a ng-click="linkSearch = ''">All </a>
+			<a ng-click="linkSearch = 'css'">CSS </a>
+			<a ng-click="linkSearch = 'html'">HTML </a>
+			<a ng-click="linkSearch = 'article'">Article </a>
+		</div>
+		<ol>
+			<li ng-repeat="link in links | filter: linkSearch | orderBy: random">
+				<a href="{{link.url}}">{{link.name}}</a>, <i>{{link.category}}</i>
+			</li>
+		</ol>
+	</div>
+
 
 
 <script>
@@ -44,13 +60,28 @@ var app = angular.module("MyApp", []);
 
 app.controller("UserController", function($scope, $http) {
 
+	// simple data
 	$http.get('user.json').success(function(data) {
   	$scope.users = data;
 	});
 
+	// layer data
 	$http.get('data.json').success(function(data) {
   	$scope.fathers = data.fathers;
   	$scope.random = function() {
+	    return 0.5 - Math.random();
+    }
+	});
+
+});
+
+// UX Links
+app.controller("UXLinkController", function($scope, $http) {
+	$scope.title = "UI/UX Links"
+
+	$http.get('link.json').success(function(data) {
+		$scope.links = data;
+		$scope.random = function() {
 	    return 0.5 - Math.random();
     }
 	});
