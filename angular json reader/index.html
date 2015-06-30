@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Angular json reader</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
 	<style>
 		body { 
@@ -14,10 +15,12 @@
 </head>
 <body ng-app="MyApp">
 
+<section class="container">
+
 	<h1>Angular json Reader</h1>
-
+	
 	<div ng-controller="UserController">
-
+	
 		<!-- simple json -->
 		<h2>Read simple json</h2>
 		<ol>
@@ -33,24 +36,33 @@
 				ID: {{father.id}} / Name: {{father.name}}
 			</li>
 		</ul>
-
+	
 	</div>
-
+	
 	<div ng-controller="UXLinkController">
 		<h2>{{title}}</h2>
-		<input type="text" ng-model="linkSearch">
-		<div>
-			<a ng-click="linkSearch = ''">All </a>
-			<a ng-click="linkSearch = 'css'">CSS </a>
-			<a ng-click="linkSearch = 'html'">HTML </a>
-			<a ng-click="linkSearch = 'article'">Article </a>
+
+		<div class="btn-group">
+			<a ng-click="linkSearch = ''" class="btn btn-default">All </a>
+			<a ng-click="linkSearch = 'css'" class="btn btn-default">CSS </a>
+			<a ng-click="linkSearch = 'html'" class="btn btn-default">HTML </a>
+			<a ng-click="linkSearch = 'article'" class="btn btn-default">Article </a>
 		</div>
+		
+		<div class="row">
+			<div class="col-md-4">
+				<input type="text" ng-model="linkSearch" class="form-control" placeholder="Search links">
+			</div>
+		</div>
+
 		<ol>
 			<li ng-repeat="link in links | filter: linkSearch | orderBy: random">
 				<a href="{{link.url}}">{{link.name}}</a>, <i>{{link.category}}</i>
 			</li>
 		</ol>
 	</div>
+
+</section>
 
 
 
