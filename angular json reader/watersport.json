@@ -1,0 +1,128 @@
+[
+  {
+    "Area": "西貢",
+    "Shop": "草原之友",
+    "Address": "黃宜洲",
+    "Website": "http://www.prairie.org.hk/",
+    "Activity": "獨木舟、浮潛一天遊",
+    "Price": "$280",
+    "Category": 0
+  },
+  {
+    "Area": "西貢",
+    "Shop": "草原之友",
+    "Address": "黃宜洲",
+    "Website": "http://www.prairie.org.hk/",
+    "Activity": "獨木舟",
+    "Price": "$200",
+    "Category": 0
+  },
+  {
+    "Area": "西貢",
+    "Shop": "藍天水上活動中心",
+    "Address": "沙下灣",
+    "Website": "http://www.bluesky-sc.com/zh/",
+    "Activity": "單人獨木舟",
+    "Price": "$300 / 3 hours",
+    "Category": 0
+  },
+  {
+    "Area": "西貢",
+    "Shop": "藍天水上活動中心",
+    "Address": "沙下灣",
+    "Website": "http://www.bluesky-sc.com/zh/",
+    "Activity": "直立板",
+    "Price": "$280 / 3 hours",
+    "Category": 0
+  },
+  {
+    "Area": "赤柱",
+    "Shop": "赤柱水上活動拓展中心",
+    "Address": "赤柱正灘",
+    "Website": "http://www.aquabound.com.hk/Top.html",
+    "Activity": "雙人獨木舟",
+    "Price": "$200 / 3 hours",
+    "Category": 0
+  },
+  {
+    "Area": "赤柱",
+    "Shop": "赤柱水上活動拓展中心",
+    "Address": "赤柱正灘",
+    "Website": "http://www.aquabound.com.hk/Top.html",
+    "Activity": "直立板",
+    "Price": "$200 / 3 hours",
+    "Category": 0
+  },
+  {
+    "Area": "赤柱",
+    "Shop": "赤柱水上活動拓展中心",
+    "Address": "赤柱正灘",
+    "Website": "http://www.aquabound.com.hk/Top.html",
+    "Activity": "滑浪風帆",
+    "Price": "$250 / 3 hours",
+    "Category": 0
+  },
+  {
+    "Area": "西貢",
+    "Shop": "創興水上活動中心",
+    "Address": "新界西貢萬宜水庫西壩",
+    "Website": 0,
+    "Activity": "單人獨木舟",
+    "Price": "$150 / day",
+    "Category": "康文署"
+  },
+  {
+    "Area": "西貢",
+    "Shop": "創興水上活動中心",
+    "Address": "新界西貢萬宜水庫西壩",
+    "Website": 0,
+    "Activity": "雙人船",
+    "Price": "$ 250 / day",
+    "Category": "康文署"
+  },
+  {
+    "Area": "西貢",
+    "Shop": "創興水上活動中心",
+    "Address": "新界西貢萬宜水庫西壩",
+    "Website": 0,
+    "Activity": "直立板",
+    "Price": "$ 280 / 3 hours",
+    "Category": "康文署"
+  },
+  {
+    "Area": "赤柱",
+    "Shop": "赤柱正灘水上活動中心",
+    "Address": "香港赤柱赤柱連合道",
+    "Website": 0,
+    "Activity": "單人獨木舟",
+    "Price": "$150 / day",
+    "Category": "康文署"
+  },
+  {
+    "Area": "赤柱",
+    "Shop": "聖士提反灣水上活動中心",
+    "Address": "香港赤柱黃麻角徑",
+    "Website": 0,
+    "Activity": "單人獨木舟",
+    "Price": "$150 / day",
+    "Category": "康文署"
+  },
+  {
+    "Area": "大美督",
+    "Shop": "大美督水上活動中心",
+    "Address": "新界大埔大美督船灣淡水湖主壩",
+    "Website": 0,
+    "Activity": "單人獨木舟",
+    "Price": "$150 / day",
+    "Category": "康文署"
+  },
+  {
+    "Area": "西貢",
+    "Shop": "賽馬會黃石水上活動中心",
+    "Address": "新界西貢黃石碼頭",
+    "Website": 0,
+    "Activity": "單人獨木舟",
+    "Price": "$150 / day",
+    "Category": "康文署"
+  }
+]

@@ -20,11 +20,10 @@
 	<h1>Angular json Reader</h1>
 	
 	<div ng-controller="UserController">
-	
 		<!-- simple json -->
 		<h2>Read simple json</h2>
 		<ol>
-			<li ng-repeat="user in users | limitTo: 12 | orderBy:random ">
+			<li ng-repeat="user in users | limitTo: 5 | orderBy:random ">
 				<b>{{user.FirstName}} {{user.LastName}}</b> - {{user.Email}}
 			</li>
 		</ol>
@@ -36,8 +35,7 @@
 				ID: {{father.id}} / Name: {{father.name}}
 			</li>
 		</ul>
-	
-	</div>
+	</div> <!-- /UserController -->
 	
 	<div ng-controller="UXLinkController">
 		<h2>{{title}}</h2>
@@ -60,6 +58,15 @@
 				<a href="{{link.url}}">{{link.name}}</a>, <i>{{link.category}}</i>
 			</li>
 		</ol>
+	</div> <!-- /UXLinkController -->
+
+	<div ng-controller="WaterSport">
+		<h2>{{title}}</h2>
+		<ul>
+			<li ng-repeat="item in items | limitTo: 5">
+				{{ item.price }}
+			</li>
+		</ul>
 	</div>
 
 </section>
@@ -96,6 +103,15 @@ app.controller("UXLinkController", function($scope, $http) {
 		$scope.random = function() {
 	    return 0.5 - Math.random();
     }
+	});
+
+});
+
+app.controller("WaterSport", function($scope, $http) {
+	$scope.title = "Hong Kong Water Sport Info"
+
+	$http.get('watersport.json').success(function(data) {
+		$scope.items = data;
 	});
 
 });
