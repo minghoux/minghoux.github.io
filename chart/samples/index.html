@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Line Chart</title>
+		<script src="../Chart.js"></script>
+	</head>
+	<body>
+		<div style="width:50%">
+			<div>
+				<canvas id="canvas" height="200px" width="200px"></canvas>
+			</div>
+		</div>
+
+
+	<script>
+		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+		var lineChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [
+						15000, 45300, 18600, 25000, 64890, 52700, 85200
+					]
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [
+						64890, 52700, 41200, 15000, 35300, 38600, 25000
+					]
+				}
+			]
+
+		}
+
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			responsive: true
+		});
+	}
+
+	canvas.onclick = function(evt){
+    var activePoints = myLineChart.getPointsAtEvent(evt);
+    // => activePoints is an array of points on the canvas that are at the same position as the click event.
+    myLineChart.removeData();
+	};
+
+
+	</script>
+	</body>
+</html>
