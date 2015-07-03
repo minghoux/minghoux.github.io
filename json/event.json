@@ -1,0 +1,162 @@
+[
+  {
+    "Host": "Mainfirst",
+    "Host Email": "markus@mainfirst.com",
+    "Title": "Alain Oberhuber in Zurich",
+    "StartDate": "07/29/2015",
+    "EndDate": "07/30/2015",
+    "Tickers": "",
+    "Sectors": "Food & Beverage",
+    "Locations": "Zurich"
+  },
+  {
+    "Host": "Morgan Stanley",
+    "Host Email": "mike@morganstanley.com",
+    "Title": "Non-Deal Roadshow with ReneSola",
+    "StartDate": "7/12/2015",
+    "EndDate": "7/12/2015",
+    "Tickers": "SOL US",
+    "Sectors": "Oil & Gas",
+    "Locations": "Boston"
+  },
+  {
+    "Host": "JPM Morgan",
+    "Host Email": "lisa@jpmorgan.com",
+    "Title": "Europe NDR - Tokio Marine Holdings",
+    "StartDate": "07/17/2015",
+    "EndDate": "07/20/2015",
+    "Tickers": "8766 JP",
+    "Sectors": "Financials",
+    "Locations": "London, Paris, Frankfurt"
+  },
+  {
+    "Host": "Goldman Sachs",
+    "Host Email": "fabio@gs.com",
+    "Title": "Denki Kagaku Kogyo KK - Company Marketing",
+    "StartDate": "07/22/2015",
+    "EndDate": "07/23/2015",
+    "Tickers": "4061 JP",
+    "Sectors": "Chemicals",
+    "Locations": "New York"
+  },
+  {
+    "Host": "Redburn",
+    "Host Email": "steve@redburn.com",
+    "Title": "East Coast NDR - YPF (CEO and CFO)",
+    "StartDate": "07/23/2015",
+    "EndDate": "07/24/2015",
+    "Tickers": "YPF US",
+    "Sectors": "Oil & Gas",
+    "Locations": "New York, Boston"
+  },
+  {
+    "Host": "Macquarie Bank",
+    "Host Email": "adam@macquarie.com",
+    "Title": "Brad Friedman US Roadshow",
+    "StartDate": "07/25/2015",
+    "EndDate": "07/30/2015",
+    "Tickers": "",
+    "Sectors": "Consumer",
+    "Locations": "New York, Boston, Chicago, San Francisco"
+  },
+  {
+    "Host": "Mainfirst",
+    "Host Email": "markus@mainfirst.com",
+    "Title": "sThree site visit with Biz Services analyst",
+    "StartDate": "8/01/2015",
+    "EndDate": "8/01/2015",
+    "Tickers": "STHR LN",
+    "Sectors": "Business Services",
+    "Locations": "London"
+  },
+  {
+    "Host": "Morgan Stanley",
+    "Host Email": "mike@morganstanley.com",
+    "Title": "Berkeley Group Capital Markets Day",
+    "StartDate": "8/03/2015",
+    "EndDate": "8/03/2015",
+    "Tickers": "BKG LN",
+    "Sectors": "Construction",
+    "Locations": "London"
+  },
+  {
+    "Host": "JPM Morgan",
+    "Host Email": "lisa@jpmorgan.com",
+    "Title": "EOG Resources Hong Kong Company Marketing",
+    "StartDate": "8/05/2015",
+    "EndDate": "8/06/2015",
+    "Tickers": "EOG US",
+    "Sectors": "Oil & Gas",
+    "Locations": "Hong Kong"
+  },
+  {
+    "Host": "Goldman Sachs",
+    "Host Email": "fabio@gs.com",
+    "Title": "Daimler CEO Roadshow",
+    "StartDate": "8/09/2015",
+    "EndDate": "8/09/2015",
+    "Tickers": "DAI GR",
+    "Sectors": "Autos & Parts",
+    "Locations": "Paris"
+  },
+  {
+    "Host": "Redburn",
+    "Host Email": "steve@redburn.com",
+    "Title": "mBank",
+    "StartDate": "8/11/2015",
+    "EndDate": "8/11/2015",
+    "Tickers": "BRU GR",
+    "Sectors": "Business Services",
+    "Locations": "Paris"
+  },
+  {
+    "Host": "Macquarie Bank",
+    "Host Email": "adam@macquarie.com",
+    "Title": "Examworks Group Inc",
+    "StartDate": "8/12/2015",
+    "EndDate": "08/13/2015",
+    "Tickers": "EXAM US",
+    "Sectors": "Healthcare",
+    "Locations": "New York"
+  },
+  {
+    "Host": "Mainfirst",
+    "Host Email": "markus@mainfirst.com",
+    "Title": "Healthscope Ltd",
+    "StartDate": "08/14/2015",
+    "EndDate": "08/15/2015",
+    "Tickers": "HSO AU",
+    "Sectors": "Healthcare",
+    "Locations": "Sydney"
+  },
+  {
+    "Host": "Morgan Stanley",
+    "Host Email": "mike@morganstanley.com",
+    "Title": "Barry Callebaut",
+    "StartDate": "08/14/2015",
+    "EndDate": "08/14/2015",
+    "Tickers": "BARN SW",
+    "Sectors": "Consumer",
+    "Locations": "London"
+  },
+  {
+    "Host": "JPM Morgan",
+    "Host Email": "lisa@jpmorgan.com",
+    "Title": "Medibank Private Ltd",
+    "StartDate": "08/15/2015",
+    "EndDate": "08/15/2015",
+    "Tickers": "MPV GR",
+    "Sectors": "Healthcare",
+    "Locations": "Singapore"
+  },
+  {
+    "Host": "Goldman Sachs",
+    "Host Email": "fabio@gs.com",
+    "Title": "Q4 Results Roadshow (IR Team)",
+    "StartDate": "08/18/2015",
+    "EndDate": "08/18/2015",
+    "Tickers": "HSBA LN",
+    "Sectors": "Financials",
+    "Locations": "New York"
+  }
+]

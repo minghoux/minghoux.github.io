@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="MyApp">
+  <head>
+    <title>Event List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+
+  <body ng-controller="eventController">
+
+  	<div class="container">
+  		<h1>Event List</h1>
+      <table class="table table-striped">
+        <tr class="info">
+          <th>Title</th>
+          <th>Date</th>
+          <th style="width:15%">Location</th>
+          <th>Sector</th>
+          <th>Ticker</th>
+          <th>Host</th>
+        </tr>
+        <tr ng-repeat="event in events">
+          <td>{{event.Title}}</td>
+          <td>{{event.StartDate}} - {{event.EndDate}}</td>
+          <td>{{event.Locations}}</td>
+          <td>{{event.Sectors}}</td>
+          <td>{{event.Tickers}}</td>
+          <td>{{event.Host}}</td>
+        </tr>
+      </table>
+
+  	</div>
+
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("eventController", function($scope, $http) {
+
+      // simple data
+      $http.get('event.json').success(function(data) {
+        $scope.events = data;
+      });
+
+    });
+
+    </script>
+  </body>
+</html>
