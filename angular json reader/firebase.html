@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+  </head>
+
+  <body ng-controller="MyController">
+
+  	<div>
+  		<h1>Angular + Firebase Playground</h1>
+
+  		<h2>Reading Flat Content</h2>
+  		<ul>
+  			<li ng-repeat="link in links | limitTo: 5">
+  				<a href="{{link.url}}" target="_blank">{{link.name}}</a>, {{link.category}}
+  			</li>
+  		</ul>
+
+			<h2>Reading Nested Content</h2>
+  		<ul>
+  			<li ng-repeat="collection in collections">
+  				{{collection.name}}
+  			</li>
+  		</ul>
+
+  	</div>
+
+    <script>
+      var myApp = angular.module("myApp", ["firebase"]);
+
+      myApp.controller("MyController", ["$scope", "$firebaseArray",
+        function($scope, $firebaseArray) {
+          //CREATE A FIREBASE REFERENCE
+          var mingggRef = new Firebase("https://minggg.firebaseio.com/");
+          var collectionRef = new Firebase("https://minggg.firebaseio.com/5/collection");
+
+          // GET MESSAGES AS AN ARRAY
+          $scope.links = $firebaseArray(mingggRef);
+          $scope.collections = $firebaseArray(collectionRef);
+        }
+      ]);
+    </script>
+  </body>
+</html>

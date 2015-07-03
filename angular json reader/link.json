@@ -1,10 +1,5 @@
 [
   {
-    "name": "A List Apart",
-    "url": "http://alistapart.com/",
-    "category": "article"
-  },
-  {
     "name": "Smashing Magazine",
     "url": "http://www.smashingmagazine.com/",
     "category": "article"
@@ -28,5 +23,24 @@
     "name": "滄海一聲笑",
     "url": "http://www.google.com",
     "category": "typography"
+  },
+  {
+    "collection":[
+      {
+        "name": "A List Apart",
+        "url": "http://alistapart.com/",
+        "category": "article"
+      },
+      {
+        "name": "Random Blog",
+        "url": "http://alistapart.com/",
+        "category": "article"
+      },
+      {
+        "name": "Another Wordpress Blog",
+        "url": "http://alistapart.com/",
+        "category": "article"
+      }
+    ]
   }
 ]
