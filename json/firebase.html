@@ -12,10 +12,20 @@
 
   	<div class="container">
   		<h1>Firebase + Angular Playground</h1>
+      
+      <!-- add link -->
+      <div>
+        <form action="" class="form-inline">
+          <div class="form-group">
+            <input ng-model="msg" ng-keydown="addMessage($event)" type="text" id="messageInput"  placeholder="Enter a Title" class="form-control">
+          </div>
+        </form>
+      </div>
 
+      <!-- display link -->
   		<h2>Reading Flat Content</h2>
   		<ul>
-  			<li ng-repeat="link in links | limitTo: 5 | filter:{link.category:}">
+  			<li ng-repeat="link in links">
   				<a href="{{link.url}}" target="_blank">{{link.name}}</a>, {{link.category}}
   			</li>
   		</ul>
@@ -41,6 +51,23 @@
           // GET MESSAGES AS AN ARRAY
           $scope.links = $firebaseArray(mingggRef);
           $scope.collections = $firebaseArray(collectionRef);
+
+          //ADD MESSAGE METHOD
+          $scope.addMessage = function(e) {
+
+            //LISTEN FOR RETURN KEY
+            if (e.keyCode === 13 && $scope.msg) {
+
+              //ADD TO FIREBASE
+              $scope.links.$add({
+                name: $scope.msg
+              });
+
+              //RESET MESSAGE
+              $scope.msg = "";
+            }
+          }
+
         }
       ]);
     </script>
