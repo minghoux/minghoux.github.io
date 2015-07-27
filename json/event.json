@@ -1,578 +1,578 @@
 [
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "Alain Oberhuber in Zurich",
     "StartDate": "07/29/2015",
     "EndDate": "07/30/2015",
     "Tickers": "",
     "Sectors": "Food & Beverage",
     "Locations": "Zurich",
-    "Event Type": "Analyst Marketing",
-    "Meeting Participants": "Alain Oberhuber"
+    "EventType": "Analyst Marketing",
+    "Participants": "Alain Oberhuber"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Non-Deal Roadshow with ReneSola",
     "StartDate": "7/12/2015",
     "EndDate": "7/12/2015",
     "Tickers": "SOL US",
     "Sectors": "Oil & Gas",
     "Locations": "Boston",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Xianshou Li"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Xianshou Li"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "Europe NDR - Tokio Marine Holdings",
     "StartDate": "07/17/2015",
     "EndDate": "07/20/2015",
     "Tickers": "8766 JP",
     "Sectors": "Financials",
     "Locations": "London, Paris, Frankfurt",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Tsuyoshi Nagano"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Tsuyoshi Nagano"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Denki Kagaku Kogyo KK - Company Marketing",
     "StartDate": "07/22/2015",
     "EndDate": "07/23/2015",
     "Tickers": "4061 JP",
     "Sectors": "Chemicals",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Shinsuke Yoshitaka"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Shinsuke Yoshitaka"
   },
   {
     "Host": "Redburn",
-    "Host Email": "steve@redburn.com",
+    "HostEmail": "steve@redburn.com",
     "Title": "East Coast NDR - YPF (CEO and CFO)",
     "StartDate": "07/23/2015",
     "EndDate": "07/24/2015",
     "Tickers": "YPF US",
     "Sectors": "Oil & Gas",
     "Locations": "New York, Boston",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Miguel Matias Galuccio"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Miguel Matias Galuccio"
   },
   {
     "Host": "Macquarie Bank",
-    "Host Email": "adam@macquarie.com",
+    "HostEmail": "adam@macquarie.com",
     "Title": "Brad Friedman US Roadshow",
     "StartDate": "07/25/2015",
     "EndDate": "07/30/2015",
     "Tickers": "",
     "Sectors": "Consumer",
     "Locations": "New York, Boston, Chicago, San Francisco",
-    "Event Type": "Analyst Marketing",
-    "Meeting Participants": "Brad Friedman"
+    "EventType": "Analyst Marketing",
+    "Participants": "Brad Friedman"
   },
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "sThree site visit with Biz Services analyst",
     "StartDate": "8/01/2015",
     "EndDate": "8/01/2015",
     "Tickers": "STHR LN",
     "Sectors": "Business Services",
     "Locations": "London",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Gary Elden"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Gary Elden"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Berkeley Group Capital Markets Day",
     "StartDate": "8/03/2015",
     "EndDate": "8/03/2015",
     "Tickers": "BKG LN",
     "Sectors": "Construction",
     "Locations": "London",
-    "Event Type": "Capital Markets Day",
-    "Meeting Participants": "Anthony William Pidgley"
+    "EventType": "Capital Markets Day",
+    "Participants": "Anthony William Pidgley"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "EOG Resources Hong Kong Company Marketing",
     "StartDate": "8/05/2015",
     "EndDate": "8/06/2015",
     "Tickers": "EOG US",
     "Sectors": "Oil & Gas",
     "Locations": "Hong Kong",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "William R Thomas"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "William R Thomas"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Daimler CEO Roadshow",
     "StartDate": "8/09/2015",
     "EndDate": "8/09/2015",
     "Tickers": "DAI GR",
     "Sectors": "Autos & Parts",
     "Locations": "Paris",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Dieter Zetsche"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Dieter Zetsche"
   },
   {
     "Host": "Redburn",
-    "Host Email": "steve@redburn.com",
+    "HostEmail": "steve@redburn.com",
     "Title": "mBank",
     "StartDate": "8/11/2015",
     "EndDate": "8/11/2015",
     "Tickers": "BRU GR",
     "Sectors": "Business Services",
     "Locations": "Paris",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Cezary Stypulkowski"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Cezary Stypulkowski"
   },
   {
     "Host": "Macquarie Bank",
-    "Host Email": "adam@macquarie.com",
+    "HostEmail": "adam@macquarie.com",
     "Title": "Examworks Group Inc",
     "StartDate": "8/12/2015",
     "EndDate": "08/13/2015",
     "Tickers": "EXAM US",
     "Sectors": "Healthcare",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "James K Price"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "James K Price"
   },
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "Healthscope Ltd",
     "StartDate": "08/14/2015",
     "EndDate": "08/15/2015",
     "Tickers": "HSO AU",
     "Sectors": "Healthcare",
     "Locations": "Sydney",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Robert john Cooke"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Robert john Cooke"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Barry Callebaut",
     "StartDate": "08/14/2015",
     "EndDate": "08/14/2015",
     "Tickers": "BARN SW",
     "Sectors": "Consumer",
     "Locations": "London",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Antoine Bernard De Saint-Affrique"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Antoine Bernard De Saint-Affrique"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "Medibank Private Ltd",
     "StartDate": "08/15/2015",
     "EndDate": "08/15/2015",
     "Tickers": "MPV GR",
     "Sectors": "Healthcare",
     "Locations": "Singapore",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Paul Koppelman"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Paul Koppelman"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Q4 Results Roadshow (IR Team)",
     "StartDate": "08/18/2015",
     "EndDate": "08/18/2015",
     "Tickers": "HSBA LN",
     "Sectors": "Financials",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Darryl West"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Darryl West"
   },
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "Alain Oberhuber in Zurich",
     "StartDate": "07/29/2015",
     "EndDate": "07/30/2015",
     "Tickers": "",
     "Sectors": "Food & Beverage",
     "Locations": "Zurich",
-    "Event Type": "Analyst Marketing",
-    "Meeting Participants": "Alain Oberhuber"
+    "EventType": "Analyst Marketing",
+    "Participants": "Alain Oberhuber"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Non-Deal Roadshow with ReneSola",
     "StartDate": "7/12/2015",
     "EndDate": "7/12/2015",
     "Tickers": "SOL US",
     "Sectors": "Oil & Gas",
     "Locations": "Boston",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Xianshou Li"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Xianshou Li"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "Europe NDR - Tokio Marine Holdings",
     "StartDate": "07/17/2015",
     "EndDate": "07/20/2015",
     "Tickers": "8766 JP",
     "Sectors": "Financials",
     "Locations": "London, Paris, Frankfurt",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Tsuyoshi Nagano"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Tsuyoshi Nagano"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Denki Kagaku Kogyo KK - Company Marketing",
     "StartDate": "07/22/2015",
     "EndDate": "07/23/2015",
     "Tickers": "4061 JP",
     "Sectors": "Chemicals",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Shinsuke Yoshitaka"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Shinsuke Yoshitaka"
   },
   {
     "Host": "Redburn",
-    "Host Email": "steve@redburn.com",
+    "HostEmail": "steve@redburn.com",
     "Title": "East Coast NDR - YPF (CEO and CFO)",
     "StartDate": "07/23/2015",
     "EndDate": "07/24/2015",
     "Tickers": "YPF US",
     "Sectors": "Oil & Gas",
     "Locations": "New York, Boston",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Miguel Matias Galuccio"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Miguel Matias Galuccio"
   },
   {
     "Host": "Macquarie Bank",
-    "Host Email": "adam@macquarie.com",
+    "HostEmail": "adam@macquarie.com",
     "Title": "Brad Friedman US Roadshow",
     "StartDate": "07/25/2015",
     "EndDate": "07/30/2015",
     "Tickers": "",
     "Sectors": "Consumer",
     "Locations": "New York, Boston, Chicago, San Francisco",
-    "Event Type": "Analyst Marketing",
-    "Meeting Participants": "Brad Friedman"
+    "EventType": "Analyst Marketing",
+    "Participants": "Brad Friedman"
   },
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "sThree site visit with Biz Services analyst",
     "StartDate": "8/01/2015",
     "EndDate": "8/01/2015",
     "Tickers": "STHR LN",
     "Sectors": "Business Services",
     "Locations": "London",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Gary Elden"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Gary Elden"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Berkeley Group Capital Markets Day",
     "StartDate": "8/03/2015",
     "EndDate": "8/03/2015",
     "Tickers": "BKG LN",
     "Sectors": "Construction",
     "Locations": "London",
-    "Event Type": "Capital Markets Day",
-    "Meeting Participants": "Anthony William Pidgley"
+    "EventType": "Capital Markets Day",
+    "Participants": "Anthony William Pidgley"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "EOG Resources Hong Kong Company Marketing",
     "StartDate": "8/05/2015",
     "EndDate": "8/06/2015",
     "Tickers": "EOG US",
     "Sectors": "Oil & Gas",
     "Locations": "Hong Kong",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "William R Thomas"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "William R Thomas"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Daimler CEO Roadshow",
     "StartDate": "8/09/2015",
     "EndDate": "8/09/2015",
     "Tickers": "DAI GR",
     "Sectors": "Autos & Parts",
     "Locations": "Paris",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Dieter Zetsche"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Dieter Zetsche"
   },
   {
     "Host": "Redburn",
-    "Host Email": "steve@redburn.com",
+    "HostEmail": "steve@redburn.com",
     "Title": "mBank",
     "StartDate": "8/11/2015",
     "EndDate": "8/11/2015",
     "Tickers": "BRU GR",
     "Sectors": "Business Services",
     "Locations": "Paris",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Cezary Stypulkowski"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Cezary Stypulkowski"
   },
   {
     "Host": "Macquarie Bank",
-    "Host Email": "adam@macquarie.com",
+    "HostEmail": "adam@macquarie.com",
     "Title": "Examworks Group Inc",
     "StartDate": "8/12/2015",
     "EndDate": "08/13/2015",
     "Tickers": "EXAM US",
     "Sectors": "Healthcare",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "James K Price"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "James K Price"
   },
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "Healthscope Ltd",
     "StartDate": "08/14/2015",
     "EndDate": "08/15/2015",
     "Tickers": "HSO AU",
     "Sectors": "Healthcare",
     "Locations": "Sydney",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Robert john Cooke"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Robert john Cooke"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Barry Callebaut",
     "StartDate": "08/14/2015",
     "EndDate": "08/14/2015",
     "Tickers": "BARN SW",
     "Sectors": "Consumer",
     "Locations": "London",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Antoine Bernard De Saint-Affrique"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Antoine Bernard De Saint-Affrique"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "Medibank Private Ltd",
     "StartDate": "08/15/2015",
     "EndDate": "08/15/2015",
     "Tickers": "MPV GR",
     "Sectors": "Healthcare",
     "Locations": "Singapore",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Paul Koppelman"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Paul Koppelman"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Q4 Results Roadshow (IR Team)",
     "StartDate": "08/18/2015",
     "EndDate": "08/18/2015",
     "Tickers": "HSBA LN",
     "Sectors": "Financials",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Darryl West"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Darryl West"
   },
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "Alain Oberhuber in Zurich",
     "StartDate": "07/29/2015",
     "EndDate": "07/30/2015",
     "Tickers": "",
     "Sectors": "Food & Beverage",
     "Locations": "Zurich",
-    "Event Type": "Analyst Marketing",
-    "Meeting Participants": "Alain Oberhuber"
+    "EventType": "Analyst Marketing",
+    "Participants": "Alain Oberhuber"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Non-Deal Roadshow with ReneSola",
     "StartDate": "7/12/2015",
     "EndDate": "7/12/2015",
     "Tickers": "SOL US",
     "Sectors": "Oil & Gas",
     "Locations": "Boston",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Xianshou Li"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Xianshou Li"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "Europe NDR - Tokio Marine Holdings",
     "StartDate": "07/17/2015",
     "EndDate": "07/20/2015",
     "Tickers": "8766 JP",
     "Sectors": "Financials",
     "Locations": "London, Paris, Frankfurt",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Tsuyoshi Nagano"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Tsuyoshi Nagano"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Denki Kagaku Kogyo KK - Company Marketing",
     "StartDate": "07/22/2015",
     "EndDate": "07/23/2015",
     "Tickers": "4061 JP",
     "Sectors": "Chemicals",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Shinsuke Yoshitaka"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Shinsuke Yoshitaka"
   },
   {
     "Host": "Redburn",
-    "Host Email": "steve@redburn.com",
+    "HostEmail": "steve@redburn.com",
     "Title": "East Coast NDR - YPF (CEO and CFO)",
     "StartDate": "07/23/2015",
     "EndDate": "07/24/2015",
     "Tickers": "YPF US",
     "Sectors": "Oil & Gas",
     "Locations": "New York, Boston",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Miguel Matias Galuccio"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Miguel Matias Galuccio"
   },
   {
     "Host": "Macquarie Bank",
-    "Host Email": "adam@macquarie.com",
+    "HostEmail": "adam@macquarie.com",
     "Title": "Brad Friedman US Roadshow",
     "StartDate": "07/25/2015",
     "EndDate": "07/30/2015",
     "Tickers": "",
     "Sectors": "Consumer",
     "Locations": "New York, Boston, Chicago, San Francisco",
-    "Event Type": "Analyst Marketing",
-    "Meeting Participants": "Brad Friedman"
+    "EventType": "Analyst Marketing",
+    "Participants": "Brad Friedman"
   },
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "sThree site visit with Biz Services analyst",
     "StartDate": "8/01/2015",
     "EndDate": "8/01/2015",
     "Tickers": "STHR LN",
     "Sectors": "Business Services",
     "Locations": "London",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Gary Elden"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Gary Elden"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Berkeley Group Capital Markets Day",
     "StartDate": "8/03/2015",
     "EndDate": "8/03/2015",
     "Tickers": "BKG LN",
     "Sectors": "Construction",
     "Locations": "London",
-    "Event Type": "Capital Markets Day",
-    "Meeting Participants": "Anthony William Pidgley"
+    "EventType": "Capital Markets Day",
+    "Participants": "Anthony William Pidgley"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "EOG Resources Hong Kong Company Marketing",
     "StartDate": "8/05/2015",
     "EndDate": "8/06/2015",
     "Tickers": "EOG US",
     "Sectors": "Oil & Gas",
     "Locations": "Hong Kong",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "William R Thomas"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "William R Thomas"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Daimler CEO Roadshow",
     "StartDate": "8/09/2015",
     "EndDate": "8/09/2015",
     "Tickers": "DAI GR",
     "Sectors": "Autos & Parts",
     "Locations": "Paris",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Dieter Zetsche"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Dieter Zetsche"
   },
   {
     "Host": "Redburn",
-    "Host Email": "steve@redburn.com",
+    "HostEmail": "steve@redburn.com",
     "Title": "mBank",
     "StartDate": "8/11/2015",
     "EndDate": "8/11/2015",
     "Tickers": "BRU GR",
     "Sectors": "Business Services",
     "Locations": "Paris",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Cezary Stypulkowski"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Cezary Stypulkowski"
   },
   {
     "Host": "Macquarie Bank",
-    "Host Email": "adam@macquarie.com",
+    "HostEmail": "adam@macquarie.com",
     "Title": "Examworks Group Inc",
     "StartDate": "8/12/2015",
     "EndDate": "08/13/2015",
     "Tickers": "EXAM US",
     "Sectors": "Healthcare",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "James K Price"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "James K Price"
   },
   {
     "Host": "Mainfirst",
-    "Host Email": "markus@mainfirst.com",
+    "HostEmail": "markus@mainfirst.com",
     "Title": "Healthscope Ltd",
     "StartDate": "08/14/2015",
     "EndDate": "08/15/2015",
     "Tickers": "HSO AU",
     "Sectors": "Healthcare",
     "Locations": "Sydney",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Robert john Cooke"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Robert john Cooke"
   },
   {
     "Host": "Morgan Stanley",
-    "Host Email": "mike@morganstanley.com",
+    "HostEmail": "mike@morganstanley.com",
     "Title": "Barry Callebaut",
     "StartDate": "08/14/2015",
     "EndDate": "08/14/2015",
     "Tickers": "BARN SW",
     "Sectors": "Consumer",
     "Locations": "London",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Antoine Bernard De Saint-Affrique"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Antoine Bernard De Saint-Affrique"
   },
   {
     "Host": "JPM Morgan",
-    "Host Email": "lisa@jpmorgan.com",
+    "HostEmail": "lisa@jpmorgan.com",
     "Title": "Medibank Private Ltd",
     "StartDate": "08/15/2015",
     "EndDate": "08/15/2015",
     "Tickers": "MPV GR",
     "Sectors": "Healthcare",
     "Locations": "Singapore",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Paul Koppelman"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Paul Koppelman"
   },
   {
     "Host": "Goldman Sachs",
-    "Host Email": "fabio@gs.com",
+    "HostEmail": "fabio@gs.com",
     "Title": "Q4 Results Roadshow (IR Team)",
     "StartDate": "08/18/2015",
     "EndDate": "08/18/2015",
     "Tickers": "HSBA LN",
     "Sectors": "Financials",
     "Locations": "New York",
-    "Event Type": "Non-Deal Roadshow",
-    "Meeting Participants": "Darryl West"
+    "EventType": "Non-Deal Roadshow",
+    "Participants": "Darryl West"
   }
 ]

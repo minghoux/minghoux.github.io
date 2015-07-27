@@ -1,4 +1,4 @@
-Host,Host Email,Title,StartDate,EndDate,Tickers,Sectors,Locations,Event Type,Meeting Participants
+Host,HostEmail,Title,StartDate,EndDate,Tickers,Sectors,Locations,EventType,Participants
 Mainfirst,markus@mainfirst.com,Alain Oberhuber in Zurich ,07/29/2015,07/30/2015,,Food & Beverage,Zurich,Analyst Marketing,Alain Oberhuber
 Morgan Stanley,mike@morganstanley.com,Non-Deal Roadshow with ReneSola,7/12/2015,7/12/2015,SOL US,Oil & Gas,Boston,Non-Deal Roadshow,Xianshou Li
 JPM Morgan,lisa@jpmorgan.com,Europe NDR - Tokio Marine Holdings,07/17/2015,07/20/2015,8766 JP,Financials,"London, Paris, Frankfurt",Non-Deal Roadshow,Tsuyoshi Nagano

@@ -16,6 +16,11 @@
       .search-box {
         margin-bottom: 20px;
       }
+      .tile {
+        border: #ccc 1px solid;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
     </style>
   </head>
 
@@ -27,24 +32,38 @@
       <input type="text" class="form-control search-box" ng-model="search" placeholder="Event Search">
 
       <!-- event list -->
-      <table class="table table-striped">
+      <table class="table">
         <tr class="info">
-          <th>Title</th>
-          <th>Date</th>
-          <th style="width:15%">Location</th>
+          <th style="width:20%">Title</th>
+          <th style="width:180px">Date</th>
+          <th>Type</th>
+          <th style="width:10%">Location</th>
           <th>Sector</th>
           <th>Ticker</th>
           <th>Host</th>
         </tr>
-        <tr ng-repeat="event in events | limitTo: 40 | filter: search">
+        <tr ng-repeat="event in events | limitTo: 20 | filter: search">
           <td>{{event.Title}}</td>
           <td>{{event.StartDate}} - {{event.EndDate}}</td>
+          <td>{{event.EventType}}</td>
           <td>{{event.Locations}}</td>
           <td>{{event.Sectors}}</td>
           <td>{{event.Tickers}}</td>
           <td>{{event.Host}}</td>
         </tr>
       </table>
+
+      <!-- event tile -->
+      <h1>Event Tile</h1>
+      <div class="row">
+        <div ng-repeat="event in events | limitTo: 10" class="col-xs-4">
+          <div class="tile">
+            <p><b>{{event.Title}}</b></p>
+            <p>{{event.Host}}</p>
+            <p>{{event.StartDate}} - {{event.EndDate}}</p>
+          </div>
+        </div>
+      </div>
 
   	</div>
 
@@ -53,7 +72,7 @@
 
     app.controller("eventController", function($scope, $http) {
 
-      // simple data
+      // get json data
       $http.get('event.json').success(function(data) {
         $scope.events = data;
       });
