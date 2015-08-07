@@ -4,15 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Client List</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src=""></script>
 	<style>
 	.nav-group {
 		padding: 10px;
 		border-bottom: #ccc 1px solid;
-	}
-	.nav-group:first-child {
-		border-top: #ccc 1px solid;
 	}
 	.client-list {
 		list-style: none;
@@ -25,6 +21,26 @@
 		display: inline-block;
 		width: 30% !important;
 	}
+	.filter-dropdown {
+		position: relative;
+	}
+	.filter-list {
+		position: absolute;
+		left: 0;
+		top: 33px;
+		padding: 0;
+		list-style: none;
+		background-color: white;
+		border: #ccc 1px solid;
+	}
+	.filter-list li {
+		padding: 5px 10px;
+	}
+	.filter-list li:hover {
+		background-color: #efefef;
+		cursor: pointer;
+	}
+	/* listing of clients */
 	.table {
 		width: 100%;
 		display: table;
@@ -51,21 +67,14 @@
 
 	<!-- filter by tag -->
 	<div ng-if="filterTag" class="nav-group">
-		<div class="dropdown">
-		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		    Dropdown
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-		    <li><a href="#">Action</a></li>
-		    <li><a href="#">Another action</a></li>
-		    <li><a href="#">Something else here</a></li>
-		    <li><a href="#">Separated link</a></li>
-		  </ul>
+		<div class="filter-dropdown">
+			<a href="" class="btn btn-default" ng-click="filterActive=!filterActive">Add Filter</a>
+			<ul class="filter-list" ng-if="filterActive">
+				<li ng-repeat="client in clients | limitTo: 8">
+					{{client.City}}
+				</li>
+			</ul>
 		</div>
-
-
-		<a href="" class="btn btn-default" ng-click="filter='alex'">Add Filter</a>
 		{{filter}}
 	</div>
 	
@@ -95,7 +104,8 @@
 
 </section>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script>
 var app = angular.module("MyApp", []);
 
