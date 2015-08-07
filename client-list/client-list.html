@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Client List</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<style>
+	.nav-group {
+		padding: 10px;
+		border-bottom: #ccc 1px solid;
+	}
+	.nav-group:first-child {
+		border-top: #ccc 1px solid;
+	}
+	.client-list {
+		list-style: none;
+		padding-left: 0;
+	}
+	.client-list li {
+		border-bottom: #efefef 1px solid;
+	}
+	.form-control.searchBox {
+		display: inline-block;
+		width: 30% !important;
+	}
+	.table {
+		width: 100%;
+		display: table;
+		margin-bottom: 0;
+	}
+	.table-cell {
+		display: table-cell;
+		padding: 5px 0;
+	}
+	.name { width: 25%; }
+	.email { width: 35%; }
+	</style>
+</head>
+<body>
+
+
+<section ng-controller="clientController" class="container">
+	<h1>Client List</h1>
+
+	<!-- client count -->
+	<div class="nav-group">
+		2642 Clients | <a href="" ng-click="filterTag=!filterTag">Filter Client</a>
+	</div>
+
+	<!-- filter by tag -->
+	<div ng-if="filterTag" class="nav-group">
+		<div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Dropdown
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+
+
+		<a href="" class="btn btn-default" ng-click="filter='alex'">Add Filter</a>
+		{{filter}}
+	</div>
+	
+
+	<!-- select and paging -->
+	<div class="nav-group">
+		<input type="text" class="form-control searchBox" ng-model="clientSearch" placeholder="Client Search">
+		<a href="" class="btn btn-default">select visible</a>
+	</div>
+
+	<!-- client list -->
+	<ul class="client-list">
+		<li ng-repeat="client in clients | limitTo: 20 | filter: clientSearch">
+			<div class="table">
+				<div class="table-cell name">
+					{{client.Name}}
+				</div>
+				<div class="table-cell email">
+					{{client.Email}}
+				</div>
+				<div class="table-cell city">
+					<a href="" ng-click="addFilter(client.City)">{{client.City}}</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+</section>
+
+
+<script>
+var app = angular.module("MyApp", []);
+
+app.controller("clientController", function($scope, $http) {
+
+  // get json data
+  $http.get('client.json').success(function(data) {
+    $scope.clients = data;
+  });
+
+  $scope.addFilter = function(city) {
+  	$scope.filter = $scope.filter + " " + city;
+  	$scope.clientSearch = city;
+  }
+
+});
+</script>
+</body>
+</html>
