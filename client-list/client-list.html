@@ -62,32 +62,34 @@
 
 	<!-- client count -->
 	<div class="nav-group">
-		2642 Clients | <a href="" ng-click="filterTag=!filterTag">Filter Client</a>
+		2642 Clients | <a href="" ng-click="filterTag=!filterTag">Filter Client</a> <a href="" ng-click="clearFilter()">Clear Filter</a>
 	</div>
 
 	<!-- filter by tag -->
-	<div ng-if="filterTag" class="nav-group">
-		<div class="filter-dropdown">
+	<div class="nav-group" ng-init="filter = ''">
+		<span>
+			{{filter}}
+		</span>
+		<span class="filter-dropdown">
 			<a href="" class="btn btn-default" ng-click="filterActive=!filterActive">Add Filter</a>
 			<ul class="filter-list" ng-if="filterActive">
-				<li ng-repeat="client in clients | limitTo: 8">
+				<li ng-click="addFilter(client.City)" ng-repeat="client in clients | limitTo: 8">
 					{{client.City}}
 				</li>
 			</ul>
-		</div>
-		{{filter}}
+		</span>
 	</div>
 	
 
 	<!-- select and paging -->
 	<div class="nav-group">
-		<input type="text" class="form-control searchBox" ng-model="clientSearch" placeholder="Client Search">
+		<input type="text" class="form-control searchBox" ng-init="clientSearch = '' " ng-model="clientSearch" placeholder="Client Search">
 		<a href="" class="btn btn-default">select visible</a>
 	</div>
 
 	<!-- client list -->
 	<ul class="client-list">
-		<li ng-repeat="client in clients | limitTo: 20 | filter: clientSearch">
+		<li ng-repeat="client in clients | limitTo: 20 | filter: filter">
 			<div class="table">
 				<div class="table-cell name">
 					{{client.Name}}
@@ -117,8 +119,11 @@ app.controller("clientController", function($scope, $http) {
   });
 
   $scope.addFilter = function(city) {
-  	$scope.filter = $scope.filter + " " + city;
-  	$scope.clientSearch = city;
+  	$scope.filter = $scope.filter +  city;
+  	$scope.filterActive = false;
+  }
+  $scope.clearFilter = function() {
+  	$scope.filter = '';
   }
 
 });
