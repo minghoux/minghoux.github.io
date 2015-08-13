@@ -40,6 +40,7 @@
 		background-color: #efefef;
 		cursor: pointer;
 	}
+	.filter-label { margin-right: 5px;}
 	/* listing of clients */
 	.table {
 		width: 100%;
@@ -48,10 +49,19 @@
 	}
 	.table-cell {
 		display: table-cell;
-		padding: 5px 0;
+		padding: 5px;
+	}
+	.client-list-row.active, .client-list-row.active:hover {
+		background-color: #EEF3FF;
+	}
+	.client-list-row:hover {
+		background-color: #efefef;
+		cursor: pointer;
 	}
 	.name { width: 25%; }
 	.email { width: 35%; }
+
+
 	</style>
 </head>
 <body>
@@ -62,13 +72,17 @@
 
 	<!-- client count -->
 	<div class="nav-group">
-		2642 Clients | <a href="" ng-click="filterTag=!filterTag">Filter Client</a> <a href="" ng-click="clearFilter()">Clear Filter</a>
+		2642 Clients | <a href="" ng-click="filterTag=!filterTag">Filter Client</a> 
+		<span ng-hide="currentFilter.length == 0">
+			| <a href="" ng-click="clearFilter()">Clear Filter</a> | 
+			{{currentFilter.length}} active filter
+		</span>
 	</div>
 
 	<!-- filter by tag -->
 	<div class="nav-group" ng-init="filter = ''">
-		<span>
-			{{filter}}
+		<span ng-repeat="item in currentFilter" class="btn btn-primary filter-label">
+			{{item.tag}}
 		</span>
 		<span class="filter-dropdown">
 			<a href="" class="btn btn-default" ng-click="filterActive=!filterActive">Add Filter</a>
@@ -89,7 +103,10 @@
 
 	<!-- client list -->
 	<ul class="client-list">
-		<li ng-repeat="client in clients | limitTo: 20 | filter: filter">
+		<li ng-repeat="client in clients | limitTo: 20 | filter: clientSearch "
+		ng-click="clientActive=!clientActive" 
+		ng-class="{ 'active' : clientActive }" 
+		class="client-list-row">
 			<div class="table">
 				<div class="table-cell name">
 					{{client.Name}}
@@ -118,12 +135,22 @@ app.controller("clientController", function($scope, $http) {
     $scope.clients = data;
   });
 
+  // default filter
+  $scope.currentFilter = [
+  	// { tag: 'Hong Kong' },
+  	// { tag: 'London' },
+  	// { tag: 'Singapore' }
+  ];
+
+  // add filter
   $scope.addFilter = function(city) {
-  	$scope.filter = $scope.filter +  city;
+  	$scope.currentFilter.push({ tag: city });
   	$scope.filterActive = false;
   }
+
+  // clear filter
   $scope.clearFilter = function() {
-  	$scope.filter = '';
+  	$scope.currentFilter = '';
   }
 
 });
