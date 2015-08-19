@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Image Playground</title>
+    <style>
+    #background {
+        display: none;
+    }
+    
+    #logo {
+        position: absolute;
+        top: 120px;
+        left: 20px;
+        cursor: move;
+        opacity: 0.5;
+        /*background: white;*/
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Drag the like.</h1>
+    <canvas id="canvas" width="600" height="337"></canvas>
+    <img src="event-banner.jpg" id="background" />
+    <img src="like.png" id="logo" />
+    <button id="draw">Draw</button>
+
+
+    <!-- load scripts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        var d_canvas = document.getElementById('canvas');
+        var context = d_canvas.getContext('2d');
+        var background = document.getElementById('background');
+        var logo = document.getElementById('logo')
+        context.drawImage(background, 0, 0);
+
+        // drag logo
+        $('#logo').draggable();
+
+        // click to combine image
+        $('#draw').click(function() {
+            var $logo = $('#logo'),
+                $canvas = $('#canvas');
+            var ballon_x = $logo.offset().left - $canvas.offset().left,
+                ballon_y = $logo.offset().top - $canvas.offset().top;
+
+            context.drawImage(logo, ballon_x, ballon_y);
+
+            $logo.hide();
+            $(this).attr('disabled', 'disabled');
+        });
+    });
+    </script>
+</body>
+
+</html>
