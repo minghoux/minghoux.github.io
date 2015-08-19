@@ -1,0 +1,64 @@
+name,account,email,city,country,tier,tag
+Alexander Galbiati,UBS Global Asset Management,alexander.galbiati@ubs.com,Zurich,Switzerland,Primary,asia
+Alexander Harrison,Axiom International Investors,aharrison@axinvest.com,Greenwich,United States,Primary,tech
+Amanda Hall,T.Rowe Price,amanda_hall@troweprice.com,London,United Kingdom,Primary,financial
+Anastasia Canty,Wellington Management Company,aacanty@wellington.com,Boston,United States,Primary,mining
+Andrew Raikes,TT International,raikesa@ttint.com,London,United Kingdom,Primary,media
+Asger Nielsen,Danske Capital,aln@danskecapital.com,Kongens Lyngby,Denmark,Primary,medical
+Asim Rahman,Henderson Global Investors,asim.rahman@henderson.com,London,United Kingdom,Primary,consumer
+Benjamin Lofthouse,Henderson Global Investors,ben.lofthouse@henderson.com,London,United Kingdom,Primary,asia
+Benjamin Singer-Scott,Wellington Management Company,bnsinger-scott@wellington.com,Radnor,United States,Primary,tech
+Casper Lund,UBS O'Connor Limited,casper.lund@ubs.com,London,United Kingdom,Primary,financial
+Charles Hamker,Artisan Partners,charles.hamker@artisanpartners.com,San Francisco,United States,Primary,mining
+Daniel Avigad,Lansdowne Partners International Ltd.,davigad@lansdownepartners.com,London,United Kingdom,Primary,media
+Daniel Lenz,Schroder Investment Mgmt,daniel.lenz@schroders.com,Zurich,Switzerland,Primary,medical
+Daniel Riff,Wellington Management Company,drriff@wellington.com,Boston,United States,Primary,consumer
+Darren Powell,Wellington Management Company,dpowell@wellington.com,Boston,United States,Primary,asia
+Dennis Neveling,Lazard Asset Management,dennis.neveling@lazard.com,New York,United States,Secondary,tech
+Dimitri Kern,Marble Bar Asset Management,dimitri.kern@mbamfunds.com,London,United Kingdom,Secondary,financial
+Dirk Enderlein,Wellington Management Company,cdenderlein@wellington.com,Boston,United States,Secondary,mining
+Eugene Kim,TIAA-CREF Investment Management,ekim@tiaa-cref.org,New York,United States,Secondary,media
+Fabrizio Cattaneo,Pictet & Cie (Asset Management),fcattaneo@pictet.com,Zürich,Switzerland,Secondary,medical
+Frédéric Le Meaux,Amundi,frederic.lemeaux@amundi.com,Paris,France,Secondary,consumer
+Georgios Damtsas,Capital World Investors CWI,ged@capgroup.com,Geneve,Switzerland,Secondary,asia
+Gerd Kirsten,Deutsche Asset & Wealth Management Investment GmbH,gerd.kirsten@db.com,Frankfurt am Main,Germany,Secondary,tech
+Giovanni Trombello,Allianz Global Investors,giovanni.trombello@de.rcm.com,Frankfurt am Main,Germany,Secondary,financial
+Gregory Kunz,Pictet & Cie,gkunz@pictet.com,Geneva,Switzerland,Secondary,mining
+Heidi Rauber,Fidelity Worldwide Investment,heidi.rauber@fil.com,London,United Kingdom,Secondary,media
+Jawan Parker,Wellington Management Company,jparker@wellington.com,Singapore,Singapore,Secondary,medical
+Jean-Marc Berteaux,Wellington Management Company,jmberteaux@wellington.com,Boston,United States,Secondary,consumer
+Jhoanna Alba-Harkort,DEKA Investment GmbH,jhoanna.alba-harkort@deka.de,Frankfurt am Main,Germany,Secondary,asia
+Jon Ellis,Axiom International Investors,jellis@axinvest.com,Greenwich,United States,Secondary,tech
+Jonathan Herbert,Cologny Advisors LLP,herbert@cologny.co.uk,London,United Kingdom,Primary,financial
+Konstantin Stoev,UBS Global Asset Management,konstantin.stoev@ubs.com,London,United Kingdom,Secondary,mining
+Kristin Manning,Waddell & Reed,kmanning1@waddell.com,Kansas City,United States,Primary,media
+Lorenz Reinhard,Pictet & Cie (Asset Management),lreinhard@pictet.com,Zürich,Switzerland,Secondary,medical
+Martin Dolan,Pioneer Investment Mgmt Ltd,martin.dolan@pioneerinvestments.com,Dublin,Ireland,Primary,consumer
+Matthias Born,Allianz Global Investors,matthias.born@allianzgi.com,Frankfurt am Main,Germany,Secondary,asia
+Matthias Bussemer,DEKA Investment GmbH,matthias.bussemer@deka.de,Frankfurt am Main,Germany,Primary,tech
+Neil Haddow,BlackRock,neil.haddow@blackrock.com,Edinburgh,United Kingdom,Secondary,financial
+Niels Pecriaux,GLG Partners,niels.pecriaux@glgpartners.com,London,United Kingdom,Primary,mining
+Peter Moeschter,Templeton Global Equity,pmoeschter@templeton.com,Toronto,Canada,Secondary,media
+Philipp Bruderer,Schroder Investment Mgmt,philipp.bruderer@schroders.com,Zurich,Switzerland,Primary,medical
+Philippe Labilloy,Petercam,philippe.labilloy@petercam.be,Brussels,Belgium,Secondary,consumer
+Saurav Jain,Capital International Investors (CII),sauj@cgii.com,London,United Kingdom,Primary,asia
+Scott Sullivan,Waddell & Reed,ssullivan@waddell.com,Kansas City,United States,Secondary,tech
+Sebastian Schrott,T.Rowe Price,sebastian_schrott@troweprice.com,London,United Kingdom,Primary,financial
+Simon Mahony,Fidelity Worldwide Investment,simon.mahony@fil.com,London,United Kingdom,Secondary,mining
+Stefan Frischknecht,Schroder Investment Mgmt,stefan.frischknecht@schroders.com,Zurich,Switzerland,Primary,media
+Stephan Scharrer,Credit Suisse Zurich,stephan.scharrer@credit-suisse.com,Zurich,Switzerland,Secondary,medical
+Steven Bowen,Franklin Mutual Advisors LLC,sbowen@franklintempleton.co.uk,London,United Kingdom,Primary,consumer
+Struan Samson,Capital Research Global Investors CRGI,struan.samson@capitalglobal.com,London,United Kingdom,Secondary,asia
+Stuart Reeve,BlackRock,stuart.reeve@blackrock.com,London,United Kingdom,Primary,tech
+Thomas Jökel,Union Investment GmbH,thomas.joekel@union-investment.de,Frankfurt am Main,Germany,Secondary,financial
+Tobias Schulte,UBS Global Asset Management,tobias.schulte@ubs.com,Zurich,Switzerland,Primary,mining
+Todd Ostrow,Franklin Mutual Advisors LLC,tostrow@msfi.com,Short Hills,United States,Secondary,media
+Urs Kunz,Credit Suisse Zurich,urs.kunz.2@credit-suisse.com,Zurich,Switzerland,Primary,medical
+Vincent Champion,Generali,vincent.champion@am.generali.com,Paris Cedex 09,France,Secondary,consumer
+Zehrid Osmani,BlackRock,zehrid.osmani@blackrock.com,London,United Kingdom,Primary,asia
+Zoey Zuo,Waddell & Reed,nzuo@waddell.com,Kansas City,United States,Secondary,tech
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,

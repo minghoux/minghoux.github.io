@@ -10,6 +10,9 @@
 		padding: 10px;
 		border-bottom: #ccc 1px solid;
 	}
+	.client-nav {
+		margin-bottom: 0;
+	}
 	.client-list {
 		list-style: none;
 		padding-left: 0;
@@ -41,6 +44,7 @@
 		cursor: pointer;
 	}
 	.filter-label { margin-right: 5px;}
+	.blank-state-label { margin-left: 10px; }
 	/* listing of clients */
 	.table {
 		width: 100%;
@@ -60,7 +64,8 @@
 	}
 	.name { width: 25%; }
 	.email { width: 35%; }
-
+	.tag-close { padding: 3px 6px; }
+	.tag-close:hover { background-color: white; color: #337ab7;}
 
 	</style>
 </head>
@@ -72,25 +77,32 @@
 
 	<!-- client count -->
 	<div class="nav-group">
-		2642 Clients | <a href="" ng-click="filterTag=!filterTag">Filter Client</a> 
-		<span ng-hide="currentFilter.length == 0">
-			| <a href="" ng-click="clearFilter()">Clear Filter</a> | 
-			{{currentFilter.length}} active filter
-		</span>
+		<h3 class="client-nav">
+			2642 Clients 
+			<span ng-hide="currentFilter.length > 0">
+				| <a href="" ng-click="filterTag=!filterTag">Filter by Tag</a>
+			</span>
+			<span ng-hide="currentFilter.length == 0">
+				| <a href="" ng-click="clearFilter()">{{currentFilter.length}} Tags [x]</a>
+			</span>
+		</h3>
 	</div>
 
 	<!-- filter by tag -->
-	<div class="nav-group" ng-init="filter = ''">
-		<span ng-repeat="item in currentFilter" class="btn btn-primary filter-label">
-			{{item.tag}}
-		</span>
+	<div class="nav-group" ng-show="filterTag" ng-init="filter = ''">
 		<span class="filter-dropdown">
-			<a href="" class="btn btn-default" ng-click="filterActive=!filterActive">Add Filter</a>
+			<a href="" class="btn btn-default" ng-click="filterActive=!filterActive">Add Tag</a>
 			<ul class="filter-list" ng-if="filterActive">
 				<li ng-click="addFilter(client.City)" ng-repeat="client in clients | limitTo: 8">
 					{{client.City}}
 				</li>
 			</ul>
+		</span>
+		<span ng-repeat="item in currentFilter" class="btn btn-primary filter-label">
+			{{item.tag}} <span class="tag-close" ng-click="remove(item.tag)">x</span>
+		</span>
+		<span ng-hide="hasFilter" class="blank-state-label">
+			Filter by tag to see a specific list of clients
 		</span>
 	</div>
 	
@@ -104,7 +116,6 @@
 	<!-- client list -->
 	<ul class="client-list">
 		<li ng-repeat="client in clients | limitTo: 20 | filter: clientSearch "
-		ng-click="clientActive=!clientActive" 
 		ng-class="{ 'active' : clientActive }" 
 		class="client-list-row">
 			<div class="table">
@@ -146,11 +157,21 @@ app.controller("clientController", function($scope, $http) {
   $scope.addFilter = function(city) {
   	$scope.currentFilter.push({ tag: city });
   	$scope.filterActive = false;
+  	$scope.filterTag = true;
+  	$scope.hasFilter = true;
   }
 
   // clear filter
   $scope.clearFilter = function() {
-  	$scope.currentFilter = '';
+  	$scope.currentFilter = [];
+  	$scope.filterTag = false;
+  	$scope.hasFilter = false;
+  }
+
+  // remove one filter
+  $scope.remove = function(item) {
+  	var index = $scope.currentFilter.indexOf(item);
+  	$scope.currentFilter.splice(index, 1);
   }
 
 });
