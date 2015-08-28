@@ -1,5 +1,5 @@
 name,account,email,city,country,tier,tag
-Alexander Galbiati,UBS Global Asset Management,alexander.galbiati@ubs.com,Zurich,Switzerland,Primary,asia
+Alexander Galbiati,UBS Global Asset Management,alexander.galbiati@ubs.com,Zurich,Switzerland,Primary,"asia,tech,financial"
 Alexander Harrison,Axiom International Investors,aharrison@axinvest.com,Greenwich,United States,Primary,tech
 Amanda Hall,T.Rowe Price,amanda_hall@troweprice.com,London,United Kingdom,Primary,financial
 Anastasia Canty,Wellington Management Company,aacanty@wellington.com,Boston,United States,Primary,mining
@@ -57,8 +57,3 @@ Urs Kunz,Credit Suisse Zurich,urs.kunz.2@credit-suisse.com,Zurich,Switzerland,Pr
 Vincent Champion,Generali,vincent.champion@am.generali.com,Paris Cedex 09,France,Secondary,consumer
 Zehrid Osmani,BlackRock,zehrid.osmani@blackrock.com,London,United Kingdom,Primary,asia
 Zoey Zuo,Waddell & Reed,nzuo@waddell.com,Kansas City,United States,Secondary,tech
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,

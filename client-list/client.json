@@ -1,466 +1,524 @@
 [
   {
-    "Name": "Alexander Galbiati",
-    "Account": "UBS Global Asset Management",
-    "Phone": "+41 44 234 8058",
-    "Email": "alexander.galbiati@ubs.com",
-    "City": "Zurich",
-    "Country": "Switzerland"
+    "name": "Alexander Galbiati",
+    "account": "UBS Global Asset Management",
+    "email": "alexander.galbiati@ubs.com",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "tier": "Primary",
+    "tag": "asia"
   },
   {
-    "Name": "Alexander Harrison",
-    "Account": "Axiom International Investors",
-    "Phone": "+1 (203) 422 8045",
-    "Email": "aharrison@axinvest.com",
-    "City": "Greenwich",
-    "Country": "United States"
+    "name": "Alexander Harrison",
+    "account": "Axiom International Investors",
+    "email": "aharrison@axinvest.com",
+    "city": "Greenwich",
+    "country": "United States",
+    "tier": "Primary",
+    "tag": "tech"
   },
   {
-    "Name": "Amanda Hall",
-    "Account": "T.Rowe Price",
-    "Phone": "+44 207 651 8351",
-    "Email": "amanda_hall@troweprice.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Amanda Hall",
+    "account": "T.Rowe Price",
+    "email": "amanda_hall@troweprice.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "financial"
   },
   {
-    "Name": "Anastasia Canty",
-    "Account": "Wellington Management Company",
-    "Phone": "+1 617 2893877",
-    "Email": "aacanty@wellington.com",
-    "City": "Boston",
-    "Country": "United States"
+    "name": "Anastasia Canty",
+    "account": "Wellington Management Company",
+    "email": "aacanty@wellington.com",
+    "city": "Boston",
+    "country": "United States",
+    "tier": "Primary",
+    "tag": "mining"
   },
   {
-    "Name": "Andrew Raikes",
-    "Account": "TT International",
-    "Phone": "+44 20 75091098",
-    "Email": "raikesa@ttint.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Andrew Raikes",
+    "account": "TT International",
+    "email": "raikesa@ttint.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "media"
   },
   {
-    "Name": "Asger Nielsen",
-    "Account": "Danske Capital",
-    "Phone": "+45 45 13 96 86",
-    "Email": "aln@danskecapital.com",
-    "City": "Kongens Lyngby",
-    "Country": "Denmark"
+    "name": "Asger Nielsen",
+    "account": "Danske Capital",
+    "email": "aln@danskecapital.com",
+    "city": "Kongens Lyngby",
+    "country": "Denmark",
+    "tier": "Primary",
+    "tag": "medical"
   },
   {
-    "Name": "Asim Rahman",
-    "Account": "Henderson Global Investors",
-    "Phone": "+44 20 78182146",
-    "Email": "asim.rahman@henderson.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Asim Rahman",
+    "account": "Henderson Global Investors",
+    "email": "asim.rahman@henderson.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "consumer"
   },
   {
-    "Name": "Benjamin Lofthouse",
-    "Account": "Henderson Global Investors",
-    "Phone": "+44 20 78185187",
-    "Email": "ben.lofthouse@henderson.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Benjamin Lofthouse",
+    "account": "Henderson Global Investors",
+    "email": "ben.lofthouse@henderson.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "asia"
   },
   {
-    "Name": "Benjamin Singer-Scott",
-    "Account": "Wellington Management Company",
-    "Phone": "+1 610 6313541",
-    "Email": "bnsinger-scott@wellington.com",
-    "City": "Radnor",
-    "Country": "United States"
+    "name": "Benjamin Singer-Scott",
+    "account": "Wellington Management Company",
+    "email": "bnsinger-scott@wellington.com",
+    "city": "Radnor",
+    "country": "United States",
+    "tier": "Primary",
+    "tag": "tech"
   },
   {
-    "Name": "Casper Lund",
-    "Account": "UBS O'Connor Limited",
-    "Phone": "+44 20 7901 5533",
-    "Email": "casper.lund@ubs.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Casper Lund",
+    "account": "UBS O'Connor Limited",
+    "email": "casper.lund@ubs.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "financial"
   },
   {
-    "Name": "Charles Hamker",
-    "Account": "Artisan Partners",
-    "Phone": "+1 415 283 1703",
-    "Email": "charles.hamker@artisanpartners.com",
-    "City": "San Francisco",
-    "Country": "United States"
+    "name": "Charles Hamker",
+    "account": "Artisan Partners",
+    "email": "charles.hamker@artisanpartners.com",
+    "city": "San Francisco",
+    "country": "United States",
+    "tier": "Primary",
+    "tag": "mining"
   },
   {
-    "Name": "Daniel Avigad",
-    "Account": "Lansdowne Partners International Ltd.",
-    "Phone": "+44 20 7408 8557",
-    "Email": "davigad@lansdownepartners.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Daniel Avigad",
+    "account": "Lansdowne Partners International Ltd.",
+    "email": "davigad@lansdownepartners.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "media"
   },
   {
-    "Name": "Daniel Lenz",
-    "Account": "Schroder Investment Mgmt",
-    "Phone": "+41 44 250 1448",
-    "Email": "daniel.lenz@schroders.com",
-    "City": "Zurich",
-    "Country": "Switzerland"
+    "name": "Daniel Lenz",
+    "account": "Schroder Investment Mgmt",
+    "email": "daniel.lenz@schroders.com",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "tier": "Primary",
+    "tag": "medical"
   },
   {
-    "Name": "Daniel Riff",
-    "Account": "Wellington Management Company",
-    "Phone": "+1 617 2634596",
-    "Email": "drriff@wellington.com",
-    "City": "Boston",
-    "Country": "United States"
+    "name": "Daniel Riff",
+    "account": "Wellington Management Company",
+    "email": "drriff@wellington.com",
+    "city": "Boston",
+    "country": "United States",
+    "tier": "Primary",
+    "tag": "consumer"
   },
   {
-    "Name": "Darren Powell",
-    "Account": "Wellington Management Company",
-    "Phone": "+1 617 289 3764",
-    "Email": "dpowell@wellington.com",
-    "City": "Boston",
-    "Country": "United States"
+    "name": "Darren Powell",
+    "account": "Wellington Management Company",
+    "email": "dpowell@wellington.com",
+    "city": "Boston",
+    "country": "United States",
+    "tier": "Primary",
+    "tag": "asia"
   },
   {
-    "Name": "Dennis Neveling",
-    "Account": "Lazard Asset Management",
-    "Phone": "+1 212 632 8271",
-    "Email": "dennis.neveling@lazard.com",
-    "City": "New York",
-    "Country": "United States"
+    "name": "Dennis Neveling",
+    "account": "Lazard Asset Management",
+    "email": "dennis.neveling@lazard.com",
+    "city": "New York",
+    "country": "United States",
+    "tier": "Secondary",
+    "tag": "tech"
   },
   {
-    "Name": "Dimitri Kern",
-    "Account": "Marble Bar Asset Management",
-    "Phone": "+44 20 30238201",
-    "Email": "dimitri.kern@mbamfunds.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Dimitri Kern",
+    "account": "Marble Bar Asset Management",
+    "email": "dimitri.kern@mbamfunds.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Secondary",
+    "tag": "financial"
   },
   {
-    "Name": "Dirk Enderlein",
-    "Account": "Wellington Management Company",
-    "Phone": "+44 207 126 6174",
-    "Email": "cdenderlein@wellington.com",
-    "City": "Boston",
-    "Country": "United States"
+    "name": "Dirk Enderlein",
+    "account": "Wellington Management Company",
+    "email": "cdenderlein@wellington.com",
+    "city": "Boston",
+    "country": "United States",
+    "tier": "Secondary",
+    "tag": "mining"
   },
   {
-    "Name": "Eugene Kim",
-    "Account": "TIAA-CREF Investment Management",
-    "Phone": "+1 212 916 4101",
-    "Email": "ekim@tiaa-cref.org",
-    "City": "New York",
-    "Country": "United States"
+    "name": "Eugene Kim",
+    "account": "TIAA-CREF Investment Management",
+    "email": "ekim@tiaa-cref.org",
+    "city": "New York",
+    "country": "United States",
+    "tier": "Secondary",
+    "tag": "media"
   },
   {
-    "Name": "Fabrizio Cattaneo",
-    "Account": "Pictet & Cie (Asset Management)",
-    "Phone": "+41 58 323 7920",
-    "Email": "fcattaneo@pictet.com",
-    "City": "Zürich",
-    "Country": "Switzerland"
+    "name": "Fabrizio Cattaneo",
+    "account": "Pictet & Cie (Asset Management)",
+    "email": "fcattaneo@pictet.com",
+    "city": "Zürich",
+    "country": "Switzerland",
+    "tier": "Secondary",
+    "tag": "medical"
   },
   {
-    "Name": "Frédéric Le Meaux",
-    "Account": "Amundi",
-    "Phone": "+33 1 76336011",
-    "Email": "frederic.lemeaux@amundi.com",
-    "City": "Paris",
-    "Country": "France"
+    "name": "Frédéric Le Meaux",
+    "account": "Amundi",
+    "email": "frederic.lemeaux@amundi.com",
+    "city": "Paris",
+    "country": "France",
+    "tier": "Secondary",
+    "tag": "consumer"
   },
   {
-    "Name": "Georgios Damtsas",
-    "Account": "Capital World Investors CWI",
-    "Phone": "+41 22 807 4509",
-    "Email": "ged@capgroup.com",
-    "City": "Geneve",
-    "Country": "Switzerland"
+    "name": "Georgios Damtsas",
+    "account": "Capital World Investors CWI",
+    "email": "ged@capgroup.com",
+    "city": "Geneve",
+    "country": "Switzerland",
+    "tier": "Secondary",
+    "tag": "asia"
   },
   {
-    "Name": "Gerd Kirsten",
-    "Account": "Deutsche Asset & Wealth Management Investment GmbH",
-    "Phone": "+49 69 9101 32 24",
-    "Email": "gerd.kirsten@db.com",
-    "City": "Frankfurt am Main",
-    "Country": "Germany"
+    "name": "Gerd Kirsten",
+    "account": "Deutsche Asset & Wealth Management Investment GmbH",
+    "email": "gerd.kirsten@db.com",
+    "city": "Frankfurt am Main",
+    "country": "Germany",
+    "tier": "Secondary",
+    "tag": "tech"
   },
   {
-    "Name": "Giovanni Trombello",
-    "Account": "Allianz Global Investors",
-    "Phone": "+49 69 24431 2670",
-    "Email": "giovanni.trombello@de.rcm.com",
-    "City": "Frankfurt am Main",
-    "Country": "Germany"
+    "name": "Giovanni Trombello",
+    "account": "Allianz Global Investors",
+    "email": "giovanni.trombello@de.rcm.com",
+    "city": "Frankfurt am Main",
+    "country": "Germany",
+    "tier": "Secondary",
+    "tag": "financial"
   },
   {
-    "Name": "Gregory Kunz",
-    "Account": "Pictet & Cie",
-    "Phone": "+41 58 323 2323",
-    "Email": "gkunz@pictet.com",
-    "City": "Geneva",
-    "Country": "Switzerland"
+    "name": "Gregory Kunz",
+    "account": "Pictet & Cie",
+    "email": "gkunz@pictet.com",
+    "city": "Geneva",
+    "country": "Switzerland",
+    "tier": "Secondary",
+    "tag": "mining"
   },
   {
-    "Name": "Heidi Rauber",
-    "Account": "Fidelity Worldwide Investment",
-    "Phone": "+44 20 7961 4489",
-    "Email": "heidi.rauber@fil.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Heidi Rauber",
+    "account": "Fidelity Worldwide Investment",
+    "email": "heidi.rauber@fil.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Secondary",
+    "tag": "media"
   },
   {
-    "Name": "Jawan Parker",
-    "Account": "Wellington Management Company",
-    "Phone": "+65 6428 0124",
-    "Email": "jparker@wellington.com",
-    "City": "Singapore",
-    "Country": "Singapore"
+    "name": "Jawan Parker",
+    "account": "Wellington Management Company",
+    "email": "jparker@wellington.com",
+    "city": "Singapore",
+    "country": "Singapore",
+    "tier": "Secondary",
+    "tag": "medical"
   },
   {
-    "Name": "Jean-Marc Berteaux",
-    "Account": "Wellington Management Company",
-    "Phone": "+1 617 951 5488",
-    "Email": "jmberteaux@wellington.com",
-    "City": "Boston",
-    "Country": "United States"
+    "name": "Jean-Marc Berteaux",
+    "account": "Wellington Management Company",
+    "email": "jmberteaux@wellington.com",
+    "city": "Boston",
+    "country": "United States",
+    "tier": "Secondary",
+    "tag": "consumer"
   },
   {
-    "Name": "Jhoanna Alba-Harkort",
-    "Account": "DEKA Investment GmbH",
-    "Phone": "+49 69 7147 1362",
-    "Email": "jhoanna.alba-harkort@deka.de",
-    "City": "Frankfurt am Main",
-    "Country": "Germany"
+    "name": "Jhoanna Alba-Harkort",
+    "account": "DEKA Investment GmbH",
+    "email": "jhoanna.alba-harkort@deka.de",
+    "city": "Frankfurt am Main",
+    "country": "Germany",
+    "tier": "Secondary",
+    "tag": "asia"
   },
   {
-    "Name": "Jon Ellis",
-    "Account": "Axiom International Investors",
-    "Phone": "+1 203 4228019",
-    "Email": "jellis@axinvest.com",
-    "City": "Greenwich",
-    "Country": "United States"
+    "name": "Jon Ellis",
+    "account": "Axiom International Investors",
+    "email": "jellis@axinvest.com",
+    "city": "Greenwich",
+    "country": "United States",
+    "tier": "Secondary",
+    "tag": "tech"
   },
   {
-    "Name": "Jonathan Herbert",
-    "Account": "Cologny Advisors LLP",
-    "Phone": "+44 20 36420666",
-    "Email": "herbert@cologny.co.uk",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Jonathan Herbert",
+    "account": "Cologny Advisors LLP",
+    "email": "herbert@cologny.co.uk",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "financial"
   },
   {
-    "Name": "Konstantin Stoev",
-    "Account": "UBS Global Asset Management",
-    "Phone": "+44 20 79015033",
-    "Email": "konstantin.stoev@ubs.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Konstantin Stoev",
+    "account": "UBS Global Asset Management",
+    "email": "konstantin.stoev@ubs.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Secondary",
+    "tag": "mining"
   },
   {
-    "Name": "Kristin Manning",
-    "Account": "Waddell & Reed",
-    "Phone": "+1 913 2361772",
-    "Email": "kmanning1@waddell.com",
-    "City": "Kansas City",
-    "Country": "United States"
+    "name": "Kristin Manning",
+    "account": "Waddell & Reed",
+    "email": "kmanning1@waddell.com",
+    "city": "Kansas City",
+    "country": "United States",
+    "tier": "Primary",
+    "tag": "media"
   },
   {
-    "Name": "Lorenz Reinhard",
-    "Account": "Pictet & Cie (Asset Management)",
-    "Phone": "+41 58 323 7922",
-    "Email": "lreinhard@pictet.com",
-    "City": "Zürich",
-    "Country": "Switzerland"
+    "name": "Lorenz Reinhard",
+    "account": "Pictet & Cie (Asset Management)",
+    "email": "lreinhard@pictet.com",
+    "city": "Zürich",
+    "country": "Switzerland",
+    "tier": "Secondary",
+    "tag": "medical"
   },
   {
-    "Name": "Martin Dolan",
-    "Account": "Pioneer Investment Mgmt Ltd",
-    "Phone": "+353 1 4802765",
-    "Email": "martin.dolan@pioneerinvestments.com",
-    "City": "Dublin",
-    "Country": "Ireland"
+    "name": "Martin Dolan",
+    "account": "Pioneer Investment Mgmt Ltd",
+    "email": "martin.dolan@pioneerinvestments.com",
+    "city": "Dublin",
+    "country": "Ireland",
+    "tier": "Primary",
+    "tag": "consumer"
   },
   {
-    "Name": "Matthias Born",
-    "Account": "Allianz Global Investors",
-    "Phone": "+49 69 24431 4560",
-    "Email": "matthias.born@allianzgi.com",
-    "City": "Frankfurt am Main",
-    "Country": "Germany"
+    "name": "Matthias Born",
+    "account": "Allianz Global Investors",
+    "email": "matthias.born@allianzgi.com",
+    "city": "Frankfurt am Main",
+    "country": "Germany",
+    "tier": "Secondary",
+    "tag": "asia"
   },
   {
-    "Name": "Matthias Bussemer",
-    "Account": "DEKA Investment GmbH",
-    "Phone": "+49 69 7147 1407",
-    "Email": "matthias.bussemer@deka.de",
-    "City": "Frankfurt am Main",
-    "Country": "Germany"
+    "name": "Matthias Bussemer",
+    "account": "DEKA Investment GmbH",
+    "email": "matthias.bussemer@deka.de",
+    "city": "Frankfurt am Main",
+    "country": "Germany",
+    "tier": "Primary",
+    "tag": "tech"
   },
   {
-    "Name": "Neil Haddow",
-    "Account": "BlackRock",
-    "Phone": "+44 131 222 1646",
-    "Email": "neil.haddow@blackrock.com",
-    "City": "Edinburgh",
-    "Country": "United Kingdom"
+    "name": "Neil Haddow",
+    "account": "BlackRock",
+    "email": "neil.haddow@blackrock.com",
+    "city": "Edinburgh",
+    "country": "United Kingdom",
+    "tier": "Secondary",
+    "tag": "financial"
   },
   {
-    "Name": "Niels Pecriaux",
-    "Account": "GLG Partners",
-    "Phone": "+44 2070167079",
-    "Email": "niels.pecriaux@glgpartners.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Niels Pecriaux",
+    "account": "GLG Partners",
+    "email": "niels.pecriaux@glgpartners.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "mining"
   },
   {
-    "Name": "Peter Moeschter",
-    "Account": "Templeton Global Equity",
-    "Phone": "+1 416 9576061",
-    "Email": "pmoeschter@templeton.com",
-    "City": "Toronto",
-    "Country": "Canada"
+    "name": "Peter Moeschter",
+    "account": "Templeton Global Equity",
+    "email": "pmoeschter@templeton.com",
+    "city": "Toronto",
+    "country": "Canada",
+    "tier": "Secondary",
+    "tag": "media"
   },
   {
-    "Name": "Philipp Bruderer",
-    "Account": "Schroder Investment Mgmt",
-    "Phone": "+41 44 250 1229",
-    "Email": "philipp.bruderer@schroders.com",
-    "City": "Zurich",
-    "Country": "Switzerland"
+    "name": "Philipp Bruderer",
+    "account": "Schroder Investment Mgmt",
+    "email": "philipp.bruderer@schroders.com",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "tier": "Primary",
+    "tag": "medical"
   },
   {
-    "Name": "Philippe Labilloy",
-    "Account": "Petercam",
-    "Phone": "+32 2 2296657",
-    "Email": "philippe.labilloy@petercam.be",
-    "City": "Brussels",
-    "Country": "Belgium"
+    "name": "Philippe Labilloy",
+    "account": "Petercam",
+    "email": "philippe.labilloy@petercam.be",
+    "city": "Brussels",
+    "country": "Belgium",
+    "tier": "Secondary",
+    "tag": "consumer"
   },
   {
-    "Name": "Saurav Jain",
-    "Account": "Capital International Investors (CII)",
-    "Phone": 0,
-    "Email": "sauj@cgii.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Saurav Jain",
+    "account": "Capital International Investors (CII)",
+    "email": "sauj@cgii.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "asia"
   },
   {
-    "Name": "Scott Sullivan",
-    "Account": "Waddell & Reed",
-    "Phone": "+1 913 236 3590",
-    "Email": "ssullivan@waddell.com",
-    "City": "Kansas City",
-    "Country": "United States"
+    "name": "Scott Sullivan",
+    "account": "Waddell & Reed",
+    "email": "ssullivan@waddell.com",
+    "city": "Kansas City",
+    "country": "United States",
+    "tier": "Secondary",
+    "tag": "tech"
   },
   {
-    "Name": "Sebastian Schrott",
-    "Account": "T.Rowe Price",
-    "Phone": "+44 20 7651 8395",
-    "Email": "sebastian_schrott@troweprice.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Sebastian Schrott",
+    "account": "T.Rowe Price",
+    "email": "sebastian_schrott@troweprice.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "financial"
   },
   {
-    "Name": "Simon Mahony",
-    "Account": "Fidelity Worldwide Investment",
-    "Phone": "+44 20 7074 5785",
-    "Email": "simon.mahony@fil.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Simon Mahony",
+    "account": "Fidelity Worldwide Investment",
+    "email": "simon.mahony@fil.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Secondary",
+    "tag": "mining"
   },
   {
-    "Name": "Stefan Frischknecht",
-    "Account": "Schroder Investment Mgmt",
-    "Phone": "+41 44 250 1294",
-    "Email": "stefan.frischknecht@schroders.com",
-    "City": "Zurich",
-    "Country": "Switzerland"
+    "name": "Stefan Frischknecht",
+    "account": "Schroder Investment Mgmt",
+    "email": "stefan.frischknecht@schroders.com",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "tier": "Primary",
+    "tag": "media"
   },
   {
-    "Name": "Stephan Scharrer",
-    "Account": "Credit Suisse Zurich",
-    "Phone": "+41 44 333 7393",
-    "Email": "stephan.scharrer@credit-suisse.com",
-    "City": "Zurich",
-    "Country": "Switzerland"
+    "name": "Stephan Scharrer",
+    "account": "Credit Suisse Zurich",
+    "email": "stephan.scharrer@credit-suisse.com",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "tier": "Secondary",
+    "tag": "medical"
   },
   {
-    "Name": "Steven Bowen",
-    "Account": "Franklin Mutual Advisors LLC",
-    "Phone": "+44 20 7073 8631",
-    "Email": "sbowen@franklintempleton.co.uk",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Steven Bowen",
+    "account": "Franklin Mutual Advisors LLC",
+    "email": "sbowen@franklintempleton.co.uk",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "consumer"
   },
   {
-    "Name": "Struan Samson",
-    "Account": "Capital Research Global Investors CRGI",
-    "Phone": "+44 20 7864 5089",
-    "Email": "struan.samson@capitalglobal.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Struan Samson",
+    "account": "Capital Research Global Investors CRGI",
+    "email": "struan.samson@capitalglobal.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Secondary",
+    "tag": "asia"
   },
   {
-    "Name": "Stuart Reeve",
-    "Account": "BlackRock",
-    "Phone": "+44 20 7743 4605",
-    "Email": "stuart.reeve@blackrock.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Stuart Reeve",
+    "account": "BlackRock",
+    "email": "stuart.reeve@blackrock.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "tech"
   },
   {
-    "Name": "Thomas Jökel",
-    "Account": "Union Investment GmbH",
-    "Phone": "+49 69 2567 2566",
-    "Email": "thomas.joekel@union-investment.de",
-    "City": "Frankfurt am Main",
-    "Country": "Germany"
+    "name": "Thomas Jökel",
+    "account": "Union Investment GmbH",
+    "email": "thomas.joekel@union-investment.de",
+    "city": "Frankfurt am Main",
+    "country": "Germany",
+    "tier": "Secondary",
+    "tag": "financial"
   },
   {
-    "Name": "Tobias Schulte",
-    "Account": "UBS Global Asset Management",
-    "Phone": "+41 44 234 8931",
-    "Email": "tobias.schulte@ubs.com",
-    "City": "Zurich",
-    "Country": "Switzerland"
+    "name": "Tobias Schulte",
+    "account": "UBS Global Asset Management",
+    "email": "tobias.schulte@ubs.com",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "tier": "Primary",
+    "tag": "mining"
   },
   {
-    "Name": "Todd Ostrow",
-    "Account": "Franklin Mutual Advisors LLC",
-    "Phone": "+1 973 912 2024",
-    "Email": "tostrow@msfi.com",
-    "City": "Short Hills",
-    "Country": "United States"
+    "name": "Todd Ostrow",
+    "account": "Franklin Mutual Advisors LLC",
+    "email": "tostrow@msfi.com",
+    "city": "Short Hills",
+    "country": "United States",
+    "tier": "Secondary",
+    "tag": "media"
   },
   {
-    "Name": "Urs Kunz",
-    "Account": "Credit Suisse Zurich",
-    "Phone": "+41 44 334 71 40",
-    "Email": "urs.kunz.2@credit-suisse.com",
-    "City": "Zurich",
-    "Country": "Switzerland"
+    "name": "Urs Kunz",
+    "account": "Credit Suisse Zurich",
+    "email": "urs.kunz.2@credit-suisse.com",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "tier": "Primary",
+    "tag": "medical"
   },
   {
-    "Name": "Vincent Champion",
-    "Account": "Generali",
-    "Phone": "+33 1 58381646",
-    "Email": "vincent.champion@am.generali.com",
-    "City": "Paris Cedex 09",
-    "Country": "France"
+    "name": "Vincent Champion",
+    "account": "Generali",
+    "email": "vincent.champion@am.generali.com",
+    "city": "Paris Cedex 09",
+    "country": "France",
+    "tier": "Secondary",
+    "tag": "consumer"
   },
   {
-    "Name": "Zehrid Osmani",
-    "Account": "BlackRock",
-    "Phone": "+44 131 472 7372",
-    "Email": "zehrid.osmani@blackrock.com",
-    "City": "London",
-    "Country": "United Kingdom"
+    "name": "Zehrid Osmani",
+    "account": "BlackRock",
+    "email": "zehrid.osmani@blackrock.com",
+    "city": "London",
+    "country": "United Kingdom",
+    "tier": "Primary",
+    "tag": "asia"
   },
   {
-    "Name": "Zoey Zuo",
-    "Account": "Waddell & Reed",
-    "Phone": 19132363972,
-    "Email": "nzuo@waddell.com",
-    "City": "Kansas City",
-    "Country": "United States"
+    "name": "Zoey Zuo",
+    "account": "Waddell & Reed",
+    "email": "nzuo@waddell.com",
+    "city": "Kansas City",
+    "country": "United States",
+    "tier": "Secondary",
+    "tag": "tech"
   }
 ]

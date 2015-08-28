@@ -64,6 +64,9 @@
 	}
 	.name { width: 25%; }
 	.email { width: 35%; }
+	.city, .tier, .tag {
+		width: 10%;
+	}
 	.tag-close { padding: 3px 6px; }
 	.tag-close:hover { background-color: white; color: #337ab7;}
 
@@ -120,13 +123,19 @@
 		class="client-list-row">
 			<div class="table">
 				<div class="table-cell name">
-					{{client.Name}}
+					{{client.name}}
 				</div>
 				<div class="table-cell email">
-					{{client.Email}}
+					{{client.email}}
 				</div>
 				<div class="table-cell city">
-					<a href="" ng-click="addFilter(client.City)">{{client.City}}</a>
+					<a href="" ng-click="addFilter(client.city)">{{client.city}}</a>
+				</div>
+				<div class="table-cell tier">
+					<a href="" ng-click="addFilter(client.tier)">{{client.tier}}</a>
+				</div>
+				<div class="table-cell tag">
+					<a href="" ng-click="addFilter(client.tag)">{{client.tag}}</a>
 				</div>
 			</div>
 		</li>
