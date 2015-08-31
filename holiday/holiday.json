@@ -1,0 +1,67 @@
+[
+  {
+    "Date": "01-01-2015",
+    "Name": "新年",
+    "Weekday": "Thu"
+  },
+  {
+    "Date": "02-19-2015",
+    "Name": "農曆年初一",
+    "Weekday": "Thu"
+  },
+  {
+    "Date": "02-20-2015",
+    "Name": "農曆年初二",
+    "Weekday": "Fri"
+  },
+  {
+    "Date": "02-21-2015",
+    "Name": "農曆年初三",
+    "Weekday": "Sat"
+  },
+  {
+    "Date": "04-05-2015",
+    "Name": "清明節",
+    "Weekday": "Sun"
+  },
+  {
+    "Date": "05-01-2015",
+    "Name": "勞動節",
+    "Weekday": "Fri"
+  },
+  {
+    "Date": "06-20-2015",
+    "Name": "端午節",
+    "Weekday": "Sat"
+  },
+  {
+    "Date": "07-01-2015",
+    "Name": "香港特別行政區成立紀念日",
+    "Weekday": "Wed"
+  },
+  {
+    "Date": "09-03-2015",
+    "Name": "抗戰勝利七十周年",
+    "Weekday": "Thu"
+  },
+  {
+    "Date": "09-28-2015",
+    "Name": "中秋節翌日",
+    "Weekday": "Mon"
+  },
+  {
+    "Date": "10-01-2015",
+    "Name": "國慶日",
+    "Weekday": "Thu"
+  },
+  {
+    "Date": "10-21-2015",
+    "Name": "重陽節",
+    "Weekday": "Wed"
+  },
+  {
+    "Date": "12-25-2015",
+    "Name": "聖誕節",
+    "Weekday": "Fri"
+  }
+]
