@@ -10,11 +10,6 @@
         padding: 3px 8px;
         vertical-align: middle;
       }
-/*      table > tbody > tr:hover > td {
-        background: #f9f9f9;
-        cursor: pointer;
-        -webkit-user-select: none;
-      }*/
       .search-box {
         margin-bottom: 20px;
       }
@@ -41,12 +36,18 @@
         td:before {
           content: attr(data-header)": ";
           position: absolute;
-          top: 6px;
+          top: 2px;
           left: 0;
           font-weight: bold;
+          color: black;
           /*width: 5.2em;*/
           /*display: inline-block;*/
         }
+      }
+      td.title { color: #337ab7; }
+      td.title:hover {
+        text-decoration: underline;
+        cursor: pointer;
       }
       @media (min-width: 781px) and (max-width: 1099px) {
         .sector, .ticker { display: none;}
@@ -67,11 +68,7 @@
         .event-row:hover .action-wrap {
           opacity: 1;
         }
-
-        .event-row .title:hover {
-          text-decoration: underline;
-          cursor: pointer;
-        }
+        
       }
 
       @media (min-width: 1099px) {
@@ -91,8 +88,12 @@
       <input type="text" class="form-control search-box" ng-model="search" placeholder="Event Search">
 
       <p>
-        <button ng-click="coordinator=!coordinator" class="btn btn-default"> {{ coordinator ? 'Hide Coordinator View' : 'Turn On Coordinator View'}}</button>
+        <button ng-click="coordinator=!coordinator" class="btn btn-default"> 
+          {{ coordinator ? 'Hide Coordinator View' : 'Turn On Coordinator View'}}
+        </button>
       </p>
+
+      <p>{{hello}}</p>
 
       <!-- event list -->
       <table class="table event-list">
@@ -109,7 +110,7 @@
         </tr>
         <tr ng-repeat="event in events | limitTo: 20 | filter: search" class="event-row">
           <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
-          <td data-header="Title" class="title"><a href="#"><b>{{event.Title}}</b></a></td>
+          <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
           <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
           <td data-header="Type" class="type">{{event.EventType}}</td>
           <td data-header="Location" class="location">{{event.Locations}}</td>
