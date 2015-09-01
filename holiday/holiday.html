@@ -11,13 +11,13 @@
     </style>
   </head>
 
-  <body ng-controller="eventController">
+  <body ng-controller="holidayController">
 
-  	<div class="container-fluid">
+  	<div class="container">
   		<h1>幾時放假?</h1>
       <p>目前時間: {{currentTime | date:'dd-MM-yyyy, HH:mm:ss'}}</p>
       <ul>
-        <li ng-repeat="event in events | limitTo: 10" class="col-xs-3">
+        <li ng-repeat="event in events | limitTo: 10" class="col-sm-3">
             <p><b>{{event.Name}}</b></p>
             <p>{{event.Date}}, {{event.Weekday}}</p>
         </li>
@@ -28,7 +28,7 @@
     <script>
     var app = angular.module("MyApp", []);
 
-    app.controller("eventController", function($scope, $http) {
+    app.controller("holidayController", function($scope, $http) {
 
       // get json data
       $http.get('holiday.json').success(function(data) {
