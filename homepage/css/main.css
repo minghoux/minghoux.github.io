@@ -1,5 +1,5 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-@import url("http://fonts.googleapis.com/css?family=Noto+Serif|Roboto:700");
+@import url("http://fonts.googleapis.com/css?family=NPT+Serif|Montserrat:700");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -7734,17 +7734,15 @@ button.close {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "Roboto";
+  font-family: "Montserrat";
 }
 
 body {
   background: url("/img/concrete_seamless.png") repeat;
-  font-family: "Noto Serif";
-  font-size: 16px;
+  font-family: "PT Serif";
+  font-size: 18px;
 }
 
 .content-wrap {
   padding: 30px 0;
 }
-
-/*# sourceMappingURL=main.css.map */
