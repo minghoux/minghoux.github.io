@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Poem List</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+    <style>
+
+    </style>
+  </head>
+
+  <body ng-controller="MyController">
+  	<div class="container-fluid">
+  		<h1>Poem List</h1>
+  
+      <!-- event tile -->
+      <div class="row">
+        <p>Test {{2*2}}</p>
+        <div ng-repeat="link in links">
+          {{link}} {{link.1}}
+        </div>
+        
+
+      </div>
+
+  	</div>
+
+<script>
+      var myApp = angular.module("myApp", ["firebase"]);
+
+      myApp.controller("MyController", ["$scope", "$firebaseArray",
+        function($scope, $firebaseArray) {
+          //CREATE A FIREBASE REFERENCE
+          var mingggRef = new Firebase("https://tangpoem.firebaseio.com/");
+
+          // GET MESSAGES AS AN ARRAY
+          $scope.links = $firebaseArray(mingggRef);
+
+        }
+      ]);
+    </script>
+  </body>
+</html>
