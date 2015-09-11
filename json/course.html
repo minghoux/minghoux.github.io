@@ -1,0 +1,116 @@
+<!doctype html>
+<html ng-app="MyApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Event List</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <style>
+      table.event-list > tbody > tr > td {
+        padding: 3px 8px;
+        vertical-align: middle;
+      }
+      .search-box {
+        margin-bottom: 20px;
+      }
+      .tile {
+        border: #ccc 1px solid;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .event-list {
+        font-size: 12px;
+      }
+      @media (max-width: 780px) {
+        .info { display: none; }
+        table.event-list > tbody > tr > td { 
+          display: block; 
+          border-top: none !important;
+          position: relative;
+          padding-left: 5.2em;
+        }
+        td:last-child {
+          border-bottom: #ccc 1px solid;
+          margin-bottom: 20px;
+        }
+        td:before {
+          content: attr(data-header)": ";
+          position: absolute;
+          top: 2px;
+          left: 0;
+          font-weight: bold;
+          color: black;
+          /*width: 5.2em;*/
+          /*display: inline-block;*/
+        }
+      }
+      td.title { color: #337ab7; }
+      td.title:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      @media (min-width: 781px) and (max-width: 1099px) {
+        .sector, .ticker { display: none;}
+      }
+      @media (min-width: 780px) {
+        .date { width: 70px; }
+        .type { width: 100px; }
+        .location { width: 90px; }
+        .action { width: 180px; }
+        .sector { width: 100px; }
+        .ticker { width: 75px; }
+        .host { width: 60px;}
+
+        .event-row .action-wrap {
+          opacity: 0.2;
+          -webkit-transition: all 0.2s;
+        }
+        .event-row:hover .action-wrap {
+          opacity: 1;
+        }
+        
+      }
+
+      @media (min-width: 1099px) {
+        .date { width: 100px; }
+        .type { width: 140px; }
+        .location { width: 120px; }
+        .host { width: 120px; }
+      }
+    </style>
+  </head>
+
+  <body ng-controller="eventController">
+
+  	<div class="container-fluid">
+
+      <h1>Course List</h1>
+      <p>
+        <input type="text" ng-model="courseSearch" class="form-control">
+      </p>
+      <div class="row">
+        <div ng-repeat="event in events | limitTo: 10 | filter: courseSearch" class="col-xs-12 col-lg-4">
+          <div class="tile">
+            <p><a href="{{event.link}}"><b>{{event.title}}</b></a></p>
+            <p>{{event.description}}</p>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("eventController", function($scope, $http) {
+
+      // get json data
+      $http.get('course.json').success(function(data) {
+        $scope.events = data;
+      });
+
+    });
+
+    </script>
+  </body>
+</html>

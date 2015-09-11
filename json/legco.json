@@ -1,0 +1,352 @@
+[
+  {
+    "name": "田北辰",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/tps.jpg"
+  },
+  {
+    "name": "易志明",
+    "category": "航運交通界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ycm.jpg"
+  },
+  {
+    "name": "梁耀忠",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lyc.jpg"
+  },
+  {
+    "name": "王國興",
+    "category": "香港島",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/wkh.jpg"
+  },
+  {
+    "name": "何俊賢",
+    "category": "漁農界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/hcys.jpg"
+  },
+  {
+    "name": "謝偉銓",
+    "category": "建築、測量及都市規劃界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/twct.jpg"
+  },
+  {
+    "name": "劉慧卿",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lwh.jpg"
+  },
+  {
+    "name": "郭家麒",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/kkk.jpg"
+  },
+  {
+    "name": "單仲偕",
+    "category": "香港島",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/sck.jpg"
+  },
+  {
+    "name": "廖長江",
+    "category": "null",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lck.jpg"
+  },
+  {
+    "name": "張華峰",
+    "category": "金融服務界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/cwf.jpg"
+  },
+  {
+    "name": "梁志祥",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lcc.jpg"
+  },
+  {
+    "name": "陳鑑林",
+    "category": "九龍東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ckl.jpg"
+  },
+  {
+    "name": "曾鈺成",
+    "category": "香港島",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/tys.jpg"
+  },
+  {
+    "name": "馮檢基",
+    "category": "區議會",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/fkk.jpg"
+  },
+  {
+    "name": "李卓人",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lcy.jpg"
+  },
+  {
+    "name": "蔣麗芸",
+    "category": "九龍西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/clw.jpg"
+  },
+  {
+    "name": "謝偉俊",
+    "category": "九龍東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/twc.jpg"
+  },
+  {
+    "name": "葉劉淑",
+    "category": "香港島",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ilsy.jpg"
+  },
+  {
+    "name": "姚思榮",
+    "category": "旅遊界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ysw.jpg"
+  },
+  {
+    "name": "黃定光",
+    "category": "進出口界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/wtk.jpg"
+  },
+  {
+    "name": "鄧家彪",
+    "category": "勞工界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/tkp.jpg"
+  },
+  {
+    "name": "鍾樹根",
+    "category": "香港島",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/csk.jpg"
+  },
+  {
+    "name": "涂謹申",
+    "category": "區議會",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/tks.jpg"
+  },
+  {
+    "name": "陳婉嫻",
+    "category": "區議會",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/cyh.jpg"
+  },
+  {
+    "name": "黃國健",
+    "category": "九龍東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/wkk.jpg"
+  },
+  {
+    "name": "湯家驊",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/tkw.jpg"
+  },
+  {
+    "name": "張宇人",
+    "category": "飲食界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/cyy.jpg"
+  },
+  {
+    "name": "潘兆平",
+    "category": "勞工界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/psp.jpg"
+  },
+  {
+    "name": "田北俊",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/tpc.jpg"
+  },
+  {
+    "name": "莫乃光",
+    "category": "資訊科技界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/mcp.jpg"
+  },
+  {
+    "name": "盧偉國",
+    "category": "工程界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lwk.jpg"
+  },
+  {
+    "name": "毛孟靜",
+    "category": "九龍西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/mc.jpg"
+  },
+  {
+    "name": "鍾國斌",
+    "category": "紡織及製衣界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ckpf.jpg"
+  },
+  {
+    "name": "馬逢國",
+    "category": "體育、演藝、文化及出版界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/mfk.jpg"
+  },
+  {
+    "name": "陳志全",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ccc.jpg"
+  },
+  {
+    "name": "方剛",
+    "category": "批發及零售界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/fk.jpg"
+  },
+  {
+    "name": "李慧琼",
+    "category": "區議會",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lwks.jpg"
+  },
+  {
+    "name": "郭榮鏗",
+    "category": "法律界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/kd.jpg"
+  },
+  {
+    "name": "譚耀宗",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/tyc.jpg"
+  },
+  {
+    "name": "吳亮星",
+    "category": "金融界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/nls.jpg"
+  },
+  {
+    "name": "葉國謙",
+    "category": "區議會",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ikh.jpg"
+  },
+  {
+    "name": "麥美娟",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/mmk.jpg"
+  },
+  {
+    "name": "陳偉業",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/cwy.jpg"
+  },
+  {
+    "name": "胡志偉",
+    "category": "九龍東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/wcw.jpg"
+  },
+  {
+    "name": "梁繼昌",
+    "category": "會計界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lk.jpg"
+  },
+  {
+    "name": "梁家傑",
+    "category": "九龍東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lkk.jpg"
+  },
+  {
+    "name": "黃碧雲",
+    "category": "九龍西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/wpw.jpg"
+  },
+  {
+    "name": "林大輝",
+    "category": "工業界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ltf.jpg"
+  },
+  {
+    "name": "葛珮帆",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/qe.jpg"
+  },
+  {
+    "name": "陳克勤",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/chk.jpg"
+  },
+  {
+    "name": "陳家洛",
+    "category": "香港島",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/cklk.jpg"
+  },
+  {
+    "name": "陳恒鑌",
+    "category": "新界西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/chp.jpg"
+  },
+  {
+    "name": "梁國雄",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lkh.jpg"
+  },
+  {
+    "name": "李國麟",
+    "category": "衛生服務界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lklj.jpg"
+  },
+  {
+    "name": "葉建源",
+    "category": "教育界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/iky.jpg"
+  },
+  {
+    "name": "劉皇發",
+    "category": "鄉議局",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lwf.jpg"
+  },
+  {
+    "name": "何秀蘭",
+    "category": "香港島",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/hsl.jpg"
+  },
+  {
+    "name": "范國威",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/fkw.jpg"
+  },
+  {
+    "name": "梁家騮",
+    "category": "醫學界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lkl.jpg"
+  },
+  {
+    "name": "張國柱",
+    "category": "社會福利界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ckc.jpg"
+  },
+  {
+    "name": "林健鋒",
+    "category": "null",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lkf.jpg"
+  },
+  {
+    "name": "石禮謙",
+    "category": "地產及建造界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/slh.jpg"
+  },
+  {
+    "name": "黃毓民",
+    "category": "九龍西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/wym.jpg"
+  },
+  {
+    "name": "梁君彥",
+    "category": "工業界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lky.jpg"
+  },
+  {
+    "name": "郭偉强",
+    "category": "勞工界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/kwk.jpg"
+  },
+  {
+    "name": "張超雄",
+    "category": "新界東",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/cch.jpg"
+  },
+  {
+    "name": "陳健波",
+    "category": "保險界",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/ckp.jpg"
+  },
+  {
+    "name": "梁美芬",
+    "category": "九龍西",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/lmf.jpg"
+  },
+  {
+    "name": "何俊仁",
+    "category": "區議會",
+    "photo": "http://www.legco.gov.hk/images/mem_small_1216/hcy.jpg"
+  }
+]
