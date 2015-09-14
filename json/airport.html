@@ -16,10 +16,10 @@
 
       <h1>Airport Search</h1>
       <p>
-        <input type="text" ng-model="courseSearch" class="form-control" placeholder="Search for airport by it's name, city or code">
+        <input type="text" ng-model="courseSearch" class="form-control" placeholder="Search for airport by name, city or code">
       </p>
       <div class="row">
-        <div ng-repeat="event in events | filter: courseSearch" class="col-xs-4 col-lg-2">
+        <div ng-repeat="event in events | filter: courseSearch" class="col-xs-3 col-lg-2">
           <div class="tile">
             <p>{{event.name}} <small>({{event.iata}})</small></p>
           </div>
