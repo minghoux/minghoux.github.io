@@ -8,10 +8,18 @@
     <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
     <style>
+    body {
+      font-family: "microsoft jhenghei", sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+    }
     .poem-list {
       list-style: none;
       padding: 0;
       margin: 0;
+    }
+    .title {
+      font-weight: bold;
     }
     </style>
   </head>
@@ -22,19 +30,19 @@
   
       <!-- event tile -->
       <div class="row">
-      <div>
-          <input type="text" class="form-control" ng-model="poemSearch">
+        <div class="col-sm-6">
+            <input type="text" class="form-control" ng-model="poemSearch" placeholder="Search for poem">
         </div>
       </div>
 
       <ul class="row poem-list">
         <li ng-repeat="poem in poems | filter: poemSearch" class="col-sm-4">
-          <h3>{{poem.title}} - <small>{{poem.author}}</small></h3>
-          <p>
-            {{poem.text}}
-          </p>
+          <h3 class="title">{{poem.title}} - <small>{{poem.author}}</small></h3>
+          <p>{{poem.text}}</p>
         </li>
       </ul>
+
+
 
   	</div>
 
@@ -50,6 +58,7 @@
           $scope.poems = $firebaseArray(mingggRef);
         }
       ]);
-    </script>
+</script>
+
   </body>
 </html>
