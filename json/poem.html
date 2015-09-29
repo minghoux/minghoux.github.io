@@ -8,7 +8,11 @@
     <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
     <style>
-
+    .poem-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
     </style>
   </head>
 
@@ -18,13 +22,19 @@
   
       <!-- event tile -->
       <div class="row">
-        <p>Test {{2*2}}</p>
-        <div ng-repeat="link in links">
-          {{link}} {{link.1}}
+      <div>
+          <input type="text" class="form-control" ng-model="poemSearch">
         </div>
-        
-
       </div>
+
+      <ul class="row poem-list">
+        <li ng-repeat="poem in poems | filter: poemSearch" class="col-sm-4">
+          <h3>{{poem.title}} - <small>{{poem.author}}</small></h3>
+          <p>
+            {{poem.text}}
+          </p>
+        </li>
+      </ul>
 
   	</div>
 
@@ -37,8 +47,7 @@
           var mingggRef = new Firebase("https://tangpoem.firebaseio.com/");
 
           // GET MESSAGES AS AN ARRAY
-          $scope.links = $firebaseArray(mingggRef);
-
+          $scope.poems = $firebaseArray(mingggRef);
         }
       ]);
     </script>

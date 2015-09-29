@@ -1,5 +1,5 @@
 [
-    [
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B3%8A%E9%80%80%E7%A4%BA%E5%AE%98%E5%90%8F",
         "title": "賊退示官吏",
         "author": "元結",
@@ -17,8 +17,8 @@
             "思欲委符節，引竿自刺船。",
             "將家就魚麥，歸老江湖邊。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%90%8C%E5%BE%9E%E5%BC%9F%E5%8D%97%E9%BD%8B%E7%BF%AB%E6%9C%88%E6%86%B6%E5%B1%B1%E9%99%B0%E5%B4%94%E5%B0%91%E5%BA%9C",
         "title": "同從弟南齋翫月憶山陰崔少府",
         "author": "王昌齡",
@@ -29,8 +29,8 @@
             "美人清江畔，是夜越吟苦。",
             "千里其如何，微風吹蘭杜。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E7%B6%A6%E6%AF%8B%E6%BD%9B%E8%90%BD%E7%AC%AC%E9%82%84%E9%84%89",
         "title": "送綦毋潛落第還鄉",
         "author": "王維",
@@ -44,8 +44,8 @@
             "遠樹帶行客，孤村當落暉。",
             "吾謀適不用，勿謂知音稀。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E5%88%A5_(%E4%B8%8B%E9%A6%AC%E9%A3%B2%E5%90%9B%E9%85%92)",
         "title": "送別",
         "author": "王維",
@@ -54,8 +54,8 @@
             "君言不得意，歸臥南山陲。",
             "但去莫復問，白雲無盡時。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9D%92%E8%B0%BF",
         "title": "青谿",
         "author": "王維",
@@ -67,8 +67,8 @@
             "我心素已閒，清川澹如此。",
             "請留盤石上，垂釣將已矣。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B8%AD%E5%B7%9D%E7%94%B0%E5%AE%B6",
         "title": "渭川田家",
         "author": "王維",
@@ -79,8 +79,8 @@
             "田夫荷鋤至，相見語依依。",
             "即此羨閑逸，悵然吟式微。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A5%BF%E6%96%BD%E8%A9%A0",
         "title": "西施詠",
         "author": "王維",
@@ -93,8 +93,8 @@
             "當時浣紗伴，莫得同車歸。",
             "持謝鄰家子，效顰安可希？"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%88%87%E9%AB%98%E9%81%A9%E8%96%9B%E6%93%9A%E7%99%BB%E6%85%88%E6%81%A9%E5%AF%BA%E6%B5%AE%E5%9C%96",
         "title": "與高適薛據登慈恩寺浮圖",
         "author": "岑參",
@@ -111,8 +111,8 @@
             "淨理了可悟，勝因夙所宗。",
             "誓將挂冠去，覺道資無窮。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E4%B8%8B%E7%B5%82%E5%8D%97%E5%B1%B1%E9%81%8E%E6%96%9B%E6%96%AF%E5%B1%B1%E4%BA%BA%E5%AE%BF%E7%BD%AE%E9%85%92",
         "title": "下終南山過斛斯山人宿置酒",
         "author": "李白",
@@ -125,8 +125,8 @@
             "長歌吟松風，曲盡河星稀。",
             "我醉君復樂，陶然共忘機。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9C%88%E4%B8%8B%E7%8D%A8%E9%85%8C_(%E8%8A%B1%E9%96%93%E4%B8%80%E5%A3%BA%E9%85%92)",
         "title": "月下獨酌",
         "author": "李白",
@@ -139,8 +139,8 @@
             "醒時同交歡，醉後各分散。",
             "永結無情遊，相期邈雲漢。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%80%9D_(%E6%9D%8E%E7%99%BD)",
         "title": "春思",
         "author": "李白",
@@ -149,8 +149,8 @@
             "當君懷歸日，是妾斷腸時。",
             "春風不相識，何事入羅幃。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9C%9B%E5%B6%BD_(%E5%B2%B1%E5%AE%97%E5%A4%AB%E5%A6%82%E4%BD%95)",
         "title": "望嶽",
         "author": "杜甫",
@@ -160,8 +160,8 @@
             "盪胸生層雲，決眥入歸鳥。",
             "會當凌絕頂，一覽衆山小。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E8%A1%9B%E5%85%AB%E8%99%95%E5%A3%AB",
         "title": "贈衛八處士",
         "author": "杜甫",
@@ -179,8 +179,8 @@
             "十觴亦不醉，感子故意長。",
             "明日隔山岳，世事兩茫茫。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E4%BD%B3%E4%BA%BA",
         "title": "佳人",
         "author": "杜甫",
@@ -198,8 +198,8 @@
             "摘花不插髮，采柏動盈掬。",
             "天寒翠袖薄，日暮倚修竹。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%A2%E6%9D%8E%E7%99%BD_(%E6%AD%BB%E5%88%A5%E5%B7%B2%E5%90%9E%E8%81%B2)",
         "title": "夢李白之一",
         "author": "杜甫",
@@ -213,8 +213,8 @@
             "落月滿屋梁，猶疑照顏色。",
             "水深波浪闊，無使蛟龍得。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%A2%E6%9D%8E%E7%99%BD_(%E6%B5%AE%E9%9B%B2%E7%B5%82%E6%97%A5%E8%A1%8C)",
         "title": "夢李白之二",
         "author": "杜甫",
@@ -228,8 +228,8 @@
             "孰云網恢恢，將老身反累。",
             "千秋萬歲名，寂寞身後事。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%A7%8B%E7%99%BB%E8%98%AD%E5%B1%B1%E5%AF%84%E5%BC%B5%E4%BA%94",
         "title": "秋登蘭山寄張五",
         "author": "孟浩然",
@@ -241,8 +241,8 @@
             "天邊樹若薺，江畔舟如月。",
             "何當載酒來，共醉重陽節。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%8F%E6%97%A5%E5%8D%97%E4%BA%AD%E6%87%B7%E8%BE%9B%E5%A4%A7",
         "title": "夏日南亭懷辛大",
         "author": "孟浩然",
@@ -253,8 +253,8 @@
             "欲取鳴琴彈，恨無知音賞。",
             "感此懷故人，中宵勞夢想。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%BF%E6%A5%AD%E5%B8%AB%E5%B1%B1%E6%88%BF%E5%BE%85%E4%B8%81%E5%A4%A7%E4%B8%8D%E8%87%B3",
         "title": "宿業師山房待丁大不至",
         "author": "孟浩然",
@@ -264,8 +264,8 @@
             "樵人歸欲盡，煙鳥棲初定。",
             "之子期宿來，孤琴候蘿徑。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B0%8B%E8%A5%BF%E5%B1%B1%E9%9A%B1%E8%80%85%E4%B8%8D%E9%81%87",
         "title": "尋西山隱者不遇",
         "author": "丘為",
@@ -279,8 +279,8 @@
             "雖無賓主意，頗得清淨理。",
             "興盡方下山，何必待之子。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%99%A8%E8%A9%A3%E8%B6%85%E5%B8%AB%E9%99%A2%E8%AE%80%E7%A6%AA%E7%B6%93",
         "title": "晨詣超師院讀禪經",
         "author": "柳宗元",
@@ -293,8 +293,8 @@
             "日出霧露餘，青松如膏沐。",
             "澹然離言說，悟悅心自足。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%BA%AA%E5%B1%85",
         "title": "溪居",
         "author": "柳宗元",
@@ -304,8 +304,8 @@
             "曉耕翻露草，夜榜響溪石。",
             "來往不逢人，長歌楚天碧。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%83%A1%E9%BD%8B%E9%9B%A8%E4%B8%AD%E8%88%87%E8%AB%B8%E6%96%87%E5%A3%AB%E7%87%95%E9%9B%86",
         "title": "郡齋雨中與諸文士燕集",
         "author": "韋應物",
@@ -321,8 +321,8 @@
             "吳中盛文史，羣彥今汪洋。",
             "方知大藩地，豈曰財賦疆。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%88%9D%E7%99%BC%E6%8F%9A%E5%AD%90%E5%AF%84%E5%85%83%E5%A4%A7%E6%A0%A1%E6%9B%B8",
         "title": "初發揚子寄元大校書",
         "author": "韋應物",
@@ -332,8 +332,8 @@
             "今朝此爲別，何處還相遇。",
             "世事波上舟，沿洄安得住。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E5%85%A8%E6%A4%92%E5%B1%B1%E4%B8%AD%E9%81%93%E5%A3%AB",
         "title": "寄全椒山中道士",
         "author": "韋應物",
@@ -343,8 +343,8 @@
             "欲持一瓢酒，遠慰風雨夕。",
             "落葉滿空山，何處尋行跡。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E5%AE%89%E9%81%87%E9%A6%AE%E8%91%97",
         "title": "長安遇馮著",
         "author": "韋應物",
@@ -354,8 +354,8 @@
             "冥冥花正開，颺颺燕新乳。",
             "昨別今已春，鬢絲生幾縷。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%95%E6%AC%A1%E7%9B%B1%E7%9C%99%E7%B8%A3",
         "title": "夕次盱眙縣",
         "author": "韋應物",
@@ -365,8 +365,8 @@
             "人歸山郭暗，雁下蘆洲白。",
             "獨夜憶秦關，聽鐘未眠客。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9D%B1%E9%83%8A",
         "title": "東郊",
         "author": "韋應物",
@@ -378,8 +378,8 @@
             "樂幽心屢止，遵事跡猶遽。",
             "終罷斯結廬，慕陶真可庶。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E6%A5%8A%E6%B0%8F%E5%A5%B3",
         "title": "送楊氏女",
         "author": "韋應物",
@@ -397,8 +397,8 @@
             "居閑始自遣，臨感忽難收。",
             "歸來視幼女，零淚緣纓流。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%BF%E7%8E%8B%E6%98%8C%E9%BD%A1%E9%9A%B1%E5%B1%85",
         "title": "宿王昌齡隱居",
         "author": "常建",
@@ -408,8 +408,8 @@
             "茅亭宿花影，藥院滋苔紋。",
             "余亦謝時去，西山鸞鶴羣。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%84%9F%E9%81%87_(%E5%AD%A4%E9%B4%BB%E6%B5%B7%E4%B8%8A%E4%BE%86)",
         "title": "感遇之一",
         "author": "張九齡",
@@ -420,8 +420,8 @@
             "美服患人指，高明逼神惡。",
             "今我遊冥冥，弋者何所慕。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%84%9F%E9%81%87_(%E8%98%AD%E8%91%89%E6%98%A5%E8%91%B3%E8%95%A4)",
         "title": "感遇之二",
         "author": "張九齡",
@@ -431,8 +431,8 @@
             "誰知林棲者，聞風坐相悅。",
             "草木有本心，何求美人折。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%84%9F%E9%81%87_(%E5%B9%BD%E6%9E%97%E6%AD%B8%E7%8D%A8%E8%87%A5)",
         "title": "感遇之三",
         "author": "張九齡",
@@ -442,8 +442,8 @@
             "日夕懷空意，人誰感至精。",
             "飛沈理自隔，何所慰吾誠。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%84%9F%E9%81%87_(%E6%B1%9F%E5%8D%97%E6%9C%89%E4%B8%B9%E6%A9%98)",
         "title": "感遇之四",
         "author": "張九齡",
@@ -454,8 +454,8 @@
             "運命唯所遇，循環不可尋。",
             "徒言樹桃李，此木豈無陰。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%B3%9B%E8%8B%A5%E8%80%B6%E6%BA%AA",
         "title": "春泛若耶溪",
         "author": "綦毋潛",
@@ -466,8 +466,8 @@
             "潭煙飛溶溶，林月低向後。",
             "生事且彌漫，願爲持竿叟。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%92%8C%E8%B3%88%E8%88%8D%E4%BA%BA%E6%97%A9%E6%9C%9D%E5%A4%A7%E6%98%8E%E5%AE%AE%E4%B9%8B%E4%BD%9C",
         "title": "和賈舍人早朝大明宮之作",
         "author": "王維",
@@ -477,8 +477,8 @@
             "日色纔臨仙掌動，香煙欲傍衮龍浮。",
             "朝罷須裁五色詔，佩聲歸向鳳池頭。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%9F%B3%E9%AD%9A%E6%B9%96%E4%B8%8A%E9%86%89%E6%AD%8C%E4%B8%A6%E5%BA%8F",
         "title": "石魚湖上醉歌並序",
         "author": "元結",
@@ -488,8 +488,8 @@
             "長風連日作大浪，不能廢人運酒舫。",
             "我持長瓢坐巴丘，酌飲四座以散愁。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E6%81%A8%E6%AD%8C",
         "title": "長恨歌",
         "author": "白居易",
@@ -555,8 +555,8 @@
             "在天願作比翼鳥，在地願為連理枝。",
             "天長地久有時盡，此恨綿綿無絕期。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%90%B5%E7%90%B6%E8%A1%8C",
         "title": "琵琶行並序",
         "author": "白居易",
@@ -606,8 +606,8 @@
             "淒淒不似向前聲，滿座重聞皆掩泣。",
             "座中泣下誰最多？江州司馬青衫濕。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B5%B0%E9%A6%AC%E5%B7%9D%E8%A1%8C%E5%A5%89%E9%80%81%E5%B0%81%E5%A4%A7%E5%A4%AB%E5%87%BA%E5%B8%AB%E8%A5%BF%E5%BE%81",
         "title": "走馬川行奉送封大夫出師西征",
         "author": "岑參",
@@ -619,8 +619,8 @@
             "馬毛帶雪汗氣蒸，五花連錢旋作冰，幕中草檄硯水凝。",
             "虜騎聞之應膽懾，料知短兵不敢接。軍師西門佇獻捷。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%BC%AA%E8%87%BA%E6%AD%8C%E5%A5%89%E9%80%81%E5%B0%81%E5%A4%A7%E5%A4%AB%E5%87%BA%E5%B8%AB%E8%A5%BF%E5%BE%81",
         "title": "輪臺歌奉送封大夫出師西征",
         "author": "岑參",
@@ -635,8 +635,8 @@
             "亞相勤王甘苦辛，誓將報主靜邊塵。",
             "古來青史誰不見，今見功名勝古人。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BD%E9%9B%AA%E6%AD%8C%E9%80%81%E6%AD%A6%E5%88%A4%E5%AE%98%E6%AD%B8%E4%BA%AC",
         "title": "白雪歌送武判官歸京",
         "author": "岑參",
@@ -651,8 +651,8 @@
             "輪臺東門送君去，去時雪滿天山路。",
             "山回路轉不見君，雪上空留馬行處。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%BB%AC%E5%B1%B1%E8%AC%A0%E5%AF%84%E7%9B%A7%E4%BE%8D%E7%A6%A6%E8%99%9B%E8%88%9F",
         "title": "廬山謠寄盧侍禦虛舟",
         "author": "李白",
@@ -672,8 +672,8 @@
             "遙見仙人綵雲裏，手把芙蓉朝玉京。",
             "先期汗漫九垓上，願接盧敖遊太清。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%A2%E9%81%8A%E5%A4%A9%E5%A7%A5%E5%90%9F%E7%95%99%E5%88%A5",
         "title": "夢遊天姥吟留別",
         "author": "李白",
@@ -701,8 +701,8 @@
             "別君去兮何時還？且放白鹿青崖間，須行即騎訪名山。",
             "安能摧眉折腰事權貴，使我不得開心顏。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%87%91%E9%99%B5%E9%85%92%E8%82%86%E7%95%99%E5%88%A5",
         "title": "金陵酒肆留別",
         "author": "李白",
@@ -711,8 +711,8 @@
             "金陵子弟來相送，欲行不行各盡觴。",
             "請君試問東流水，別意與之誰短長。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%A3%E5%B7%9E%E8%AC%9D%E6%9C%93%E6%A8%93%E9%A4%9E%E5%88%A5%E6%A0%A1%E6%9B%B8%E5%8F%94%E9%9B%B2",
         "title": "宣州謝朓樓餞別校書叔雲",
         "author": "李白",
@@ -725,8 +725,8 @@
             "抽刀斷水水更流，舉杯消愁愁更愁。",
             "人生在世不稱意，明朝散髮弄扁舟。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9F%93%E7%A2%91",
         "title": "韓碑",
         "author": "李商隱",
@@ -758,8 +758,8 @@
             "願書萬本誦萬過，口角流沫右手胝。",
             "傳之七十有二代，以爲封禪玉檢明堂基。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%8F%A4%E6%84%8F_(%E6%9D%8E%E9%A0%8E)",
         "title": "古意",
         "author": "李頎",
@@ -771,8 +771,8 @@
             "遼東小婦年十五，慣彈琵琶解歌舞。",
             "今爲羗笛出塞聲，使我三軍淚如雨。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E9%99%B3%E7%AB%A0%E7%94%AB",
         "title": "送陳章甫",
         "author": "李頎",
@@ -787,8 +787,8 @@
             "鄭國遊人未及家，洛陽行子空歎息。",
             "聞道故林相識多，罷官昨日今如何。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%90%B4%E6%AD%8C_(%E6%9D%8E%E9%A0%8E)",
         "title": "琴歌",
         "author": "李頎",
@@ -799,8 +799,8 @@
             "一聲已動物皆靜，四座無言星欲稀。",
             "清淮奉使千餘里，敢告雲山從此始。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%81%BD%E8%91%A3%E5%A4%A7%E5%BD%88%E8%83%A1%E7%AC%B3%E5%85%BC%E5%AF%84%E8%AA%9E%E5%BC%84%E6%88%BF%E7%B5%A6%E4%BA%8B",
         "title": "聽董大彈胡笳兼寄語弄房給事",
         "author": "李頎",
@@ -820,8 +820,8 @@
             "長安城連東掖垣，鳳凰池對青瑣門。",
             "高才脫略名與利，日夕望君抱琴至。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%81%BD%E5%AE%89%E8%90%AC%E5%96%84%E5%90%B9%E8%A7%B1%E7%AF%A5%E6%AD%8C",
         "title": "聽安萬善吹觱篥歌",
         "author": "李頎",
@@ -836,8 +836,8 @@
             "變調如聞楊柳春，上林繁花照眼新。",
             "歲夜高堂列明燭，美酒一杯聲一曲。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9F%8B%E8%AB%B7%E9%8C%84%E4%BA%8B%E5%AE%85%E8%A7%80%E6%9B%B9%E5%B0%87%E8%BB%8D%E7%95%AB%E9%A6%AC%E5%9C%96",
         "title": "韋諷錄事宅觀曹將軍畫馬圖",
         "author": "杜甫",
@@ -860,8 +860,8 @@
             "自從獻寶朝河宗，無復射蛟江水中。",
             "君不見金粟堆前松柏裏，龍媒去盡鳥呼風？"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E4%B8%B9%E9%9D%92%E5%BC%95%E8%B4%88%E6%9B%B9%E9%9C%B8%E5%B0%87%E8%BB%8D",
         "title": "丹青引贈曹霸將軍",
         "author": "杜甫",
@@ -882,8 +882,8 @@
             "塗窮反遭俗眼白，世上未有如公貧。",
             "但看古來盛名下，終日坎壈纏其身。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E9%9F%93%E8%AB%AB%E8%AD%B0%E6%B3%A8",
         "title": "寄韓諫議注",
         "author": "杜甫",
@@ -900,8 +900,8 @@
             "周南留滯古所惜，南極老人應壽昌。",
             "美人胡為隔秋水？焉得置之貢玉堂。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%8F%A4%E6%9F%8F%E8%A1%8C",
         "title": "古柏行",
         "author": "杜甫",
@@ -919,8 +919,8 @@
             "苦心豈免容螻蟻，香葉終經宿鸞鳳。",
             "志士幽人莫怨嗟，古來材大難為用。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A7%80%E5%85%AC%E5%AD%AB%E5%A4%A7%E5%A8%98%E5%BC%9F%E5%AD%90%E8%88%9E%E5%8A%8D%E5%99%A8%E8%A1%8C%E4%B8%A6%E5%BA%8F",
         "title": "觀公孫大娘弟子舞劍器行並序",
         "author": "杜甫",
@@ -939,8 +939,8 @@
             "玳筵急管曲復終，樂極哀來月東出。",
             "老夫不知其所往，足繭荒山轉愁疾。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%9C%E6%AD%B8%E9%B9%BF%E9%96%80%E6%AD%8C",
         "title": "夜歸鹿門歌",
         "author": "孟浩然",
@@ -950,8 +950,8 @@
             "鹿門月照開煙樹，忽到龐公棲隱處。",
             "巖扉松徑長寂寥，惟有幽人自來去。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%BC%81%E7%BF%81",
         "title": "漁翁",
         "author": "柳宗元",
@@ -960,8 +960,8 @@
             "煙銷日出不見人，欸乃一聲山水綠。",
             "迴看天際下中流，巖上無心雲相逐。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E5%B9%BD%E5%B7%9E%E8%87%BA%E6%AD%8C",
         "title": "登幽州臺歌",
         "author": "陳子昂",
@@ -969,8 +969,8 @@
             "前不見古人，後不見來者。",
             "念天地之悠悠，獨愴然而涕下。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B1%B1%E7%9F%B3",
         "title": "山石",
         "author": "韓愈",
@@ -986,8 +986,8 @@
             "人生如此自可樂，豈必局束為人鞿。",
             "嗟哉吾黨二三子，安得至老不更歸。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%85%AB%E6%9C%88%E5%8D%81%E4%BA%94%E5%A4%9C%E8%B4%88%E5%BC%B5%E5%8A%9F%E6%9B%B9",
         "title": "八月十五夜贈張功曹",
         "author": "韓愈",
@@ -1008,8 +1008,8 @@
             "一年明月今宵多，人生由命非由他，",
             "有酒不飲奈明何！"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%AC%81%E8%A1%A1%E5%B6%BD%E5%BB%9F%E9%81%82%E5%AE%BF%E5%B6%BD%E5%AF%BA%E9%A1%8C%E9%96%80%E6%A8%93",
         "title": "謁衡嶽廟遂宿嶽寺題門樓",
         "author": "韓愈",
@@ -1031,8 +1031,8 @@
             "夜投佛寺上高閣，星月掩映雲瞳朧。",
             "猿鳴鐘動不知曙，杲杲寒日生於東。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%9F%B3%E9%BC%93%E6%AD%8C_(%E9%9F%93%E6%84%88)",
         "title": "石鼓歌",
         "author": "韓愈",
@@ -1071,8 +1071,8 @@
             "安能以此上論列，願借辯口如懸河。",
             "石鼓之歌止於此，嗚呼吾意其蹉跎。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%87%BA%E5%A1%9E_(%E7%8E%8B%E4%B9%8B%E6%B8%99)",
         "title": "出塞",
         "author": "王之渙",
@@ -1080,8 +1080,8 @@
             "黃河遠上白雲間，一片孤城萬仞山。",
             "羌笛何須怨楊柳，春風不度玉門關。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%87%BA%E5%A1%9E_(%E7%A7%A6%E6%99%82%E6%98%8E%E6%9C%88%E6%BC%A2%E6%99%82%E9%97%9C)",
         "title": "出塞",
         "author": "王昌齡",
@@ -1089,8 +1089,8 @@
             "秦時明月漢時關，萬里長征人未還。",
             "但使龍城飛將在，不教胡馬度陰山。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A1%9E%E4%B8%8B%E6%9B%B2_(%E8%9F%AC%E9%B3%B4%E7%A9%BA%E6%A1%91%E6%9E%97)",
         "title": "塞下曲之一",
         "author": "王昌齡",
@@ -1100,8 +1100,8 @@
             "從來幽幷客，皆共塵沙老。",
             "莫學遊俠兒，矜夸紫騮好。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A1%9E%E4%B8%8B%E6%9B%B2_(%E9%A3%B2%E9%A6%AC%E6%B8%A1%E7%A7%8B%E6%B0%B4)",
         "title": "塞下曲之二",
         "author": "王昌齡",
@@ -1111,8 +1111,8 @@
             "昔日長城戰，咸言意氣高。",
             "黃塵足今古，白骨亂蓬蒿。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E4%BF%A1%E6%80%A8_(%E7%8E%8B%E6%98%8C%E9%BD%A1)",
         "title": "長信怨",
         "author": "王昌齡",
@@ -1120,8 +1120,8 @@
             "奉帚平明金殿開，暫將團扇共徘徊。",
             "玉顏不及寒鴉色，猶帶昭陽日影來。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B8%AD%E5%9F%8E%E6%9B%B2",
         "title": "渭城曲",
         "author": "王維",
@@ -1129,8 +1129,8 @@
             "渭城朝雨浥輕塵，客舍青青柳色新。",
             "勸君更盡一杯酒，西出陽關無故人。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%A7%8B%E5%A4%9C%E6%9B%B2_(%E7%8E%8B%E7%B6%AD)",
         "title": "秋夜曲",
         "author": "王維",
@@ -1138,8 +1138,8 @@
             "桂魄初生秋露微，輕羅已薄未更衣。",
             "銀箏夜久殷勤弄，心怯空房不忍歸。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B4%9B%E9%99%BD%E5%A5%B3%E5%85%92%E8%A1%8C",
         "title": "洛陽女兒行",
         "author": "王維",
@@ -1155,8 +1155,8 @@
             "城中相識盡繁華，日夜經過趙李家。",
             "誰憐越女顏如玉，貧賤江頭自浣紗。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%80%81%E5%B0%87%E8%A1%8C_(%E7%8E%8B%E7%B6%AD)",
         "title": "老將行",
         "author": "王維",
@@ -1177,8 +1177,8 @@
             "願得燕弓射天將，恥令越甲鳴吳軍。",
             "莫嫌舊日雲中守，猶堪一戰取功勳。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%A1%83%E6%BA%90%E8%A1%8C_(%E7%8E%8B%E7%B6%AD)",
         "title": "桃源行",
         "author": "王維",
@@ -1200,8 +1200,8 @@
             "當時只記入山深，青溪幾曲到雲林。",
             "春來遍是桃花水，不辨仙源何處尋。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B8%85%E5%B9%B3%E8%AA%BF_(%E9%9B%B2%E6%83%B3%E8%A1%A3%E8%A3%B3%E8%8A%B1%E6%83%B3%E5%AE%B9)",
         "title": "清平調之一",
         "author": "李白",
@@ -1209,8 +1209,8 @@
             "雲想衣裳花想容，春風拂檻露華濃。",
             "若非羣玉山頭見，會向瑤臺月下逢。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B8%85%E5%B9%B3%E8%AA%BF_(%E4%B8%80%E6%9E%9D%E7%B4%85%E8%89%B7%E9%9C%B2%E5%87%9D%E9%A6%99)",
         "title": "清平調之二",
         "author": "李白",
@@ -1218,8 +1218,8 @@
             "一枝紅艷露凝香，雲雨巫山枉斷腸。",
             "借問漢宮誰得似？可憐飛燕倚新妝！"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B8%85%E5%B9%B3%E8%AA%BF_(%E5%90%8D%E8%8A%B1%E5%82%BE%E5%9C%8B%E5%85%A9%E7%9B%B8%E6%AD%A1)",
         "title": "清平調之三",
         "author": "李白",
@@ -1227,8 +1227,8 @@
             "名花傾國兩相歡，長得君王帶笑看。",
             "觧釋春風無限恨，沈香亭北倚闌干。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B0%87%E9%80%B2%E9%85%92_(%E6%9D%8E%E7%99%BD)",
         "title": "將進酒",
         "author": "李白",
@@ -1246,8 +1246,8 @@
             "主人何為言少錢？徑須沽取對君酌。",
             "五花馬，千金裘。呼兒將出換美酒，與爾同銷萬古愁。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%8E%89%E9%9A%8E%E6%80%A8_(%E6%9D%8E%E7%99%BD)",
         "title": "玉階怨",
         "author": "李白",
@@ -1255,8 +1255,8 @@
             "玉階生白露，夜久侵羅襪。",
             "却下水晶簾，玲瓏望秋月。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E7%9B%B8%E6%80%9D_(%E9%95%B7%E7%9B%B8%E6%80%9D%E5%9C%A8%E9%95%B7%E5%AE%89)",
         "title": "長相思之一",
         "author": "李白",
@@ -1268,8 +1268,8 @@
             "天長路遠魂飛苦，夢魂不到關山難。",
             "長相思，摧心肝。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E7%9B%B8%E6%80%9D_(%E6%97%A5%E8%89%B2%E6%AC%B2%E7%9B%A1%E8%8A%B1%E5%90%AB%E7%85%99)",
         "title": "長相思之二",
         "author": "李白",
@@ -1280,8 +1280,8 @@
             "昔日橫波目，今成流淚泉。",
             "不信妾腸斷，歸來看取明鏡前。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A1%8C%E8%B7%AF%E9%9B%A3_(%E9%87%91%E6%A8%BD%E6%B8%85%E9%85%92%E6%96%97%E5%8D%81%E5%8D%83)",
         "title": "行路難之一",
         "author": "李白",
@@ -1293,8 +1293,8 @@
             "行路難，行路難，多岐路，今安在。",
             "長風破浪會有時，直挂雲帆濟滄海。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A1%8C%E8%B7%AF%E9%9B%A3_(%E5%A4%A7%E9%81%93%E5%A6%82%E9%9D%92%E5%A4%A9)",
         "title": "行路難之二",
         "author": "李白",
@@ -1308,8 +1308,8 @@
             "昭王白骨縈爛草，誰人更掃黃金台。",
             "行路難，歸去來。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A1%8C%E8%B7%AF%E9%9B%A3_(%E6%9C%89%E8%80%B3%E8%8E%AB%E6%B4%97%E6%BD%81%E5%B7%9D%E6%B0%B4)",
         "title": "行路難之三",
         "author": "李白",
@@ -1323,8 +1323,8 @@
             "君不見吳中張翰稱達生，秋風忽憶江東行。",
             "且樂生前一杯酒，何須身後千載名。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E5%B9%B2%E8%A1%8C_(%E5%A6%BE%E9%AB%AE%E5%88%9D%E8%A6%86%E9%A1%8D)",
         "title": "長干行",
         "author": "李白",
@@ -1345,8 +1345,8 @@
             "早晚下三巴，預將書報家。",
             "相迎不道遠，直至長風沙。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%9C%80%E9%81%93%E9%9B%A3_(%E6%9D%8E%E7%99%BD)",
         "title": "蜀道難",
         "author": "李白",
@@ -1373,8 +1373,8 @@
             "錦城雖云樂，不如早還家。",
             "蜀道之難，難於上青天，側身西望長咨嗟。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AD%90%E5%A4%9C%E5%90%B3%E6%AD%8C/%E6%98%A5%E6%AD%8C",
         "title": "子夜吳歌之春歌",
         "author": "李白",
@@ -1383,8 +1383,8 @@
             "素手青條上，紅妝白日鮮。",
             "蠶飢妾欲去，五馬莫留連。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AD%90%E5%A4%9C%E5%90%B3%E6%AD%8C/%E5%A4%8F%E6%AD%8C",
         "title": "子夜吳歌之夏歌",
         "author": "李白",
@@ -1393,8 +1393,8 @@
             "五月西施採，人看隘若耶。",
             "回舟不待月，歸去越王家。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AD%90%E5%A4%9C%E5%90%B3%E6%AD%8C/%E7%A7%8B%E6%AD%8C",
         "title": "子夜吳歌之秋歌",
         "author": "李白",
@@ -1403,8 +1403,8 @@
             "秋風吹不盡，總是玉關情。",
             "何日平胡虜，良人罷遠征。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AD%90%E5%A4%9C%E5%90%B3%E6%AD%8C/%E5%86%AC%E6%AD%8C",
         "title": "子夜吳歌之冬歌",
         "author": "李白",
@@ -1413,8 +1413,8 @@
             "素手抽針冷，那堪把剪刀。",
             "裁縫寄遠道，幾日到臨洮。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%97%9C%E5%B1%B1%E6%9C%88_(%E6%9D%8E%E7%99%BD)",
         "title": "關山月",
         "author": "李白",
@@ -1426,8 +1426,8 @@
             "戍客望邊色，思歸多苦顏。",
             "高樓當此夜，歎息未應閑。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B1%9F%E5%8D%97%E6%9B%B2_(%E5%AB%81%E5%BE%97%E7%9E%BF%E5%A1%98%E8%B3%88)",
         "title": "江南曲",
         "author": "李益",
@@ -1435,8 +1435,8 @@
             "嫁得瞿塘賈，朝朝誤妾期。",
             "早知潮有信，嫁與弄潮兒。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%8F%A4%E5%BE%9E%E8%BB%8D%E8%A1%8C",
         "title": "古從軍行",
         "author": "李頎",
@@ -1448,8 +1448,8 @@
             "聞道玉門猶被遮，應將性命逐輕車。",
             "年年戰骨埋荒外，空見蒲桃入漢家。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%85%B5%E8%BB%8A%E8%A1%8C",
         "title": "兵車行",
         "author": "杜甫",
@@ -1472,8 +1472,8 @@
             "君不見青海頭，古來白骨無人收。",
             "新鬼煩冤舊鬼哭，天陰雨濕聲啾啾。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%BA%97%E4%BA%BA%E8%A1%8C",
         "title": "麗人行",
         "author": "杜甫",
@@ -1492,8 +1492,8 @@
             "楊花雪落覆白蘋，青鳥飛去銜紅巾。",
             "炙手可熱勢絕倫，慎莫近前丞相嗔。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%93%80%E6%B1%9F%E9%A0%AD",
         "title": "哀江頭",
         "author": "杜甫",
@@ -1509,8 +1509,8 @@
             "人生有情淚霑臆，江水江花豈終極。",
             "黃昏胡騎塵滿城，欲往城南忘南北。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%93%80%E7%8E%8B%E5%AD%AB",
         "title": "哀王孫",
         "author": "杜甫",
@@ -1530,8 +1530,8 @@
             "花門剺面請雪恥，慎勿出口他人狙。",
             "哀哉王孫慎勿疏，五陵佳氣無時無。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%87%91%E7%B8%B7%E8%A1%A3",
         "title": "金縷衣",
         "author": "杜秋娘",
@@ -1539,8 +1539,8 @@
             "勸君莫惜金縷衣，勸君惜取少年時。",
             "花開堪折直須折，莫待無花空折枝。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%8D%A8%E4%B8%8D%E8%A6%8B_(%E6%B2%88%E4%BD%BA%E6%9C%9F)",
         "title": "獨不見",
         "author": "沈佺期",
@@ -1550,8 +1550,8 @@
             "白狼河北音書斷，丹鳳城南秋夜長。",
             "誰為含愁獨不見，更教明月照流黃！"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%83%88%E5%A5%B3%E6%93%8D",
         "title": "烈女操",
         "author": "孟郊",
@@ -1560,8 +1560,8 @@
             "貞婦貴殉夫，捨生亦如此。",
             "波瀾誓不起，妾心古井水。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%81%8A%E5%AD%90%E5%90%9F_(%E5%AD%9F%E9%83%8A)",
         "title": "遊子吟",
         "author": "孟郊",
@@ -1570,8 +1570,8 @@
             "臨行密密縫，意恐遲遲歸。",
             "誰言寸草心，報得三春暉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%87%95%E6%AD%8C%E8%A1%8C_(%E9%AB%98%E9%81%A9)",
         "title": "燕歌行並序",
         "author": "高適",
@@ -1591,8 +1591,8 @@
             "相看白刃血紛紛，死節從來豈顧勳。",
             "君不見沙場征戰苦，至今猶憶李將軍。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E5%B9%B2%E8%A1%8C%E4%B9%8B%E4%B8%80",
         "title": "長干行之一",
         "author": "崔顥",
@@ -1600,8 +1600,8 @@
             "君家何處住？妾住在橫塘。",
             "停船暫借問，或恐是同鄉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E5%B9%B2%E8%A1%8C%E4%B9%8B%E4%BA%8C",
         "title": "長干行之二",
         "author": "崔顥",
@@ -1609,8 +1609,8 @@
             "家臨九江水，來去九江側。",
             "同是長干人，自小不相識。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A1%9E%E4%B8%8B%E6%9B%B2%E4%B9%8B%E4%B8%80",
         "title": "塞下曲之一",
         "author": "盧綸",
@@ -1618,8 +1618,8 @@
             "鷲翎金僕姑，燕尾繡蝥弧。",
             "獨立揚新令，千營共一呼。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A1%9E%E4%B8%8B%E6%9B%B2%E4%B9%8B%E4%BA%8C",
         "title": "塞下曲之二",
         "author": "盧綸",
@@ -1627,8 +1627,8 @@
             "林暗草驚風，將軍夜引弓。",
             "平明尋白羽，沒在石稜中。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A1%9E%E4%B8%8B%E6%9B%B2%E4%B9%8B%E4%B8%89",
         "title": "塞下曲之三",
         "author": "盧綸",
@@ -1636,8 +1636,8 @@
             "月黑雁飛高，單于夜遁逃。",
             "欲將輕騎逐，大雪滿弓刀。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A1%9E%E4%B8%8B%E6%9B%B2%E4%B9%8B%E5%9B%9B",
         "title": "塞下曲之四",
         "author": "盧綸",
@@ -1645,8 +1645,8 @@
             "野幕蔽瓊筵，羌戎賀勞旋。",
             "醉和金甲舞，雷鼓動山川。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E6%9D%9C%E5%B0%91%E5%BA%9C%E4%B9%8B%E4%BB%BB%E8%9C%80%E5%B7%9E",
         "title": "送杜少府之任蜀州",
         "author": "王勃",
@@ -1656,8 +1656,8 @@
             "海內存知己，天涯若比隣。",
             "無爲在岐路，兒女共霑巾。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E6%A2%93%E5%B7%9E%E6%9D%8E%E4%BD%BF%E5%90%9B",
         "title": "送梓州李使君",
         "author": "王維",
@@ -1667,8 +1667,8 @@
             "漢女輸橦布，巴人訟芋田。",
             "文翁翻教授，不敢倚先賢。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%BC%A2%E6%B1%9F%E8%87%A8%E7%9C%BA",
         "title": "漢江臨眺",
         "author": "王維",
@@ -1678,8 +1678,8 @@
             "郡邑浮前浦，波瀾動遠空。",
             "襄陽好風日，留醉與山翁。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%B5%82%E5%8D%97%E5%88%A5%E6%A5%AD",
         "title": "終南別業",
         "author": "王維",
@@ -1689,8 +1689,8 @@
             "行到水窮處，坐看雲起時。",
             "偶然值林叟，談笑無還期。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%B5%82%E5%8D%97%E5%B1%B1",
         "title": "終南山",
         "author": "王維",
@@ -1700,8 +1700,8 @@
             "分野中峰變，陰晴眾壑殊。",
             "欲投人處宿，隔水問樵夫。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%85%AC%E5%BC%B5%E5%B0%91%E5%BA%9C",
         "title": "酬張少府",
         "author": "王維",
@@ -1711,8 +1711,8 @@
             "松風吹解帶，山月照彈琴。",
             "君問窮通理，漁歌入浦深。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%81%8E%E9%A6%99%E7%A9%8D%E5%AF%BA",
         "title": "過香積寺",
         "author": "王維",
@@ -1722,8 +1722,8 @@
             "泉聲咽危石，日色冷青松。",
             "薄暮空潭曲，安禪制毒龍。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%BC%9E%E5%B7%9D%E9%96%91%E5%B1%85%E8%B4%88%E8%A3%B4%E7%A7%80%E6%89%8D%E8%BF%AA",
         "title": "輞川閑居贈裴秀才迪",
         "author": "王維",
@@ -1733,8 +1733,8 @@
             "渡頭餘落日，墟里上孤煙。",
             "復值接輿醉，狂歌五柳前。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B1%B1%E5%B1%85%E7%A7%8B%E6%9A%9D",
         "title": "山居秋暝",
         "author": "王維",
@@ -1744,8 +1744,8 @@
             "竹喧歸浣女，蓮動下漁舟。",
             "隨意春芳歇，王孫自可留。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%AD%B8%E5%B5%A9%E5%B1%B1%E4%BD%9C",
         "title": "歸嵩山作",
         "author": "王維",
@@ -1755,8 +1755,8 @@
             "荒城臨古渡，落日滿秋山。",
             "迢遞嵩高下，歸來且閉關。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%AC%A1%E5%8C%97%E5%9B%BA%E5%B1%B1%E4%B8%8B",
         "title": "次北固山下",
         "author": "王灣",
@@ -1766,8 +1766,8 @@
             "海日生殘夜，江春入舊年。",
             "鄉書何處達，歸雁洛陽邊。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9B%B2%E9%99%BD%E9%A4%A8%E8%88%87%E9%9F%93%E7%B4%B3%E5%AE%BF%E5%88%A5",
         "title": "雲陽館與韓紳宿別",
         "author": "司空曙",
@@ -1777,8 +1777,8 @@
             "孤燈寒照雨，深竹暗浮煙。",
             "更有明朝恨，離杯惜共傳。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%96%9C%E5%A4%96%E5%BC%9F%E7%9B%A7%E7%B6%B8%E8%A6%8B%E5%AE%BF",
         "title": "喜外弟盧綸見宿",
         "author": "司空曙",
@@ -1788,8 +1788,8 @@
             "以我獨沉久，愧君相訪頻。",
             "平生自有分，況是蔡家親。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B3%8A%E5%B9%B3%E5%BE%8C%E9%80%81%E4%BA%BA%E5%8C%97%E6%AD%B8",
         "title": "賊平後送人北歸",
         "author": "司空曙",
@@ -1799,8 +1799,8 @@
             "曉月過殘壘，繁星宿故關。",
             "寒禽與衰草，處處伴愁顏。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B3%A6%E5%BE%97%E5%8F%A4%E5%8E%9F%E8%8D%89%E9%80%81%E5%88%A5",
         "title": "賦得古原草送別",
         "author": "白居易",
@@ -1810,8 +1810,8 @@
             "遠芳侵古道，晴翠接荒城。",
             "又送王孫去，萋萋滿別情。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%A1%8C%E5%A4%A7%E5%BA%BE%E5%B6%BA%E5%8C%97%E9%A9%9B",
         "title": "題大庾嶺北驛",
         "author": "宋之問",
@@ -1821,8 +1821,8 @@
             "江靜潮初落，林昏瘴不開。",
             "明朝望鄉處，應見隴頭梅。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E5%B7%A6%E7%9C%81%E6%9D%9C%E6%8B%BE%E9%81%BA",
         "title": "寄左省杜拾遺",
         "author": "岑參",
@@ -1832,8 +1832,8 @@
             "白髮悲花落，青雲羨鳥飛。",
             "聖朝無闕事，自覺諫書稀。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%81%BD%E8%9C%80%E5%83%A7%E6%BF%AC%E5%BD%88%E7%90%B4",
         "title": "聽蜀僧濬彈琴",
         "author": "李白",
@@ -1843,8 +1843,8 @@
             "客心洗流水，餘響入霜鐘。",
             "不覺碧山暮，秋雲暗幾重。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%9C%E6%B3%8A%E7%89%9B%E6%B8%9A%E6%87%B7%E5%8F%A4",
         "title": "夜泊牛渚懷古",
         "author": "李白",
@@ -1854,8 +1854,8 @@
             "余亦能高詠，斯人不可聞。",
             "明朝挂帆席，楓葉落紛紛。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E5%AD%9F%E6%B5%A9%E7%84%B6",
         "title": "贈孟浩然",
         "author": "李白",
@@ -1865,8 +1865,8 @@
             "醉月頻中聖，迷花不事君。",
             "高山安可仰，徒此挹清芬。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B8%A1%E8%8D%8A%E9%96%80%E9%80%81%E5%88%A5",
         "title": "渡荊門送別",
         "author": "李白",
@@ -1876,8 +1876,8 @@
             "月下飛天鏡，雲生結海樓。",
             "仍怜故鄉水，萬里送行舟。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E5%8F%8B%E4%BA%BA_(%E6%9D%8E%E7%99%BD)",
         "title": "送友人",
         "author": "李白",
@@ -1887,8 +1887,8 @@
             "浮雲游子意，落日故人情。",
             "揮手自茲去，蕭蕭班馬鳴。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%96%9C%E8%A6%8B%E5%A4%96%E5%BC%9F%E5%8F%88%E8%A8%80%E5%88%A5",
         "title": "喜見外弟又言別",
         "author": "李益",
@@ -1898,8 +1898,8 @@
             "別來滄海事，語罷暮天鐘。",
             "明日巴陵道，秋山又幾重。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B6%BC%E6%80%9D",
         "title": "涼思",
         "author": "李商隱",
@@ -1909,8 +1909,8 @@
             "北斗兼春遠，南陵寓使遲。",
             "天涯占夢數，疑誤有新知。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%8C%97%E9%9D%92%E8%98%BF",
         "title": "北青蘿",
         "author": "李商隱",
@@ -1920,8 +1920,8 @@
             "獨敲初夜磬，閑倚一枝藤。",
             "世界微塵裡，吾寧愛與憎。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%9F%AC_(%E6%9D%8E%E5%95%86%E9%9A%B1)",
         "title": "蟬",
         "author": "李商隱",
@@ -1931,8 +1931,8 @@
             "薄宦梗猶泛，故園蕪已平。",
             "煩君最相警，我亦舉家清。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%A2%A8%E9%9B%A8",
         "title": "風雨",
         "author": "李商隱",
@@ -1942,8 +1942,8 @@
             "新知遭薄俗，舊好隔良緣。",
             "心斷新豐酒，銷愁斗幾千。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%90%BD%E8%8A%B1_(%E6%9D%8E%E5%95%86%E9%9A%B1)",
         "title": "落花",
         "author": "李商隱",
@@ -1953,8 +1953,8 @@
             "腸斷未忍掃，眼穿仍欲歸。",
             "芳心向春盡，所得是沾衣。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E5%B2%B3%E9%99%BD%E6%A8%93",
         "title": "登岳陽樓",
         "author": "杜甫",
@@ -1964,8 +1964,8 @@
             "親朋無一字，老病有孤舟。",
             "戎馬關山北，憑軒涕泗流。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A5%89%E6%BF%9F%E9%A9%9B%E9%87%8D%E9%80%81%E5%9A%B4%E5%85%AC%E5%9B%9B%E9%9F%BB",
         "title": "奉濟驛重送嚴公四韻",
         "author": "杜甫",
@@ -1975,8 +1975,8 @@
             "列郡謳歌惜，三朝出入榮。",
             "江村獨歸處，寂寞養殘生。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%88%A5%E6%88%BF%E5%A4%AA%E5%B0%89%E5%A2%93",
         "title": "別房太尉墓",
         "author": "杜甫",
@@ -1986,8 +1986,8 @@
             "對棋陪謝傅，把劍覓徐君。",
             "惟見林花落，鶯啼送客聞。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%97%85%E5%A4%9C%E6%9B%B8%E6%87%B7",
         "title": "旅夜書懷",
         "author": "杜甫",
@@ -1997,8 +1997,8 @@
             "名豈文章著，官因老病休。",
             "飄飄何所似，天地一沙鷗。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%87%B3%E5%BE%B7%E4%BA%8C%E8%BC%89%E7%94%AB%E8%87%AA%E4%BA%AC%E9%87%91%E5%85%89%E9%96%80%E5%87%BA_%E9%96%93%E9%81%93%E6%AD%B8%E9%B3%B3%E7%BF%94_%E4%B9%BE%E5%85%83%E5%88%9D%E5%BE%9E%E5%B7%A6%E6%8B%BE%E9%81%BA%E7%A7%BB%E8%8F%AF%E5%B7%9E%E6%8E%BE_%E8%88%87%E8%A6%AA%E6%95%85%E5%88%A5_%E5%9B%A0%E5%87%BA%E6%AD%A4%E9%96%80_%E6%9C%89%E6%82%B2%E5%BE%80%E4%BA%8B",
         "title": "至德二載甫自京金光門出間道歸鳳翔乾元初從左拾遺移華州掾與親故別因出此門有悲往事",
         "author": "杜甫",
@@ -2008,8 +2008,8 @@
             "近侍歸京邑，移官豈至尊。",
             "無才日衰老，駐馬望千門。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9C%88%E5%A4%9C%E6%86%B6%E8%88%8D%E5%BC%9F",
         "title": "月夜憶舍弟",
         "author": "杜甫",
@@ -2019,8 +2019,8 @@
             "有弟皆分散，無家問死生。",
             "寄書長不達，況乃未休兵。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%A9%E6%9C%AB%E6%87%B7%E6%9D%8E%E7%99%BD",
         "title": "天末懷李白",
         "author": "杜甫",
@@ -2030,8 +2030,8 @@
             "文章憎命達，魑魅喜人過。",
             "應共冤魂語，投詩贈汨羅。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9C%88%E5%A4%9C_(%E6%9D%9C%E7%94%AB)",
         "title": "月夜",
         "author": "杜甫",
@@ -2041,8 +2041,8 @@
             "香霧雲鬟濕，清輝玉臂寒。",
             "何日倚虛幌，雙照淚痕乾。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%9C%9B",
         "title": "春望",
         "author": "杜甫",
@@ -2052,8 +2052,8 @@
             "烽火連三月，家書抵萬金。",
             "白頭搔更短，渾欲不勝簪。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E5%AE%BF%E5%B7%A6%E7%9C%81",
         "title": "春宿左省",
         "author": "杜甫",
@@ -2063,8 +2063,8 @@
             "不寢聽金鑰，因風想玉珂。",
             "明朝有封事，數問夜如何。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%97%85%E5%AE%BF",
         "title": "旅宿",
         "author": "杜牧",
@@ -2074,8 +2074,8 @@
             "遠夢歸侵曉，家書到隔年。",
             "湘江好煙月，門繫釣魚船。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E5%AE%AE%E6%80%A8",
         "title": "春宮怨",
         "author": "杜荀鶴",
@@ -2085,8 +2085,8 @@
             "風暖鳥聲碎，日高花影重。",
             "年年越溪女，相憶採芙蓉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%92%8C%E6%99%89%E9%99%B5%E8%B7%AF%E4%B8%9E%E6%97%A9%E6%98%A5%E9%81%8A%E6%9C%9B",
         "title": "和晉陵路丞早春遊望",
         "author": "杜審言",
@@ -2096,8 +2096,8 @@
             "淑气催黄鸟，晴光转绿苹。",
             "忽闻歌古调，归思欲沾襟。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9B%9C%E8%A9%A9_(%E6%B2%88%E4%BD%BA%E6%9C%9F)",
         "title": "雜詩",
         "author": "沈佺期",
@@ -2107,8 +2107,8 @@
             "少婦今春意，良人昨夜情。",
             "誰能將旗鼓，一為取龍城？"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%BF%E6%A1%90%E5%BB%AC%E6%B1%9F%E5%AF%84%E5%BB%A3%E9%99%B5%E8%88%8A%E9%81%8A",
         "title": "宿桐廬江寄廣陵舊遊",
         "author": "孟浩然",
@@ -2118,8 +2118,8 @@
             "建德非吾土，維揚憶舊遊。",
             "還將兩行淚，遙寄海西頭。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%95%99%E5%88%A5%E7%8E%8B%E7%B6%AD_(%E5%AD%9F%E6%B5%A9%E7%84%B6)",
         "title": "留別王維",
         "author": "孟浩然",
@@ -2129,8 +2129,8 @@
             "當路誰相假，知音世所稀。",
             "祇因守寂寞，還掩故園扉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%97%A9%E5%AF%92%E6%9C%89%E6%87%B7",
         "title": "早寒有懷",
         "author": "孟浩然",
@@ -2140,8 +2140,8 @@
             "鄉淚客中盡，孤帆天際看。",
             "迷津欲有問，平海夕漫漫。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%AD%B2%E6%9A%AE%E6%AD%B8%E5%8D%97%E5%B1%B1",
         "title": "歲暮歸南山",
         "author": "孟浩然",
@@ -2151,8 +2151,8 @@
             "白髮催年老，青陽逼歲除。",
             "永懷愁不寐，松月夜窗虛。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%81%8E%E6%95%85%E4%BA%BA%E8%8E%8A",
         "title": "過故人莊",
         "author": "孟浩然",
@@ -2162,8 +2162,8 @@
             "開筵面場圃，把酒話桑麻。",
             "待到重陽日，還來就菊花。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%A7%A6%E4%B8%AD%E6%84%9F%E7%A7%8B%E5%AF%84%E9%81%A0%E4%B8%8A%E4%BA%BA",
         "title": "秦中感秋寄遠上人",
         "author": "孟浩然",
@@ -2173,8 +2173,8 @@
             "黃金然桂盡，壯志逐年衰。",
             "日夕涼風至，聞蟬但益悲。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E4%B8%B4%E6%B4%9E%E5%BA%AD%E8%B5%A0%E5%BC%A0%E4%B8%9E%E7%9B%B8",
         "title": "臨洞庭贈張丞相",
         "author": "孟浩然",
@@ -2184,8 +2184,8 @@
             "欲濟無舟楫，端居恥聖明。",
             "坐觀垂釣者，徒有羨魚情。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%88%87%E8%AB%B8%E5%AD%90%E7%99%BB%E5%B3%B4%E5%B1%B1",
         "title": "與諸子登峴山",
         "author": "孟浩然",
@@ -2195,8 +2195,8 @@
             "水落魚梁淺，天寒夢澤深。",
             "羊公碑字在，讀罷淚沾襟。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%B4%E6%A2%85%E9%81%93%E5%A3%AB%E5%B1%B1%E6%88%BF",
         "title": "宴梅道士山房",
         "author": "孟浩然",
@@ -2206,8 +2206,8 @@
             "金灶初開火，仙桃正發花。",
             "童顏若可駐，何惜醉流霞。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%AB%A0%E8%87%BA%E5%A4%9C%E6%80%9D",
         "title": "章臺夜思",
         "author": "韋莊",
@@ -2217,8 +2217,8 @@
             "芳草已云暮，故人殊未來。",
             "鄉書不可寄，秋雁又南迴。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B7%AE%E4%B8%8A%E5%96%9C%E6%9C%83%E6%A2%81%E5%B7%9D%E6%95%85%E4%BA%BA",
         "title": "淮上喜會梁川故人",
         "author": "韋應物",
@@ -2228,8 +2228,8 @@
             "歡笑情如舊，蕭疎鬢已斑。",
             "何因北歸去，淮上對秋山。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B3%A6%E5%BE%97%E6%9A%AE%E9%9B%A8%E9%80%81%E6%9D%8E%E5%86%91",
         "title": "賦得暮雨送李冑",
         "author": "韋應物",
@@ -2239,8 +2239,8 @@
             "海門深不見，浦樹遠含滋。",
             "相送情無限，沾襟比散絲。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%B6%93%E9%84%92%E9%AD%AF%E7%A5%AD%E5%AD%94%E5%AD%90%E8%80%8C%E6%AD%8E%E4%B9%8B",
         "title": "經鄒魯祭孔子而歎之",
         "author": "唐玄宗",
@@ -2250,8 +2250,8 @@
             "歎鳳嗟身否，傷麟怨道窮。",
             "今看兩楹奠，當與夢時同。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%81%9E%E4%B8%8A%E7%A7%8B%E5%B1%85",
         "title": "灞上秋居",
         "author": "馬戴",
@@ -2261,8 +2261,8 @@
             "空園白露滴，孤壁野僧鄰。",
             "寄臥郊扉久，何年致此身？"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%A5%9A%E6%B1%9F%E6%87%B7%E5%8F%A4",
         "title": "楚江懷古",
         "author": "馬戴",
@@ -2272,8 +2272,8 @@
             "廣澤生明月，蒼山夾亂流。",
             "雲中君不見，竟夕自悲秋。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%99%A4%E5%A4%9C%E6%9C%89%E6%87%B7_(%E5%B4%94%E5%A1%97)",
         "title": "除夜有懷",
         "author": "崔塗",
@@ -2283,8 +2283,8 @@
             "漸與骨肉遠，轉於僮僕親。",
             "那堪正飄泊，明日歲華新。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AD%A4%E9%9B%81",
         "title": "孤雁",
         "author": "崔塗",
@@ -2294,8 +2294,8 @@
             "渚雲低暗渡，關月冷相隨。",
             "未必逢矰繳，孤飛自可疑。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%A1%8C%E7%A0%B4%E5%B1%B1%E5%AF%BA%E5%BE%8C%E7%A6%AA%E9%99%A2",
         "title": "題破山寺後禪院",
         "author": "常建",
@@ -2305,8 +2305,8 @@
             "山光悅鳥性，潭影空人心。",
             "萬籟此俱寂，惟聞鐘磬音。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9C%9B%E6%9C%88%E6%87%B7%E9%81%A0",
         "title": "望月懷遠",
         "author": "張九齡",
@@ -2316,8 +2316,8 @@
             "滅燭憐光滿，披衣覺露滋。",
             "不堪盈手贈，還寢夢佳期。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9B%B8%E9%82%8A%E4%BA%8B",
         "title": "書邊事",
         "author": "張喬",
@@ -2327,8 +2327,8 @@
             "大漠無兵阻，窮邊有客遊。",
             "蕃情似此水，長願向南流。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B2%92%E8%95%83%E6%95%85%E4%BA%BA",
         "title": "沒蕃故人",
         "author": "張籍",
@@ -2338,8 +2338,8 @@
             "無人收廢帳，歸馬識殘旗。",
             "欲祭疑君在，天涯哭此時。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%A7%8B%E6%97%A5%E8%B5%B4%E9%97%95%E9%A1%8C%E6%BD%BC%E9%97%9C%E9%A9%9B%E6%A8%93",
         "title": "秋日赴闕題潼關驛樓",
         "author": "許渾",
@@ -2349,8 +2349,8 @@
             "樹色隨山迥，河聲入海遙。",
             "帝鄉明日到，猶自夢漁樵。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%97%A9%E7%A7%8B",
         "title": "早秋",
         "author": "許渾",
@@ -2360,8 +2360,8 @@
             "高樹曉還密，遠山晴更多。",
             "淮南一葉下，自覺洞庭波。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E4%BA%BA%E6%9D%B1%E9%81%8A",
         "title": "送人東遊",
         "author": "溫庭筠",
@@ -2371,8 +2371,8 @@
             "江上幾人在，天涯孤棹還。",
             "何當重相見，樽酒慰離顏。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B0%8B%E9%99%B8%E9%B4%BB%E6%BC%B8%E4%B8%8D%E9%81%87",
         "title": "尋陸鴻漸不遇",
         "author": "僧皎然",
@@ -2382,8 +2382,8 @@
             "扣門無犬吠，欲去問西家。",
             "報到山中去，歸來每日斜。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B0%8B%E5%8D%97%E6%BA%AA%E5%B8%B8%E9%81%93%E5%A3%AB",
         "title": "尋南溪常道士",
         "author": "劉長卿",
@@ -2393,8 +2393,8 @@
             "過雨看松色，隨山到水源。",
             "溪花與禪意，相對亦忘言。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%96%B0%E5%B9%B4%E4%BD%9C_(%E5%8A%89%E9%95%B7%E5%8D%BF)",
         "title": "新年作",
         "author": "劉長卿",
@@ -2404,8 +2404,8 @@
             "嶺猨同旦暮，江柳共風煙。",
             "已是長沙傅，從今又幾年。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%A7%8B%E6%97%A5%E7%99%BB%E5%90%B3%E5%85%AC%E8%87%BA%E4%B8%8A%E5%AF%BA%E9%81%A0%E7%9C%BA",
         "title": "秋日登吳公臺上寺遠眺",
         "author": "劉長卿",
@@ -2415,8 +2415,8 @@
             "夕陽依舊壘，寒磬滿空林。",
             "惆悵南朝事，長江獨至今。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E6%9D%8E%E4%B8%AD%E4%B8%9E%E6%AD%B8%E6%BC%A2%E9%99%BD%E5%88%A5%E6%A5%AD",
         "title": "送李中丞歸漢陽別業",
         "author": "劉長卿",
@@ -2426,8 +2426,8 @@
             "獨立三邊靜，輕生一劍知。",
             "茫茫江漢上，日暮復何之？"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%A4%9E%E5%88%A5%E7%8E%8B%E5%8D%81%E4%B8%80%E5%8D%97%E9%81%8A",
         "title": "餞別王十一南遊",
         "author": "劉長卿",
@@ -2437,8 +2437,8 @@
             "長江一帆遠，落日五湖春。",
             "誰見汀洲上，相思愁白蘋。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%9C%80%E5%85%88%E4%B8%BB%E5%BB%9F",
         "title": "蜀先主廟",
         "author": "劉禹錫",
@@ -2448,8 +2448,8 @@
             "得相能開國，生兒不象賢。",
             "淒涼蜀故妓，來舞魏宮前。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%97%95%E9%A1%8C_(%E5%8A%89%E7%9C%98%E8%99%9B)",
         "title": "闕題",
         "author": "劉眘虛",
@@ -2459,8 +2459,8 @@
             "閑門向山路，深柳讀書堂。",
             "幽映每白日，清輝照衣裳。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E6%9D%8E%E7%AB%AF_(%E7%9B%A7%E7%B6%B8)",
         "title": "送李端",
         "author": "盧綸",
@@ -2470,8 +2470,8 @@
             "少孤為客早，多難識君遲。",
             "掩淚空相向，風塵何處期。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E5%83%A7%E6%AD%B8%E6%97%A5%E6%9C%AC",
         "title": "送僧歸日本",
         "author": "錢起",
@@ -2481,8 +2481,8 @@
             "水月通禪觀，魚龍聽梵聲。",
             "惟憐一燈影，萬里眼中明。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B0%B7%E5%8F%A3%E6%9B%B8%E9%BD%8B%E5%AF%84%E6%A5%8A%E8%A3%9C%E9%97%95",
         "title": "谷口書齋寄楊補闕",
         "author": "錢起",
@@ -2492,8 +2492,8 @@
             "閑鷺棲常早，秋花落更遲。",
             "家童掃蘿逕，昨與故人期。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%9C%A8%E7%8D%84%E8%A9%A0%E8%9F%AC",
         "title": "在獄詠蟬並序",
         "author": "駱賓王",
@@ -2503,8 +2503,8 @@
             "露重飛難進，風多響易沉。",
             "無人信高潔，誰為表予心。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B1%9F%E9%84%89%E6%95%85%E4%BA%BA%E5%81%B6%E9%9B%86%E5%AE%A2%E8%88%8D",
         "title": "江鄉故人偶集客舍",
         "author": "戴叔倫",
@@ -2514,8 +2514,8 @@
             "風枝驚暗鵲，露草覆寒蟲。",
             "羈旅長堪醉，相留畏曉鐘。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%85%AC%E7%A8%8B%E8%BF%91%E7%A7%8B%E5%A4%9C%E5%8D%B3%E4%BA%8B%E8%A6%8B%E8%B4%88",
         "title": "酬程近秋夜即事見贈",
         "author": "韓翃",
@@ -2525,8 +2525,8 @@
             "節候看應晚，心期臥亦賒。",
             "向來吟秀句，不覺已鳴鴉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%81%A3%E6%82%B2%E6%87%B7%E4%B9%8B%E4%B8%80",
         "title": "遣悲懷之一",
         "author": "元稹",
@@ -2536,8 +2536,8 @@
             "野蔬充膳甘長藿，落葉添薪仰古槐。",
             "今日俸錢過十萬，與君營奠復營齋。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%81%A3%E6%82%B2%E6%87%B7%E4%B9%8B%E4%BA%8C",
         "title": "遣悲懷之二",
         "author": "元稹",
@@ -2547,8 +2547,8 @@
             "尚想舊情憐婢僕，也曾因夢送錢財。",
             "誠知此恨人人有，貧賤夫妻百事哀。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%81%A3%E6%82%B2%E6%87%B7%E4%B9%8B%E4%B8%89",
         "title": "遣悲懷之三",
         "author": "元稹",
@@ -2558,8 +2558,8 @@
             "同穴窅冥何所望？他生緣會更難期。",
             "惟將終夜長開眼，報答平生未展眉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E9%83%AD%E7%B5%A6%E4%BA%8B",
         "title": "贈郭給事",
         "author": "王維",
@@ -2569,8 +2569,8 @@
             "晨搖玉珮趨金殿，夕奉天書拜瑣闈。",
             "強欲從君無那老，將因臥病解朝衣。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A5%89%E5%92%8C%E8%81%96%E5%88%B6%E5%BE%9E%E8%93%AC%E8%90%8A%E5%90%91%E8%88%88%E6%85%B6%E9%96%A3%E9%81%93%E4%B8%AD%E7%95%99%E6%98%A5%E9%9B%A8%E4%B8%AD%E6%98%A5%E6%9C%9B%E4%B9%8B%E4%BD%9C%E6%87%89%E5%88%B6",
         "title": "奉和聖制從蓬萊向興慶閣道中留春雨中春望之作應制",
         "author": "王維",
@@ -2580,8 +2580,8 @@
             "雲裡帝城雙鳳闕，雨中春樹萬人家。",
             "為乘陽氣行時令，不是宸遊翫物華。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%A9%8D%E9%9B%A8%E8%BC%9E%E5%B7%9D%E8%8E%8A%E4%BD%9C",
         "title": "積雨輞川莊作",
         "author": "王維",
@@ -2591,8 +2591,8 @@
             "山中習靜觀朝槿，松下清齋折露葵。",
             "野老與人爭席罷，海鷗何事更相疑。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%87%AA%E6%B2%B3%E5%8D%97%E7%B6%93%E4%BA%82%EF%BC%8C%E9%97%9C%E5%85%A7%E9%98%BB%E9%A5%91%EF%BC%8C%E5%85%84%E5%BC%9F%E9%9B%A2%E6%95%A3%EF%BC%8C%E5%90%84%E5%9C%A8%E4%B8%80%E8%99%95%E3%80%82%E5%9B%A0%E6%9C%9B%E6%9C%88%E6%9C%89%E6%84%9F%EF%BC%8C%E8%81%8A%E6%9B%B8%E6%89%80%E6%87%B7%E5%AF%84%E4%B8%8A%EF%BC%8C%E6%B5%AE%E6%A2%81%E5%A4%A7%E5%85%84%EF%BC%8C%E6%96%BC%E6%BD%9B%E4%B8%83%E5%85%84%EF%BC%8C%E7%83%8F%E6%B1%9F%E5%8D%81%E4%BA%94%E5%85%84%EF%BC%8C%E5%85%BC%E7%A4%BA%E7%AC%A6%E9%9B%A2%EF%BC%8C%E5%8F%8A%E4%B8%8B%E9%82%BD%E5%BC%9F%E5%A6%B9",
         "title": "自河南經亂，關內阻饑，兄弟離散，各在一處。因望月有感，聊書所懷寄上，浮梁大兄，於潛七兄，烏江十五兄，兼示符離，及下邽弟妹",
         "author": "白居易",
@@ -2602,8 +2602,8 @@
             "弔影分為千里雁，辭根散作九秋蓬。",
             "共看明月應垂淚，一夜鄉心五處同。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A5%89%E5%92%8C%E4%B8%AD%E6%9B%B8%E8%88%8D%E4%BA%BA%E8%B3%88%E8%87%B3%E6%97%A9%E6%9C%9D%E5%A4%A7%E6%98%8E%E5%AE%AE",
         "title": "奉和中書舍人賈至早朝大明宮",
         "author": "岑參",
@@ -2613,8 +2613,8 @@
             "花迎劒珮星初落，柳拂旌旗露未乾。",
             "獨有鳳皇池上客，陽春一曲和皆難。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E9%87%91%E9%99%B5%E9%B3%B3%E5%87%B0%E8%87%BA",
         "title": "登金陵鳳凰臺",
         "author": "李白",
@@ -2624,8 +2624,8 @@
             "三山半落青天外，二水中分白鷺洲。",
             "總爲浮雲能蔽日，長安不見使人愁。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%84%A1%E9%A1%8C_(%E7%9B%B8%E8%A6%8B%E6%99%82%E9%9B%A3%E5%88%A5%E4%BA%A6%E9%9B%A3)",
         "title": "無題",
         "author": "李商隱",
@@ -2635,8 +2635,8 @@
             "曉鏡但愁雲鬢改，夜吟應覺月光寒。",
             "蓬山此去無多路，青鳥殷勤為探看。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%84%A1%E9%A1%8C_(%E9%B3%B3%E5%B0%BE%E9%A6%99%E7%BE%85%E8%96%84%E5%B9%BE%E9%87%8D)",
         "title": "無題之一",
         "author": "李商隱",
@@ -2646,8 +2646,8 @@
             "曾是寂寥金燼暗，斷無消息石榴紅。",
             "斑騅只繫垂楊岸，何處西南待好風。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%84%A1%E9%A1%8C_(%E9%87%8D%E5%B8%B7%E6%B7%B1%E4%B8%8B%E8%8E%AB%E6%84%81%E5%A0%82)",
         "title": "無題之二",
         "author": "李商隱",
@@ -2657,8 +2657,8 @@
             "風波不信菱枝弱，月露誰教桂葉香？",
             "直道相思了無益，未妨惆悵是清狂。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%8C%A6%E7%91%9F",
         "title": "錦瑟",
         "author": "李商隱",
@@ -2668,8 +2668,8 @@
             "滄海月明珠有淚，藍田日暖玉生煙。",
             "此情可待成追憶，只是當時已惘然。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9A%8B%E5%AE%AE",
         "title": "隋宮",
         "author": "李商隱",
@@ -2679,8 +2679,8 @@
             "於今腐草無螢火，終古垂楊有暮鴉。",
             "地下若逢陳後主，豈宜重問後庭花。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%84%A1%E9%A1%8C_(%E4%BE%86%E6%98%AF%E7%A9%BA%E8%A8%80%E5%8E%BB%E7%B5%95%E8%B9%A4)",
         "title": "無題之一",
         "author": "李商隱",
@@ -2690,8 +2690,8 @@
             "蠟照半籠金翡翠，麝熏微度繡芙蓉。",
             "劉郎已恨蓬山遠，更隔蓬山一萬重！"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%84%A1%E9%A1%8C_(%E9%A2%AF%E9%A2%AF%E6%9D%B1%E9%A2%A8%E7%B4%B0%E9%9B%A8%E4%BE%86)",
         "title": "無題之二",
         "author": "李商隱",
@@ -2701,8 +2701,8 @@
             "賈氏窺簾韓掾少，宓妃留枕魏王才。",
             "春心莫共花爭發，一寸相思一寸灰。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%B1%8C%E7%AD%86%E9%A9%9B_(%E6%9D%8E%E5%95%86%E9%9A%B1)",
         "title": "籌筆驛",
         "author": "李商隱",
@@ -2712,8 +2712,8 @@
             "管樂有才原不忝，關張無命欲何如。",
             "他年錦里經祠廟，梁父吟成恨有餘。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%84%A1%E9%A1%8C_(%E6%98%A8%E5%A4%9C%E6%98%9F%E8%BE%B0%E6%98%A8%E5%A4%9C%E9%A2%A8)",
         "title": "無題",
         "author": "李商隱",
@@ -2723,8 +2723,8 @@
             "隔座送鉤春酒暖，分曹射覆蠟燈紅。",
             "嗟余聽鼓應官去，走馬蘭台類轉蓬。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E9%9B%A8_(%E6%9D%8E%E5%95%86%E9%9A%B1)",
         "title": "春雨",
         "author": "李商隱",
@@ -2734,8 +2734,8 @@
             "遠路應悲春晼晚，殘宵猶得夢依稀。",
             "玉璫緘札何由達，萬里雲羅一雁飛。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E9%AD%8F%E8%90%AC%E4%B9%8B%E4%BA%AC",
         "title": "送魏萬之京",
         "author": "李頎",
@@ -2745,8 +2745,8 @@
             "關城樹色催寒近，御苑砧聲向晚多。",
             "莫見長安行樂處，空令歲月易蹉跎。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A9%A0%E6%87%B7%E5%8F%A4%E8%B7%A1%E4%B9%8B%E4%B8%80",
         "title": "詠懷古跡之一",
         "author": "杜甫",
@@ -2756,8 +2756,8 @@
             "羯胡事主終無賴，詞客哀時且未還。",
             "庾信平生最蕭瑟，暮年詩賦動江關。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A9%A0%E6%87%B7%E5%8F%A4%E8%B7%A1%E4%B9%8B%E4%BA%8C",
         "title": "詠懷古跡之二",
         "author": "杜甫",
@@ -2767,8 +2767,8 @@
             "江山故宅空文藻，雲雨荒臺豈夢思。",
             "最是楚宮俱泯滅，舟人指點到今疑。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A9%A0%E6%87%B7%E5%8F%A4%E8%B7%A1%E4%B9%8B%E4%B8%89",
         "title": "詠懷古跡之三",
         "author": "杜甫",
@@ -2778,8 +2778,8 @@
             "畫圖省識春風面，環珮空歸月下魂。",
             "千載琵琶作胡語，分明怨恨曲中論。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A9%A0%E6%87%B7%E5%8F%A4%E8%B7%A1%E4%B9%8B%E5%9B%9B",
         "title": "詠懷古跡之四",
         "author": "杜甫",
@@ -2789,8 +2789,8 @@
             "古廟杉松巢水鶴，歲時伏臘走村翁。",
             "武侯祠屋常鄰近，一體君臣祭祀同。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A9%A0%E6%87%B7%E5%8F%A4%E8%B7%A1%E4%B9%8B%E4%BA%94",
         "title": "詠懷古跡之五",
         "author": "杜甫",
@@ -2800,8 +2800,8 @@
             "伯仲之間見伊呂，指揮若定失蕭曹。",
             "運移漢祚終難復，志決身殲軍務勞。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%81%9E%E5%AE%98%E8%BB%8D%E6%94%B6%E6%B2%B3%E5%8D%97%E6%B2%B3%E5%8C%97",
         "title": "聞官軍收河南河北",
         "author": "杜甫",
@@ -2811,8 +2811,8 @@
             "白日放歌須縱酒，青春作伴好還鄉。",
             "即從巴峽穿巫峽，便下襄陽向洛陽。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%BF%E5%BA%9C",
         "title": "宿府",
         "author": "杜甫",
@@ -2822,8 +2822,8 @@
             "風塵荏苒音書絕，關塞蕭條行陸難。",
             "已忍伶俜十年事，強移棲息一枝安。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%96%A3%E5%A4%9C",
         "title": "閣夜",
         "author": "杜甫",
@@ -2833,8 +2833,8 @@
             "野哭幾家聞戰伐？夷歌數處起漁樵。",
             "臥龍躍馬終黃土，人事依依漫寂寥。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E9%AB%98",
         "title": "登高",
         "author": "杜甫",
@@ -2844,8 +2844,8 @@
             "萬里悲秋常作客，百年多病獨登臺。",
             "艱難苦恨繁霜鬢，潦倒新停濁酒杯。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E6%A8%93_(%E6%9D%9C%E7%94%AB)",
         "title": "登樓",
         "author": "杜甫",
@@ -2855,8 +2855,8 @@
             "北極朝庭終不改，西山寇盜莫相侵。",
             "可憐後主還祠廟，日暮聊為梁父吟。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%9C%80%E7%9B%B8",
         "title": "蜀相",
         "author": "杜甫",
@@ -2866,8 +2866,8 @@
             "三顧頻煩天下計，兩朝開濟老臣心。",
             "出師未捷身先死，長使英雄淚滿襟。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%A2%E8%87%B3",
         "title": "客至",
         "author": "杜甫",
@@ -2877,8 +2877,8 @@
             "盤飧市遠無兼味，樽酒家貧只舊醅。",
             "肯與鄰翁相對飲，隔籬呼取盡餘杯。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%87%8E%E6%9C%9B_(%E8%A5%BF%E5%B1%B1%E7%99%BD%E9%9B%AA%E4%B8%89%E5%A5%87%E6%88%8D)",
         "title": "野望",
         "author": "杜甫",
@@ -2888,8 +2888,8 @@
             "唯將遲暮供多病，未有涓埃答聖朝。",
             "跨馬出郊時極目，不堪人事日蕭條。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E6%9F%B3%E5%B7%9E%E5%9F%8E%E6%A8%93%E5%AF%84%E6%BC%B3%E6%B1%80%E5%B0%81%E9%80%A3%E5%9B%9B%E5%B7%9E%E5%88%BA%E5%8F%B2",
         "title": "登柳州城樓寄漳汀封連四州刺史",
         "author": "柳宗元",
@@ -2899,8 +2899,8 @@
             "嶺樹重遮千里目，江流曲似九迴腸。",
             "共來百越文身地，猶自音書滯一鄉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%80%9D_(%E7%9A%87%E7%94%AB%E5%86%89)",
         "title": "春思",
         "author": "皇甫冉",
@@ -2910,8 +2910,8 @@
             "機中錦字論長恨，樓上花枝笑獨眠。",
             "爲問元戎竇車騎，何時反斾勒燕然。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E6%9D%8E%E5%84%8B%E5%85%83%E9%8C%AB",
         "title": "寄李儋元錫",
         "author": "韋應物",
@@ -2921,8 +2921,8 @@
             "身多疾病思田里，邑有流亡愧俸錢。",
             "聞道欲來相問訊，西樓望月幾廻圓。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9C%9B%E8%96%8A%E9%96%80",
         "title": "望薊門",
         "author": "祖詠",
@@ -2932,8 +2932,8 @@
             "沙場烽火連胡月，海畔雲山擁薊城。",
             "少小雖非投筆吏，論功還欲請長纓。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B2%A7%E5%A5%B3(%E7%A7%A6%E9%9F%9C%E7%8E%89)",
         "title": "貧女",
         "author": "秦韜玉",
@@ -2943,8 +2943,8 @@
             "敢將十指誇偏巧，不把雙眉鬬畫長。",
             "苦恨年年壓金線，爲他人作嫁衣裳。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E6%9D%8E%E5%B0%91%E5%BA%9C%E8%B2%B6%E5%B3%BD%E4%B8%AD%E7%8E%8B%E5%B0%91%E5%BA%9C%E8%B2%B6%E9%95%B7%E6%B2%99",
         "title": "送李少府貶峽中王少府貶長沙",
         "author": "高適",
@@ -2954,8 +2954,8 @@
             "青楓江上秋天遠，白帝城邊古木疎。",
             "聖代即今多雨露，暫時分手莫躊躇。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E4%B9%9D%E6%97%A5%E7%99%BB%E6%9C%9B%E4%BB%99%E8%87%BA%E5%91%88%E5%8A%89%E6%98%8E%E5%BA%9C",
         "title": "九日登望仙臺呈劉明府",
         "author": "崔曙",
@@ -2965,8 +2965,8 @@
             "關門令尹誰能識，河上仙翁去不回。",
             "且欲近尋彭澤宰，陶然共醉菊花杯。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%BB%83%E9%B6%B4%E6%A8%93",
         "title": "黃鶴樓",
         "author": "崔顥",
@@ -2976,8 +2976,8 @@
             "晴川歷歷漢陽樹，芳草萋萋鸚鵡洲。",
             "日暮鄉關何處是？煙波江上使人愁。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A1%8C%E7%B6%93%E8%8F%AF%E9%99%B0",
         "title": "行經華陰",
         "author": "崔顥",
@@ -2987,8 +2987,8 @@
             "河山北枕秦關險，驛樹西連漢畤平。",
             "借問路傍名利客，無如此處學長生。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%88%A9%E6%B4%B2%E5%8D%97%E6%B8%A1",
         "title": "利洲南渡",
         "author": "溫庭筠",
@@ -2998,8 +2998,8 @@
             "數叢沙草群鷗散，萬頃江田一鷺飛。",
             "誰解乘舟尋范蠡，五湖煙水獨忘機。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%98%87%E6%AD%A6%E5%BB%9F",
         "title": "蘇武廟",
         "author": "溫庭筠",
@@ -3009,8 +3009,8 @@
             "回日樓臺非甲帳，去時冠劍是丁年。",
             "茂陵不見封侯印，空向秋波哭逝川。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B1%9F%E5%B7%9E%E9%87%8D%E5%88%A5%E8%96%9B%E5%85%AD%E6%9F%B3%E5%85%AB%E4%BA%8C%E5%93%A1%E5%A4%96",
         "title": "江州重別薛六柳八二員外",
         "author": "劉長卿",
@@ -3020,8 +3020,8 @@
             "寄身且喜滄洲近，顧影無如白髮何。",
             "今日龍鍾人共棄，媿君猶遣慎風波。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%95%B7%E6%B2%99%E9%81%8E%E8%B3%88%E8%AA%BC%E5%AE%85",
         "title": "長沙過賈誼宅",
         "author": "劉長卿",
@@ -3031,8 +3031,8 @@
             "漢文有道恩猶薄，湘水無情弔豈知。",
             "寂寂江山搖落處，憐君何事到天涯。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%87%AA%E5%A4%8F%E5%8F%A3%E8%87%B3%E9%B8%9A%E9%B5%A1%E6%B4%B2%E6%9C%9B%E5%B2%B3%E9%99%BD%E5%AF%84%E5%85%83%E4%B8%AD%E4%B8%9E",
         "title": "自夏口至鸚鵡洲望岳陽寄元中丞",
         "author": "劉長卿",
@@ -3042,8 +3042,8 @@
             "孤城背嶺寒吹角，獨樹臨江夜泊船。",
             "賈誼上書憂漢室，長沙謫去古今憐。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A5%BF%E5%A1%9E%E5%B1%B1%E6%87%B7%E5%8F%A4",
         "title": "西塞山懷古",
         "author": "劉禹錫",
@@ -3053,8 +3053,8 @@
             "人世幾回傷往事，山形依舊枕寒流。",
             "今逢四海為家日，故壘蕭蕭蘆荻秋。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%99%9A%E6%AC%A1%E9%84%82%E5%B7%9E",
         "title": "晚次鄂州",
         "author": "盧綸",
@@ -3064,8 +3064,8 @@
             "三湘衰鬢逢秋色，萬里歸心對月明。",
             "舊業已隨征戰盡，更堪江上鼓鼙聲。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E9%97%95%E4%B8%8B%E8%A3%B4%E8%88%8D%E4%BA%BA",
         "title": "贈闕下裴舍人",
         "author": "錢起",
@@ -3075,8 +3075,8 @@
             "陽和不散窮途恨，霄漢長懷捧日新。",
             "獻賦十年猶未遇，羞將白髮對華簪。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%AE%E8%A9%9E_(%E8%96%9B%E9%80%A2)",
         "title": "宮詞",
         "author": "薛逢",
@@ -3086,8 +3086,8 @@
             "雲髻罷梳還對鏡，羅衣欲換更添香。",
             "遙窺正殿簾開處，袍袴宮人掃御床。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%90%8C%E9%A1%8C%E4%BB%99%E9%81%8A%E8%A7%80",
         "title": "同題仙遊觀",
         "author": "韓翃",
@@ -3097,8 +3097,8 @@
             "疏松影落空壇靜，細草香閑小洞幽。",
             "何用別尋方外去，人間亦自有丹丘。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%A1%8C%E5%AE%AE",
         "title": "行宮",
         "author": "元稹",
@@ -3106,8 +3106,8 @@
             "寥落古行宮，宮花寂寞紅。",
             "白頭宮女在，閑坐說玄宗。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E9%B8%9B%E9%9B%80%E6%A8%93_(%E7%8E%8B%E4%B9%8B%E6%B8%99)",
         "title": "登鸛雀樓",
         "author": "王之渙",
@@ -3115,8 +3115,8 @@
             "白日依山盡，黃河入海流。",
             "欲窮千里目，更上一層樓。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%96%B0%E5%AB%81%E5%A8%98",
         "title": "新嫁娘",
         "author": "王建",
@@ -3124,8 +3124,8 @@
             "三日入廚下，洗手作羹湯。",
             "未諳姑食性，先遣小姑嘗。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%9B%B8%E6%80%9D",
         "title": "相思",
         "author": "王維",
@@ -3133,8 +3133,8 @@
             "紅豆生南國，春來發幾枝。",
             "願君多采擷，此物最相思。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9B%9C%E8%A9%A9_(%E5%90%9B%E8%87%AA%E6%95%85%E9%84%89%E4%BE%86)",
         "title": "雜詩",
         "author": "王維",
@@ -3142,8 +3142,8 @@
             "君自故鄉來，應知故鄉事。",
             "來日綺窗前，寒梅着花未。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%B9%BF%E5%AF%A8_(%E7%8E%8B%E7%B6%AD)",
         "title": "鹿寨",
         "author": "王維",
@@ -3151,8 +3151,8 @@
             "空山不見人，但聞人語響。",
             "返景入深林，復照青苔上。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%AB%B9%E9%87%8C%E9%A4%A8_(%E7%8E%8B%E7%B6%AD)",
         "title": "竹里館",
         "author": "王維",
@@ -3160,8 +3160,8 @@
             "獨坐幽篁裏，彈琴復長嘯。",
             "深林人不知，明月來相照。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E5%88%A5_(%E5%B1%B1%E4%B8%AD%E7%9B%B8%E9%80%81%E7%BD%B7)",
         "title": "送別",
         "author": "王維",
@@ -3169,8 +3169,8 @@
             "山中相送罷，日暮掩柴扉。",
             "春草明年綠，王孫歸不歸。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%95%8F%E5%8A%89%E5%8D%81%E4%B9%9D",
         "title": "問劉十九",
         "author": "白居易",
@@ -3178,8 +3178,8 @@
             "綠螘新醅酒，紅泥小火爐。",
             "晚來天欲雪，能飲一杯無？"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%93%A5%E8%88%92%E6%AD%8C",
         "title": "哥舒歌",
         "author": "西鄙人",
@@ -3187,8 +3187,8 @@
             "北斗七星高，哥舒夜帶刀。",
             "至今窺牧馬，不敢過臨洮。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9D%9C%E5%A4%9C%E6%80%9D",
         "title": "靜夜思",
         "author": "李白",
@@ -3196,8 +3196,8 @@
             "床前明月光，疑是地上霜。",
             "舉頭望明月，低頭思故鄉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%80%A8%E6%83%85_(%E7%BE%8E%E4%BA%BA%E6%8D%B2%E7%8F%A0%E7%B0%BE)",
         "title": "怨情",
         "author": "李白",
@@ -3205,8 +3205,8 @@
             "美人捲珠簾，深坐顰蛾眉。",
             "但見淚痕濕，不知心恨誰。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%99%BB%E6%A8%82%E6%B8%B8%E5%8E%9F",
         "title": "登樂游原",
         "author": "李商隱",
@@ -3214,8 +3214,8 @@
             "向晚意不適，驅車登古原。",
             "夕陽無限好，只是近黃昏。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%81%BD%E7%AE%8F_(%E6%9D%8E%E7%AB%AF)",
         "title": "聽箏",
         "author": "李端",
@@ -3223,8 +3223,8 @@
             "鳴箏金粟柱，素手玉房前。",
             "欲得周郎顧，時時誤拂弦。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B8%A1%E6%BC%A2%E6%B1%9F_(%E6%9D%8E%E9%A0%BB)",
         "title": "渡漢江",
         "author": "李頻",
@@ -3232,8 +3232,8 @@
             "嶺外音書絕，經冬復立春。",
             "近鄉情更怯，不敢問來人。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%85%AB%E9%99%A3%E5%9C%96",
         "title": "八陣圖",
         "author": "杜甫",
@@ -3241,8 +3241,8 @@
             "功蓋三分國，名成八陣圖。",
             "江流石不轉，遺恨失吞吳。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%BF%E5%BB%BA%E5%BE%B7%E6%B1%9F",
         "title": "宿建德江",
         "author": "孟浩然",
@@ -3250,8 +3250,8 @@
             "移舟泊煙渚，日暮客愁新。",
             "野曠天低樹，江清月近人。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%9B%89_(%E5%AD%9F%E6%B5%A9%E7%84%B6)",
         "title": "春曉",
         "author": "孟浩然",
@@ -3259,8 +3259,8 @@
             "春眠不覺曉，處處聞啼鳥。",
             "夜來風雨聲，花落知多少。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%80%A8_(%E9%87%91%E6%98%8C%E7%B7%92)",
         "title": "春怨",
         "author": "金昌緒",
@@ -3268,8 +3268,8 @@
             "打起黃鶯兒，莫教枝上啼。",
             "啼時驚妾夢，不得到遼西。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B1%9F%E9%9B%AA",
         "title": "江雪",
         "author": "柳宗元",
@@ -3277,8 +3277,8 @@
             "千山鳥飛絕，萬徑人蹤滅。",
             "孤舟簑笠翁，獨釣寒江雪。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%A7%8B%E5%A4%9C%E5%AF%84%E4%B8%98%E5%93%A1%E5%A4%96",
         "title": "秋夜寄丘員外",
         "author": "韋應物",
@@ -3286,8 +3286,8 @@
             "懷君屬秋夜，散步詠涼天。",
             "空山松子落，幽人應未眠。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%B5%82%E5%8D%97%E6%9C%9B%E9%A4%98%E9%9B%AA",
         "title": "終南望餘雪",
         "author": "祖詠",
@@ -3295,8 +3295,8 @@
             "終南陰嶺秀，積雪浮雲端。",
             "林表明霽色，城中增暮寒。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E4%BD%95%E6%BB%BF%E5%AD%90_(%E5%BC%B5%E7%A5%9C)",
         "title": "何滿子",
         "author": "張祜",
@@ -3304,8 +3304,8 @@
             "故國三千里，深宮二十年。",
             "一聲何滿子，雙淚落君前。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B0%8B%E9%9A%B1%E8%80%85%E4%B8%8D%E9%81%87",
         "title": "尋隱者不遇",
         "author": "賈島",
@@ -3313,8 +3313,8 @@
             "松下問童子，言師採藥去。",
             "只在此山中，雲深不知處。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E5%B4%94%E4%B9%9D",
         "title": "送崔九",
         "author": "裴迪",
@@ -3322,8 +3322,8 @@
             "歸山深淺去，須盡丘壑美。",
             "莫學武陵人，暫遊桃源裡。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E9%9D%88%E6%BE%88",
         "title": "送靈澈",
         "author": "劉長卿",
@@ -3331,8 +3331,8 @@
             "蒼蒼竹林寺，杳杳鐘聲晚。",
             "荷笠帶夕陽，青山獨歸遠。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%BD%88%E7%90%B4",
         "title": "彈琴",
         "author": "劉長卿",
@@ -3340,8 +3340,8 @@
             "泠泠七絲上，靜聽松風寒。",
             "古調雖自愛，今人多不彈。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E4%B8%8A%E4%BA%BA",
         "title": "送上人",
         "author": "劉長卿",
@@ -3349,8 +3349,8 @@
             "孤雲將野鶴，豈向人間住？",
             "莫買沃洲山，時人已知處。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%8E%89%E8%87%BA%E9%AB%94",
         "title": "玉臺體",
         "author": "權德輿",
@@ -3358,8 +3358,8 @@
             "昨夜裙帶解，今朝蟢子飛。",
             "鉛華不可棄，莫是藁砧歸。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%8A%99%E8%93%89%E6%A8%93%E9%80%81%E8%BE%9B%E6%BC%B8_(%E5%AF%92%E9%9B%A8%E9%80%A3%E5%A4%A9%E5%A4%9C%E5%85%A5%E6%B9%96)",
         "title": "芙蓉樓送辛漸",
         "author": "王昌齡",
@@ -3367,8 +3367,8 @@
             "寒雨連江夜入吳，平明送客楚山孤。",
             "洛陽親友如相問，一片冰心在玉壺。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%96%A8%E6%80%A8_(%E7%8E%8B%E6%98%8C%E9%BD%A1)",
         "title": "閨怨",
         "author": "王昌齡",
@@ -3376,8 +3376,8 @@
             "閨中少婦不曾愁，春日凝妝上翠樓。",
             "忽見陌頭楊柳色，悔教夫婿覓封侯。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E5%AE%AE%E6%9B%B2",
         "title": "春宮曲",
         "author": "王昌齡",
@@ -3385,8 +3385,8 @@
             "昨夜風開露井桃，未央前殿月輪高。",
             "平陽歌舞新承寵，簾外春寒賜錦袍。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E4%B9%9D%E6%9C%88%E4%B9%9D%E6%97%A5%E6%86%B6%E5%B1%B1%E6%9D%B1%E5%85%84%E5%BC%9F",
         "title": "九月九日憶山東兄弟",
         "author": "王維",
@@ -3394,8 +3394,8 @@
             "獨在異鄉爲異客，每逢佳節倍思親。",
             "遙知兄弟登高處，遍插茱萸少一人。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B6%BC%E5%B7%9E%E8%A9%9E_(%E8%91%A1%E8%90%84%E7%BE%8E%E9%85%92%E5%A4%9C%E5%85%89%E6%9D%AF)",
         "title": "涼州詞",
         "author": "王翰",
@@ -3403,8 +3403,8 @@
             "葡萄美酒夜光杯，欲飲琵琶馬上催。",
             "醉臥沙場君莫笑，古來征戰幾人回。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%AE%E8%A9%9E_(%E7%99%BD%E5%B1%85%E6%98%93)",
         "title": "宮詞",
         "author": "白居易",
@@ -3412,8 +3412,8 @@
             "淚濕羅巾夢不成，夜深前殿按歌聲。",
             "紅顏未老恩先斷，斜倚薰籠坐到明。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%AE%E4%B8%AD%E8%A9%9E",
         "title": "宮中詞",
         "author": "朱慶餘",
@@ -3421,8 +3421,8 @@
             "寂寂花時閉院門，美人相並立瓊軒。",
             "含情欲說宮中事，鸚鵡前頭不敢言。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%BF%91%E8%A9%A6%E4%B8%8A%E5%BC%B5%E6%B0%B4%E9%83%A8",
         "title": "近試上張水部",
         "author": "朱慶餘",
@@ -3430,8 +3430,8 @@
             "洞房昨夜停紅燭，待曉堂前拜舅姑。",
             "妝罷低聲問夫婿，畫眉深淺入時無？"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%A2%E5%85%A5%E4%BA%AC%E4%BD%BF",
         "title": "逢入京使",
         "author": "岑參",
@@ -3439,8 +3439,8 @@
             "故園東望路漫漫，雙袖龍鍾淚不乾。",
             "馬上相逢無紙筆，憑君傳語報平安。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%80%81%E5%AD%9F%E6%B5%A9%E7%84%B6%E4%B9%8B%E5%BB%A3%E9%99%B5",
         "title": "送孟浩然之廣陵",
         "author": "李白",
@@ -3448,8 +3448,8 @@
             "故人西辭黃鶴樓，煙花三月下揚州。",
             "孤帆遠影碧山盡，唯見長江天際流。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E4%B8%8B%E6%B1%9F%E9%99%B5",
         "title": "下江陵",
         "author": "李白",
@@ -3457,8 +3457,8 @@
             "朝辭白帝彩雲間，千里江陵一日還。",
             "兩岸猿聲啼不住，輕舟已過萬重山。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%9C%E4%B8%8A%E5%8F%97%E9%99%8D%E5%9F%8E%E8%81%9E%E7%AC%9B",
         "title": "夜上受降城聞笛",
         "author": "李益",
@@ -3466,8 +3466,8 @@
             "回樂峰前沙似雪，受降城下月如霜。",
             "不知何處吹蘆管，一夜征人盡望鄉。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B3%88%E7%94%9F",
         "title": "賈生",
         "author": "李商隱",
@@ -3475,8 +3475,8 @@
             "宣室求賢訪逐臣，賈生才調更無倫。",
             "可憐夜半虛前席，不問蒼生問鬼神。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9A%8B%E5%AE%AE_(%E4%B9%98%E8%88%88%E5%8D%97%E9%81%8A%E4%B8%8D%E6%88%92%E5%9A%B4)",
         "title": "隋宮",
         "author": "李商隱",
@@ -3484,8 +3484,8 @@
             "乘興南遊不戒嚴，九重誰省諫書函。",
             "春風舉國裁宮錦，半作障泥半作帆。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%91%A4%E6%B1%A0",
         "title": "瑤池",
         "author": "李商隱",
@@ -3493,8 +3493,8 @@
             "瑤池阿母綺窗開，黃竹歌聲動地哀。",
             "八駿日行三萬里，穆王何事不重來。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AB%A6%E5%A8%A5",
         "title": "嫦娥",
         "author": "李商隱",
@@ -3502,8 +3502,8 @@
             "雲母屏風燭影深，長河漸落曉星沈。",
             "嫦娥應悔偷靈藥，碧海青天夜夜心。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%A4%9C%E9%9B%A8%E5%AF%84%E5%8C%97",
         "title": "夜雨寄北",
         "author": "李商隱",
@@ -3511,8 +3511,8 @@
             "君問歸期未有期，巴山夜雨漲秋池。",
             "何當共剪西窗燭，卻話巴山夜雨時。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E4%BB%A4%E7%8B%90%E9%83%8E%E4%B8%AD",
         "title": "寄令狐郎中",
         "author": "李商隱",
@@ -3520,8 +3520,8 @@
             "嵩雲秦樹久離居，雙鯉迢迢一紙書。",
             "休問梁園舊賓客，茂陵秋雨病相如。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%82%BA%E6%9C%89",
         "title": "為有",
         "author": "李商隱",
@@ -3529,8 +3529,8 @@
             "為有雲屏無限嬌，鳳城寒盡怕春宵。",
             "無端嫁得金龜婿，辜負香衾事早朝。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B1%9F%E5%8D%97%E9%80%A2%E6%9D%8E%E9%BE%9C%E5%B9%B4",
         "title": "江南逢李龜年",
         "author": "杜甫",
@@ -3538,8 +3538,8 @@
             "岐王宅裡尋常見，崔九堂前幾度聞。",
             "正是江南好風景，落花時節又逢君。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E5%88%A5_(%E5%A8%89%E5%A8%89%E8%A4%AD%E8%A4%AD%E5%8D%81%E4%B8%89%E9%A4%98)",
         "title": "贈別之一",
         "author": "杜牧",
@@ -3547,8 +3547,8 @@
             "娉娉褭褭十三餘，荳蔻梢頭二月初。",
             "春風十里揚州路，卷上珠簾總不如。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E5%88%A5_(%E5%A4%9A%E6%83%85%E5%8D%BB%E4%BC%BC%E7%B8%BD%E7%84%A1%E6%83%85)",
         "title": "贈別之二",
         "author": "杜牧",
@@ -3556,8 +3556,8 @@
             "多情卻似總無情，唯覺尊前笑不成。",
             "蠟燭有心還惜別，替人垂淚到天明。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%87%91%E8%B0%B7%E5%9C%92_(%E6%9D%9C%E7%89%A7)",
         "title": "金谷園",
         "author": "杜牧",
@@ -3565,8 +3565,8 @@
             "繁華事散逐香塵，流水無情草自春。",
             "日暮東風怨啼鳥，落花猶似墜樓人。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E6%8F%9A%E5%B7%9E%E9%9F%93%E7%B6%BD%E5%88%A4%E5%AE%98",
         "title": "寄揚州韓綽判官",
         "author": "杜牧",
@@ -3574,8 +3574,8 @@
             "青山隱隱水迢迢，秋盡江南草未凋。",
             "二十四橋明月夜，玉人何處教吹簫。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%81%A3%E6%87%B7(%E6%9D%9C%E7%89%A7)",
         "title": "遣懷",
         "author": "杜牧",
@@ -3583,8 +3583,8 @@
             "落魄江湖載酒行，楚腰纖細掌中輕。",
             "十年一覺揚州夢，贏得青樓薄倖名。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%A7%8B%E5%A4%95_(%E6%9D%9C%E7%89%A7)",
         "title": "秋夕",
         "author": "杜牧",
@@ -3592,8 +3592,8 @@
             "紅燭秋光冷畫屏，輕羅小扇撲流螢。",
             "天階夜色涼如水，坐看牽牛織女星。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B0%87%E8%B5%B4%E5%90%B3%E8%88%88%E7%99%BB%E6%A8%82%E6%B8%B8%E5%8E%9F",
         "title": "將赴吳興登樂游原",
         "author": "杜牧",
@@ -3601,8 +3601,8 @@
             "清時有味是無能，閑愛孤云靜愛僧。",
             "欲把一麾江海去，樂游原上望昭陵。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B5%A4%E5%A3%81",
         "title": "赤壁",
         "author": "杜牧",
@@ -3610,8 +3610,8 @@
             "折戟沉沙鐵未銷，自將磨洗認前朝。",
             "東風不與周郎便，銅雀春深鎖二喬。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%B3%8A%E7%A7%A6%E6%B7%AE",
         "title": "泊秦淮",
         "author": "杜牧",
@@ -3619,8 +3619,8 @@
             "煙籠寒水月籠沙，夜泊秦淮近酒家。",
             "商女不知亡國恨，隔江猶唱後庭花。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%BE%81%E4%BA%BA%E6%80%A8",
         "title": "徵人怨",
         "author": "柳中庸",
@@ -3628,8 +3628,8 @@
             "歲歲金河復玉關，朝朝馬策與刀環。",
             "三春白雪歸青塚，萬里黃河繞黑山。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%87%91%E9%99%B5%E5%9C%96",
         "title": "金陵圖",
         "author": "韋莊",
@@ -3637,8 +3637,8 @@
             "江雨霏霏江草齊，六朝如夢鳥空啼。",
             "無情最是臺城柳，依舊煙籠十里堤。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%BB%81%E5%B7%9E%E8%A5%BF%E6%BE%97",
         "title": "滁州西澗",
         "author": "韋應物",
@@ -3646,8 +3646,8 @@
             "獨憐幽草澗邊生，上有黃鸝深樹鳴。",
             "春潮帶雨晚來急，野渡無人舟自橫。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%A1%83%E8%8A%B1%E8%B0%BF",
         "title": "桃花谿",
         "author": "張旭",
@@ -3655,8 +3655,8 @@
             "隱隱飛橋隔野煙，石磯西畔問漁船。",
             "桃花盡日隨流水，洞在清谿何處邊。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AF%84%E4%BA%BA_(%E5%BC%B5%E6%B3%8C)",
         "title": "寄人",
         "author": "張泌",
@@ -3664,8 +3664,8 @@
             "別夢依依到謝家，小廊回合曲闌斜。",
             "多情只有春庭月，猶為離人照落花。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%A1%8C%E9%87%91%E9%99%B5%E6%B8%A1",
         "title": "題金陵渡",
         "author": "張祜",
@@ -3673,8 +3673,8 @@
             "金陵津渡小山樓，一宿行人自可愁。",
             "潮落夜江斜月裡，兩三星火是瓜州。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E8%B4%88%E5%85%A7%E4%BA%BA",
         "title": "贈內人",
         "author": "張祜",
@@ -3682,8 +3682,8 @@
             "禁門宮樹月痕過，媚眼惟看宿鷺窠。",
             "斜拔玉釵燈影畔，剔開紅燄救飛蛾。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9B%86%E9%9D%88%E8%87%BA%E4%B9%8B%E4%B8%80",
         "title": "集靈臺之一",
         "author": "張祜",
@@ -3691,8 +3691,8 @@
             "日光斜照集靈台，紅樹花迎曉露開。",
             "昨夜上皇新授籙，太真含笑入簾來。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9B%86%E9%9D%88%E8%87%BA%E4%B9%8B%E4%BA%8C",
         "title": "集靈臺之二",
         "author": "張祜",
@@ -3700,8 +3700,8 @@
             "虢國夫人承主恩，平明騎馬入宮門。",
             "卻嫌脂粉污顏色，淡掃蛾眉朝至尊。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%A5%93%E6%A9%8B%E5%A4%9C%E6%B3%8A",
         "title": "楓橋夜泊",
         "author": "張繼",
@@ -3709,8 +3709,8 @@
             "月落烏啼霜滿天，江楓漁火對愁眠。",
             "姑蘇城外寒山寺，夜半鐘聲到客船。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9A%B4%E8%A5%BF%E8%A1%8C_(%E9%99%B3%E9%99%B6)",
         "title": "隴西行",
         "author": "陳陶",
@@ -3718,8 +3718,8 @@
             "誓掃匈奴不顧身，五千貂錦喪胡塵。",
             "可憐無定河邊骨，猶是深閨夢裡人。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%9B%9C%E8%A9%A9_(%E7%84%A1%E5%90%8D%E6%B0%8F)",
         "title": "雜詩",
         "author": "無名氏",
@@ -3727,8 +3727,8 @@
             "盡寒食雨草萋萋，著麥苗風柳映堤。",
             "等是有家歸未得，杜鵑休向耳邊啼。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%9B%9E%E9%84%89%E5%81%B6%E6%9B%B8_(%E5%B0%91%E5%B0%8F%E9%9B%A2%E5%AE%B6%E8%80%81%E5%A4%A7%E5%9B%9E)",
         "title": "回鄉偶書",
         "author": "賀知章",
@@ -3736,8 +3736,8 @@
             "少小離家老大回，鄉音難改鬢毛衰。",
             "兒童相見不相識，笑問客從何處來。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%91%A4%E7%91%9F%E6%80%A8",
         "title": "瑤瑟怨",
         "author": "溫庭筠",
@@ -3745,8 +3745,8 @@
             "冰簟銀牀夢不成，碧天如水夜雲輕。",
             "雁聲遠過瀟湘去，十二樓中月自明。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%9C%88%E5%A4%9C_(%E5%8A%89%E6%96%B9%E5%B9%B3)",
         "title": "月夜",
         "author": "劉方平",
@@ -3754,8 +3754,8 @@
             "更深月色半人家，北斗闌干南斗斜。",
             "今夜偏知春氣暖，蟲聲新透綠窗沙。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E6%80%A8_(%E5%8A%89%E6%96%B9%E5%B9%B3)",
         "title": "春怨",
         "author": "劉方平",
@@ -3763,8 +3763,8 @@
             "紗窗日落漸黃昏，金屋無人見淚痕。",
             "寂寞空庭春欲晚，梨花滿地不開門。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E7%83%8F%E8%A1%A3%E5%B7%B7",
         "title": "烏衣巷",
         "author": "劉禹錫",
@@ -3772,8 +3772,8 @@
             "朱雀橋邊野草花，烏衣巷口夕陽斜。",
             "舊時王謝堂前燕，飛入尋常百姓家。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E6%98%A5%E8%A9%9E_(%E5%8A%89%E7%A6%B9%E9%8C%AB)",
         "title": "春詞",
         "author": "劉禹錫",
@@ -3781,8 +3781,8 @@
             "新妝宜面下朱樓，深鎖春光一院愁。",
             "行到中庭數花朵，蜻蜓飛上玉搔頭。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E9%A6%AC%E5%B5%AC%E5%9D%A1_(%E9%84%AD%E7%95%8B)",
         "title": "馬嵬坡",
         "author": "鄭畋",
@@ -3790,8 +3790,8 @@
             "玄宗回馬楊妃死，雲雨難忘日月新。",
             "終是聖明天子事，景陽宮井又何人？"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AF%92%E9%A3%9F_(%E9%9F%93%E7%BF%83)",
         "title": "寒食",
         "author": "韓翃",
@@ -3799,8 +3799,8 @@
             "春城無處不飛花，寒食東風御柳斜。",
             "日暮漢宮傳蠟燭，輕煙散入五侯家。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%B7%B2%E6%B6%BC",
         "title": "已涼",
         "author": "韓偓",
@@ -3808,8 +3808,8 @@
             "碧闌干外繡簾垂，猩色屏風畫折枝。",
             "八尺龍鬚方錦褥，已涼天氣未寒時。"
         ]
-    ],
-    [
+    },
+    {
         "source": "https://zh.wikisource.org/wiki/%E5%AE%AE%E8%A9%9E_(%E7%8E%89%E6%A8%93%E5%A4%A9%E5%8D%8A%E8%B5%B7%E7%AC%99%E6%AD%8C)",
         "title": "宮詞",
         "author": "顧況",
@@ -3817,5 +3817,5 @@
             "玉樓天半起笙歌，風送宮嬪笑語和。",
             "月殿影開聞夜漏，水精簾卷近銀河。"
         ]
-    ]
+    }
 ]
