@@ -11,7 +11,7 @@
     body {
       font-family: "microsoft jhenghei", sans-serif;
       line-height: 1.6;
-      font-size: 16px;
+      font-size: 18px;
     }
     .poem-list {
       list-style: none;
@@ -37,8 +37,10 @@
 
       <ul class="row poem-list">
         <li ng-repeat="poem in poems | filter: poemSearch" class="col-sm-4">
-          <h3 class="title">{{poem.title}} - <small>{{poem.author}}</small></h3>
-          <p>{{poem.text}}</p>
+          <h4 class="title">{{poem.title}} <small>{{poem.author}}</small></h4>
+          <p>
+            <div ng-repeat="text in poem.text">{{text}}</div>
+          </p>
         </li>
       </ul>
 
