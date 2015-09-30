@@ -3,26 +3,81 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SVG Playground</title>
+	<!-- load bootstrap css -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 	<style>
-	img { max-width: 150px ;}
+		img { max-width: 150px ;}
+		#svgout {
+			width: 800px;
+			height: 300px;
+			border: #efefef 1px solid;
+		}
 	</style>
+
 </head>
 <body>
 	
-<h1>SVG Playground</h1>
 
-<h3>Market</h3>
-<img src="market.svg">
+<div class="container">
 
-<h3>Noodles</h3>
-<img src="noodles.svg">
+	<h1>SVG Playground</h1>
 
-<h3>Smartphone</h3>
-<img src="smartphone.svg">
+	<!-- list of icon -->
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<h3>Market</h3>
+			<img id="market" class="icon-svg" src="market.svg">
+		</div>
+		
+		<div class="col-sm-6">
+			<h3>Noodles</h3>
+			<img class="icon-svg" src="noodles.svg">
+		</div>
+		
+		<div class="col-sm-6">
+			<h3>Smartphone</h3>
+			<img class="icon-svg" src="smartphone.svg">
+		</div>
+		
+		<div class="col-sm-6">
+			<h3>Taxi</h3>
+			<img class="icon-svg" src="taxi.svg">
+		</div>
+	
+	</div> <!-- /.row -->
 
-<h3>Taxi</h3>
-<img src="taxi.svg">
+	<hr>
+
+	<h2>Snap.svg</h2>
+	<div class="row">
+		<svg id="svgout"></svg>
+	</div>
+
+</div> <!-- /.container -->
 
 
+<!-- load snap.svg -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
+<script>
+var s = Snap("#svgout"); 
+
+// Lets draw 2 rects at position 100,100 and then reposition them
+var r = s.rect(100,100,100,100,20,20).attr({ stroke: '#123456', 'strokeWidth': 20, fill: 'red', 'opacity': 0.2 });
+
+var t = s.text(100,50,'Snap("#svg") should reference an svg element, not a div. Or create it by supplying width,height Snap(100,100)');
+
+// Now lets load external SVG file:
+var g = s.group();
+var tux = Snap.load("market.svg", function ( loadedFragment ) {
+	g.append( loadedFragment );
+	g.hover( hoverover, hoverout );
+	g.text(600,100, 'hover over me');
+} );
+// Add some hover animation:
+var hoverover = function() { g.animate({ transform: 's2r45,150,150' }, 1000, mina.bounce ) };
+var hoverout = function() { g.animate({ transform: 's1r0,150,150' }, 1000, mina.bounce ) };
+</script>
 </body>
 </html>
