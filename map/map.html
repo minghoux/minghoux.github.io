@@ -34,11 +34,19 @@
     <script>
 
 var map;
+// -----------------------------------------------------------
+// Set the stage
+// -----------------------------------------------------------
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: {lat: 22.3015669, lng: 114.1731235}
   });
+
+// -----------------------------------------------------------
+// Load map data from json
+// -----------------------------------------------------------
 
   // Load map data
   map.data.loadGeoJson('map.json');
@@ -48,12 +56,6 @@ function initMap() {
   //   fillColor: 'green',
   //   strokeWeight: 1
   // });
-
-  // Event listener
-  map.data.addListener('mouseover', function(event) {
-    document.getElementById('info-box').textContent =
-        event.feature.getProperty('text');
-  });
 
   // Color each letter gray. Change the color when the isColorful property
   // is set to true.
@@ -86,8 +88,15 @@ function initMap() {
     map.data.revertStyle();
   });
 
-  // End of import json stuff
-  // -----------------------------------------------------------
+// -----------------------------------------------------------
+// Event listener
+// -----------------------------------------------------------
+
+  // Event listener
+  map.data.addListener('mouseover', function(event) {
+    document.getElementById('info-box').textContent =
+        event.feature.getProperty('text');
+  });
 
   // Event - Dragging
   google.maps.event.addListener(map, 'drag', function() { 
@@ -101,6 +110,10 @@ function initMap() {
     var center = map.getCenter();
     document.getElementById('target').textContent = "No Drag " + center
   });
+
+// -----------------------------------------------------------
+// Google map marker and info box
+// -----------------------------------------------------------
 
   // Add marker
   var myLatLng = {lat: 22.3015669, lng: 114.1731235};

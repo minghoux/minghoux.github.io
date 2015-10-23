@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "text": "Hey!",
+        "text": "尖沙咀",
         "color": "Red"
         },
       "geometry": {
@@ -42,7 +42,7 @@
     {
       "type": "Feature",
       "properties": {
-        "text": "Sup",
+        "text": "佐敦",
         "color": "green"
         },
       "geometry": {
@@ -84,7 +84,7 @@
     {
       "type": "Feature",
       "properties": {
-        "text": "This is fun",
+        "text": "旺角 & 油麻地",
         "color": "blue"
         },
       "geometry": {
@@ -130,7 +130,7 @@
     {
       "type": "Feature",
       "properties": {
-        "text": "恭喜發財",
+        "text": "土瓜灣",
         "color": "yellow"
         },
       "geometry": {
