@@ -13,10 +13,20 @@
       #map {
         height: 100%;
       }
+      #info-box {
+        background-color: white;
+        border: 1px solid black;
+        bottom: 30px;
+        height: 20px;
+        padding: 10px;
+        position: absolute;
+        left: 30px;
+      }
     </style>
   </head>
   <body>
     <div id="map"></div>
+    <div id="info-box"></div>
     <script>
 
 var map;
@@ -26,8 +36,20 @@ function initMap() {
     center: {lat: 22.3015669, lng: 114.1731235}
   });
 
-  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+  // Load map data
   map.data.loadGeoJson('map.json');
+
+  // Styling
+  map.data.setStyle({
+    fillColor: 'green',
+    strokeWeight: 1
+  });
+
+  // Event listener
+  map.data.addListener('mouseover', function(event) {
+    document.getElementById('info-box').textContent =
+        event.feature.getProperty('text');
+  });
 
   // Add Marker
   var myLatLng = {lat: 22.3015669, lng: 114.1731235};
