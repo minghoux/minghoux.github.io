@@ -4,7 +4,8 @@
     {
       "type": "Feature",
       "properties": {
-        "text": "Hey!"
+        "text": "Hey!",
+        "color": "Red"
         },
       "geometry": {
         "type": "Polygon",
@@ -41,7 +42,8 @@
     {
       "type": "Feature",
       "properties": {
-        "text": "Sup"
+        "text": "Sup",
+        "color": "green"
         },
       "geometry": {
         "type": "Polygon",
@@ -82,7 +84,8 @@
     {
       "type": "Feature",
       "properties": {
-        "text": "This is fun"
+        "text": "This is fun",
+        "color": "blue"
         },
       "geometry": {
         "type": "Polygon",
@@ -127,7 +130,8 @@
     {
       "type": "Feature",
       "properties": {
-        "text": "恭喜發財"
+        "text": "恭喜發財",
+        "color": "yellow"
         },
       "geometry": {
         "type": "Polygon",

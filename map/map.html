@@ -13,7 +13,7 @@
       #map {
         height: 100%;
       }
-      #info-box {
+      #info-box, #target {
         background-color: white;
         border: 1px solid black;
         bottom: 30px;
@@ -22,11 +22,15 @@
         position: absolute;
         left: 30px;
       }
+      #target {
+        bottom: 80px;
+      }
     </style>
   </head>
   <body>
     <div id="map"></div>
     <div id="info-box"></div>
+    <div id="target"></div>
     <script>
 
 var map;
@@ -39,11 +43,11 @@ function initMap() {
   // Load map data
   map.data.loadGeoJson('map.json');
 
-  // Styling
-  map.data.setStyle({
-    fillColor: 'green',
-    strokeWeight: 1
-  });
+  // Basic Styling
+  // map.data.setStyle({
+  //   fillColor: 'green',
+  //   strokeWeight: 1
+  // });
 
   // Event listener
   map.data.addListener('mouseover', function(event) {
@@ -51,8 +55,56 @@ function initMap() {
         event.feature.getProperty('text');
   });
 
-  // Add Marker
+  // Color each letter gray. Change the color when the isColorful property
+  // is set to true.
+  map.data.setStyle(function(feature) {
+    var color = 'gray';
+    if (feature.getProperty('isColorful')) {
+      color = feature.getProperty('color');
+    }
+    return /** @type {google.maps.Data.StyleOptions} */({
+      fillColor: color,
+      strokeColor: color,
+      strokeWeight: 2
+    });
+  });
+
+  // When the user clicks, set 'isColorful', changing the color of the letters.
+  map.data.addListener('click', function(event) {
+    event.feature.setProperty('isColorful', true);
+  });
+
+  // When the user hovers, tempt them to click by outlining the letters.
+  // Call revertStyle() to remove all overrides. This will use the style rules
+  // defined in the function passed to setStyle()
+  map.data.addListener('mouseover', function(event) {
+    map.data.revertStyle();
+    map.data.overrideStyle(event.feature, {strokeWeight: 8});
+  });
+
+  map.data.addListener('mouseout', function(event) {
+    map.data.revertStyle();
+  });
+
+  // End of import json stuff
+  // -----------------------------------------------------------
+
+  // Event - Dragging
+  google.maps.event.addListener(map, 'drag', function() { 
+    // alert('map dragged'); 
+    var center = map.getCenter();
+    document.getElementById('target').textContent = "Dragging! " + center
+  });
+
+  // Event - End of drag
+  google.maps.event.addListener(map, 'dragend', function() { 
+    var center = map.getCenter();
+    document.getElementById('target').textContent = "No Drag " + center
+  });
+
+  // Add marker
   var myLatLng = {lat: 22.3015669, lng: 114.1731235};
+  // Info box for marker
   var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
@@ -61,6 +113,7 @@ function initMap() {
       '<p><b>This is Hong Kong!</b>, welcome aboard.' +
       '</div>' +
       '</div>'
+
 
   var infowindow = new google.maps.InfoWindow({
     content: contentString
