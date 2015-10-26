@@ -33,15 +33,16 @@
     <div id="target"></div>
     <script>
 
-var map;
 // -----------------------------------------------------------
 // Set the stage
 // -----------------------------------------------------------
+var map;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
-    center: {lat: 22.3015669, lng: 114.1731235}
+    center: {lat: 22.3015669, lng: 114.1731235},
+    disableDefaultUI: true
   });
 
 // -----------------------------------------------------------
@@ -92,7 +93,7 @@ function initMap() {
 // Event listener
 // -----------------------------------------------------------
 
-  // Event listener
+  // Event listener - Mouseover
   map.data.addListener('mouseover', function(event) {
     document.getElementById('info-box').textContent =
         event.feature.getProperty('text');
@@ -108,7 +109,23 @@ function initMap() {
   // Event - End of drag
   google.maps.event.addListener(map, 'dragend', function() { 
     var center = map.getCenter();
-    document.getElementById('target').textContent = "No Drag " + center
+    document.getElementById('target').textContent = "Stop at " + center
+  });
+
+  // Event - Click
+  google.maps.event.addListener(map, 'click', function(e) {
+    new google.maps.Marker({
+      position: e.latLng,
+      map: map,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        fillColor: 'red',
+        fillOpacity: .2,
+        strokeColor: 'white',
+        strokeWeight: .5,
+        scale: 10
+      }
+    });
   });
 
 // -----------------------------------------------------------
