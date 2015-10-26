@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Data Layer: Simple</title>
+    <title>Google Map Data Layer</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -100,7 +100,7 @@ function initMap() {
   });
 
   // Event - Dragging
-  google.maps.event.addListener(map, 'drag', function() { 
+  google.maps.event.addListener(map, 'drag', function(event) { 
     // alert('map dragged'); 
     var center = map.getCenter();
     document.getElementById('target').textContent = "Dragging! " + center
@@ -161,6 +161,7 @@ function initMap() {
 
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6Pm6rDlIf4VwJIzYsc8Skh33M2lqkezc&signed_in=true&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6Pm6rDlIf4VwJIzYsc8Skh33M2lqkezc&signed_in=true&callback=initMap">
+    </script>
   </body>
 </html>
