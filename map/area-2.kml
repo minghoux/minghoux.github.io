@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<NetworkLink>
+<name><![CDATA[DC2015 DCCA boundaries]]></name>
+<Link>
+<href>
+https://www.google.com/fusiontables/exporttable?query=select+col13+from+10URM7eQvbXKNbrfoLbpgEkHaBXGF1BJcjuUqnsr4&amp;o=kmllink&amp;g=col13&amp;styleId=2&amp;templateId=2</href>
+</Link>
+</NetworkLink>
+</kml>

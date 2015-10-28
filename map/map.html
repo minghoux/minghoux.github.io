@@ -61,14 +61,16 @@ function initMap() {
     disableDefaultUI: true
   });
 
-// $('<div/>').addClass('centerMarker').appendTo(map.getDiv());
-
 // -----------------------------------------------------------
 // Load map data from json
 // -----------------------------------------------------------
 
   // Load map data
-  map.data.loadGeoJson('map.json');
+  // map.data.loadGeoJson('map.json');
+  var ctaLayer = new google.maps.KmlLayer({
+    url: 'cta.kml',
+    map: map
+  });
 
   // Basic Styling
   // map.data.setStyle({
