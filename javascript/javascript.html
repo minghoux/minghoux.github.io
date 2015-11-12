@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Javascript Playground</title>
+</head>
+<body>
+	
+<h1>Javascript Playground</h1>
+
+<h3>Print a list of people name / age / country</h3>
+<button id="action1">Go!</button>
+
+<div id="content"></div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+	var people = [
+		{name: "John", age: 24, country: "Hong Kong"},
+		{name: "Sam", age: 32, country: "Germany"},
+		{name: "Tim", age: 46, country: "Australia"},
+		{name: "Jerome", age: 18, country: "South Korea"}
+	]
+
+	$("#action1").click(function(){
+		for(var i=0; i < people.length; i++) {
+			var text = (people[i].name + " / " + people[i].age + " years old / " + people[i].country + ".");
+			$("#content").append('<p>' + text + '</p>');
+		}
+	});
+
+</script>
+
+</body>
+</html>
