@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.people {
+			margin-right: 1em;
+		}
+
+    .todo-item:hover {
+      cursor: pointer;
+      background-color: #efefef;
+    }
+    .done {
+      text-decoration: line-through;
+    }
+	</style>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="myController">
+<h3>Angular Sandbox</h3>
+<p>{{greeting}}</p>
+<p>{{something}} <button ng-click="plusOne()">Add</button></p>
+<p>
+	<span ng-repeat="people in peoples" class="people">{{people}}</span>
+</p>
+<p>
+	<input type="text" ng-model="newPeople"><button ng-click="addPeople(newPeople)">Add People</button>
+</p>
+
+<h3>To-Do List {{todo.length}}</h3>
+<ul class="todo">
+	<li ng-repeat="todo in todos | filter: todo.done='false'" ng-click="todo.done=!todo.done" ng-class="{'done': todo.done}" class="todo-item">
+		{{todo.task}}
+	</li>
+</ul>
+
+<h3>Done</h3>
+<ul class="todo">
+  <li ng-repeat="todo in todos | filter: todo.done='true'" ng-click="todo.done=!todo.done" ng-class="{'done': todo.done}" class="todo-item">
+    {{todo.task}}
+  </li>
+</ul>
+
+<p>
+	<input type="text" ng-model="newTask"><button ng-click="addTask(newTask)">Add Task</button>
+</p>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script>
+var app = angular.module('myApp',[]);
+
+app.controller('myController', ['$scope', function($scope) {
+  $scope.greeting = 'Hola!';
+  $scope.something = 100;
+
+  $scope.plusOne = function() {
+  	$scope.something += 1;
+  	$scope.greeting = $scope.greeting + (", " + $scope.something);
+  };
+
+  $scope.peoples = ["John", "Sam", "Tim", "Amy"];
+
+  $scope.addPeople = function(newPeople) {
+  	$scope.peoples.push(newPeople);
+  };
+
+  $scope.todos = [
+  	{task:"buy breakfast", done: true},
+  	{task:"take bus", done: false},
+  	{task:"get ticket", done: false}
+  ]
+
+  $scope.addTask = function(newTask) {
+  	$scope.todos.push({task:newTask, done: false});
+    $scope.newTask =  '';
+  };
+
+}]);
+
+</script>
+</body>
+</html>
