@@ -7,8 +7,9 @@
 		.people {
 			margin-right: 1em;
 		}
-
     .todo-item:hover {
+      transition: background-color .2s ease;
+      position: relative;
       cursor: pointer;
       background-color: #efefef;
     }
@@ -45,7 +46,7 @@
 </ul>
 
 <p>
-	<input type="text" ng-model="newTask"><button ng-click="addTask(newTask)">Add Task</button>
+	<input type="text" ng-model="newTask"><button ng-click="addTask(newTask)">Add To Do</button>
 </p>
 </div>
 
@@ -75,8 +76,12 @@ app.controller('myController', ['$scope', function($scope) {
   ]
 
   $scope.addTask = function(newTask) {
-  	$scope.todos.push({task:newTask, done: false});
-    $scope.newTask =  '';
+    if(newTask !== '') {
+      $scope.todos.push({task:newTask, done: false});
+      $scope.newTask =  '';
+    } else {
+      alert('Enter a task for your to do!');
+    }
   };
 
 }]);
