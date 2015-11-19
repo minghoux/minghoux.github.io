@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Angular Playground</title>
 	<style>
 		.people {
 			margin-right: 1em;
@@ -17,37 +17,57 @@
       text-decoration: line-through;
     }
 	</style>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body ng-app="myApp">
 
-<div ng-controller="myController">
-<h3>Angular Sandbox</h3>
-<p>{{greeting}}</p>
-<p>{{something}} <button ng-click="plusOne()">Add</button></p>
-<p>
-	<span ng-repeat="people in peoples" class="people">{{people}}</span>
-</p>
-<p>
-	<input type="text" ng-model="newPeople"><button ng-click="addPeople(newPeople)">Add People</button>
-</p>
+<div ng-controller="myController" class="container">
+<h1 class="page-header">Angular Playground</h1>
 
-<h3>To-Do List {{todo.length}}</h3>
-<ul class="todo">
-	<li ng-repeat="todo in todos | filter: todo.done='false'" ng-click="todo.done=!todo.done" ng-class="{'done': todo.done}" class="todo-item">
-		{{todo.task}}
-	</li>
-</ul>
+<h3>Click to Plus One</h3>
+<p class="bg-success">{{greeting}}</p>
+<p>{{something}} <button ng-click="plusOne()" class="btn btn-primary">Pump+</button></p>
 
-<h3>Done</h3>
-<ul class="todo">
-  <li ng-repeat="todo in todos | filter: todo.done='true'" ng-click="todo.done=!todo.done" ng-class="{'done': todo.done}" class="todo-item">
-    {{todo.task}}
-  </li>
-</ul>
+<hr>
 
+<h3>Add item to array</h3>
 <p>
-	<input type="text" ng-model="newTask"><button ng-click="addTask(newTask)">Add To Do</button>
+  <span ng-repeat="people in peoples" class="people">{{people}}</span>
 </p>
+<form class="form-inline">
+  <div class="form-group">
+  	<input type="text" ng-model="newPeople" placeholder="Type in a name" class="form-control">
+  </div>
+  <button ng-click="addPeople(newPeople)" class="btn btn-primary">Add People</button>
+</form>
+
+<hr>
+
+<section class="row">
+  <div class="col-sm-6">
+    <h3>To-Do List {{todo.length}}</h3>
+    <ul class="todo">
+    	<li ng-repeat="todo in todos | filter: todo.done='false'" ng-click="todo.done=!todo.done" ng-class="{'done': todo.done}" class="todo-item">
+    		{{todo.task}}
+    	</li>
+    </ul>
+  </div>
+
+  <div class="col-sm-6">
+    <h3>Done</h3>
+    <ul class="todo">
+      <li ng-repeat="todo in todos | filter: todo.done='true'" ng-click="todo.done=!todo.done" ng-class="{'done': todo.done}" class="todo-item">
+        {{todo.task}}
+      </li>
+    </ul>
+  </div>
+</section>
+
+<form class="form-inline">
+	<input type="text" ng-model="newTask" placeholder="What needs to be done?" class="form-control">
+  <button ng-click="addTask(newTask)" class="btn btn-primary">Add To Do</button>
+</form>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -72,7 +92,8 @@ app.controller('myController', ['$scope', function($scope) {
   $scope.todos = [
   	{task:"buy breakfast", done: true},
   	{task:"take bus", done: false},
-  	{task:"get ticket", done: false}
+  	{task:"get ticket", done: false},
+    {task:"get dressed", done: true}
   ]
 
   $scope.addTask = function(newTask) {
