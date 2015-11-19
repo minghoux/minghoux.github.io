@@ -68,7 +68,8 @@
 	<input type="text" ng-model="newTask" placeholder="What needs to be done?" class="form-control">
   <button ng-click="addTask(newTask)" class="btn btn-primary">Add To Do</button>
 </form>
-</div>
+  <p>Random: {{what}}</p>
+</div> <!--/container-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <script>
@@ -86,7 +87,7 @@ app.controller('myController', ['$scope', function($scope) {
   $scope.peoples = ["John", "Sam", "Tim", "Amy"];
 
   $scope.addPeople = function(newPeople) {
-  	$scope.peoples.push(newPeople);
+    $scope.peoples.push(newPeople);
   };
 
   $scope.todos = [
@@ -103,6 +104,11 @@ app.controller('myController', ['$scope', function($scope) {
     } else {
       alert('Enter a task for your to do!');
     }
+  };
+
+  // random a number 1-10
+  $scope.randomNum = function() {
+    return Math.floor(Math.random()*10 + 1);
   };
 
 }]);
