@@ -20,9 +20,11 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
+
 <body ng-app="myApp">
 
 <div ng-controller="myController" class="container">
+  
 <h1 class="page-header">Angular Playground</h1>
 
 <h3>Click to Plus One</h3>
@@ -68,7 +70,7 @@
 	<input type="text" ng-model="newTask" placeholder="What needs to be done?" class="form-control">
   <button ng-click="addTask(newTask)" class="btn btn-primary">Add To Do</button>
 </form>
-  <p>Random: {{what}}</p>
+
 </div> <!--/container-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -84,19 +86,20 @@ app.controller('myController', ['$scope', function($scope) {
   	$scope.greeting = $scope.greeting + (", " + $scope.something);
   };
 
+  // list of people
   $scope.peoples = ["John", "Sam", "Tim", "Amy"];
-
   $scope.addPeople = function(newPeople) {
     $scope.peoples.push(newPeople);
   };
 
+  // initial to-do list
   $scope.todos = [
   	{task:"buy breakfast", done: true},
   	{task:"take bus", done: false},
   	{task:"get ticket", done: false},
     {task:"get dressed", done: true}
   ]
-
+  // add a task to to-do list
   $scope.addTask = function(newTask) {
     if(newTask !== '') {
       $scope.todos.push({task:newTask, done: false});

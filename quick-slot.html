@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quick Slot</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- font awesome -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+  <style>
+  body {
+  	color: #666;
+  }
+	.slot-input {
+		max-width: 600px;
+		border: #ccc 1px solid;
+		box-shadow: #ccc 0 1px 15px;
+		border-radius: 5px;
+	}
+	.slot-input > div {
+		overflow: hidden;
+	}
+	.form-simple {
+		border: 0;
+		padding: 0.2em 0;
+		width: 100%;
+		border-bottom: white 1px solid;
+		font-size: 18px;
+		box-sizing: border-box;
+	}
+	input:focus.form-simple {
+		outline: 0;
+		color: black;
+		transition: all .2s;
+		background-color: #f7f7f7;
+		/*border-bottom: #ccc 1px solid;*/
+	}
+	label {
+		transition: all .2s;
+		margin-bottom: 0;
+		color: #b3b3b3;
+	}
+	.active {
+		color: #5FABD3;
+	}
+	.date-field {
+		width: 5em;
+	}
+	.title, .type, .time, .address, .attendee, .capacity, .ticker, .note, .refineType {
+		padding: 15px 0;
+		border-bottom: #ccc 1px solid;
+	}
+	.time, .capacity, .type, .refineType {
+		padding: 15px;
+	}
+	.capacity, .refineType {
+		border-left: #ccc 1px solid;
+	}
+	.action {
+		padding: 15px 0;
+	}
+	.additional-field {
+		padding: 5px 0;
+		border-bottom: #ccc 1px solid;
+	}
+	.title h3 {
+		margin: 0;
+	}
+	.fa-asterisk {
+		position: relative;
+		top: -5px;
+		color: #FB8036; 
+		font-size: 10px;
+	}
+  </style>
+</head>
+<body ng-app="myApp">
+
+<section ng-controller="myController" class="container">
+<h1 class="page-header">Quick Slot Creation</h1>
+
+<div>
+	<p>Meeting type: {{meetingType}}</p>
+	<p>Time: {{startTime}} to {{endTime}}</p>
+	<p>Capacity: {{capacity}}</p>
+	<p>Address: {{address}}</p>
+	<p>Attendee: {{attendee}} 
+	</p>
+	<button ng-click="showAttendee=!showAttendee" class="btn btn-default">Toggle Attendee</button>
+	<button ng-click="showTicker=!showTicker" class="btn btn-default">Toggle Ticker</button>
+	<button ng-click="showNote=!showNote" class="btn btn-default">Toggle Note</button>
+</div>
+
+<hr>
+
+<div class="slot-input">
+	<!-- title -->
+	<div class="title">
+		<div class="col-xs-12">
+			<h3>
+				<span>{{meetingType}} </span>
+				<span ng-if="startTime">at {{startTime}}</span> 
+				<span ng-if="attendee">with {{attendee}}</span>
+			</h3>
+		</div>
+	</div>
+
+	<!-- slot type -->
+	<div>
+		<div ng-class="{'col-xs-6':meetingType=='Transport', 'col-xs-12':meetingType!=='Transport'}" class="type">
+	    <label ng-class="{'active': editType}">Meeting Type <i class="fa fa-asterisk"></i> </label>
+		    <select class="form-simple" 
+				ng-focus="editType=true" ng-blur="editType=false" 
+		    ng-model="meetingType">
+		    	<option value="One on One">One on One</option>
+		    	<option value="Group Meeting">Group Meeting</option>
+		    	<option value="Conference Call">Conference Call</option>
+		    	<option value="Seminar">Seminar</option>
+		    	<option value="Transport">Transport</option>
+		    	<option value="Accomodation">Accomodation</option>
+		    </select>
+		</div>
+
+		<!-- refine slot type -->
+		<div ng-if="meetingType=='Transport'" class="col-xs-6 refineType">
+	    <label ng-class="{'active': refineType}">Type of Transportation</label>
+		    <select class="form-simple" 
+				ng-focus="refineType=true" ng-blur="refineType=false" 
+		    ng-model="transportType">
+		    	<option value="Flight">Flight</option>
+		    	<option value="Car">Car</option>
+		    	<option value="Train">Train</option>
+		    	<option value="Walk">Walk</option>
+		    	<option value="Ferry">Ferry</option>
+		    	<option value="General">General</option>
+		    </select>
+		</div>
+	</div>
+
+	<!-- start and end time / capacity -->
+	<div>
+		<div class="col-sm-8 time">
+			<label ng-class="{'active': editTime}">Time <i class="fa fa-asterisk"></i></label>
+			<div class="form-inline">
+				<div class="form-group">
+					<input type="text" ng-model="startTime" 
+					ng-focus="editTime=true" ng-blur="editTime=false" 
+					placeholder="Start Time" class="form-simple date-field">
+				</div>
+				<span style="margin-right: 1.2em">TO</span>
+				<div class="form-group">
+					<input type="text" ng-model="endTime" 
+					ng-focus="editTime=true" ng-blur="editTime=false" 
+					placeholder="End Time" class="form-simple date-field">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4 capacity">
+			<label ng-class="{'active': editCapacity}">Capacity <i class="fa fa-asterisk"></i></label>
+			<input type="text" class="form-simple" 
+			ng-focus="editCapacity=true" ng-blur="editCapacity=false" 
+			ng-model="capacity">
+		</div>
+	</div>
+
+	<!-- address -->
+	<div class="address">
+		<div class="col-xs-12">
+			<label ng-class="{'active': editAddress}">Address <i class="fa fa-asterisk"></i></label>
+			<input type="text" class="form-simple" 
+			ng-focus="editAddress=true" ng-blur="editAddress=false" 
+			ng-model="address">
+		</div>
+	</div>
+
+	<!-- attendee -->
+	<div ng-if="showAttendee==true" class="attendee">
+		<div class="col-xs-12">
+			<label ng-class="{'active': editAttendee}" ng-click="showAttendee=false">
+				Attendee
+			</label>
+			<input type="text" class="form-simple" 
+			ng-focus="editAttendee=true" ng-blur="editAttendee=false" 
+			ng-model="attendee">
+		</div>
+	</div>
+
+	<!-- ticker -->
+	<div ng-if="showTicker==true" class="ticker">
+		<div class="col-xs-12">
+			<label ng-class="{'active': editTicker}" ng-click="showTicker=false">
+				Ticker
+			</label>
+			<input type="text" class="form-simple" 
+			ng-focus="editTicker=true" ng-blur="editTicker=false" 
+			ng-model="ticker" placeholder="Type in related ticker">
+		</div>
+	</div>
+
+	<!-- note -->
+	<div ng-if="showNote==true" class="note">
+		<div class="col-xs-12">
+			<label ng-class="{'active': editNote}" ng-click="showNote=false">
+				Note
+			</label>
+			<input type="text" class="form-simple" 
+			ng-focus="editNote=true" ng-blur="editNote=false" 
+			ng-model="note" placeholder="Type in related note">
+		</div>
+	</div>
+
+	<!-- additional field -->
+	<div class="additional-field" ng-hide="showAttendee && showTicker && showNote">
+		<div class="col-xs-12">
+			<label>Additional</label>
+			<button class="btn btn-link" ng-click="showAttendee=true" ng-hide="showAttendee">
+				<i class="fa fa-plus-circle"></i> Attendee
+			</button>
+			<button class="btn btn-link" ng-click="showTicker=true" ng-hide="showTicker">
+				<i class="fa fa-plus-circle"></i> Ticker
+			</button>
+			<button class="btn btn-link" ng-click="showNote=true" ng-hide="showNote">
+				<i class="fa fa-plus-circle"></i> Note
+			</button>
+		</div>
+	</div>
+
+	<!-- action -->
+	<div class="action">
+		<div class="col-xs-12 text-right">
+			<button class="btn btn-primary">Done</button>
+		</div>
+	</div>
+</div>
+
+</section>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+<script>
+var app = angular.module('myApp',[]);
+
+app.controller('myController', ['$scope', function($scope) {
+	$scope.meetingType = "Group Meeting";
+	$scope.transportType = "Flight";
+	$scope.startTime = "9:00AM";
+	$scope.endTime = "11:45AM";
+	$scope.capacity = "5";
+	$scope.address = "23/F, 10 Knutsford Road, Tsim Sha Tsui, Hong Kong";
+	$scope.attendee = "John Smith";
+	$scope.ticker = "0005.HK";
+	$scope.note = "Meeting with investors at HSBC HQ"
+
+	$scope.showAttendee = true;
+}]);
+
+
+</script>
+</body>
+</html>
