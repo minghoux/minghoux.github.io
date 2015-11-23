@@ -12,6 +12,7 @@
   	color: #666;
   }
 	.slot-input {
+		overflow: hidden;
 		max-width: 600px;
 		border: #ccc 1px solid;
 		box-shadow: #ccc 0 1px 15px;
@@ -63,8 +64,13 @@
 		padding: 5px 0;
 		border-bottom: #ccc 1px solid;
 	}
-	.title h3 {
+	.title {
+		background-color: #5FABD3;
+		color: white;
+	}
+	.title {
 		margin: 0;
+		font-size: 18px;
 	}
 	.fa-asterisk {
 		position: relative;
@@ -97,11 +103,9 @@
 	<!-- title -->
 	<div class="title">
 		<div class="col-xs-12">
-			<h3>
-				<span>{{meetingType}} </span>
-				<span ng-if="startTime">at {{startTime}}</span> 
-				<span ng-if="attendee">with {{attendee}}</span>
-			</h3>
+			<span>{{meetingType}} </span>
+			<span ng-if="startTime">at {{startTime}}</span> 
+			<span ng-if="attendee">with {{attendee}}</span>
 		</div>
 	</div>
 
@@ -227,7 +231,10 @@
 
 	<!-- action -->
 	<div class="action">
-		<div class="col-xs-12 text-right">
+		<div class="col-xs-6">
+			<button class="btn btn-link"><i class="fa fa-trash-o"></i> Delete Slot</button>
+		</div>
+		<div class="col-xs-6 text-right">
 			<button class="btn btn-primary">Done</button>
 		</div>
 	</div>
