@@ -13,7 +13,8 @@
   }
 	.slot-input {
 		overflow: hidden;
-		max-width: 600px;
+		width: 600px;
+		/*width: 100%;*/
 		border: #ccc 1px solid;
 		box-shadow: #ccc 0 1px 15px;
 		border-radius: 5px;
@@ -82,7 +83,7 @@
 </head>
 <body ng-app="myApp">
 
-<section ng-controller="myController" class="container">
+<section ng-controller="myController" class="container-fluid">
 <h1 class="page-header">Quick Slot Creation</h1>
 
 <div>
@@ -141,8 +142,8 @@
 		</div>
 	</div>
 
-	<!-- start and end time / capacity -->
 	<div>
+		<!-- start and end time -->
 		<div class="col-sm-8 time">
 			<label ng-class="{'active': editTime}">Time <i class="fa fa-asterisk"></i></label>
 			<div class="form-inline">
@@ -159,6 +160,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- capacity -->
 		<div class="col-sm-4 capacity">
 			<label ng-class="{'active': editCapacity}">Capacity <i class="fa fa-asterisk"></i></label>
 			<input type="text" class="form-simple" 
