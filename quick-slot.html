@@ -333,12 +333,23 @@ app.controller('myController', ['$scope', function($scope) {
 	$scope.ticker = "0005.HK";
 	$scope.note = "Meeting with investors at HSBC HQ";
 
-	// $scope.showAttendee = true;
-
 	// transport slot
 	$scope.from = {'date': '24 Nov', 'time': '11:30AM', 'location': '1 Queens Road Central'};
 	$scope.to = {'date': '24 Nov', 'time': '12:45PM', 'location': 'ICC, 1 Austin Road West, West Kowloon'};
 	$scope.flight = 'CX 9413';
+
+
+	// show relevant field based on meeting type
+	$scope.$watch('meetingType', function () {
+	  if ($scope.meetingType == "Transport") {
+	      $scope.showAttendee = true;
+	  } else if ($scope.meetingType == 'Accomodation') {
+	      $scope.showNote = true;
+	  } else {
+	  	$scope.showAttendee = false;
+	  	$scope.showNote = false;
+	  }
+   });
 
 }]);
 
