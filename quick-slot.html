@@ -10,10 +10,11 @@
   <style>
   body {
   	color: #666;
+  	padding: 0 3% 3% 3%;
   }
 	.slot-input {
 		overflow: hidden;
-		width: 600px;
+		max-width: 700px;
 		/*width: 100%;*/
 		border: #ccc 1px solid;
 		box-shadow: #ccc 0 1px 15px;
@@ -79,6 +80,17 @@
 		color: #FB8036; 
 		font-size: 10px;
 	}
+	.relative {
+		position: relative;
+	}
+	.cell-connector {
+		position: absolute;
+		left: -12px;
+		top: 50%;
+		margin-top: -12px;
+		font-size: 24px;
+		background-color: white;
+	}
   </style>
 </head>
 <body ng-app="myApp">
@@ -142,7 +154,67 @@
 		</div>
 	</div>
 
-	<div>
+	<!-- Transport From > To -->
+	<div ng-if="meetingType=='Transport'">
+		<!-- transport from -->
+		<div class="col-sm-6 time">
+			<label ng-class="{'active': editFrom}">From <i class="fa fa-asterisk"></i></label>
+			<div class="form-inline">
+				<div class="form-group">
+					<i class="fa fa-calendar"></i> 
+					<input type="text" ng-model="from.date" 
+					ng-focus="editFrom=true" ng-blur="editFrom=false" 
+					placeholder="Start Time" class="form-simple date-field">
+				</div>
+				<div class="form-group">
+					<i class="fa fa-clock-o"></i> 
+					<input type="text" ng-model="from.time" 
+					ng-focus="editFrom=true" ng-blur="editFrom=false" 
+					placeholder="End Time" class="form-simple date-field">
+				</div>
+			</div>
+			<input type="text" class="form-simple" 
+			ng-focus="editCapacity=true" ng-blur="editCapacity=false" 
+			ng-model="from.location">
+		</div>
+		<!-- transport to -->
+		<div class="col-sm-6 capacity relative">
+			<i class="fa fa-arrow-circle-right cell-connector"></i>
+			<label ng-class="{'active': editTo}">To <i class="fa fa-asterisk"></i></label>
+			<div class="form-inline">
+				<div class="form-group">
+					<i class="fa fa-calendar"></i> 
+					<input type="text" ng-model="to.date" 
+					ng-focus="editTo=true" ng-blur="editTo=false" 
+					placeholder="Start Time" class="form-simple date-field">
+				</div>
+				<div class="form-group">
+					<i class="fa fa-clock-o"></i> 
+					<input type="text" ng-model="to.time" 
+					ng-focus="editTo=true" ng-blur="editTo=false" 
+					placeholder="End Time" class="form-simple date-field">
+				</div>
+			</div>
+			<input type="text" class="form-simple" 
+			ng-focus="editCapacity=true" ng-blur="editCapacity=false" 
+			ng-model="to.location">
+		</div>
+	</div>
+	<!-- /Transport From > To  -->
+
+	<!-- flight number -->
+	<div ng-if="meetingType=='Transport'" class="ticker">
+		<div class="col-xs-12">
+			<label ng-class="{'active': editFlight}" ng-click="showTicker=false">
+				Flight
+			</label>
+			<input type="text" class="form-simple" 
+			ng-focus="editFlight=true" ng-blur="editFlight=false" 
+			ng-model="flight" placeholder="Type in related ticker">
+		</div>
+	</div>
+
+	<div ng-if="meetingType!=='Transport'">
 		<!-- start and end time -->
 		<div class="col-sm-8 time">
 			<label ng-class="{'active': editTime}">Time <i class="fa fa-asterisk"></i></label>
@@ -170,7 +242,7 @@
 	</div>
 
 	<!-- address -->
-	<div class="address">
+	<div ng-if="meetingType!=='Transport'" class="address">
 		<div class="col-xs-12">
 			<label ng-class="{'active': editAddress}">Address <i class="fa fa-asterisk"></i></label>
 			<input type="text" class="form-simple" 
@@ -250,6 +322,7 @@
 var app = angular.module('myApp',[]);
 
 app.controller('myController', ['$scope', function($scope) {
+	// basic slot info
 	$scope.meetingType = "Group Meeting";
 	$scope.transportType = "Flight";
 	$scope.startTime = "9:00 AM";
@@ -258,9 +331,15 @@ app.controller('myController', ['$scope', function($scope) {
 	$scope.address = "23/F, 10 Knutsford Road, Tsim Sha Tsui, Hong Kong";
 	$scope.attendee = "John Smith";
 	$scope.ticker = "0005.HK";
-	$scope.note = "Meeting with investors at HSBC HQ"
+	$scope.note = "Meeting with investors at HSBC HQ";
 
-	$scope.showAttendee = true;
+	// $scope.showAttendee = true;
+
+	// transport slot
+	$scope.from = {'date': '24 Nov', 'time': '11:30AM', 'location': '1 Queens Road Central'};
+	$scope.to = {'date': '24 Nov', 'time': '12:45PM', 'location': 'ICC, 1 Austin Road West, West Kowloon'};
+	$scope.flight = 'CX 9413';
+
 }]);
 
 
