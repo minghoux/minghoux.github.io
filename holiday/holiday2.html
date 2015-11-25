@@ -1,0 +1,75 @@
+<!doctype html>
+<html ng-app="testapp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <meta charset="UTF-8">
+    <title>Next Holiday?</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body ng-controller="testCtrlr">
+    <div class="container">
+      <h2 class="page-header">Next Holiday</h2>
+      <div dr-holiday> </div>
+
+      <h2>List of Holiday</h2>
+      <ul>
+        <li ng-repeat="holiday in holidays">
+          {{holiday.name}}, {{holiday.date}}
+        </li>
+      </ul>
+    </div>
+    <script>
+    var MyDirectives = angular.module('testapp', []);
+
+    MyDirectives.controller('testCtrlr', ['$scope', function($scope, $http, $filter) {
+
+        // $http.get('holiday2.json').success(function(data) {
+        //   $scope.holidays = data;
+        // });
+        $scope.holidays = [{
+            "name": "Christmas Eve",
+            "country": "US",
+            "date": "2015-12-24"
+        }, {
+            "name": "Christmas",
+            "country": "US",
+            "date": "2015-12-25"
+        }, {
+            "name": "First Day of Kwanzaa",
+            "country": "US",
+            "date": "2015-12-26"
+        }, {
+            "name": "Second Day of Kwanzaa",
+            "country": "US",
+            "date": "2015-12-27"
+        }]
+    }]);
+
+    MyDirectives.directive("drHoliday", function() {
+        return {
+            replace: true,
+            restrict: 'A',
+            scope: false, //default
+            link: function(scope, element, attrs) {
+
+                items = scope.holidays.filter(function(item) {
+                    var d1 = new Date();
+                    var d2 = new Date(item.date);
+                    return d2 > d1;
+                });
+                console.dir(items);
+
+                element.html('<p>Next holiday is ' + items[0].name + ' on ' + items[0].date + ' </p>');
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

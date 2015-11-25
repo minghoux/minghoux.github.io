@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Christmas Eve",
+        "country": "US",
+        "date": "2015-12-24"
+    }, {
+        "name": "Christmas",
+        "country": "US",
+        "date": "2015-12-25"
+    }, {
+        "name": "First Day of Kwanzaa",
+        "country": "US",
+        "date": "2015-12-26"
+    }, {
+        "name": "Second Day of Kwanzaa",
+        "country": "US",
+        "date": "2015-12-27"
+    }
+]

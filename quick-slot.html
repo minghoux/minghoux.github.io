@@ -96,9 +96,9 @@
 <body ng-app="myApp">
 
 <section ng-controller="myController" class="container-fluid">
-<h1 class="page-header">Quick Slot Creation</h1>
+<h1 ng-click="slide()" class="page-header">Quick Slot Creation</h1>
 
-<div>
+<div id="slot-wrap">
 	<p>Slot type: {{meetingType}}</p>
 	<p>Time: {{startTime}} to {{endTime}}</p>
 	<p>Capacity: {{capacity}}</p>
@@ -315,8 +315,11 @@
 </div>
 
 </section>
-	
+
+<!-- angular js -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<!-- jquery -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script> -->
 
 <script>
 var app = angular.module('myApp',[]);
