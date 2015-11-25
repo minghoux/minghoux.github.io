@@ -14,14 +14,21 @@
 
 <body ng-controller="testCtrlr">
     <div class="container">
-      <h2 class="page-header">Next Holiday</h2>
-      <div dr-holiday> </div>
-
-      <h2>List of Holiday</h2>
+      <h2 class="page-header">List of Holiday</h2>
       <ul>
         <li ng-repeat="holiday in holidays">
           {{holiday.name}}, {{holiday.date}}
         </li>
+      </ul>
+
+      <h2>Directive approach</h2>
+      <div dr-holiday> </div>
+
+      <h2>Date filter for next holiday</h2>
+      <ul>
+          <li ng-repeat="holiday in holidays | filter:dateFilter | limitTo: 1">
+              {{holiday.name}}, {{holiday.date}}
+          </li>
       </ul>
     </div>
     <script>
@@ -32,7 +39,20 @@
         // $http.get('holiday2.json').success(function(data) {
         //   $scope.holidays = data;
         // });
-        $scope.holidays = [{
+
+        // holiday data
+        $scope.holidays = [
+        {
+            "name": "Lunar New Year",
+            "country": "US",
+            "date": "2015-02-19"
+        },
+        {
+            "name": "Mid Autumn Festival",
+            "country": "US",
+            "date": "2015-09-28"
+        },
+        {
             "name": "Christmas Eve",
             "country": "US",
             "date": "2015-12-24"
@@ -49,8 +69,20 @@
             "country": "US",
             "date": "2015-12-27"
         }]
+
+        // date filter approach
+            $scope.dateFilter = function ($scope) {
+                var d = new Date();
+                var curr_date = d.getDate();
+                var curr_month = d.getMonth() + 1;
+                var curr_year = d.getFullYear();
+                var today = curr_year + "-" + curr_month + "-" + curr_date;
+                return (Date.parse($scope.date) > Date.parse(today));
+            }
+
     }]);
 
+    // directive approach
     MyDirectives.directive("drHoliday", function() {
         return {
             replace: true,
