@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+	<style>
+		body {
+			font-family: 'Droid Serif', serif;
+		}
+		#picture {
+			border: #ccc 1px solid;
+		}
+	</style>
+
+</head>
+<body onload="draw()">
+	
+	<h1>Canvas Playground</h1>
+	<canvas id="picture" width="500" height="350"></canvas>
+
+	<p>
+		<input type="text" placeholder="Text in banner" id="textInput"> 
+		<button id="saveText">Add Text</button>
+		<button id="clear">Reset Board</button>
+		<button id="saveImg">Save Image</button>
+		<button id="genImg">Generate Image</button>
+	</p>
+
+	<div id="result"></div>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="canvas2image.js"></script>
+<script type="text/javascript">
+	var canvas = document.getElementById("picture");
+  var ctx = canvas.getContext("2d");
+
+	function draw(){
+      if (canvas.getContext) {
+
+        ctx.fillStyle = "rgb(200,0,0)";
+        ctx.fillRect (10, 10, 55, 50);
+
+        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+        ctx.fillRect (30, 30, 55, 50);
+
+        ctx.font = "48px Droid Serif";
+			  ctx.fillText("Hello world", 120, 50);
+			  ctx.font = "48px 微軟正黑體"
+			  ctx.fillText("中文內容", 120, 100);
+      }
+    }
+
+// add text to canvas
+$('#saveText').click(function(){
+	var newText = $('#textInput').val();
+    ctx.font = "48px Droid Serif";
+	  ctx.fillText(newText, 120, 150);
+
+})
+
+// reset board
+$('#clear').click(function(){
+	ctx.clearRect(0, 0, 500,  350);
+})
+
+// save image
+$('#saveImg').click(function(e){
+	Canvas2Image.saveAsImage(canvas, '500', '350', 'png');
+})
+
+// generate image
+$('#genImg').click(function(e){
+	$('#result').append(Canvas2Image.convertToImage(canvas, '250', '175', 'png'))
+})
+
+</script>
+
+</body>
+</html>
