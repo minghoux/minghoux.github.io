@@ -378,10 +378,10 @@ app.controller('myController', ['$scope', function($scope) {
 			$scope.meetingType = "Group Meeting";
 			$scope.capacity = "6";
 			$scope.showAttendee = true;
-			$scope.attendee ="John Smith, Tom Jones, Jerome Wilfong";
-			$scope.showTicker = true;
-			$scope.ticker = "1398, 3328";
 			$scope.showNote = true;
+			$scope.showTicker = true;
+			$scope.attendee ="John Smith, Tom Jones, Jerome Wilfong";
+			$scope.ticker = "1398, 3328";
 			$scope.note = "Group meeting with China banks management";
 		} 
 		else if(type == 3) {
@@ -390,9 +390,9 @@ app.controller('myController', ['$scope', function($scope) {
 			$scope.attendee = "John Smith"
 			$scope.from.location = "Beijing Airport";
 			$scope.to.location = "Hong Kong International Airport";
-			$scope.attendee = true;
-			$scope.showTicker = false;
+			$scope.showAttendee = true;
 			$scope.showNote = true;
+			$scope.showTicker = false;
 			$scope.note = "CEO flight from Beijing to Hong Kong";
 		}
 	}
