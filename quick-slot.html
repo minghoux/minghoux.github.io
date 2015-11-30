@@ -105,12 +105,23 @@
 	<p>Address: {{address}}</p>
 	<p>Attendee: {{attendee}} 
 	</p>
-	<button ng-click="showAttendee=!showAttendee" class="btn btn-default">Toggle Attendee</button>
-	<button ng-click="showTicker=!showTicker" class="btn btn-default">Toggle Ticker</button>
-	<button ng-click="showNote=!showNote" class="btn btn-default">Toggle Note</button>
-</div>
+<!-- 	<p>
+		<button ng-click="showAttendee=!showAttendee" class="btn btn-default">Toggle Attendee</button>
+		<button ng-click="showTicker=!showTicker" class="btn btn-default">Toggle Ticker</button>
+		<button ng-click="showNote=!showNote" class="btn btn-default">Toggle Note</button>
+	</p> -->
 
 <hr>
+
+	<h3>Use Cases</h3>
+	<p>
+		<button ng-click="changeSlot(1)" class="btn btn-default">Simple One on One</button>
+		<button ng-click="changeSlot(2)" class="btn btn-default">Large Group Meeting</button>
+		<button ng-click="changeSlot(3)" class="btn btn-default">Flight Slot</button>
+	</p>
+</div>
+
+<!-- <hr> -->
 
 <div class="slot-input">
 	<!-- title -->
@@ -216,7 +227,7 @@
 
 	<div ng-if="meetingType!=='Transport'">
 		<!-- start and end time -->
-		<div class="col-sm-8 time">
+		<div ng-class="{'col-sm-8': meetingType!='One on One'}" class="time">
 			<label ng-class="{'active': editTime}">Time <i class="fa fa-asterisk"></i></label>
 			<div class="form-inline">
 				<div class="form-group">
@@ -233,7 +244,7 @@
 			</div>
 		</div>
 		<!-- capacity -->
-		<div class="col-sm-4 capacity">
+		<div ng-hide="meetingType=='One on One'" class="col-sm-4 capacity">
 			<label ng-class="{'active': editCapacity}">Capacity <i class="fa fa-asterisk"></i></label>
 			<input type="text" class="form-simple" 
 			ng-focus="editCapacity=true" ng-blur="editCapacity=false" 
@@ -353,6 +364,37 @@ app.controller('myController', ['$scope', function($scope) {
 	  	$scope.showNote = false;
 	  }
    });
+
+	$scope.changeSlot = function(type) {
+		if(type == 1) {
+			$scope.meetingType = "One on One";
+			$scope.capacity = "1";
+			$scope.showAttendee = false;
+			$scope.showNote = false;
+			$scope.showTicker = false;
+			$scope.attendee = "";
+		} 
+		else if(type == 2) {
+			$scope.meetingType = "Group Meeting";
+			$scope.capacity = "6";
+			$scope.showAttendee = true;
+			$scope.attendee ="John Smith, Tom Jones, Jerome Wilfong";
+			$scope.showTicker = true;
+			$scope.ticker = "1398, 3328";
+			$scope.showNote = true;
+			$scope.note = "Group meeting with China banks management";
+		} 
+		else if(type == 3) {
+			$scope.meetingType = "Transport";
+			$scope.transportType = "Flight";
+			$scope.attendee = "John Smith"
+			$scope.from.location = "Beijing Airport";
+			$scope.to.location = "Hong Kong International Airport";
+			$scope.showTicker = false;
+			$scope.showNote = true;
+			$scope.note = "CEO flight from Beijing to Hong Kong";
+		}
+	}
 
 }]);
 
