@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Weather Forecast</title>
+    <!-- Include the AngularJS library -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+  </head>
+  <body ng-app="ForecastApp">
+
+    <div class="main" ng-controller="MainController">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-7">
+            <h1>{{ fiveDay.city.name }}</h1>
+            <h2>5-day forecast 
+              <a href="http://api.openweathermap.org/data/2.5/forecast?q=HongKong&mode=json&appid=2de143494c0b295cca9337e1e96b00e0" target="_blank">source</a>
+            </h2>
+            <div class="forecast" ng-repeat="day in fiveDay.list">
+              <div class="day row">
+                <div class="weekday col-md-4">
+                  <p>{{ day.dt_txt }}</p>
+                </div>
+                <div class="weather col-md-3">
+                  <p>{{ day.weather[0].description }}</p>
+                </div>
+                <div class="high col-md-2">
+                  <p>{{ day.main.temp_max }}&deg;</p>
+                </div>
+                <div class="low col-md-2">
+                  <p>{{ day.main.temp_min }}&deg;</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Modules -->
+    <script src="app.js"></script>
+
+    <!-- Controllers -->
+    <script src="MainController.js"></script>
+
+    <!-- Services -->
+    <script src="forecast.js"></script>
+
+    <!-- Directives -->
+
+
+  </body>
+</html>
