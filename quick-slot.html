@@ -20,8 +20,13 @@
 		box-shadow: #ccc 0 1px 15px;
 		border-radius: 5px;
 	}
-	.slot-input > div {
-		overflow: hidden;
+	.slot-input > div:after {
+		 visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
 	}
 	.form-simple {
 		border: 0;
@@ -90,6 +95,32 @@
 		margin-top: -12px;
 		font-size: 24px;
 		background-color: white;
+	}
+	.form-simple-autocomplete {
+		border: #ccc 1px solid; 
+		position: absolute; 
+		top: 100%; 
+		z-index: 10; 
+		width: 100%;
+		background: white; 
+	}
+	.form-autocomplete-dropdown {
+		margin-bottom: 0;
+		box-shadow: #ccc 0 1px 5px 1px;
+		max-height: 140px;
+		overflow: auto;
+	}
+	.form-autocomplete-dropdown li {
+		padding: .5em;
+		border-bottom: #fff 1px solid;
+	}
+	.form-autocomplete-dropdown li:hover {
+		background: #efefef;
+		cursor: pointer;
+	}
+	.form-autocomplete-dropdown li.active {
+		background: #999;
+		color: white;
 	}
   </style>
 </head>
@@ -268,9 +299,23 @@
 			<label ng-class="{'active': editAttendee}" ng-click="showAttendee=false">
 				Attendee
 			</label>
-			<input type="text" class="form-simple" 
-			ng-focus="editAttendee=true" ng-blur="editAttendee=false" 
-			ng-model="attendee">
+			<div class="relative">
+				<input type="text" class="form-simple" 
+				ng-focus="editAttendee=true" ng-model="attendee">
+
+				<!-- auto complete dropdown -->
+				<div ng-show="editAttendee" class="form-simple-autocomplete">
+					<ul class="list-unstyled form-autocomplete-dropdown">
+						<li ng-repeat="attendee in attendeeList" 
+						ng-click="addAttendee(attendee.name); attendee.selected=!attendee.selected" 
+						ng-class="{active : attendee.selected == true}">
+							{{attendee.name}} 
+							<i ng-show="attendee.selected" class="fa fa-check"></i>
+						</li>
+					</ul>
+				</div>
+
+			</div>
 		</div>
 	</div>
 
@@ -366,6 +411,7 @@ app.controller('myController', ['$scope', function($scope) {
    });
 
 	$scope.changeSlot = function(type) {
+		// simple one on one
 		if(type == 1) {
 			$scope.meetingType = "One on One";
 			$scope.capacity = "1";
@@ -374,6 +420,7 @@ app.controller('myController', ['$scope', function($scope) {
 			$scope.showTicker = false;
 			$scope.attendee = "";
 		} 
+		// large group meeting
 		else if(type == 2) {
 			$scope.meetingType = "Group Meeting";
 			$scope.capacity = "6";
@@ -384,16 +431,40 @@ app.controller('myController', ['$scope', function($scope) {
 			$scope.ticker = "1398, 3328";
 			$scope.note = "Group meeting with China banks management";
 		} 
+		// itinerary slot
 		else if(type == 3) {
 			$scope.meetingType = "Transport";
 			$scope.transportType = "Flight";
-			$scope.attendee = "John Smith"
+			$scope.attendee = "";
 			$scope.from.location = "Beijing Airport";
 			$scope.to.location = "Hong Kong International Airport";
 			$scope.showAttendee = true;
 			$scope.showNote = true;
 			$scope.showTicker = false;
 			$scope.note = "CEO flight from Beijing to Hong Kong";
+		}
+	}
+
+	// auto complete attendee
+	$scope.attendeeList = [
+		{ 'name': 'John Smith' },
+		{ 'name': 'Alonzo Severt' },
+		{ 'name': 'Freida Wohl' },
+		{ 'name': 'Danny Jones' },
+		{ 'name': 'Stephaine Waddington' },
+		{ 'name': 'Anna Calder' },
+		{ 'name': 'Richard Smith' },
+		{ 'name': 'Jerome Wilfong' }
+	];
+
+	// add attendee
+	$scope.addAttendee = function(newAttendee) {
+		if($scope.attendee == "") {
+			$scope.attendee += newAttendee;
+		} else if ($scope.attendee.indexOf(newAttendee) > -1 == true) {
+			$scope.attendee.replace(newAttendee, " ");
+		} else {
+			$scope.attendee += ", " + newAttendee;
 		}
 	}
 
