@@ -1,0 +1,56 @@
+<!doctype html>
+<html ng-app="MyApp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Math</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body ng-controller="myController">
+    <div class="container">
+        <h1 class="page-header">Math Logic</h1>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-1 control-label">Amount</label>
+                <div class="col-sm-6">
+                    <input type="text" ng-model="input1" class="form-control" placeholder="Input 1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-1 control-label">Interest</label>
+                <div class="col-sm-6">
+                    <input type="text" ng-model="input2" class="form-control" placeholder="Input 2">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-1 control-label">Time</label>
+                <div class="col-sm-6">
+                    <input type="text" ng-model="input3" class="form-control" placeholder="Input 3">
+                </div>
+            </div>
+        </form>
+
+        <h3>Result</h3>
+        <p>
+          {{input1}} x {{input2*100}}% x {{input3}} = {{input1*input2*input3}}
+        </p>
+
+    </div>
+
+<script>
+var app = angular.module("MyApp", []);
+
+app.controller("myController", function($scope, $http) {
+    $scope.input1 = 10000;
+    $scope.input2 = 0.2;
+    $scope.input3 = 36;
+});
+</script>
+</body>
+
+</html>
