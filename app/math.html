@@ -31,14 +31,15 @@
                 <label for="inputEmail3" class="col-sm-1 control-label">Time</label>
                 <div class="col-sm-6">
                     <input type="text" ng-model="input3" class="form-control" placeholder="Input 3">
-                </div>
-            </div>
+                </div
+>            </div>
         </form>
 
         <h3>Result</h3>
         <p>
           {{input1}} x {{input2*100}}% x {{input3}} = {{input1*input2*input3}}
         </p>
+        <p>Interest rate {{interest*100}}%</p>
 
     </div>
 
@@ -49,6 +50,17 @@ app.controller("myController", function($scope, $http) {
     $scope.input1 = 10000;
     $scope.input2 = 0.2;
     $scope.input3 = 36;
+
+    // change interest rate based on deposite
+    $scope.$watch('input1', function () {
+      if ($scope.input1 >= 100 && $scope.input1 < 200) {
+          $scope.interest = 0.1;
+      } else if ($scope.input1 >= 200) {
+          $scope.interest = 0.2;
+      } else {
+        $scope.interest = 0.05;
+      }
+   });
 });
 </script>
 </body>
