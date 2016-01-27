@@ -60,8 +60,9 @@
         </form>
 
         <h3>Result</h3>
+        <p>Loan:{{loan}}, Interest:{{interest}}%, Month:{{month}}</p>
         <p>
-            Payment per month: ${{((loan*interest/100) + loan)/month || 0 | number:0}}
+            Payment per month: ${{ ((loan*interest/100) + loan)/month || 0 | number:0 }}
         </p>
         <p>
             Total amount: ${{(loan*interest/100) + loan}}
@@ -75,7 +76,7 @@
 var app = angular.module("MyApp", []);
 
 app.controller("myController", function($scope, $http) {
-    $scope.loan = 10000;
+    $scope.loan = 100000;
     $scope.interest = 2.6;
     $scope.month = 12;
     $scope.monthinterest = 100;
