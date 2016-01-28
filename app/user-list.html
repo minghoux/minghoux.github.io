@@ -1,0 +1,76 @@
+<!doctype html>
+<html ng-app="MyApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Json List</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <style>
+    .tile {
+      margin-bottom: 1em;
+      line-height: 1em;
+      overflow: hidden;
+    }
+    .name {
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+    .email, .phone {
+      font-size: .8em;
+      color: #999;
+    }
+    .profile-pic {
+      width: 40px; 
+      height: 40px; 
+      float: left; 
+      margin-right: 8px;
+      padding: 1px;
+      border: #ccc 1px solid;
+    }
+    .content {
+      float: left;
+    }
+    </style>
+  </head>
+
+  <body ng-controller="myController">
+
+  	<div class="container-fluid">
+
+      <h1>User List</h1>
+      <p>
+        <input type="text" ng-model="userSearch" class="form-control" placeholder="User Search">
+      </p>
+
+      <div class="row">
+        <div ng-repeat="user in users | filter: userSearch" class="col-sm-4 col-lg-3">
+          <div class="tile">
+              <img src="{{user.user.picture.thumbnail}}" class="profile-pic">
+              <div class="content">
+                <span class="name">{{user.user.name.first}} {{user.user.name.last}}</span>
+                <br>
+                <span class="email">{{user.user.email}}</span>
+                <br>
+                <span class="phone">{{user.user.phone}}</span>
+              </div>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("myController", function($scope, $http) {
+
+      // get json data
+      $http.get('http://api.randomuser.me/?results=20').success(function(data) {
+        $scope.users = data.results;
+      });
+
+    });
+
+    </script>
+  </body>
+</html>
