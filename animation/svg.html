@@ -10,6 +10,12 @@
       height: 80%;
       border: #ccc 1px solid;
     }
+    .box {
+      display: inline-block;
+      background: green;
+      height: 50px;
+      width: 50px;
+    }
     </style>
   </head>
 
@@ -22,7 +28,7 @@
       <!-- svg image -->
       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
        width="430.117px" height="430.118px" viewBox="0 0 430.117 430.118" style="enable-background:new 0 0 430.117 430.118;"
-       xml:space="preserve" id="robot-wrap">
+       xml:space="preserve" id="robot-wrap" class="hidden">
         <g id="robot">
           <path id="Robo.to" d="M251.808,171.704c0-8.623,6.926-15.609,15.485-15.609c8.536,0,15.467,6.986,15.467,15.609
             c0,8.62-6.931,15.611-15.467,15.611C258.733,187.311,251.808,180.32,251.808,171.704z M203.641,38.734h-0.128v21.396h19.639V39.36
@@ -52,6 +58,15 @@
         </g>
         </svg>
 
+        <div class="col-xs-offset-4">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+
   	</div>
 
     <!-- jQuery -->
@@ -68,6 +83,7 @@
 
       // define variable
       var robot = $('#robot');
+      var box = $('.box');
 
       // create timeline
       tl = new TimelineMax();
@@ -82,6 +98,11 @@
       robot.click(function(){
         tl.timeScale(1).seek(0);
       })
+
+      // box stagger animation
+      tl2 = new TimelineMax({repeat: 5, yoyo: true});
+      tl2.staggerTo(box, .6, {y:50, rotation: 360, ease: Bounce.eastOut, delay: .5}, .3);
+
     });
 
     </script>
