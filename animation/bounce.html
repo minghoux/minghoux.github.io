@@ -1,0 +1,104 @@
+<!doctype html>
+<html ng-app="MyApp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Bouncing Box</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+    #box {
+        background: green;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+    }
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #canvas {
+        width: 100%;
+        height: 400%;
+    }
+    </style>
+</head>
+
+<body ng-controller="myController">
+    <div class="container-fluid">
+        <h1>Bouncing Box</h1>
+        <p>Click to move box to cursor. Press up arrow to move box randomly.</p>
+        <p>
+            Keypress: <span id="keypress">-</span> X: <span id="x">-</span> Y: <span id="y">-</span>
+        </p>
+        <section id="canvas">
+            <div id="box"></div>
+        </section>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <!-- TweenMax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("myController", function($scope, $http) {
+
+        var $box = $('#box');
+
+        function moveBox(e) {
+            var x = e.pageX,
+                y = e.pageY;
+            TweenMax.to($box, 1.4, {
+                css: {
+                    left: x,
+                    top: y,
+                    scale: Math.random() * 2 + 1
+                },
+                ease: Elastic.easeOut
+            });
+            $('#x').text(x);
+            $('#y').text(y);
+        }
+
+        function randy(min, max) {
+            return Math.floor(Math.random() * (1 + max - min) + min);
+        }
+
+        function randomBox(e) {
+            var x = randy(0, $(window).width() - 50);
+            var y = randy(0, $(window).height() - 50);
+            $('#x').text(x);
+            $('#y').text(y);
+            TweenMax.to($box, .8, {
+                css: {
+                    left: x,
+                    top: y,
+                },
+                ease: Power1.easeOut
+            });
+        }
+
+        // key press
+        $(window).keydown(function(e) {
+            $("#keypress").html(e.keyCode);
+        });
+
+        $(window).on('click', moveBox);
+        $(window).keydown(function(e) {
+            if (e.which == 38) {
+                randomBox();
+            }
+        })
+
+    });
+    </script>
+</body>
+
+</html>
