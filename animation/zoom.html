@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app="MyApp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Zoom</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+    body, html {
+        width: 100%;
+        height: 100%;
+    }
+    #hero:hover {
+        cursor: pointer;
+    }
+    #heroZoom {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    </style>
+</head>
+
+<body ng-controller="myController">
+    <div class="container-fluid">
+        <h1 id="title">Zoom image</h1>
+        <p>Click to zoom image</p>
+        <p>
+            x:<span id="x"></span> 
+            y:<span id="y"></span> 
+            width:<span id="width"></span> 
+            height:<span id="height"></span>
+        </p>
+        <div class="wrap">
+            <img id="hero" src="http://placehold.it/400x250&text=Thumb">
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <!-- TweenMax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("myController", function($scope, $http) {
+        // define variables
+        var pageWidth = $(window).width();
+            pageHeight = $(window).height();
+            thumbWidth = $('#hero').width();
+            thumbHeight = $('#hero').height();
+            posX = $('#hero').offset().left;
+            posY = $('#hero').offset().top;
+            $imgBig = $("<img id='heroZoom' src='http://placehold.it/800x400&text=Zoom'>");
+
+        // click on thumb
+        $('#hero').click(function(e) {            
+            // print numbers    
+            $('#x').text(posX);
+            $('#y').text(posY);
+            $('#width').text(thumbWidth);
+            $('#height').text(thumbHeight);
+
+            // append zoom image
+            $(this).after($imgBig);
+            var heroZoom = $('#heroZoom');
+            $(this).hide();
+
+            // animate zoom
+            var tl = new TimelineMax();
+            tl.set(heroZoom, {x: posX, y: posY, width: thumbWidth, height: thumbHeight});
+            tl.to(heroZoom, .8, {x:30, y:30, width: pageWidth-60, height: pageHeight-60, ease: Power3.easeOut});
+        });
+
+        // click on zoom to remove
+        $(document).on('click', '#heroZoom', function() {  
+            // var tl = new TimelineMax();
+            // tl.to(heroZoom, .8, {x:posX, y:posY, width: thumbWidth, height: thumbHeight, ease: Power3.easeOut});
+            // tl.to(heroZoom, 0, {opacity:0});
+            $(heroZoom).remove();
+            $('#hero').show();
+        });
+
+    });
+    </script>
+</body>
+
+</html>
