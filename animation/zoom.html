@@ -6,17 +6,32 @@
     <title>Zoom</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <style>
-    body, html {
+    body,
+    html {
         width: 100%;
         height: 100%;
     }
+    
     #hero:hover {
         cursor: pointer;
     }
+    
     #heroZoom {
         position: absolute;
         left: 0;
         top: 0;
+        z-index: 2;
+    }
+    
+    #mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .5);
+        z-index: 1;
+        display: none;
     }
     </style>
 </head>
@@ -24,18 +39,18 @@
 <body ng-controller="myController">
     <div class="container-fluid">
         <h1 id="title">Zoom image</h1>
-        <p>Click to zoom image</p>
+        <p>Click to zoom, Press arrow up to move image</p>
         <p>
-            x:<span id="x"></span> 
-            y:<span id="y"></span> 
-            width:<span id="width"></span> 
-            height:<span id="height"></span>
+            x:<span id="x"></span> y:
+            <span id="y"></span> width:
+            <span id="width"></span> height:
+            <span id="height"></span>
         </p>
         <div class="wrap">
             <img id="hero" src="http://placehold.it/400x250&text=Thumb">
         </div>
     </div>
-
+    <div id="mask"></div>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <!-- Angular -->
@@ -48,15 +63,15 @@
     app.controller("myController", function($scope, $http) {
         // define variables
         var pageWidth = $(window).width();
-            pageHeight = $(window).height();
-            thumbWidth = $('#hero').width();
-            thumbHeight = $('#hero').height();
-            posX = $('#hero').offset().left;
-            posY = $('#hero').offset().top;
-            $imgBig = $("<img id='heroZoom' src='http://placehold.it/800x400&text=Zoom'>");
+        pageHeight = $(window).height();
+        thumbWidth = $('#hero').width();
+        thumbHeight = $('#hero').height();
+        $imgBig = $("<img id='heroZoom' src='http://placehold.it/800x400&text=Zoom'>");
 
         // click on thumb
-        $('#hero').click(function(e) {            
+        $('#hero').click(function(e) {
+            posX = $('#hero').offset().left;
+            posY = $('#hero').offset().top;
             // print numbers    
             $('#x').text(posX);
             $('#y').text(posY);
@@ -66,22 +81,62 @@
             // append zoom image
             $(this).after($imgBig);
             var heroZoom = $('#heroZoom');
-            $(this).hide();
+            $('#mask').fadeIn();
 
             // animate zoom
             var tl = new TimelineMax();
-            tl.set(heroZoom, {x: posX, y: posY, width: thumbWidth, height: thumbHeight});
-            tl.to(heroZoom, .8, {x:30, y:30, width: pageWidth-60, height: pageHeight-60, ease: Power3.easeOut});
+            tl.set(heroZoom, {
+                x: posX,
+                y: posY,
+                width: thumbWidth,
+                height: thumbHeight
+            });
+            tl.to(heroZoom, .8, {
+                x: 30,
+                y: 30,
+                width: pageWidth - 60,
+                height: pageHeight - 60,
+                ease: Power3.easeOut,
+                delay: .1
+            });
+
+            $(this).hide();
         });
 
         // click on zoom to remove
-        $(document).on('click', '#heroZoom', function() {  
+        $(document).on('click', '#heroZoom', function() {
             // var tl = new TimelineMax();
-            // tl.to(heroZoom, .8, {x:posX, y:posY, width: thumbWidth, height: thumbHeight, ease: Power3.easeOut});
+            // tl.to($(document).find('$heroZoom'), .8, {x:posX, y:posY, width: thumbWidth, height: thumbHeight, ease: Power3.easeOut});
             // tl.to(heroZoom, 0, {opacity:0});
+            $('#mask').hide();
             $(heroZoom).remove();
             $('#hero').show();
         });
+
+        // generate random min - max
+        function randy(min, max) {
+            return Math.floor(Math.random() * (1 + max - min) + min);
+        }
+
+        // random move image
+        $(window).keydown(function(e) {
+            // pressed up arrow
+            if (e.which == 38) {
+                var x = randy(0, $(window).width() - 400);
+                var y = randy(0, $(window).height() - 250);
+                $('#x').text(x);
+                $('#y').text(y);
+                TweenMax.to($('#hero'), .5, {
+                    css: {
+                        position: 'absolute',
+                        left: x,
+                        top: y,
+                    },
+                    ease: Power3.easeOut
+                });
+            }
+        });
+
 
     });
     </script>
