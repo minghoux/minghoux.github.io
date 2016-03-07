@@ -51,10 +51,14 @@
         <hr>
         <div class="row">
             <div class="col-xs-6">
-                <input ng-model="newItem" type="text" class="form-control" placeholder="Add Item to Nav">
-                <button ng-click="addItem(newItem)" class="btn btn-default">Add</button>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <input ng-model="newItem" type="text" class="form-control" placeholder="Add Item to Nav">
+                        <button ng-click="addItem(newItem)" class="btn btn-default">Add</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-12">Double click nav item to delete</div>
+            <div class="col-xs-12">*Double click nav item to delete</div>
         </div>
     </div>
     <div id="mask"></div>
