@@ -12,7 +12,9 @@
     }
     .nav-item {
         float: left;
-        margin-right: 1em;
+        margin-right: 1.5em;
+        font-weight: bold;
+        font-size: 1.2em;
     }
     .nav-item:hover {
         cursor: pointer;
@@ -23,7 +25,7 @@
     }
     .nav-highlight {
         height: 3px;
-        width: 38px;
+        width: 46px;
         background: blue;
         position: absolute;
     }
@@ -35,16 +37,24 @@
         <h1 id="title">Lava Lamp Navigation</h1>
         <p>Label: <span id="label">-</span></p>
         <p>Item Width: <span id="width">-</span></p>
-        <p>Item Position: <span id="position">-</span></p>
+        <p>Item Position: <span id="x">-</span> <span id="y"></span></p>
         
         <hr>
         <div class="nav-wrap">
             <ul class="nav">
-                <li class="nav-item" ng-repeat="navitem in navitems">
+                <li ng-dblclick="delete(navitem)" class="nav-item" ng-repeat="navitem in navitems">
                     {{navitem}}
                 </li>
             </ul>
             <div class="nav-highlight"></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-6">
+                <input ng-model="newItem" type="text" class="form-control" placeholder="Add Item to Nav">
+                <button ng-click="addItem(newItem)" class="btn btn-default">Add</button>
+            </div>
+            <div class="col-xs-12">Double click nav item to delete</div>
         </div>
     </div>
     <div id="mask"></div>
@@ -58,25 +68,37 @@
     var app = angular.module("MyApp", []);
 
     app.controller("myController", function($scope, $http) {
-        $scope.navitems = [ "Home", "About Us", "Pricing", "A Long Menu Item 123", "Hello World", "End of story"];
+        $scope.navitems = [ "Home", "About Us", "Pricing", "A Long Menu Item 123", "Hello World", "Interesting Story", "End of story"];
         $scope.eventStatus = [ "All", "Live", "Approved", "Planning", "Rejected"];
 
         $(document).on('click', '.nav-item',  function(e) {
             // define variables
             var content = $(this).text();
                 itemWidth = $(this).width();
-                itemPos = $(this).position().left;
+                itemPosX = $(this).position().left;
+                itemPosY = $(this).position().top + 21;
                 highlight = $('.nav-highlight');
 
             // print variables
             $('#label').text(content);
             $('#width').text(itemWidth);
-            $('#position').text(itemPos);
+            $('#x').text(itemPosX);
+            $('#y').text(itemPosY);
             
             // animate to target
-            TweenMax.to(highlight, .5, {left: itemPos, width: itemWidth, ease: Power4.easeOut})
-
+            TweenMax.to(highlight, .5, {left: itemPosX, top: itemPosY, width: itemWidth, ease: Power4.easeOut})
         })
+
+        $scope.addItem = function(newItem) {
+            // alert (newItem);
+            $scope.navitems.push(newItem);
+        }
+
+        $scope.delete = function(target) {
+            // alert(target);
+            var target = $scope.navitems.indexOf(target);
+            $scope.navitems.splice(target, 1);
+        }
     });
     </script>
 </body>
