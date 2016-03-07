@@ -1,0 +1,84 @@
+<!doctype html>
+<html ng-app="MyApp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Lava Lamp Navigation</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+    .nav {
+        overflow: hidden;
+        position: relative;
+    }
+    .nav-item {
+        float: left;
+        margin-right: 1em;
+    }
+    .nav-item:hover {
+        cursor: pointer;
+        color: blue;
+    }
+    .nav-wrap {
+        position: relative;
+    }
+    .nav-highlight {
+        height: 3px;
+        width: 38px;
+        background: blue;
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body ng-controller="myController">
+    <div class="container-fluid">
+        <h1 id="title">Lava Lamp Navigation</h1>
+        <p>Label: <span id="label">-</span></p>
+        <p>Item Width: <span id="width">-</span></p>
+        <p>Item Position: <span id="position">-</span></p>
+        
+        <hr>
+        <div class="nav-wrap">
+            <ul class="nav">
+                <li class="nav-item" ng-repeat="navitem in navitems">
+                    {{navitem}}
+                </li>
+            </ul>
+            <div class="nav-highlight"></div>
+        </div>
+    </div>
+    <div id="mask"></div>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <!-- TweenMax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("myController", function($scope, $http) {
+        $scope.navitems = [ "Home", "About Us", "Pricing", "A Long Menu Item 123", "Hello World", "End of story"];
+        $scope.eventStatus = [ "All", "Live", "Approved", "Planning", "Rejected"];
+
+        $(document).on('click', '.nav-item',  function(e) {
+            // define variables
+            var content = $(this).text();
+                itemWidth = $(this).width();
+                itemPos = $(this).position().left;
+                highlight = $('.nav-highlight');
+
+            // print variables
+            $('#label').text(content);
+            $('#width').text(itemWidth);
+            $('#position').text(itemPos);
+            
+            // animate to target
+            TweenMax.to(highlight, .5, {left: itemPos, width: itemWidth, ease: Power4.easeOut})
+
+        })
+    });
+    </script>
+</body>
+
+</html>
