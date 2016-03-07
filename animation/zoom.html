@@ -121,6 +121,7 @@
         // random move image
         $(window).keydown(function(e) {
             // pressed up arrow
+            // alert(e.which);
             if (e.which == 38) {
                 var x = randy(0, $(window).width() - 400);
                 var y = randy(0, $(window).height() - 250);
@@ -132,6 +133,20 @@
                         left: x,
                         top: y,
                     },
+                    ease: Power3.easeOut
+                });
+            }
+            // press left arrow
+            else if (e.which == 37) {
+                TweenMax.to($('#hero'), .5, {
+                    css: {rotation: '-=90'},
+                    ease: Power3.easeOut
+                });
+            }
+            // press right arrow
+            else if (e.which === 39) {
+                TweenMax.to($('#hero'), .5, {
+                    css: {rotation: '+=90'},
                     ease: Power3.easeOut
                 });
             }
