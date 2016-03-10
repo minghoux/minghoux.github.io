@@ -40,13 +40,13 @@
         <div class="nav-wrap">
             <ul class="nav">
                 <li ng-click="setFilter(status.status)" class="nav-item" ng-repeat="status in eventStatus">
-                    {{status.status}} <!-- ({{status.count}}) -->
+                    {{status.status}} ({{status.count}})
                 </li>
             </ul>
             <div class="nav-highlight"></div>
         </div>
         <hr>
-        <p>Showing {{filterActivities.length}} results</p>
+        <p><strong>Showing {{filterActivities.length}} results</strong></p>
         <ol>
             <li ng-repeat="activity in filterActivities = (activities | filter: currentFilter)">
                 {{activity.name.first}} {{activity.name.last}} {{activity.status}} this event.
@@ -65,14 +65,14 @@
 
     app.controller("myController", function($scope, $http) {
         $scope.eventStatus = [
-            { status: 'All' },
+            { status: 'All', count: '20' },
             // { status: 'Unread'},
             // { status: 'Read'},
-            { status: 'Shortlisted' },
-            { status: 'Added' },
-            { status: 'Replied' },
-            { status: 'Booked' },
-            { status: 'Declined' }
+            { status: 'Shortlisted', count: '4' },
+            { status: 'Added', count: '7' },
+            { status: 'Replied', count: '6' },
+            { status: 'Booked', count: '3' },
+            { status: 'Declined', count: '0' }
         ];
 
         $scope.activities = [
@@ -275,7 +275,7 @@
             var content = $(this).text();
                 itemWidth = $(this).width();
                 itemPosX = $(this).position().left;
-                itemPosY = $(this).position().top + 21;
+                itemPosY = $(this).position().top + 24;
                 highlight = $('.nav-highlight');
 
             // print variables
