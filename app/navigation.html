@@ -29,6 +29,28 @@
         background: #5FABD3;
         position: absolute;
     }
+    .item {
+      margin-bottom: 3px;
+    }
+    .color {
+      border-left: white 5px solid;
+      padding-left: 8px;
+    }
+    .orange {
+      border-left-color: #FB8036;
+    }
+    .green {
+      border-left-color: #92B81E;
+    }
+    .blue {
+      border-left-color: #5FABD3;
+    }
+    .yellow {
+      border-left-color: #FEC500;
+    }
+    .purple {
+      border-left-color: #9C779C;
+    }
     </style>
 </head>
 
@@ -48,7 +70,11 @@
         <hr>
         <p><strong>Showing {{filterActivities.length}} results</strong></p>
         <ol>
-            <li ng-repeat="activity in filterActivities = (activities | filter: currentFilter)">
+            <li ng-repeat="activity in filterActivities = (activities | filter: currentFilter)" ng-class="{'purple': activity.status== 'Replied', 
+            'yellow': activity.status== 'Shortlisted', 
+            'blue': activity.status== 'Added', 
+            'green': activity.status== 'Booked'}" 
+            class="item color">
                 {{activity.name.first}} {{activity.name.last}} {{activity.status}} this event.
             </li>
         </ol>
