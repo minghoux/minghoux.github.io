@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Firebase + Angular Playground</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+  </head>
+
+  <body ng-controller="MyController">
+
+  	<div class="container">
+  		<h1>Firebase + Angular Playground</h1>
+      
+      <!-- add link -->
+      <div>
+        <form action="" class="form-inline">
+          <div class="form-group">
+            <input ng-model="msg" ng-keydown="addMessage($event)" type="text" id="messageInput"  placeholder="Enter a Title" class="form-control">
+          </div>
+        </form>
+      </div>
+
+      <!-- display link -->
+  		<h2>Display Airport Name</h2>
+  		<ul>
+  			<li ng-repeat="link in links | limitTo: 25 | filter: msg">
+  				{{link.name}}
+  			</li>
+  		</ul>
+
+  	</div>
+
+    <script>
+      var myApp = angular.module("myApp", ["firebase"]);
+
+      myApp.controller("MyController", ["$scope", "$firebaseArray",
+        function($scope, $firebaseArray) {
+          //CREATE A FIREBASE REFERENCE
+          var mingggRef = new Firebase("https://airport-search.firebaseio.com");
+
+          // GET MESSAGES AS AN ARRAY
+          $scope.links = $firebaseArray(mingggRef);
+
+          //ADD MESSAGE METHOD
+          $scope.addMessage = function(e) {
+
+            //LISTEN FOR RETURN KEY
+            if (e.keyCode === 13 && $scope.msg) {
+
+              //ADD TO FIREBASE
+              $scope.links.$add({
+                name: $scope.msg
+              });
+
+              //RESET MESSAGE
+              $scope.msg = "";
+            }
+          }
+
+        }
+      ]);
+    </script>
+  </body>
+</html>
