@@ -17,6 +17,22 @@ for row_num in 1..9
 end
 
 # ask for name and print it
-puts "Hello, what's your name?(hit Enter when done)"
-user_name = gets.chomp
-puts "Nice to meet you, #{user_name}!\n\n"
+# puts "Hello, what's your name?(hit Enter when done)"
+# user_name = gets.chomp
+# puts "Nice to meet you, #{user_name}!\n\n"
+
+
+# read nytimes and save it as html
+require "open-uri"
+remote_base_url = "http://www.nytimes.com"
+remote_page_name = ""
+remote_full_url = remote_base_url + "/" + remote_page_name
+
+somedata = open(remote_full_url).read
+
+my_local_filename = "good-copy.html"
+my_local_file = open(my_local_filename, "w")
+
+    my_local_file.write(somedata)    
+
+my_local_file.close
