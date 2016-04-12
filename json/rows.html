@@ -1,0 +1,166 @@
+<!doctype html>
+<html ng-app="MyApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Event List</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <style>
+      table.event-list > tbody > tr > td {
+        padding: 8px;
+        vertical-align: middle;
+      }
+      .search-box {
+        margin-bottom: 20px;
+      }
+      .tile {
+        border: #ccc 1px solid;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .event-list {
+        font-size: 12px;
+      }
+      @media (max-width: 780px) {
+        .info { display: none; }
+        table.event-list > tbody > tr > td { 
+          display: block; 
+          border-top: none !important;
+          position: relative;
+          padding-left: 5.2em;
+        }
+        td:last-child {
+          border-bottom: #ccc 1px solid;
+          margin-bottom: 20px;
+        }
+        td:before {
+          content: attr(data-header)": ";
+          position: absolute;
+          top: 2px;
+          left: 0;
+          font-weight: bold;
+          color: black;
+        }
+      }
+      td.title { color: #337ab7; }
+      td.title:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      @media (min-width: 781px) and (max-width: 1099px) {
+        .sector, .ticker { display: none;}
+      }
+      @media (min-width: 780px) {
+        .date { width: 70px; }
+        .type { width: 100px; }
+        .location { width: 90px; }
+        .action { width: 220px; }
+        .sector { width: 100px; }
+        .ticker { width: 75px; }
+        .host { width: 60px;}
+        
+      }
+
+      @media (min-width: 1099px) {
+        .date { width: 140px; }
+        .type { width: 140px; }
+        .location { width: 120px; }
+        .host { width: 120px; }
+      }
+    </style>
+  </head>
+
+  <body ng-controller="eventController">
+
+  	<div class="container-fluid">
+  		<h1>Event List</h1>
+  
+      <input type="text" class="form-control search-box" ng-model="search" placeholder="Event Search">
+
+      <p>
+        <button ng-click="coordinator=!coordinator" class="btn btn-default"> 
+          {{ coordinator ? 'Hide Coordinator View' : 'Turn On Coordinator View'}}
+        </button>
+      </p>
+
+      <p>{{hello}}</p>
+
+      <!-- event list -->
+      <table class="table event-list">
+        <tr class="info">
+          <th ng-show="coordinator" class="select"></th>
+          <th class="title">Title</th>
+          <th class="date">Dates</th>
+          <th class="type">Event Type</th>
+          <th class="location">Locations</th>
+          <th class="host">Host</th>
+          <!-- <th class="sector">Sector</th>
+          <th class="ticker">Ticker</th> -->
+          <th class="action"></th>
+        </tr>
+        <tr ng-repeat="event in events | limitTo: 20 | filter: search" class="event-row">
+          <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
+          <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
+          <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
+          <td data-header="Type" class="type">{{event.EventType}}</td>
+          <td data-header="Location" class="location">{{event.Locations}}</td>
+          <td data-header="Host" class="host"><a href="#">{{event.Host}}</a></td>
+          <!-- <td data-header="Sector" class="sector">{{event.Sectors}}</td>
+          <td data-header="Ticker" class="ticker">{{event.Tickers}}</td> -->
+          <td data-header="Action" class="action">
+            <span class="action-wrap">
+              <span class="btn-group">
+                <button class="btn btn-default"><i class="fa fa-star"></i></button>
+                <button class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                <button class="btn btn-default"><i class="fa fa-share"></i></button>
+              </span>
+              <span class="btn-group">
+                <button class="btn btn-primary">Book</button>
+                <button class="btn btn-primary dropdown-toggle">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </span>
+            </span>
+          </td>
+        </tr>
+      </table>
+
+      <!-- event tile -->
+      <h1>Event Tile</h1>
+      <div class="row">
+        <div ng-repeat="event in events | limitTo: 10" class="col-xs-4">
+          <div class="tile">
+            <p><b>{{event.Title}}</b></p>
+            <p>{{event.Host}}</p>
+            <p>{{event.StartDate}} - {{event.EndDate}}</p>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("eventController", function($scope, $http) {
+
+      // get json data
+      $http.get('event.json').success(function(data) {
+        $scope.events = data;
+      });
+
+    });
+
+    </script>
+  </body>
+</html>
