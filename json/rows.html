@@ -89,6 +89,8 @@
       .borderColor.green { border-left-color: green; }
       .borderColor.orange { border-left-color: orange; }
       .borderColor.blue { border-left-color: #337AB7; }
+
+      /*.btn.btn-primary { background: orange; }*/
     </style>
   </head>
 
@@ -114,7 +116,7 @@
           <th class="host">Host</th>
           <th class="action"></th>
         </tr>
-        <tr ng-repeat="event in events | limitTo: 2 | filter: search" class="event-row">
+        <tr ng-repeat="event in events | limitTo: 1 | filter: search" class="event-row">
           <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
           <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
           <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
@@ -125,14 +127,20 @@
             <span class="action-wrap">
               
               <span class="btn-group">
-                <button ng-click="eventFlag=!eventFlag" class="btn btn-default">
+                <button ng-click="eventFlag=!eventFlag" class="btn btn-default no-border">
                   <i class="fa fa-flag" ng-class="{'active': eventFlag}"></i>
                 </button>
-                <button ng-click="eventStar=!eventStar" class="btn btn-default">
+                <button ng-click="eventStar=!eventStar" class="btn btn-default no-border">
                   <i class="fa fa-star" ng-class="{'active': eventStar}"></i>
                 </button>
-                <button ng-click="eventCalendar=!eventCalendar" class="btn btn-default">
+                <button ng-click="eventCalendar=!eventCalendar" class="btn btn-default no-border">
                   <i class="fa fa-calendar" ng-class="{'active': eventCalendar}"></i>
+                </button>
+                <button class="btn btn-default no-border">
+                  <i class="fa fa-share"></i>
+                </button>
+                <button class="btn btn-default no-border">
+                  <i class="fa fa-close"></i>
                 </button>
               </span>
 
@@ -141,14 +149,6 @@
                   <span ng-show="!eventBook">Book</span>
                   <span ng-show="eventBook">Booked</span>
                 </button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-class="{'btn-success': eventBook}">
-                  <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#"><i class="fa fa-share"></i> Share</a></li>
-                  <li><a href="#"><i class="fa fa-close"></i> Decline</a></li>
-                </ul>
               </span>
               
             </span>
@@ -156,7 +156,7 @@
         </tr>
 
         <!-- no border -->
-        <tr ng-repeat="event in events | limitTo: 2 | filter: search  " class="event-row">
+        <tr ng-repeat="event in events | limitTo: 1 | filter: search  " class="event-row">
           <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
           <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
           <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
@@ -192,7 +192,7 @@
         </tr>
 
         <!-- collapse marked button -->
-        <tr ng-repeat="event in events | limitTo: 2 | filter: search  " class="event-row">
+        <tr ng-repeat="event in events | limitTo: 1 | filter: search  " class="event-row">
           <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
           <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
           <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
@@ -236,7 +236,7 @@
           </td>
         </tr>
 
-        <tr ng-repeat="event in events | limitTo: 2 | filter: search  " class="event-row">
+        <tr ng-repeat="event in events | limitTo: 1 | filter: search  " class="event-row">
           <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
           <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
           <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
@@ -282,60 +282,8 @@
 
       <h2>Sell Side Event Row</h2>
       <table class="table event-list">
-        <!-- primary action + border secondary -->
-        <tr ng-repeat="event in events | limitTo: 2 | filter: search  " class="event-row">
-          <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
-          <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
-          <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
-          <td data-header="Type" class="type">{{event.EventType}}</td>
-          <td data-header="Location" class="location">{{event.Locations}}</td>
-          <td data-header="Action" class="action">
-            <span class="action-wrap">
-
-              <span class="btn-group">
-                <button class="btn btn-default"><i class="fa fa-thumbs-up"></i></button>
-                <button class="btn btn-default"><i class="fa fa-signal"></i></button>
-                <button class="btn btn-default"><i class="fa fa-copy"></i></button>
-              </span>
-
-              <span class="btn-group">
-                <button type="button" class="btn btn-primary">Edit</button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#"><i class="fa fa-close"></i> Cancel event</a></li>
-                </ul>
-              </span>
-              
-            </span>
-          </td>
-        </tr>
-
-        <!-- edit as primary action -->
-        <tr ng-repeat="event in events | limitTo: 2 | filter: search  " class="event-row">
-          <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
-          <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
-          <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
-          <td data-header="Type" class="type">{{event.EventType}}</td>
-          <td data-header="Location" class="location">{{event.Locations}}</td>
-          <td data-header="Action" class="action">
-            <span class="action-wrap">
-
-              <span class="btn-group">
-                <button class="btn btn-default no-border"><i class="fa fa-thumbs-up"></i></button>
-                <button class="btn btn-default no-border"><i class="fa fa-signal"></i></button>
-                <button class="btn btn-default no-border"><i class="fa fa-copy"></i></button>
-              </span>
-
-              <button type="button" class="btn btn-primary btn-action">Edit</button>
-              
-            </span>
-          </td>
-        </tr>
-
-        <tr ng-repeat="event in events | limitTo: 2 | filter: search  " class="event-row">
+        <!-- current row -->
+        <tr ng-repeat="event in events | limitTo: 1 | filter: search  " class="event-row">
           <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
           <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
           <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
@@ -357,8 +305,63 @@
           </td>
         </tr>
 
+        <!-- primary action + border secondary -->
+        <tr ng-repeat="event in events | limitTo: 1 | filter: search  " class="event-row">
+          <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
+          <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
+          <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
+          <td data-header="Type" class="type">{{event.EventType}}</td>
+          <td data-header="Location" class="location">{{event.Locations}}</td>
+          <td data-header="Action" class="action">
+            <span class="action-wrap">
+
+              <span class="btn-group">
+                <button class="btn btn-default no-border"><i class="fa fa-thumbs-up"></i></button>
+                <button class="btn btn-default no-border"><i class="fa fa-signal"></i></button>
+                <button class="btn btn-default no-border"><i class="fa fa-copy"></i></button>
+              </span>
+
+              <span class="btn-group">
+                <button type="button" class="btn btn-primary">Edit</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a href="#"><i class="fa fa-close"></i> Cancel event</a></li>
+                </ul>
+              </span>
+              
+            </span>
+          </td>
+        </tr>
+
+        <!-- edit as primary action -->
+        <tr ng-repeat="event in events | limitTo: 1 | filter: search  " class="event-row hidden">
+          <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
+          <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
+          <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
+          <td data-header="Type" class="type">{{event.EventType}}</td>
+          <td data-header="Location" class="location">{{event.Locations}}</td>
+          <td data-header="Action" class="action">
+            <span class="action-wrap">
+
+              <span class="btn-group">
+                <button class="btn btn-default no-border"><i class="fa fa-thumbs-up"></i></button>
+                <button class="btn btn-default no-border"><i class="fa fa-signal"></i></button>
+                <button class="btn btn-default no-border"><i class="fa fa-copy"></i></button>
+              </span>
+
+              <button type="button" class="btn btn-primary btn-action">Edit</button>
+              
+            </span>
+          </td>
+        </tr>
+
+        
+
         <!-- collapse all option -->
-        <tr ng-repeat="event in events | limitTo: 2 | filter: search  " class="event-row">
+        <tr ng-repeat="event in events | limitTo: 1 | filter: search  " class="event-row">
           <td ng-show="coordinator" data-header="Select" class="select"><input type="checkbox"></td>
           <td data-header="Title" class="title"><b>{{event.Title}}</b></td>
           <td data-header="Date" class="date">{{event.StartDate}} - {{event.EndDate}}</td>
@@ -456,14 +459,6 @@
                   <span ng-if="!clientBooked">Book for Client</span>
                   <span ng-if="clientBooked">Manage Bookings</span>
                 </button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-class="{'btn-success' : clientBooked}">
-                  <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#"><i class="fa fa-edit"></i> Add Note</a></li>
-                  <li><a href="#"><i class="fa fa-close"></i> Mark as Decline</a></li>
-                </ul>
               </span>
               
             </span>
