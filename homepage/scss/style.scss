@@ -1,13 +1,14 @@
 //- Minggg Style
 
-@import url("http://fonts.googleapis.com/css?family=Noto+Serif|Roboto:700|PT+Serif|Montserrat:700");
+@import url("http://fonts.googleapis.com/css?family=Noto+Serif|Roboto|Roboto:700|PT+Serif|Montserrat:700");
 // @import url("http://fonts.googleapis.com/css?family=Noto+Serif|Montserrat:700");
 
 h1, h2, h3, h4, h5 { 
-	font-family: "Montserrat";
+	font-family: "Roboto";
+	font-weight: 700;
 }
 body { 
 	background: url("/img/concrete_seamless.png") repeat;
-	font-family: "Noto Serif";
-	font-size: 18px;
+	font-family: "Roboto";
+	font-size: 16px;
 }
