@@ -1,0 +1,90 @@
+[
+  {
+    "Company": "BCOV",
+    "City": "New York",
+    "Sector": "Technology",
+    "Trader": "Duggan",
+    "Attendee": "David Mendels, CEO \nKevin Rhodes, CFO",
+    "Analyst": "Roderick"
+  },
+  {
+    "Company": "COO",
+    "City": "Edinburgh / London",
+    "Sector": "Healthcare",
+    "Trader": "Shaduk",
+    "Attendee": "Dan McBride, EVP & COO Coopervision \nKim Duncan, VP Investor Relations COO",
+    "Analyst": "Block"
+  },
+  {
+    "Company": "LGF",
+    "City": "New York",
+    "Sector": "Media & Entertainment",
+    "Trader": "Gaeger",
+    "Attendee": "Michael Burns, Vice Chairman",
+    "Analyst": "Mogil"
+  },
+  {
+    "Company": "GPS",
+    "City": "New York",
+    "Sector": "Consumer",
+    "Trader": "Finkel",
+    "Attendee": "Art Peck, CEO",
+    "Analyst": "Jaffe"
+  },
+  {
+    "Company": "FLEX",
+    "City": "New York",
+    "Sector": "Technology",
+    "Trader": "Gaeger",
+    "Attendee": "Chris Collier, CFO \nDoug Britt, President Industrial and Emerging Industries \nKevin Kessel, VP Investor Relations",
+    "Analyst": "Sheerin"
+  },
+  {
+    "Company": "GPT",
+    "City": "Chicago",
+    "Sector": "REIT",
+    "Trader": "Boone",
+    "Attendee": "Gordon Dugan, CEO \nBen Harris, President",
+    "Analyst": "Yarmak"
+  },
+  {
+    "Company": "MORE",
+    "City": "Boston",
+    "Sector": "REIT",
+    "Trader": "Boone",
+    "Attendee": "Mark Alfieri, CEO, COO \nDan Swanstrom, EVP, CFO \nRoss Odland, SVP Portfolio Management",
+    "Analyst": "Petrik"
+  },
+  {
+    "Company": "NATI",
+    "City": "Chicago",
+    "Sector": "Technology",
+    "Trader": "Tracy",
+    "Attendee": "John Roiko, VP of Finance \nJohn Graff, VP of Corporate Marketing",
+    "Analyst": "Newton"
+  },
+  {
+    "Company": "RKUS",
+    "City": "Boston",
+    "Sector": "Technology",
+    "Trader": "Tracy",
+    "Attendee": "Seamus Hennessey, CFO",
+    "Analyst": "Wadhwani"
+  },
+  {
+    "Company": "LTC",
+    "City": "Austin / Dallas",
+    "Sector": "REIT",
+    "Trader": "Boone",
+    "Attendee": "Pam Kessler, CFO \nClint Malin, Chief Investment Officer",
+    "Analyst": "Vanacore"
+  },
+  {
+    "Company": "SSNI",
+    "City": "Europe",
+    "Sector": "Industrials",
+    "Trader": "Gaeger",
+    "Attendee": "Jim Burns, CFO \nMark McKenzie, VP Investor Relations",
+    "Analyst": "Eenmaa"
+  }
+]

@@ -21,7 +21,7 @@
 
   	<div class="container-fluid">
 
-      <h1>Legco List</h1>
+      <h1 ng-click="courseSearch = ''">Legco List</h1>
       <p>
         <input type="text" ng-model="courseSearch" class="form-control">
       </p>
@@ -31,7 +31,10 @@
             <div class="photo">
               <img src="{{people.photo}}" class="photo-img">
             </div>
-            <div class="info"><b>{{people.name}}</b><br>{{people.category}}</div>
+            <div class="info">
+              <b>{{people.name}}</b><br>
+              <a href="#" ng-click="searchFilter(people.category)">{{people.category}}</a>
+            </div>
 
         </div>
       </div>
@@ -47,6 +50,10 @@
       $http.get('legco.json').success(function(data) {
         $scope.peoples = data;
       });
+
+      $scope.searchFilter = function(value) {
+        $scope.courseSearch = value;
+      }
 
     });
 
