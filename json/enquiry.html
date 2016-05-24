@@ -38,7 +38,7 @@
       padding: 15px;
       background: #efefef;
      }
-     .action-list > .fa {
+     .action-icon {
       margin: 0 .5em;
      }
      .tab-nav {
@@ -80,7 +80,18 @@
           <td class="col-md-3 table-cell">{{client.company}}</td>
           <td class="col-md-3 table-cell">{{client.status}}</td>
           <td class="col-md-3 table-cell text-right action-list">
-            <i class="fa fa-comments"></i> <i class="fa fa-ticket"></i> <i class="fa fa-file-o"></i> <i class="fa fa-close"></i>
+            <span class="action-icon">
+              {{client.message}} <i class="fa fa-comments"></i>
+            </span>
+            <span class="action-icon">
+              {{client.booking}} <i class="fa fa-ticket"></i>
+            </span>
+            <span class="action-icon">
+              {{client.note}} <i class="fa fa-file-o"></i>
+            </span>
+            <span class="action-icon">
+              <i class="fa fa-close"></i>
+            </span>
           </td>
         </tr>
         <tr class="table-row-conversation">
@@ -129,7 +140,18 @@
           <td class="col-md-3 table-cell">{{client.company}}</td>
           <td class="col-md-3 table-cell">{{client.status}}</td>
           <td class="col-md-3 table-cell text-right action-list">
-            <i class="fa fa-comments"></i> <i class="fa fa-ticket"></i> <i class="fa fa-file-o"></i> <i class="fa fa-close"></i>
+            <span class="action-icon">
+              <i class="fa fa-comments"></i>
+            </span>
+            <span class="action-icon">
+              <i class="fa fa-ticket"></i>
+            </span>
+            <span class="action-icon">
+              <i class="fa fa-file-o"></i>
+            </span>
+            <span class="action-icon">
+              <i class="fa fa-close"></i>
+            </span>
           </td>
         </tr>
       </ul>
@@ -208,7 +230,10 @@
                 // "last": "Richards"
               },
               "company": "Firm ABC",
-              "status": "Replied"
+              "status": "Replied",
+              "message": 4,
+              "booking": 1,
+              "note": 1,
             }
           ]
 
