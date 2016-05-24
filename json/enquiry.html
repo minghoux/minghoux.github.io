@@ -1,0 +1,268 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Enquiries</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <style>
+     .client-table {
+      border: 1px solid #ccc;
+     }
+     th {
+      background: #efefef;
+     }
+     .chat-bubble {
+      width: 80%;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+     }
+     .table-cell-conversation {
+      padding: 0 !important;
+     }
+     .from-me {
+      border-color: #5fabd3;
+      background: #dbf2ff;
+     }
+     .chat-item {
+      margin-bottom: 1em;
+     }
+     .conversation-wrap {
+      padding: 15px;
+      max-height: 350px;
+      overflow-y: scroll;
+      border-bottom: #ccc 1px solid;
+     }
+     .conversation-input {
+      padding: 15px;
+      background: #efefef;
+     }
+     .action-list > .fa {
+      margin: 0 .5em;
+     }
+     .tab-nav {
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      padding: 1em;
+     }
+     .tab-nav:last-child {
+      border-right: none;
+     }
+     .client-nav {
+      background-color: #efefef;
+     }
+     .tab-nav:hover {
+      cursor: pointer;
+      background:#ccc;
+     }
+     .tab-nav.active {
+      background: #dbf2ff;
+     }
+    </style>
+  </head>
+
+  <body ng-controller="MyController">
+
+    <div class="container">
+      <h1>Enquiries</h1>
+      
+      <table class="client-table border table">
+        <tr>
+          <th>Name</th>
+          <th>Firm</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+        <tr ng-repeat="client in client" class="client-table-row">
+          <td class="col-md-3 table-cell">{{client.name.first}} {{client.name.last}}</td>
+          <td class="col-md-3 table-cell">{{client.company}}</td>
+          <td class="col-md-3 table-cell">{{client.status}}</td>
+          <td class="col-md-3 table-cell text-right action-list">
+            <i class="fa fa-comments"></i> <i class="fa fa-ticket"></i> <i class="fa fa-file-o"></i> <i class="fa fa-close"></i>
+          </td>
+        </tr>
+        <tr class="table-row-conversation">
+          <td colspan="4" class="table-cell-conversation">
+            
+            <!-- tab nav -->
+            <div class="clearfix client-nav">
+              <div class="col-xs-4 tab-nav active">4 Enquiries</div>
+              <div class="col-xs-4 tab-nav">1 Booking</div>
+              <div class="col-xs-4 tab-nav">1 Note</div>
+            </div>
+
+            <!-- conversation stream -->
+            <div class="conversation-wrap">
+              <div ng-repeat="chat in chat | orderBy:'id'" class="chat-item">
+                <div class="clearfix">
+                  <div class="chat-bubble" ng-class="{'from-me pull-right': chat.role == 'sell'}">
+                    {{chat.message}}
+                    <div ng-if="chat.request">
+                      Booking request for : {{chat.request}}
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-sender" ng-class="{'text-right': chat.role == 'sell'}">
+                  {{chat.sender}}, {{chat.time}}
+                </div>
+              </div>
+            </div>
+            
+            <!-- message input -->
+            <div class="conversation-input">
+              <div class="row">
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" placeholder="Write a message for client...">
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn btn-primary">Send Message</button>
+                </div>
+              </div>
+            </div>
+
+          </td>
+        </tr>
+        <tr ng-repeat="client in client" class="client-table-row">
+          <td class="col-md-3 table-cell">{{client.name.first}} {{client.name.last}}</td>
+          <td class="col-md-3 table-cell">{{client.company}}</td>
+          <td class="col-md-3 table-cell">{{client.status}}</td>
+          <td class="col-md-3 table-cell text-right action-list">
+            <i class="fa fa-comments"></i> <i class="fa fa-ticket"></i> <i class="fa fa-file-o"></i> <i class="fa fa-close"></i>
+          </td>
+        </tr>
+      </ul>
+      
+    <!-- loading scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+    <script>
+    $(document).ready(function(){
+      var d = $('.conversation-wrap');
+      d.scrollTop(d.prop("scrollHeight"));
+    })
+    $( '.client-table' ).on("click", ".client-table-row", function() {
+      $('.conversation-wrap').slideToggle();
+      $('.conversation-input').slideToggle();
+      $('.client-nav').slideToggle();
+      // $('.table-row-conversation').delay(300).toggle();
+    });
+    $( '.conversation-wrap' ).on( 'mousewheel', function ( e ) {
+        var event = e.originalEvent,
+            d = event.wheelDelta || -event.detail;
+
+        this.scrollTop += ( d < 0 ? 1 : -1 ) * 30;
+        e.preventDefault();
+    });
+    </script>
+    <script>
+      var myApp = angular.module("myApp", ["firebase"]);
+
+      myApp.controller("MyController", ["$scope", "$firebaseArray",
+
+
+        function($scope, $firebaseArray) {
+
+          // client data
+          $scope.client = [
+            {
+              "name": {
+                "first": "Doyle",
+                "last": "Hewitt"
+              },
+              "company": "Premiant",
+              "status": "Booked"
+            },
+            {
+              "name": {
+                "first": "Steve",
+                // "last": "Gibbs"
+              },
+              "company": "Firm ABC",
+              "status": "Replied"
+            },
+            {
+              "name": {
+                "first": "Ming",
+                // "last": "Richmond"
+              },
+              "company": "Firm ABC",
+              "status": "Replied"
+            },
+            {
+              "name": {
+                "first": "Mike",
+                // "last": "Shaw"
+              },
+              "company": "Firm ABC",
+              "status": "Replied"
+            },
+            {
+              "name": {
+                "first": "Jeff",
+                // "last": "Richards"
+              },
+              "company": "Firm ABC",
+              "status": "Replied"
+            }
+          ]
+
+          // conversation
+          $scope.chat  = [
+            {
+              id: 1,
+              "role": "buy",
+              "message": "Hello, Mike B here wants to attend this, do you have any 1x1 slots available in the morning",
+              "request": "Mike B",
+              "sender": "Steve",
+              "time": "4 Mar 8:31 AM",
+            },
+            {
+              id: 2,
+              "role": "sell",
+              "message": "We have a 10am or 11:30am, what works best?",
+              "sender": "Joe",
+              "time": "4 Mar 9:08 AM",
+            },
+            {
+              id: 3,
+              "role": "buy",
+              "message": "Ming here also wants to attend this, but has something at 11am, any chance of making the 10am - 9:30am",
+              "request": "Ming",
+              "sender": "Jeff",
+              "time": "4 Mar 10:42 AM",
+            },
+            {
+              id: 4,
+              "role": "buy",
+              "message": "earlier works for Mike B also",
+              "sender": "Steve",
+              "time": "4 Mar 12:38 PM",
+            },
+            {
+              id: 5,
+              "role": "sell",
+              "message": "Ok, have booked Ming and Mike B in for 9:30am at your offices",
+              "sender": "Joe",
+              "time": "4 Mar 1:16 PM",
+            },
+            {
+              id: 6,
+              "role": "buy",
+              "message": "Actually, can we do it as your offices as we are both at a later meeting in that part of town",
+              "sender": "Jeff",
+              "time": "4 Mar 3:28PM",
+            },
+          ]
+
+
+        }
+      ]);
+    </script>
+  </body>
+</html>
