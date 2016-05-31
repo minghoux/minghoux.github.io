@@ -1,6 +1,7 @@
-@import url("http://fonts.googleapis.com/css?family=Noto+Serif|Roboto|PT+Serif|Montserrat:700");
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto);
 h1, h2, h3, h4, h5 {
-  font-family: "Montserrat";
+  font-family: "Roboto Slab";
+  font-weight: 700;
 }
 
 body {
