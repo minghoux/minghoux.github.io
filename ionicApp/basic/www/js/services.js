@@ -7,7 +7,7 @@ angular.module('starter.services', [])
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',
-    lastText: 'You on your way?',
+    lastText: 'You on your way right?',
     face: 'img/ben.png'
   }, {
     id: 1,
