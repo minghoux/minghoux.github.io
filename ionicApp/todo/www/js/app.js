@@ -9,9 +9,11 @@ angular.module('starter', ['ionic'])
     // pre-definied task
     $scope.tasks =
       [
-        {title: "First", completed: true},
-        {title: "Second", completed: false},
-        {title: "Third", completed: false},
+        {title: "Eat breakfast", completed: true},
+        {title: "Wash dishes", completed: false},
+        {title: "Tidy up bedroom", completed: false},
+        {title: "Pay the bills", completed: false},
+        {title: "Buy milk", completed: false},
       ];
 
       // add new task alternative
