@@ -1,13 +1,64 @@
-<ion-view view-title="Account">
+<ion-view view-title="Profile">
   <ion-content>
-    <ion-list>
-	    <ion-toggle ng-model="settings.enableFriends">
-	        Enable Friends
-	    </ion-toggle>
-	    <ion-toggle ng-model="settings.enableLocation">
-	        Enable Location
-	    </ion-toggle>
-    </ion-list>
+  	<ion-list>
+  		<ion-item>
+	  		<h1>John Smith</h1>
+	  		<p>UX Designer</p>
+	  		<p>Random Comapny</p>
+	  		<button class="button button-full button-positive">
+			  Edit Profile
+			</button>
+		</ion-item>
+		<ion-item>
+			<h2>Work Experience</h2>
+			<p>Random Company</p>
+			<p>Jan 2015 - Present</p>
+			<button class="button button-positive">
+			  Edit
+			</button>
+		</ion-item>
+  	</ion-list>
+	<div class="card" on-swipe="hello('Education')">
+		<div class="item item-divider">
+		  <h2>Education</h2>
+		  </div>
+	  <div class="item item-text-wrap">
+	    <p>Hong Kong Baptist University</p>
+	    <p>Digital Graphic Communication</p>
+	    <p>Graduated 2006</p>
+			<button ng-click="show()"
+			class="button button-full button-stable">Show Action Sheet</button>
+	  </div>
+	</div>
+
+	<div class="card">
+		<div class="item item-divider">
+			<h2>Skills</h2>
+		</div>
+		<div class="item item-text-wrap">
+			My skills will be shown here
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="item item-divider">
+			<h2>Language</h2>
+		</div>
+
+			<ion-list>
+				<ion-item>
+					Cantonese
+				</ion-item>
+				<ion-item>
+					Mandarian
+				</ion-item>
+				<ion-item>
+					English
+				</ion-item>
+
+			</ion-list>
+
+	</div>
 
   </ion-content>
 </ion-view> 
