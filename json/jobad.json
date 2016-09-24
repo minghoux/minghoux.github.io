@@ -1,0 +1,68 @@
+[
+  {
+    "company": "China Mobile International Limited",
+    "position": "Product Manager, Service Support",
+    "location": "",
+    "salary": "negotiable",
+    "type": "Full Time, Permanent",
+    "careerLevel": "Middle",
+    "expYear": 4,
+    "industry": "Telecommunication",
+    "qualification": "Degree"
+  },
+  {
+    "company": "Fook Tai Jewellery Group Limited",
+    "position": "Human Resources Supervisor",
+    "location": "Yau Ma Tei",
+    "salary": "provided",
+    "type": "Full Time",
+    "careerLevel": "Senior",
+    "expYear": 5,
+    "industry": "Jewellery / Gems / Watches",
+    "qualification": "Degree"
+  },
+  {
+    "company": "Page Personnel",
+    "position": "Legal Secretary - Top tier Investment Bank",
+    "location": "",
+    "salary": "HK$25,000 - 30,000 /month",
+    "type": "Full Time, Permanent",
+    "careerLevel": "Middle level",
+    "expYear": 3,
+    "industry": "Banking",
+    "qualification": "Degree"
+  },
+  {
+    "company": "Sloane Manhattan",
+    "position": "Deputy Head, Human Resources - Banking",
+    "location": "Central",
+    "salary": "negotiable",
+    "type": "Full Time",
+    "careerLevel": "Senior",
+    "expYear": 8,
+    "industry": "Human Resources Management / Consultancy",
+    "qualification": "Degree"
+  },
+  {
+    "company": "Pacific Prime Insurance Brokers Ltd",
+    "position": "Graphic Designer",
+    "location": "Kwun Tong",
+    "salary": "negotiable",
+    "type": "Full Time, Permanent",
+    "careerLevel": "",
+    "expYear": 1,
+    "industry": "Insurance / Pension Funding",
+    "qualification": "Non-Degree Tertiary"
+  },
+  {
+    "company": "Agile Global Search Limited",
+    "position": "IT Support (End User Support/Technical Support)",
+    "location": "Central & Western Area",
+    "salary": "HK$20,000 - 30,000 /month",
+    "type": "Full Time",
+    "careerLevel": "Middle",
+    "expYear": 3,
+    "industry": "Information Technology",
+    "qualification": "Degree"
+  }
+]

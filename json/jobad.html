@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="MyApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Job Ad</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <style>
+      .border {
+        border: #ccc 1px solid;
+        padding: 1em;
+      }
+      .infoLabel {
+        width: 11em;
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="myController">
+
+  	<div class="container-fluid">
+
+      <h1 class="page-title">Job Ad</h1>
+      <p>
+        <input type="text" ng-model="courseSearch" class="form-control" placeholder="Search">
+      </p>
+      <div class="row">
+        <div ng-repeat="job in jobs | limitTo: 10 | filter: courseSearch" class="col-xs-12 col-lg-4">
+          <div class="tile border">
+            <p><b>{{job.company}}</b></p>
+            <h4>{{job.position}}</h4>
+            <div class="small">
+              <span class="infoLabel">Salary:</span> {{job.salary}}</div>
+            <div ng-if="job.location" class="small">
+              <span class="infoLabel">Location:</span> {{job.location}}</div>
+            <div class="small">
+              <span class="infoLabel">Career Level:</span> {{job.careerLevel}}</div>
+            <div class="small">
+              <span class="infoLabel">Years of experience:</span> {{job.expYear}}</div>
+            <div class="small">
+              <span class="infoLabel">Type:</span> {{job.type}}</div>
+            <div class="small">
+              <span class="infoLabel">Qualification:</span> {{job.qualification}}</div>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("myController", function($scope, $http) {
+
+      // get json data
+      $http.get('jobad.json').success(function(data) {
+        $scope.jobs = data;
+      });
+
+    });
+
+    </script>
+  </body>
+</html>
