@@ -21,14 +21,11 @@
 
   	<div class="container-fluid">
 
-      <h1 class="page-title">Profile</h1>
-      <p>
-        <input type="text" ng-model="courseSearch" class="form-control" placeholder="Search">
-      </p>
+      <h1 class="page-header">Profile</h1>
       <div class="row">
+        <h2>{{profile.name}}</h2>
         <div ng-repeat="profile in profile | limitTo: 10 | filter: courseSearch" class="col-xs-12">
-          <div class="tile border">
-            <h2>{{profile.name}}</h2>
+          <div class="border">
             <p>{{profile.email}}</p>
             <h4>Work Experience</h4>
             <ul>
@@ -39,6 +36,10 @@
                 <div>{{exp.description}}</div>
               </li>
             </ul>
+            <h4>Skills</h4>
+            <div>
+              <span ng-repeat="skill in profile.skill" class="btn btn-default">{{skill}}</span>
+            </div>
           </div>
         </div>
       </div>

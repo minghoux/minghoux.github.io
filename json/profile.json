@@ -18,6 +18,9 @@
         "position": "Web Designer",
         "description": "Designing UI for some firm"
       }
-    ]     
+    ],
+    "skill": [
+      "HTML", "CSS", "UI/UX", "Product Development"
+    ]    
   }
 ]
