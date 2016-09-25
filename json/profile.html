@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="MyApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <style>
+      .border {
+        border: #ccc 1px solid;
+        padding: 1em;
+      }
+      .infoLabel {
+        width: 11em;
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="myController">
+
+  	<div class="container-fluid">
+
+      <h1 class="page-title">Profile</h1>
+      <p>
+        <input type="text" ng-model="courseSearch" class="form-control" placeholder="Search">
+      </p>
+      <div class="row">
+        <div ng-repeat="profile in profile | limitTo: 10 | filter: courseSearch" class="col-xs-12">
+          <div class="tile border">
+            <h2>{{profile.name}}</h2>
+            <p>{{profile.email}}</p>
+            <h4>Work Experience</h4>
+            <ul>
+              <li ng-repeat="exp in profile.experience">
+                <div><strong>{{exp.position}}</strong></div>
+                <div>{{exp.company}}</div>
+                <div>{{exp.beginDate}} - {{exp.endDate}}</div>
+                <div>{{exp.description}}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+
+    <script>
+    var app = angular.module("MyApp", []);
+
+    app.controller("myController", function($scope, $http) {
+
+      // get json data
+      $http.get('profile.json').success(function(data) {
+        $scope.profile = data;
+        $scope.experience = data.experience;
+      });
+
+    });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "John Smith",
+    "email": "john@banking.com",
+    "experience": [
+      {
+        "company": "Million Dollar Bank",
+        "beginDate": "Feb 2015",
+        "endDate": "Present",
+        "position": "Big Data Analyst",
+        "description": "Leverage big data to drive business growth. Predict market trend. Shape consumer behaviour. See the future."
+      },
+      {
+        "company": "random design firm",
+        "beginDate": "Jan 2012",
+        "endDate": "Jun 2013",
+        "position": "Web Designer",
+        "description": "Designing UI for some firm"
+      }
+    ]     
+  }
+]
