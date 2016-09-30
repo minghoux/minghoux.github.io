@@ -14,6 +14,10 @@
         width: 11em;
         display: inline-block;
       }
+      .noMargin {
+        padding-left: 1em;
+        margin-top: .5em;
+      }
     </style>
   </head>
 
@@ -26,7 +30,7 @@
         <input type="text" ng-model="courseSearch" class="form-control" placeholder="Search">
       </p>
       <div class="row">
-        <div ng-repeat="job in jobs | limitTo: 10 | filter: courseSearch" class="col-xs-12 col-lg-4">
+        <!-- <div ng-repeat="job in jobs | limitTo: 10 | filter: courseSearch" class="col-xs-12 col-lg-4">
           <div class="tile border">
             <p><b>{{job.company}}</b></p>
             <h4>{{job.position}}</h4>
@@ -43,6 +47,17 @@
             <div class="small">
               <span class="infoLabel">Qualification:</span> {{job.qualification}}</div>
           </div>
+        </div> -->
+        <div ng-repeat="job in jobs | filter: courseSearch" class="col-xs-4 border">
+          <h4><a href="{{job.poslink}}" target="_blank">{{job.jobTitle}}</a></h4>
+          <div ng-if="!job.logo">{{job.company}}</div>
+          <div ng-if="job.logo"><img src="{{job.logo}}" alt=""></div>
+          <ul ng-if="job.jobsummary_value_1" class="noMargin">
+            <li>{{job.jobsummary_value_1}}</li>
+            <li>{{job.jobsummary_value_2}}</li>
+            <li>{{job.jobsummary_value_3}}</li>
+          </ul>
+          <div><small>{{job.jobquickinfoblock_value}}</small></div>
         </div>
       </div>
 
@@ -54,7 +69,7 @@
     app.controller("myController", function($scope, $http) {
 
       // get json data
-      $http.get('jobad.json').success(function(data) {
+      $http.get('jobad2.json').success(function(data) {
         $scope.jobs = data;
       });
 
