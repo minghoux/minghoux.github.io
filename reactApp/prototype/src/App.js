@@ -13,6 +13,7 @@ class Footer extends Component {
   }
 }
 
+// Loading data into component
 class Greeting extends Component {
   constructor() {
     super();
@@ -21,6 +22,7 @@ class Greeting extends Component {
       email: 'john@gmail.com',
       title: 'Web Designer',
       company: 'Awesome Company',
+      skills: ['Photoshop', 'HTML', 'ReactJS'],
     }
   }
   render() {
@@ -29,7 +31,10 @@ class Greeting extends Component {
         <p>
           <b>Hello {this.state.name}</b> <br />
           {this.state.email} <br />
-          {this.state.title} at {this.state.company}
+          {this.state.title} at {this.state.company} <br />
+          {this.state.skills.map(function(skill){
+            return <span>{skill} </span>;
+          })}
         </p>
       </div>
     )
