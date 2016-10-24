@@ -81,8 +81,8 @@ class Jobs extends Component {
     return(
       <div>
         <hr />
-        <strong>Show jobs</strong>
-        <ul className="joblist">
+        <strong>Jobs for you</strong>
+        <ul className="text-left">
           <li>{this.state.title}</li>
           <li>{this.jobs[0].title}, {this.jobs[0].company}</li>
         </ul>

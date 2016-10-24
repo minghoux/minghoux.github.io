@@ -27,7 +27,7 @@ html, body, #root, .App {
   background: #ccc;
   padding: 1em 0;
 }
-.joblist {
+.text-left {
   text-align: left;
 }
 @keyframes App-logo-spin {
