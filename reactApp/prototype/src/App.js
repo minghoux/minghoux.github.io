@@ -25,24 +25,8 @@ class Greeting extends Component {
       company: 'Awesome Company',
       skills: ['Photoshop', 'HTML', 'ReactJS'],
     }
-    this.json = null;
-    this.getJSON();
-    
   }
-
-  getJSON() {
-    return fetch('http://mrcow138.github.io/json/jobad2.json')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        return responseJson;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
   render() {
-    console.log(this.json);
     return (
       <div>
         <p>
@@ -62,29 +46,34 @@ class Jobs extends Component {
   constructor() {
     super();
     this.state = {
-      title: 'Marketing Manager',
+      data: [],
     }
-    this.jobs = [
-      {
-        title: 'Marketing Analyst',
-        company: 'Robert Walters Hong Kong',
-        postTime: '29 mins ago',
-      },
-      {
-        title: 'IT Project Manager (Financial Systems) - Global Corporate',
-        company: 'Michael Page',
-        postTime: '1 hour ago',
-      }
-    ]
+    this.getJSON();
   }
+
+  getJSON() {
+  return fetch('http://mrcow138.github.io/json/jobad2.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      this.setState({data: responseJson});
+      return responseJson;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   render() {
     return(
       <div>
         <hr />
         <strong>Jobs for you</strong>
         <ul className="text-left">
-          <li>{this.state.title}</li>
-          <li>{this.jobs[0].title}, {this.jobs[0].company}</li>
+          {this.state.data.map(function(obj){
+            return <li>{obj.jobTitle}, {obj.company} <br /> 
+                    <small>{obj.jobquickinfoblock_value}</small>
+                   </li>;
+          })}
         </ul>
       </div>
     )
