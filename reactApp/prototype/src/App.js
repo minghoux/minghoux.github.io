@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import logo from './logo.svg';
 import './App.css';
 
@@ -43,14 +44,7 @@ class Greeting extends Component {
 }
 
 class Jobs extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-    }
-    this.getJSON();
-  }
-
+  // setup json fetch
   getJSON() {
   return fetch('http://mrcow138.github.io/json/jobad2.json')
     .then((response) => response.json())
@@ -62,7 +56,15 @@ class Jobs extends Component {
       console.error(error);
     });
   }
-
+  // map json to this.state
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+    }
+    this.getJSON();
+  }
+  // displaying data
   render() {
     return(
       <div>
@@ -93,8 +95,12 @@ class App extends Component {
         </div>
 
         <div className="App-intro">
+          <div>
+            <span>Home / </span>
+            <span>Profile</span>
+          </div>
           <Greeting />
-          <Jobs />
+          <Jobs / >
         </div>
 
         <Footer />
