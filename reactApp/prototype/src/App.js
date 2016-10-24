@@ -71,7 +71,7 @@ class Jobs extends Component {
         <ul className="text-left list">
           {this.state.data.map(function(obj){
             return <li className="list-item">
-                    <strong>{obj.jobTitle}</strong> <br />
+                    <strong><a href={obj.poslink}>{obj.jobTitle}</a></strong> <br />
                     {obj.company} <br /> 
                     <small>{obj.jobquickinfoblock_value}</small>
                    </li>;
