@@ -58,6 +58,39 @@ class Greeting extends Component {
   }
 }
 
+class Jobs extends Component {
+  constructor() {
+    super();
+    this.state = {
+      title: 'Marketing Manager',
+    }
+    this.jobs = [
+      {
+        title: 'Marketing Analyst',
+        company: 'Robert Walters Hong Kong',
+        postTime: '29 mins ago',
+      },
+      {
+        title: 'IT Project Manager (Financial Systems) - Global Corporate',
+        company: 'Michael Page',
+        postTime: '1 hour ago',
+      }
+    ]
+  }
+  render() {
+    return(
+      <div>
+        <hr />
+        <strong>Show jobs</strong>
+        <ul className="joblist">
+          <li>{this.state.title}</li>
+          <li>{this.jobs[0].title}, {this.jobs[0].company}</li>
+        </ul>
+      </div>
+    )
+  }
+}
+
 // Putting everything together
 class App extends Component {
   render() {
@@ -70,6 +103,7 @@ class App extends Component {
 
         <div className="App-intro">
           <Greeting />
+          <Jobs />
         </div>
 
         <Footer />

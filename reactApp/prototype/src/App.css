@@ -1,11 +1,10 @@
-html, body, #root {
+html, body, #root, .App {
   height: 100%;
 }
 .App {
   text-align: center;
   display: flex;
   flex-flow: column;
-  height: 100%;
 }
 
 .App-logo {
@@ -28,7 +27,9 @@ html, body, #root {
   background: #ccc;
   padding: 1em 0;
 }
-
+.joblist {
+  text-align: left;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
