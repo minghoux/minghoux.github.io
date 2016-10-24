@@ -1,5 +1,11 @@
+html, body, #root {
+  height: 100%;
+}
 .App {
   text-align: center;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 }
 
 .App-logo {
@@ -16,6 +22,11 @@
 
 .App-intro {
   font-size: large;
+  flex: 1;
+}
+.App-footer {
+  background: #ccc;
+  padding: 1em 0;
 }
 
 @keyframes App-logo-spin {

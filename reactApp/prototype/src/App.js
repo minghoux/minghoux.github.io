@@ -3,11 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 // Define a standalone component
+let footerMsg = 'This is a footer';
 class Footer extends Component {
   render() {
     return (
       <div className="App-footer">
-        This is the Footer!
+        {footerMsg}
       </div>
     )    
   }
@@ -24,8 +25,24 @@ class Greeting extends Component {
       company: 'Awesome Company',
       skills: ['Photoshop', 'HTML', 'ReactJS'],
     }
+    this.json = null;
+    this.getJSON();
+    
   }
+
+  getJSON() {
+    return fetch('http://mrcow138.github.io/json/jobad2.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        return responseJson;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   render() {
+    console.log(this.json);
     return (
       <div>
         <p>
