@@ -68,9 +68,11 @@ class Jobs extends Component {
       <div>
         <hr />
         <strong>Jobs for you</strong>
-        <ul className="text-left">
+        <ul className="text-left list">
           {this.state.data.map(function(obj){
-            return <li>{obj.jobTitle}, {obj.company} <br /> 
+            return <li className="list-item">
+                    <strong>{obj.jobTitle}</strong> <br />
+                    {obj.company} <br /> 
                     <small>{obj.jobquickinfoblock_value}</small>
                    </li>;
           })}
