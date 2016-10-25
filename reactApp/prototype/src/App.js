@@ -15,6 +15,17 @@ class Footer extends Component {
   }
 }
 
+// Component taking variables
+class Hello extends Component {
+  render() {
+    return (
+      <div>
+        Hello, {this.props.greetTarget}!
+      </div>
+    )
+  }
+}
+
 // Loading data into component
 class Greeting extends Component {
   constructor() {
@@ -31,7 +42,7 @@ class Greeting extends Component {
     return (
       <div>
         <p>
-          <b>Hello {this.state.name}</b> <br />
+          <Hello greetTarget={this.state.name} />
           {this.state.email} <br />
           {this.state.title} at {this.state.company} <br />
           {this.state.skills.map(function(skill){
@@ -100,7 +111,7 @@ class App extends Component {
             <span>Profile</span>
           </div>
           <Greeting />
-          <Jobs / >
+          <Jobs />
         </div>
 
         <Footer />
