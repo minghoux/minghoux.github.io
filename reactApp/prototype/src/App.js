@@ -20,7 +20,7 @@ class Hello extends Component {
   render() {
     return (
       <div>
-        Hello, {this.props.greetTarget}!
+        Hello, {this.props.greetTarget}! {this.props.children}
       </div>
     )
   }
@@ -42,7 +42,7 @@ class Greeting extends Component {
     return (
       <div>
         <p>
-          <Hello greetTarget={this.state.name} />
+          <Hello greetTarget={this.state.name}>How are you?</Hello>
           {this.state.email} <br />
           {this.state.title} at {this.state.company} <br />
           {this.state.skills.map(function(skill){
