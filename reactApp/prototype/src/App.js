@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import logo from './logo.svg';
 import './App.css';
 
@@ -49,6 +49,16 @@ class Greeting extends Component {
             return <span>{skill} </span>;
           })}
         </p>
+      </div>
+    )
+  }
+}
+
+class Nav extends Component {
+  render() {
+    return (
+      <div>
+        <Link to="/">Home</Link> / <Link to="/profile">Profile</Link>
       </div>
     )
   }
@@ -106,10 +116,7 @@ class App extends Component {
         </div>
 
         <div className="App-intro">
-          <div>
-            <span>Home / </span>
-            <span>Profile</span>
-          </div>
+          <Nav />
           <Greeting />
           <Jobs />
         </div>
