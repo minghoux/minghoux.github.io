@@ -78,6 +78,9 @@ class SavedJobs extends Component {
       <div>
         <h4>Saved Jobs</h4>
         <p>No saved job yet.</p>
+        {cities.map(function(city){
+          return <span>{city} </span>
+        })}
       </div>
     )
   }
@@ -95,5 +98,7 @@ class Profile extends Component {
     );
   }
 }
+
+let cities = ['Johor', 'Kedah','Kelantan', 'Kuala Lumpur', 'Labuan', 'Melaka', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Perlis', 'Putrajaya', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu'];
 
 export default Profile;
