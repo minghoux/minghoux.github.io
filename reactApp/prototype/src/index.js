@@ -9,7 +9,6 @@ let destination = document.getElementById('root');
 ReactDOM.render(
   <Router>
     <Route path="/profile" component={Profile}>
-    	
     </Route>
     <Route path="/" component={App}>
     </Route>
