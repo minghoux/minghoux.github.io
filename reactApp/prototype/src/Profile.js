@@ -26,23 +26,56 @@ class Content extends Component {
         </ul>
 
         <h3>Dynamic content</h3>
+        <Buttonify behavior="submit" bgcolor="#333">Edit Profile</Buttonify>
+        <Buttonify behavior="submit" bgcolor="#999">Magic!</Buttonify>
         <hr />
-        <ProfileDetail />
+        <ProfileDetail name="John Smith" email="johnsmith@randomcorp.com"/>
+        <hr />
         <ApplyHistory />
-        <SavedJobs />
+        <hr />
+        <SavedJobs>
+          <p>This is defined as child content!</p>
+        </SavedJobs>
       </div>
     )
   }
 }
+
+// showing property from parent call
+class Buttonify extends Component {
+  render() {
+    var btn = {
+      backgroundColor: this.props.bgcolor,
+      color: "#fff",
+      fontSize: "16",
+      padding: ".5em 1em",
+      border: "0",
+      borderRadius: "5px",
+      margin: ".3em"
+    };
+    return (
+      <div>
+        <button style={btn} type={this.props.behavior}>{this.props.children}</button>
+      </div>
+    )
+  }
+}
+
+// define a function and reuse in component
+function getDistance(speed, time) {
+    var result = speed * time;
+    return result;
+}    
 
 class ProfileDetail extends Component {
   render() {
     return (
       <div>
         <h4>Profile Detail</h4>
-        <p>John Smith</p>
+        <p>{this.props.name}</p>
         <p>Marketing Manager at Random Company</p>
-        <p>johnsmith@randomcorp.com</p>
+        <p>{this.props.email}</p>
+        <p>{getDistance(5,10)}</p>
       </div>
     )
   }
@@ -77,10 +110,13 @@ class SavedJobs extends Component {
     return (
       <div>
         <h4>Saved Jobs</h4>
-        <p>No saved job yet.</p>
+        <p>{this.props.children}</p>
+        <p>
+          <h5>Cities:</h5>
         {cities.map(function(city){
           return <span>{city} </span>
         })}
+        </p>
       </div>
     )
   }
