@@ -2,6 +2,22 @@ import React, { Component } from 'react';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import './App.css';
 
+var items = ["Hong Kong", "New York", "London"];
+ 
+function printStuff(a, b, c) {
+  console.log("Printing: " + a + " " + b + " " + c);
+}
+
+function printStuff(a, b, c) {
+  console.log("Printing: " + a + " " + b + " " + c);
+}
+ 
+// using the spread operator
+printStuff(...items);
+ 
+// without using the spread operator
+printStuff(items[0], items[1], items[2]);
+
 
 class Nav extends Component {
   render() {

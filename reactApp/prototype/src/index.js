@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import App from './App';
 import Profile from './Profile';
+import Playground from './Playground';
 import './index.css';
 
 let destination = document.getElementById('root');
@@ -14,6 +15,6 @@ ReactDOM.render(
   //   </Route>
   // </Router>,
  	// <App />,
- 	<Profile />,
+ 	<Playground />,
 	destination
 );
