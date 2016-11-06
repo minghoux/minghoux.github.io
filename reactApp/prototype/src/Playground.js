@@ -66,6 +66,66 @@ var LightningCounter = React.createClass({
   }
 });
 
+var Counter = React.createClass({
+  render: function() {
+      var textStyle = {
+        fontSize: 72,
+        fontFamily: "sans-serif",
+        color: "#333",
+        fontWeight: "bold"
+      };
+ 
+      return (
+        <div style={textStyle}>
+          {this.props.display}
+        </div>
+      );
+    }
+});
+
+var CounterParent = React.createClass({
+  getInitialState: function() {
+    return {
+      count: 0
+    };
+  },
+  increase: function(e) {
+    this.setState({
+      count: this.state.count + 1
+    });
+  },
+  render: function() {
+      var backgroundStyle = {
+        padding: 50,
+        backgroundColor: "#FFC53A",
+        width: 250,
+        height: 100,
+        borderRadius: 10,
+        textAlign: "center"
+      };
+ 
+      var buttonStyle = {
+        fontSize: "1em",
+        width: 30,
+        height: 30,
+        fontFamily: "sans-serif",
+        color: "#333",
+        fontWeight: "bold",
+        lineHeight: "3px"
+      };
+ 
+      return (
+        <div>
+          <h1>Clicking Counter</h1>
+          <div style={backgroundStyle}>
+            <Counter display={this.state.count}/>
+            <button onClick={this.increase} style={buttonStyle}>+</button>
+          </div>
+        </div>
+      );
+    }
+});
+
 
 // Putting everything together
 class Playground extends Component {
@@ -80,6 +140,7 @@ class Playground extends Component {
         <h1>Passing Variables</h1>
         <Shirt color="steelblue" num="3.14" size="medium"/>
         <LightningCounter />
+        <CounterParent />
       </div>
     );
   }

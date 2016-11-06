@@ -8,10 +8,6 @@ function printStuff(a, b, c) {
   console.log("Printing: " + a + " " + b + " " + c);
 }
 
-function printStuff(a, b, c) {
-  console.log("Printing: " + a + " " + b + " " + c);
-}
- 
 // using the spread operator
 printStuff(...items);
  
