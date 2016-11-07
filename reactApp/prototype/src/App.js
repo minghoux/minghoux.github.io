@@ -58,7 +58,7 @@ class Nav extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Home</Link> / <Link to="/profile">Profile</Link>
+        <Link to="/">Home</Link> / <Link to="/profile">Profile</Link> / <Link to="/routeplay">Route</Link>
       </div>
     )
   }

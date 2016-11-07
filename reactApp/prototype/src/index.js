@@ -10,7 +10,11 @@ import './index.css';
 let destination = document.getElementById('root');
 ReactDOM.render(
   // <Router>
-  //   <Route path="/" component={Routeplay}>
+  //   <Route path="/" component={App}>
+  //   </Route>
+  //   <Route path="/profile" component={Profile}>
+  //   </Route>
+  //   <Route path="/routeplay" component={Routeplay}>
   //   </Route>
   // </Router>,
  	// <App />,

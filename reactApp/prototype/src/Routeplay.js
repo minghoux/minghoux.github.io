@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, Link, IndexLink, hashHistory } from 'react-router';
 import './App.css';
 
 class Home extends Component {
@@ -24,6 +24,7 @@ class Stuff extends Component {
   }
 }
 
+
 class Contact extends Component {
   render() {
     return (
@@ -41,7 +42,7 @@ class Content extends Component {
     return (
       <div>
         <ul>
-          <li><Link to="/">Home</Link></li>
+          <li><IndexLink to="/">Home</IndexLink></li>
           <li><Link to="/stuff">Stuff</Link></li>
           <li><Link to="/contact">Contact</Link></li>            
         </ul>
@@ -60,14 +61,15 @@ class Routeplay extends Component {
       padding: "0 5%",
       margin: "0 auto"
     };
+    // setup routing
     return (
       <div style={container}>
           <h1>Routing Playground</h1>
           <Router>
             <Route path="/" component={Content}>
               <IndexRoute component={Home} />
-              <Route path="/stuff" component={Stuff} />
-              <Route path="/contact" component={Contact} />
+              <Route path="stuff" component={Stuff} />
+              <Route path="contact" component={Contact} color="#333" />
             </Route>
           </Router>
       </div>
