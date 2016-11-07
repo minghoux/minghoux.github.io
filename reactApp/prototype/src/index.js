@@ -4,17 +4,16 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import App from './App';
 import Profile from './Profile';
 import Playground from './Playground';
+import Routeplay from './Routeplay';
 import './index.css';
 
 let destination = document.getElementById('root');
 ReactDOM.render(
   // <Router>
-  //   <Route path="/profile" component={Profile}>
-  //   </Route>
-  //   <Route path="/" component={App}>
+  //   <Route path="/" component={Routeplay}>
   //   </Route>
   // </Router>,
  	// <App />,
- 	<Playground />,
+ 	<Routeplay />,
 	destination
 );
