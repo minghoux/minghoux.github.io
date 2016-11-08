@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body {
+  font-family: roboto;
+}
+
 html, body, #root, .App {
   height: 100%;
+  width: 100%;
+  background: #EBEBF1;
 }
 .App {
   text-align: center;
@@ -48,4 +56,62 @@ html, body, #root, .App {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.padding {
+  padding: 10px;
+}
+
+/* search bar */
+.searchbar-wrap {
+  background: #1C3F94;
+  padding: 10px 20px;
+  color: #fff;
+}
+.searchbar-input {
+  width: 100%;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: .5em;
+  color: #666;
+  font-size: .8em;
+}
+
+/* job ad */
+.jobad {
+  background: #fff;
+  border-bottom: #ccc 1px solid;
+}
+.jobad:first-child {
+  border-radius: 5px 5px 0 0;
+}
+.jobad:last-child {
+  border-bottom: 0;
+}
+.jobad-title {
+  color: #428BCA;
+  font-weight: bold;
+  margin-bottom: .5em;
+}
+.company-display {
+  display: flex;
+  align-items: center;
+}
+.company-name {
+  flex-grow: 1;
+}
+.jobad-desc {
+  padding: 0;
+  margin: 0;
+  color: #999;
+  list-style-type: none;
+  font-size: .8em;
+  line-height: 1.5em;
+}
+.jobad-desc-sub {
+  list-style-type: square;
+  padding-left: 1.5em;
 }

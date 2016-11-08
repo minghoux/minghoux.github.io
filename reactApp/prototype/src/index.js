@@ -6,6 +6,7 @@ import Profile from './Profile';
 import Playground from './Playground';
 import Routeplay from './Routeplay';
 import Eventgo from './Eventgo';
+import Feed from './Feed';
 import './index.css';
 
 let destination = document.getElementById('root');
@@ -19,6 +20,6 @@ ReactDOM.render(
   //   </Route>
   // </Router>,
  	// <App />,
- 	<Eventgo />,
+ 	<Feed />,
 	destination
 );
