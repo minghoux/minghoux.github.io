@@ -39,7 +39,7 @@ class JobAd extends Component {
         {this.state.data.map(function(jobad){
           return (
             <div className="jobad padding">
-              <div className="jobad-title">{jobad.jobTitle}</div>
+              <a className="jobad-title" href={jobad.poslink}>{jobad.jobTitle}</a>
               <div className="company-display">
                 <div className="company-name">
                   {jobad.company}

@@ -92,9 +92,11 @@ html, body, #root, .App {
   border-bottom: 0;
 }
 .jobad-title {
+  display: block;
   color: #428BCA;
   font-weight: bold;
   margin-bottom: .5em;
+  text-decoration: none;
 }
 .company-display {
   display: flex;
