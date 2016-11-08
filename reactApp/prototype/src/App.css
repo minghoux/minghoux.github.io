@@ -83,7 +83,7 @@ html, body, #root, .App {
 /* job ad */
 .jobad {
   background: #fff;
-  border-bottom: #ccc 1px solid;
+  border-bottom: #ECECF1 1px solid;
 }
 .jobad:first-child {
   border-radius: 5px 5px 0 0;

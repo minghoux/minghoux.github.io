@@ -24,7 +24,6 @@ class JobAd extends Component {
       console.error(error);
     });
   }
-  // map json to this.state
   constructor() {
     super();
     this.state = {
@@ -35,7 +34,7 @@ class JobAd extends Component {
   render() {
     return (
       <div className="padding">
-        <div className="section-header">Jobs in Marketing 123</div>
+        <div className="section-header">Jobs in Marketing</div>
 
         {this.state.data.map(function(jobad){
           return (
@@ -70,14 +69,6 @@ class JobAd extends Component {
     );
   }
 }
-
-// class Searchbar extends Component {
-//   render() {
-//     return (
-//       <div>Content</div>
-//     );
-//   }
-// }
 
 
 // Putting everything together

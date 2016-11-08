@@ -4,6 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA3lHrugzuiLI2a-dbmmuwtmXCg6D7-gaw",
+        authDomain: "jobs-39655.firebaseapp.com",
+        databaseURL: "https://jobs-39655.firebaseio.com",
+        storageBucket: "jobs-39655.appspot.com",
+        messagingSenderId: "998194304593"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
