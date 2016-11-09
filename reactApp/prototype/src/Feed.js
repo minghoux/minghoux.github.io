@@ -12,6 +12,17 @@ class Searchbar extends Component {
   }
 }
 
+class Navigation extends Component {
+  render() {
+    return (
+      <div className="nav">
+        <div className="nav-item">Feed</div>
+        <div className="nav-item">Me</div>
+      </div>
+    );
+  }
+}
+
 class JobAd extends Component {
   getJSON() {
   return fetch('http://mrcow138.github.io/json/jobad2.json')
@@ -81,8 +92,9 @@ class Feed extends Component {
     };
     // setup routing
     return (
-      <div>
+      <div className="container-wrap">
           <Searchbar />
+          <Navigation />
           <JobAd />
       </div>
     );

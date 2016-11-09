@@ -13,6 +13,7 @@ html, body, #root, .App {
   text-align: center;
   display: flex;
   flex-flow: column;
+  position: relative;
 }
 
 .App-logo {
@@ -34,6 +35,9 @@ html, body, #root, .App {
 .App-footer {
   background: #ccc;
   padding: 1em 0;
+}
+.container-wrap {
+  padding-top: 3em;
 }
 .text-left {
   text-align: left;
@@ -62,11 +66,31 @@ html, body, #root, .App {
   padding: 10px;
 }
 
+/* navigation*/
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #F5F5F5;
+}
+.nav-item {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  padding: 1em 0;
+  color: #0C4B85;
+}
+
 /* search bar */
 .searchbar-wrap {
   background: #1C3F94;
   padding: 10px 20px;
   color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .searchbar-input {
   width: 100%;
