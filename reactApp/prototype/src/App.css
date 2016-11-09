@@ -141,3 +141,19 @@ html, body, #root, .App {
   list-style-type: square;
   padding-left: 1.5em;
 }
+.jobad-action {
+  margin-top: .5em;
+}
+
+.btn-action {
+  display: inline-block;
+  border: #ccc 1px solid;
+  padding: .3em 1em;
+  border-radius: 3px;
+}
+
+.card {
+  background: #fff;
+  border: #ccc 1px solid;
+  border-width: 1px 0;
+}

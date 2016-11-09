@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Router, Route, IndexRoute, Link, IndexLink, hashHistory } from 'react-router';
 import './App.css';
 
 
@@ -16,8 +17,12 @@ class Navigation extends Component {
   render() {
     return (
       <div className="nav">
-        <div className="nav-item">Feed</div>
-        <div className="nav-item">Me</div>
+        <div className="nav-item">
+          <IndexLink to="/">Feed</IndexLink>
+        </div>
+        <div className="nav-item">
+          <Link to="/Me">Me</Link>
+        </div>
       </div>
     );
   }
@@ -71,11 +76,50 @@ class JobAd extends Component {
                   </ul>
                 </li>
                 <li>{jobad.jobquickinfoblock_value}</li>
+                <li className="jobad-action"><span className="btn-action">Bookmark</span></li>
               </ul>
             </div>
           )
         })}
 
+      </div>
+    );
+  }
+}
+
+class Me extends Component {
+  render() {
+    let list = ["Application History", "Bookmarks", "Job invitations", "Job alert", "Settings"];
+    let profile = {
+      name: "John Chan",
+      title: "Marketing Manager",
+      company: "Heng Sang Bank"
+    };
+    return (
+      <div>
+        <div className="card padding">
+          <div><strong>{profile.name}</strong></div>
+          <div>{profile.title}</div>
+          <div>{profile.company}</div>
+        </div>
+
+        <ul className="card">
+          {list.map(function(link){
+            return <li className="padding">{link} </li>;
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+
+class Content extends Component {
+  render() {
+    return (
+      <div>
+        <Searchbar />
+        <Navigation />
+        {this.props.children}
       </div>
     );
   }
@@ -93,9 +137,12 @@ class Feed extends Component {
     // setup routing
     return (
       <div className="container-wrap">
-          <Searchbar />
-          <Navigation />
-          <JobAd />
+        <Router>
+          <Route path="/" component={Content}>
+            <IndexRoute component={JobAd} />
+            <Route path="me" component={Me} />
+          </Route>
+        </Router>
       </div>
     );
   }
