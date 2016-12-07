@@ -156,4 +156,5 @@ html, body, #root, .App {
   background: #fff;
   border: #ccc 1px solid;
   border-width: 1px 0;
+  margin-bottom: 10px;
 }

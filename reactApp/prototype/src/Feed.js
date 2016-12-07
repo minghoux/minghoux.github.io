@@ -29,6 +29,7 @@ class Navigation extends Component {
 }
 
 class JobAd extends Component {
+  // load external json file
   getJSON() {
   return fetch('http://mrcow138.github.io/json/jobad2.json')
     .then((response) => response.json())
@@ -97,6 +98,10 @@ class Me extends Component {
     };
     return (
       <div>
+        <div className="card padding">
+          Hello {profile.name}!
+        </div>
+        
         <div className="card padding">
           <div><strong>{profile.name}</strong></div>
           <div>{profile.title}</div>
