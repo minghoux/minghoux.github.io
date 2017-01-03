@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+  <h1>React Example</h1>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+class Welcome extends React.Component {
+  render() {
+    return <p>Hello, {this.props.name}</p>;
+  }
+}
+
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <div>Welcome back!</div>;
+  }
+  return <div>Please sign up.</div>;
+}
+
+class Logic extends React.Component {
+  render() {
+    return (
+      <div>
+        <h3>Show me the logic</h3>
+        <Greeting isLoggedIn={false} />
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        Greetings everyone
+        <Welcome name="Ann" />
+        <Welcome name="John" />
+        <hr/>
+        <Logic />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+</script>
+</html>
