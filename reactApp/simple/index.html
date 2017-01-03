@@ -5,21 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
   <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 </head>
 <body>
-  <h1>React Example</h1>
   <div id="root"></div>
 </body>
 <script type="text/babel">
-class Welcome extends React.Component {
-  render() {
-    return <p>Hello, {this.props.name}</p>;
-  }
-}
-
 function Greeting(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
@@ -28,25 +22,45 @@ function Greeting(props) {
   return <div>Please sign up.</div>;
 }
 
+// list out item array
+const list = ["Hong Kong", "London", "New York"];
+const listDisplay = list.map((item) =>
+  <div className="alert alert-info">{item}</div>
+);
+
 class Logic extends React.Component {
   render() {
     return (
-      <div>
+      <div className="card p-1">
         <h3>Show me the logic</h3>
         <Greeting isLoggedIn={false} />
+        <Greeting isLoggedIn={true} />
+        <hr/>
+        <h4>Pre-define array</h4>
+        {listDisplay}
+        <h4>Inline array</h4>
+        {list.map((item) =>
+          <div className="alert alert-success">{item}</div>
+        )}
       </div>
     );
+  }
+}
+
+class Welcome extends React.Component {
+  render() {
+    return <div className="card p-1">Hello, {this.props.name}</div>;
   }
 }
 
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container pt-2">
+        <h2>Simple React App</h2>
         Greetings everyone
         <Welcome name="Ann" />
         <Welcome name="John" />
-        <hr/>
         <Logic />
       </div>
     );
