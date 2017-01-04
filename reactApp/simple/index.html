@@ -53,12 +53,21 @@ class Welcome extends React.Component {
   }
 }
 
+// stateless component
+const Hello = (message) => (
+  <div className="card">This is a simple component - {message}</div>
+);
+
+const Bye = (test) => (
+  <div className="card">This is a simple component</div>
+);
+
 class App extends React.Component {
   render() {
     return (
       <div className="container pt-2">
         <h2>Simple React App</h2>
-        Greetings everyone
+        {Hello("with a message")}
         <Welcome name="Ann" />
         <Welcome name="John" />
         <Logic />
