@@ -54,12 +54,8 @@ class Welcome extends React.Component {
 }
 
 // stateless component
-const Hello = (message) => (
-  <div className="card">This is a simple component - {message}</div>
-);
-
-const Bye = (test) => (
-  <div className="card">This is a simple component</div>
+const Hello = (props) => (
+  <div className="card">This is a simple component - {props}</div>
 );
 
 class App extends React.Component {
