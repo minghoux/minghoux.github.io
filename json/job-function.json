@@ -1,0 +1,66 @@
+{
+  "software engineer": [
+    "backend engineer",
+    "build/release engineer",
+    "data engineer",
+    "database administrator",
+    "devops engineer",
+    "embedded engineer",
+    "engineering manager",
+    "frontend engineer",
+    "full stack engineer",
+    "machine learning engineer",
+    "mobile engineer",
+    "QA/test engineer",
+    "security engineer",
+    "ux engineer"
+  ],
+  "design": [
+    "brand/graphic designer",
+    "product designer",
+    "ux designer",
+    "ux researcher",
+    "visual/ui designer"
+  ],
+  "data science": [
+    "data analyst",
+    "data scientist"
+  ],
+  "product management": [],
+  "sales": [
+    "account executive",
+    "account manager",
+    "business development",
+    "customer success manager",
+    "sales development rep",
+    "sales engineer",
+    "sales manager",
+    "sales operations"
+  ],
+  "marketing": [
+    "acquisition marketing",
+    "brand marketing",
+    "community/events marketing",
+    "content marketing",
+    "lifecycle/email marketing",
+    "marketing analytics & ops",
+    "marketing programs",
+    "PR/communications",
+    "product marketing"
+  ],
+  "recruiting/people ops": [
+    "hr business partner",
+    "people ops management",
+    "people ops specialist",
+    "recruiter",
+    "recruiting coordinator",
+    "sourcer"
+  ],
+  "finance/operations": [
+    "accounting",
+    "financial management/analysis",
+    "general management",
+    "office administration"
+  ],
+  "other": []
+}
