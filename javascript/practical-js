@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Practical JS V11</h1>
+
+<div>
+  <button onclick="handlers.toggleAll()">Toggle All</button>
+</div>
+<hr />
+<div>
+  <button onclick="handlers.addTodo()">Add</button>
+  <input id="addTodoTextInput" type="text" />
+</div>
+<hr />
+<div>
+  <button onclick="handlers.changeTodo()">Change Todo</button>
+  <input id="changeTodoPositionInput" type="number" />
+  <input id="changeTodoTextInput" type="text" />
+</div>
+<hr />
+<div>
+  <button onclick="handlers.toggleCompleted()">Toggle</button>
+  <input id="toggleCompletedPositionInput" type="number" />
+</div>
+
+<ul>
+</ul>
+
+<script>
+// MVC - Model
+var todoList = {
+todos: [{
+  todoText: 'item 1',
+  completed: false
+}, {
+  todoText: 'item 2',
+  completed: false
+}, {
+  todoText: 'item 3',
+  completed: false
+}],
+// add new to do
+addTodo: function(todoText) {
+  this.todos.push({
+    todoText: todoText,
+    completed: false
+  });
+},
+// change specific to do
+changeTodo: function(position, todoText) {
+  this.todos[position].todoText = todoText;
+},
+// delete to do
+deleteTodo: function(position) {
+  this.todos.splice(position, 1);
+},
+// toggle true & false
+toggleCompleted: function(position) {
+  var todo = this.todos[position];
+  todo.completed = !todo.completed;
+},
+// toggle all to do
+toggleAll: function() {
+  var totalTodos = this.todos.length;
+  var completedTodos = 0;
+
+  this.todos.forEach(function(todo) {
+    if (todo.completed === true) {
+      completedTodos++;
+    }
+  });
+
+  this.todos.forEach(function(todo) {
+    // case 1: if everything's true, make everything false
+    if (completedTodos === totalTodos) {
+      todo.completed = false;
+    // case 1: otherwise, make everything true
+    } else {
+      todo.completed = true;
+    }
+  });
+
+
+}
+}
+// MVC - Controller
+// handler deal with user interaction
+var handlers = {
+addTodo: function() {
+  var addTodoTextInput = document.getElementById('addTodoTextInput');
+  todoList.addTodo(addTodoTextInput.value);
+  addTodoTextInput.value = '';
+  view.displayTodos();
+},
+changeTodo: function() {
+  var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
+  var changeTodoTextInput = document.getElementById('changeTodoTextInput');
+  todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+  changeTodoPositionInput.value = '';
+  changeTodoTextInput.value = '';
+  view.displayTodos();
+},
+deleteTodo: function(position) {
+  todoList.deleteTodo(position);
+  view.displayTodos();
+},
+toggleCompleted: function() {
+  var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
+  todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+  toggleCompletedPositionInput.value = '';
+  view.displayTodos();
+},
+toggleAll: function() {
+  todoList.toggleAll();
+  view.displayTodos();
+}
+};
+
+// MVC - View
+// render what user sees
+var view = {
+displayTodos: function() {
+  var todosUl = document.querySelector('ul');
+  todosUl.innerHTML = '';
+  todoList.todos.forEach(function(todo, position) {
+    var todoLi = document.createElement('li');
+    var todoTextWithCompletion = '';
+    if (todo.completed === true) {
+      todoTextWithCompletion = '(x) ' + todo.todoText;
+    } else {
+      todoTextWithCompletion = '( ) ' + todo.todoText;
+    }
+    todoLi.id = position;
+    todoLi.textContent = todoTextWithCompletion;
+    todoLi.appendChild(this.createDeleteButton());
+    todosUl.appendChild(todoLi);
+  }, this);
+},
+createDeleteButton: function() {
+  var deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.className = 'deleteButton';
+  return deleteButton;
+},
+setUpEventListeners: function() {
+  var todosUl = document.querySelector('ul');
+  todosUl.addEventListener('click', function(event) {
+    var elementClicked = event.target;
+    if (elementClicked.className === 'deleteButton') {
+      handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+    }
+  });
+}
+};
+
+view.setUpEventListeners();
+view.displayTodos();
+
+</script>
+</body>
+</html>
