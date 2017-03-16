@@ -14,8 +14,8 @@
       background: #eee;
       padding: 20px;
     }
-    #container h1 {
-      font-size: 40px;
+    #container p {
+      font-size: 30px;
       color: blue;
     }
   </style>
@@ -23,8 +23,35 @@
 <body>
   <div id="container"></div>
   <script type="text/babel">
+
+    var HelloWorld = React.createClass({
+      render: function() {
+        return(
+          <p>Hello, world {this.props.greetTarget}!</p>
+        );
+      }
+    });
+
+    const Simple = () => (
+      <div className="card">This is a simple component</div>
+    );
+
+    var Buttonify = React.createClass({
+      render: function() {
+        return(
+          <div>
+            <button type={this.props.behavior}>{this.props.children}</button>
+          </div>
+        )
+      }
+    });
+
     ReactDOM.render(
-      <h1>Ming!</h1>,
+      <div>
+        <Buttonify behavior="Submit">Send More Data</Buttonify>
+        <Simple/>
+        <HelloWorld greetTarget="Ming"/>
+      </div>,
       document.querySelector("#container")
     );
   </script>
