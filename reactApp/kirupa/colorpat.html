@@ -68,13 +68,17 @@
     }
   });
 
+  // list of colors
+  var colorList = ["red", "#127809", "#128de6"];
+
   // final rendering
   var destination = document.querySelector("#container");
     ReactDOM.render(
       <div>
         <Card color="#FFA737"/>
-        <Card color="red"/>
-        <Card color="#ccc"/>
+        <Card color={colorList[0]}/>
+        <Card color={colorList[1]}/>
+        <Card color={colorList[2]}/>
       </div>,
       destination
     );
