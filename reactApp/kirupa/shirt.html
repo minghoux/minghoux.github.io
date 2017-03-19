@@ -12,6 +12,9 @@
 
   </script>
   <style>
+    body {
+      font-family: sans-serif;
+    }
   </style>
 </head>
 
@@ -25,9 +28,9 @@ var Display = React.createClass({
   render: function() {
     return(
       <div>
-        <p>{this.props.color}</p>
-        <p>{this.props.num}</p>
-        <p>{this.props.size}</p>
+        <p>Color: {this.props.color}</p>
+        <p>Number: {this.props.num}</p>
+        <p>Size: {this.props.size}</p>
       </div>
     );
   }

@@ -71,10 +71,12 @@
   // list of colors
   var colorList = ["red", "#127809", "#128de6"];
 
+  var title = <h1>React Color Palette</h1>;
   // final rendering
   var destination = document.querySelector("#container");
     ReactDOM.render(
       <div>
+        {title}
         <Card color="#FFA737"/>
         <Card color={colorList[0]}/>
         <Card color={colorList[1]}/>
