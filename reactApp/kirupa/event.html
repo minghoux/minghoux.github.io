@@ -37,6 +37,25 @@ var Counter = React.createClass({
     }
 });
 
+var PlusButton = React.createClass({
+  render: function() {
+  var buttonStyle = {
+    fontSize: "1em",
+    width: 30,
+    height: 30,
+    fontFamily: "sans-serif",
+    color: "#333",
+    fontWeight: "bold",
+    lineHeight: "3px"
+  };
+      return (
+        <button style={buttonStyle} onClick={this.props.clickHandler}>
+          +
+        </button>
+      );
+    }
+});
+
 var CounterParent = React.createClass({
   getInitialState: function() {
     return {
@@ -66,20 +85,10 @@ var CounterParent = React.createClass({
         textAlign: "center"
       };
 
-      var buttonStyle = {
-        fontSize: "1em",
-        width: 30,
-        height: 30,
-        fontFamily: "sans-serif",
-        color: "#333",
-        fontWeight: "bold",
-        lineHeight: "3px"
-      };
-
       return (
         <div style={backgroundStyle}>
         <Counter display={this.state.count}/>
-        <button onClick={this.increase} style={buttonStyle}>+</button>
+        <PlusButton clickHandler={this.increase}/>
         </div>
       );
     }
