@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <style>
+  body {
+    font-family: sans-serif;
+  }
+  </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+
+
+<script  type="text/babel">
+var destination = document.querySelector("#container");
+
+var NavBar = React.createClass({
+  render: function() {
+      var navElements = this.props.navItems.map(function(item) {
+        var navItem = <li><a href="#">{item}</a></li>
+        return navItem;
+      });
+      return (
+        <nav role="navigation">
+            <ul>
+                {navElements}
+            </ul>
+        </nav>
+      );
+    }
+});
+
+var App = React.createClass({
+  render: function() {
+      return (
+        <div>
+          Hello World!
+          <NavBar navItems={['Home', 'About', 'Product', 'Contact']}/>
+          <NavBar navItems={['1', '2', '3', '4']}/>
+        </div>
+      );
+    }
+});
+
+ReactDOM.render(
+  <App/>,
+  destination
+);
+</script>
+</body>
+</html>
