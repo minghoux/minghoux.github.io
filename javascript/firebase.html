@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Firebase Playground</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mb-3 mt-3">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="mb-0">Writing with Firebase</h3>
+    </div>
+
+    <div class="card-content p-3">
+      <!-- value input -->
+      <div class="input-group mb-3">
+        <input id="userName" type="text" class="form-control">
+        <span class="input-group-btn">
+          <button onClick="app.fireWrite()" class="btn btn-primary">Add User</button>
+        </span>
+      </div>
+
+      <!-- content display -->
+      <ul id="peopleList">
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+<script>
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyA4hW10qk0PnVpj3bOQ73-_dcWUXujQC4k",
+  authDomain: "simple-c7fc8.firebaseapp.com",
+  databaseURL: "https://simple-c7fc8.firebaseio.com",
+  projectId: "simple-c7fc8",
+  storageBucket: "simple-c7fc8.appspot.com",
+  messagingSenderId: "334716043483"
+};
+firebase.initializeApp(config);
+
+// Reference to firebase
+var database = firebase.database();
+var people = firebase.database().ref().child('people');
+
+// DOM Reference
+var userName = document.querySelector("#userName");
+var peopleList = document.querySelector("#peopleList");
+
+var app = {
+  init: () => {
+    app.fireListen();
+  },
+  writeStuff: (text) => {
+    var test = document.createElement("div");
+    test.innerHTML = text? text : "Hello world";
+    document.body.appendChild(test);
+  },
+  fireListen: () => {
+    console.log("Listening");
+    people.on('value', function(people) {
+      peopleList.innerHTML = "";
+      people.forEach(function(people) {
+        console.log("people", people.val().name, people.val().age);
+        var name = people.val().name;
+        var age = people.val().age;
+        var li = document.createElement("li");
+        li.innerHTML = name + ", " + age;
+        peopleList.appendChild(li);
+      });
+    });
+  },
+  fireWrite: () => {
+    var age = Math.floor((Math.random()*40) + 18);
+    console.log("Writing", userName.value, age);
+    people.push({
+      name: userName.value,
+      age: age
+    })
+    userName.value = "";
+  }
+}
+app.init();
+</script>
+</body>
+</html>
