@@ -45,12 +45,17 @@ const writeData = (data) => {
 
 <!-- google sheet v4 -->
 <script>
-var api = "https://sheets.googleapis.com/v4/spreadsheets/1f_OZySGN4ykBR8h4diRhCNEhbIZ3IydfDEf9IzuEYTM/values/Sheet1?key=AIzaSyDeMhboTQQwXJ-XkJ8AcCiQ7NB4TARFsf4"
+const gsheet = "https://sheets.googleapis.com/v4/spreadsheets/";
+const sheetId = "1f_OZySGN4ykBR8h4diRhCNEhbIZ3IydfDEf9IzuEYTM";
+const apikey = "AIzaSyDeMhboTQQwXJ-XkJ8AcCiQ7NB4TARFsf4";
+const dataRange = "Sheet1"
+
+const api = gsheet + sheetId + "/values/" + dataRange + "?key=" + apikey
 
 fetch(api)
   .then(res => res.json())
   .then(data => {
-    console.log(data);
+    // console.log(data);
     printData(data.values);
   })
 
