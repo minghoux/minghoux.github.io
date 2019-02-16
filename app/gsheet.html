@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google sheet experiment</title>
+</head>
+<body>
+
+<h1>Getting data from google sheet</h1>
+
+<script>
+const sheet = "https://spreadsheets.google.com/feeds/list/";
+const sheetId = "1f_OZySGN4ykBR8h4diRhCNEhbIZ3IydfDEf9IzuEYTM";
+const getjson = "/od6/public/values?alt=json";
+      
+const api = sheet + sheetId + getjson;
+
+fetch(api)
+  .then(res => res.json())
+  .then(data => {
+    // console.log(data.feed.entry);
+    printData(data.feed.entry);
+  })
+
+
+const printData = (data) => {
+  data.map( (data, i) => {
+    const message = "User #" + i + " : " + 
+                  data.gsx$name.$t + ", " + 
+                  data.gsx$age.$t + ", " + 
+                  data.gsx$title.$t
+    writeData(message);
+  })
+}
+
+const writeData = (data) => {
+  const newContent = document.createElement("div");
+  newContent.innerText = data;
+  document.body.appendChild(newContent);
+}
+</script>
+</body>
+</html>
