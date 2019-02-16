@@ -9,8 +9,9 @@
 <body>
 
 <h1>Getting data from google sheet</h1>
+<p class="content">Content goes here</p>
 
-<script>
+<!-- <script>
 const sheet = "https://spreadsheets.google.com/feeds/list/";
 const sheetId = "1f_OZySGN4ykBR8h4diRhCNEhbIZ3IydfDEf9IzuEYTM";
 const getjson = "/od6/public/values?alt=json";
@@ -38,6 +39,34 @@ const printData = (data) => {
 const writeData = (data) => {
   const newContent = document.createElement("div");
   newContent.innerText = data;
+  document.body.appendChild(newContent);
+}
+</script> -->
+
+<!-- google sheet v4 -->
+<script>
+var api = "https://sheets.googleapis.com/v4/spreadsheets/1f_OZySGN4ykBR8h4diRhCNEhbIZ3IydfDEf9IzuEYTM/values/Sheet1?key=AIzaSyDeMhboTQQwXJ-XkJ8AcCiQ7NB4TARFsf4"
+
+fetch(api)
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+    printData(data.values);
+  })
+
+const printData = (data) => {
+  data.map( (item, i) => {
+    let message = "User #" + i + " : " + 
+                  item[0] + ", " + 
+                  item[1] + ", " + 
+                  item[2]
+    writeData(message);
+  })
+}
+
+const writeData = (message) => {
+  const newContent = document.createElement("div");
+  newContent.innerText = message;
   document.body.appendChild(newContent);
 }
 </script>
