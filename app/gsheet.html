@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
     <title>Document</title>
+=======
+    <title>Google sheet experiment</title>
+>>>>>>> 7ad98bcaa6b7f6efc751a2bd1dd5d244bd242d47
 </head>
 <body>
 
 <h1>Getting data from google sheet</h1>
+<<<<<<< HEAD
 
 <script>
+=======
+<p class="content">Content goes here</p>
+
+<!-- <script>
+>>>>>>> 7ad98bcaa6b7f6efc751a2bd1dd5d244bd242d47
 const sheet = "https://spreadsheets.google.com/feeds/list/";
 const sheetId = "1f_OZySGN4ykBR8h4diRhCNEhbIZ3IydfDEf9IzuEYTM";
 const getjson = "/od6/public/values?alt=json";
@@ -40,6 +50,42 @@ const writeData = (data) => {
   newContent.innerText = data;
   document.body.appendChild(newContent);
 }
+<<<<<<< HEAD
+=======
+</script> -->
+
+<!-- google sheet v4 -->
+<script>
+const gsheet = "https://sheets.googleapis.com/v4/spreadsheets/";
+const sheetId = "1f_OZySGN4ykBR8h4diRhCNEhbIZ3IydfDEf9IzuEYTM";
+const apikey = "AIzaSyDeMhboTQQwXJ-XkJ8AcCiQ7NB4TARFsf4";
+const dataRange = "Sheet1"
+
+const api = gsheet + sheetId + "/values/" + dataRange + "?key=" + apikey
+
+fetch(api)
+  .then(res => res.json())
+  .then(data => {
+    // console.log(data);
+    printData(data.values);
+  })
+
+const printData = (data) => {
+  data.map( (item, i) => {
+    let message = "User #" + i + " : " + 
+                  item[0] + ", " + 
+                  item[1] + ", " + 
+                  item[2]
+    writeData(message);
+  })
+}
+
+const writeData = (message) => {
+  const newContent = document.createElement("div");
+  newContent.innerText = message;
+  document.body.appendChild(newContent);
+}
+>>>>>>> 7ad98bcaa6b7f6efc751a2bd1dd5d244bd242d47
 </script>
 </body>
 </html>
