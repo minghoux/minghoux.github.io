@@ -7,6 +7,7 @@
     <title>Find CP</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch-theme-algolia.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
     <!-- Google Tag Manager-->
     <script>
@@ -23,20 +24,33 @@
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP5PW3G" height="0" width="0" style="display:none;visibility:hidden;"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript)-->
-    <h1>Find CP</h1>
-    <p>Integration with algolia search</p>
-    <div id="search-box"></div>
-    <div id="refinement-list"></div>
-    <hr>
-    <div id="current-refined-values"></div>
-    <div id="clear-all"></div>
-    <div id="pagination"></div>
-    <div id="hits"></div>
+    <div class="container mt-3 mb-3">
+      <h1>Find CP</h1>
+      <p>Integration with algolia search</p>
+      <div class="mb-1">
+        <div id="search-box"></div>
+      </div>
+      <div class="mb-3">
+        <div id="clear-all"></div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <div id="refinement-list"></div>
+          <hr>
+          <div id="current-refined-values"></div>
+        </div>
+        <div class="col">
+          <ul class="pl-3"></ul>
+          <div id="hits"></div>
+          <div id="pagination"></div>
+        </div>
+      </div>
+    </div>
     <script>
       const search = instantsearch({
-          appId: 'latency',
-          apiKey: '6be0576ff61c053d5f9a3225e2a90f76',
-          indexName: 'instant_search',
+          appId: 'WDJ2B9FLVR',
+          apiKey: '8e95452f95efc48d5314a35f33c2202e',
+          indexName: 'find_cp',
           routing: true
       });
       
@@ -52,7 +66,7 @@
       search.addWidget(
           instantsearch.widgets.refinementList({
               container: '#refinement-list',
-              attributeName: 'categories'
+              attributeName: 'serviceArea'
           })
       );
       
@@ -62,7 +76,7 @@
           container: '#hits',
           templates: {
               empty: 'No results',
-              item: '<em>Hit {{objectID}}</em>: {{{_highlightResult.name.value}}}'
+              item: '<li>{{objectID}}: {{{_highlightResult.enFirstName.value}}} {{{_highlightResult.enLastName.value}}} {{{_highlightResult.enNickName.value}}}</li>'
           }
           })
       );

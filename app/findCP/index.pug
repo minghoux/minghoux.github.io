@@ -9,32 +9,34 @@ html(lang="en")
         title Find CP
         link(rel='stylesheet', type='text/css', href='https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch.min.css')
         link(rel='stylesheet', type='text/css', href='https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch-theme-algolia.min.css')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
         script(src='https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4')
         +analyticsHeader()
     body
         +analyticsNoScript()
-        h1 Find CP
-        p Integration with algolia search
+        .container.mt-3.mb-3
+            h1 Find CP
+            p Integration with algolia search
 
-        #search-box
-
-        #refinement-list
-
-        hr
-
-        #current-refined-values
-
-        #clear-all
-        
-        #pagination
-
-        #hits
+            .mb-1
+                #search-box
+            .mb-3
+                #clear-all
+            .row
+                .col-3
+                    #refinement-list
+                    hr
+                    #current-refined-values
+                .col
+                    ul.pl-3
+                    #hits
+                    #pagination
 
         script.
             const search = instantsearch({
-                appId: 'latency',
-                apiKey: '6be0576ff61c053d5f9a3225e2a90f76',
-                indexName: 'instant_search',
+                appId: 'WDJ2B9FLVR',
+                apiKey: '8e95452f95efc48d5314a35f33c2202e',
+                indexName: 'find_cp',
                 routing: true
             });
 
@@ -50,7 +52,7 @@ html(lang="en")
             search.addWidget(
                 instantsearch.widgets.refinementList({
                     container: '#refinement-list',
-                    attributeName: 'categories'
+                    attributeName: 'serviceArea'
                 })
             );
 
@@ -60,7 +62,7 @@ html(lang="en")
                 container: '#hits',
                 templates: {
                     empty: 'No results',
-                    item: '<em>Hit {{objectID}}</em>: {{{_highlightResult.name.value}}}'
+                    item: '<li>{{objectID}}: {{{_highlightResult.enFirstName.value}}} {{{_highlightResult.enLastName.value}}} {{{_highlightResult.enNickName.value}}}</li>'
                 }
                 })
             );
