@@ -17,7 +17,17 @@ html(lang="en")
         p Integration with algolia search
 
         #search-box
+
+        #refinement-list
+
+        hr
+
+        #current-refined-values
+
+        #clear-all
         
+        #pagination
+
         #hits
 
         script.
@@ -30,10 +40,18 @@ html(lang="en")
 
             // initialize SearchBox
             search.addWidget(
-            instantsearch.widgets.searchBox({
-                container: '#search-box',
-                placeholder: 'Search for products'
-            })
+                instantsearch.widgets.searchBox({
+                    container: '#search-box',
+                    placeholder: 'Search for products'
+                })
+            );
+
+              // initialize RefinementList
+            search.addWidget(
+                instantsearch.widgets.refinementList({
+                    container: '#refinement-list',
+                    attributeName: 'categories'
+                })
             );
 
             // initialize hits widget
@@ -45,6 +63,37 @@ html(lang="en")
                     item: '<em>Hit {{objectID}}</em>: {{{_highlightResult.name.value}}}'
                 }
                 })
+            );
+
+            // initialize currentRefinedValues
+            search.addWidget(
+            instantsearch.widgets.currentRefinedValues({
+                container: '#current-refined-values',
+                // This widget can also contain a clear all link to remove all filters,
+                // we disable it in this example since we use `clearAll` widget on its own.
+                clearAll: false
+            })
+            );
+
+            // initialize clearAll
+            search.addWidget(
+            instantsearch.widgets.clearAll({
+                container: '#clear-all',
+                templates: {
+                link: 'Reset everything'
+                },
+                autoHideContainer: false
+            })
+            );
+
+            // initialize pagination
+            search.addWidget(
+            instantsearch.widgets.pagination({
+                container: '#pagination',
+                maxPages: 20,
+                // default is to scroll to 'body', here we disable this behavior
+                scrollTo: false
+            })
             );
 
             search.start();
