@@ -1,0 +1,208 @@
+[Normal] FINTERN LTD
+[Normal] Complaints Handling Policy and Procedure
+[Normal] V4.0
+[Normal] CONFIDENTIAL AND PROPRIETARY
+[Normal] Any use of this material without specific permission is strictly prohibited
+[Heading1] Purpose
+[Normal] This policy applies directly to Fintern Ltd.  It covers all consumer credit activities under the trading names of ‘Fintern’ and ‘Abound’ and applies to all staff employed by Fintern Ltd.
+[Normal] This document is to be used by all Fintern’s staff who interact with customers and who can potentially receive customer complaints. This paper provides a written framework to assist all relevant staff identify customer complaints and deal with such in accordance with the policies and procedures set out herein.
+[Normal] The policy will be further reviewed and updated in line with changes to our activities, namely following an application to conduct Account Information Service Provider (AISP) activities by Fintern Ltd or another member of the Fintern Group and extended to other entities in the Group as needed.
+[Heading1] Regulatory Requirements
+[Normal] The Financial Conduct Authority (FCA) requires Fintern to have internal procedures for the reasonable and prompt handling of complaints.  The content of this policy and procedures has been designed in accordance with the FCA’s Principles for Businesses (PRIN), Treating Customers Fairly (TCF) outcomes and the Dispute Resolution Handbook (DISP) as noted below. Activities under the AISP arm will be subject to all of the below, with additional requirements set out by the Payment Services Regulations 2017 (PSR). The policy is duly noted where requirements differ under the AISP arm.
+[Normal] High level standards
+[Normal] Principle 6 of the FCA’s Principles for Businesses requires the Fintern to treat customers fairly.
+[Normal] Principle 12 mandates firms to act to deliver good customer outcomes for retail customers, as set out within the Consumer Duty.
+[Normal] TCF Outcome 6 requires Fintern to ensure that customers do not experience any post-sale barriers such as experiencing difficulties in making complaints.
+[Normal] DISP
+[Normal] The FCAs Dispute Resolution Handbook provides rules and guidance on complaint handling, resolution and escalation requirements. This includes permitted timeframes, the provision of information to complainants, investigations requirements, record keeping, and dealing with the regulator and the Financial Ombudsman.
+[Normal] PSR
+[Normal] In preparation for Fintern’s regulatory application to undertake activities as an Account Information Service Provider (AISP), we note that there are some differences in the dispute resolution requirements to those of the consumer credit activities. Section 101 of the PSRs includes requirements on resolution timeframes and the provision of providers of dispute resolution services.
+[Normal] Consumer Duty
+[Normal] The FCA introduced the Consumer Duty with effect from 31 July 2023. The new Duty was designed to further promote good outcomes for customers, whilst mitigating detriment where possible.
+[Normal] The duty compromises of:
+[ListParagraph] A Consumer Principle setting out the COCON rule ‘You must act to deliver good outcomes for retail customers’
+[ListParagraph] Cross Cutting Rules
+[ListParagraph] Act in good faith towards retail customers
+[ListParagraph] Avoid causing foreseeable harm
+[ListParagraph] Enable and support customers to pursue their financial objectives
+[ListParagraph] Four Outcomes
+[ListParagraph] Design and suitability of products and services
+[ListParagraph] Price and value
+[ListParagraph] Customer Understanding
+[ListParagraph] Customer Support
+[Normal] What this means for Fintern:
+[ListParagraph] We need to be able to understand our characteristics and behaviours of our customers and target market, and ensure that our products meet those needs accordingly
+[ListParagraph] Our customers should be able to understand the nature of our product. Information should be widely available and written in a way that customers can understand. There should be no ‘surprises’ in terms of features, restrictions or fees
+[ListParagraph] Our customers should be able to speak to us in a way that suits them – e.g. by telephone or in writing such as email or through live chat
+[ListParagraph] Our products should demonstrate value and be priced accordingly. There should be no hidden fees or charges
+[ListParagraph] We should have the facility to monitor our adherence to the duty, such as through MI, quality assurance and customer feedback
+[ListParagraph] Ultimately, we should put customer interests and positive customer outcomes at the heart of everything that we do
+[Normal] Consumer Duty should be at the heart of everything that we do, and therefore the spirit of the Duty is woven throughout the requirements of this policy. There are however aspects of the Duty which are aligned to complaints handling, more specifically:
+[ListParagraph] Taking time to fully understand the complaint
+[ListParagraph] Remediating the customer (where required)
+[ListParagraph] Making changes to practices if detriment identified
+[ListParagraph] Adhering to complaints timeframes
+[ListParagraph] Further to the above, we have sought to determine what positive customer outcomes looks like to us:
+[ListParagraph] Customers obtain loans that are suited to their needs and circumstances and which are affordable.
+[ListParagraph] Customer receive good value for money in terms of the interest rate, fees and overall cost of the loans that we provide
+[ListParagraph] Customers understand the loans that they have applied for or that they have entered into.   This includes the cost of the loan, the features available to help them manage the loan, and the consequence of not making their repayments.
+[ListParagraph] Customers are offered support as needed during the life cycle of loan, from application through to final repayment.  Where customers fall into financial difficulties, that they are provided with tailored forbearance strategies as needed.  Vulnerable customers are identified and are supported in way that are appropriate to their vulnerability.
+[Heading1] Definition of an eligible complaint
+[Normal] An eligible complaint is a complaint which should be handled in accordance with the policies and procedures set out in this document. There are two components that determine whether a complaint is an eligible complaint, namely (1) the complaint must satisfy the definition in paragraph 3.1 below and (2) the complaint must be made by an eligible complainant.
+[Heading2] Definition of A Complaint
+[Normal] An eligible complaint is defined by the FCA as “any oral or written expression of dissatisfaction, whether justified or not, from, or on behalf of a customer or potential customer about the provision of, or failure to provide, a financial service which alleges that the complainant has suffered (or may suffer) financial loss, material distress or material inconvenience and relates to an activity of Fintern or any other organisation that Fintern has some connection to in marketing or providing financial services or products.”
+[Normal] In other words, a complaint is any expression of dissatisfaction about the provision of Fintern’s consumer credit activities, including embedded lending, whether justified or not.
+[Heading2] Eligible Complaint
+[Normal] In order for a complaint to be an eligible complaint it must be made by an eligible complainant. An eligible complainant can be a consumer (i.e. a natural person acting for purposes outside his trade, business, or profession).
+[Normal] Fintern only provides its regulated products and/or services to consumers and therefore all of its customers are potentially eligible complainants. In light of this, all complaints that fall within the definition set out in paragraph 3.1 above that are made by the Fintern’s customers are eligible complaints that should be handled according to the policies and procedures set out in this document.
+[Normal] It is to be noted that reference to a customer includes a potential customer.
+[Normal] Fintern also facilitates embedded lending for our Render clients. Where an embedded lending customer makes a complaint aligned to the loan aspect of their product, it falls within the definition above and will be handled by Fintern. More information can be found in section 11.
+[Heading2] Non-Reportable Complaints
+[Normal] A client with a non-reportable complaint does NOT have the right to refer their complaint to the Financial Ombudsman Service.
+[ListParagraph] Complaints made by non-eligible complainants are classed as non-reportable. For example, should we receive a complaint from the customer’s bank account provider relating to our use of Open Banking; and
+[ListParagraph] Any complaint that does not involve an allegation that the complainant has suffered, or may suffer, financial loss, material distress or material inconvenience is non-reportable as it does not fall into the definition of a complaint.
+[Normal] Fintern aims to treat all complainants fairly and reasonably. Non-reportable complaints shall be dealt with in the same manner as reportable complaints, except for the fact that we are unable to refer the clients to the Financial Ombudsman Service.
+[Normal] Under section 101 of the PSR, we are required to provide details of one or more providers of dispute resolution services who are able to deal with disputes concerning the rights and obligations set out by the Regulations in respect of AISP activities.
+[Heading1] Means of making a complaint
+[Heading2] How to make complaint
+[Normal] Customers can make complaint by:
+[ListParagraph] Telephone: 020 3443 8881 or 012 7144 4027 for Collections-related complaints
+[ListParagraph] Email: complaints@getabound.com or contact@getabound.com
+[ListParagraph] Through the contact us section on the website
+[ListParagraph] Live Chat
+[ListParagraph] Responding to SMS
+[ListParagraph] Where a complaint is made via one of our Render clients, the relevant elements of the complaint (e.g. anything relating to the loan) will be forwarded to us as per the DISP complaint forwarding rules
+[Heading2] Confidentiality
+[Normal] All complaints received will be dealt with confidentially and in accordance with the requirements of the Data Protection Act 2018 and the General Data Protection Regulation, subject to the need to disclose information as required by statutory authorities, and/or as a result of statutory, legal or parliamentary obligations placed on the Commission.
+[Heading2] Complaint handling standard
+[Normal] The complaints procedure is intended to ensure that all complaints are handled fairly, consistently and wherever possible resolved to the complainant's satisfaction.
+[Normal] Fintern will not treat our customers less favourably than anyone else because of their:
+[ListParagraph] Disability
+[ListParagraph] Mental health issue
+[ListParagraph] Colour or race: this includes ethnic or national origin or nationality
+[ListParagraph] Any other unjustifiable factors, for example language difficulties, age
+[Normal] We will, in accordance with Principle 6 (customers' interests) and to the extent that it applies, consider whether we ought to act with regard to the position of customers who may have suffered detriment from, or been potentially disadvantaged by, such problems but who have not complained and, if so, take appropriate and proportionate measures to ensure that those customers are given appropriate redress or a proper opportunity to obtain it. In particular, we will:
+[ListParagraph] ascertain the scope and severity of the consumer detriment that might have arisen; and
+[ListParagraph] consider whether it is fair and reasonable for us to undertake proactively a redress or remediation exercise, which may include contacting customers who have not complained.
+[Heading1] Time barred complaint
+[Normal] If the complaint is time barred Fintern will notify the complainant in writing. Fintern may reject the event that is:
+[ListParagraph] the subject of the complaint occurred more than six years after the events complained about or
+[ListParagraph] (if later) more than three years from the date the complainant became aware (or ought reasonably to have become aware) that he/she had cause for complaint.
+[Normal] However, where there are exceptional circumstances surrounding the customer’s delay (e.g. the customer having been incapacitated for a period of time), we will consider dealing with such complaints.
+[Heading1] Complaints awareness
+[Normal] Fintern makes consumers aware of its internal complaint handling procedure by publishing guidance:
+[ListParagraph] Within the Loan Agreement (the terms and conditions)
+[ListParagraph] Within the Pre-Contract Credit Information (PCCI) document
+[ListParagraph] On www.getabound.com on the designated complaints page within the ‘help’ section and within the FAQs
+[Normal] Please see Annex 1 for a copy of the Fintern’s complaints procedure to share with consumers.
+[Heading1] Complaints acknowledgement
+[Normal] Fintern endeavours to send complainants a written acknowledgement of complaints within 5 business days of the receipt of the complaint. The acknowledgement shall include:
+[ListParagraph] Acknowledgment that the complaint has been received
+[ListParagraph] A reminder of the timescales for complaint resolution under DISP
+[Heading1] Complaints investigation
+[Normal] Fintern will ensure that new customer-facing staff members receive training regarding its internal complaint handling procedure during their induction training. Upon receiving the complaints, each complaint will be logged into our Complaints Log by the assigned case handler with the following information:
+[ListParagraph] Customer Details
+[ListParagraph] Date/ the complaint was received
+[ListParagraph] Issue Categories
+[ListParagraph] Issue Descriptions
+[ListParagraph] Acknowledgement Date
+[ListParagraph] Case Handler
+[ListParagraph] Assigned Date
+[ListParagraph] Any correspondence relating to the complaint, including details of any redress offered by the firm
+[ListParagraph] Action Taken
+[ListParagraph] Associated costs e.g. GOGW
+[ListParagraph] Issue Close Date
+[ListParagraph] Time spent to close the issue
+[ListParagraph] FOS referral
+[Normal] We aim to resolve complaints and send a response within three working days of receiving each complaint. If for any reason the complaint takes longer than three working days to resolve, we will keep our customers informed of our investigation progress by the end of the fourth working day following receipt.
+[Normal] We aim to complete our investigation into all complaints received about our service and provide a final written response within eight weeks. However, in a limited number of cases – for example, if a complaint is very complex or requires further breakdown – it may be necessary to extend the time limit to ensure we have all the information needed to deal with it. If this is the case, we will keep the customer informed of progress with the investigation, the reasons for the delay, and inform the customer about their right to refer the complaint to the Financial Ombudsman Service by the eight weeks since our receipt of the same.
+[Heading1] Complaints resolution
+[Heading2] Final Response
+[Normal] Once the investigation is concluded, Fintern will endeavour to issue a final written response to the complaint within 8 weeks from the receipt of the complaint.
+[Normal] Fintern’s final response will set out:
+[ListParagraph] Details of the complaint
+[ListParagraph] Details of the resolution to the complaint.  Resolution may consist of:
+[ListParagraph] Uphold the complaint and, where appropriate, offer redress or remedial action;
+[ListParagraph] Offer redress or remedial action without upholding the complaint; or
+[ListParagraph] Reject the complaint and give reasons for doing so.
+[ListParagraph] In the unlikely event the complaint has not been resolved, what will happen next and the time scales
+[ListParagraph] For an eligible complaint,  explanation of the complainant’s right to refer the complaint to the Financial Ombudsman Service should they subsequently be dissatisfied with the resolution and sets out the contact details of the Financial Ombudsman Service including its website
+[Normal] Customers will be informed that they should wait until a Final Response is issued by Fintern before contacting the Financial Ombudsman Service. If Fintern is not in a position to issue a final response within eight weeks, the complainant will be provided with a written response explaining why we are not in a position to issue a final response and set out the date by which we expect to be able to issue one. At this point, complainants have the right to refer their complaint to the Financial Ombudsman Service should they choose to not wait beyond the eight-week timescale for the Firm to issue a final response.
+[Normal] If the complaint is resolved by COB on the third working day, we will send a Summary Resolution Communication (SRC) as opposed to the Final Resolution Letter (FRL) required if the complaint is resolved after that date. At Fintern, we believe that it is important for customers to receive a full breakdown of the complaint outcome and the reasoning behind the decision. SRC’s are intended to summarise the complaint in a shorter manner than a final response and are therefore not as complex.
+[Heading2] Definition of a Closed Complaint
+[Normal] A closed complaint is a complaint:
+[ListParagraph] Where the firm has sent a final response; or
+[ListParagraph] Where the complainant has indicated in writing acceptance of the firm’s earlier response.
+[Heading1] Governance
+[Heading2] Approval
+[Normal] Fintern’s operations team will take the lead on responding to and investigating complaints and ensure all complaints are dealt with promptly and impartially (that is, in a fair and unbiased way). Each complaint resolution is subject to a ‘four eyes’ approach being written by a member of the Business Operations Team before being reviewed by the Business Operations Lead or Head of Credit of Operation before resolution is communicated.
+[Heading2] Designated Complaints Handler
+[Normal] Complaints are handled by the business operations team. An officer from the team will be appointed to handle the complaint from start to finish. They will take ownership of the assigned case and be the point of contact.
+[Normal] Cases where the original decision maker is the subject of the complaint, an independent case handler will be assigned to provide an impartial and unbiased supports to the complainants.
+[Normal] When handling complaints, the Business Operations team will take reasonable steps to ensure that they identify and remedies any recurring or systemic problems within the regulatory timescales, by:
+[ListParagraph] Carefully logging and categorising complaints;
+[ListParagraph] Analysing the causes of individual complaints so as to identify root causes common to types of complaint;
+[ListParagraph] Identifying the frequency and trend of such complaint;
+[ListParagraph] Considering whether such root causes may also affect other processes or products, including those not directly complained of; and
+[ListParagraph] Correcting, where reasonable to do so, such root causes;
+[ListParagraph] Maintaining accurate records.
+[Normal] The designated officer is also responsible for liaison with the FOS should the case be referred to the FOS.
+[Heading2] Root Cause and Trend Analysis
+[Normal] There is a Root Cause &amp; Trends Analysis report in JIRA that can be viewed anytime by the Senior Management Team. This report updates immediately and can be reviewed using a specific link.The role of the RCA report is to give senior management visibility to (1) the common nature/subject matter of complaints received in the monthly period, (2) the common causes of the said complaints, (3) the outcome of the relevant complaints, (4) lessons learned or to be learned from the complaints and the outcomes, (5) corrective action taken or recommended to be taken to minimise recurrence and, for example, our compensation strategy to compensate customers that may be affected in the same manner as relevant complainants but who have not complained (e.g. the potential commissioning of a past business review).
+[Normal] In preparing the RCA report, the complaints log data will be the primary source of data.  It may also be helpful to have regard to other data when compiling the report or performing analysis as to the root causes.  Where necessary this data will be supplemented with data from file reviews, customer communications history including chat logs, call recordings, correspondence and interviews with staff handling complaints.  Where relevant in determining root causes, it may also be helpful to have regard to complaints data reported by other lenders or the Financial Ombudsman Service, industry-level analysis undertaken and published by regulators, money advice charities or others, and media reporting on complaints.
+[Heading2] Financial Ombudsman Service Past Decisions
+[Normal] Fintern’s operations team will track and record complaints that are referred to and addressed by the FOS, and report to the Chief Operations Officer on a weekly basis. The report will include past FOS decisions (inclusive of FOS past decisions relating to the Fintern’s complaints and FOS past decisions relating to similar products and services to those offered by Fintern) in order for the committee to assess and address the potential risks.
+[Heading2] Second Line Assurance
+[Normal] Fintern’s Chief Compliance Officer (CCO) oversees firm's compliance with DISP 1 and handle the second line Compliance assurance testing of the complaints handling policy and procedure, they may also co-operate with other functions within Fintern such as the Risk team and Product team. The testing will be carried out on a bi-monthly basis to address the recurring or systemic problems and effectiveness of the complaint handling process. The assurance testing will consist of reviewing Fintern’s Complaints Log for the period and sample customer complaints files to check adherence to the policies and procedures set out in this document and the suitability of the outcomes achieved for the complainants.
+[Heading2] Review
+[Normal] Fintern’s complaint handling policy and procedure will be reviewed by the Chief Compliance Officer on an annual basis and kept up to date and in compliance with the latest changes in legislation/ regulation. Any deficiencies in the policy and procedure will be discussed and action plan will be drawn up to address such deficiencies in the operating committee meetings. The review process will consist of the Chief Compliance Officer reviewing our policies and procedures, as documented herein, against relevant rules and guidance updates and publications from the FCA to identify any gaps against best practice and make changes to the same.
+[Heading1] Embedded Lending
+[Normal] The below sets out our process for dealing with complaints aligned to our embedded lending activities (e.g. Gaia).
+[ListParagraph] Complaints may be received by either the third party or by Fintern.  A complaint may relate to the loan, to the product offered by the third party, to the service provided or a mix of these.
+[ListParagraph] Each party will designate a person or an inbox as the contact person for complaints
+[ListParagraph] The party receiving the complaint should share the complaint with the other party's contact promptly, unless the complaint relates exclusively to the business of the party that receives the complaint.  Each party will assign their own complaint number to the case and share number.
+[ListParagraph] The two contact people should quickly agree which parts of a complaint should be address by which party. As a general rule, Fintern will address that part of complaints relating to lending, and the third party will address the part relating to the additional product provided (e.g. insurance/the service provided by the clinic for Gaia, or the auction sale by Spey).
+[ListParagraph] In practice, complaint issue may be bundled together and a clean split may not be possible.  A common sense allocation will need to be made depending on the preponderance of matters raising in a complaint.
+[ListParagraph] Each party will work to address the part of the complaint and respond individually to the customer, quoting both party's complaint number, and sharing draft complaint responses as needed and explaining to the customer which part of the complaint that they are addressing. It should be clear to the customer which entity is responding to which part of the complaint.
+[ListParagraph] Complaints may entail the customer providing sensitive information (i.e. special category data in terms of the GDPR).  Each party will work to ensure that such data is held securely and in line with GDPR requirement for such data.
+[Heading1] Record Keeping
+[Heading2] Record Storage
+[Normal] All eligible complaints, the investigation and resolution will be tracked and recorded in our within Jira. The record of will be retained in the English language.
+[Normal] Every six months, we will publish data on customer complaints we have received for the previous half year;  this data will be published on our website to provide transparency to our customers and the same data will be provided to the FCA and may published by them on the FCA website if the number of complaints exceeds the threshold for publication. This data can be used as an indicator of how well we are serving our customers, for comparison purposes and also demonstrates the improvements we're making to reduce the number of complaints we receive.
+[Heading2] Record Retention
+[Normal] Fintern retains complaints records for minimum period of six years from the date a complaint was received, in order to appropriately investigate and defend claims that are made during the limitation period. That is six years after a cause of action or (if later) three years after the date on which a complainant/customer/former customer became aware (or ought reasonably to have become aware) that they had cause for a claim which determines whether a customer/former customer can lodge a legal claim against Fintern relating to a breach of contract or pursue a legal claim for negligence within the period set out in the Limitation Act 1980.
+[Normal] However, Fintern will also take into account of the storage limitation principle under the GDPR which stipulates that personal data (i.e. records containing information capable of identifying an individual) be kept for no longer than is necessary for the purposes for which the personal data are processed. That is when the complaints are closed with satisfaction and the customers no longer have relationships with Fintern.
+[Heading1] Policy Owner
+[Normal] This Policy is owned and managed by the Chief Operating Officer
+[Heading1] Review and version history log
+[Normal] The complaint handling policy and procedure will be reviewed on an annual basis. The most up-to-date policy will be stored in Fintern internal “access controlled” shared-drive, alongside the previous versions and important reference documents as well as a review log listing the following information:
+[TableRow] Version | Date | Author | Reviewed by | Approved by | Approved Date | Comments
+[TableRow] 1.1 | 12/05/2020 | Ni Li (CPO) | Jourdain Tambo (TCC) |  | 30/05/2020 | First Draft
+[TableRow] 1.2 | 02/06/2020 | Ni Li (CPO) | Alan Cathcart (CCO) |  | 05/06/2020 | First Review
+[TableRow] 1.3 | 08/06/2020 | Ni Li (CPO) | Alan Cathcart (CCO) |  | 10/06/2020 | Second Review
+[TableRow] 1.4 | 11/06/2020 | Alan Cathcart (CCO) | Jourdain Tambo (TTC) | Operating Committee | 12/06/2020 | New Policy
+[TableRow] 1.0 | 16/11/2020 | Alan Cathcart (CCO) | Operating Committee | Operating Committee | 16/11/2020 | Final
+[TableRow] 2.0 | 11/7/2022 | Alan Cathcart (CCO) | Jacob Parker | Operating Committee | 26/7/2022 | Final
+[TableRow] 3.0 | 05/04/2023 | Claire Belsham (Compliance Officer) | Alan Cathcart (CCO) | Gerald Chappell (CEO) | 21/7/2023 | Addition of Consumer Duty. Introductory information on AISP requirements. Addition of a Policy owner. Updates to appendix 1
+[TableRow] 4.0 | 09/09/2024 | Claire Belsham (Compliance Officer) Jacob Parker (Head of Credit Operations) | Alan Cathcart (CCO) | Gerald Chappell (CEO) | 01/11/2024 | Annual review + addition of embedded lending requirements
+[Heading1] ANNEX 1 – COMPLAINTS PROCEDURE TO SHARE WITH CONSUMERS
+[Normal] We view complaints as a valuable source of customer feedback and an opportunity to identify how we can improve our service. We treat them seriously and investigate all complaints thoroughly and ensure they are fully addressed. We endeavour to provide you with an excellent customer service. However, we acknowledge that, at times, we may fail to meet your expectations. Should you be dissatisfied with our service, you can raise a complaint here. The quickest way to get in touch is by using our online form.Alternatively, you can use any of the methods below:
+[Normal] Telephone:
+[Normal] 020 3443 8881
+[Normal] Email:
+[Normal] complaints@getabound.com
+[Normal] By post:
+[Normal] Abound, Fintern Ltd, 3rd Floor, 86-90 Paul Street, London, EC2A 4NE
+[Normal] What do I do if I'm not satisfied?
+[Normal] ‍We will acknowledge that you have made a complaint promptly after receiving it.We try to resolve complaints as soon as possible. We aim to resolve most complaints by the third business day following the day on which we receive your complaint. If you are not happy with our response, you can escalate the complaint and the resolution to a senior member of staff via the same channels as above stating the case reference number.Should we resolve your complaint by the close of the third business day, we will issue you with a full written response acknowledging that you made a complaint and setting out that the complaint has been resolved and what our final response is, and making you aware of your right to refer the complaint to the Financial Ombudsman Service should you be dissatisfied with the resolution.If we are not able to resolve your complaint by the third business day, we will let you know promptly. Thereafter, we will investigate your complaint to reach a fair resolution. Please note that investigating your complaint may require us to contact you to obtain further information about it.If we need to take longer than three days to resolve your complaint, we will endeavour to issue you with a written final response within eight weeks.
+[Normal] What options do I have?
+[Normal] If you are not satisfied with our final response, you have the right to refer your complaint to the Financial Ombudsman Service ('FOS'). The FOS is an independent body established to settle disputes between UK-based financial companies and consumers free of charge. You can refer your complaint to the FOS on any of the below contact details:
+[Normal] Telephone:
+[Normal] Email:
+[Normal] complaint.info@financial-ombudsman.org.uk
+[Normal] https://www.financial -ombudsman.org.uk/contact-us/complain-online
+[Normal] Post:
+[Normal] Complain Online:
+[Normal] 0300 123 9 123 / 0800 023 4567
+[Normal] Exchange Tower, Harbour Exchange Square, London, E14 9SR
+[Normal] For the Financial Ombudsman to consider the complaint, it must be referred to them within 6 months of receiving our summary resolution communication or our final response. Information regarding the service can be found on the Financial Ombudsman website: https://www.financial-ombudsman.org.uk/publications/ordering-leaflet/leaflet

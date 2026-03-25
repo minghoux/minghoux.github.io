@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abound — Logo & Wordmark Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ─────────────────────────────────────────────
+       DESIGN TOKENS (Abound DS)
+    ───────────────────────────────────────────── */
+    :root {
+      --forest-green:            #0E4533;
+      --charcoal:                #201F1D;
+      --white:                   #FFFFFF;
+      --off-white:               #F4F8F3;
+      --pale-yellow-green:       #F7F7E9;
+      --teal-sage:               #B8DCD2;
+      --khaki:                   #EDEABE;
+      --lime:                    #D4F19B;
+
+      --text-primary:            #201F1D;
+      --text-secondary:          #3F4F3F;
+      --text-tertiary:           #586858;
+      --text-placeholder:        #829080;
+      --text-inverse:            #FFFFFF;
+      --text-brand:              #0E4533;
+
+      --bg-primary:              #FFFFFF;
+      --bg-secondary:            #F4F8F3;
+      --bg-brand:                #0E4533;
+
+      --border-secondary:        #D3DCCF;
+      --border-primary:          #B4C2B0;
+
+      --interactive-primary-hover: #0A3325;
+
+      --success:                 #0A5C3A;
+      --success-bg:              #EBF5EF;
+      --danger:                  #C4320A;
+      --danger-bg:               #FEF3F2;
+
+      --shadow-xs:  0 1px 2px rgba(32,31,29,0.06);
+      --shadow-sm:  0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06);
+      --shadow-md:  0 4px 8px -2px rgba(32,31,29,0.10), 0 2px 4px -2px rgba(32,31,29,0.06);
+      --shadow-lg:  0 12px 16px -4px rgba(32,31,29,0.09), 0 4px 6px -2px rgba(32,31,29,0.04);
+
+      --radius-sm:   6px;
+      --radius-md:   8px;
+      --radius-lg:   12px;
+      --radius-xl:   16px;
+      --radius-2xl:  24px;
+      --radius-full: 9999px;
+
+      --space-1:  4px;
+      --space-2:  8px;
+      --space-3:  12px;
+      --space-4:  16px;
+      --space-5:  20px;
+      --space-6:  24px;
+      --space-8:  32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+      --space-20: 80px;
+
+      --ease-hover: 150ms ease-out;
+      --ease-enter: 200ms ease-out;
+
+      --nav-width:     220px;
+      --header-height: 56px;
+    }
+
+    /* ─────────────────────────────────────────────
+       BASE
+    ───────────────────────────────────────────── */
+    html  { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body  {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* ─────────────────────────────────────────────
+       TOP BAR
+    ───────────────────────────────────────────── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-height);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-secondary);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-6);
+      gap: var(--space-4);
+    }
+    .topbar__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      color: var(--forest-green);
+    }
+    /* Inline SVG in topbar — constrain height */
+    .topbar__logo svg.mark-svg  { height: 22px; width: auto; }
+    .topbar__divider { width: 1px; height: 20px; background: var(--border-secondary); }
+    .topbar__title   { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+    .topbar__pill    {
+      margin-left: auto;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-brand);
+      background: var(--off-white);
+      border: 1px solid var(--border-secondary);
+      padding: 3px var(--space-3);
+      border-radius: var(--radius-full);
+    }
+
+    /* ─────────────────────────────────────────────
+       LAYOUT
+    ───────────────────────────────────────────── */
+    .layout {
+      display: flex;
+      padding-top: var(--header-height);
+      min-height: 100vh;
+    }
+
+    /* ─────────────────────────────────────────────
+       SIDE NAV
+    ───────────────────────────────────────────── */
+    .sidenav {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      width: var(--nav-width);
+      height: calc(100vh - var(--header-height));
+      overflow-y: auto;
+      background: var(--bg-primary);
+      border-right: 1px solid var(--border-secondary);
+      padding: var(--space-8) var(--space-4);
+      z-index: 100;
+    }
+    .sidenav__label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-placeholder);
+      padding: 0 var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+    .sidenav__list { list-style: none; }
+    .sidenav__item a {
+      display: flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 400;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: background var(--ease-hover), color var(--ease-hover);
+    }
+    .sidenav__item a:hover { background: var(--off-white); color: var(--text-primary); }
+    .sidenav__item a.active { background: var(--off-white); color: var(--text-brand); font-weight: 500; }
+    .sidenav__num {
+      font-size: 10px; font-variant-numeric: tabular-nums;
+      color: var(--text-placeholder); width: 18px; flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       MAIN CONTENT
+    ───────────────────────────────────────────── */
+    .content { margin-left: var(--nav-width); flex: 1; min-width: 0; }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    .hero {
+      background: var(--bg-brand);
+      color: var(--text-inverse);
+      padding: var(--space-20) var(--space-16) var(--space-16);
+    }
+    .hero__eyebrow {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--lime); margin-bottom: var(--space-5);
+    }
+    .hero__title {
+      font-size: 44px; font-weight: 300;
+      letter-spacing: -0.025em; line-height: 1.1;
+      margin-bottom: var(--space-4);
+    }
+    .hero__title strong { font-weight: 600; }
+    .hero__desc {
+      font-size: 15px; color: rgba(255,255,255,0.6);
+      max-width: 480px; line-height: 1.65;
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTIONS
+    ───────────────────────────────────────────── */
+    .sections-wrap { max-width: 1100px; padding: var(--space-16) var(--space-16) var(--space-20); }
+    .section { margin-bottom: var(--space-20); }
+    .section__head {
+      display: flex; align-items: baseline; gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-5);
+      border-bottom: 1px solid var(--border-secondary);
+    }
+    .section__num {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-placeholder); flex-shrink: 0;
+    }
+    .section__title { font-size: 20px; font-weight: 400; letter-spacing: -0.01em; }
+
+    /* ─────────────────────────────────────────────
+       PALETTE
+    ───────────────────────────────────────────── */
+    .palette-row { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: flex-start; }
+    .swatch-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+    .swatch { width: 60px; height: 60px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+    .swatch-meta { text-align: center; }
+    .swatch-name { display: block; font-size: 12px; font-weight: 500; color: var(--text-primary); line-height: 1.3; }
+    .swatch-hex  { display: block; font-size: 11px; color: var(--text-placeholder); font-variant-numeric: tabular-nums; }
+    .palette-divider { width: 1px; height: 60px; background: var(--border-secondary); margin: 0 var(--space-1); align-self: center; }
+
+    /* ─────────────────────────────────────────────
+       GRIDS
+    ───────────────────────────────────────────── */
+    .logo-grid     { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--space-3); }
+    .wordmark-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-3); }
+    .lockup-grid   { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3); }
+
+    /* ─────────────────────────────────────────────
+       LOGO CARDS
+    ───────────────────────────────────────────── */
+    .logo-card {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--ease-hover), transform var(--ease-hover);
+    }
+    .logo-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+    /* ── Canvas types ── */
+    .canvas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .canvas--icon     { aspect-ratio: 1 / 1; padding: var(--space-8); }
+    .canvas--wordmark { aspect-ratio: 16 / 6; padding: var(--space-5) var(--space-8); }
+    .canvas--lockup   { aspect-ratio: 16 / 6; padding: var(--space-5) var(--space-8); gap: var(--space-5); }
+
+    /* ── SVG sizing inside canvas ── */
+    .canvas--icon svg.mark-svg {
+      width: 58%;
+      height: 58%;
+    }
+    .canvas--wordmark svg.wm-svg {
+      width: 76%;
+      height: auto;
+    }
+    /* Lockup: icon and wordmark side-by-side, aligned to cap-height */
+    .canvas--lockup svg.mark-svg {
+      height: 48px;
+      width: auto;
+      flex-shrink: 0;
+    }
+    .canvas--lockup svg.wm-svg {
+      height: 30px;
+      width: auto;
+      align-self: center;
+    }
+
+    /* ── Color variants: CSS-driven, no blend modes needed ── */
+    .c-green svg { color: var(--forest-green); }
+    .c-white svg { color: var(--white); }
+
+    /* ── All inline SVGs inherit currentColor ── */
+    .mark-svg path, .wm-svg path { fill: currentColor; }
+
+    /* Card meta row */
+    .card-meta {
+      padding: var(--space-3) var(--space-4);
+      background: var(--bg-primary);
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+    }
+    .card-meta__name { font-size: 12px; font-weight: 500; color: var(--text-primary); white-space: nowrap; }
+    .card-meta__hex  { font-size: 11px; color: var(--text-placeholder); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .card-meta__dot  {
+      width: 10px; height: 10px;
+      border-radius: var(--radius-full); flex-shrink: 0;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.10);
+    }
+
+    /* ─────────────────────────────────────────────
+       PRE-BUILT ASSETS
+    ───────────────────────────────────────────── */
+    .prebuilt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--space-4);
+    }
+    .prebuilt-card {
+      border-radius: var(--radius-xl); overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--ease-hover), transform var(--ease-hover);
+    }
+    .prebuilt-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .prebuilt-card__img-wrap {
+      aspect-ratio: 4 / 3;
+      background: var(--bg-secondary);
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--space-6); overflow: hidden;
+    }
+    .prebuilt-card__img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    /* SVG badges inside prebuilt cards */
+    .prebuilt-card__img-wrap > svg { display: block; }
+    .prebuilt-card__meta { padding: var(--space-3) var(--space-4); background: var(--bg-primary); }
+    .prebuilt-card__name { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
+    .prebuilt-card__desc { font-size: 12px; color: var(--text-placeholder); }
+
+    /* ─────────────────────────────────────────────
+       USAGE DO / DON'T
+    ───────────────────────────────────────────── */
+    .usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .usage-card {
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      border: 1px solid var(--border-secondary);
+      background: var(--bg-primary);
+    }
+    .usage-card__icon {
+      width: 30px; height: 30px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; margin-bottom: var(--space-4);
+    }
+    .usage-card--do   .usage-card__icon { background: var(--success-bg); }
+    .usage-card--dont .usage-card__icon { background: var(--danger-bg); }
+    .usage-card__label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+    .usage-card--do   .usage-card__label { color: var(--success); }
+    .usage-card--dont .usage-card__label { color: var(--danger); }
+    .usage-card__list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+    .usage-card__list li {
+      font-size: 13px; color: var(--text-tertiary);
+      display: flex; gap: var(--space-2); align-items: flex-start; line-height: 1.55;
+    }
+    .usage-card--do   .usage-card__list li::before { content:''; width:5px; height:5px; border-radius:var(--radius-full); background:var(--success); flex-shrink:0; margin-top:6px; }
+    .usage-card--dont .usage-card__list li::before { content:''; width:5px; height:5px; border-radius:var(--radius-full); background:var(--danger);  flex-shrink:0; margin-top:6px; }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .sidenav { display: none; }
+      .content { margin-left: 0; }
+      .hero { padding: var(--space-12) var(--space-6) var(--space-10); }
+      .hero__title { font-size: 32px; }
+      .sections-wrap { padding: var(--space-10) var(--space-6) var(--space-16); }
+      .logo-grid, .wordmark-grid, .lockup-grid, .prebuilt-grid { grid-template-columns: 1fr 1fr; }
+      .usage-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     SVG SPRITE — define once, reference anywhere.
+     fill="currentColor" means CSS `color` controls the fill.
+════════════════════════════════════════════════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+
+  <!-- ── Gradient definitions (referenced by pre-built badges) ── -->
+  <defs>
+    <!-- Lime diagonal gradient: light top-left → saturated bottom-right -->
+    <linearGradient id="grad-lime-diag" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#F2FDDB"/>
+      <stop offset="100%" stop-color="#AEDD5A"/>
+    </linearGradient>
+    <!-- Lime radial gradient: bright centre → deeper lime edge -->
+    <radialGradient id="grad-lime-radial" cx="38%" cy="36%" r="70%" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#EFFBD8"/>
+      <stop offset="100%" stop-color="#B4DC65"/>
+    </radialGradient>
+    <!-- Forest-green circle badge fill -->
+    <linearGradient id="grad-green-badge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#155A42"/>
+      <stop offset="100%" stop-color="#0A2E22"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Logo mark -->
+  <symbol id="mark" viewBox="0 0 138 159">
+    <path d="M49.4463 0V55.9609C58.9285 50.5015 69.6296 47.4717 80.7334 47.4717C112.826 47.4719 137.647 72.1222 137.647 103.235H137.637C137.637 134.349 112.816 159 80.7227 159C55.0959 159 34.1067 141.225 28.25 117.174C23.4056 128.083 22.1973 140.409 22.1973 151.928V156.974H0V152.734C0 124.454 9.68894 96.7728 25.627 76.7646V0H49.4463ZM80.7227 69.2891C61.3555 69.2891 48.0314 84.2408 48.0312 103.235C48.0312 122.23 61.3554 137.183 80.7227 137.183C100.09 137.183 113.415 122.23 113.415 103.235C113.415 84.2407 100.09 69.2891 80.7227 69.2891Z" fill="currentColor"/>
+  </symbol>
+  <!-- Wordmark -->
+  <symbol id="wordmark" viewBox="0 0 731 159">
+    <path d="M109.387 49.4981V156.984H85.5674V146.478C77.4899 154.564 65.9935 159 52.8754 159C24.0155 159 0 134.349 0 103.236C0 72.1223 24.0155 47.4715 52.8754 47.4715C65.9935 47.4715 77.5003 51.9177 85.5674 59.9934V49.4878H109.387V49.4981ZM56.9141 69.2995C37.5364 69.2995 24.2221 84.2513 24.2221 103.246C24.2221 122.241 37.5468 137.193 56.9141 137.193C70.4351 137.193 79.9173 130.73 85.5777 122.241V84.2616C79.9276 75.7724 70.4454 69.3098 56.9141 69.3098V69.2995ZM259.14 103.236C259.14 134.349 234.319 159 202.226 159C176.599 159 155.61 141.225 149.753 117.174C144.909 128.083 143.7 140.408 143.7 151.927V156.973H121.503V152.734C121.503 124.454 131.192 96.7732 147.13 76.765V0H170.949V55.9607C180.431 50.5011 191.132 47.4715 202.236 47.4715C234.329 47.4715 259.15 72.1223 259.15 103.236H259.14ZM234.918 103.236C234.918 84.2409 221.593 69.2891 202.226 69.2891C182.858 69.2891 169.534 84.2409 169.534 103.236C169.534 122.231 182.858 137.182 202.226 137.182C221.593 137.182 234.918 122.231 234.918 103.236ZM385.074 103.236C385.074 134.349 360.253 159 328.16 159C296.067 159 271.246 134.349 271.246 103.236C271.246 72.1223 296.067 47.4715 328.16 47.4715C360.253 47.4715 385.074 72.1223 385.074 103.236ZM360.852 103.236C360.852 84.2409 347.527 69.2891 328.16 69.2891C308.793 69.2891 295.468 84.2409 295.468 103.236C295.468 122.231 308.793 137.182 328.16 137.182C347.527 137.182 360.852 122.231 360.852 103.236ZM494.863 49.4981V115.158C494.863 142.032 474.277 159 446.832 159C419.388 159 398.801 142.032 398.801 115.158V49.4981H422.621V112.128C422.621 126.067 431.907 137.182 446.843 137.182C461.779 137.182 471.065 126.067 471.065 112.128V49.4981H494.884H494.863ZM559.049 69.2995C544.113 69.2995 534.021 80.4151 534.021 94.3536V156.984H510.202V91.3239C510.202 64.45 531.594 47.4818 559.039 47.4818C586.484 47.4818 607.875 64.45 607.875 91.3239V156.984H584.056V94.3536C584.056 80.4151 573.965 69.2995 559.029 69.2995H559.049ZM731 0.206802V156.984H707.181V146.478C699.103 154.564 687.607 159 674.489 159C645.629 159 621.613 134.349 621.613 103.236C621.613 72.1223 645.629 47.4715 674.489 47.4715C687.607 47.4715 699.114 51.9177 707.181 59.9934V0.206802H731ZM678.527 69.2995C659.15 69.2995 645.835 84.2513 645.835 103.246C645.835 122.241 659.16 137.193 678.527 137.193C692.048 137.193 701.531 130.73 707.191 122.241V84.2616C701.541 75.7724 692.059 69.3098 678.527 69.3098V69.2995Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<!-- ════════════════════════════════════════════════════
+     TOP BAR
+════════════════════════════════════════════════════ -->
+<header class="topbar">
+  <a class="topbar__logo" href="#">
+    <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound"><use href="#mark"/></svg>
+  </a>
+  <div class="topbar__divider"></div>
+  <span class="topbar__title">Logo &amp; Wordmark Showcase</span>
+  <span class="topbar__pill">Brand Identity</span>
+</header>
+
+<div class="layout">
+
+  <!-- ════════════════════════════════════════════════════
+       SIDE NAV
+  ════════════════════════════════════════════════════ -->
+  <nav class="sidenav" aria-label="Page sections">
+    <p class="sidenav__label">Sections</p>
+    <ul class="sidenav__list">
+      <li class="sidenav__item"><a href="#palette"        ><span class="sidenav__num">01</span>Colour Palette</a></li>
+      <li class="sidenav__item"><a href="#mark-light"     ><span class="sidenav__num">02</span>Mark — Light</a></li>
+      <li class="sidenav__item"><a href="#mark-dark"      ><span class="sidenav__num">03</span>Mark — Dark</a></li>
+      <li class="sidenav__item"><a href="#wordmark-light" ><span class="sidenav__num">04</span>Wordmark — Light</a></li>
+      <li class="sidenav__item"><a href="#wordmark-dark"  ><span class="sidenav__num">05</span>Wordmark — Dark</a></li>
+      <li class="sidenav__item"><a href="#lockup"         ><span class="sidenav__num">06</span>Full Lockup</a></li>
+      <li class="sidenav__item"><a href="#prebuilt"       ><span class="sidenav__num">07</span>Pre-built Assets</a></li>
+      <li class="sidenav__item"><a href="#usage"          ><span class="sidenav__num">08</span>Usage Guidelines</a></li>
+    </ul>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════
+       CONTENT
+  ════════════════════════════════════════════════════ -->
+  <main class="content">
+
+    <!-- HERO -->
+    <div class="hero">
+      <p class="hero__eyebrow">Brand Identity</p>
+      <h1 class="hero__title">Logo &amp; Wordmark<br><strong>Showcase</strong></h1>
+      <p class="hero__desc">Explore how the Abound mark and wordmark perform across every official brand surface — from pale off-whites to deep forest greens.</p>
+    </div>
+
+    <div class="sections-wrap">
+
+      <!-- ══ 01 COLOUR PALETTE ══ -->
+      <section class="section" id="palette">
+        <div class="section__head">
+          <span class="section__num">01</span>
+          <h2 class="section__title">Official Colour Palette</h2>
+        </div>
+        <div class="palette-row">
+          <div class="swatch-item">
+            <div class="swatch" style="background:var(--white); box-shadow:var(--shadow-sm), inset 0 0 0 1px var(--border-secondary);"></div>
+            <div class="swatch-meta"><span class="swatch-name">White</span><span class="swatch-hex">#FFFFFF</span></div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:var(--off-white);"></div>
+            <div class="swatch-meta"><span class="swatch-name">Off-White</span><span class="swatch-hex">#F4F8F3</span></div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:var(--pale-yellow-green);"></div>
+            <div class="swatch-meta"><span class="swatch-name">Pale Yellow</span><span class="swatch-hex">#F7F7E9</span></div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:var(--khaki);"></div>
+            <div class="swatch-meta"><span class="swatch-name">Khaki</span><span class="swatch-hex">#EDEABE</span></div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:var(--lime);"></div>
+            <div class="swatch-meta"><span class="swatch-name">Lime</span><span class="swatch-hex">#D4F19B</span></div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:var(--teal-sage);"></div>
+            <div class="swatch-meta"><span class="swatch-name">Teal Sage</span><span class="swatch-hex">#B8DCD2</span></div>
+          </div>
+          <div class="palette-divider"></div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:var(--forest-green);"></div>
+            <div class="swatch-meta"><span class="swatch-name">Forest Green</span><span class="swatch-hex">#0E4533</span></div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch" style="background:var(--charcoal);"></div>
+            <div class="swatch-meta"><span class="swatch-name">Charcoal</span><span class="swatch-hex">#201F1D</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 02 MARK — GREEN ON LIGHT ══ -->
+      <section class="section" id="mark-light">
+        <div class="section__head">
+          <span class="section__num">02</span>
+          <h2 class="section__title">Logomark — Green on Light Backgrounds</h2>
+        </div>
+        <div class="logo-grid">
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-green" style="background:var(--white);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">White</p><p class="card-meta__hex">#FFFFFF</p></div>
+              <div class="card-meta__dot" style="background:var(--white); box-shadow:inset 0 0 0 1px var(--border-secondary);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-green" style="background:var(--off-white);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Off-White</p><p class="card-meta__hex">#F4F8F3</p></div>
+              <div class="card-meta__dot" style="background:var(--off-white);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-green" style="background:var(--pale-yellow-green);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Pale Yellow</p><p class="card-meta__hex">#F7F7E9</p></div>
+              <div class="card-meta__dot" style="background:var(--pale-yellow-green);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-green" style="background:var(--khaki);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Khaki</p><p class="card-meta__hex">#EDEABE</p></div>
+              <div class="card-meta__dot" style="background:var(--khaki);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-green" style="background:var(--lime);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Lime</p><p class="card-meta__hex">#D4F19B</p></div>
+              <div class="card-meta__dot" style="background:var(--lime);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-green" style="background:var(--teal-sage);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Teal Sage</p><p class="card-meta__hex">#B8DCD2</p></div>
+              <div class="card-meta__dot" style="background:var(--teal-sage);"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 03 MARK — WHITE ON DARK ══ -->
+      <section class="section" id="mark-dark">
+        <div class="section__head">
+          <span class="section__num">03</span>
+          <h2 class="section__title">Logomark — White on Dark Backgrounds</h2>
+        </div>
+        <div class="logo-grid">
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-white" style="background:var(--forest-green);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Forest Green</p><p class="card-meta__hex">#0E4533</p></div>
+              <div class="card-meta__dot" style="background:var(--forest-green);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-white" style="background:var(--charcoal);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Charcoal</p><p class="card-meta__hex">#201F1D</p></div>
+              <div class="card-meta__dot" style="background:var(--charcoal);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-white" style="background:var(--interactive-primary-hover);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Deep Green</p><p class="card-meta__hex">#0A3325</p></div>
+              <div class="card-meta__dot" style="background:var(--interactive-primary-hover);"></div>
+            </div>
+          </div>
+
+          <!-- Lime — green mark works here too -->
+          <div class="logo-card">
+            <div class="canvas canvas--icon c-white" style="background:var(--teal-sage);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark white on teal"><use href="#mark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Teal Sage</p><p class="card-meta__hex">White mark</p></div>
+              <div class="card-meta__dot" style="background:var(--teal-sage);"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 04 WORDMARK — GREEN ON LIGHT ══ -->
+      <section class="section" id="wordmark-light">
+        <div class="section__head">
+          <span class="section__num">04</span>
+          <h2 class="section__title">Wordmark — Green on Light Backgrounds</h2>
+        </div>
+        <div class="wordmark-grid">
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-green" style="background:var(--white);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">White</p><p class="card-meta__hex">#FFFFFF</p></div>
+              <div class="card-meta__dot" style="background:var(--white); box-shadow:inset 0 0 0 1px var(--border-secondary);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-green" style="background:var(--off-white);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Off-White</p><p class="card-meta__hex">#F4F8F3</p></div>
+              <div class="card-meta__dot" style="background:var(--off-white);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-green" style="background:var(--pale-yellow-green);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Pale Yellow</p><p class="card-meta__hex">#F7F7E9</p></div>
+              <div class="card-meta__dot" style="background:var(--pale-yellow-green);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-green" style="background:var(--khaki);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Khaki</p><p class="card-meta__hex">#EDEABE</p></div>
+              <div class="card-meta__dot" style="background:var(--khaki);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-green" style="background:var(--lime);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Lime</p><p class="card-meta__hex">#D4F19B</p></div>
+              <div class="card-meta__dot" style="background:var(--lime);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-green" style="background:var(--teal-sage);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Teal Sage</p><p class="card-meta__hex">#B8DCD2</p></div>
+              <div class="card-meta__dot" style="background:var(--teal-sage);"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 05 WORDMARK — WHITE ON DARK ══ -->
+      <section class="section" id="wordmark-dark">
+        <div class="section__head">
+          <span class="section__num">05</span>
+          <h2 class="section__title">Wordmark — White on Dark Backgrounds</h2>
+        </div>
+        <div class="wordmark-grid">
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-white" style="background:var(--forest-green);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Forest Green</p><p class="card-meta__hex">#0E4533</p></div>
+              <div class="card-meta__dot" style="background:var(--forest-green);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-white" style="background:var(--charcoal);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Charcoal</p><p class="card-meta__hex">#201F1D</p></div>
+              <div class="card-meta__dot" style="background:var(--charcoal);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-white" style="background:var(--interactive-primary-hover);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Deep Green</p><p class="card-meta__hex">#0A3325</p></div>
+              <div class="card-meta__dot" style="background:var(--interactive-primary-hover);"></div>
+            </div>
+          </div>
+
+          <!-- Lime as a bonus — green wordmark also works on lime -->
+          <div class="logo-card">
+            <div class="canvas canvas--wordmark c-green" style="background:var(--lime);">
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark green on lime"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Lime</p><p class="card-meta__hex">Green mark</p></div>
+              <div class="card-meta__dot" style="background:var(--lime);"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 06 FULL LOCKUP ══ -->
+      <section class="section" id="lockup">
+        <div class="section__head">
+          <span class="section__num">06</span>
+          <h2 class="section__title">Full Lockup — Mark + Wordmark</h2>
+        </div>
+        <div class="lockup-grid">
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-green" style="background:var(--white);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">White</p><p class="card-meta__hex">Green lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--white); box-shadow:inset 0 0 0 1px var(--border-secondary);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-green" style="background:var(--off-white);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Off-White</p><p class="card-meta__hex">Green lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--off-white);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-green" style="background:var(--lime);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Lime</p><p class="card-meta__hex">Green lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--lime);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-green" style="background:var(--teal-sage);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Teal Sage</p><p class="card-meta__hex">Green lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--teal-sage);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-white" style="background:var(--forest-green);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Forest Green</p><p class="card-meta__hex">White lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--forest-green);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-white" style="background:var(--charcoal);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Charcoal</p><p class="card-meta__hex">White lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--charcoal);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-green" style="background:var(--khaki);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Khaki</p><p class="card-meta__hex">Green lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--khaki);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-green" style="background:var(--pale-yellow-green);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Pale Yellow</p><p class="card-meta__hex">Green lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--pale-yellow-green);"></div>
+            </div>
+          </div>
+
+          <div class="logo-card">
+            <div class="canvas canvas--lockup c-white" style="background:var(--interactive-primary-hover);">
+              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
+              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+            </div>
+            <div class="card-meta">
+              <div><p class="card-meta__name">Deep Green</p><p class="card-meta__hex">White lockup</p></div>
+              <div class="card-meta__dot" style="background:var(--interactive-primary-hover);"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 07 PRE-BUILT ASSETS ══ -->
+      <section class="section" id="prebuilt">
+        <div class="section__head">
+          <span class="section__num">07</span>
+          <h2 class="section__title">Pre-Built Brand Assets</h2>
+        </div>
+        <div class="prebuilt-grid">
+
+          <!-- ─── Circle badge (SVG) ─── -->
+          <div class="prebuilt-card">
+            <div class="prebuilt-card__img-wrap" style="background:var(--off-white);">
+              <!--
+                Square viewBox (300×300). Circle fills the canvas.
+                Mark centred: scale=1.132 (180px tall), x=68.8, y=60
+                color:white drives fill="currentColor" on the mark path.
+              -->
+              <svg viewBox="0 0 300 300" style="height:78%; width:auto;" aria-label="Abound circle badge">
+                <circle cx="150" cy="150" r="150" fill="url(#grad-green-badge)"/>
+                <!-- subtle inner highlight ring -->
+                <circle cx="150" cy="150" r="149" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+                <g transform="translate(68.8, 60) scale(1.132)" fill="white">
+                  <use href="#mark"/>
+                </g>
+              </svg>
+            </div>
+            <div class="prebuilt-card__meta">
+              <p class="prebuilt-card__name">Circle Badge</p>
+              <p class="prebuilt-card__desc">SVG vector — Avatars, favicons, app icons</p>
+            </div>
+          </div>
+
+          <!-- ─── Rectangle — Lime Gradient (SVG) ─── -->
+          <div class="prebuilt-card">
+            <div class="prebuilt-card__img-wrap" style="padding:0; overflow:hidden;">
+              <!--
+                4:3 viewBox (400×300). Mark centred at ~55% height (165px).
+                Scale=1.038, width≈143, x=128.4, y=67.5
+              -->
+              <svg viewBox="0 0 400 300" width="100%" height="100%"
+                   preserveAspectRatio="xMidYMid meet"
+                   aria-label="Abound rectangle badge lime gradient">
+                <rect width="400" height="300" fill="url(#grad-lime-diag)"/>
+                <!-- subtle grain texture via noise pattern -->
+                <rect width="400" height="300" fill="none" opacity="0.04"
+                      style="filter:url(#noise)" />
+                <g transform="translate(128.4, 67.5) scale(1.038)" fill="#0E4533">
+                  <use href="#mark"/>
+                </g>
+              </svg>
+            </div>
+            <div class="prebuilt-card__meta">
+              <p class="prebuilt-card__name">Rectangle — Lime Gradient</p>
+              <p class="prebuilt-card__desc">SVG vector — Social tiles, thumbnails</p>
+            </div>
+          </div>
+
+          <!-- ─── Rectangle — Lime Flat (SVG) ─── -->
+          <div class="prebuilt-card">
+            <div class="prebuilt-card__img-wrap" style="padding:0; overflow:hidden;">
+              <svg viewBox="0 0 400 300" width="100%" height="100%"
+                   preserveAspectRatio="xMidYMid meet"
+                   aria-label="Abound rectangle badge lime flat">
+                <rect width="400" height="300" fill="#D4F19B"/>
+                <g transform="translate(128.4, 67.5) scale(1.038)" fill="#0E4533">
+                  <use href="#mark"/>
+                </g>
+              </svg>
+            </div>
+            <div class="prebuilt-card__meta">
+              <p class="prebuilt-card__name">Rectangle — Lime Flat</p>
+              <p class="prebuilt-card__desc">SVG vector — Social tiles, thumbnails</p>
+            </div>
+          </div>
+
+          <div class="prebuilt-card">
+            <div class="prebuilt-card__img-wrap" style="padding:0; background:var(--forest-green);">
+              <img src="brand-assest/wordmark-bg.png" alt="Abound wordmark on forest green" style="width:100%; height:100%; object-fit:cover; max-height:none;">
+            </div>
+            <div class="prebuilt-card__meta">
+              <p class="prebuilt-card__name">Wordmark — Forest Green BG</p>
+              <p class="prebuilt-card__desc">wordmark-bg.png — Email headers, banners, covers</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ 08 USAGE GUIDELINES ══ -->
+      <section class="section" id="usage">
+        <div class="section__head">
+          <span class="section__num">08</span>
+          <h2 class="section__title">Usage Guidelines</h2>
+        </div>
+        <div class="usage-grid">
+          <div class="usage-card usage-card--do">
+            <div class="usage-card__icon">✓</div>
+            <p class="usage-card__label">Do</p>
+            <ul class="usage-card__list">
+              <li>Use the green mark on white, off-white, pale yellow, khaki, lime, and teal sage surfaces</li>
+              <li>Use the white mark on forest green, deep green, and charcoal backgrounds</li>
+              <li>Maintain clear space equal to the cap-height of the "b" letterform on all sides</li>
+              <li>Use the circle badge for avatars, profile images, and app icons</li>
+              <li>Use the full lockup (mark + wordmark) as the primary brand placement</li>
+            </ul>
+          </div>
+          <div class="usage-card usage-card--dont">
+            <div class="usage-card__icon">✕</div>
+            <p class="usage-card__label">Don't</p>
+            <ul class="usage-card__list">
+              <li>Place the green mark on dark backgrounds — use the white version instead</li>
+              <li>Place the white mark on light backgrounds — it will be lost</li>
+              <li>Stretch, distort, rotate, or skew the logo or wordmark</li>
+              <li>Use colours outside the official palette as logo backgrounds</li>
+              <li>Apply drop shadows, outlines, glows, or other effects to the mark</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /sections-wrap -->
+  </main>
+</div><!-- /layout -->
+
+<script>
+  // Highlight active section in sidenav as user scrolls
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('.sidenav__item a');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
