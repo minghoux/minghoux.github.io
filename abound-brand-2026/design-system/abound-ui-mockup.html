@@ -7,1022 +7,370 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
-<style>
-/* ─── DESIGN TOKENS ─────────────────────────────────────── */
-:root {
-  /* Brand */
-  --forest-green:      #0E4533;
-  --charcoal:          #201F1D;
-  --white:             #FFFFFF;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                DEFAULT: '#0E4533',
+                subtle: '#EBF2ED',
+              },
+              charcoal: '#201F1D',
+              success: {
+                DEFAULT: '#0A5C3A',
+                bg: '#EBF5EF',
+              },
+              danger: {
+                DEFAULT: '#C4320A',
+                bg: '#FEF3F2',
+              },
+              warning: {
+                DEFAULT: '#B54708',
+                bg: '#FDF6E8',
+              },
+              info: {
+                DEFAULT: '#1A6B73',
+                bg: '#EDF6F5',
+              },
+              lime: '#D4F19B',
+              khaki: '#EDEABE',
+              'off-white': '#F4F8F3',
+              'pale-yellow-green': '#F7F7E9',
+              'teal-sage': '#B8DCD2',
+            },
+            fontFamily: {
+              sans: ['DM Sans', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              'xs': '0 1px 2px rgba(32,31,29,0.06)',
+              'sm': '0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06)',
+              'md': '0 4px 8px -2px rgba(32,31,29,0.10), 0 2px 4px -2px rgba(32,31,29,0.06)',
+              'lg': '0 12px 16px -4px rgba(32,31,29,0.09), 0 4px 6px -2px rgba(32,31,29,0.04)',
+              'xl': '0 20px 24px -4px rgba(32,31,29,0.09), 0 8px 8px -4px rgba(32,31,29,0.04)',
+            },
+            borderRadius: {
+              'md': '8px',
+              'lg': '12px',
+              'xl': '16px',
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          @apply bg-off-white text-charcoal;
+        }
+      }
 
-  /* Backgrounds */
-  --off-white:         #F4F8F3;
-  --pale-yellow-green: #F7F7E9;
-  --teal-sage:         #B8DCD2;
+      .nav-link.active::after {
+        content: "";
+        @apply absolute -bottom-[18px] left-0 right-0 h-[2px] bg-brand;
+      }
 
-  /* Accents */
-  --khaki:             #EDEABE;
-  --lime:              #D4F19B;
-
-  /* Warm Neutrals */
-  --neutral-50:        #F4F7F4;
-  --neutral-100:       #E8EDEA;
-  --neutral-200:       #D3DCCF;
-  --neutral-300:       #B4C2B0;
-  --neutral-400:       #829080;
-  --neutral-500:       #586858;
-  --neutral-600:       #3F4F3F;
-  --neutral-700:       #2C3A2C;
-  --neutral-800:       #1C271C;
-  --neutral-900:       #111A11;
-
-  /* Feedback */
-  --success:           #0A5C3A;
-  --success-bg:        #EBF5EF;
-  --danger:            #C4320A;
-  --danger-bg:         #FEF3F2;
-  --warning:           #B54708;
-  --warning-bg:        #FDF6E8;
-  --info:              #1A6B73;
-  --info-bg:           #EDF6F5;
-
-  /* Semantic Surface */
-  --bg-primary:        #FFFFFF;
-  --bg-secondary:      #F4F8F3;
-  --bg-tertiary:       #F7F7E9;
-  --bg-brand:          #0E4533;
-  --bg-brand-subtle:   #EBF2ED;
-
-  /* Semantic Text */
-  --text-primary:      #201F1D;
-  --text-secondary:    #3F4F3F;
-  --text-tertiary:     #586858;
-  --text-placeholder:  #829080;
-  --text-disabled:     #B4C2B0;
-  --text-inverse:      #FFFFFF;
-  --text-brand:        #0E4533;
-
-  /* Semantic Border */
-  --border-primary:    #B4C2B0;
-  --border-secondary:  #D3DCCF;
-  --border-brand:      #0E4533;
-  --border-error:      #C4320A;
-
-  /* Interactive */
-  --interactive-primary:        #0E4533;
-  --interactive-primary-hover:  #0A3325;
-  --interactive-primary-pressed:#071F17;
-  --interactive-secondary-hover:#F4F8F3;
-  --interactive-disabled:        #E8EDEA;
-
-  /* Shadows — warm charcoal base */
-  --shadow-xs: 0 1px 2px rgba(32,31,29,0.06);
-  --shadow-sm: 0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06);
-  --shadow-md: 0 4px 8px -2px rgba(32,31,29,0.10), 0 2px 4px -2px rgba(32,31,29,0.06);
-  --shadow-lg: 0 12px 16px -4px rgba(32,31,29,0.09), 0 4px 6px -2px rgba(32,31,29,0.04);
-
-  /* Radius */
-  --radius-sm:   6px;
-  --radius-md:   8px;
-  --radius-lg:   12px;
-  --radius-xl:   16px;
-  --radius-2xl:  24px;
-  --radius-full: 9999px;
-
-  /* Spacing */
-  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
-  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
-  --sp-12: 48px;--sp-16: 64px;--sp-20: 80px;
-
-  /* Motion */
-  --ease-hover: 150ms ease-out;
-  --ease-enter: 200ms ease-out;
-}
-
-/* ─── RESET ─────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html {
-  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-primary);
-  background: var(--bg-secondary);
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ─── APP SHELL ─────────────────────────────────────────── */
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ─── HEADER ─────────────────────────────────────────────── */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-secondary);
-  height: 60px;
-  display: flex;
-  align-items: center;
-  padding: 0 var(--sp-8);
-}
-.header-inner {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-}
-.logo-mark {
-  width: 28px;
-  height: 28px;
-  background: var(--forest-green);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: -0.02em;
-}
-.logo-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--forest-green);
-  letter-spacing: -0.02em;
-}
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-}
-.header-link {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  padding: var(--sp-2) var(--sp-3);
-  border-radius: var(--radius-md);
-  transition: all var(--ease-hover);
-}
-.header-link:hover { background: var(--bg-secondary); color: var(--text-brand); }
-.header-btn {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--forest-green);
-  background: var(--bg-brand-subtle);
-  border: none;
-  border-radius: var(--radius-md);
-  padding: var(--sp-2) var(--sp-4);
-  cursor: pointer;
-  transition: all var(--ease-hover);
-}
-.header-btn:hover { background: var(--teal-sage); }
-
-/* ─── MAIN LAYOUT ─────────────────────────────────────────── */
-.main {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: var(--sp-12) var(--sp-8) var(--sp-20);
-  gap: var(--sp-10);
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* ─── FORM COLUMN ─────────────────────────────────────────── */
-.form-col {
-  flex: 1;
-  max-width: 560px;
-}
-
-/* ─── PROGRESS STEPS ─────────────────────────────────────── */
-.progress-wrap {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: var(--sp-10);
-}
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--sp-2);
-  flex: 1;
-  position: relative;
-}
-.step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  width: 100%;
-  height: 2px;
-  background: var(--neutral-200);
-  z-index: 0;
-}
-.step.done:not(:last-child)::after { background: var(--forest-green); }
-.step-circle {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  position: relative;
-  z-index: 1;
-  background: var(--neutral-200);
-  color: var(--text-tertiary);
-  border: 2px solid var(--neutral-200);
-}
-.step.done .step-circle {
-  background: var(--forest-green);
-  border-color: var(--forest-green);
-  color: white;
-}
-.step.active .step-circle {
-  background: white;
-  border-color: var(--forest-green);
-  color: var(--forest-green);
-}
-.step-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-tertiary);
-  white-space: nowrap;
-}
-.step.done .step-label,
-.step.active .step-label { color: var(--text-brand); font-weight: 600; }
-
-/* ─── PAGE HEADER ─────────────────────────────────────────── */
-.page-header { margin-bottom: var(--sp-8); }
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  background: var(--bg-brand-subtle);
-  color: var(--text-brand);
-  font-size: 12px;
-  font-weight: 600;
-  padding: var(--sp-1) var(--sp-3);
-  border-radius: var(--radius-full);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: var(--sp-4);
-}
-.eyebrow-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--lime);
-}
-
-.page-title {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  margin-bottom: var(--sp-3);
-}
-
-.page-body {
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--text-secondary);
-  max-width: 460px;
-}
-
-/* ─── FORM CARD ─────────────────────────────────────────── */
-.form-card {
-  background: var(--white);
-  border: 1px solid var(--border-secondary);
-  border-radius: var(--radius-xl);
-  padding: var(--sp-8);
-  box-shadow: var(--shadow-sm);
-}
-
-/* ─── FORM GROUPS ─────────────────────────────────────────── */
-.form-group {
-  margin-bottom: var(--sp-6);
-}
-.form-group:last-child { margin-bottom: 0; }
-
-.form-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--sp-2);
-}
-.form-label-optional {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--text-tertiary);
-  margin-left: var(--sp-2);
-}
-.form-hint {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  margin-top: var(--sp-2);
-}
-.form-error-msg {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-1);
-  font-size: 13px;
-  color: var(--danger);
-  margin-top: var(--sp-2);
-}
-
-/* Text input */
-.input-wrap { position: relative; }
-.input-prefix {
-  position: absolute;
-  left: var(--sp-4);
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-tertiary);
-  pointer-events: none;
-}
-.form-input {
-  width: 100%;
-  height: 48px;
-  padding: 0 var(--sp-4);
-  border: 1.5px solid var(--border-primary);
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-size: 16px;
-  color: var(--text-primary);
-  background: var(--white);
-  transition: all var(--ease-hover);
-  outline: none;
-}
-.form-input::placeholder { color: var(--text-placeholder); }
-.form-input:focus {
-  border-color: var(--border-brand);
-  border-width: 2px;
-  box-shadow: 0 0 0 4px rgba(14,69,51,0.10);
-}
-.form-input.has-prefix { padding-left: 36px; }
-.form-input.error {
-  border-color: var(--border-error);
-  border-width: 2px;
-  background: var(--danger-bg);
-}
-.form-input.error:focus {
-  box-shadow: 0 0 0 4px rgba(196,50,10,0.10);
-}
-.form-input.success {
-  border-color: var(--success);
-  border-width: 2px;
-}
-.input-suffix {
-  position: absolute;
-  right: var(--sp-4);
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-tertiary);
-  display: flex;
-  align-items: center;
-}
-
-/* Select */
-.form-select {
-  width: 100%;
-  height: 48px;
-  padding: 0 var(--sp-10) 0 var(--sp-4);
-  border: 1.5px solid var(--border-primary);
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-size: 16px;
-  color: var(--text-primary);
-  background: var(--white) url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23586858' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 16px center;
-  appearance: none;
-  cursor: pointer;
-  outline: none;
-  transition: all var(--ease-hover);
-}
-.form-select:focus {
-  border-color: var(--border-brand);
-  border-width: 2px;
-  box-shadow: 0 0 0 4px rgba(14,69,51,0.10);
-}
-
-/* Radio cards */
-.radio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-3);
-}
-.radio-card {
-  position: relative;
-}
-.radio-card input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 0; height: 0;
-}
-.radio-card-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-1);
-  padding: var(--sp-4) var(--sp-3);
-  border: 1.5px solid var(--border-primary);
-  border-radius: var(--radius-lg);
-  cursor: pointer;
-  transition: all var(--ease-hover);
-  background: var(--white);
-  text-align: center;
-}
-.radio-card-label:hover {
-  border-color: var(--forest-green);
-  background: var(--bg-brand-subtle);
-}
-.radio-card input:checked + .radio-card-label {
-  border-color: var(--forest-green);
-  border-width: 2px;
-  background: var(--bg-brand-subtle);
-  box-shadow: 0 0 0 4px rgba(14,69,51,0.08);
-}
-.radio-card input:focus-visible + .radio-card-label {
-  box-shadow: 0 0 0 4px rgba(14,69,51,0.18);
-}
-.radio-card-amount {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-.radio-card-sub {
-  font-size: 12px;
-  color: var(--text-tertiary);
-}
-.radio-card input:checked + .radio-card-label .radio-card-amount {
-  color: var(--text-brand);
-}
-.radio-card input:checked + .radio-card-label .radio-card-sub {
-  color: var(--text-brand);
-}
-
-/* Inline radio (purpose) */
-.radio-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-}
-.radio-item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-3) var(--sp-4);
-  border: 1.5px solid var(--border-secondary);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all var(--ease-hover);
-}
-.radio-item:hover {
-  border-color: var(--border-primary);
-  background: var(--neutral-50);
-}
-.radio-item.selected {
-  border-color: var(--forest-green);
-  border-width: 2px;
-  background: var(--bg-brand-subtle);
-}
-.custom-radio {
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  border: 2px solid var(--border-primary);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--ease-hover);
-}
-.radio-item.selected .custom-radio {
-  border-color: var(--forest-green);
-  border-width: 6px;
-}
-.radio-item-content { flex: 1; }
-.radio-item-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-.radio-item-desc {
-  font-size: 13px;
-  color: var(--text-tertiary);
-}
-
-/* Divider */
-.divider {
-  border: none;
-  border-top: 1px solid var(--border-secondary);
-  margin: var(--sp-6) 0;
-}
-
-/* Buttons */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-2);
-  width: 100%;
-  height: 52px;
-  border-radius: var(--radius-full);
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  background: var(--interactive-primary);
-  color: var(--text-inverse);
-  transition: all var(--ease-hover);
-  letter-spacing: -0.01em;
-}
-.btn-primary:hover { background: var(--interactive-primary-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.btn-primary:active { background: var(--interactive-primary-pressed); transform: translateY(0); }
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-2);
-  width: 100%;
-  height: 44px;
-  border-radius: var(--radius-full);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  background: transparent;
-  color: var(--text-tertiary);
-  transition: all var(--ease-hover);
-  margin-top: var(--sp-3);
-  text-decoration: none;
-}
-.btn-ghost:hover { color: var(--text-primary); background: var(--neutral-100); }
-
-/* ─── SUMMARY SIDEBAR ─────────────────────────────────────── */
-.summary-col {
-  width: 300px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 84px;
-}
-
-.summary-card {
-  background: var(--forest-green);
-  border-radius: var(--radius-xl);
-  padding: var(--sp-6);
-  color: var(--text-inverse);
-  margin-bottom: var(--sp-4);
-}
-.summary-label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: var(--sp-2);
-}
-.summary-amount {
-  font-size: 40px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: var(--sp-6);
-}
-.summary-amount sup {
-  font-size: 20px;
-  vertical-align: super;
-  font-weight: 600;
-}
-.summary-rows { display: flex; flex-direction: column; gap: var(--sp-3); }
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-}
-.summary-row-label { color: rgba(255,255,255,0.6); }
-.summary-row-value { font-weight: 600; }
-.summary-divider {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.15);
-  margin: var(--sp-4) 0;
-}
-.summary-total-label { font-size: 13px; color: rgba(255,255,255,0.6); }
-.summary-total-value {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-/* Trust card */
-.trust-card {
-  background: var(--white);
-  border: 1px solid var(--border-secondary);
-  border-radius: var(--radius-xl);
-  padding: var(--sp-5);
-  box-shadow: var(--shadow-xs);
-}
-.trust-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--sp-3);
-  padding: var(--sp-3) 0;
-  border-bottom: 1px solid var(--border-secondary);
-}
-.trust-item:last-child { border-bottom: none; padding-bottom: 0; }
-.trust-item:first-child { padding-top: 0; }
-.trust-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 16px;
-}
-.trust-icon.green { background: var(--success-bg); }
-.trust-icon.teal  { background: var(--info-bg); }
-.trust-icon.khaki { background: var(--bg-tertiary); }
-.trust-text-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 2px;
-}
-.trust-text-desc {
-  font-size: 12px;
-  color: var(--text-tertiary);
-  line-height: 1.4;
-}
-
-/* ─── LABELS / BADGES ─────────────────────────────────────── */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-}
-.badge-dot { width: 6px; height: 6px; border-radius: 50%; }
-.badge-success { background: var(--success-bg); color: var(--success); }
-.badge-success .badge-dot { background: var(--success); }
-.badge-info    { background: var(--info-bg);    color: var(--info); }
-.badge-info .badge-dot { background: var(--info); }
-.badge-warning { background: var(--warning-bg); color: var(--warning); }
-.badge-warning .badge-dot { background: var(--warning); }
-.badge-neutral { background: var(--neutral-100); color: var(--neutral-600); }
-.badge-neutral .badge-dot { background: var(--neutral-400); }
-.badge-lime    { background: var(--lime); color: var(--forest-green); }
-.badge-lime .badge-dot { background: var(--forest-green); }
-
-/* ─── SVG ICONS (inline) ─────────────────────────────────── */
-.icon { display: inline-block; vertical-align: middle; }
-
-/* ─── FOOTER ─────────────────────────────────────────────── */
-.footer {
-  border-top: 1px solid var(--border-secondary);
-  padding: var(--sp-6) var(--sp-8);
-  background: var(--white);
-}
-.footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.footer-text {
-  font-size: 13px;
-  color: var(--text-tertiary);
-}
-.footer-links {
-  display: flex;
-  gap: var(--sp-6);
-}
-.footer-links a {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  text-decoration: none;
-  transition: color var(--ease-hover);
-}
-.footer-links a:hover { color: var(--text-primary); }
-
-/* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .main { flex-direction: column; align-items: stretch; padding: var(--sp-8) var(--sp-5); }
-  .summary-col { width: 100%; position: static; }
-}
-</style>
+      /* Radio card checked state logic */
+      .radio-card input:checked + label {
+        @apply border-brand border-2 bg-brand-subtle ring-4 ring-brand/5;
+      }
+      .radio-card input:checked + label .radio-amount {
+        @apply text-brand;
+      }
+      .radio-card input:checked + label .radio-sub {
+        @apply text-brand;
+      }
+      
+      /* Inline radio selected state */
+      .radio-item.selected {
+        @apply border-brand border-2 bg-brand-subtle;
+      }
+      .radio-item.selected .custom-radio {
+        @apply border-brand border-[6px];
+      }
+    </style>
 </head>
 <body>
 
 <!-- ═══════════════ HEADER ═══════════════ -->
-<header class="header">
-  <div class="header-inner">
-    <div class="logo">
-      <div class="logo-mark">a</div>
-      <span class="logo-text">abound</span>
-    </div>
-    <nav class="header-actions">
-      <a href="#" class="header-link">How it works</a>
-      <a href="#" class="header-link">FAQs</a>
-      <button class="header-btn">Sign in</button>
-    </nav>
-  </div>
-</header>
-
-<!-- ═══════════════ MAIN ═══════════════ -->
-<main class="main">
-
-  <!-- ── FORM COLUMN ── -->
-  <div class="form-col">
-
-    <!-- Progress steps -->
-    <div class="progress-wrap" role="list" aria-label="Application steps">
-      <div class="step done" role="listitem">
-        <div class="step-circle">
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3 3.5 7-7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <span class="step-label">Eligibility</span>
+<div class="min-h-screen flex flex-col font-sans">
+  
+  <header class="sticky top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-xl border-b border-neutral-200 h-16 flex items-center px-8">
+    <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-10">
+        <a href="abound-design-system.html" class="flex items-center gap-2 text-2xl font-bold text-brand tracking-tighter no-underline">
+          <span>abound</span>
+        </a>
+        <nav class="hidden md:flex gap-8">
+          <a href="abound-design-system.html" class="nav-link text-sm font-medium text-neutral-500 hover:text-brand transition-colors relative py-1">Design System</a>
+          <a href="abound-ui-mockup.html" class="nav-link text-sm font-bold text-brand transition-colors relative py-1 after:content-[''] after:absolute after:-bottom-[20px] after:left-0 after:right-0 after:h-[2px] after:bg-brand">Live Mockup</a>
+          <a href="logo-showcase.html" class="nav-link text-sm font-medium text-neutral-500 hover:text-brand transition-colors relative py-1">Logo Showcase</a>
+        </nav>
       </div>
-      <div class="step active" role="listitem">
-        <div class="step-circle">2</div>
-        <span class="step-label">Your loan</span>
-      </div>
-      <div class="step" role="listitem">
-        <div class="step-circle">3</div>
-        <span class="step-label">About you</span>
-      </div>
-      <div class="step" role="listitem">
-        <div class="step-circle">4</div>
-        <span class="step-label">Review</span>
+
+      <div class="flex items-center">
+        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-lime text-brand">v2.0.26 <span class="w-1.5 h-1.5 rounded-full bg-current"></span></span>
       </div>
     </div>
+  </header>
 
-    <!-- Page header -->
-    <div class="page-header">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>Step 2 of 4</div>
-      <h1 class="page-title">Design your loan</h1>
-      <p class="page-body">Tell us how much you'd like to borrow and what it's for. We'll show you a personalised rate based on your full picture — not just your credit score.</p>
-    </div>
+  <main class="flex-1 flex flex-col lg:flex-row items-start justify-center pt-12 pb-20 px-5 md:px-8 gap-10 max-w-[1100px] mx-auto w-full">
 
-    <!-- Form card -->
-    <div class="form-card">
 
-      <!-- Loan amount -->
-      <div class="form-group">
-        <label class="form-label" for="loan-amount">
-          How much would you like to borrow?
-        </label>
-        <div class="input-wrap">
-          <span class="input-prefix">£</span>
-          <input
-            id="loan-amount"
-            class="form-input has-prefix"
-            type="text"
-            value="5,000"
-            aria-describedby="loan-amount-hint"
-          >
-          <span class="input-suffix">
-            <span class="badge badge-success"><span class="badge-dot"></span>Eligible</span>
-          </span>
+    <!-- ── FORM COLUMN ── -->
+    <div class="flex-1 max-w-[560px] w-full">
+
+      <!-- Progress steps -->
+      <div class="flex items-center mb-10" role="list" aria-label="Application steps">
+        <div class="flex flex-col items-center gap-2 flex-1 relative after:content-[''] after:absolute after:top-[14px] after:left-[50%] after:w-full after:h-[2px] after:bg-brand after:z-0" role="listitem">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold relative z-[1] bg-brand text-white border-2 border-brand">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3 3.5 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="text-[11px] font-bold text-brand uppercase tracking-tighter">Eligibility</span>
         </div>
-        <p id="loan-amount-hint" class="form-hint">You can borrow between £1,000 and £25,000.</p>
-      </div>
-
-      <!-- Loan term — radio cards -->
-      <div class="form-group">
-        <label class="form-label">Repayment term</label>
-        <div class="radio-grid" role="radiogroup" aria-label="Repayment term">
-          <div class="radio-card">
-            <input type="radio" name="term" id="term-12" value="12">
-            <label class="radio-card-label" for="term-12">
-              <span class="radio-card-amount">12</span>
-              <span class="radio-card-sub">months</span>
-            </label>
-          </div>
-          <div class="radio-card">
-            <input type="radio" name="term" id="term-24" value="24" checked>
-            <label class="radio-card-label" for="term-24">
-              <span class="radio-card-amount">24</span>
-              <span class="radio-card-sub">months</span>
-            </label>
-          </div>
-          <div class="radio-card">
-            <input type="radio" name="term" id="term-36" value="36">
-            <label class="radio-card-label" for="term-36">
-              <span class="radio-card-amount">36</span>
-              <span class="radio-card-sub">months</span>
-            </label>
-          </div>
+        <div class="flex flex-col items-center gap-2 flex-1 relative after:content-[''] after:absolute after:top-[14px] after:left-[50%] after:w-full after:h-[2px] after:bg-neutral-200 after:z-0" role="listitem">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold relative z-[1] bg-white text-brand border-2 border-brand">2</div>
+          <span class="text-[11px] font-bold text-brand uppercase tracking-tighter">Your loan</span>
         </div>
-        <p class="form-hint">Longer terms mean lower monthly payments, but more interest overall.</p>
+        <div class="flex flex-col items-center gap-2 flex-1 relative after:content-[''] after:absolute after:top-[14px] after:left-[50%] after:w-full after:h-[2px] after:bg-neutral-200 after:z-0" role="listitem">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold relative z-[1] bg-neutral-100 text-neutral-400 border-2 border-neutral-200">3</div>
+          <span class="text-[11px] font-medium text-neutral-400 uppercase tracking-tighter">About you</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 flex-1 relative" role="listitem">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold relative z-[1] bg-neutral-100 text-neutral-400 border-2 border-neutral-200">4</div>
+          <span class="text-[11px] font-medium text-neutral-400 uppercase tracking-tighter">Review</span>
+        </div>
       </div>
 
-      <hr class="divider">
-
-      <!-- Loan purpose — dropdown -->
-      <div class="form-group">
-        <label class="form-label" for="loan-purpose">
-          What's the loan for?
-          <span class="form-label-optional">helps us tailor your offer</span>
-        </label>
-        <select id="loan-purpose" class="form-select" aria-describedby="purpose-hint">
-          <option value="" disabled>Select a purpose</option>
-          <option value="home" selected>Home improvements</option>
-          <option value="car">Car purchase</option>
-          <option value="debt">Debt consolidation</option>
-          <option value="holiday">Holiday</option>
-          <option value="wedding">Wedding</option>
-          <option value="other">Other</option>
-        </select>
-        <p id="purpose-hint" class="form-hint">Your purpose doesn't affect your rate — it helps us understand how we can support you.</p>
+      <!-- Page header -->
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 bg-brand-subtle text-brand text-[12px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+          <div class="w-1.5 h-1.5 rounded-full bg-lime"></div>
+          Step 2 of 4
+        </div>
+        <h1 class="text-[30px] font-bold leading-tight tracking-tight text-charcoal mb-3">Design your loan</h1>
+        <p class="text-base leading-relaxed text-neutral-500 max-w-[460px]">Tell us how much you'd like to borrow and what it's for. We'll show you a personalised rate based on your full picture.</p>
       </div>
 
-      <!-- Additional info — radio list -->
-      <div class="form-group">
-        <label class="form-label">Employment status</label>
-        <div class="radio-list" role="radiogroup" aria-label="Employment status">
-          <div class="radio-item selected" tabindex="0" role="radio" aria-checked="true">
-            <div class="custom-radio"></div>
-            <div class="radio-item-content">
-              <div class="radio-item-title">Employed full-time</div>
-              <div class="radio-item-desc">Permanent contract, 35+ hours per week</div>
+      <!-- Form card -->
+      <div class="bg-white border border-neutral-200 rounded-xl p-8 shadow-sm">
+
+        <!-- Loan amount -->
+        <div class="mb-6">
+          <label class="block text-sm font-bold text-charcoal mb-2" for="loan-amount">
+            How much would you like to borrow?
+          </label>
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-base font-medium text-neutral-400">£</span>
+            <input
+              id="loan-amount"
+              class="w-full h-12 pl-8 pr-4 border-2 border-neutral-200 rounded-lg font-sans text-base text-charcoal bg-white transition-all outline-none focus:border-brand focus:ring-4 focus:ring-brand/10"
+              type="text"
+              value="5,000"
+              aria-describedby="loan-amount-hint"
+            >
+            <span class="absolute right-4 top-1/2 -translate-y-1/2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-bold bg-success-bg text-success"><span class="w-1.5 h-1.5 rounded-full bg-success"></span>Eligible</span>
+            </span>
+          </div>
+          <p id="loan-amount-hint" class="text-[13px] text-neutral-400 mt-2">You can borrow between £1,000 and £25,000.</p>
+        </div>
+
+        <!-- Loan term — radio cards -->
+        <div class="mb-6">
+          <label class="block text-sm font-bold text-charcoal mb-2">Repayment term</label>
+          <div class="grid grid-cols-3 gap-3" role="radiogroup" aria-label="Repayment term">
+            <div class="relative">
+              <input type="radio" name="term" id="term-12" value="12" class="absolute opacity-0 w-0 h-0">
+              <label class="flex flex-col items-center justify-center gap-1 p-4 border-2 border-neutral-200 rounded-xl cursor-pointer transition-all bg-white hover:border-brand hover:bg-brand-subtle" for="term-12">
+                <span class="text-lg font-bold text-charcoal tracking-tight">12</span>
+                <span class="text-[12px] text-neutral-500">months</span>
+              </label>
             </div>
-            <span class="badge badge-success"><span class="badge-dot"></span>Most common</span>
-          </div>
-          <div class="radio-item" tabindex="0" role="radio" aria-checked="false">
-            <div class="custom-radio"></div>
-            <div class="radio-item-content">
-              <div class="radio-item-title">Self-employed</div>
-              <div class="radio-item-desc">Sole trader or limited company director</div>
+            <div class="relative">
+              <input type="radio" name="term" id="term-24" value="24" checked class="absolute opacity-0 w-0 h-0">
+              <label class="flex flex-col items-center justify-center gap-1 p-4 border-2 border-brand rounded-xl cursor-pointer transition-all bg-brand-subtle shadow-sm shadow-brand/10" for="term-24">
+                <span class="text-lg font-bold text-brand tracking-tight">24</span>
+                <span class="text-[12px] text-brand">months</span>
+              </label>
+            </div>
+            <div class="relative">
+              <input type="radio" name="term" id="term-36" value="36" class="absolute opacity-0 w-0 h-0">
+              <label class="flex flex-col items-center justify-center gap-1 p-4 border-2 border-neutral-200 rounded-xl cursor-pointer transition-all bg-white hover:border-brand hover:bg-brand-subtle" for="term-36">
+                <span class="text-lg font-bold text-charcoal tracking-tight">36</span>
+                <span class="text-[12px] text-neutral-500">months</span>
+              </label>
             </div>
           </div>
-          <div class="radio-item" tabindex="0" role="radio" aria-checked="false">
-            <div class="custom-radio"></div>
-            <div class="radio-item-content">
-              <div class="radio-item-title">Employed part-time</div>
-              <div class="radio-item-desc">Less than 35 hours per week</div>
+          <p class="text-[13px] text-neutral-400 mt-2">Longer terms mean lower monthly payments, but more interest overall.</p>
+        </div>
+
+        <hr class="border-t border-neutral-200 my-6">
+
+
+        <!-- Loan purpose — dropdown -->
+        <div class="mb-6">
+          <label class="block text-sm font-bold text-charcoal mb-2" for="loan-purpose">
+            What's the loan for?
+            <span class="text-[12px] font-normal text-neutral-400 ml-2">helps us tailor your offer</span>
+          </label>
+          <div class="relative">
+            <select id="loan-purpose" class="w-full h-12 px-4 border-2 border-neutral-200 rounded-lg font-sans text-base text-charcoal bg-white transition-all outline-none focus:border-brand focus:ring-4 focus:ring-brand/10 appearance-none bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M1%201.5L6%206.5L11%201.5%22%20stroke%3D%22%23586858%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E')] bg-[length:12px_8px] bg-[right_16px_center] bg-no-repeat cursor-pointer">
+              <option value="" disabled>Select a purpose</option>
+              <option value="home" selected>Home improvements</option>
+              <option value="car">Car purchase</option>
+              <option value="debt">Debt consolidation</option>
+              <option value="holiday">Holiday</option>
+              <option value="wedding">Wedding</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <p id="purpose-hint" class="text-[13px] text-neutral-400 mt-2">Your purpose doesn't affect your rate — it helps us understand how we can support you.</p>
+        </div>
+
+        <!-- Additional info — radio list -->
+        <div class="mb-6">
+          <label class="block text-sm font-bold text-charcoal mb-2">Employment status</label>
+          <div class="flex flex-col gap-2" role="radiogroup" aria-label="Employment status">
+            <div class="flex items-center gap-3 p-3 px-4 border-2 border-brand rounded-lg cursor-pointer transition-all bg-brand-subtle" tabindex="0" role="radio" aria-checked="true">
+              <div class="w-5 h-5 rounded-full border-[6px] border-brand transition-all flex-shrink-0"></div>
+              <div class="flex-1">
+                <div class="text-sm font-bold text-charcoal">Employed full-time</div>
+                <div class="text-[13px] text-neutral-500">Permanent contract, 35+ hours per week</div>
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[12px] font-bold bg-success-bg text-success"><span class="w-1.5 h-1.5 rounded-full bg-success"></span>Most common</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 px-4 border-2 border-neutral-200 rounded-lg cursor-pointer transition-all bg-white hover:bg-neutral-50" tabindex="0" role="radio" aria-checked="false">
+              <div class="w-5 h-5 rounded-full border-2 border-neutral-300 transition-all flex-shrink-0"></div>
+              <div class="flex-1">
+                <div class="text-sm font-bold text-charcoal">Self-employed</div>
+                <div class="text-[13px] text-neutral-500">Sole trader or limited company director</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 px-4 border-2 border-neutral-200 rounded-lg cursor-pointer transition-all bg-white hover:bg-neutral-50" tabindex="0" role="radio" aria-checked="false">
+              <div class="w-5 h-5 rounded-full border-2 border-neutral-300 transition-all flex-shrink-0"></div>
+              <div class="flex-1">
+                <div class="text-sm font-bold text-charcoal">Employed part-time</div>
+                <div class="text-[13px] text-neutral-500">Less than 35 hours per week</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <hr class="divider">
+        <hr class="border-t border-neutral-200 my-6">
 
-      <!-- Reference field (error state example) -->
-      <div class="form-group">
-        <label class="form-label" for="promo">
-          Referral code
-          <span class="form-label-optional">optional</span>
-        </label>
-        <div class="input-wrap">
-          <input
-            id="promo"
-            class="form-input error"
-            type="text"
-            value="FRIEND-XZ99"
-            aria-describedby="promo-error"
-            aria-invalid="true"
-          >
-          <span class="input-suffix">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <circle cx="9" cy="9" r="8" stroke="#C4320A" stroke-width="1.5"/>
-              <path d="M9 5.5v4M9 12v.5" stroke="#C4320A" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </span>
+        <!-- Referral code -->
+        <div class="mb-6">
+          <label class="block text-sm font-bold text-charcoal mb-2" for="promo">
+            Referral code
+            <span class="text-[12px] font-normal text-neutral-400 ml-2">optional</span>
+          </label>
+          <div class="relative">
+            <input id="promo" class="w-full h-12 px-4 border-2 border-danger rounded-lg font-sans text-base text-charcoal bg-danger-bg transition-all outline-none focus:ring-4 focus:ring-danger/10" type="text" value="FRIEND-XZ99" aria-invalid="true" aria-describedby="promo-error">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-danger">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M9 5.5v4M9 12v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <p id="promo-error" class="flex items-center gap-1.5 text-[13px] text-danger mt-2 font-medium" role="alert">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.3v3.3M7 9.5v.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            This code isn't valid. Check for typos or leave blank to continue.
+          </p>
         </div>
-        <p id="promo-error" class="form-error-msg" role="alert">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#C4320A" stroke-width="1.3"/><path d="M7 4.3v3.3M7 9.5v.2" stroke="#C4320A" stroke-width="1.3" stroke-linecap="round"/></svg>
-          This code isn't valid. Check for typos or leave blank to continue.
-        </p>
+
+        <button class="w-full h-[52px] rounded-full font-bold bg-brand text-white hover:bg-[#0A3325] hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 transition-all flex items-center justify-center gap-2" type="button">
+          Continue to your details
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a href="#" class="flex items-center justify-center gap-2 w-full h-11 rounded-full text-sm font-medium text-neutral-500 hover:text-charcoal hover:bg-neutral-100 transition-all mt-3 no-underline">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11 7H3M7 3L3 7l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to eligibility check
+        </a>
       </div>
 
-      <!-- CTA -->
-      <button class="btn-primary" type="button">
-        Continue to your details
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <a href="#" class="btn-ghost">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11 7H3M7 3L3 7l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Back to eligibility check
-      </a>
+      <!-- Label showcase -->
+      <div class="mt-6 flex flex-wrap gap-2 items-center">
+        <span class="text-[12px] text-neutral-400 mr-2 uppercase tracking-widest font-bold">Status:</span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-bold bg-success-bg text-success border border-success/10"><span class="w-1.5 h-1.5 rounded-full bg-success"></span>Approved</span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-bold bg-info-bg text-info border border-info/10"><span class="w-1.5 h-1.5 rounded-full bg-info"></span>In review</span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-bold bg-warning-bg text-warning border border-warning/10"><span class="w-1.5 h-1.5 rounded-full bg-warning"></span>Action needed</span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-bold bg-neutral-100 text-neutral-600 border border-neutral-200"><span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>Pending</span>
+      </div>
 
-    </div><!-- /form-card -->
-
-    <!-- Label showcase (below the card) -->
-    <div style="margin-top: var(--sp-6); display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center;">
-      <span style="font-size: 12px; color: var(--text-tertiary); margin-right: var(--sp-2);">Labels:</span>
-      <span class="badge badge-success"><span class="badge-dot"></span>Approved</span>
-      <span class="badge badge-info"><span class="badge-dot"></span>In review</span>
-      <span class="badge badge-warning"><span class="badge-dot"></span>Action needed</span>
-      <span class="badge badge-neutral"><span class="badge-dot"></span>Pending</span>
-      <span class="badge badge-lime"><span class="badge-dot"></span>New</span>
     </div>
 
-  </div><!-- /form-col -->
-
-  <!-- ── SUMMARY SIDEBAR ── -->
-  <aside class="summary-col" aria-label="Loan summary">
-
-    <!-- Repayment summary card -->
-    <div class="summary-card">
-      <div class="summary-label">Estimated monthly payment</div>
-      <div class="summary-amount"><sup>£</sup>228</div>
-
-      <div class="summary-rows">
-        <div class="summary-row">
-          <span class="summary-row-label">Loan amount</span>
-          <span class="summary-row-value">£5,000</span>
+    <!-- ── SUMMARY SIDEBAR ── -->
+    <aside class="w-full lg:w-[300px] shrink-0 sticky top-24" aria-label="Loan summary">
+      <div class="bg-brand rounded-2xl p-6 text-white mb-4 shadow-lg overflow-hidden relative">
+        <div class="absolute -right-4 -top-4 w-24 h-24 bg-white/5 rounded-full"></div>
+        <div class="text-[12px] font-bold uppercase tracking-widest text-white/60 mb-2">Estimated monthly payment</div>
+        <div class="text-[40px] font-bold tracking-tighter leading-none mb-6">
+          <span class="text-[20px] align-top font-semibold mr-0.5">£</span>228
         </div>
-        <div class="summary-row">
-          <span class="summary-row-label">Term</span>
-          <span class="summary-row-value">24 months</span>
+
+        <div class="flex flex-col gap-3">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-white/60">Loan amount</span>
+            <span class="font-bold">£5,000</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-white/60">Term</span>
+            <span class="font-bold">24 months</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-white/60">Representative APR</span>
+            <span class="font-bold">14.9%</span>
+          </div>
         </div>
-        <div class="summary-row">
-          <span class="summary-row-label">Representative APR</span>
-          <span class="summary-row-value">14.9%</span>
+
+        <hr class="border-t border-white/15 my-4">
+
+        <div class="flex justify-between items-center">
+          <span class="text-[13px] text-white/60">Total repayable</span>
+          <span class="text-xl font-bold tracking-tight">£5,472</span>
         </div>
       </div>
 
-      <hr class="summary-divider">
-
-      <div class="summary-row">
-        <span class="summary-total-label">Total repayable</span>
-        <span class="summary-total-value">£5,472</span>
+      <div class="bg-white border border-neutral-200 rounded-xl p-5 shadow-xs divide-y divide-neutral-100 font-sans">
+        <div class="flex items-start gap-3 py-3 first:pt-0">
+          <div class="w-8 h-8 rounded-lg bg-success-bg flex items-center justify-center text-base shrink-0">🔒</div>
+          <div>
+            <div class="text-[13px] font-bold text-charcoal mb-0.5">No impact on your credit score</div>
+            <div class="text-[12px] text-neutral-500 leading-snug">We use a soft search to check your eligibility first.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 py-3">
+          <div class="w-8 h-8 rounded-lg bg-info-bg flex items-center justify-center text-base shrink-0">⚡</div>
+          <div>
+            <div class="text-[13px] font-bold text-charcoal mb-0.5">Decision in minutes</div>
+            <div class="text-[12px] text-neutral-500 leading-snug">Most applicants get an instant decision.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 py-3 last:pb-0">
+          <div class="w-8 h-8 rounded-lg bg-pale-yellow-green flex items-center justify-center text-base shrink-0">📋</div>
+          <div>
+            <div class="text-[13px] font-bold text-charcoal mb-0.5">Fair by design</div>
+            <div class="text-[12px] text-neutral-500 leading-snug">We look at the full picture, not just your credit score.</div>
+          </div>
+        </div>
       </div>
+    </aside>
+
+  </main>
+
+  <footer class="mt-auto border-t border-neutral-200 py-6 px-8 bg-white font-sans">
+    <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-[13px] text-neutral-500 text-center md:text-left">© 2026 Abound (Fintern Ltd). Authorised and regulated by the FCA. Firm Reference 714260.</p>
+      <nav class="flex gap-6">
+        <a href="#" class="text-[13px] text-neutral-500 hover:text-charcoal transition-colors no-underline">Privacy</a>
+        <a href="#" class="text-[13px] text-neutral-500 hover:text-charcoal transition-colors no-underline">Terms</a>
+        <a href="#" class="text-[13px] text-neutral-500 hover:text-charcoal transition-colors no-underline">Accessibility</a>
+        <a href="#" class="text-[13px] text-neutral-500 hover:text-charcoal transition-colors no-underline">Contact</a>
+      </nav>
     </div>
+  </footer>
 
-    <!-- Trust signals -->
-    <div class="trust-card">
-      <div class="trust-item">
-        <div class="trust-icon green">🔒</div>
-        <div>
-          <div class="trust-text-title">No impact on your credit score</div>
-          <div class="trust-text-desc">We use a soft search to check your eligibility first.</div>
-        </div>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon teal">⚡</div>
-        <div>
-          <div class="trust-text-title">Decision in minutes</div>
-          <div class="trust-text-desc">Most applicants get an instant decision.</div>
-        </div>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon khaki">📋</div>
-        <div>
-          <div class="trust-text-title">Fair by design</div>
-          <div class="trust-text-desc">We look at the full picture, not just your credit score.</div>
-        </div>
-      </div>
-    </div>
-
-  </aside>
-
-</main>
-
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="footer">
-  <div class="footer-inner">
-    <p class="footer-text">© 2026 Abound (Fintern Ltd). Authorised and regulated by the FCA. Firm Reference 714260.</p>
-    <nav class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Accessibility</a>
-      <a href="#">Contact</a>
-    </nav>
-  </div>
-</footer>
+</div>
 
 </body>
 </html>

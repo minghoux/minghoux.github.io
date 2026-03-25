@@ -5,371 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abound — Logo & Wordmark Showcase</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    /* ─────────────────────────────────────────────
-       DESIGN TOKENS (Abound DS)
-    ───────────────────────────────────────────── */
-    :root {
-      --forest-green:            #0E4533;
-      --charcoal:                #201F1D;
-      --white:                   #FFFFFF;
-      --off-white:               #F4F8F3;
-      --pale-yellow-green:       #F7F7E9;
-      --teal-sage:               #B8DCD2;
-      --khaki:                   #EDEABE;
-      --lime:                    #D4F19B;
-
-      --text-primary:            #201F1D;
-      --text-secondary:          #3F4F3F;
-      --text-tertiary:           #586858;
-      --text-placeholder:        #829080;
-      --text-inverse:            #FFFFFF;
-      --text-brand:              #0E4533;
-
-      --bg-primary:              #FFFFFF;
-      --bg-secondary:            #F4F8F3;
-      --bg-brand:                #0E4533;
-
-      --border-secondary:        #D3DCCF;
-      --border-primary:          #B4C2B0;
-
-      --interactive-primary-hover: #0A3325;
-
-      --success:                 #0A5C3A;
-      --success-bg:              #EBF5EF;
-      --danger:                  #C4320A;
-      --danger-bg:               #FEF3F2;
-
-      --shadow-xs:  0 1px 2px rgba(32,31,29,0.06);
-      --shadow-sm:  0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06);
-      --shadow-md:  0 4px 8px -2px rgba(32,31,29,0.10), 0 2px 4px -2px rgba(32,31,29,0.06);
-      --shadow-lg:  0 12px 16px -4px rgba(32,31,29,0.09), 0 4px 6px -2px rgba(32,31,29,0.04);
-
-      --radius-sm:   6px;
-      --radius-md:   8px;
-      --radius-lg:   12px;
-      --radius-xl:   16px;
-      --radius-2xl:  24px;
-      --radius-full: 9999px;
-
-      --space-1:  4px;
-      --space-2:  8px;
-      --space-3:  12px;
-      --space-4:  16px;
-      --space-5:  20px;
-      --space-6:  24px;
-      --space-8:  32px;
-      --space-10: 40px;
-      --space-12: 48px;
-      --space-16: 64px;
-      --space-20: 80px;
-
-      --ease-hover: 150ms ease-out;
-      --ease-enter: 200ms ease-out;
-
-      --nav-width:     220px;
-      --header-height: 56px;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#0E4533',
+              subtle: '#EBF2ED',
+            },
+            charcoal: '#201F1D',
+            success: {
+              DEFAULT: '#0A5C3A',
+              bg: '#EBF5EF',
+            },
+            danger: {
+              DEFAULT: '#C4320A',
+              bg: '#FEF3F2',
+            },
+            warning: {
+              DEFAULT: '#B54708',
+              bg: '#FDF6E8',
+            },
+            info: {
+              DEFAULT: '#1A6B73',
+              bg: '#EDF6F5',
+            },
+            lime: '#D4F19B',
+            khaki: '#EDEABE',
+            'off-white': '#F4F8F3',
+            'pale-yellow-green': '#F7F7E9',
+            'teal-sage': '#B8DCD2',
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            xs: '0 1px 2px rgba(32,31,29,0.06)',
+            sm: '0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06)',
+            md: '0 4px 8px -2px rgba(32,31,29,0.10), 0 2px 4px -2px rgba(32,31,29,0.06)',
+            lg: '0 12px 16px -4px rgba(32,31,29,0.09), 0 4px 6px -2px rgba(32,31,29,0.04)',
+            xl: '0 20px 24px -4px rgba(32,31,29,0.09), 0 8px 8px -4px rgba(32,31,29,0.04)',
+          },
+          borderRadius: {
+            sm: '6px',
+            md: '8px',
+            lg: '12px',
+            xl: '16px',
+            '2xl': '24px',
+          }
+        }
+      }
     }
-
-    /* ─────────────────────────────────────────────
-       BASE
-    ───────────────────────────────────────────── */
-    html  { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body  {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      min-height: 100vh;
-    }
-
-    /* ─────────────────────────────────────────────
-       TOP BAR
-    ───────────────────────────────────────────── */
-    .topbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--header-height);
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-secondary);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      padding: 0 var(--space-6);
-      gap: var(--space-4);
-    }
-    .topbar__logo {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      text-decoration: none;
-      color: var(--forest-green);
-    }
-    /* Inline SVG in topbar — constrain height */
-    .topbar__logo svg.mark-svg  { height: 22px; width: auto; }
-    .topbar__divider { width: 1px; height: 20px; background: var(--border-secondary); }
-    .topbar__title   { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
-    .topbar__pill    {
-      margin-left: auto;
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-brand);
-      background: var(--off-white);
-      border: 1px solid var(--border-secondary);
-      padding: 3px var(--space-3);
-      border-radius: var(--radius-full);
-    }
-
-    /* ─────────────────────────────────────────────
-       LAYOUT
-    ───────────────────────────────────────────── */
-    .layout {
-      display: flex;
-      padding-top: var(--header-height);
-      min-height: 100vh;
-    }
-
-    /* ─────────────────────────────────────────────
-       SIDE NAV
-    ───────────────────────────────────────────── */
-    .sidenav {
-      position: fixed;
-      top: var(--header-height);
-      left: 0;
-      width: var(--nav-width);
-      height: calc(100vh - var(--header-height));
-      overflow-y: auto;
-      background: var(--bg-primary);
-      border-right: 1px solid var(--border-secondary);
-      padding: var(--space-8) var(--space-4);
-      z-index: 100;
-    }
-    .sidenav__label {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-placeholder);
-      padding: 0 var(--space-3);
-      margin-bottom: var(--space-2);
-    }
-    .sidenav__list { list-style: none; }
-    .sidenav__item a {
-      display: flex; align-items: center; gap: var(--space-2);
-      padding: var(--space-2) var(--space-3);
-      border-radius: var(--radius-sm);
-      font-size: 13px; font-weight: 400;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: background var(--ease-hover), color var(--ease-hover);
-    }
-    .sidenav__item a:hover { background: var(--off-white); color: var(--text-primary); }
-    .sidenav__item a.active { background: var(--off-white); color: var(--text-brand); font-weight: 500; }
-    .sidenav__num {
-      font-size: 10px; font-variant-numeric: tabular-nums;
-      color: var(--text-placeholder); width: 18px; flex-shrink: 0;
-    }
-
-    /* ─────────────────────────────────────────────
-       MAIN CONTENT
-    ───────────────────────────────────────────── */
-    .content { margin-left: var(--nav-width); flex: 1; min-width: 0; }
-
-    /* ─────────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────────── */
-    .hero {
-      background: var(--bg-brand);
-      color: var(--text-inverse);
-      padding: var(--space-20) var(--space-16) var(--space-16);
-    }
-    .hero__eyebrow {
-      font-size: 12px; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--lime); margin-bottom: var(--space-5);
-    }
-    .hero__title {
-      font-size: 44px; font-weight: 300;
-      letter-spacing: -0.025em; line-height: 1.1;
-      margin-bottom: var(--space-4);
-    }
-    .hero__title strong { font-weight: 600; }
-    .hero__desc {
-      font-size: 15px; color: rgba(255,255,255,0.6);
-      max-width: 480px; line-height: 1.65;
-    }
-
-    /* ─────────────────────────────────────────────
-       SECTIONS
-    ───────────────────────────────────────────── */
-    .sections-wrap { max-width: 1100px; padding: var(--space-16) var(--space-16) var(--space-20); }
-    .section { margin-bottom: var(--space-20); }
-    .section__head {
-      display: flex; align-items: baseline; gap: var(--space-4);
-      margin-bottom: var(--space-8);
-      padding-bottom: var(--space-5);
-      border-bottom: 1px solid var(--border-secondary);
-    }
-    .section__num {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-placeholder); flex-shrink: 0;
-    }
-    .section__title { font-size: 20px; font-weight: 400; letter-spacing: -0.01em; }
-
-    /* ─────────────────────────────────────────────
-       PALETTE
-    ───────────────────────────────────────────── */
-    .palette-row { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: flex-start; }
-    .swatch-item { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
-    .swatch { width: 60px; height: 60px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
-    .swatch-meta { text-align: center; }
-    .swatch-name { display: block; font-size: 12px; font-weight: 500; color: var(--text-primary); line-height: 1.3; }
-    .swatch-hex  { display: block; font-size: 11px; color: var(--text-placeholder); font-variant-numeric: tabular-nums; }
-    .palette-divider { width: 1px; height: 60px; background: var(--border-secondary); margin: 0 var(--space-1); align-self: center; }
-
-    /* ─────────────────────────────────────────────
-       GRIDS
-    ───────────────────────────────────────────── */
-    .logo-grid     { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--space-3); }
-    .wordmark-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-3); }
-    .lockup-grid   { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3); }
-
-    /* ─────────────────────────────────────────────
-       LOGO CARDS
-    ───────────────────────────────────────────── */
-    .logo-card {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--ease-hover), transform var(--ease-hover);
-    }
-    .logo-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-
-    /* ── Canvas types ── */
-    .canvas {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .canvas--icon     { aspect-ratio: 1 / 1; padding: var(--space-8); }
-    .canvas--wordmark { aspect-ratio: 16 / 6; padding: var(--space-5) var(--space-8); }
-    .canvas--lockup   { aspect-ratio: 16 / 6; padding: var(--space-5) var(--space-8); gap: var(--space-5); }
-
-    /* ── SVG sizing inside canvas ── */
-    .canvas--icon svg.mark-svg {
-      width: 58%;
-      height: 58%;
-    }
-    .canvas--wordmark svg.wm-svg {
-      width: 76%;
-      height: auto;
-    }
-    /* Lockup: icon and wordmark side-by-side, aligned to cap-height */
-    .canvas--lockup svg.mark-svg {
-      height: 48px;
-      width: auto;
-      flex-shrink: 0;
-    }
-    .canvas--lockup svg.wm-svg {
-      height: 30px;
-      width: auto;
-      align-self: center;
-    }
-
-    /* ── Color variants: CSS-driven, no blend modes needed ── */
-    .c-green svg { color: var(--forest-green); }
-    .c-white svg { color: var(--white); }
-
-    /* ── All inline SVGs inherit currentColor ── */
-    .mark-svg path, .wm-svg path { fill: currentColor; }
-
-    /* Card meta row */
-    .card-meta {
-      padding: var(--space-3) var(--space-4);
-      background: var(--bg-primary);
-      display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
-    }
-    .card-meta__name { font-size: 12px; font-weight: 500; color: var(--text-primary); white-space: nowrap; }
-    .card-meta__hex  { font-size: 11px; color: var(--text-placeholder); font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .card-meta__dot  {
-      width: 10px; height: 10px;
-      border-radius: var(--radius-full); flex-shrink: 0;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.10);
-    }
-
-    /* ─────────────────────────────────────────────
-       PRE-BUILT ASSETS
-    ───────────────────────────────────────────── */
-    .prebuilt-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: var(--space-4);
-    }
-    .prebuilt-card {
-      border-radius: var(--radius-xl); overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--ease-hover), transform var(--ease-hover);
-    }
-    .prebuilt-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-    .prebuilt-card__img-wrap {
-      aspect-ratio: 4 / 3;
-      background: var(--bg-secondary);
-      display: flex; align-items: center; justify-content: center;
-      padding: var(--space-6); overflow: hidden;
-    }
-    .prebuilt-card__img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    /* SVG badges inside prebuilt cards */
-    .prebuilt-card__img-wrap > svg { display: block; }
-    .prebuilt-card__meta { padding: var(--space-3) var(--space-4); background: var(--bg-primary); }
-    .prebuilt-card__name { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
-    .prebuilt-card__desc { font-size: 12px; color: var(--text-placeholder); }
-
-    /* ─────────────────────────────────────────────
-       USAGE DO / DON'T
-    ───────────────────────────────────────────── */
-    .usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-    .usage-card {
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--border-secondary);
-      background: var(--bg-primary);
-    }
-    .usage-card__icon {
-      width: 30px; height: 30px;
-      border-radius: var(--radius-md);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; margin-bottom: var(--space-4);
-    }
-    .usage-card--do   .usage-card__icon { background: var(--success-bg); }
-    .usage-card--dont .usage-card__icon { background: var(--danger-bg); }
-    .usage-card__label {
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      margin-bottom: var(--space-3);
-    }
-    .usage-card--do   .usage-card__label { color: var(--success); }
-    .usage-card--dont .usage-card__label { color: var(--danger); }
-    .usage-card__list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
-    .usage-card__list li {
-      font-size: 13px; color: var(--text-tertiary);
-      display: flex; gap: var(--space-2); align-items: flex-start; line-height: 1.55;
-    }
-    .usage-card--do   .usage-card__list li::before { content:''; width:5px; height:5px; border-radius:var(--radius-full); background:var(--success); flex-shrink:0; margin-top:6px; }
-    .usage-card--dont .usage-card__list li::before { content:''; width:5px; height:5px; border-radius:var(--radius-full); background:var(--danger);  flex-shrink:0; margin-top:6px; }
-
-    /* ─────────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .sidenav { display: none; }
-      .content { margin-left: 0; }
-      .hero { padding: var(--space-12) var(--space-6) var(--space-10); }
-      .hero__title { font-size: 32px; }
-      .sections-wrap { padding: var(--space-10) var(--space-6) var(--space-16); }
-      .logo-grid, .wordmark-grid, .lockup-grid, .prebuilt-grid { grid-template-columns: 1fr 1fr; }
-      .usage-grid { grid-template-columns: 1fr; }
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      html { scroll-behavior: smooth; }
+      body { @apply font-sans bg-off-white text-charcoal antialiased; }
     }
   </style>
 </head>
@@ -413,156 +106,176 @@
 <!-- ════════════════════════════════════════════════════
      TOP BAR
 ════════════════════════════════════════════════════ -->
-<header class="topbar">
-  <a class="topbar__logo" href="#">
-    <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound"><use href="#mark"/></svg>
-  </a>
-  <div class="topbar__divider"></div>
-  <span class="topbar__title">Logo &amp; Wordmark Showcase</span>
-  <span class="topbar__pill">Brand Identity</span>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="sticky top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-xl border-b border-neutral-200 h-16 flex items-center px-8">
+  <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-10">
+      <a href="abound-design-system.html" class="flex items-center gap-2 text-2xl font-bold text-brand tracking-tighter no-underline">
+        <span>abound</span>
+      </a>
+      <nav class="hidden md:flex gap-8">
+        <a href="abound-design-system.html" class="nav-link text-sm font-medium text-neutral-500 hover:text-brand transition-colors relative py-1">Design System</a>
+        <a href="abound-ui-mockup.html" class="nav-link text-sm font-medium text-neutral-500 hover:text-brand transition-colors relative py-1">Live Mockup</a>
+        <a href="logo-showcase.html" class="nav-link text-sm font-bold text-brand transition-colors relative py-1 after:content-[''] after:absolute after:-bottom-[20px] after:left-0 after:right-0 after:h-[2px] after:bg-brand">Logo Showcase</a>
+      </nav>
+    </div>
+    
+    <div class="flex items-center">
+      <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-lime text-brand">v2.0.26 <span class="w-1.5 h-1.5 rounded-full bg-current"></span></span>
+    </div>
+  </div>
 </header>
 
-<div class="layout">
+<div class="flex min-h-screen">
 
-  <!-- ════════════════════════════════════════════════════
-       SIDE NAV
-  ════════════════════════════════════════════════════ -->
-  <nav class="sidenav" aria-label="Page sections">
-    <p class="sidenav__label">Sections</p>
-    <ul class="sidenav__list">
-      <li class="sidenav__item"><a href="#palette"        ><span class="sidenav__num">01</span>Colour Palette</a></li>
-      <li class="sidenav__item"><a href="#mark-light"     ><span class="sidenav__num">02</span>Mark — Light</a></li>
-      <li class="sidenav__item"><a href="#mark-dark"      ><span class="sidenav__num">03</span>Mark — Dark</a></li>
-      <li class="sidenav__item"><a href="#wordmark-light" ><span class="sidenav__num">04</span>Wordmark — Light</a></li>
-      <li class="sidenav__item"><a href="#wordmark-dark"  ><span class="sidenav__num">05</span>Wordmark — Dark</a></li>
-      <li class="sidenav__item"><a href="#lockup"         ><span class="sidenav__num">06</span>Full Lockup</a></li>
-      <li class="sidenav__item"><a href="#prebuilt"       ><span class="sidenav__num">07</span>Pre-built Assets</a></li>
-      <li class="sidenav__item"><a href="#usage"          ><span class="sidenav__num">08</span>Usage Guidelines</a></li>
+  <!-- ═══════════════ SIDE NAV ═══════════════ -->
+  <nav class="fixed top-16 left-0 w-[260px] h-[calc(100vh-64px)] overflow-y-auto bg-white border-r border-neutral-200 py-8 px-4 z-[100] hidden lg:block" aria-label="Page sections">
+    <p class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 px-3 mb-2">Sections</p>
+    <ul class="list-none flex flex-col gap-1">
+      <li><a href="#palette" class="flex items-center gap-2 p-2 px-3 rounded-md text-[13px] text-neutral-600 hover:bg-off-white hover:text-charcoal transition-all no-underline"><span class="text-[10px] w-[18px] text-neutral-400">01</span>Colour Palette</a></li>
+      <li><a href="#mark-light" class="flex items-center gap-2 p-2 px-3 rounded-md text-[13px] text-neutral-600 hover:bg-off-white hover:text-charcoal transition-all no-underline"><span class="text-[10px] w-[18px] text-neutral-400">02</span>Mark — Light</a></li>
+      <li><a href="#mark-dark" class="flex items-center gap-2 p-2 px-3 rounded-md text-[13px] text-neutral-600 hover:bg-off-white hover:text-charcoal transition-all no-underline"><span class="text-[10px] w-[18px] text-neutral-400">03</span>Mark — Dark</a></li>
+      <li><a href="#wordmark-light" class="flex items-center gap-2 p-2 px-3 rounded-md text-[13px] text-neutral-600 hover:bg-off-white hover:text-charcoal transition-all no-underline"><span class="text-[10px] w-[18px] text-neutral-400">04</span>Wordmark — Light</a></li>
+      <li><a href="#wordmark-dark" class="flex items-center gap-2 p-2 px-3 rounded-md text-[13px] text-neutral-600 hover:bg-off-white hover:text-charcoal transition-all no-underline"><span class="text-[10px] w-[18px] text-neutral-400">05</span>Wordmark — Dark</a></li>
+      <li><a href="#separation" class="flex items-center gap-2 p-2 px-3 rounded-md text-[13px] text-neutral-600 hover:bg-off-white hover:text-charcoal transition-all no-underline"><span class="text-[10px] w-[18px] text-neutral-400">06</span>Separation Rule</a></li>
+      <li><a href="#prebuilt" class="flex items-center gap-2 p-2 px-3 rounded-md text-[13px] text-neutral-600 hover:bg-off-white hover:text-charcoal transition-all no-underline"><span class="text-[10px] w-[18px] text-neutral-400">07</span>Pre-built Assets</a></li>
+      <li><a href="#usage" class="flex items-center gap-2 p-2 px-3 rounded-md text-[13px] text-neutral-600 hover:bg-off-white hover:text-charcoal transition-all no-underline"><span class="text-[10px] w-[18px] text-neutral-400">08</span>Usage Guidelines</a></li>
     </ul>
   </nav>
 
-  <!-- ════════════════════════════════════════════════════
-       CONTENT
-  ════════════════════════════════════════════════════ -->
-  <main class="content">
+  <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+  <main class="lg:ml-[260px] flex-1 min-w-0">
 
     <!-- HERO -->
-    <div class="hero">
-      <p class="hero__eyebrow">Brand Identity</p>
-      <h1 class="hero__title">Logo &amp; Wordmark<br><strong>Showcase</strong></h1>
-      <p class="hero__desc">Explore how the Abound mark and wordmark perform across every official brand surface — from pale off-whites to deep forest greens.</p>
+    <div class="bg-brand text-white pt-16 pb-20 px-8 relative overflow-hidden">
+      <div class="absolute -right-20 -top-20 w-[400px] h-[400px] bg-white/[0.03] rounded-full blur-3xl"></div>
+      <div class="absolute -left-10 bottom-0 w-[300px] h-[300px] bg-[#D4F19B]/[0.05] rounded-full blur-2xl"></div>
+      
+      <div class="max-w-[1100px] mx-auto text-center">
+        <div class="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full text-[12px] font-bold uppercase tracking-widest text-[#D4F19B] mb-8 animate-fade-in border border-white/10">
+          Brand Identity
+        </div>
+        <h1 class="text-[56px] md:text-[80px] font-bold leading-[0.9] tracking-tighter mb-8 max-w-[900px] mx-auto">
+          Logo & Wordmark <span class="text-lime">Showcase</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-white/60 font-medium max-w-[650px] mx-auto leading-relaxed">
+          Explore how the Abound mark and wordmark perform across every official brand surface.
+        </p>
+      </div>
     </div>
 
-    <div class="sections-wrap">
+
+    <div class="max-w-[1100px] mx-auto py-16 px-8 pb-32">
 
       <!-- ══ 01 COLOUR PALETTE ══ -->
-      <section class="section" id="palette">
-        <div class="section__head">
-          <span class="section__num">01</span>
-          <h2 class="section__title">Official Colour Palette</h2>
+      <section class="mb-20" id="palette">
+        <div class="flex items-baseline gap-4 mb-8 pb-5 border-b border-neutral-200">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 shrink-0">01</span>
+          <h2 class="text-xl font-medium tracking-tight">Official Colour Palette</h2>
         </div>
-        <div class="palette-row">
-          <div class="swatch-item">
-            <div class="swatch" style="background:var(--white); box-shadow:var(--shadow-sm), inset 0 0 0 1px var(--border-secondary);"></div>
-            <div class="swatch-meta"><span class="swatch-name">White</span><span class="swatch-hex">#FFFFFF</span></div>
+        <div class="flex flex-wrap gap-3 items-start">
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-[60px] h-[60px] rounded-lg shadow-sm bg-white ring-1 ring-inset ring-neutral-200"></div>
+            <div class="text-center"><span class="block text-[12px] font-medium text-charcoal leading-tight">White</span><span class="block text-[11px] text-neutral-400 tabular-nums">#FFFFFF</span></div>
           </div>
-          <div class="swatch-item">
-            <div class="swatch" style="background:var(--off-white);"></div>
-            <div class="swatch-meta"><span class="swatch-name">Off-White</span><span class="swatch-hex">#F4F8F3</span></div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-[60px] h-[60px] rounded-lg shadow-sm bg-off-white"></div>
+            <div class="text-center"><span class="block text-[12px] font-medium text-charcoal leading-tight">Off-White</span><span class="block text-[11px] text-neutral-400 tabular-nums">#F4F8F3</span></div>
           </div>
-          <div class="swatch-item">
-            <div class="swatch" style="background:var(--pale-yellow-green);"></div>
-            <div class="swatch-meta"><span class="swatch-name">Pale Yellow</span><span class="swatch-hex">#F7F7E9</span></div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-[60px] h-[60px] rounded-lg shadow-sm bg-pale-yellow-green"></div>
+            <div class="text-center"><span class="block text-[12px] font-medium text-charcoal leading-tight">Pale Yellow</span><span class="block text-[11px] text-neutral-400 tabular-nums">#F7F7E9</span></div>
           </div>
-          <div class="swatch-item">
-            <div class="swatch" style="background:var(--khaki);"></div>
-            <div class="swatch-meta"><span class="swatch-name">Khaki</span><span class="swatch-hex">#EDEABE</span></div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-[60px] h-[60px] rounded-lg shadow-sm bg-khaki"></div>
+            <div class="text-center"><span class="block text-[12px] font-medium text-charcoal leading-tight">Khaki</span><span class="block text-[11px] text-neutral-400 tabular-nums">#EDEABE</span></div>
           </div>
-          <div class="swatch-item">
-            <div class="swatch" style="background:var(--lime);"></div>
-            <div class="swatch-meta"><span class="swatch-name">Lime</span><span class="swatch-hex">#D4F19B</span></div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-[60px] h-[60px] rounded-lg shadow-sm bg-lime"></div>
+            <div class="text-center"><span class="block text-[12px] font-medium text-charcoal leading-tight">Lime</span><span class="block text-[11px] text-neutral-400 tabular-nums">#D4F19B</span></div>
           </div>
-          <div class="swatch-item">
-            <div class="swatch" style="background:var(--teal-sage);"></div>
-            <div class="swatch-meta"><span class="swatch-name">Teal Sage</span><span class="swatch-hex">#B8DCD2</span></div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-[60px] h-[60px] rounded-lg shadow-sm bg-teal-sage"></div>
+            <div class="text-center"><span class="block text-[12px] font-medium text-charcoal leading-tight">Teal Sage</span><span class="block text-[11px] text-neutral-400 tabular-nums">#B8DCD2</span></div>
           </div>
-          <div class="palette-divider"></div>
-          <div class="swatch-item">
-            <div class="swatch" style="background:var(--forest-green);"></div>
-            <div class="swatch-meta"><span class="swatch-name">Forest Green</span><span class="swatch-hex">#0E4533</span></div>
+          <div class="w-px h-[60px] bg-neutral-200 mx-1 self-center"></div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-[60px] h-[60px] rounded-lg shadow-sm bg-brand"></div>
+            <div class="text-center"><span class="block text-[12px] font-medium text-charcoal leading-tight">Forest Green</span><span class="block text-[11px] text-neutral-400 tabular-nums">#0E4533</span></div>
           </div>
-          <div class="swatch-item">
-            <div class="swatch" style="background:var(--charcoal);"></div>
-            <div class="swatch-meta"><span class="swatch-name">Charcoal</span><span class="swatch-hex">#201F1D</span></div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-[60px] h-[60px] rounded-lg shadow-sm bg-charcoal"></div>
+            <div class="text-center"><span class="block text-[12px] font-medium text-charcoal leading-tight">Charcoal</span><span class="block text-[11px] text-neutral-400 tabular-nums">#201F1D</span></div>
           </div>
         </div>
       </section>
 
       <!-- ══ 02 MARK — GREEN ON LIGHT ══ -->
-      <section class="section" id="mark-light">
-        <div class="section__head">
-          <span class="section__num">02</span>
-          <h2 class="section__title">Logomark — Green on Light Backgrounds</h2>
+      <section class="mb-20" id="mark-light">
+        <div class="flex items-baseline gap-4 mb-8 pb-5 border-b border-neutral-200">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 shrink-0">02</span>
+          <h2 class="text-xl font-medium tracking-tight">Logomark — Green on Light Backgrounds</h2>
         </div>
-        <div class="logo-grid">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
 
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-green" style="background:var(--white);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-white text-brand">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">White</p><p class="card-meta__hex">#FFFFFF</p></div>
-              <div class="card-meta__dot" style="background:var(--white); box-shadow:inset 0 0 0 1px var(--border-secondary);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">White</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#FFFFFF</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-white"></div>
             </div>
           </div>
 
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-green" style="background:var(--off-white);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-off-white text-brand">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Off-White</p><p class="card-meta__hex">#F4F8F3</p></div>
-              <div class="card-meta__dot" style="background:var(--off-white);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-green" style="background:var(--pale-yellow-green);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Pale Yellow</p><p class="card-meta__hex">#F7F7E9</p></div>
-              <div class="card-meta__dot" style="background:var(--pale-yellow-green);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Off-White</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#F4F8F3</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-off-white"></div>
             </div>
           </div>
 
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-green" style="background:var(--khaki);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-pale-yellow-green text-brand">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Khaki</p><p class="card-meta__hex">#EDEABE</p></div>
-              <div class="card-meta__dot" style="background:var(--khaki);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-green" style="background:var(--lime);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Lime</p><p class="card-meta__hex">#D4F19B</p></div>
-              <div class="card-meta__dot" style="background:var(--lime);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Pale Yellow</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#F7F7E9</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-pale-yellow-green"></div>
             </div>
           </div>
 
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-green" style="background:var(--teal-sage);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-khaki text-brand">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Teal Sage</p><p class="card-meta__hex">#B8DCD2</p></div>
-              <div class="card-meta__dot" style="background:var(--teal-sage);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Khaki</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#EDEABE</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-khaki"></div>
+            </div>
+          </div>
+
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-lime text-brand">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+            </div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Lime</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#D4F19B</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-lime"></div>
+            </div>
+          </div>
+
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-teal-sage text-brand">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark"><use href="#mark"/></svg>
+            </div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Teal Sage</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#B8DCD2</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-teal-sage"></div>
             </div>
           </div>
 
@@ -570,51 +283,50 @@
       </section>
 
       <!-- ══ 03 MARK — WHITE ON DARK ══ -->
-      <section class="section" id="mark-dark">
-        <div class="section__head">
-          <span class="section__num">03</span>
-          <h2 class="section__title">Logomark — White on Dark Backgrounds</h2>
+      <section class="mb-20" id="mark-dark">
+        <div class="flex items-baseline gap-4 mb-8 pb-5 border-b border-neutral-200">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 shrink-0">03</span>
+          <h2 class="text-xl font-medium tracking-tight">Logomark — White on Dark Backgrounds</h2>
         </div>
-        <div class="logo-grid">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
 
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-white" style="background:var(--forest-green);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-brand text-white">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Forest Green</p><p class="card-meta__hex">#0E4533</p></div>
-              <div class="card-meta__dot" style="background:var(--forest-green);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Forest Green</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#0E4533</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-brand"></div>
             </div>
           </div>
 
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-white" style="background:var(--charcoal);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-charcoal text-white">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Charcoal</p><p class="card-meta__hex">#201F1D</p></div>
-              <div class="card-meta__dot" style="background:var(--charcoal);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-white" style="background:var(--interactive-primary-hover);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Deep Green</p><p class="card-meta__hex">#0A3325</p></div>
-              <div class="card-meta__dot" style="background:var(--interactive-primary-hover);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Charcoal</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#201F1D</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-charcoal"></div>
             </div>
           </div>
 
-          <!-- Lime — green mark works here too -->
-          <div class="logo-card">
-            <div class="canvas canvas--icon c-white" style="background:var(--teal-sage);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-label="Abound logomark white on teal"><use href="#mark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-[#0A3325] text-white">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark white"><use href="#mark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Teal Sage</p><p class="card-meta__hex">White mark</p></div>
-              <div class="card-meta__dot" style="background:var(--teal-sage);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Deep Green</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#0A3325</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-[#0A3325]"></div>
+            </div>
+          </div>
+
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-square p-8 flex items-center justify-center bg-teal-sage text-white">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark white on teal"><use href="#mark"/></svg>
+            </div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Teal Sage</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">White mark</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-teal-sage"></div>
             </div>
           </div>
 
@@ -622,70 +334,70 @@
       </section>
 
       <!-- ══ 04 WORDMARK — GREEN ON LIGHT ══ -->
-      <section class="section" id="wordmark-light">
-        <div class="section__head">
-          <span class="section__num">04</span>
-          <h2 class="section__title">Wordmark — Green on Light Backgrounds</h2>
+      <section class="mb-20" id="wordmark-light">
+        <div class="flex items-baseline gap-4 mb-8 pb-5 border-b border-neutral-200">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 shrink-0">04</span>
+          <h2 class="text-xl font-medium tracking-tight">Wordmark — Green on Light Backgrounds</h2>
         </div>
-        <div class="wordmark-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
 
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-green" style="background:var(--white);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-white text-brand">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">White</p><p class="card-meta__hex">#FFFFFF</p></div>
-              <div class="card-meta__dot" style="background:var(--white); box-shadow:inset 0 0 0 1px var(--border-secondary);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">White</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#FFFFFF</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-white"></div>
             </div>
           </div>
 
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-green" style="background:var(--off-white);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-off-white text-brand">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Off-White</p><p class="card-meta__hex">#F4F8F3</p></div>
-              <div class="card-meta__dot" style="background:var(--off-white);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-green" style="background:var(--pale-yellow-green);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Pale Yellow</p><p class="card-meta__hex">#F7F7E9</p></div>
-              <div class="card-meta__dot" style="background:var(--pale-yellow-green);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Off-White</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#F4F8F3</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-off-white"></div>
             </div>
           </div>
 
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-green" style="background:var(--khaki);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-pale-yellow-green text-brand">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Khaki</p><p class="card-meta__hex">#EDEABE</p></div>
-              <div class="card-meta__dot" style="background:var(--khaki);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-green" style="background:var(--lime);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Lime</p><p class="card-meta__hex">#D4F19B</p></div>
-              <div class="card-meta__dot" style="background:var(--lime);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Pale Yellow</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#F7F7E9</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-pale-yellow-green"></div>
             </div>
           </div>
 
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-green" style="background:var(--teal-sage);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-khaki text-brand">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Teal Sage</p><p class="card-meta__hex">#B8DCD2</p></div>
-              <div class="card-meta__dot" style="background:var(--teal-sage);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Khaki</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#EDEABE</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-khaki"></div>
+            </div>
+          </div>
+
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-lime text-brand">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+            </div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Lime</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#D4F19B</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-lime"></div>
+            </div>
+          </div>
+
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-teal-sage text-brand">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark"><use href="#wordmark"/></svg>
+            </div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Teal Sage</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#B8DCD2</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-teal-sage"></div>
             </div>
           </div>
 
@@ -693,248 +405,117 @@
       </section>
 
       <!-- ══ 05 WORDMARK — WHITE ON DARK ══ -->
-      <section class="section" id="wordmark-dark">
-        <div class="section__head">
-          <span class="section__num">05</span>
-          <h2 class="section__title">Wordmark — White on Dark Backgrounds</h2>
+      <section class="mb-20" id="wordmark-dark">
+        <div class="flex items-baseline gap-4 mb-8 pb-5 border-b border-neutral-200">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 shrink-0">05</span>
+          <h2 class="text-xl font-medium tracking-tight">Wordmark — White on Dark Backgrounds</h2>
         </div>
-        <div class="wordmark-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
 
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-white" style="background:var(--forest-green);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-brand text-white">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Forest Green</p><p class="card-meta__hex">#0E4533</p></div>
-              <div class="card-meta__dot" style="background:var(--forest-green);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Forest Green</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#0E4533</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-brand"></div>
             </div>
           </div>
 
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-white" style="background:var(--charcoal);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-charcoal text-white">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Charcoal</p><p class="card-meta__hex">#201F1D</p></div>
-              <div class="card-meta__dot" style="background:var(--charcoal);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-white" style="background:var(--interactive-primary-hover);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Deep Green</p><p class="card-meta__hex">#0A3325</p></div>
-              <div class="card-meta__dot" style="background:var(--interactive-primary-hover);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Charcoal</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#201F1D</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-charcoal"></div>
             </div>
           </div>
 
-          <!-- Lime as a bonus — green wordmark also works on lime -->
-          <div class="logo-card">
-            <div class="canvas canvas--wordmark c-green" style="background:var(--lime);">
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound wordmark green on lime"><use href="#wordmark"/></svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[16/6] p-5 px-8 flex items-center justify-center bg-[#0A3325] text-white">
+              <svg class="w-[76%] h-auto" viewBox="0 0 731 159" aria-label="abound wordmark white"><use href="#wordmark"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Lime</p><p class="card-meta__hex">Green mark</p></div>
-              <div class="card-meta__dot" style="background:var(--lime);"></div>
+            <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Deep Green</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">#0A3325</p></div>
+              <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-[#0A3325]"></div>
             </div>
           </div>
 
         </div>
       </section>
 
-      <!-- ══ 06 FULL LOCKUP ══ -->
-      <section class="section" id="lockup">
-        <div class="section__head">
-          <span class="section__num">06</span>
-          <h2 class="section__title">Full Lockup — Mark + Wordmark</h2>
+      <!-- ══ 06 MODERN SEPARATION RULE ══ -->
+      <section class="mb-20" id="separation">
+        <div class="flex items-baseline gap-4 mb-8 pb-5 border-b border-neutral-200">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 shrink-0">06</span>
+          <h2 class="text-xl font-medium tracking-tight text-danger">Strict Separation Rule</h2>
         </div>
-        <div class="lockup-grid">
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-green" style="background:var(--white);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">White</p><p class="card-meta__hex">Green lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--white); box-shadow:inset 0 0 0 1px var(--border-secondary);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-green" style="background:var(--off-white);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Off-White</p><p class="card-meta__hex">Green lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--off-white);"></div>
+        <div class="bg-danger/5 border border-danger/20 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-danger mb-4 tracking-tight">Never use together.</h3>
+            <p class="text-neutral-600 leading-relaxed mb-6">
+              The Abound mark and wordmark are designed to stand alone. Combining them into a single lockup is strictly prohibited across all digital and print surfaces.
+            </p>
+            <div class="flex flex-wrap gap-4">
+               <span class="px-4 py-2 bg-white border border-danger text-danger text-xs font-bold uppercase rounded-lg">No Lockups</span>
+               <span class="px-4 py-2 bg-white border border-danger text-danger text-xs font-bold uppercase rounded-lg">One logo at a time</span>
             </div>
           </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-green" style="background:var(--lime);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
+          <div class="relative p-10 bg-white shadow-xl rounded-2xl border border-neutral-100 flex flex-col items-center gap-6">
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <svg viewBox="0 0 100 100" class="w-full h-full text-danger opacity-20"><line x1="10" y1="10" x2="90" y2="90" stroke="currentColor" stroke-width="2"/><line x1="90" y1="10" x2="10" y2="90" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Lime</p><p class="card-meta__hex">Green lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--lime);"></div>
-            </div>
+            <svg class="h-10 w-auto text-neutral-300" viewBox="0 0 138 159"><use href="#mark"/></svg>
+            <svg class="h-6 w-auto text-neutral-300" viewBox="0 0 731 159"><use href="#wordmark"/></svg>
+            <p class="text-[10px] font-bold text-danger uppercase tracking-widest mt-2">Zero integration</p>
           </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-green" style="background:var(--teal-sage);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Teal Sage</p><p class="card-meta__hex">Green lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--teal-sage);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-white" style="background:var(--forest-green);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Forest Green</p><p class="card-meta__hex">White lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--forest-green);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-white" style="background:var(--charcoal);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Charcoal</p><p class="card-meta__hex">White lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--charcoal);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-green" style="background:var(--khaki);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Khaki</p><p class="card-meta__hex">Green lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--khaki);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-green" style="background:var(--pale-yellow-green);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Pale Yellow</p><p class="card-meta__hex">Green lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--pale-yellow-green);"></div>
-            </div>
-          </div>
-
-          <div class="logo-card">
-            <div class="canvas canvas--lockup c-white" style="background:var(--interactive-primary-hover);">
-              <svg class="mark-svg" viewBox="0 0 138 159" aria-hidden="true"><use href="#mark"/></svg>
-              <svg class="wm-svg" viewBox="0 0 731 159" aria-label="abound"><use href="#wordmark"/></svg>
-            </div>
-            <div class="card-meta">
-              <div><p class="card-meta__name">Deep Green</p><p class="card-meta__hex">White lockup</p></div>
-              <div class="card-meta__dot" style="background:var(--interactive-primary-hover);"></div>
-            </div>
-          </div>
-
         </div>
       </section>
 
       <!-- ══ 07 PRE-BUILT ASSETS ══ -->
-      <section class="section" id="prebuilt">
-        <div class="section__head">
-          <span class="section__num">07</span>
-          <h2 class="section__title">Pre-Built Brand Assets</h2>
+      <section class="mb-20" id="prebuilt">
+        <div class="flex items-baseline gap-4 mb-8 pb-5 border-b border-neutral-200">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 shrink-0">07</span>
+          <h2 class="text-xl font-medium tracking-tight">Pre-built Brand Assets</h2>
         </div>
-        <div class="prebuilt-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
-          <!-- ─── Circle badge (SVG) ─── -->
-          <div class="prebuilt-card">
-            <div class="prebuilt-card__img-wrap" style="background:var(--off-white);">
-              <!--
-                Square viewBox (300×300). Circle fills the canvas.
-                Mark centred: scale=1.132 (180px tall), x=68.8, y=60
-                color:white drives fill="currentColor" on the mark path.
-              -->
-              <svg viewBox="0 0 300 300" style="height:78%; width:auto;" aria-label="Abound circle badge">
-                <circle cx="150" cy="150" r="150" fill="url(#grad-green-badge)"/>
-                <!-- subtle inner highlight ring -->
-                <circle cx="150" cy="150" r="149" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
-                <g transform="translate(68.8, 60) scale(1.132)" fill="white">
-                  <use href="#mark"/>
-                </g>
-              </svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[4/3] bg-off-white flex items-center justify-center p-6 overflow-hidden">
+               <svg viewBox="0 0 200 200" width="120" height="120">
+                 <circle cx="100" cy="100" r="80" fill="url(#grad-lime-radial)"/>
+                 <circle cx="100" cy="100" r="80" fill="none" stroke="white" stroke-width="2" stroke-dasharray="8 4" opacity="0.3"/>
+                 <use href="#mark" x="65" y="65" width="70" height="70" class="text-brand"/>
+               </svg>
             </div>
-            <div class="prebuilt-card__meta">
-              <p class="prebuilt-card__name">Circle Badge</p>
-              <p class="prebuilt-card__desc">SVG vector — Avatars, favicons, app icons</p>
+            <div class="p-3 px-4 bg-white border-t border-neutral-50">
+              <p class="text-[13px] font-bold text-charcoal mb-0.5">Circle Badge (Lime)</p>
+              <p class="text-[12px] text-neutral-400">Marketing & UI context</p>
             </div>
           </div>
 
-          <!-- ─── Rectangle — Lime Gradient (SVG) ─── -->
-          <div class="prebuilt-card">
-            <div class="prebuilt-card__img-wrap" style="padding:0; overflow:hidden;">
-              <!--
-                4:3 viewBox (400×300). Mark centred at ~55% height (165px).
-                Scale=1.038, width≈143, x=128.4, y=67.5
-              -->
-              <svg viewBox="0 0 400 300" width="100%" height="100%"
-                   preserveAspectRatio="xMidYMid meet"
-                   aria-label="Abound rectangle badge lime gradient">
-                <rect width="400" height="300" fill="url(#grad-lime-diag)"/>
-                <!-- subtle grain texture via noise pattern -->
-                <rect width="400" height="300" fill="none" opacity="0.04"
-                      style="filter:url(#noise)" />
-                <g transform="translate(128.4, 67.5) scale(1.038)" fill="#0E4533">
-                  <use href="#mark"/>
-                </g>
-              </svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[4/3] bg-charcoal flex items-center justify-center p-6 overflow-hidden">
+               <svg viewBox="0 0 200 200" width="120" height="120">
+                 <circle cx="100" cy="100" r="80" fill="url(#grad-green-badge)"/>
+                 <use href="#mark" x="65" y="65" width="70" height="70" style="color:white;"/>
+               </svg>
             </div>
-            <div class="prebuilt-card__meta">
-              <p class="prebuilt-card__name">Rectangle — Lime Gradient</p>
-              <p class="prebuilt-card__desc">SVG vector — Social tiles, thumbnails</p>
+            <div class="p-3 px-4 bg-white border-t border-neutral-50">
+              <p class="text-[13px] font-bold text-charcoal mb-0.5">Circle Badge (Green)</p>
+              <p class="text-[12px] text-neutral-400">Social & Dark contexts</p>
             </div>
           </div>
 
-          <!-- ─── Rectangle — Lime Flat (SVG) ─── -->
-          <div class="prebuilt-card">
-            <div class="prebuilt-card__img-wrap" style="padding:0; overflow:hidden;">
-              <svg viewBox="0 0 400 300" width="100%" height="100%"
-                   preserveAspectRatio="xMidYMid meet"
-                   aria-label="Abound rectangle badge lime flat">
-                <rect width="400" height="300" fill="#D4F19B"/>
-                <g transform="translate(128.4, 67.5) scale(1.038)" fill="#0E4533">
-                  <use href="#mark"/>
-                </g>
-              </svg>
+          <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
+            <div class="aspect-[4/3] bg-pale-yellow-green flex items-center justify-center p-6 overflow-hidden">
+               <rect x="20" y="40" width="160" height="120" rx="20" fill="url(#grad-lime-diag)" transform="rotate(-5 100 100)"/>
+               <use href="#mark" x="75" y="70" width="50" height="50" class="text-brand"/>
             </div>
-            <div class="prebuilt-card__meta">
-              <p class="prebuilt-card__name">Rectangle — Lime Flat</p>
-              <p class="prebuilt-card__desc">SVG vector — Social tiles, thumbnails</p>
-            </div>
-          </div>
-
-          <div class="prebuilt-card">
-            <div class="prebuilt-card__img-wrap" style="padding:0; background:var(--forest-green);">
-              <img src="brand-assest/wordmark-bg.png" alt="Abound wordmark on forest green" style="width:100%; height:100%; object-fit:cover; max-height:none;">
-            </div>
-            <div class="prebuilt-card__meta">
-              <p class="prebuilt-card__name">Wordmark — Forest Green BG</p>
-              <p class="prebuilt-card__desc">wordmark-bg.png — Email headers, banners, covers</p>
+            <div class="p-3 px-4 bg-white border-t border-neutral-50">
+              <p class="text-[13px] font-bold text-charcoal mb-0.5">App Tile (Draft)</p>
+              <p class="text-[12px] text-neutral-400">iOS/Android context</p>
             </div>
           </div>
 
@@ -942,53 +523,54 @@
       </section>
 
       <!-- ══ 08 USAGE GUIDELINES ══ -->
-      <section class="section" id="usage">
-        <div class="section__head">
-          <span class="section__num">08</span>
-          <h2 class="section__title">Usage Guidelines</h2>
+      <section class="mb-20" id="usage">
+        <div class="flex items-baseline gap-4 mb-8 pb-5 border-b border-neutral-200">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-400 shrink-0">08</span>
+          <h2 class="text-xl font-medium tracking-tight">Usage Guidelines</h2>
         </div>
-        <div class="usage-grid">
-          <div class="usage-card usage-card--do">
-            <div class="usage-card__icon">✓</div>
-            <p class="usage-card__label">Do</p>
-            <ul class="usage-card__list">
-              <li>Use the green mark on white, off-white, pale yellow, khaki, lime, and teal sage surfaces</li>
-              <li>Use the white mark on forest green, deep green, and charcoal backgrounds</li>
-              <li>Maintain clear space equal to the cap-height of the "b" letterform on all sides</li>
-              <li>Use the circle badge for avatars, profile images, and app icons</li>
-              <li>Use the full lockup (mark + wordmark) as the primary brand placement</li>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="rounded-xl p-6 border border-neutral-200 bg-white">
+            <div class="w-[30px] h-[30px] rounded-md flex items-center justify-center text-[15px] mb-4 bg-success-bg transition-colors">✅</div>
+            <div class="text-[11px] font-bold tracking-widest uppercase mb-3 text-success">Do</div>
+            <ul class="list-none flex flex-col gap-2">
+              <li class="text-[13px] text-neutral-600 flex gap-2 items-start leading-relaxed"><span class="w-1 h-1 rounded-full bg-success shrink-0 mt-1.5"></span>Use the green mark on light backgrounds</li>
+              <li class="text-[13px] text-neutral-600 flex gap-2 items-start leading-relaxed"><span class="w-1 h-1 rounded-full bg-success shrink-0 mt-1.5"></span>Maintain minimum exclusion zone (20% of mark width)</li>
+              <li class="text-[13px] text-neutral-600 flex gap-2 items-start leading-relaxed"><span class="w-1 h-1 rounded-full bg-success shrink-0 mt-1.5"></span>Ensure wordmark alignment to cap-height</li>
             </ul>
           </div>
-          <div class="usage-card usage-card--dont">
-            <div class="usage-card__icon">✕</div>
-            <p class="usage-card__label">Don't</p>
-            <ul class="usage-card__list">
-              <li>Place the green mark on dark backgrounds — use the white version instead</li>
-              <li>Place the white mark on light backgrounds — it will be lost</li>
-              <li>Stretch, distort, rotate, or skew the logo or wordmark</li>
-              <li>Use colours outside the official palette as logo backgrounds</li>
-              <li>Apply drop shadows, outlines, glows, or other effects to the mark</li>
+          <div class="rounded-xl p-6 border border-neutral-200 bg-white">
+            <div class="w-[30px] h-[30px] rounded-md flex items-center justify-center text-[15px] mb-4 bg-danger-bg transition-colors">❌</div>
+            <div class="text-[11px] font-bold tracking-widest uppercase mb-3 text-danger">Don't</div>
+            <ul class="list-none flex flex-col gap-2">
+              <li class="text-[13px] text-neutral-600 flex gap-2 items-start leading-relaxed"><span class="w-1 h-1 rounded-full bg-danger shrink-0 mt-1.5"></span>Do not distort or stretch the mark or wordmark</li>
+              <li class="text-[13px] text-neutral-600 flex gap-2 items-start leading-relaxed"><span class="w-1 h-1 rounded-full bg-danger shrink-0 mt-1.5"></span>Do not apply outlines or dropshadows to the logo</li>
+              <li class="text-[13px] text-neutral-600 flex gap-2 items-start leading-relaxed"><span class="w-1 h-1 rounded-full bg-danger shrink-0 mt-1.5"></span>Never use the mark and wordmark together</li>
             </ul>
           </div>
         </div>
       </section>
 
-    </div><!-- /sections-wrap -->
+    </div>
+
   </main>
-</div><!-- /layout -->
+
+</div>
 
 <script>
   // Highlight active section in sidenav as user scrolls
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks  = document.querySelectorAll('.sidenav__item a');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        document.querySelectorAll('nav[aria-label="Page sections"] a').forEach(l => {
+          const isActive = l.getAttribute('href') === '#' + e.target.id;
+          l.classList.toggle('bg-off-white', isActive);
+          l.classList.toggle('text-brand', isActive);
+          l.classList.toggle('font-bold', isActive);
+        });
       }
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
-  sections.forEach(s => io.observe(s));
+  document.querySelectorAll('section[id]').forEach(s => io.observe(s));
 </script>
 
 </body>
