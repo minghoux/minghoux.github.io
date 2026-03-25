@@ -64,9 +64,12 @@
           '8': '32px',
           '10': '40px',
           '12': '48px',
+          '14': '56px',
           '16': '64px',
           '20': '80px',
           '24': '96px',
+          '32': '128px',
+          '40': '160px',
         },
         borderRadius: {
           'sm': '6px',
@@ -83,15 +86,298 @@
           'xl': '0 20px 24px -4px rgba(32,31,29,0.09), 0 8px 8px -4px rgba(32,31,29,0.04)',
         },
         fontFamily: {
-          sans: ['DM Sans', 'sans-serif'],
+          /* Saans is the Abound brand typeface — files are in brand-assest/Saans font/ */
+          sans: ['Saans', 'DM Sans', 'sans-serif'],
         },
       }
     }
   }
 </script>
+
+<!-- Saans — Abound brand typeface (loaded from local assets) -->
+<style>
+  @font-face {
+    font-family: 'Saans';
+    src: url('../brand-assest/Saans font/Saans-Regular.woff2') format('woff2'),
+         url('../brand-assest/Saans font/Saans-Regular.woff') format('woff'),
+         url('../brand-assest/Saans font/Saans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Saans';
+    src: url('../brand-assest/Saans font/Saans-Medium.woff2') format('woff2'),
+         url('../brand-assest/Saans font/Saans-Medium.woff') format('woff'),
+         url('../brand-assest/Saans font/Saans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Saans';
+    src: url('../brand-assest/Saans font/Saans-SemiBold.woff2') format('woff2'),
+         url('../brand-assest/Saans font/Saans-SemiBold.woff') format('woff'),
+         url('../brand-assest/Saans font/Saans-SemiBold.ttf') format('truetype');
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ── Shared component classes used across multiple sections ── */
+
+  /* Divider */
+  hr.divider {
+    border: none;
+    height: 1px;
+    background: #E8EDEA;
+    margin: 4rem 0;
+  }
+
+  /* Token reference tables */
+  .token-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #E8EDEA;
+  }
+  .token-table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .token-table-wrap thead {
+    background: #F4F7F4;
+  }
+  .token-table-wrap th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: #3F4F3F;
+    border-bottom: 1px solid #E8EDEA;
+    white-space: nowrap;
+  }
+  .token-table-wrap td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #E8EDEA;
+    color: #201F1D;
+    vertical-align: middle;
+  }
+  .token-table-wrap tr:last-child td { border-bottom: none; }
+  .token-table-wrap code {
+    font-family: ui-monospace, 'SF Mono', monospace;
+    font-size: 0.8125rem;
+    background: #F4F7F4;
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    color: #3F4F3F;
+  }
+  .token-table-wrap .mono { font-family: ui-monospace, 'SF Mono', monospace; }
+  .color-dot {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* Card system (used in Accessibility section) */
+  .card {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid #E8EDEA;
+  }
+  .card-default {
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06);
+  }
+  .section { margin-bottom: 6rem; }
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #0E4533;
+    margin-bottom: 0.5rem;
+  }
+  .section-subtitle {
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: #3F4F3F;
+    margin-bottom: 2rem;
+    max-width: 640px;
+  }
+
+  /* Focus ring demo (Accessibility section) */
+  .focus-ring-demo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.25rem;
+    height: 44px;
+    background: #0E4533;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: background 150ms ease-out;
+  }
+  .focus-ring-demo:hover { background: #0A3325; }
+  .focus-ring-demo:focus-visible {
+    outline: 2px solid #0E4533;
+    outline-offset: 4px;
+    background: #0A3325;
+  }
+
+  /* Active side-nav link */
+  #sideNav a.active {
+    background: #F4F7F4;
+    color: #0E4533;
+    font-weight: 600;
+  }
+
+  /* Skeleton shimmer animation */
+  @keyframes skeleton-shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  .skeleton {
+    border-radius: 6px;
+    background: linear-gradient(90deg, #E8EDEA 25%, #F4F7F4 50%, #E8EDEA 75%);
+    background-size: 800px 100%;
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  }
+
+  /* Slider thumb styling */
+  input[type=range].brand-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: #E8EDEA;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type=range].brand-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #0E4533;
+    border: 3px solid #fff;
+    box-shadow: 0 1px 6px rgba(14,69,51,0.35);
+    cursor: grab;
+    transition: box-shadow 150ms ease-out, transform 150ms ease-out;
+  }
+  input[type=range].brand-range::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.15);
+    box-shadow: 0 2px 10px rgba(14,69,51,0.4);
+  }
+  input[type=range].brand-range:focus-visible::-webkit-slider-thumb {
+    outline: 2px solid #0E4533;
+    outline-offset: 3px;
+  }
+  input[type=range].brand-range::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #0E4533;
+    border: 3px solid #fff;
+    box-shadow: 0 1px 6px rgba(14,69,51,0.35);
+    cursor: grab;
+    transition: box-shadow 150ms ease-out, transform 150ms ease-out;
+  }
+  input[type=range].brand-range::-moz-range-progress {
+    background: #0E4533;
+    border-radius: 999px;
+    height: 6px;
+  }
+
+  /* Toast notification */
+  .toast-demo {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #201F1D;
+    color: #fff;
+    font-size: 0.875rem;
+    box-shadow: 0 8px 24px rgba(32,31,29,0.2);
+    max-width: 360px;
+  }
+  .toast-demo.success-toast { background: #0A5C3A; }
+  .toast-demo.warning-toast { background: #B54708; }
+  .toast-demo.danger-toast  { background: #C4320A; }
+
+  /* Tooltip */
+  .tooltip-wrap { position: relative; display: inline-flex; }
+  .tooltip-wrap .tooltip-bubble {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #201F1D;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 150ms ease-out, transform 150ms ease-out;
+    transform: translateX(-50%) translateY(4px);
+    z-index: 10;
+  }
+  .tooltip-wrap .tooltip-bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #201F1D;
+  }
+  .tooltip-wrap:hover .tooltip-bubble,
+  .tooltip-wrap:focus-within .tooltip-bubble {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Motion entry demo */
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .motion-entry-demo { animation: fadeSlideIn 200ms ease-out both; }
+
+  @keyframes fadeSlideOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(8px); }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+<!-- DM Sans as fallback if Saans hasn't loaded yet -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -135,11 +421,15 @@
     <li class="mb-1"><a href="#inputs" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Form Inputs</a></li>
     <li class="mb-1"><a href="#selects" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Select / Dropdown</a></li>
     <li class="mb-1"><a href="#radios" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Radios &amp; Checkboxes</a></li>
+    <li class="mb-1"><a href="#slider" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Slider / Range</a></li>
     <li class="mb-1"><a href="#cards" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Cards</a></li>
     <li class="mb-1"><a href="#tables" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Tables</a></li>
     <li class="mb-1"><a href="#badges" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Badges / Tags</a></li>
     <li class="mb-1"><a href="#progress" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Progress Indicator</a></li>
     <li class="mb-1"><a href="#alerts" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Alerts / Banners</a></li>
+    <li class="mb-1"><a href="#toasts" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Toasts</a></li>
+    <li class="mb-1"><a href="#tooltips" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Tooltips</a></li>
+    <li class="mb-1"><a href="#skeletons" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Loading Skeletons</a></li>
     <li class="mb-1"><a href="#navigation" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Navigation</a></li>
   </ul>
   <div class="text-[11px] font-bold tracking-wider uppercase text-neutral-500 px-3 py-4 pb-2">System</div>
@@ -157,10 +447,41 @@
 <main class="ml-[260px] p-12 max-w-[calc(1280px-260px)]">
 
   <!-- HERO -->
-  <div class="bg-brand text-white p-16 pb-16 -mt-12 -mx-10 mb-16" id="top">
-    <div class="text-[12px] font-bold tracking-[0.14em] uppercase text-lime mb-5">March 2026</div>
-    <h1 class="text-[44px] font-light tracking-[-0.025em] leading-[1.1] mb-4">Abound <strong class="font-bold">2026</strong></h1>
-    <p class="text-[15px] text-white/60 max-w-[480px] leading-[1.65]">The core design system foundation for Abound. A cohesive set of tokens, components, and patterns to build premium financial experiences.</p>
+  <div class="relative overflow-hidden rounded-2xl mb-16 mt-0" id="top" style="background:#0E4533; min-height:320px;">
+    <!-- Abstract brand background -->
+    <div class="absolute inset-0 opacity-20" style="background-image:url('../brand-assest/abstract-1.jpg'); background-size:cover; background-position:center; mix-blend-mode:luminosity;"></div>
+    <!-- Lime accent blob -->
+    <div class="absolute -top-16 -right-16 w-80 h-80 rounded-full opacity-10" style="background:#D4F19B;"></div>
+    <div class="absolute bottom-0 left-1/3 w-48 h-48 rounded-full opacity-5" style="background:#D4F19B;"></div>
+
+    <div class="relative z-10 p-12 md:p-16">
+      <!-- Wordmark image -->
+      <img src="../brand-assest/wordmark-white.png" alt="Abound" class="h-7 mb-10 opacity-90">
+
+      <div class="text-[11px] font-bold tracking-[0.18em] uppercase mb-4" style="color:#D4F19B;">Design System · v1.0 · March 2026</div>
+      <h1 class="text-[48px] md:text-[56px] font-semibold tracking-[-0.03em] leading-[1.05] mb-5 text-white max-w-[560px]">The foundation for <em class="not-italic" style="color:#D4F19B;">every</em> Abound experience.</h1>
+      <p class="text-[15px] max-w-[480px] leading-[1.7]" style="color:rgba(255,255,255,0.65);">Tokens, components, and patterns built to deliver premium, accessible financial products — from marketing pages to the loan application flow.</p>
+
+      <!-- Quick stats -->
+      <div class="flex flex-wrap gap-8 mt-10 pt-10 border-t border-white/10">
+        <div>
+          <div class="text-[28px] font-bold text-white tabular-nums">40+</div>
+          <div class="text-[11px] uppercase tracking-wider mt-0.5" style="color:rgba(255,255,255,0.5);">Design Tokens</div>
+        </div>
+        <div>
+          <div class="text-[28px] font-bold text-white tabular-nums">12</div>
+          <div class="text-[11px] uppercase tracking-wider mt-0.5" style="color:rgba(255,255,255,0.5);">Components</div>
+        </div>
+        <div>
+          <div class="text-[28px] font-bold text-white tabular-nums">WCAG AA</div>
+          <div class="text-[11px] uppercase tracking-wider mt-0.5" style="color:rgba(255,255,255,0.5);">Accessible</div>
+        </div>
+        <div>
+          <div class="text-[28px] font-bold text-white tabular-nums">2</div>
+          <div class="text-[11px] uppercase tracking-wider mt-0.5" style="color:rgba(255,255,255,0.5);">Platforms</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ============================================================
@@ -325,7 +646,7 @@
           </thead>
           <tbody>
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-primary</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#FFFFFF</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-white"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Default page background</td></tr>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-secondary</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#F4F8F3</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-off-white"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Alternate sections, card surfaces</td></tr>
+            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-secondary</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#F4F8F3</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-off-white"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Alternate sections, card surfaces — use <code class="font-mono text-[12px] bg-neutral-50 px-1 rounded text-neutral-600">bg-off-white</code></td></tr>
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-tertiary</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#F7F7E9</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-pale-yellow-green"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Marketing hero backgrounds</td></tr>
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-brand</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#0E4533</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-brand"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Brand-heavy panels, CTA areas</td></tr>
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-brand-subtle</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#F4F8F3</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-off-white"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Subtle brand tint</td></tr>
@@ -698,8 +1019,6 @@
 
   <hr class="divider">
 
-  <hr class="divider">
-
   <!-- ============================================================
        SECTION 5: COMPONENTS
        ============================================================ -->
@@ -715,9 +1034,9 @@
       <div class="bg-white border border-neutral-200 rounded-lg p-8 shadow-sm">
         <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Primary</div>
         <div class="flex flex-wrap gap-4 mb-10">
-          <button class="inline-flex items-center justify-center px-3 h-9 bg-brand text-white rounded-md font-medium text-xs hover:bg-[#0A3325] transition-all shadow-sm">Continue</button>
-          <button class="inline-flex items-center justify-center px-5 h-11 bg-brand text-white rounded-md font-medium text-sm hover:bg-[#0A3325] transition-all shadow-sm">Get my quote</button>
-          <button class="inline-flex items-center justify-center px-8 h-12 bg-brand text-white rounded-md font-medium text-base hover:bg-[#0A3325] transition-all shadow-sm">Submit application</button>
+          <button class="inline-flex items-center justify-center px-3 h-9 bg-brand text-white rounded-md font-medium text-xs hover:bg-brand-hover transition-all shadow-sm">Continue</button>
+          <button class="inline-flex items-center justify-center px-5 h-11 bg-brand text-white rounded-md font-medium text-sm hover:bg-brand-hover transition-all shadow-sm">Get my quote</button>
+          <button class="inline-flex items-center justify-center px-8 h-12 bg-brand text-white rounded-md font-medium text-base hover:bg-brand-hover transition-all shadow-sm">Submit application</button>
           <button class="inline-flex items-center justify-center px-5 h-11 bg-neutral-100 text-neutral-400 rounded-md font-medium text-sm cursor-not-allowed">Disabled</button>
           <button class="inline-flex items-center justify-center px-5 h-11 bg-brand text-white rounded-md font-medium text-sm opacity-80 cursor-wait">
             <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
@@ -746,9 +1065,9 @@
 
         <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Pill Variant (Marketing CTAs)</div>
         <div class="flex flex-wrap gap-4">
-          <button class="inline-flex items-center justify-center px-6 h-11 bg-brand text-white rounded-full font-medium text-sm hover:bg-[#0A3325] transition-all shadow-sm">Get started</button>
+          <button class="inline-flex items-center justify-center px-6 h-11 bg-brand text-white rounded-full font-medium text-sm hover:bg-brand-hover transition-all shadow-sm">Get started</button>
           <button class="inline-flex items-center justify-center px-6 h-11 bg-white border border-neutral-300 text-charcoal rounded-full font-medium text-sm hover:bg-neutral-50 transition-all shadow-sm">How it works</button>
-          <button class="inline-flex items-center justify-center px-10 h-14 bg-brand text-white rounded-full font-medium text-lg hover:bg-[#0A3325] transition-all shadow-md">Check your rate</button>
+          <button class="inline-flex items-center justify-center px-10 h-14 bg-brand text-white rounded-full font-medium text-lg hover:bg-brand-hover transition-all shadow-md">Check your rate</button>
         </div>
       </div>
     </div>
@@ -916,7 +1235,62 @@
       </div>
     </div>
 
-    <!-- 5e. Cards -->
+    <!-- 5e. Slider / Range Input (P0 — loan amount) -->
+    <div class="mb-16" id="slider">
+      <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Slider / Range Input</h3>
+      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Used for loan amount and term selection. The slider must always be paired with a numeric display. Min 44px touch target height. Custom thumb on Forest Green track.</p>
+
+      <div class="bg-white border border-neutral-200 rounded-lg p-8 shadow-sm">
+        <div class="max-w-[480px]">
+          <!-- Live interactive demo -->
+          <div class="mb-8">
+            <div class="flex items-end justify-between mb-2">
+              <label class="text-sm font-semibold text-charcoal">Loan amount</label>
+              <span id="loanDisplay" class="text-2xl font-bold text-brand tabular-nums tracking-tight">£5,000</span>
+            </div>
+            <input
+              id="loanSlider"
+              type="range"
+              class="brand-range w-full"
+              min="1000"
+              max="10000"
+              step="100"
+              value="5000"
+              aria-label="Select loan amount between £1,000 and £10,000"
+            >
+            <div class="flex justify-between text-xs text-neutral-400 font-mono mt-2">
+              <span>£1,000</span>
+              <span>£10,000</span>
+            </div>
+            <div class="mt-4 p-4 bg-neutral-50 rounded-lg flex items-center justify-between">
+              <span class="text-sm text-neutral-600">Estimated monthly repayment</span>
+              <span id="loanMonthly" class="text-lg font-bold text-charcoal tabular-nums">£166.49</span>
+            </div>
+          </div>
+
+          <!-- States -->
+          <div class="border-t border-neutral-100 pt-6">
+            <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Disabled State</div>
+            <input
+              type="range"
+              class="brand-range w-full opacity-40 cursor-not-allowed pointer-events-none"
+              min="1000" max="10000" step="100" value="3000"
+              disabled aria-disabled="true"
+            >
+          </div>
+        </div>
+
+        <!-- Usage rules -->
+        <div class="mt-8 pt-6 border-t border-neutral-100 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div class="flex items-start gap-2 text-success"><span class="text-base font-bold mt-0.5">✓</span><span>Always pair with a readable numeric value</span></div>
+          <div class="flex items-start gap-2 text-success"><span class="text-base font-bold mt-0.5">✓</span><span>Show min/max range labels below track</span></div>
+          <div class="flex items-start gap-2 text-success"><span class="text-base font-bold mt-0.5">✓</span><span>Support keyboard arrow keys (built-in)</span></div>
+          <div class="flex items-start gap-2 text-danger"><span class="text-base font-bold mt-0.5">✗</span><span>Never use slider alone without a confirm step</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5f. Cards -->
     <div class="mb-16" id="cards">
       <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Cards</h3>
       <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Four card variants for different contexts, plus a specialised loan summary card.</p>
@@ -931,9 +1305,9 @@
             <h3 class="text-lg font-bold mb-2">Brand Card</h3>
             <p class="text-sm opacity-80 leading-relaxed">Forest Green background with white text. For CTAs and premium callouts.</p>
           </div>
-          <div class="p-6 rounded-xl bg-white border-transparent">
+          <div class="p-6 rounded-xl bg-off-white border border-transparent">
             <h3 class="text-lg font-bold text-charcoal mb-2">Surface Card</h3>
-            <p class="text-sm text-neutral-500 leading-relaxed">Off-White background, no border. For informational sections with subtle separation.</p>
+            <p class="text-sm text-neutral-500 leading-relaxed">Off-White (#F4F8F3) background, no border. For informational sections with subtle separation.</p>
           </div>
           <div class="p-6 rounded-xl shadow-sm border bg-white border-neutral-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer group">
             <h3 class="text-lg font-bold text-charcoal mb-2 group-hover:text-brand transition-colors">Interactive Card</h3>
@@ -1031,9 +1405,13 @@
       <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Step-based progress for the loan application flow.</p>
 
       <div class="bg-white border border-neutral-200 rounded-lg p-10 shadow-sm overflow-hidden">
+        <!-- Step 3 of 4 active — progress bar shows 62.5% -->
         <div class="flex items-center justify-between relative max-w-[640px] mx-auto">
-          <!-- Connector Line -->
-          <div class="absolute h-0.5 bg-neutral-100 top-4 left-0 right-0 -z-0"></div>
+
+          <!-- Track: full neutral bg -->
+          <div class="absolute h-0.5 bg-neutral-100 top-4 left-0 right-0 z-0"></div>
+          <!-- Track: filled progress (steps 1→3 = 2 of 3 gaps = 66%) -->
+          <div class="absolute h-0.5 bg-brand top-4 left-0 z-0 transition-all duration-500" style="width: 62.5%;"></div>
 
           <!-- Step 1 (Completed) -->
           <div class="flex flex-col items-center gap-2 relative z-10">
@@ -1053,7 +1431,7 @@
 
           <!-- Step 3 (Current) -->
           <div class="flex flex-col items-center gap-2 relative z-10">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-white border-2 border-brand text-brand ring-4 ring-brand/10 shadow-sm animate-pulse">3</div>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-white border-2 border-brand text-brand ring-4 ring-brand/10 shadow-sm">3</div>
             <span class="text-[11px] font-bold text-brand uppercase tracking-wider">Offers</span>
           </div>
 
@@ -1063,6 +1441,9 @@
             <span class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Verify</span>
           </div>
         </div>
+
+        <!-- Step counter -->
+        <p class="text-center text-xs text-neutral-400 mt-8 font-medium">Step 3 of 4 — <span class="text-brand font-semibold">Loan offers</span></p>
       </div>
     </div>
 
@@ -1112,6 +1493,155 @@
       </div>
     </div>
 
+    <!-- Toast Notifications -->
+    <div class="mb-16" id="toasts">
+      <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Toast Notifications</h3>
+      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Non-blocking, ephemeral feedback. Appear bottom-right, auto-dismiss after 3 seconds. Use for save confirmations, background actions, and soft errors — not for critical errors that require user action (use Alerts instead).</p>
+
+      <div class="bg-neutral-50 border border-neutral-200 rounded-lg p-8 shadow-sm">
+        <!-- Static display examples -->
+        <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Variants</div>
+        <div class="flex flex-col gap-3 mb-8 max-w-[380px]">
+          <!-- Default / Neutral -->
+          <div class="toast-demo motion-entry-demo">
+            <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5M10 6h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div class="flex-1"><div class="font-semibold text-sm">Application saved</div><div class="text-xs text-white/60 mt-0.5">Your progress has been saved automatically.</div></div>
+            <button class="text-white/40 hover:text-white/80 transition-colors text-lg leading-none">&times;</button>
+          </div>
+          <!-- Success -->
+          <div class="toast-demo success-toast motion-entry-demo" style="animation-delay:80ms;">
+            <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="flex-1"><div class="font-semibold text-sm">Document verified</div><div class="text-xs text-white/60 mt-0.5">Your bank statement has been accepted.</div></div>
+            <button class="text-white/40 hover:text-white/80 transition-colors text-lg leading-none">&times;</button>
+          </div>
+          <!-- Warning -->
+          <div class="toast-demo warning-toast motion-entry-demo" style="animation-delay:160ms;">
+            <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><path d="M10 2L1.5 17h17L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8v4M10 14h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div class="flex-1"><div class="font-semibold text-sm">Session expiring</div><div class="text-xs text-white/60 mt-0.5">You'll be logged out in 5 minutes.</div></div>
+            <button class="text-white/40 hover:text-white/80 transition-colors text-lg leading-none">&times;</button>
+          </div>
+          <!-- Danger -->
+          <div class="toast-demo danger-toast motion-entry-demo" style="animation-delay:240ms;">
+            <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 7.5l5 5M12.5 7.5l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div class="flex-1"><div class="font-semibold text-sm">Connection lost</div><div class="text-xs text-white/60 mt-0.5">Check your internet and try again.</div></div>
+            <button class="text-white/40 hover:text-white/80 transition-colors text-lg leading-none">&times;</button>
+          </div>
+        </div>
+
+        <!-- Live demo -->
+        <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Live demo — click to trigger</div>
+        <div class="flex flex-wrap gap-3 mb-6">
+          <button onclick="showToast('toast-live-default')" class="inline-flex items-center justify-center px-4 h-9 bg-charcoal text-white rounded-md font-medium text-xs hover:bg-neutral-700 transition-all shadow-sm">Default toast</button>
+          <button onclick="showToast('toast-live-success')" class="inline-flex items-center justify-center px-4 h-9 bg-success text-white rounded-md font-medium text-xs hover:bg-success/90 transition-all shadow-sm">Success toast</button>
+        </div>
+
+        <!-- Live toast elements (hidden by default) -->
+        <div id="toast-live-default" class="fixed bottom-6 right-6 z-[9000] toast-demo opacity-0 translate-y-2 pointer-events-none transition-all duration-200">
+          <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5M10 6h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div><div class="font-semibold text-sm">Application saved</div><div class="text-xs text-white/60 mt-0.5">Auto-dismisses in 3 seconds.</div></div>
+        </div>
+        <div id="toast-live-success" class="fixed bottom-6 right-6 z-[9000] toast-demo success-toast opacity-0 translate-y-2 pointer-events-none transition-all duration-200">
+          <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><div class="font-semibold text-sm">Document verified</div><div class="text-xs text-white/60 mt-0.5">Auto-dismisses in 3 seconds.</div></div>
+        </div>
+
+        <p class="text-xs text-neutral-400 mt-4">Position: bottom-right, 24px from edge. Stack multiple toasts vertically (newest on top). Max 3 at once.</p>
+      </div>
+    </div>
+
+    <!-- Tooltips -->
+    <div class="mb-16" id="tooltips">
+      <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Tooltips</h3>
+      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Short, supplementary text that appears on hover or focus. Critical for explaining financial terms — APR, representative rate, soft vs hard search — without cluttering the UI.</p>
+
+      <div class="bg-white border border-neutral-200 rounded-lg p-8 shadow-sm">
+        <div class="text-[12px] font-bold text-neutral-400 mb-6 uppercase tracking-wider">Hover or focus each element</div>
+        <div class="flex flex-wrap gap-8 items-end mb-8">
+          <!-- Tooltip on text link -->
+          <div class="tooltip-wrap">
+            <button class="text-brand text-sm font-semibold border-b border-dashed border-brand/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 rounded-sm">
+              Representative APR
+            </button>
+            <div class="tooltip-bubble" role="tooltip">The APR offered to at least 51% of successful applicants</div>
+          </div>
+
+          <!-- Tooltip on icon button -->
+          <div class="tooltip-wrap">
+            <button class="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-500 hover:bg-neutral-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 6.5v3.5M7 4.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="tooltip-bubble" role="tooltip">A soft search doesn't affect your credit score</div>
+          </div>
+
+          <!-- Tooltip on field label -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-center gap-1.5">
+              <label class="text-sm font-semibold text-charcoal">Annual income</label>
+              <div class="tooltip-wrap">
+                <button class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-400 hover:bg-neutral-200 transition-colors focus:outline-none">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.3"/><path d="M5 4.5v2.5M5 3.5h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                </button>
+                <div class="tooltip-bubble" role="tooltip">Include salary, bonuses, and any other regular income</div>
+              </div>
+            </div>
+            <input class="w-48 h-11 px-4 bg-white border border-neutral-300 rounded-md text-sm text-charcoal placeholder:text-neutral-400 focus:outline-none focus:ring-4 focus:ring-brand/10 focus:border-brand transition-all duration-200" type="text" placeholder="e.g. £35,000">
+          </div>
+        </div>
+
+        <p class="text-xs text-neutral-500 border-t border-neutral-100 pt-4">Tooltip max-width: 240px. Use <code class="font-mono bg-neutral-50 px-1.5 py-0.5 rounded">role="tooltip"</code> and reference with <code class="font-mono bg-neutral-50 px-1.5 py-0.5 rounded">aria-describedby</code> on the trigger.</p>
+      </div>
+    </div>
+
+    <!-- Loading Skeletons -->
+    <div class="mb-16" id="skeletons">
+      <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Loading Skeletons</h3>
+      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Placeholder shapes that mirror the content layout during loading states — credit checks, open banking, and document verification. Prefer skeletons over spinners for content-heavy screens.</p>
+
+      <div class="bg-white border border-neutral-200 rounded-lg p-8 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <!-- Loan offer card skeleton -->
+          <div>
+            <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Loan offer card (loading)</div>
+            <div class="border border-neutral-100 rounded-xl p-6 space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="skeleton w-10 h-10 rounded-full"></div>
+                <div class="flex-1 space-y-2">
+                  <div class="skeleton h-3 rounded w-3/4"></div>
+                  <div class="skeleton h-3 rounded w-1/2"></div>
+                </div>
+              </div>
+              <div class="skeleton h-8 rounded w-1/2"></div>
+              <div class="space-y-2">
+                <div class="skeleton h-3 rounded"></div>
+                <div class="skeleton h-3 rounded w-4/5"></div>
+              </div>
+              <div class="skeleton h-11 rounded-md"></div>
+            </div>
+          </div>
+
+          <!-- Repayment table skeleton -->
+          <div>
+            <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Repayment table (loading)</div>
+            <div class="border border-neutral-100 rounded-xl overflow-hidden">
+              <div class="bg-neutral-50 p-3 px-4 border-b border-neutral-100 flex gap-4">
+                <div class="skeleton h-3 rounded w-16"></div>
+                <div class="skeleton h-3 rounded w-20"></div>
+                <div class="skeleton h-3 rounded w-16 ml-auto"></div>
+              </div>
+              <div class="divide-y divide-neutral-50">
+                <div class="p-3 px-4 flex items-center gap-4"><div class="skeleton h-3 rounded w-4"></div><div class="skeleton h-3 rounded w-24"></div><div class="skeleton h-3 rounded w-14 ml-auto"></div><div class="skeleton h-5 rounded-full w-16 ml-4"></div></div>
+                <div class="p-3 px-4 flex items-center gap-4"><div class="skeleton h-3 rounded w-4"></div><div class="skeleton h-3 rounded w-24"></div><div class="skeleton h-3 rounded w-14 ml-auto"></div><div class="skeleton h-5 rounded-full w-14 ml-4"></div></div>
+                <div class="p-3 px-4 flex items-center gap-4"><div class="skeleton h-3 rounded w-4"></div><div class="skeleton h-3 rounded w-24"></div><div class="skeleton h-3 rounded w-14 ml-auto"></div><div class="skeleton h-5 rounded-full w-16 ml-4"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-neutral-500 mt-6 border-t border-neutral-100 pt-4">Add <code class="font-mono bg-neutral-50 px-1.5 py-0.5 rounded">aria-busy="true"</code> and <code class="font-mono bg-neutral-50 px-1.5 py-0.5 rounded">aria-label="Loading..."</code> to the skeleton container for screen readers. Remove when content loads.</p>
+      </div>
+    </div>
+
     <!-- 5j. Navigation -->
     <div class="mb-16" id="navigation">
       <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Navigation</h3>
@@ -1127,7 +1657,7 @@
               <li><a href="#" class="text-sm font-medium text-neutral-500 hover:text-charcoal transition-colors">About us</a></li>
               <li><a href="#" class="text-sm font-medium text-neutral-500 hover:text-charcoal transition-colors">Help</a></li>
             </ul>
-            <button class="inline-flex items-center justify-center px-4 h-9 bg-brand text-white rounded-md font-bold text-xs hover:bg-[#0A3325] transition-all ml-4">Get a quote</button>
+            <button class="inline-flex items-center justify-center px-4 h-9 bg-brand text-white rounded-md font-bold text-xs hover:bg-brand-hover transition-all ml-4">Get a quote</button>
           </div>
           <div class="p-12 text-center text-neutral-400 font-medium text-sm italic bg-neutral-50/50">
             Page content area
@@ -1190,11 +1720,12 @@
       <table>
         <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
         <tbody>
-          <tr><td><code>shadow-xs</code></td><td class="mono">0 1px 2px rgba(16,24,40,0.05)</td><td>Subtle inputs</td></tr>
-          <tr><td><code>shadow-sm</code></td><td class="mono">0 1px 3px rgba(16,24,40,0.1), 0 1px 2px rgba(16,24,40,0.06)</td><td>Cards default</td></tr>
-          <tr><td><code>shadow-md</code></td><td class="mono">0 4px 8px -2px rgba(16,24,40,0.1), 0 2px 4px -2px rgba(16,24,40,0.06)</td><td>Card hover, dropdowns</td></tr>
-          <tr><td><code>shadow-lg</code></td><td class="mono">0 12px 16px -4px rgba(16,24,40,0.08), 0 4px 6px -2px rgba(16,24,40,0.03)</td><td>Modals, popovers</td></tr>
-          <tr><td><code>shadow-xl</code></td><td class="mono">0 20px 24px -4px rgba(16,24,40,0.08), 0 8px 8px -4px rgba(16,24,40,0.03)</td><td>Full overlays</td></tr>
+          <!-- Values use Charcoal (32,31,29) as shadow colour — warmer, brand-aligned, matches Tailwind config -->
+          <tr><td><code>shadow-xs</code></td><td class="mono">0 1px 2px rgba(32,31,29,0.06)</td><td>Subtle inputs</td></tr>
+          <tr><td><code>shadow-sm</code></td><td class="mono">0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06)</td><td>Cards default</td></tr>
+          <tr><td><code>shadow-md</code></td><td class="mono">0 4px 8px -2px rgba(32,31,29,0.10), 0 2px 4px -2px rgba(32,31,29,0.06)</td><td>Card hover, dropdowns</td></tr>
+          <tr><td><code>shadow-lg</code></td><td class="mono">0 12px 16px -4px rgba(32,31,29,0.09), 0 4px 6px -2px rgba(32,31,29,0.04)</td><td>Modals, popovers</td></tr>
+          <tr><td><code>shadow-xl</code></td><td class="mono">0 20px 24px -4px rgba(32,31,29,0.09), 0 8px 8px -4px rgba(32,31,29,0.04)</td><td>Full overlays</td></tr>
         </tbody>
       </table>
     </div>
@@ -1220,29 +1751,101 @@
         </thead>
         <tbody class="divide-y divide-neutral-100">
           <tr class="hover:bg-neutral-50 transition-colors">
-            <td class="p-4"><code class="bg-neutral-100 px-1.5 py-0.5 rounded text-danger font-mono font-bold">ease-hover</code></td>
+            <td class="p-4"><code class="bg-neutral-100 px-1.5 py-0.5 rounded text-brand font-mono font-bold">ease-hover</code></td>
             <td class="p-4 text-neutral-500 font-mono">150ms ease-out</td>
-            <td class="p-4 text-neutral-600">Hover states, color transitions</td>
+            <td class="p-4 text-neutral-600">Hover states, colour transitions, focus rings</td>
           </tr>
           <tr class="hover:bg-neutral-50 transition-colors">
-            <td class="p-4"><code class="bg-neutral-100 px-1.5 py-0.5 rounded text-danger font-mono font-bold">ease-enter</code></td>
+            <td class="p-4"><code class="bg-neutral-100 px-1.5 py-0.5 rounded text-brand font-mono font-bold">ease-enter</code></td>
             <td class="p-4 text-neutral-500 font-mono">200ms ease-out</td>
-            <td class="p-4 text-neutral-600">Element entry, expansion</td>
+            <td class="p-4 text-neutral-600">Element entry — alerts, modals, toasts sliding in</td>
+          </tr>
+          <tr class="hover:bg-neutral-50 transition-colors">
+            <td class="p-4"><code class="bg-neutral-100 px-1.5 py-0.5 rounded text-brand font-mono font-bold">ease-exit</code></td>
+            <td class="p-4 text-neutral-500 font-mono">120ms ease-in</td>
+            <td class="p-4 text-neutral-600">Element exit — dismissed toasts, closing panels. Exits are faster than entries.</td>
+          </tr>
+          <tr class="hover:bg-neutral-50 transition-colors">
+            <td class="p-4"><code class="bg-neutral-100 px-1.5 py-0.5 rounded text-brand font-mono font-bold">ease-page</code></td>
+            <td class="p-4 text-neutral-500 font-mono">300ms ease-out</td>
+            <td class="p-4 text-neutral-600">Step-to-step transitions in the loan application flow</td>
+          </tr>
+          <tr class="hover:bg-neutral-50 transition-colors">
+            <td class="p-4"><code class="bg-neutral-100 px-1.5 py-0.5 rounded text-brand font-mono font-bold">ease-expand</code></td>
+            <td class="p-4 text-neutral-500 font-mono">250ms ease-out</td>
+            <td class="p-4 text-neutral-600">Accordion open/close, collapsible sections. Use <code class="font-mono text-xs">grid-template-rows</code> not <code class="font-mono text-xs">height</code>.</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="bg-white border border-neutral-200 rounded-lg p-12 shadow-sm text-center">
-      <h4 class="text-sm font-bold text-neutral-400 uppercase tracking-widest mb-10">Interactive Demos</h4>
-      <div class="flex flex-wrap gap-16 justify-center">
+    <!-- Motion rules callout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <div class="p-5 rounded-xl bg-success/5 border border-success/20">
+        <div class="text-xs font-bold text-success uppercase tracking-wider mb-3">Do</div>
+        <ul class="space-y-2 text-sm text-neutral-700">
+          <li class="flex items-start gap-2"><span class="text-success font-bold mt-0.5">✓</span> Animate <code class="font-mono text-xs bg-white px-1 rounded">opacity</code> and <code class="font-mono text-xs bg-white px-1 rounded">transform</code> only</li>
+          <li class="flex items-start gap-2"><span class="text-success font-bold mt-0.5">✓</span> Make exits faster than entries (120ms vs 200ms)</li>
+          <li class="flex items-start gap-2"><span class="text-success font-bold mt-0.5">✓</span> Use <code class="font-mono text-xs bg-white px-1 rounded">@media (prefers-reduced-motion)</code> to disable animations</li>
+          <li class="flex items-start gap-2"><span class="text-success font-bold mt-0.5">✓</span> Use <code class="font-mono text-xs bg-white px-1 rounded">ease-out</code> — elements decelerate, like real objects</li>
+        </ul>
+      </div>
+      <div class="p-5 rounded-xl bg-danger/5 border border-danger/20">
+        <div class="text-xs font-bold text-danger uppercase tracking-wider mb-3">Don't</div>
+        <ul class="space-y-2 text-sm text-neutral-700">
+          <li class="flex items-start gap-2"><span class="text-danger font-bold mt-0.5">✗</span> Animate layout properties — <code class="font-mono text-xs bg-white px-1 rounded">width</code>, <code class="font-mono text-xs bg-white px-1 rounded">height</code>, <code class="font-mono text-xs bg-white px-1 rounded">margin</code></li>
+          <li class="flex items-start gap-2"><span class="text-danger font-bold mt-0.5">✗</span> Use bounce or spring easing — feels dated in fintech</li>
+          <li class="flex items-start gap-2"><span class="text-danger font-bold mt-0.5">✗</span> Add decorative animation — every motion must communicate something</li>
+          <li class="flex items-start gap-2"><span class="text-danger font-bold mt-0.5">✗</span> Exceed 300ms for any interaction response</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-white border border-neutral-200 rounded-lg p-10 shadow-sm">
+      <h4 class="text-sm font-bold text-neutral-400 uppercase tracking-widest mb-8">Interactive Demos — hover each element</h4>
+      <div class="flex flex-wrap gap-12 items-end justify-start">
+
+        <!-- Hover: colour -->
         <div class="flex flex-col items-center gap-4">
-          <div class="w-24 h-24 bg-brand rounded-2xl shadow-lg transition-transform duration-300 hover:scale-110 cursor-pointer"></div>
-          <p class="text-xs font-bold text-neutral-500 uppercase tracking-tighter">Hover: Scale</p>
+          <button class="px-6 h-11 bg-brand text-white rounded-md font-medium text-sm transition-colors duration-[150ms] ease-out hover:bg-brand-hover active:bg-brand-pressed">
+            ease-hover
+          </button>
+          <p class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Colour · 150ms</p>
         </div>
+
+        <!-- Hover: transform -->
         <div class="flex flex-col items-center gap-4">
-          <div class="w-24 h-24 bg-brand rounded-2xl shadow-lg animate-pulse"></div>
-          <p class="text-xs font-bold text-neutral-500 uppercase tracking-tighter">System: Pulse</p>
+          <div class="w-20 h-20 bg-brand rounded-xl shadow-md transition-all duration-[200ms] ease-out hover:-translate-y-2 hover:shadow-lg cursor-pointer"></div>
+          <p class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Lift · 200ms</p>
+        </div>
+
+        <!-- Skeleton shimmer -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-36 space-y-2">
+            <div class="skeleton h-4 rounded w-full"></div>
+            <div class="skeleton h-4 rounded w-3/4"></div>
+            <div class="skeleton h-4 rounded w-1/2"></div>
+          </div>
+          <p class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Skeleton · infinite</p>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-40">
+            <div class="flex justify-between text-xs text-neutral-400 mb-2 font-mono"><span>0%</span><span>100%</span></div>
+            <div class="h-2 bg-neutral-100 rounded-full overflow-hidden">
+              <div class="h-full bg-brand rounded-full transition-all duration-[300ms] ease-out" style="width: 65%"></div>
+            </div>
+          </div>
+          <p class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Track fill · 300ms</p>
+        </div>
+
+        <!-- Fade in (entry) demo -->
+        <div class="flex flex-col items-center gap-4 group cursor-pointer" title="Hover to re-trigger">
+          <div class="px-4 py-2 bg-success/10 text-success rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 group-hover:-translate-y-0 transition-all duration-[200ms] ease-out -translate-y-1">
+            ✓ Saved!
+          </div>
+          <p class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Entry · 200ms</p>
         </div>
       </div>
     </div>
@@ -1339,24 +1942,31 @@
   <!-- ============================================================
        FOOTER
        ============================================================ -->
-  <footer class="mt-24 pt-12 pb-16 border-t border-neutral-100 text-center text-neutral-400 text-sm">
-    <p>Abound Design System v1.0 — March 2026</p>
-    <p class="mt-2">
-      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="hover:text-brand transition-colors underline underline-offset-4">Created with Perplexity Computer</a>
-    </p>
+  <footer class="mt-24 pt-12 pb-16 border-t border-neutral-100">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <img src="../brand-assest/wordmark.png" alt="Abound" class="h-5 mb-3 opacity-60">
+        <p class="text-sm text-neutral-400">Design System · v1.0 · March 2026</p>
+        <p class="text-xs text-neutral-300 mt-1">Questions? Reach the design team on Slack <span class="font-mono">#design-system</span></p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-lime text-brand">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span>
+          WCAG AA Compliant
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-neutral-100 text-neutral-500">
+          Saans · Tailwind · HTML
+        </span>
+      </div>
+    </div>
   </footer>
 
 </main>
 
 <script>
-// Close mobile nav when a link is clicked
-function closeMobileNav() {
-  document.querySelector('.side-nav').classList.remove('open');
-}
-
 // Highlight active nav item on scroll
-const sections = document.querySelectorAll('section[id], div.subsection[id]');
-const navLinks = document.querySelectorAll('.side-nav a');
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('#sideNav a');
 
 function highlightNav() {
   let current = '';
@@ -1378,6 +1988,42 @@ function highlightNav() {
 
 window.addEventListener('scroll', highlightNav, { passive: true });
 highlightNav();
+
+// Loan slider interactive demo
+const loanSlider = document.getElementById('loanSlider');
+const loanDisplay = document.getElementById('loanDisplay');
+const loanMonthly = document.getElementById('loanMonthly');
+const loanTrackFill = document.getElementById('loanTrackFill');
+
+function updateLoanSlider() {
+  if (!loanSlider) return;
+  const val = parseInt(loanSlider.value);
+  const min = parseInt(loanSlider.min);
+  const max = parseInt(loanSlider.max);
+  const pct = ((val - min) / (max - min)) * 100;
+  if (loanDisplay) loanDisplay.textContent = '£' + val.toLocaleString('en-GB');
+  if (loanMonthly) loanMonthly.textContent = '£' + Math.round((val / 36) * 1.099).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  // Update track fill via CSS custom property
+  if (loanSlider) loanSlider.style.background =
+    `linear-gradient(to right, #0E4533 0%, #0E4533 ${pct}%, #E8EDEA ${pct}%, #E8EDEA 100%)`;
+}
+
+if (loanSlider) {
+  loanSlider.addEventListener('input', updateLoanSlider);
+  updateLoanSlider();
+}
+
+// Toast demo
+function showToast(id) {
+  const toast = document.getElementById(id);
+  if (!toast) return;
+  toast.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
+  toast.classList.add('opacity-100', 'translate-y-0');
+  setTimeout(() => {
+    toast.classList.remove('opacity-100', 'translate-y-0');
+    toast.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+  }, 3000);
+}
 </script>
 
 </body>
