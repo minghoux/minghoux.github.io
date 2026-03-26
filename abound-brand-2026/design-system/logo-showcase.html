@@ -4,7 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abound — Logo & Wordmark Showcase</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+  <!-- Saans font (local) -->
+  <style>
+  @font-face {
+    font-family: 'Saans';
+    src: url('../brand-assest/Saans font/Saans-Regular.woff2') format('woff2'),
+         url('../brand-assest/Saans font/Saans-Regular.woff') format('woff'),
+         url('../brand-assest/Saans font/Saans-Regular.ttf') format('truetype');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Saans';
+    src: url('../brand-assest/Saans font/Saans-Medium.woff2') format('woff2'),
+         url('../brand-assest/Saans font/Saans-Medium.woff') format('woff'),
+         url('../brand-assest/Saans font/Saans-Medium.ttf') format('truetype');
+    font-weight: 500; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Saans';
+    src: url('../brand-assest/Saans font/Saans-SemiBold.woff2') format('woff2'),
+         url('../brand-assest/Saans font/Saans-SemiBold.woff') format('woff'),
+         url('../brand-assest/Saans font/Saans-SemiBold.ttf') format('truetype');
+    font-weight: 600 700; font-style: normal; font-display: swap;
+  }
+  </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,33 +36,28 @@
           colors: {
             brand: {
               DEFAULT: '#0E4533',
+              hover: '#0A3325',
+              pressed: '#071F17',
               subtle: '#EBF2ED',
             },
             charcoal: '#201F1D',
-            success: {
-              DEFAULT: '#0A5C3A',
-              bg: '#EBF5EF',
-            },
-            danger: {
-              DEFAULT: '#C4320A',
-              bg: '#FEF3F2',
-            },
-            warning: {
-              DEFAULT: '#B54708',
-              bg: '#FDF6E8',
-            },
-            info: {
-              DEFAULT: '#1A6B73',
-              bg: '#EDF6F5',
-            },
+            success: { DEFAULT: '#0A5C3A', bg: '#EBF5EF' },
+            danger:  { DEFAULT: '#C4320A', bg: '#FEF3F2' },
+            warning: { DEFAULT: '#B54708', bg: '#FDF6E8' },
+            info:    { DEFAULT: '#175CD3', bg: '#EFF6FF' },
             lime: '#D4F19B',
             khaki: '#EDEABE',
             'off-white': '#F4F8F3',
             'pale-yellow-green': '#F7F7E9',
             'teal-sage': '#B8DCD2',
+            neutral: {
+              50: '#F4F7F4', 100: '#E8EDEA', 200: '#D3DCCF',
+              300: '#B4C2B0', 400: '#829080', 500: '#586858',
+              600: '#3F4F3F', 700: '#2C3A2C', 800: '#1C271C', 900: '#111A11',
+            },
           },
           fontFamily: {
-            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+            sans: ['Saans', 'DM Sans', 'system-ui', 'sans-serif'],
           },
           boxShadow: {
             xs: '0 1px 2px rgba(32,31,29,0.06)',
@@ -111,8 +129,8 @@
 <header class="sticky top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-xl border-b border-neutral-200 h-16 flex items-center px-8">
   <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between">
     <div class="flex items-center gap-10">
-      <a href="abound-design-system.html" class="flex items-center gap-2 text-2xl font-bold text-brand tracking-tighter no-underline">
-        <span>abound</span>
+      <a href="abound-design-system.html" class="no-underline">
+        <img src="../brand-assest/wordmark.png" alt="Abound" class="h-5" onerror="this.outerHTML='<span class=\'text-xl font-bold text-brand tracking-tighter\'>abound</span>'">
       </a>
       <nav class="hidden md:flex gap-8">
         <a href="abound-design-system.html" class="nav-link text-sm font-medium text-neutral-500 hover:text-brand transition-colors relative py-1">Design System</a>
@@ -122,7 +140,7 @@
     </div>
     
     <div class="flex items-center">
-      <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-lime text-brand">v2.0.26 <span class="w-1.5 h-1.5 rounded-full bg-current"></span></span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-lime text-brand">v1.0 <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span></span>
     </div>
   </div>
 </header>
@@ -148,20 +166,44 @@
   <main class="lg:ml-[260px] flex-1 min-w-0">
 
     <!-- HERO -->
-    <div class="bg-brand text-white pt-16 pb-20 px-8 relative overflow-hidden">
-      <div class="absolute -right-20 -top-20 w-[400px] h-[400px] bg-white/[0.03] rounded-full blur-3xl"></div>
-      <div class="absolute -left-10 bottom-0 w-[300px] h-[300px] bg-[#D4F19B]/[0.05] rounded-full blur-2xl"></div>
-      
-      <div class="max-w-[1100px] mx-auto text-center">
-        <div class="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full text-[12px] font-bold uppercase tracking-widest text-[#D4F19B] mb-8 animate-fade-in border border-white/10">
-          Brand Identity
+    <div class="text-white pt-16 pb-20 px-8 relative overflow-hidden" style="background:#0E4533; min-height:320px;">
+      <!-- Abstract brand background -->
+      <div class="absolute inset-0 opacity-20" style="background-image:url('../brand-assest/abstract-1.jpg'); background-size:cover; background-position:center; mix-blend-mode:luminosity;"></div>
+      <!-- Lime accent blobs -->
+      <div class="absolute -right-20 -top-20 w-[400px] h-[400px] rounded-full blur-3xl opacity-10" style="background:#D4F19B;"></div>
+      <div class="absolute -left-10 bottom-0 w-[300px] h-[300px] rounded-full blur-2xl opacity-10" style="background:#D4F19B;"></div>
+
+      <div class="max-w-[1100px] mx-auto text-center relative z-10">
+        <!-- Wordmark image in hero -->
+        <div class="mb-8">
+          <img src="../brand-assest/wordmark-white.png" alt="Abound" class="h-8 mx-auto opacity-90" onerror="this.style.display='none'">
         </div>
-        <h1 class="text-[56px] md:text-[80px] font-bold leading-[0.9] tracking-tighter mb-8 max-w-[900px] mx-auto">
-          Logo & Wordmark <span class="text-lime">Showcase</span>
+        <div class="inline-flex items-center bg-white/10 px-4 py-1.5 rounded-full text-[12px] font-bold uppercase tracking-widest mb-6 border border-white/10" style="color:#D4F19B;">
+          Brand Identity · v1.0
+        </div>
+        <h1 class="text-[48px] md:text-[64px] font-bold leading-[1] tracking-tighter mb-6 max-w-[800px] mx-auto">
+          Logo &amp; Wordmark <em class="not-italic" style="color:#D4F19B;">Showcase</em>
         </h1>
-        <p class="text-xl md:text-2xl text-white/60 font-medium max-w-[650px] mx-auto leading-relaxed">
-          Explore how the Abound mark and wordmark perform across every official brand surface.
+        <p class="text-base md:text-lg text-white/70 font-medium max-w-[560px] mx-auto leading-relaxed">
+          Every approved combination of the Abound mark and wordmark across official brand surfaces — with contrast ratios and usage guidance.
         </p>
+        <!-- Stats bar -->
+        <div class="flex items-center justify-center gap-8 mt-10 pt-8 border-t border-white/15">
+          <div class="text-center">
+            <div class="text-2xl font-bold" style="color:#D4F19B;">10.2:1</div>
+            <div class="text-xs text-white/50 uppercase tracking-widest mt-0.5">Mark contrast</div>
+          </div>
+          <div class="w-px h-8 bg-white/20"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold" style="color:#D4F19B;">8</div>
+            <div class="text-xs text-white/50 uppercase tracking-widest mt-0.5">Brand colours</div>
+          </div>
+          <div class="w-px h-8 bg-white/20"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold" style="color:#D4F19B;">WCAG AA</div>
+            <div class="text-xs text-white/50 uppercase tracking-widest mt-0.5">Compliant</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -321,11 +363,12 @@
           </div>
 
           <div class="rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group bg-white border border-neutral-100">
-            <div class="aspect-square p-8 flex items-center justify-center bg-teal-sage text-white">
-              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark white on teal"><use href="#mark"/></svg>
+            <div class="aspect-square p-8 flex items-center justify-center bg-teal-sage text-brand relative">
+              <svg class="w-[58%] h-[58%]" viewBox="0 0 138 159" aria-label="Abound logomark on teal"><use href="#mark"/></svg>
+              <span class="absolute top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-bold bg-danger-bg text-danger">Use Forest Green mark</span>
             </div>
             <div class="p-3 px-4 bg-white flex items-center justify-between gap-3 border-t border-neutral-50">
-              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Teal Sage</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">White mark</p></div>
+              <div><p class="text-[12px] font-medium text-charcoal whitespace-nowrap">Teal Sage</p><p class="text-[11px] text-neutral-400 tabular-nums whitespace-nowrap">Green mark (not white)</p></div>
               <div class="w-2.5 h-2.5 rounded-full shrink-0 ring-1 ring-inset ring-black/10 bg-teal-sage"></div>
             </div>
           </div>

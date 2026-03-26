@@ -399,7 +399,7 @@
     </div>
     
     <div class="flex items-center">
-      <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-lime text-brand">v2.0.26 <span class="w-1.5 h-1.5 rounded-full bg-current"></span></span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-lime text-brand">v1.0 <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span></span>
     </div>
   </div>
 </header>
@@ -438,6 +438,12 @@
     <li class="mb-1"><a href="#motion" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Motion / Animation</a></li>
     <li class="mb-1"><a href="#accessibility" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Accessibility</a></li>
     <li class="mb-1"><a href="#rationale" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Rationale</a></li>
+  </ul>
+  <div class="text-[11px] font-bold tracking-wider uppercase px-3 py-4 pb-2 mt-1" style="color:#0E4533; background:linear-gradient(135deg,#EBF2ED 0%,#F4F8F3 100%); border-radius:6px; letter-spacing:0.12em;">AI Patterns</div>
+  <ul class="list-none">
+    <li class="mb-1"><a href="#journey" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Journey Architecture</a></li>
+    <li class="mb-1"><a href="#composition" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Composition Patterns</a></li>
+    <li class="mb-1"><a href="#copy-library" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Copy Tone Library</a></li>
   </ul>
 </nav>
 
@@ -748,7 +754,7 @@
        ============================================================ -->
   <section class="mb-24" id="typography">
     <h2 class="text-4xl font-bold leading-tight tracking-tight text-brand mb-2">Typography</h2>
-    <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">DM Sans is the primary typeface — a geometric grotesque that closely matches the agency-specified Saans.</p>
+    <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">Saans is the primary brand typeface — a geometric grotesque, loaded from local font files. DM Sans (Google Fonts) is the fallback for environments where local files aren't available.</p>
 
     <!-- 3a. Font Stack -->
     <div class="mb-16">
@@ -765,14 +771,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Web (Webflow + React)</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><strong>DM Sans</strong> (Google Fonts CDN)</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">400, 500, 700</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">"DM Sans", sans-serif</code></td></tr>
+            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Web (Webflow + React)</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><strong>Saans</strong> (local .woff2) · DM Sans fallback</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">400, 500, 600/700</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">'Saans', 'DM Sans', sans-serif</code></td></tr>
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Data-dense UI</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><strong>Inter</strong> (secondary)</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">400, 500, 600</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">"Inter", sans-serif</code></td></tr>
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Documents (Word/Office)</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><strong>Calibri</strong> (system)</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">400, 700</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">Calibri, Arial, sans-serif</code></td></tr>
           </tbody>
         </table>
       </div>
       <p class="text-sm text-neutral-600 mt-4">
-        <strong class="text-charcoal">Note:</strong> If Saans font files become available, swap DM Sans → Saans. The token system means this is a one-line change in the configuration.
+        <strong class="text-charcoal">Status:</strong> Saans .woff2 files are active and loaded via <code class="font-mono text-xs bg-neutral-100 px-1.5 py-0.5 rounded text-brand">@font-face</code>. DM Sans is declared as a CSS fallback for environments where local font files aren't served (e.g. email clients, static exports).
       </p>
     </div>
 
@@ -1923,7 +1929,7 @@
         <li class="text-neutral-700 leading-relaxed"><strong class="text-charcoal font-bold">Extended neutral scale (Neutral 50–900)</strong> — the agency palette had no mid-greys, which are essential for UI hierarchy: borders, backgrounds, secondary text, disabled states.</li>
         <li class="text-neutral-700 leading-relaxed"><strong class="text-charcoal font-bold">Feedback colours (Success, Danger, Warning, Info)</strong> — red/amber/green/blue semantic colours are non-negotiable for a lending product that needs to communicate approvals, errors, warnings, and status.</li>
         <li class="text-neutral-700 leading-relaxed"><strong class="text-charcoal font-bold">Specific border, shadow, and spacing tokens</strong> — the agency defined brand identity, not product implementation details. These tokens ensure consistency across Webflow and React.</li>
-        <li class="text-neutral-700 leading-relaxed"><strong class="text-charcoal font-bold">DM Sans as Saans fallback</strong> — closest geometric match available on Google Fonts. When Saans files arrive, it's a one-line swap.</li>
+        <li class="text-neutral-700 leading-relaxed"><strong class="text-charcoal font-bold">Saans loaded via @font-face, DM Sans as fallback</strong> — Saans .woff2 files are now active. DM Sans (Google Fonts) remains as a CSS fallback for email and environments without local font access.</li>
         <li class="text-neutral-700 leading-relaxed"><strong class="text-charcoal font-bold">Interactive colour states</strong> — hover (#0A3325) and pressed (#071F17) variants of Forest Green, plus disabled states using the neutral scale.</li>
       </ul>
     </div>
@@ -1938,6 +1944,708 @@
       </ul>
     </div>
   </section>
+
+  <!-- ============================================================
+       §10 — AI PATTERNS: JOURNEY ARCHITECTURE
+       ============================================================ -->
+  <section class="mb-24" id="journey">
+    <div class="flex items-center gap-3 mb-2">
+      <h2 class="text-4xl font-bold leading-tight tracking-tight text-brand">Journey Architecture</h2>
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase" style="background:#EBF2ED;color:#0E4533;">AI-Ready</span>
+    </div>
+    <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">The complete map of the Abound loan application journey — every step, state, and component needed to build each screen from scratch.</p>
+
+    <!-- Journey intent box -->
+    <div class="p-6 rounded-xl mb-10 border border-neutral-200 bg-off-white">
+      <p class="text-sm font-semibold text-charcoal mb-2">How to use this section</p>
+      <p class="text-sm text-neutral-600 leading-relaxed">Each journey step below defines: (1) the screen goal, (2) the exact components needed, (3) all states that screen can be in, and (4) the transitions in and out. When generating a screen with AI, reference the step ID and state name — e.g. <span class="font-mono bg-neutral-100 px-1.5 py-0.5 rounded text-brand text-xs">step-2 / state:interactive</span> — to get a correctly composed output.</p>
+    </div>
+
+    <!-- Journey flow diagram -->
+    <div class="mb-12">
+      <h3 class="text-lg font-semibold text-charcoal mb-6">Application Flow Overview</h3>
+      <div class="overflow-x-auto pb-4">
+        <div class="flex items-stretch gap-0 min-w-[700px]">
+
+          <!-- Step 1 -->
+          <div class="flex-1 rounded-l-xl border border-neutral-200 bg-white overflow-hidden">
+            <div class="px-5 py-3 text-white text-[11px] font-bold tracking-widest uppercase" style="background:#0E4533;">Step 1</div>
+            <div class="p-5">
+              <div class="text-base font-bold text-charcoal mb-1">Eligibility</div>
+              <div class="text-xs text-neutral-500 mb-4 leading-relaxed">Soft-check qualification. Gather loan purpose, amount, income.</div>
+              <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">Components</div>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Input</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Select</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Radio</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Button (primary)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Progress [1/4]</span>
+              </div>
+              <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">States</div>
+              <div class="space-y-1 text-[11px] text-neutral-600">
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-neutral-300 flex-shrink-0"></span>blank</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-info flex-shrink-0"></span>in-progress</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-danger flex-shrink-0"></span>validation-error</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-success flex-shrink-0"></span>complete</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="flex items-center justify-center w-8 bg-neutral-50 border-y border-neutral-200 flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#829080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex-1 border border-neutral-200 bg-white overflow-hidden">
+            <div class="px-5 py-3 text-white text-[11px] font-bold tracking-widest uppercase" style="background:#0E4533;">Step 2</div>
+            <div class="p-5">
+              <div class="text-base font-bold text-charcoal mb-1">Loan Design</div>
+              <div class="text-xs text-neutral-500 mb-4 leading-relaxed">Configure loan amount and term. See live repayment calculation.</div>
+              <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">Components</div>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Slider</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Card (surface)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Radio (term)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Table (schedule)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Progress [2/4]</span>
+              </div>
+              <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">States</div>
+              <div class="space-y-1 text-[11px] text-neutral-600">
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-neutral-300 flex-shrink-0"></span>interactive</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-warning flex-shrink-0"></span>out-of-range</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-success flex-shrink-0"></span>confirmed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="flex items-center justify-center w-8 bg-neutral-50 border-y border-neutral-200 flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#829080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex-1 border border-neutral-200 bg-white overflow-hidden">
+            <div class="px-5 py-3 text-white text-[11px] font-bold tracking-widest uppercase" style="background:#0E4533;">Step 3</div>
+            <div class="p-5">
+              <div class="text-base font-bold text-charcoal mb-1">Personal Details</div>
+              <div class="text-xs text-neutral-500 mb-4 leading-relaxed">Identity, address, employment. Open Banking authorisation.</div>
+              <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">Components</div>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Input (x6)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Select</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">File Upload</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Alert (info)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Progress [3/4]</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Skeleton (OB wait)</span>
+              </div>
+              <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">States</div>
+              <div class="space-y-1 text-[11px] text-neutral-600">
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-neutral-300 flex-shrink-0"></span>blank</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-info flex-shrink-0"></span>ob-authorising</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0"></span>ob-loading</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-danger flex-shrink-0"></span>ob-failed</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-success flex-shrink-0"></span>ob-success</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="flex items-center justify-center w-8 bg-neutral-50 border-y border-neutral-200 flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#829080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flex-1 rounded-r-xl border border-neutral-200 bg-white overflow-hidden">
+            <div class="px-5 py-3 text-white text-[11px] font-bold tracking-widest uppercase" style="background:#0E4533;">Step 4</div>
+            <div class="p-5">
+              <div class="text-base font-bold text-charcoal mb-1">Decision</div>
+              <div class="text-xs text-neutral-500 mb-4 leading-relaxed">Approval, refer, or decline. Loan agreement and e-sign.</div>
+              <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">Components</div>
+              <div class="flex flex-wrap gap-1 mb-4">
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Card (offer)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Badge (status)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Alert</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Button (primary)</span>
+                <span class="px-2 py-0.5 bg-brand-subtle text-brand rounded text-[10px] font-semibold">Skeleton (deciding)</span>
+              </div>
+              <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">States</div>
+              <div class="space-y-1 text-[11px] text-neutral-600">
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-neutral-400 flex-shrink-0"></span>processing</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-success flex-shrink-0"></span>approved</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-warning flex-shrink-0"></span>referred</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-danger flex-shrink-0"></span>declined</div>
+                <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0"></span>signed</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- State transition table -->
+    <div class="mb-12">
+      <h3 class="text-lg font-semibold text-charcoal mb-4">State Transition Reference</h3>
+      <p class="text-sm text-neutral-600 mb-5 max-w-[580px]">When generating any screen, match it to a step + state combination. Each row defines the exact UI treatment, loading behaviour, and available user actions.</p>
+      <div class="token-table-wrap">
+        <table class="w-full text-sm">
+          <thead>
+            <tr>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200 rounded-tl-lg">Step · State</th>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200">UI Treatment</th>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200">CTA</th>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200 rounded-tr-lg">Alert / Feedback</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 font-mono text-xs text-brand font-semibold">step-1 / blank</td>
+              <td class="py-3 px-4 text-neutral-600">All inputs empty, no errors shown</td>
+              <td class="py-3 px-4 text-neutral-600">Button disabled</td>
+              <td class="py-3 px-4 text-neutral-400">—</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 font-mono text-xs text-brand font-semibold">step-1 / validation-error</td>
+              <td class="py-3 px-4 text-neutral-600">Affected inputs show <code class="bg-neutral-100 px-1 rounded text-[11px]">input-error</code> state</td>
+              <td class="py-3 px-4 text-neutral-600">Button enabled (re-submit)</td>
+              <td class="py-3 px-4 text-neutral-600">Inline field-level error text</td>
+            </tr>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 font-mono text-xs text-brand font-semibold">step-2 / interactive</td>
+              <td class="py-3 px-4 text-neutral-600">Slider active, repayment card live-updates</td>
+              <td class="py-3 px-4 text-neutral-600">"Continue" enabled</td>
+              <td class="py-3 px-4 text-neutral-400">—</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 font-mono text-xs text-brand font-semibold">step-3 / ob-loading</td>
+              <td class="py-3 px-4 text-neutral-600">Skeleton loader replaces form, spinner in header</td>
+              <td class="py-3 px-4 text-neutral-600">Button hidden</td>
+              <td class="py-3 px-4 text-neutral-600">Info alert: "Connecting to your bank…"</td>
+            </tr>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 font-mono text-xs text-brand font-semibold">step-3 / ob-failed</td>
+              <td class="py-3 px-4 text-neutral-600">Form restored, error banner at top</td>
+              <td class="py-3 px-4 text-neutral-600">"Try again" (secondary) + "Continue manually" (text link)</td>
+              <td class="py-3 px-4 text-neutral-600">Danger alert with retry option</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 font-mono text-xs text-brand font-semibold">step-4 / processing</td>
+              <td class="py-3 px-4 text-neutral-600">Full-page skeleton: offer card + details shimmer</td>
+              <td class="py-3 px-4 text-neutral-600">No CTA (decision pending)</td>
+              <td class="py-3 px-4 text-neutral-600">Neutral toast: "Running your credit check…"</td>
+            </tr>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 font-mono text-xs text-success font-semibold">step-4 / approved</td>
+              <td class="py-3 px-4 text-neutral-600">Offer card with lime accent, rate + monthly payment prominent</td>
+              <td class="py-3 px-4 text-neutral-600">"Accept offer" (primary) + "Adjust loan" (secondary)</td>
+              <td class="py-3 px-4 text-neutral-600">Success badge: "Approved"</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 font-mono text-xs text-warning font-semibold">step-4 / referred</td>
+              <td class="py-3 px-4 text-neutral-600">Soft card, no rate shown, timeline estimate</td>
+              <td class="py-3 px-4 text-neutral-600">"Track my application" (secondary)</td>
+              <td class="py-3 px-4 text-neutral-600">Warning badge: "Under review"</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-mono text-xs text-danger font-semibold">step-4 / declined</td>
+              <td class="py-3 px-4 text-neutral-600">Supportive layout, no offer card, eligibility tips</td>
+              <td class="py-3 px-4 text-neutral-600">"Check eligibility again" (secondary)</td>
+              <td class="py-3 px-4 text-neutral-600">Danger badge: "Not eligible right now"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Component data-flow annotations -->
+    <div>
+      <h3 class="text-lg font-semibold text-charcoal mb-5">Component Data Annotations</h3>
+      <p class="text-sm text-neutral-600 mb-6 max-w-[580px]">When building components for AI-generation, annotate them with <code class="bg-neutral-100 px-1.5 py-0.5 rounded text-brand text-xs">data-journey-step</code> and <code class="bg-neutral-100 px-1.5 py-0.5 rounded text-brand text-xs">data-field</code> attributes. This enables AI to correctly populate content and wire up interactions.</p>
+      <div class="bg-neutral-900 rounded-xl p-6 overflow-x-auto">
+        <pre class="text-sm leading-relaxed text-neutral-200"><code><span class="text-neutral-500">&lt;!-- Step 2: Loan Design screen skeleton --&gt;</span>
+<span class="text-lime">&lt;div</span> <span class="text-teal-sage">data-journey-step</span>=<span class="text-khaki">"2"</span> <span class="text-teal-sage">data-step-state</span>=<span class="text-khaki">"interactive"</span><span class="text-lime">&gt;</span>
+
+  <span class="text-neutral-500">&lt;!-- Progress bar always shows current step --&gt;</span>
+  <span class="text-lime">&lt;div</span> <span class="text-teal-sage">data-component</span>=<span class="text-khaki">"progress"</span> <span class="text-teal-sage">data-step</span>=<span class="text-khaki">"2"</span> <span class="text-teal-sage">data-total</span>=<span class="text-khaki">"4"</span><span class="text-lime">&gt;&lt;/div&gt;</span>
+
+  <span class="text-neutral-500">&lt;!-- Slider wired to loan-amount field --&gt;</span>
+  <span class="text-lime">&lt;input</span> <span class="text-teal-sage">type</span>=<span class="text-khaki">"range"</span>
+         <span class="text-teal-sage">data-component</span>=<span class="text-khaki">"slider"</span>
+         <span class="text-teal-sage">data-field</span>=<span class="text-khaki">"loan-amount"</span>
+         <span class="text-teal-sage">data-min</span>=<span class="text-khaki">"1000"</span> <span class="text-teal-sage">data-max</span>=<span class="text-khaki">"25000"</span> <span class="text-teal-sage">data-step</span>=<span class="text-khaki">"500"</span>
+         <span class="text-teal-sage">data-currency</span>=<span class="text-khaki">"GBP"</span>
+         <span class="text-teal-sage">aria-label</span>=<span class="text-khaki">"Loan amount"</span><span class="text-lime">&gt;</span>
+
+  <span class="text-neutral-500">&lt;!-- Live repayment card updates when slider moves --&gt;</span>
+  <span class="text-lime">&lt;div</span> <span class="text-teal-sage">data-component</span>=<span class="text-khaki">"card"</span>
+       <span class="text-teal-sage">data-variant</span>=<span class="text-khaki">"surface"</span>
+       <span class="text-teal-sage">data-live-update</span>=<span class="text-khaki">"loan-amount,loan-term"</span><span class="text-lime">&gt;</span>
+    <span class="text-lime">&lt;span</span> <span class="text-teal-sage">data-field</span>=<span class="text-khaki">"monthly-payment"</span> <span class="text-teal-sage">data-format</span>=<span class="text-khaki">"currency-GBP"</span><span class="text-lime">&gt;</span>£—<span class="text-lime">&lt;/span&gt;</span>
+  <span class="text-lime">&lt;/div&gt;</span>
+
+<span class="text-lime">&lt;/div&gt;</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============================================================
+       §11 — AI PATTERNS: COMPOSITION PATTERNS
+       ============================================================ -->
+  <section class="mb-24" id="composition">
+    <div class="flex items-center gap-3 mb-2">
+      <h2 class="text-4xl font-bold leading-tight tracking-tight text-brand">Composition Patterns</h2>
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase" style="background:#EBF2ED;color:#0E4533;">AI-Ready</span>
+    </div>
+    <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">How tokens and components assemble into complete page layouts. Reference these patterns rather than designing page structure from scratch.</p>
+
+    <!-- Pattern 1: Form Step Page -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-6 h-6 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
+        <h3 class="text-lg font-semibold text-charcoal">Form Step Page</h3>
+        <span class="text-xs text-neutral-400 font-mono">Used by: step-1, step-2, step-3</span>
+      </div>
+      <p class="text-sm text-neutral-600 mb-5 max-w-[560px]">Single-column form layout with persistent header, progress indicator, and sticky CTA. This is the primary template for all application steps.</p>
+
+      <!-- Wireframe -->
+      <div class="grid grid-cols-2 gap-6 mb-6">
+        <div class="border-2 border-dashed border-neutral-200 rounded-xl p-5 bg-neutral-50">
+          <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-4">Layout wireframe</div>
+          <!-- Navigation bar mock -->
+          <div class="rounded-sm bg-white border border-neutral-200 mb-2 px-3 py-2 flex items-center justify-between">
+            <div class="w-12 h-2.5 bg-brand rounded-sm opacity-40"></div>
+            <div class="w-4 h-4 rounded-full bg-neutral-200"></div>
+          </div>
+          <!-- Progress bar mock -->
+          <div class="rounded-sm bg-white border border-neutral-200 mb-2 px-3 py-2.5">
+            <div class="flex items-center gap-2 mb-1.5">
+              <div class="w-full h-1 bg-neutral-100 rounded-full overflow-hidden">
+                <div class="h-full bg-brand rounded-full" style="width:50%"></div>
+              </div>
+            </div>
+            <div class="text-[9px] text-neutral-400">Step 2 of 4 · Loan design</div>
+          </div>
+          <!-- Form area mock -->
+          <div class="rounded-sm bg-white border border-neutral-200 mb-2 p-3">
+            <div class="w-24 h-2.5 bg-charcoal rounded-sm mb-3 opacity-30"></div>
+            <div class="w-full h-6 bg-neutral-100 rounded-sm mb-2"></div>
+            <div class="w-full h-6 bg-neutral-100 rounded-sm mb-2"></div>
+            <div class="w-3/4 h-6 bg-neutral-100 rounded-sm"></div>
+          </div>
+          <!-- CTA mock -->
+          <div class="rounded-sm bg-brand px-4 py-2.5 text-center">
+            <div class="w-16 h-2 bg-white rounded-sm mx-auto opacity-60"></div>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div class="text-[10px] font-bold text-neutral-400 uppercase tracking-wider mb-2">Token usage rules</div>
+          <div class="p-3 rounded-lg border border-neutral-200 bg-white">
+            <div class="text-xs font-semibold text-charcoal mb-1">Page background</div>
+            <div class="font-mono text-xs text-brand">bg-off-white</div>
+          </div>
+          <div class="p-3 rounded-lg border border-neutral-200 bg-white">
+            <div class="text-xs font-semibold text-charcoal mb-1">Form container</div>
+            <div class="font-mono text-xs text-brand">bg-white · rounded-xl · shadow-sm · max-w-[560px]</div>
+          </div>
+          <div class="p-3 rounded-lg border border-neutral-200 bg-white">
+            <div class="text-xs font-semibold text-charcoal mb-1">Field spacing</div>
+            <div class="font-mono text-xs text-brand">space-y-5 between fields · p-8 container padding</div>
+          </div>
+          <div class="p-3 rounded-lg border border-neutral-200 bg-white">
+            <div class="text-xs font-semibold text-charcoal mb-1">CTA placement</div>
+            <div class="font-mono text-xs text-brand">sticky bottom-0 · bg-white · border-t · py-4 · px-8</div>
+          </div>
+          <div class="p-3 rounded-lg border border-neutral-200 bg-white">
+            <div class="text-xs font-semibold text-charcoal mb-1">Section heading</div>
+            <div class="font-mono text-xs text-brand">text-2xl · font-bold · text-charcoal · mb-1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pattern 2: Decision Page -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-6 h-6 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
+        <h3 class="text-lg font-semibold text-charcoal">Decision Page</h3>
+        <span class="text-xs text-neutral-400 font-mono">Used by: step-4 (approved, referred, declined)</span>
+      </div>
+      <p class="text-sm text-neutral-600 mb-5 max-w-[560px]">Full-width outcome page. Approved variant uses Forest Green hero with abstract background. Declined variant uses a soft neutral card, never red — maintains trust even in bad news.</p>
+
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <!-- Approved -->
+        <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+          <div class="p-4 text-white text-xs font-bold" style="background:#0E4533;">
+            <div class="flex items-center justify-between mb-3">
+              <span>Approved</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:#D4F19B;color:#0E4533;">✓ Approved</span>
+            </div>
+            <div class="text-[22px] font-bold leading-none mb-0.5">£247<span class="text-base font-normal opacity-70">/mo</span></div>
+            <div class="text-[11px] opacity-60">36 months · 9.9% APR</div>
+          </div>
+          <div class="p-4 bg-white">
+            <div class="w-full h-7 rounded-md mb-2" style="background:#0E4533;"></div>
+            <div class="w-full h-7 rounded-md bg-neutral-100"></div>
+          </div>
+        </div>
+        <!-- Referred -->
+        <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+          <div class="p-4 bg-warning-bg border-b border-warning/20">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold text-charcoal">Under review</span>
+              <span class="px-2 py-0.5 rounded-full bg-warning/10 text-warning text-[10px] font-bold">⧗ Reviewing</span>
+            </div>
+            <div class="text-sm text-neutral-600 leading-relaxed">We're taking a closer look. You'll hear from us within 24 hours.</div>
+          </div>
+          <div class="p-4 bg-white">
+            <div class="w-full h-7 rounded-md bg-neutral-200 mb-2"></div>
+            <div class="w-full h-7 rounded-md bg-neutral-100"></div>
+          </div>
+        </div>
+        <!-- Declined -->
+        <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
+          <div class="p-4 bg-neutral-50 border-b border-neutral-200">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold text-charcoal">Not eligible right now</span>
+              <span class="px-2 py-0.5 rounded-full bg-neutral-200 text-neutral-600 text-[10px] font-bold">Not eligible</span>
+            </div>
+            <div class="text-sm text-neutral-600 leading-relaxed">This doesn't mean never. Here's how to improve your chances.</div>
+          </div>
+          <div class="p-4 bg-white">
+            <div class="w-full h-7 rounded-md bg-neutral-200 mb-2"></div>
+            <div class="w-full h-7 rounded-md bg-neutral-100"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-off-white border border-neutral-200 text-xs text-neutral-600 leading-relaxed">
+        <strong class="text-charcoal">Critical rule:</strong> Never use <span class="font-mono text-danger">bg-danger</span> or red tones on the declined page. The user is already experiencing a setback — the layout should feel warm and supportive, not alarming. Use <span class="font-mono">bg-neutral-50</span> card surface with <span class="font-mono">text-charcoal</span> headings. Reserve <span class="font-mono text-danger">text-danger</span> strictly for error states within the application flow.
+      </div>
+    </div>
+
+    <!-- Pattern 3: Processing / Loading Page -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-6 h-6 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center flex-shrink-0">3</span>
+        <h3 class="text-lg font-semibold text-charcoal">Processing / Loading Page</h3>
+        <span class="text-xs text-neutral-400 font-mono">Used by: step-4/processing, step-3/ob-loading</span>
+      </div>
+      <p class="text-sm text-neutral-600 mb-5 max-w-[560px]">Credit check and Open Banking wait states use skeleton loaders, never spinners alone. A single explanatory sentence tells the user what's happening and how long to expect.</p>
+
+      <div class="p-6 rounded-xl border border-neutral-200 bg-white mb-4">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full bg-neutral-100 skeleton flex-shrink-0"></div>
+          <div class="flex-1">
+            <div class="h-3 bg-neutral-100 rounded skeleton mb-2 w-40"></div>
+            <div class="h-2.5 bg-neutral-100 rounded skeleton w-24"></div>
+          </div>
+        </div>
+        <div class="h-32 bg-neutral-100 rounded-xl skeleton mb-4"></div>
+        <div class="grid grid-cols-3 gap-3">
+          <div class="h-16 bg-neutral-100 rounded-lg skeleton"></div>
+          <div class="h-16 bg-neutral-100 rounded-lg skeleton"></div>
+          <div class="h-16 bg-neutral-100 rounded-lg skeleton"></div>
+        </div>
+        <div class="mt-4 text-center text-sm text-neutral-400">Running your credit check — usually takes under 10 seconds</div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-off-white border border-neutral-200 text-xs text-neutral-600 leading-relaxed">
+        <strong class="text-charcoal">Animation rule:</strong> Skeleton shimmer uses <span class="font-mono">ease-enter (200ms)</span> to fade in. The loading message must always include a time estimate. Never leave a user on a blank screen — even 0.5s delays should show a skeleton state.
+      </div>
+    </div>
+
+    <!-- Pattern 4: Empty State -->
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-6 h-6 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center flex-shrink-0">4</span>
+        <h3 class="text-lg font-semibold text-charcoal">Empty State</h3>
+        <span class="text-xs text-neutral-400 font-mono">Used by: dashboard (no loans), payment history, saved quotes</span>
+      </div>
+      <p class="text-sm text-neutral-600 mb-5 max-w-[560px]">Empty states must teach, not just inform. They combine a descriptive headline, a single supportive sentence, and exactly one CTA. Use the brand abstract background image at low opacity for visual interest.</p>
+
+      <div class="rounded-xl border-2 border-dashed border-neutral-200 p-12 text-center max-w-[480px]">
+        <div class="w-16 h-16 rounded-2xl mx-auto mb-5 overflow-hidden flex items-center justify-center" style="background:linear-gradient(135deg,#EBF2ED,#B8DCD2);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0E4533" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <h4 class="text-base font-bold text-charcoal mb-2">No loans yet</h4>
+        <p class="text-sm text-neutral-500 mb-6 leading-relaxed">Once you take out a loan, you'll see your balance, repayments, and schedule here.</p>
+        <button class="px-5 py-2.5 rounded-md bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors">Check your eligibility</button>
+      </div>
+
+      <div class="p-4 rounded-xl bg-off-white border border-neutral-200 text-xs text-neutral-600 leading-relaxed mt-4">
+        <strong class="text-charcoal">Empty state rule:</strong> The CTA must take the user forward (towards a loan), not backward. Never show "Try again" or "Refresh" on an empty state — those imply an error. Use the icon slot (<span class="font-mono">w-16 h-16 rounded-2xl</span>) for a product-relevant icon, never a generic placeholder or emoji.
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============================================================
+       §12 — AI PATTERNS: COPY TONE LIBRARY
+       ============================================================ -->
+  <section class="mb-24" id="copy-library">
+    <div class="flex items-center gap-3 mb-2">
+      <h2 class="text-4xl font-bold leading-tight tracking-tight text-brand">Copy Tone Library</h2>
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase" style="background:#EBF2ED;color:#0E4533;">AI-Ready</span>
+    </div>
+    <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">Real microcopy examples for every touchpoint. When generating UI text, match the pattern for the current step and context — never use generic placeholder copy.</p>
+
+    <!-- Tone principles -->
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="p-5 rounded-xl bg-white border border-neutral-200">
+        <div class="text-2xl mb-3">🧭</div>
+        <div class="text-sm font-bold text-charcoal mb-2">Clear, not clever</div>
+        <div class="text-xs text-neutral-500 leading-relaxed">Use plain English. No jargon ("underwriting", "soft enquiry"). If a technical term is unavoidable, define it inline.</div>
+      </div>
+      <div class="p-5 rounded-xl bg-white border border-neutral-200">
+        <div class="text-2xl mb-3">🤝</div>
+        <div class="text-sm font-bold text-charcoal mb-2">Warm, not casual</div>
+        <div class="text-xs text-neutral-500 leading-relaxed">Supportive and human — not stiff finance speak, but never slangy. "We'll be in touch" not "Hang tight." "You're eligible" not "You're good to go!"</div>
+      </div>
+      <div class="p-5 rounded-xl bg-white border border-neutral-200">
+        <div class="text-2xl mb-3">⚡</div>
+        <div class="text-sm font-bold text-charcoal mb-2">Action-forward</div>
+        <div class="text-xs text-neutral-500 leading-relaxed">CTAs start with a verb. Headlines tell users what they can do, not what the system is. "Check your rate" not "Rate checker."</div>
+      </div>
+    </div>
+
+    <!-- CTA Labels -->
+    <div class="mb-10">
+      <h3 class="text-lg font-semibold text-charcoal mb-4">CTA Labels by Step &amp; Context</h3>
+      <div class="token-table-wrap">
+        <table class="w-full text-sm">
+          <thead>
+            <tr>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200">Context</th>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200">Use this</th>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200">Not this</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Step 1 → Step 2</td>
+              <td class="py-3 px-4"><span class="font-semibold text-charcoal">Check my eligibility</span></td>
+              <td class="py-3 px-4 text-danger/80 line-through text-xs">Submit, Continue, Next, Proceed</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Step 2 → Step 3</td>
+              <td class="py-3 px-4"><span class="font-semibold text-charcoal">Continue with £X,XXX</span></td>
+              <td class="py-3 px-4 text-danger/80 line-through text-xs">Confirm, Save, OK</td>
+            </tr>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Step 3 → Step 4</td>
+              <td class="py-3 px-4"><span class="font-semibold text-charcoal">Run my credit check</span></td>
+              <td class="py-3 px-4 text-danger/80 line-through text-xs">Submit application, Apply now</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Step 4 approved CTA</td>
+              <td class="py-3 px-4"><span class="font-semibold text-charcoal">Accept this offer</span></td>
+              <td class="py-3 px-4 text-danger/80 line-through text-xs">Accept, Confirm, I agree</td>
+            </tr>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Open Banking consent</td>
+              <td class="py-3 px-4"><span class="font-semibold text-charcoal">Connect my bank securely</span></td>
+              <td class="py-3 px-4 text-danger/80 line-through text-xs">Authorise, Grant access, Allow</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Back navigation</td>
+              <td class="py-3 px-4"><span class="font-semibold text-charcoal">← Back</span></td>
+              <td class="py-3 px-4 text-danger/80 line-through text-xs">Go back, Previous, Cancel</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-neutral-600 font-medium">Refer a friend / share</td>
+              <td class="py-3 px-4"><span class="font-semibold text-charcoal">Tell a friend</span></td>
+              <td class="py-3 px-4 text-danger/80 line-through text-xs">Share, Refer, Earn £X</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Error messages -->
+    <div class="mb-10">
+      <h3 class="text-lg font-semibold text-charcoal mb-4">Form Validation Messages</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <div class="text-[10px] font-bold text-success uppercase tracking-wider mb-3">Use these patterns</div>
+          <div class="space-y-3">
+            <div class="p-4 rounded-lg bg-white border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">field: full-name</div>
+              <div class="text-xs text-danger font-medium">Please enter your full legal name</div>
+            </div>
+            <div class="p-4 rounded-lg bg-white border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">field: date-of-birth</div>
+              <div class="text-xs text-danger font-medium">You must be 18 or over to apply</div>
+            </div>
+            <div class="p-4 rounded-lg bg-white border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">field: annual-income</div>
+              <div class="text-xs text-danger font-medium">Enter your total income before tax</div>
+            </div>
+            <div class="p-4 rounded-lg bg-white border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">field: address-postcode</div>
+              <div class="text-xs text-danger font-medium">Enter a valid UK postcode (e.g. SW1A 1AA)</div>
+            </div>
+            <div class="p-4 rounded-lg bg-white border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">system: network error</div>
+              <div class="text-xs text-danger font-medium">Something went wrong. Your progress is saved — please try again.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-danger uppercase tracking-wider mb-3">Avoid these patterns</div>
+          <div class="space-y-3">
+            <div class="p-4 rounded-lg bg-neutral-50 border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">too generic</div>
+              <div class="text-xs text-neutral-400 line-through">This field is required</div>
+            </div>
+            <div class="p-4 rounded-lg bg-neutral-50 border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">too technical</div>
+              <div class="text-xs text-neutral-400 line-through">Invalid input format</div>
+            </div>
+            <div class="p-4 rounded-lg bg-neutral-50 border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">too passive</div>
+              <div class="text-xs text-neutral-400 line-through">Name cannot be empty</div>
+            </div>
+            <div class="p-4 rounded-lg bg-neutral-50 border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">too alarming</div>
+              <div class="text-xs text-neutral-400 line-through">ERROR: postcode not recognised</div>
+            </div>
+            <div class="p-4 rounded-lg bg-neutral-50 border border-neutral-200">
+              <div class="text-[10px] font-mono text-neutral-400 mb-1.5">too vague on network fail</div>
+              <div class="text-xs text-neutral-400 line-through">Error. Please try again later.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading messages -->
+    <div class="mb-10">
+      <h3 class="text-lg font-semibold text-charcoal mb-4">Loading &amp; Processing Messages</h3>
+      <div class="token-table-wrap">
+        <table class="w-full text-sm">
+          <thead>
+            <tr>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200">Moment</th>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200">Headline</th>
+              <th class="text-left py-3 px-4 text-[11px] font-bold tracking-wider uppercase text-neutral-500 bg-neutral-50 border-b border-neutral-200">Sub-text / time estimate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Credit check</td>
+              <td class="py-3 px-4 font-semibold text-charcoal">Running your credit check</td>
+              <td class="py-3 px-4 text-xs text-neutral-500">This won't affect your credit score · Usually under 10 seconds</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Open Banking connect</td>
+              <td class="py-3 px-4 font-semibold text-charcoal">Connecting to your bank</td>
+              <td class="py-3 px-4 text-xs text-neutral-500">Securely fetching your last 3 months · Please don't close this page</td>
+            </tr>
+            <tr class="border-b border-neutral-100">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Decision processing</td>
+              <td class="py-3 px-4 font-semibold text-charcoal">Reviewing your application</td>
+              <td class="py-3 px-4 text-xs text-neutral-500">Almost there — this usually takes around 30 seconds</td>
+            </tr>
+            <tr class="border-b border-neutral-100 bg-neutral-50">
+              <td class="py-3 px-4 text-neutral-600 font-medium">Document upload</td>
+              <td class="py-3 px-4 font-semibold text-charcoal">Uploading your document</td>
+              <td class="py-3 px-4 text-xs text-neutral-500">Encrypting and uploading securely</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 text-neutral-600 font-medium">Loan disbursement</td>
+              <td class="py-3 px-4 font-semibold text-charcoal">Sending funds to your account</td>
+              <td class="py-3 px-4 text-xs text-neutral-500">Money typically arrives within 1 working day</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Financial copy rules -->
+    <div class="mb-10">
+      <h3 class="text-lg font-semibold text-charcoal mb-4">Financial Copy Rules</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="p-5 rounded-xl bg-white border border-neutral-200">
+          <div class="text-xs font-bold text-charcoal mb-3 uppercase tracking-wider">Number formatting</div>
+          <div class="space-y-2 text-xs text-neutral-600">
+            <div class="flex items-start gap-2"><span class="text-success font-bold mt-0.5">✓</span><span>£10,000 <span class="text-neutral-400">(thousands separator, no decimal for round amounts)</span></span></div>
+            <div class="flex items-start gap-2"><span class="text-success font-bold mt-0.5">✓</span><span>£247.50/month <span class="text-neutral-400">(two decimal places for monthly amounts)</span></span></div>
+            <div class="flex items-start gap-2"><span class="text-success font-bold mt-0.5">✓</span><span>9.9% APR <span class="text-neutral-400">(one decimal, always capitalised)</span></span></div>
+            <div class="flex items-start gap-2"><span class="text-danger font-bold mt-0.5">✗</span><span class="line-through text-neutral-400">£10000.00, 9.90% APR, £247/mo</span></div>
+          </div>
+        </div>
+        <div class="p-5 rounded-xl bg-white border border-neutral-200">
+          <div class="text-xs font-bold text-charcoal mb-3 uppercase tracking-wider">Required legal copy</div>
+          <div class="space-y-2 text-xs text-neutral-600">
+            <div class="flex items-start gap-2"><span class="text-info font-bold mt-0.5">→</span><span>APR must always be shown on any screen that shows a rate</span></div>
+            <div class="flex items-start gap-2"><span class="text-info font-bold mt-0.5">→</span><span>"Representative X% APR" — use "representative" when applicable</span></div>
+            <div class="flex items-start gap-2"><span class="text-info font-bold mt-0.5">→</span><span>Credit check screens: "This will <em>not</em> affect your credit score" if a soft check</span></div>
+            <div class="flex items-start gap-2"><span class="text-info font-bold mt-0.5">→</span><span>Open Banking: "Read-only access — we cannot make payments from your account"</span></div>
+          </div>
+        </div>
+        <div class="p-5 rounded-xl bg-white border border-neutral-200">
+          <div class="text-xs font-bold text-charcoal mb-3 uppercase tracking-wider">Approved state — offer headline</div>
+          <div class="space-y-2 text-xs">
+            <div class="p-2.5 rounded-md bg-brand text-white font-semibold text-sm">Great news — you're approved</div>
+            <div class="p-2.5 rounded-md bg-neutral-100 text-neutral-400 text-sm line-through">Congratulations! Your loan has been approved!</div>
+            <div class="text-neutral-500 leading-relaxed mt-1">Warm and confident, but not effusive. Avoid exclamation marks and casual slang.</div>
+          </div>
+        </div>
+        <div class="p-5 rounded-xl bg-white border border-neutral-200">
+          <div class="text-xs font-bold text-charcoal mb-3 uppercase tracking-wider">Declined state — headline</div>
+          <div class="space-y-2 text-xs">
+            <div class="p-2.5 rounded-md bg-neutral-100 text-charcoal font-semibold text-sm">We can't offer you a loan right now</div>
+            <div class="p-2.5 rounded-md bg-neutral-50 text-neutral-400 text-sm line-through">Your application has been declined</div>
+            <div class="text-neutral-500 leading-relaxed mt-1">"Right now" acknowledges this isn't permanent. Avoid "declined" — it's abrupt and implies finality.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust signals copy -->
+    <div>
+      <h3 class="text-lg font-semibold text-charcoal mb-4">Trust Signal Copy</h3>
+      <p class="text-sm text-neutral-600 mb-5 max-w-[560px]">These appear in the footer of each application step and on the eligibility page. Always use SVG icons from the design system, never emoji.</p>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="p-4 rounded-xl bg-off-white border border-neutral-200">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-7 h-7 rounded-md bg-brand-subtle flex items-center justify-center flex-shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E4533" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-charcoal">FCA Authorised</span>
+          </div>
+          <p class="text-[11px] text-neutral-500 leading-relaxed">Regulated by the Financial Conduct Authority (FRN 913090)</p>
+        </div>
+        <div class="p-4 rounded-xl bg-off-white border border-neutral-200">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-7 h-7 rounded-md bg-brand-subtle flex items-center justify-center flex-shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E4533" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <span class="text-xs font-bold text-charcoal">Bank-level security</span>
+          </div>
+          <p class="text-[11px] text-neutral-500 leading-relaxed">256-bit SSL encryption. Your data is never sold.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-off-white border border-neutral-200">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-7 h-7 rounded-md bg-brand-subtle flex items-center justify-center flex-shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E4533" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-charcoal">No credit impact</span>
+          </div>
+          <p class="text-[11px] text-neutral-500 leading-relaxed">Checking your eligibility is a soft search — your credit score won't be affected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
 
   <!-- ============================================================
        FOOTER
