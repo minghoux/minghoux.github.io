@@ -1,940 +1,566 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Budapest Family Trip · Apr 2–7, 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budapest Itinerary · Premium Hungarian Edition</title>
+
+  <!-- Vue 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            hun: {
+              red:   '#CE2029',
+              green: '#2B5336',
+              gold:  '#D4AF37',
+              dark:  '#1C2833',
+              cream: '#FAFAFA',
+              paper: '#FDFCFB',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --red:        #CE1126;
-      --red-light:  #F8E4E7;
-      --green:      #437A3A;
-      --green-light:#E6F2E5;
-      --gold:       #C9A84C;
-      --gold-light: #F9F2DF;
-      --dark:       #1A1B2E;
-      --charcoal:   #2D3047;
-      --ivory:      #FAF5EC;
-      --stone:      #EDE3D1;
-      --blue:       #2467A4;
-      --blue-light: #DFF0FF;
-      --teal:       #1B7A8A;
-      --teal-light: #DCF1F4;
-      --orange:     #D4621D;
-      --orange-light:#FDEBD6;
-      --text:       #1A1B2E;
-      --text-muted: #6B6D7E;
-      --radius:     12px;
-      --shadow:     0 2px 12px rgba(26,27,46,0.10);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--text); font-size: 15px; line-height: 1.6; }
-    h1,h2,h3,h4 { font-family: 'Playfair Display', Georgia, serif; }
-    a { color: inherit; text-decoration: none; }
+    body { background-color: #EDEDEB; color: #1c2833; }
 
-    /* Folk stripe */
-    .folk-border {
-      width: 100%; height: 14px;
-      background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 18px, #fff 18px, #fff 22px, var(--green) 22px, var(--green) 40px, #fff 40px, #fff 44px);
-      position: relative; z-index: 5;
+    /* Scrollbar hiding for horizontal mobile nav */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    [v-cloak] { display: none; }
+
+    /* Card elevation */
+    .card-shadow {
+      box-shadow: 0 2px 12px -2px rgba(0,0,0,0.06), 0 0 1px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .card-shadow:hover {
+      box-shadow: 0 8px 28px -4px rgba(0,0,0,0.10), 0 0 2px rgba(0,0,0,0.04);
+      transform: translateY(-1px);
     }
 
-    /* Hero */
-    .hero { background: var(--dark); color: #fff; padding: 0; position: relative; overflow: hidden; min-height: 320px; display: flex; flex-direction: column; justify-content: flex-end; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, #1A1B2E 0%, #2D3047 45%, #1B3A4B 100%); }
-    .skyline { position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 140px; opacity: 0.18; }
-    .hero-content { position: relative; z-index: 2; padding: 36px 20px 28px; max-width: 600px; margin: 0 auto; width: 100%; text-align: center; }
-    .hero-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
-    .hero h1 { font-size: clamp(30px,7vw,44px); font-weight: 700; line-height: 1.15; margin-bottom: 8px; color: #fff; }
-    .hero h1 em { color: var(--gold); font-style: italic; }
-    .hero-sub { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 22px; }
-    .hero-badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-    .hero-badge { background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 5px; }
-
-    /* Flights */
-    .flights-bar { background: var(--charcoal); color: #fff; padding: 0 16px; }
-    .flights-inner { max-width: 600px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
-    .flights-inner::-webkit-scrollbar { display: none; }
-    .flight-item { flex: 1; min-width: 0; padding: 13px 12px; display: flex; flex-direction: column; gap: 2px; }
-    .flight-item + .flight-item { border-left: 1px solid rgba(255,255,255,0.12); }
-    .flight-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); font-weight: 600; }
-    .flight-route { font-size: 14px; font-weight: 600; white-space: nowrap; }
-    .flight-detail { font-size: 11px; color: rgba(255,255,255,0.55); }
-
-    /* Hotels */
-    .hotels-strip { background: var(--stone); padding: 14px 16px; border-bottom: 1px solid rgba(26,27,46,0.08); }
-    .hotels-inner { max-width: 600px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; }
-    .hotel-card { flex: 1; min-width: 200px; background: #fff; border-radius: var(--radius); padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; box-shadow: var(--shadow); }
-    .hotel-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-    .hotel-name { font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--dark); }
-    .hotel-dates { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
-
-    /* Day nav */
-    .day-nav-wrap { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 2px solid var(--stone); box-shadow: 0 2px 8px rgba(26,27,46,0.07); }
-    .day-nav { max-width: 600px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 4px; gap: 2px; }
-    .day-nav::-webkit-scrollbar { display: none; }
-    .day-btn { flex-shrink: 0; padding: 12px 14px 10px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: var(--text-muted); background: none; border: none; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .2s; text-align: center; line-height: 1.3; }
-    .day-btn .day-num { font-size: 16px; font-weight: 700; display: block; color: var(--dark); }
-    .day-btn:hover { color: var(--red); }
-    .day-btn.active { color: var(--red); border-bottom-color: var(--red); }
-    .day-btn.active .day-num { color: var(--red); }
-
-    /* Content */
-    .content { max-width: 600px; margin: 0 auto; padding: 20px 16px 60px; }
-
-    /* Legend */
-    .legend { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 16px; background: #fff; border-bottom: 1px solid var(--stone); max-width: 600px; margin: 0 auto; }
-    .legend-title { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); font-weight: 600; width: 100%; margin-bottom: 2px; }
-
-    /* Day section */
-    .day-section { margin-bottom: 32px; scroll-margin-top: 70px; }
-    .day-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--stone); }
-    .day-number-badge { width: 48px; height: 48px; border-radius: 50%; background: var(--red); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 3px 10px rgba(206,17,38,0.30); }
-    .day-number-badge .num { font-size: 18px; font-weight: 700; line-height: 1; }
-    .day-number-badge .mon { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; }
-    .day-title-group h2 { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--dark); }
-    .day-title-group .day-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
-
-    /* Timeline */
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--stone); border-radius: 2px; }
-    .tl-item { position: relative; margin-bottom: 14px; }
-    .tl-dot { position: absolute; left: -24px; top: 10px; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; }
-    .tl-card { background: #fff; border-radius: var(--radius); padding: 13px 14px; box-shadow: var(--shadow); border-left: 4px solid transparent; }
-    .tl-card.type-sight  { border-left-color: var(--blue); }
-    .tl-card.type-food   { border-left-color: var(--orange); }
-    .tl-card.type-kids   { border-left-color: var(--green); }
-    .tl-card.type-travel { border-left-color: var(--text-muted); }
-    .tl-card.type-hotel  { border-left-color: var(--gold); }
-    .tl-card.type-water  { border-left-color: var(--teal); }
-    .tl-dot.type-sight  { background: var(--blue);       box-shadow: 0 0 0 2px var(--blue-light); }
-    .tl-dot.type-food   { background: var(--orange);     box-shadow: 0 0 0 2px var(--orange-light); }
-    .tl-dot.type-kids   { background: var(--green);      box-shadow: 0 0 0 2px var(--green-light); }
-    .tl-dot.type-travel { background: var(--text-muted); box-shadow: 0 0 0 2px var(--stone); }
-    .tl-dot.type-hotel  { background: var(--gold);       box-shadow: 0 0 0 2px var(--gold-light); }
-    .tl-dot.type-water  { background: var(--teal);       box-shadow: 0 0 0 2px var(--teal-light); }
-    .tl-time { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 3px; }
-    .tl-title { font-size: 14px; font-weight: 600; color: var(--dark); display: flex; align-items: flex-start; gap: 6px; flex-wrap: wrap; }
-    .tl-desc { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
-
-    /* Tags */
-    .tag { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; flex-shrink: 0; margin-top: 1px; }
-    .tag-sight  { background: var(--blue-light);   color: var(--blue); }
-    .tag-food   { background: var(--orange-light);  color: var(--orange); }
-    .tag-kids   { background: var(--green-light);   color: var(--green); }
-    .tag-travel { background: var(--stone);          color: var(--text-muted); }
-    .tag-hotel  { background: var(--gold-light);    color: #7A5F00; }
-    .tag-water  { background: var(--teal-light);    color: var(--teal); }
-
-    /* Rating */
-    .stars { color: var(--gold); font-size: 11px; }
-    .rating-row { display: flex; align-items: center; gap: 5px; margin-top: 5px; }
-    .rating-num { font-size: 11px; font-weight: 600; color: var(--dark); }
-    .rating-count { font-size: 11px; color: var(--text-muted); }
-
-    /* ── Map Navigation Button ── */
-    .map-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-      flex-wrap: wrap;
+    /* Sidebar sticky panel */
+    .sidebar-panel {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #d4af37 transparent;
     }
-    .map-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: #1A73E8;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 13px;
-      border-radius: 20px;
-      text-decoration: none;
-      transition: background .15s, transform .1s;
-      white-space: nowrap;
-      box-shadow: 0 1px 4px rgba(26,115,232,0.30);
-    }
-    .map-btn:hover { background: #1558b0; }
-    .map-btn:active { transform: scale(0.97); }
-    .map-btn svg { width: 13px; height: 13px; fill: #fff; flex-shrink: 0; }
-    .map-hint {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
+    .sidebar-panel::-webkit-scrollbar { width: 4px; }
+    .sidebar-panel::-webkit-scrollbar-track { background: transparent; }
+    .sidebar-panel::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
 
-    /* Tip box */
-    .tip-box { display: flex; gap: 10px; background: var(--gold-light); border: 1px solid #E8D090; border-radius: var(--radius); padding: 11px 13px; margin-top: 10px; font-size: 12px; color: #6B5100; line-height: 1.5; }
-    .tip-box .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-
-    /* Folk divider */
-    .folk-divider { height: 6px; background: repeating-linear-gradient(90deg, var(--red) 0, var(--red) 8px, #fff 8px, #fff 10px, var(--green) 10px, var(--green) 18px, #fff 18px, #fff 20px); border-radius: 3px; margin: 24px 0; opacity: 0.4; }
-
-    /* Footer */
-    .footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 20px 16px; font-size: 12px; }
-    .footer strong { color: var(--gold); font-family: 'Playfair Display', serif; }
-
-    @media (max-width: 400px) {
-      .hero-content { padding: 28px 16px 22px; }
-      .day-btn { padding: 10px 10px 8px; font-size: 11px; }
-      .day-btn .day-num { font-size: 15px; }
+    /* Folk pattern for sidebar */
+    .folk-bg {
+      background-image: repeating-linear-gradient(
+        135deg,
+        rgba(212,175,55,0.04) 0px,
+        rgba(212,175,55,0.04) 1px,
+        transparent 1px,
+        transparent 8px
+      );
     }
   </style>
 </head>
-<body>
+<body class="antialiased selection:bg-hun-gold/20 selection:text-hun-dark">
 
-<div class="folk-border"></div>
+<div id="app" v-cloak class="min-h-screen">
 
-<header class="hero">
-  <div class="hero-bg"></div>
-  <svg class="skyline" viewBox="0 0 800 140" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="0" y="118" width="800" height="22" fill="rgba(255,255,255,0.15)"/>
-    <rect x="260" y="60" width="280" height="60" fill="white"/>
-    <polygon points="270,60 400,20 530,60" fill="white"/>
-    <ellipse cx="400" cy="24" rx="18" ry="20" fill="white"/>
-    <rect x="395" y="4" width="10" height="20" fill="white"/>
-    <rect x="272" y="34" width="8" height="28" fill="white"/>
-    <polygon points="272,34 276,22 280,34" fill="white"/>
-    <rect x="298" y="42" width="7" height="20" fill="white"/>
-    <polygon points="298,42 301.5,32 305,42" fill="white"/>
-    <rect x="520" y="34" width="8" height="28" fill="white"/>
-    <polygon points="520,34 524,22 528,34" fill="white"/>
-    <rect x="495" y="42" width="7" height="20" fill="white"/>
-    <polygon points="495,42 498.5,32 502,42" fill="white"/>
-    <rect x="285" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="308" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="331" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="357" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="383" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="409" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="435" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="458" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="481" y="72" width="12" height="16" rx="6" fill="rgba(0,0,0,0.25)"/>
-    <rect x="0" y="80" width="60" height="40" fill="white"/>
-    <rect x="60" y="88" width="50" height="32" fill="white"/>
-    <rect x="110" y="70" width="45" height="50" fill="white"/>
-    <rect x="155" y="78" width="55" height="42" fill="white"/>
-    <rect x="210" y="84" width="50" height="36" fill="white"/>
-    <rect x="140" y="58" width="14" height="22" fill="white"/>
-    <polygon points="138,58 147,42 156,58" fill="white"/>
-    <rect x="540" y="82" width="50" height="38" fill="white"/>
-    <rect x="590" y="76" width="55" height="44" fill="white"/>
-    <rect x="645" y="88" width="60" height="32" fill="white"/>
-    <rect x="705" y="78" width="55" height="42" fill="white"/>
-    <rect x="760" y="86" width="40" height="34" fill="white"/>
-    <path d="M170,118 Q220,88 270,118" stroke="white" stroke-width="1.5" fill="none"/>
-    <path d="M530,118 Q580,88 630,118" stroke="white" stroke-width="1.5" fill="none"/>
-  </svg>
-  <div class="hero-content">
-    <div class="hero-eyebrow">✈ Family Adventure</div>
-    <h1>A Week in <em>Budapest</em></h1>
-    <p class="hero-sub">2 – 7 April 2026 · Ming, Wife & Little Explorer (age 6)</p>
-    <div class="hero-badges">
-      <span class="hero-badge">🏛 6 Days</span>
-      <span class="hero-badge">🏨 2 Hotels</span>
-      <span class="hero-badge">🍽 12 Restaurants</span>
-      <span class="hero-badge">🗺 Maps on every stop</span>
-    </div>
-  </div>
-</header>
+  <!-- ══════════════════════════════════════
+       FOLK STRIPE — full width, always
+  ══════════════════════════════════════ -->
+  <div style="width:100%;height:14px;background:repeating-linear-gradient(90deg,#CE1126 0px,#CE1126 18px,#fff 18px,#fff 22px,#437A3A 22px,#437A3A 40px,#fff 40px,#fff 44px);position:relative;z-index:20;flex-shrink:0;"></div>
 
-<div class="flights-bar">
-  <div class="flights-inner">
-    <div class="flight-item">
-      <span class="flight-label">✈ Outbound · BA</span>
-      <span class="flight-route">LHR → BUD</span>
-      <span class="flight-detail">2 Apr · 13:30 – 17:00</span>
-    </div>
-    <div class="flight-item">
-      <span class="flight-label">✈ Return · BA</span>
-      <span class="flight-route">BUD → LHR</span>
-      <span class="flight-detail">7 Apr · 14:35 – 16:20</span>
-    </div>
-    <div class="flight-item">
-      <span class="flight-label">🛂 Airport</span>
-      <span class="flight-route">Heathrow T5</span>
-      <span class="flight-detail">British Airways</span>
-    </div>
-  </div>
-</div>
+  <!-- ══════════════════════════════════════
+       HERO — full width
+  ══════════════════════════════════════ -->
+  <header class="text-white relative overflow-hidden flex flex-col justify-end"
+          style="min-height: clamp(340px, 45vw, 560px);">
 
-<div class="hotels-strip">
-  <div class="hotels-inner">
-    <div class="hotel-card">
-      <div class="hotel-icon">🏙</div>
-      <div>
-        <div class="hotel-name">7Seasons Apartments</div>
-        <div class="hotel-dates">2 Apr – 5 Apr · City Centre</div>
-      </div>
-    </div>
-    <div class="hotel-card">
-      <div class="hotel-icon">🌊</div>
-      <div>
-        <div class="hotel-name">Aquaworld Resort</div>
-        <div class="hotel-dates">5 Apr – 7 Apr · Water Park</div>
-      </div>
-    </div>
-  </div>
-</div>
+    <!-- Dark gradient background -->
+    <div class="absolute inset-0 z-0"
+         style="background: linear-gradient(150deg, #12131F 0%, #222440 40%, #162F3E 100%);"></div>
 
-<div class="legend">
-  <span class="legend-title">Activity Types</span>
-  <span class="tag tag-sight">🏛 Sightseeing</span>
-  <span class="tag tag-food">🍽 Dining</span>
-  <span class="tag tag-kids">🎡 Kids</span>
-  <span class="tag tag-water">🏊 Water</span>
-  <span class="tag tag-hotel">🏨 Hotel</span>
-  <span class="tag tag-travel">✈ Travel</span>
-</div>
+    <!-- Geometric accent: vertical gold rule on desktop -->
+    <div class="absolute top-0 right-0 bottom-0 w-px bg-gradient-to-b from-transparent via-hun-gold/20 to-transparent hidden lg:block z-0"></div>
 
-<nav class="day-nav-wrap">
-  <div class="day-nav">
-    <button class="day-btn active" onclick="scrollToDay('day1',this)"><span class="day-num">2</span>Apr</button>
-    <button class="day-btn" onclick="scrollToDay('day2',this)"><span class="day-num">3</span>Apr</button>
-    <button class="day-btn" onclick="scrollToDay('day3',this)"><span class="day-num">4</span>Apr</button>
-    <button class="day-btn" onclick="scrollToDay('day4',this)"><span class="day-num">5</span>Apr</button>
-    <button class="day-btn" onclick="scrollToDay('day5',this)"><span class="day-num">6</span>Apr</button>
-    <button class="day-btn" onclick="scrollToDay('day6',this)"><span class="day-num">7</span>Apr</button>
-  </div>
-</nav>
+    <!-- Decorative dots grid (desktop right side) -->
+    <div class="absolute inset-y-0 right-0 w-1/3 opacity-[0.06] hidden lg:block z-0"
+         style="background-image: radial-gradient(circle, #D4AF37 1px, transparent 1px); background-size: 28px 28px;"></div>
 
-<!-- MAP BUTTON TEMPLATE (inline SVG pin icon) -->
-<template id="map-icon">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-</template>
+    <!-- Budapest skyline SVG -->
+    <svg class="absolute bottom-0 left-0 right-0 w-full opacity-[0.15] z-0 pointer-events-none"
+         style="height: clamp(100px, 18vw, 200px);"
+         viewBox="0 0 1200 180" preserveAspectRatio="xMidYMax slice"
+         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- River base -->
+      <rect x="0" y="158" width="1200" height="22" fill="rgba(255,255,255,0.12)"/>
+      <!-- Parliament (center) -->
+      <rect x="500" y="80" width="200" height="80" fill="white"/>
+      <polygon points="510,80 600,28 690,80" fill="white"/>
+      <ellipse cx="600" cy="32" rx="20" ry="22" fill="white"/>
+      <rect x="594" y="10" width="12" height="22" fill="white"/>
+      <!-- Parliament side towers -->
+      <rect x="512" y="50" width="10" height="32" fill="white"/>
+      <polygon points="512,50 517,34 522,50" fill="white"/>
+      <rect x="526" y="56" width="9" height="26" fill="white"/>
+      <polygon points="526,56 530,43 535,56" fill="white"/>
+      <rect x="678" y="50" width="10" height="32" fill="white"/>
+      <polygon points="678,50 683,34 688,50" fill="white"/>
+      <rect x="665" y="56" width="9" height="26" fill="white"/>
+      <polygon points="665,56 670,43 675,56" fill="white"/>
+      <!-- Parliament windows -->
+      <rect x="518" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="545" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="572" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="599" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="626" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="653" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="680" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <!-- Left skyline -->
+      <rect x="0" y="100" width="70" height="60" fill="white"/>
+      <rect x="70" y="108" width="60" height="52" fill="white"/>
+      <rect x="130" y="88" width="55" height="72" fill="white"/>
+      <rect x="185" y="100" width="70" height="60" fill="white"/>
+      <rect x="255" y="106" width="60" height="54" fill="white"/>
+      <rect x="315" y="94" width="50" height="66" fill="white"/>
+      <rect x="365" y="110" width="65" height="50" fill="white"/>
+      <rect x="430" y="118" width="70" height="42" fill="white"/>
+      <!-- Spire on left side -->
+      <rect x="155" y="70" width="16" height="22" fill="white"/>
+      <polygon points="153,70 163,50 173,70" fill="white"/>
+      <!-- Right skyline -->
+      <rect x="700" y="116" width="70" height="44" fill="white"/>
+      <rect x="770" y="100" width="60" height="60" fill="white"/>
+      <rect x="830" y="90" width="70" height="70" fill="white"/>
+      <rect x="900" y="104" width="65" height="56" fill="white"/>
+      <rect x="965" y="112" width="70" height="48" fill="white"/>
+      <rect x="1035" y="96" width="60" height="64" fill="white"/>
+      <rect x="1095" y="108" width="105" height="52" fill="white"/>
+      <!-- Chain bridge cables -->
+      <path d="M250,158 Q310,108 370,158" stroke="white" stroke-width="1.5" fill="none"/>
+      <path d="M830,158 Q890,108 950,158" stroke="white" stroke-width="1.5" fill="none"/>
+    </svg>
 
-<main class="content">
+    <!-- Hero content — left-aligned on desktop, centered on mobile -->
+    <div class="relative z-10 w-full px-6 sm:px-10 lg:px-16 pt-12 lg:pt-16 pb-10 lg:pb-14 max-w-7xl mx-auto">
+      <div class="lg:max-w-2xl">
+        <div class="text-[11px] sm:text-[12px] tracking-[0.3em] uppercase text-hun-gold font-bold mb-3 font-sans flex items-center gap-2">
+          <span>✈</span><span>Family Adventure</span>
+        </div>
+        <h1 class="font-bold leading-[1.05] mb-3 text-white font-serif"
+            style="font-size: clamp(36px, 6vw, 64px);">
+          A Week in <em class="text-hun-gold italic">Budapest</em>
+        </h1>
+        <p class="text-white/65 mb-7 font-sans font-light"
+           style="font-size: clamp(14px, 1.5vw, 18px);">
+          2 – 7 April 2026 · Ming, Trista &amp; Isabella
+        </p>
 
-  <!-- ════════════ DAY 1 ════════════ -->
-  <section class="day-section" id="day1">
-    <div class="day-header">
-      <div class="day-number-badge"><span class="num">2</span><span class="mon">Apr</span></div>
-      <div class="day-title-group">
-        <h2>Arrival & First Taste</h2>
-        <div class="day-subtitle">Wednesday · Check in to 7Seasons · Evening stroll</div>
+        <!-- Stat pills -->
+        <div class="flex gap-2.5 flex-wrap">
+          <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-[12px] sm:text-[13px] text-white/90 flex items-center gap-1.5 font-medium backdrop-blur-sm">🏛 6 Days</span>
+          <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-[12px] sm:text-[13px] text-white/90 flex items-center gap-1.5 font-medium backdrop-blur-sm">🏨 2 Hotels</span>
+          <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-[12px] sm:text-[13px] text-white/90 flex items-center gap-1.5 font-medium backdrop-blur-sm">💧 Aquaworld &amp; More</span>
+          <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-[12px] sm:text-[13px] text-white/90 flex items-center gap-1.5 font-medium backdrop-blur-sm">🍽 6 Restaurants</span>
+        </div>
       </div>
     </div>
-    <div class="timeline">
+  </header>
 
-      <div class="tl-item">
-        <div class="tl-dot type-travel"></div>
-        <div class="tl-card type-travel">
-          <div class="tl-time">13:30</div>
-          <div class="tl-title">Depart London Heathrow <span class="tag tag-travel">✈ Travel</span></div>
-          <div class="tl-desc">British Airways from Terminal 5. Check in 2 hrs early. Flight time ~2h 30m.</div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=London+Heathrow+Terminal+5" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate to Heathrow T5
-            </a>
+  <!-- ══════════════════════════════════════
+       MAIN LAYOUT: sidebar (desktop) + content
+  ══════════════════════════════════════ -->
+  <div class="lg:flex lg:items-start">
+
+    <!-- ── DESKTOP SIDEBAR ─────────────────── -->
+    <aside class="hidden lg:flex flex-col flex-shrink-0 bg-white border-r border-stone-200/80 folk-bg sidebar-panel"
+           style="width: clamp(220px, 18vw, 280px);">
+
+      <div class="p-5 xl:p-6 flex flex-col h-full">
+
+        <!-- Sidebar label -->
+        <p class="text-[9px] font-bold uppercase tracking-[0.25em] text-stone-400 mb-4 px-1">Itinerary</p>
+
+        <!-- Day nav buttons -->
+        <nav class="space-y-1 flex-1">
+          <button v-for="day in days" :key="day.id"
+                  @click="scrollToDay(day.id)"
+                  class="w-full text-left flex items-center gap-3 px-2.5 py-2.5 rounded-xl transition-all duration-200 group"
+                  :class="activeDay === day.id
+                    ? 'bg-hun-green text-white shadow-md shadow-hun-green/20'
+                    : 'text-stone-600 hover:bg-stone-50 hover:text-hun-dark'">
+
+            <!-- Date badge -->
+            <span class="w-10 h-10 rounded-lg flex-shrink-0 flex flex-col items-center justify-center border"
+                  :class="activeDay === day.id
+                    ? 'bg-white/20 border-white/20 text-white'
+                    : 'bg-stone-50 border-stone-100 text-stone-700'">
+              <span class="text-[15px] font-bold leading-none font-serif">{{day.date}}</span>
+              <span class="text-[8px] uppercase font-bold leading-none mt-0.5 opacity-70">{{day.month}}</span>
+            </span>
+
+            <!-- Label -->
+            <span class="leading-snug text-[12px] xl:text-[13px] font-semibold">{{day.title}}</span>
+          </button>
+        </nav>
+
+        <!-- Divider -->
+        <div class="border-t border-stone-100 mt-3 pt-3">
+          <button @click="scrollToDay('backup')"
+                  class="w-full text-left flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-[12px] xl:text-[13px] font-semibold text-stone-500 hover:bg-stone-50 hover:text-hun-dark transition-colors">
+            <span class="w-10 h-10 rounded-lg bg-amber-50 border border-amber-100 flex items-center justify-center text-base flex-shrink-0">🗺</span>
+            <span>Backup Picks</span>
+          </button>
+        </div>
+
+        <!-- Footer note -->
+        <p class="mt-5 text-[10px] text-stone-300 text-center tracking-widest uppercase font-medium">Budapest · Apr 2026</p>
+      </div>
+    </aside>
+
+    <!-- ── MOBILE HORIZONTAL NAV ───────────── -->
+    <nav class="lg:hidden sticky top-0 z-20 bg-hun-cream/95 backdrop-blur-md shadow-sm border-b border-stone-200">
+      <div class="flex overflow-x-auto py-3 px-4 gap-2.5 no-scrollbar">
+        <button v-for="day in days" :key="day.id"
+                @click="scrollToDay(day.id)"
+                class="flex-shrink-0 flex items-center justify-center px-4 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 border"
+                :class="activeDay === day.id
+                  ? 'bg-hun-green border-hun-green text-white shadow-md'
+                  : 'bg-white border-stone-200 text-stone-600 hover:border-hun-green/30 hover:text-hun-green'">
+          <span class="mr-1.5 font-bold">{{day.date}}</span>{{day.month}}
+        </button>
+
+        <!-- Separator -->
+        <div class="flex-shrink-0 w-px bg-stone-200 self-stretch my-1 mx-0.5"></div>
+
+        <!-- Backup Picks button -->
+        <button @click="scrollToDay('backup')"
+                class="flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 border bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100">
+          <span class="text-base leading-none">🗺</span> Backup
+        </button>
+      </div>
+    </nav>
+
+    <!-- ── MAIN CONTENT ────────────────────── -->
+    <main class="flex-1 min-w-0 bg-hun-cream">
+      <div class="max-w-3xl mx-auto px-5 sm:px-8 lg:px-10 xl:px-14 py-10 lg:py-14 space-y-20 lg:space-y-24">
+
+        <!-- ─────── DAY SECTIONS ─────── -->
+        <section v-for="day in days"
+                 :key="day.id"
+                 :id="day.id"
+                 class="scroll-mt-28 lg:scroll-mt-16 observer-section">
+
+          <!-- Day header -->
+          <div class="mb-8 lg:mb-10 flex items-start gap-5">
+            <div class="bg-white border-2 border-hun-gold rounded-2xl w-14 h-14 lg:w-16 lg:h-16 flex flex-col items-center justify-center flex-shrink-0 shadow-sm shadow-hun-gold/10 mt-1">
+              <span class="text-xl lg:text-2xl font-bold leading-none font-serif text-hun-dark">{{day.date}}</span>
+              <span class="text-[8px] lg:text-[9px] font-bold uppercase tracking-widest mt-1 text-stone-400">{{day.month}}</span>
+            </div>
+            <div class="pt-0.5">
+              <h2 class="font-bold font-serif text-hun-dark mb-1.5 leading-tight"
+                  style="font-size: clamp(22px, 3vw, 30px);">{{day.title}}</h2>
+              <p class="text-[11px] lg:text-[12px] tracking-[0.07em] text-hun-green font-semibold uppercase">{{day.subtitle}}</p>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="tl-item">
-        <div class="tl-dot type-hotel"></div>
-        <div class="tl-card type-hotel">
-          <div class="tl-time">18:00</div>
-          <div class="tl-title">Check in · 7Seasons Apartments <span class="tag tag-hotel">🏨 Hotel</span></div>
-          <div class="tl-desc">Settle in, freshen up. Take the 100E Airport Express bus to Deák tér (~35 min) or taxi (~30 min, HUF 10–15k).</div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=7Seasons+Apartments+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate to Hotel
-            </a>
+          <!-- Event cards -->
+          <div class="space-y-5 lg:space-y-6">
+            <div v-for="(event, index) in day.events" :key="index"
+                 class="bg-white rounded-2xl overflow-hidden card-shadow relative"
+                 :class="getCardBorder(event.typeLabel)">
+
+              <!-- Card inner -->
+              <div class="p-6 lg:p-7">
+
+                <!-- Top row: time + pill -->
+                <div class="flex justify-between items-center mb-4">
+                  <div class="flex items-center gap-2 text-stone-400">
+                    <svg class="w-3.5 h-3.5 flex-shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <span class="text-[13px] lg:text-[14px] font-bold tracking-wider">{{event.time}}</span>
+                  </div>
+                  <span class="px-3 py-1.5 rounded-full text-[10px] lg:text-[11px] font-bold uppercase tracking-widest"
+                        :class="getPillClass(event.typeLabel)">{{event.typeLabel}}</span>
+                </div>
+
+                <!-- Title -->
+                <h3 class="font-bold text-hun-dark mb-2.5 leading-snug tracking-tight"
+                    style="font-size: clamp(16px, 1.8vw, 20px);">{{event.title}}</h3>
+
+                <!-- Description -->
+                <p class="text-stone-500 leading-relaxed font-light mb-4"
+                   style="font-size: clamp(14px, 1.2vw, 15px);">{{event.desc}}</p>
+
+                <!-- Rating -->
+                <div v-if="event.rating"
+                     class="inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-medium text-stone-500 mb-4 bg-stone-50 rounded-lg px-3 py-1.5">
+                  <span class="text-hun-gold text-[14px] leading-none">★</span>
+                  <span>{{event.rating}}</span>
+                </div>
+
+                <!-- Tip box -->
+                <div v-if="event.tip"
+                     class="bg-amber-50 border border-amber-200/60 rounded-xl p-4 lg:p-5 mb-4 flex gap-3.5 items-start">
+                  <span class="text-xl leading-none mt-0.5 flex-shrink-0" v-html="event.tipIcon || '💡'"></span>
+                  <span class="text-[13px] lg:text-[14px] font-medium text-amber-900 leading-relaxed">{{event.tip}}</span>
+                </div>
+
+                <!-- Map button -->
+                <a :href="'https://www.google.com/maps/search/?api=1&query=' + event.mapQuery"
+                   target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-50 hover:bg-stone-100 border border-stone-200 text-hun-dark font-semibold rounded-xl text-[12px] lg:text-[13px] transition-colors">
+                  <svg class="w-3.5 h-3.5 fill-current opacity-60 flex-shrink-0" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+                  </svg>
+                  View on Map
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="tl-item">
-        <div class="tl-dot type-sight"></div>
-        <div class="tl-card type-sight">
-          <div class="tl-time">19:00</div>
-          <div class="tl-title">St. Stephen's Basilica <span class="tag tag-sight">🏛 Sightseeing</span></div>
-          <div class="tl-desc">Beautiful at night when illuminated. Walk around the outside — free, impressive, short stroll from the city centre.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.7</span><span class="rating-count">· 75,676 reviews</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=St.+Stephen%27s+Basilica+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-            <a class="map-btn" style="background:#34A853;" href="https://www.google.com/maps/search/?api=1&query=St.+Stephen%27s+Basilica+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              View on Map
-            </a>
+          <!-- Day-level tip -->
+          <div v-if="day.dayLevelTip"
+               class="mt-8 bg-white border border-stone-100 rounded-2xl p-5 lg:p-6 flex gap-4 items-start card-shadow">
+            <span class="text-2xl leading-none mt-0.5 flex-shrink-0" v-html="day.dayLevelTipIcon || '💡'"></span>
+            <span class="text-[13px] lg:text-[14px] font-medium text-hun-dark leading-relaxed">{{day.dayLevelTip}}</span>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <div class="tl-item">
-        <div class="tl-dot type-food"></div>
-        <div class="tl-card type-food">
-          <div class="tl-time">20:00</div>
-          <div class="tl-title">Dinner · Fat Mama <span class="tag tag-food">🍽 Dining</span></div>
-          <div class="tl-desc">Budapest's most-reviewed neighbourhood restaurant. Casual, fun, perfect for a tired family after travel day. Hearty portions.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.8</span><span class="rating-count">· 32,464 reviews · ££</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Fat+Mama+Restaurant+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
+        <!-- ─────── DIVIDER ─────── -->
+        <div class="flex justify-center items-center py-4 gap-4 opacity-30">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent to-hun-dark"></div>
+          <span class="text-hun-gold text-2xl leading-none">❖</span>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent to-hun-dark"></div>
+        </div>
+
+        <!-- ─────── BACKUP DISCOVERIES ─────── -->
+        <section id="backup" class="scroll-mt-28 lg:scroll-mt-16 observer-section">
+          <div class="mb-8 lg:mb-10 flex items-start gap-5">
+            <div class="bg-hun-gold text-white rounded-2xl w-14 h-14 lg:w-16 lg:h-16 flex flex-col items-center justify-center flex-shrink-0 shadow-md shadow-hun-gold/25 mt-1">
+              <span class="text-2xl lg:text-3xl leading-none">🗺</span>
+            </div>
+            <div class="pt-0.5">
+              <h2 class="font-bold font-serif text-hun-dark mb-1.5 leading-tight"
+                  style="font-size: clamp(22px, 3vw, 30px);">Backup Discoveries</h2>
+              <p class="text-[11px] lg:text-[12px] tracking-[0.07em] text-stone-400 font-semibold uppercase">Alternate Inspiration</p>
+            </div>
           </div>
-        </div>
-      </div>
 
-    </div>
-  </section>
-  <div class="folk-divider"></div>
-
-  <!-- ════════════ DAY 2 ════════════ -->
-  <section class="day-section" id="day2">
-    <div class="day-header">
-      <div class="day-number-badge"><span class="num">3</span><span class="mon">Apr</span></div>
-      <div class="day-title-group">
-        <h2>Zoo, City Park & Medieval Feast</h2>
-        <div class="day-subtitle">Thursday · Városliget · Heroes' Square · Sir Lancelot</div>
-      </div>
-    </div>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot type-kids"></div>
-        <div class="tl-card type-kids">
-          <div class="tl-time">09:00</div>
-          <div class="tl-title">Budapest Zoo & Botanical Garden <span class="tag tag-kids">🎡 Kids</span></div>
-          <div class="tl-desc">One of the world's oldest zoos — gorgeous Art Nouveau entrance gates. Allow 3 hrs. Book tickets online to skip queues.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.5</span><span class="rating-count">· 47,247 reviews</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Budapest+Zoo+and+Botanical+Garden" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-            <a class="map-btn" style="background:#34A853;" href="https://www.google.com/maps/search/?api=1&query=Budapest+Zoo+and+Botanical+Garden" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              View on Map
-            </a>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
+            <div v-for="(place, index) in backups" :key="index"
+                 class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col"
+                 :class="getCardBorder(place.category)">
+              <div class="p-6 flex flex-col flex-1">
+                <span class="inline-block px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4 w-fit"
+                      :class="getPillClass(place.category)">{{place.category}}</span>
+                <h3 class="text-[15px] lg:text-[17px] font-bold text-hun-dark mb-1.5 leading-tight">{{place.title}}</h3>
+                <div class="inline-flex items-center gap-1.5 text-[12px] font-medium text-stone-400 mb-3">
+                  <span class="text-hun-gold text-[13px] leading-none">★</span>
+                  <span>{{place.rating}}</span>
+                </div>
+                <p class="text-[13px] lg:text-[14px] text-stone-500 leading-relaxed font-light mb-5 flex-grow">{{place.desc}}</p>
+                <a :href="'https://www.google.com/maps/search/?api=1&query=' + place.mapQuery"
+                   target="_blank" rel="noopener"
+                   class="flex items-center justify-center gap-2 w-full py-2.5 bg-stone-50 hover:bg-stone-100 border border-stone-200 text-hun-dark font-semibold rounded-xl text-[12px] lg:text-[13px] transition-colors mt-auto">
+                  <svg class="w-3.5 h-3.5 fill-current opacity-60 flex-shrink-0" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+                  </svg>
+                  View on Map
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <div class="tl-item">
-        <div class="tl-dot type-food"></div>
-        <div class="tl-card type-food">
-          <div class="tl-time">12:30</div>
-          <div class="tl-title">Lunch · Parasztkonyha Restaurant <span class="tag tag-food">🍽 Dining</span></div>
-          <div class="tl-desc">Beloved traditional Hungarian kitchen. The goulash and chicken paprikash are outstanding. Very family-friendly with a warm atmosphere.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.8</span><span class="rating-count">· 8,710 reviews · ££</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Parasztkonyha+Restaurant+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
+      </div><!-- /max-w-3xl -->
 
-      <div class="tl-item">
-        <div class="tl-dot type-sight"></div>
-        <div class="tl-card type-sight">
-          <div class="tl-time">14:00</div>
-          <div class="tl-title">Heroes' Square <span class="tag tag-sight">🏛 Sightseeing</span></div>
-          <div class="tl-desc">Hungary's most iconic square — enormous statues of the Magyar chieftains. Free, open air, great photo spot.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.7</span><span class="rating-count">· 84,827 reviews · Free</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Heroes+Square+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
+      <!-- Footer -->
+      <footer class="text-center py-10 lg:py-12 text-[10px] font-bold tracking-[0.25em] text-stone-400 uppercase border-t border-stone-200/60">
+        Have a wonderful trip to Budapest
+      </footer>
+    </main><!-- /main -->
 
-      <div class="tl-item">
-        <div class="tl-dot type-kids"></div>
-        <div class="tl-card type-kids">
-          <div class="tl-time">14:30</div>
-          <div class="tl-title">Main Playground in Városliget <span class="tag tag-kids">🎡 Kids</span></div>
-          <div class="tl-desc">Budapest's best-loved public playground — huge variety of equipment, safe surfaces, beautiful tree-lined surroundings. A 6-year-old's paradise!</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.8</span><span class="rating-count">· 5,942 reviews · Free</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Main+Playground+Városliget+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
+  </div><!-- /lg:flex -->
+</div><!-- /#app -->
 
-      <div class="tl-item">
-        <div class="tl-dot type-sight"></div>
-        <div class="tl-card type-sight">
-          <div class="tl-time">16:30</div>
-          <div class="tl-title">House of Music Hungary <span class="tag tag-sight">🏛 Sightseeing</span></div>
-          <div class="tl-desc">Spectacular building with interactive music exhibits. Kids can make sounds, explore instruments — the whole family gets absorbed in it.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.8</span><span class="rating-count">· 9,855 reviews</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=House+of+Music+Hungary+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
+<script type="module">
+  const { createApp, ref, onMounted } = Vue;
 
-      <div class="tl-item">
-        <div class="tl-dot type-food"></div>
-        <div class="tl-card type-food">
-          <div class="tl-time">19:30</div>
-          <div class="tl-title">Dinner · Sir Lancelot Medieval Restaurant <span class="tag tag-food">🍽 Dining</span></div>
-          <div class="tl-desc">⭐ TOP PICK FOR KIDS. Costumed waiters, sword fights, fire shows — dinner is entertainment. Massive portions of medieval Hungarian food. Reserve in advance!</div>
-          <div class="rating-row"><span class="stars">★★★★</span><span class="rating-num">4.4</span><span class="rating-count">· 12,352 reviews · £££</span></div>
-          <div class="tip-box"><span class="tip-icon">💡</span><span>Book in advance — fills up fast on evenings. Request a seat near the performance area for your little one.</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Sir+Lancelot+Medieval+Restaurant+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
+  const app = createApp({
+    setup() {
+      const activeDay = ref('day1');
 
-    </div>
-  </section>
-  <div class="folk-divider"></div>
+      const getCardBorder = (type) => {
+        const borders = {
+          'Sightseeing': 'border-l-[5px] border-l-hun-red',
+          'Kids':        'border-l-[5px] border-l-hun-green',
+          'Travel':      'border-l-[5px] border-l-blue-400',
+          'Water':       'border-l-[5px] border-l-sky-400',
+          'Hotel':       'border-l-[5px] border-l-hun-dark',
+          'Dining':      'border-l-[5px] border-l-hun-gold',
+        };
+        return borders[type] || 'border-l-[5px] border-l-stone-200';
+      };
 
-  <!-- ════════════ DAY 3 ════════════ -->
-  <section class="day-section" id="day3">
-    <div class="day-header">
-      <div class="day-number-badge"><span class="num">4</span><span class="mon">Apr</span></div>
-      <div class="day-title-group">
-        <h2>Castle Hill, Buda & IKONO</h2>
-        <div class="day-subtitle">Friday · Fisherman's Bastion · Funicular · Market Hall</div>
-      </div>
-    </div>
-    <div class="timeline">
+      const getPillClass = (type) => {
+        const pills = {
+          'Sightseeing': 'bg-red-50 text-hun-red',
+          'Kids':        'bg-green-50 text-hun-green',
+          'Travel':      'bg-blue-50 text-blue-600',
+          'Water':       'bg-sky-50 text-sky-600',
+          'Hotel':       'bg-stone-100 text-hun-dark',
+          'Dining':      'bg-amber-50 text-amber-700',
+        };
+        return pills[type] || 'bg-stone-100 text-stone-600';
+      };
 
-      <div class="tl-item">
-        <div class="tl-dot type-sight"></div>
-        <div class="tl-card type-sight">
-          <div class="tl-time">09:00</div>
-          <div class="tl-title">Fisherman's Bastion <span class="tag tag-sight">🏛 Sightseeing</span></div>
-          <div class="tl-desc">The most photographed spot in Budapest — white fairy-tale turrets with direct view of Parliament across the Danube. Arrive early to beat crowds.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.8</span><span class="rating-count">· 110,647 reviews</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Fisherman%27s+Bastion+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-            <a class="map-btn" style="background:#34A853;" href="https://www.google.com/maps/search/?api=1&query=Fisherman%27s+Bastion+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              View on Map
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-kids"></div>
-        <div class="tl-card type-kids">
-          <div class="tl-time">10:30</div>
-          <div class="tl-title">Budapest Castle Hill Funicular <span class="tag tag-kids">🎡 Kids</span></div>
-          <div class="tl-desc">Short, fun funicular ride up and down Castle Hill — great views and kids always love it. Takes 2 minutes but is a memorable experience.</div>
-          <div class="rating-row"><span class="stars">★★★★</span><span class="rating-num">3.6</span><span class="rating-count">· 834 reviews · Small fee</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Budapest+Castle+Hill+Funicular" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-kids"></div>
-        <div class="tl-card type-kids">
-          <div class="tl-time">11:15</div>
-          <div class="tl-title">Gellérthegyi Playground with Slides <span class="tag tag-kids">🎡 Kids</span></div>
-          <div class="tl-desc">Long natural slides carved into the Gellért Hill hillside — a hidden gem that locals adore. Burn off energy before lunch!</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.7</span><span class="rating-count">· 915 reviews · Free</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Gellérthegyi+playground+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-food"></div>
-        <div class="tl-card type-food">
-          <div class="tl-time">13:00</div>
-          <div class="tl-title">Lunch · Retek Bisztro <span class="tag tag-food">🍽 Dining</span></div>
-          <div class="tl-desc">One of Budapest's most-loved bistros — relaxed, unpretentious, fantastic Hungarian comfort food at fair prices.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.8</span><span class="rating-count">· 5,865 reviews · ££</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Retek+Bisztro+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-sight"></div>
-        <div class="tl-card type-sight">
-          <div class="tl-time">15:00</div>
-          <div class="tl-title">Central Market Hall <span class="tag tag-sight">🏛 Sightseeing</span></div>
-          <div class="tl-desc">Budapest's grandest Victorian iron-and-glass market hall. Try a chimney cake (kürtőskalács) — a guaranteed hit with kids. Great for souvenirs.</div>
-          <div class="rating-row"><span class="stars">★★★★</span><span class="rating-num">4.3</span><span class="rating-count">· 117,150 reviews</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Central+Market+Hall+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-kids"></div>
-        <div class="tl-card type-kids">
-          <div class="tl-time">17:00</div>
-          <div class="tl-title">IKONO Budapest <span class="tag tag-kids">🎡 Kids</span></div>
-          <div class="tl-desc">Immersive pop-art and interactive experience rooms — giant rubber ducks, mirror mazes, colourful installations. Perfect for kids and great for family photos. Allow 1–1.5 hours.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.7</span><span class="rating-count">· 13,522 reviews</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=IKONO+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-food"></div>
-        <div class="tl-card type-food">
-          <div class="tl-time">19:30</div>
-          <div class="tl-title">Dinner · Spinoza Restaurant <span class="tag tag-food">🍽 Dining</span></div>
-          <div class="tl-desc">Charming Jewish Quarter restaurant with warm, artsy atmosphere. Jewish-Hungarian cuisine with live piano music some evenings.</div>
-          <div class="rating-row"><span class="stars">★★★★</span><span class="rating-num">4.4</span><span class="rating-count">· 3,045 reviews · ££</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Spinoza+Restaurant+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <div class="folk-divider"></div>
-
-  <!-- ════════════ DAY 4 ════════════ -->
-  <section class="day-section" id="day4">
-    <div class="day-header">
-      <div class="day-number-badge"><span class="num">5</span><span class="mon">Apr</span></div>
-      <div class="day-title-group">
-        <h2>Parliament & Move to Aquaworld</h2>
-        <div class="day-subtitle">Saturday · Hotel changeover · Water park evening</div>
-      </div>
-    </div>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot type-sight"></div>
-        <div class="tl-card type-sight">
-          <div class="tl-time">09:00</div>
-          <div class="tl-title">Hungarian Parliament Tour <span class="tag tag-sight">🏛 Sightseeing</span></div>
-          <div class="tl-desc">One of the world's most beautiful parliament buildings — the guided tour includes the crown jewels, grand staircase, and stunning chambers.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.7</span><span class="rating-count">· Pre-book at jegy.parlament.hu</span></div>
-          <div class="tip-box"><span class="tip-icon">📌</span><span>Book tickets at <strong>jegy.parlament.hu</strong> — they sell out quickly on weekends.</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Hungarian+Parliament+Building+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-            <a class="map-btn" style="background:#34A853;" href="https://www.google.com/maps/search/?api=1&query=Hungarian+Parliament+Building+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              View on Map
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-sight"></div>
-        <div class="tl-card type-sight">
-          <div class="tl-time">10:30</div>
-          <div class="tl-title">Batthyány tér & Danube Riverfront <span class="tag tag-sight">🏛 Sightseeing</span></div>
-          <div class="tl-desc">Beautiful Buda-side square with direct view back across the river to the Parliament. Stop for a coffee and let the little one run around.</div>
-          <div class="rating-row"><span class="stars">★★★★</span><span class="rating-num">4.4</span><span class="rating-count">· 638 reviews</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Batthyány+tér+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-food"></div>
-        <div class="tl-card type-food">
-          <div class="tl-time">12:00</div>
-          <div class="tl-title">Lunch · Tosti Budapest <span class="tag tag-food">🍽 Dining</span></div>
-          <div class="tl-desc">Budapest's top-rated sandwich spot. Delicious artisan toasties — quick, casual and super kid-friendly.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.9</span><span class="rating-count">· 714 reviews · HUF 2–4k</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Tosti+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-hotel"></div>
-        <div class="tl-card type-hotel">
-          <div class="tl-time">14:30</div>
-          <div class="tl-title">Check in · Aquaworld Resort Budapest <span class="tag tag-hotel">🏨 Hotel</span></div>
-          <div class="tl-desc">Located in north Budapest (~20 min taxi/Uber from centre). Check in at 15:00 then straight to the water park!</div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Aquaworld+Resort+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate to Aquaworld
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-water"></div>
-        <div class="tl-card type-water">
-          <div class="tl-time">15:00</div>
-          <div class="tl-title">Aquaworld Indoor Water Park 🌊 <span class="tag tag-water">🏊 Water</span></div>
-          <div class="tl-desc">Europe's largest indoor tropical water park — 12 slides, wave pool, lazy river, children's splash zone. Open until 22:00.</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <div class="folk-divider"></div>
-
-  <!-- ════════════ DAY 5 ════════════ -->
-  <section class="day-section" id="day5">
-    <div class="day-header">
-      <div class="day-number-badge"><span class="num">6</span><span class="mon">Apr</span></div>
-      <div class="day-title-group">
-        <h2>Aquaworld Full Day & Evening Out</h2>
-        <div class="day-subtitle">Sunday · Water park morning · Elevenpark · Dinner out</div>
-      </div>
-    </div>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot type-water"></div>
-        <div class="tl-card type-water">
-          <div class="tl-time">09:00</div>
-          <div class="tl-title">Aquaworld — Full Morning Session <span class="tag tag-water">🏊 Water</span></div>
-          <div class="tl-desc">Start early before it gets busy. The children's zone has a pirate ship splash area and toddler-safe pools. The bigger slides are suitable for adventurous 6-year-olds with adult supervision.</div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-kids"></div>
-        <div class="tl-card type-kids">
-          <div class="tl-time">14:30</div>
-          <div class="tl-title">Elevenpark — Indoor Play Centre <span class="tag tag-kids">🎡 Kids</span></div>
-          <div class="tl-desc">Large indoor children's activity hall with climbing frames, ball pools, trampolines and play structures.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.5</span><span class="rating-count">· 6,229 reviews</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Elevenpark+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-kids"></div>
-        <div class="tl-card type-kids">
-          <div class="tl-time">16:00</div>
-          <div class="tl-title">Olympics Playground <span class="tag tag-kids">🎡 Kids</span></div>
-          <div class="tl-desc">One of Budapest's best-rated public playgrounds — spacious, varied equipment, lovely surroundings.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.7</span><span class="rating-count">· 1,131 reviews · Free</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Olympics+playground+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-food"></div>
-        <div class="tl-card type-food">
-          <div class="tl-time">19:00</div>
-          <div class="tl-title">Dinner · Firkász Restaurant <span class="tag tag-food">🍽 Dining</span></div>
-          <div class="tl-desc">Charming Budapest classic named after journalists who once gathered here. Relaxed, slightly retro atmosphere with excellent traditional Hungarian food.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.5</span><span class="rating-count">· 1,960 reviews · ££</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Firkász+Restaurant+Budapest" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <div class="folk-divider"></div>
-
-  <!-- ════════════ DAY 6 ════════════ -->
-  <section class="day-section" id="day6">
-    <div class="day-header">
-      <div class="day-number-badge"><span class="num">7</span><span class="mon">Apr</span></div>
-      <div class="day-title-group">
-        <h2>Last Morning & Departure</h2>
-        <div class="day-subtitle">Monday · Final splash · Fly home from BUD</div>
-      </div>
-    </div>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot type-water"></div>
-        <div class="tl-card type-water">
-          <div class="tl-time">09:00</div>
-          <div class="tl-title">One Last Aquaworld Session <span class="tag tag-water">🏊 Water</span></div>
-          <div class="tl-desc">Fit in a final hour or two before checkout — a perfect send-off for the little one!</div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-hotel"></div>
-        <div class="tl-card type-hotel">
-          <div class="tl-time">11:00</div>
-          <div class="tl-title">Check out · Aquaworld Resort <span class="tag tag-hotel">🏨 Hotel</span></div>
-          <div class="tl-desc">Pack bags and check out. Store luggage at reception if you want a final coffee nearby.</div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-food"></div>
-        <div class="tl-card type-food">
-          <div class="tl-time">11:30</div>
-          <div class="tl-title">Lunch · Twentysix Budapest <span class="tag tag-food">🍽 Dining</span></div>
-          <div class="tl-desc">Excellent brunch and lunch spot — stylish, popular, and a lovely final meal. Known for great eggs dishes and contemporary Hungarian-international menu.</div>
-          <div class="rating-row"><span class="stars">★★★★★</span><span class="rating-num">4.5</span><span class="rating-count">· 20,150 reviews · £££</span></div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Twentysix+Budapest+Restaurant" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-travel"></div>
-        <div class="tl-card type-travel">
-          <div class="tl-time">12:30</div>
-          <div class="tl-title">Head to Budapest Airport <span class="tag tag-travel">✈ Travel</span></div>
-          <div class="tl-desc">Allow ~45 min for the journey plus ~1.5 hrs check-in. Taxi or Uber recommended with luggage.</div>
-          <div class="map-row">
-            <a class="map-btn" href="https://www.google.com/maps/dir/?api=1&destination=Budapest+Ferenc+Liszt+International+Airport" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-              Navigate to Airport
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot type-travel"></div>
-        <div class="tl-card type-travel">
-          <div class="tl-time">14:35</div>
-          <div class="tl-title">Depart Budapest → London Heathrow <span class="tag tag-travel">✈ Travel</span></div>
-          <div class="tl-desc">British Airways flight home. Arrive London Heathrow 16:20. Szia, Budapest! 🇭🇺</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="tip-box" style="margin-top:16px">
-      <span class="tip-icon">🇭🇺</span>
-      <span>Leave space in your bag for Hungarian paprika, Tokaji wine, embroidered textiles, and a small porcelain Herend piece — classic Budapest souvenirs from the Central Market Hall.</span>
-    </div>
-  </section>
-
-  <div class="folk-divider"></div>
-
-  <!-- Practical Tips -->
-  <section style="margin-bottom:24px">
-    <h2 style="font-size:22px; margin-bottom:16px; color:var(--dark)">Practical Tips 🗒</h2>
-    <div style="display:flex; flex-direction:column; gap:10px">
-      <div class="tl-card type-sight" style="border-left:none; border-top:4px solid var(--blue)">
-        <div class="tl-title">💳 Currency</div>
-        <div class="tl-desc">Hungary uses <strong>Hungarian Forint (HUF)</strong> — cards widely accepted, but carry cash for markets and playgrounds. ATMs are plentiful in the centre.</div>
-      </div>
-      <div class="tl-card type-kids" style="border-left:none; border-top:4px solid var(--green)">
-        <div class="tl-title">🚌 Getting Around</div>
-        <div class="tl-desc">Budapest has excellent public transport. Buy a 24hr or 72hr travel pass for unlimited rides. Trams 2 and 19 along the Danube are scenic. Uber and Bolt both work well.</div>
-      </div>
-      <div class="tl-card type-food" style="border-left:none; border-top:4px solid var(--orange)">
-        <div class="tl-title">🌡 April Weather</div>
-        <div class="tl-desc">Expect 8–17°C with a mix of sunny and cloudy days. Light jacket essential for mornings and evenings. Rain showers possible — pack a small umbrella.</div>
-      </div>
-      <div class="tl-card type-hotel" style="border-left:none; border-top:4px solid var(--gold)">
-        <div class="tl-title">📱 Useful Apps</div>
-        <div class="tl-desc"><strong>BKK Futár</strong> — Budapest public transport planner. <strong>Bolt</strong> — local rideshare, often cheaper than Uber. <strong>Google Maps</strong> works excellently for navigation.</div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <strong>Budapest · April 2026</strong><br/>
-  <span>Have a wonderful family adventure! Jó utat! 🇭🇺</span>
-</footer>
-
-<script>
-  function scrollToDay(id, btn) {
-    document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // Highlight active day on scroll
-  const sections = ['day1','day2','day3','day4','day5','day6'];
-  const btns = document.querySelectorAll('.day-btn');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const idx = sections.indexOf(e.target.id);
-        if (idx !== -1) {
-          btns.forEach(b => b.classList.remove('active'));
-          btns[idx].classList.add('active');
+      // ── ITINERARY DATA ───────────────────────────────────────────
+      const days = [
+        {
+          id: 'day1',
+          date: '2',
+          month: 'Apr',
+          title: 'Arrival & First Taste',
+          subtitle: 'Wednesday · Check in to 7Seasons · Evening stroll',
+          events: [
+            { time: '13:30', title: 'Depart London Heathrow', typeLabel: 'Travel', desc: 'British Airways from Terminal 5. Check in 2 hrs early. Flight time ~2h 30m.', mapQuery: 'London+Heathrow+Terminal+5' },
+            { time: '18:00', title: 'Check in · 7Seasons Apartments', typeLabel: 'Hotel', desc: 'Settle in, freshen up. Take the 100E Airport Express bus to Deák tér (~35 min) or taxi (~30 min, HUF 10–15k).', mapQuery: '7Seasons+Apartments+Budapest' },
+            { time: '19:00', title: 'St. Stephen\'s Basilica', typeLabel: 'Sightseeing', desc: 'Beautiful at night when illuminated. Walk around the outside — free, impressive, short stroll from the city centre.', rating: '4.7 · 75,676 reviews', mapQuery: 'St.+Stephen%27s+Basilica+Budapest' },
+            { time: '20:00', title: 'Dinner · Fat Mama', typeLabel: 'Dining', desc: 'Budapest\'s most-reviewed neighbourhood restaurant. Casual, fun, perfect for a tired family after travel day. Hearty portions.', rating: '4.8 · 32,464 reviews · ££', mapQuery: 'Fat+Mama+Restaurant+Budapest' }
+          ]
+        },
+        {
+          id: 'day2',
+          date: '3',
+          month: 'Apr',
+          title: 'Zoo, City Park & Medieval Feast',
+          subtitle: 'Thursday · Városliget · Heroes\' Square · Sir Lancelot',
+          events: [
+            { time: '09:00', title: 'Budapest Zoo & Botanical Garden', typeLabel: 'Kids', desc: 'One of the world\'s oldest zoos — gorgeous Art Nouveau entrance gates. Allow 3 hrs. Book tickets online to skip queues.', rating: '4.5 · 47,247 reviews', mapQuery: 'Budapest+Zoo+and+Botanical+Garden' },
+            { time: '12:30', title: 'Lunch · Parasztkonyha Restaurant', typeLabel: 'Dining', desc: 'Beloved traditional Hungarian kitchen. The goulash and chicken paprikash are outstanding. Very family-friendly with a warm atmosphere.', rating: '4.8 · 8,710 reviews · ££', mapQuery: 'Parasztkonyha+Restaurant+Budapest' },
+            { time: '14:00', title: 'Heroes\' Square', typeLabel: 'Sightseeing', desc: 'Hungary\'s most iconic square — enormous statues of the Magyar chieftains. Free, open air, great photo spot.', rating: '4.7 · 84,827 reviews · Free', mapQuery: 'Heroes+Square+Budapest' },
+            { time: '14:30', title: 'Main Playground in Városliget', typeLabel: 'Kids', desc: 'Budapest\'s best-loved public playground — huge variety of equipment, safe surfaces, beautiful tree-lined surroundings. A 6-year-old\'s paradise!', rating: '4.8 · 5,942 reviews · Free', mapQuery: 'Main+Playground+Városliget+Budapest' },
+            { time: '16:30', title: 'House of Music Hungary', typeLabel: 'Sightseeing', desc: 'Spectacular building with interactive music exhibits. Kids can make sounds, explore instruments — the whole family gets absorbed in it.', rating: '4.8 · 9,855 reviews', mapQuery: 'House+of+Music+Hungary+Budapest' },
+            { time: '18:45', title: 'Dinner · Sir Lancelot Medieval Restaurant', typeLabel: 'Dining', desc: '⭐ TOP PICK FOR KIDS. Costumed waiters, sword fights, fire shows — dinner is entertainment. Arrive for 18:45 to catch the 19:00 main show!', rating: '4.4 · 12,352 reviews · £££', tip: 'Book in advance for 18:45. Request seats near the performance area for your little one to see the fire shows!', tipIcon: '🔥', mapQuery: 'Sir+Lancelot+Medieval+Restaurant+Budapest' }
+          ]
+        },
+        {
+          id: 'day3',
+          date: '4',
+          month: 'Apr',
+          title: 'Castle Hill, Buda & IKONO',
+          subtitle: 'Friday · Fisherman\'s Bastion · Funicular · Market Hall',
+          events: [
+            { time: '09:30', title: 'Central Market Hall', typeLabel: 'Sightseeing', desc: 'Start your day at Budapest\'s grandest iron-and-glass market hall. Try a chimney cake (kürtőskalács) — a guaranteed hit with kids. Great for souvenirs!', rating: '4.3 · 117,150 reviews', mapQuery: 'Central+Market+Hall+Budapest' },
+            { time: '11:00', title: 'Gellérthegyi Playground with Slides', typeLabel: 'Kids', desc: 'Cross Liberty Bridge to the Buda side. Long natural slides carved into the hillside — a hidden gem that locals adore. High energy fun!', rating: '4.7 · 915 reviews · Free', mapQuery: 'Gellérthegyi+playground+Budapest' },
+            { time: '12:30', title: 'Budapest Castle Hill Funicular', typeLabel: 'Kids', desc: 'Fun 2-minute ride up Castle Hill with panoramic views of the Danube and Chain Bridge. Memorable for kids!', rating: '3.6 · 834 reviews · Small fee', mapQuery: 'Budapest+Castle+Hill+Funicular' },
+            { time: '13:00', title: 'Fisherman\'s Bastion', typeLabel: 'Sightseeing', desc: 'Explore fairy-tale towers and spectacular views. This route saves a lot of walking by using the funicular first!', rating: '4.8 · 110,647 reviews', mapQuery: 'Fisherman%27s+Bastion+Budapest' },
+            { time: '14:30', title: 'Lunch · Retek Bisztro', typeLabel: 'Dining', desc: 'Cross back to Pest via the Chain Bridge for a late lunch. Honest Hungarian comfort food — the chicken paprikash is legendary.', rating: '4.8 · 5,865 reviews · ££', mapQuery: 'Retek+Bisztro+Budapest' },
+            { time: '16:30', title: 'IKONO Budapest', typeLabel: 'Kids', desc: 'Immersive pop-art rooms, giant rubber ducks, and mirror mazes. A perfect, fun shelter for the late afternoon.', rating: '4.7 · 13,522 reviews', mapQuery: 'IKONO+Budapest' },
+            { time: '19:00', title: 'Dinner · Spinoza Restaurant', typeLabel: 'Dining', desc: 'Artsy atmosphere in the Jewish Quarter. Enjoy Hungarian-Jewish cuisine with live piano music.', rating: '4.4 · 3,045 reviews · ££', mapQuery: 'Spinoza+Restaurant+Budapest' }
+          ]
+        },
+        {
+          id: 'day4',
+          date: '5',
+          month: 'Apr',
+          title: 'Parliament & Check-in',
+          subtitle: 'Saturday · Hotel changeover · Water park evening',
+          events: [
+            { time: '09:00', title: 'Hungarian Parliament Tour', typeLabel: 'Sightseeing', desc: 'One of the world\'s most beautiful parliament buildings — the guided tour includes the crown jewels, grand staircase, and stunning chambers.', rating: '4.7 · Pre-book required', tip: 'Book tickets at jegy.parlament.hu — they sell out quickly on weekends.', tipIcon: '📌', mapQuery: 'Hungarian+Parliament+Building+Budapest' },
+            { time: '10:30', title: 'Batthyány tér & Danube Riverfront', typeLabel: 'Sightseeing', desc: 'Beautiful Buda-side square with direct view back across the river to the Parliament. Stop for a coffee and let the little one run around.', rating: '4.4 · 638 reviews', mapQuery: 'Batthyány+tér+Budapest' },
+            { time: '12:00', title: 'Lunch · Tosti Budapest', typeLabel: 'Dining', desc: 'Budapest\'s top-rated sandwich spot. Delicious artisan toasties — quick, casual and super kid-friendly.', rating: '4.9 · 714 reviews · HUF 2–4k', mapQuery: 'Tosti+Budapest' },
+            { time: '14:30', title: 'Check in · Aquaworld Resort', typeLabel: 'Hotel', desc: 'Located in north Budapest. Take a ~25 min Bolt ride with luggage from the city centre (~HUF 6,000–8,000).', mapQuery: 'Aquaworld+Resort+Budapest' },
+            { time: '15:00', title: 'Aquaworld Indoor Water Park', typeLabel: 'Water', desc: 'Europe\'s largest indoor tropical water park — 12 slides, wave pool, lazy river, children\'s splash zone. Open until 22:00.', mapQuery: 'Aquaworld+Resort+Budapest' }
+          ]
+        },
+        {
+          id: 'day5',
+          date: '6',
+          month: 'Apr',
+          title: 'Aquaworld & Evening Out',
+          subtitle: 'Sunday · Water park morning · Elevenpark · Dinner',
+          events: [
+            { time: '09:00', title: 'Aquaworld — Morning Session', typeLabel: 'Water', desc: 'Start early before it gets busy. The children\'s zone has a pirate ship splash area and toddler-safe pools.', mapQuery: 'Aquaworld+Resort+Budapest' },
+            { time: '14:30', title: 'Elevenpark — Indoor Play Centre', typeLabel: 'Kids', desc: 'Large indoor children\'s activity hall with climbing frames, ball pools, trampolines and play structures.', rating: '4.5 · 6,229 reviews', mapQuery: 'Elevenpark+Budapest' },
+            { time: '16:00', title: 'Olympics Playground', typeLabel: 'Kids', desc: 'One of Budapest\'s best-rated public playgrounds — spacious, varied equipment, lovely surroundings.', rating: '4.7 · 1,131 reviews · Free', mapQuery: 'Olympics+playground+Budapest' },
+            { time: '19:00', title: 'Dinner · Firkász Restaurant', typeLabel: 'Dining', desc: 'Charming Budapest classic named after journalists who once gathered here. Relaxed, slightly retro atmosphere with excellent traditional food.', rating: '4.5 · 1,960 reviews · ££', mapQuery: 'Firkász+Restaurant+Budapest' }
+          ]
+        },
+        {
+          id: 'day6',
+          date: '7',
+          month: 'Apr',
+          title: 'Water Fun & Flight Home',
+          subtitle: 'Tuesday · Aquaworld Morning · BA865 Return Flight',
+          dayLevelTip: 'Don\'t forget to use up your remaining Forints! Market halls or airport shops are great for last-minute paprika or sweets.',
+          dayLevelTipIcon: '🇭🇺',
+          events: [
+            { time: '09:00', title: 'Aquaworld Final Splash', typeLabel: 'Water', desc: 'One last splash! Enjoy the pools and slides before checking out. Best way to tire out the little one before the flight.', mapQuery: 'Aquaworld+Resort+Budapest' },
+            { time: '11:00', title: 'Check Out & Lunch', typeLabel: 'Hotel', desc: 'Check out of Aquaworld. Have a final relaxed lunch at the resort restaurant before heading to the airport.', mapQuery: 'Aquaworld+Resort+Budapest' },
+            { time: '14:35', title: 'Flight BA865 to London', typeLabel: 'Travel', desc: 'Depart Budapest T2B. Fly back to London Heathrow T5. Flight time ~2h 45m. Arrive LHR at 16:20.', mapQuery: 'Budapest+Airport+Terminal+2B' }
+          ]
         }
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) observer.observe(el);
+      ];
+
+      const backups = [
+        { title: 'The Diner Co. by Felisa', category: 'Dining', rating: '4.8 · 470 reviews', desc: 'A sleek, upscale American diner near the Basilica. Great comfort-food option if the little one needs a familiar meal mid-trip.', mapQuery: 'The+Diner+Co.+by+Felisa+Budapest' },
+        { title: 'Pólós Játszótér', category: 'Kids', rating: '4.7 · 153 reviews', desc: 'A quieter, community-style playground popular with locals. A good alternative if the main Városliget playground is too busy.', mapQuery: 'Pólós+Játszótér+Budapest' },
+        { title: 'Twentysix Budapest', category: 'Dining', rating: '4.5 · 20,188 reviews', desc: 'A stunning tropical jungle restaurant with a glass ceiling and lush greenery. Perfect for a relaxed daytime brunch or lunch.', mapQuery: 'Twentysix+Budapest+Restaurant' },
+        { title: 'Gellért Hill Cave', category: 'Sightseeing', rating: '4.6 · 2,403 reviews', desc: 'A unique church carved into the hillside rock. A short walk from Liberty bridge, offering a cool, mysterious exploration for kids.', mapQuery: 'Gellert+Hill+Cave+Budapest' }
+      ];
+
+      // ── SCROLL RECOGNITION ────────────────────────────────────────
+      onMounted(() => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              if (days.find(d => d.id === id)) {
+                activeDay.value = id;
+              }
+            }
+          });
+        }, { root: null, rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+        document.querySelectorAll('.observer-section').forEach(el => observer.observe(el));
+      });
+
+      // ── MANUAL SCROLL ─────────────────────────────────────────────
+      const scrollToDay = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          activeDay.value = id;
+        }
+      };
+
+      return { days, backups, activeDay, scrollToDay, getCardBorder, getPillClass };
+    }
   });
+
+  app.mount('#app');
 </script>
 </body>
 </html>
