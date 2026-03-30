@@ -6,9 +6,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abound Design System</title>
 
-<!-- Tailwind CSS CDN -->
+<!-- Design Tokens -->
+<script src="design-tokens.js"></script>
+
+<!-- Alpine.js (for reactive template syntax) -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="tailwind.config.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            DEFAULT: '#0E4533',
+            hover: '#0A3325',
+            pressed: '#071F17',
+            subtle: '#EBF2ED',
+          },
+          charcoal: '#201F1D',
+          neutral: {
+            50: '#F4F7F4',
+            100: '#E8EDEA',
+            200: '#D3DCCF',
+            300: '#B4C2B0',
+            400: '#829080',
+            500: '#586858',
+            600: '#3F4F3F',
+            700: '#2C3A2C',
+            800: '#1C271C',
+            900: '#111A11',
+          },
+          lime: '#D4F19B',
+          khaki: '#EDEABE',
+          'off-white': '#F4F8F3',
+          'pale-yellow-green': '#F7F7E9',
+          'teal-sage': '#B8DCD2',
+          success: { DEFAULT: '#0A5C3A', bg: '#EBF5EF' },
+          danger: { DEFAULT: '#C4320A', bg: '#FEF3F2' },
+          warning: { DEFAULT: '#B54708', bg: '#FDF6E8' },
+          info: { DEFAULT: '#175CD3', bg: '#EDF6F5' },
+        },
+        spacing: {
+          '1': '4px', '2': '8px', '3': '12px', '4': '16px', '5': '20px', '6': '24px',
+          '8': '32px', '10': '40px', '12': '48px', '14': '56px', '16': '64px',
+          '20': '80px', '24': '96px', '32': '128px', '40': '160px'
+        },
+        borderRadius: {
+          'sm': '6px', 'md': '8px', 'lg': '12px', 'xl': '16px', '2xl': '24px'
+        },
+        boxShadow: {
+          'xs': '0 1px 2px rgba(32,31,29,0.06)',
+          'sm': '0 1px 3px rgba(32,31,29,0.10)',
+          'md': '0 4px 8px -2px rgba(32,31,29,0.10)',
+          'lg': '0 12px 16px -4px rgba(32,31,29,0.09)',
+          'xl': '0 20px 24px -4px rgba(32,31,29,0.09)',
+        },
+        backgroundImage: {
+          'gradient-1': 'linear-gradient(135deg, #EAF1EA 0%, #CBE4C8 100%)',
+          'gradient-2': 'linear-gradient(135deg, #F0EDC3 0%, #CBDAD9 100%)',
+          'gradient-3': 'linear-gradient(135deg, #EAF1EA 0%, #B8DCD2 100%)',
+          'gradient-4': 'linear-gradient(135deg, #FFF9F4 0%, #D4F19B 100%)',
+        }
+      }
+    }
+  }
+</script>
+
 <link rel="stylesheet" href="abound-design-system.css">
 <!-- DM Sans fallback -->
 
@@ -21,17 +85,23 @@
 
 </head>
 <body>
-
+<div id="app" x-data="appData()" x-init="init()">
 <!-- ============================================================
      HEADER
      ============================================================ -->
-<header class="sticky top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-xl border-b border-neutral-200 h-16 flex items-center px-8">
+<header class="sticky top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-xl border-b border-neutral-200 h-16 flex items-center px-4 md:px-8">
   <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between">
-    <div class="flex items-center gap-10">
+    <div class="flex items-center gap-4 md:gap-10">
+      <!-- Mobile Menu Toggle -->
+      <button @click="toggleMobileMenu()" class="lg:hidden p-2 text-brand hover:bg-neutral-50 rounded-md transition-colors" aria-label="Toggle menu">
+        <svg x-show="!isMobileMenuOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg x-show="isMobileMenuOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display: none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
       <a href="abound-design-system.html" class="flex items-center gap-2 text-2xl font-bold text-brand tracking-tighter no-underline">
-        <img src="../brand-assest/wordmark.png" alt="Abound" class="h-6" />
+        <img src="../brand-assest/wordmark.png" alt="Abound" class="h-5 md:h-6" />
       </a>
-      <nav class="hidden md:flex gap-8">
+      <nav class="hidden lg:flex gap-8">
         <a href="abound-design-system.html" class="nav-link text-sm font-bold text-brand transition-colors relative py-1 after:content-[''] after:absolute after:-bottom-[20px] after:left-0 after:right-0 after:h-[2px] after:bg-brand">Design System</a>
         <a href="abound-ui-mockup.html" class="nav-link text-sm font-medium text-neutral-500 hover:text-brand transition-colors relative py-1">Live Mockup</a>
         <a href="logo-showcase.html" class="nav-link text-sm font-medium text-neutral-500 hover:text-brand transition-colors relative py-1">Logo Showcase</a>
@@ -39,58 +109,86 @@
     </div>
     
     <div class="flex items-center">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-lime text-brand">v2.0.26 <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span></span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold bg-lime text-brand">v2.0.26 <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-brand"></span></span>
     </div>
   </div>
 </header>
+<div x-show="isMobileMenuOpen" class="fixed inset-0 bg-charcoal/20 backdrop-blur-sm z-[85] lg:hidden" @click="toggleMobileMenu()" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
 
 <!-- ============================================================
      SIDE NAV
      ============================================================ -->
-<nav class="fixed top-16 left-0 w-[260px] h-[calc(100vh-64px)] overflow-y-auto p-6 bg-white border-r border-neutral-200 z-[90]" id="sideNav">
+<nav class="fixed top-16 left-0 w-[260px] h-[calc(100vh-64px)] overflow-y-auto p-6 bg-white border-r border-neutral-200 z-[90] transition-transform duration-300 transform lg:translate-x-0" :class="isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'" id="sideNav">
   <div class="text-[11px] font-bold tracking-wider uppercase text-neutral-500 px-3 py-4 pb-2">Foundation</div>
   <ul class="list-none">
-    <li class="mb-1"><a href="#principles" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Design Principles</a></li>
-    <li class="mb-1"><a href="#colours" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Colour System</a></li>
-    <li class="mb-1"><a href="#typography" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Typography</a></li>
-    <li class="mb-1"><a href="#spacing" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Spacing &amp; Layout</a></li>
+    <li class="mb-1">
+      <a href="#principles" @click="activeNavId = 'principles'" 
+         class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand"
+         :class="activeNavId === 'principles' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Design Principles</a>
+    </li>
+    <li class="mb-1">
+      <a href="#colours" @click="activeNavId = 'colours'" 
+         class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand"
+         :class="activeNavId === 'colours' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Colour System</a>
+    </li>
+    <li class="mb-1">
+      <a href="#typography" @click="activeNavId = 'typography'" 
+         class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand"
+         :class="activeNavId === 'typography' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Typography</a>
+    </li>
+    <li class="mb-1">
+      <a href="#spacing" @click="activeNavId = 'spacing'" 
+         class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand"
+         :class="activeNavId === 'spacing' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Spacing & Layout</a>
+    </li>
   </ul>
   <div class="text-[11px] font-bold tracking-wider uppercase text-neutral-500 px-3 py-4 pb-2">Components</div>
   <ul class="list-none">
-    <li class="mb-1"><a href="#buttons" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Buttons</a></li>
-    <li class="mb-1"><a href="#inputs" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Form Inputs</a></li>
-    <li class="mb-1"><a href="#selects" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Select / Dropdown</a></li>
-    <li class="mb-1"><a href="#radios" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Radios &amp; Checkboxes</a></li>
-    <li class="mb-1"><a href="#slider" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Slider / Range</a></li>
-    <li class="mb-1"><a href="#cards" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Cards</a></li>
-    <li class="mb-1"><a href="#tables" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Tables</a></li>
-    <li class="mb-1"><a href="#badges" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Badges / Tags</a></li>
-    <li class="mb-1"><a href="#progress" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Progress Indicator</a></li>
-    <li class="mb-1"><a href="#alerts" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Alerts / Banners</a></li>
-    <li class="mb-1"><a href="#toasts" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Toasts</a></li>
-    <li class="mb-1"><a href="#tooltips" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Tooltips</a></li>
-    <li class="mb-1"><a href="#skeletons" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Loading Skeletons</a></li>
-    <li class="mb-1"><a href="#navigation" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Navigation</a></li>
+    <template x-for="id in ['buttons', 'inputs', 'selects', 'radios', 'slider', 'cards', 'tables', 'badges', 'progress', 'alerts', 'toasts', 'tooltips', 'skeletons', 'navigation']" :key="id">
+      <li class="mb-1">
+        <a :href="'#' + id" @click="activeNavId = id" 
+           class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand capitalize"
+           :class="activeNavId === id ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'"
+           x-text="id.replace('-', ' ')"></a>
+      </li>
+    </template>
   </ul>
   <div class="text-[11px] font-bold tracking-wider uppercase text-neutral-500 px-3 py-4 pb-2">System</div>
   <ul class="list-none">
-    <li class="mb-1"><a href="#shadows" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Shadows &amp; Elevation</a></li>
-    <li class="mb-1"><a href="#motion" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Motion / Animation</a></li>
-    <li class="mb-1"><a href="#accessibility" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Accessibility</a></li>
-    <li class="mb-1"><a href="#rationale" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Rationale</a></li>
+    <li class="mb-1">
+      <a href="#shadows" @click="activeNavId = 'shadows'" 
+         class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand"
+         :class="activeNavId === 'shadows' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Shadows & Elevation</a>
+    </li>
+    <li class="mb-1">
+      <a href="#motion" @click="activeNavId = 'motion'" 
+         class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand"
+         :class="activeNavId === 'motion' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Motion / Animation</a>
+    </li>
+    <li class="mb-1">
+      <a href="#accessibility" @click="activeNavId = 'accessibility'" 
+         class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand"
+         :class="activeNavId === 'accessibility' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Accessibility</a>
+    </li>
+    <li class="mb-1">
+      <a href="#rationale" @click="activeNavId = 'rationale'" 
+         class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand"
+         :class="activeNavId === 'rationale' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Rationale</a>
+    </li>
   </ul>
   <div class="text-[11px] font-bold tracking-wider uppercase px-3 py-4 pb-2 mt-1" style="color:#0E4533; background:linear-gradient(135deg,#EBF2ED 0%,#F4F8F3 100%); border-radius:6px; letter-spacing:0.12em;">AI Patterns</div>
   <ul class="list-none">
-    <li class="mb-1"><a href="#journey" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Journey Architecture</a></li>
-    <li class="mb-1"><a href="#composition" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Composition Patterns</a></li>
-    <li class="mb-1"><a href="#copy-library" onclick="closeMobileNav()" class="block px-3 py-2 rounded-sm text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-brand">Copy Tone Library</a></li>
+    <li class="mb-1"><a href="#journey" @click="activeNavId = 'journey'" class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand" :class="activeNavId === 'journey' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Journey Architecture</a></li>
+    <li class="mb-1"><a href="#composition" @click="activeNavId = 'composition'" class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand" :class="activeNavId === 'composition' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Composition Patterns</a></li>
+    <li class="mb-1"><a href="#copy-library" @click="activeNavId = 'copy-library'" class="block px-3 py-2 rounded-sm text-sm font-medium transition-all duration-150 hover:bg-neutral-50 hover:text-brand" :class="activeNavId === 'copy-library' ? 'bg-neutral-50 text-brand font-bold shadow-sm' : 'text-neutral-600'">Copy Tone Library</a></li>
   </ul>
 </nav>
 
 <!-- ============================================================
      MAIN CONTENT
      ============================================================ -->
-<main class="ml-[260px] p-12 max-w-[calc(1280px-260px)]">
+<main class="lg:ml-[260px] p-6 md:p-12 transition-all duration-300">
+  <div class="max-w-[1020px] mx-auto">
 
   <!-- HERO -->
   <div class="relative overflow-hidden rounded-2xl mb-16 mt-0" id="top" style="background:#0E4533; min-height:320px;">
@@ -173,104 +271,28 @@
     <!-- 2a. Primitive Palette -->
     <div class="mb-16" id="colour-primitives">
       <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Primitive Palette</h3>
-      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Raw colour values from the agency brand, plus extended neutrals and feedback colours derived for UI use.</p>
-
-      <div class="mb-8">
-        <div class="text-sm font-bold text-charcoal mb-4 uppercase tracking-widest">Brand Colours (from agency)</div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
-            <div class="h-20 w-full bg-brand"></div>
-            <div class="p-3 bg-white">
-              <div class="text-[13px] font-medium text-charcoal">Forest Green</div>
-              <div class="text-[11px] text-neutral-500 font-mono">#0E4533</div>
+      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Raw colour values from the agency brand, plus extended neutrals and feedback colours derived for UI use.</      <!-- Color Groups: Brand, Surfaces, Accents, Neutrals, Feedback -->
+      <div class="mb-12">
+        <template x-for="[groupName, groupColors] in Object.entries(tokenGroups)" :key="groupName">
+          <div class="mb-12">
+            <div class="text-sm font-bold text-charcoal mb-4 uppercase tracking-widest" x-text="groupName"></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+              <template x-for="[key, color] in Object.entries(groupColors)" :key="key">
+                <div class="group rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+                  <!-- Swatch box -->
+                  <div class="h-20 w-full relative" :style="`background-color: ${color.DEFAULT || color}`">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-black/5 transition-opacity pointer-events-none"></div>
+                  </div>
+                  <!-- Labels -->
+                  <div class="p-3 bg-white">
+                    <div class="text-[13px] font-bold text-charcoal leading-tight mb-0.5" x-text="color.name || key"></div>
+                    <div class="text-[11px] text-neutral-500 font-mono uppercase tracking-tighter" x-text="color.DEFAULT || color"></div>
+                  </div>
+                </div>
+              </template>
             </div>
           </div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
-            <div class="h-20 w-full bg-charcoal"></div>
-            <div class="p-3 bg-white">
-              <div class="text-[13px] font-medium text-charcoal">Charcoal</div>
-              <div class="text-[11px] text-neutral-500 font-mono">#201F1D</div>
-            </div>
-          </div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
-            <div class="h-20 w-full bg-white border-b border-neutral-100"></div>
-            <div class="p-3 bg-white">
-              <div class="text-[13px] font-medium text-charcoal">White</div>
-              <div class="text-[11px] text-neutral-500 font-mono">#FFFFFF</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-8">
-        <div class="text-sm font-bold text-charcoal mb-4 uppercase tracking-widest">Background Surfaces (from agency)</div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
-            <div class="h-20 w-full bg-off-white"></div>
-            <div class="p-3 bg-white">
-              <div class="text-[13px] font-medium text-charcoal">Off-White</div>
-              <div class="text-[11px] text-neutral-500 font-mono">#F4F8F3</div>
-            </div>
-          </div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
-            <div class="h-20 w-full bg-pale-yellow-green"></div>
-            <div class="p-3 bg-white">
-              <div class="text-[13px] font-medium text-charcoal">Pale Yellow-Green</div>
-              <div class="text-[11px] text-neutral-500 font-mono">#F7F7E9</div>
-            </div>
-          </div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
-            <div class="h-20 w-full bg-teal-sage"></div>
-            <div class="p-3 bg-white">
-              <div class="text-[13px] font-medium text-charcoal">Teal/Sage</div>
-              <div class="text-[11px] text-neutral-500 font-mono">#B8DCD2</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-8">
-        <div class="text-sm font-bold text-charcoal mb-4 uppercase tracking-widest">Accents (from agency)</div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
-            <div class="h-20 w-full bg-khaki"></div>
-            <div class="p-3 bg-white">
-              <div class="text-[13px] font-medium text-charcoal">Khaki</div>
-              <div class="text-[11px] text-neutral-500 font-mono">#EDEABE</div>
-            </div>
-          </div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
-            <div class="h-20 w-full bg-lime"></div>
-            <div class="p-3 bg-white">
-              <div class="text-[13px] font-medium text-charcoal">Lime</div>
-              <div class="text-[11px] text-neutral-500 font-mono">#D4F19B</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-8">
-        <div class="text-sm font-bold text-charcoal mb-4 uppercase tracking-widest">Extended Neutrals (new — derived for UI)</div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full bg-neutral-50"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Neutral 50</div><div class="text-[11px] text-neutral-500 font-mono">#F4F7F4</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full bg-neutral-100"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Neutral 100</div><div class="text-[11px] text-neutral-500 font-mono">#E8EDEA</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full bg-neutral-200"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Neutral 200</div><div class="text-[11px] text-neutral-500 font-mono">#D3DCCF</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full bg-neutral-300"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Neutral 300</div><div class="text-[11px] text-neutral-500 font-mono">#B4C2B0</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full bg-neutral-400"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Neutral 400</div><div class="text-[11px] text-neutral-500 font-mono">#829080</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full bg-neutral-500"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Neutral 500</div><div class="text-[11px] text-neutral-500 font-mono">#586858</div></div></div>
-        </div>
-      </div>
-
-      <div class="mb-8">
-        <div class="text-sm font-bold text-charcoal mb-4 uppercase tracking-widest">Feedback Colours (new — required for UI)</div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full" style="background:#0A5C3A;"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Success</div><div class="text-[11px] text-neutral-500 font-mono">#0A5C3A</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full" style="background:#EBF5EF;"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Success Subtle</div><div class="text-[11px] text-neutral-500 font-mono">#EBF5EF</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full" style="background:#C4320A;"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Danger</div><div class="text-[11px] text-neutral-500 font-mono">#C4320A</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full" style="background:#FEF3F2;"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Danger Subtle</div><div class="text-[11px] text-neutral-500 font-mono">#FEF3F2</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full" style="background:#B54708;"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Warning</div><div class="text-[11px] text-neutral-500 font-mono">#B54708</div></div></div>
-          <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md"><div class="h-20 w-full" style="background:#FDF6E8;"></div><div class="p-3 bg-white"><div class="text-[13px] font-medium text-charcoal">Warning Subtle</div><div class="text-[11px] text-neutral-500 font-mono">#FDF6E8</div></div></div>
-        </div>
+        </template>
       </div>
     </div>
 
@@ -295,7 +317,7 @@
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-secondary</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#F4F8F3</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-off-white"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Alternate sections, card surfaces — use <code class="font-mono text-[12px] bg-neutral-50 px-1 rounded text-neutral-600">bg-off-white</code></td></tr>
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-tertiary</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#F7F7E9</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-pale-yellow-green"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Marketing hero backgrounds</td></tr>
             <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-brand</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#0E4533</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-brand"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Brand-heavy panels, CTA areas</td></tr>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-brand-subtle</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#F4F8F3</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10 bg-off-white"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Subtle brand tint</td></tr>
+            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">bg-brand-subtle</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle font-mono">#EBF2ED</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle"><span class="inline-block w-4 h-4 rounded-full align-middle mr-2 border border-black/10" style="background:#EBF2ED;"></span></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal align-middle">Selected/active state tints — radio cards, hover surfaces. Distinct from <code class="font-mono text-[12px] bg-neutral-50 px-1 rounded text-neutral-600">bg-secondary</code> (#F4F8F3)</td></tr>
           </tbody>
         </table>
       </div>
@@ -477,112 +499,25 @@
       <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">A complete typographic scale with live examples. Each token maps to specific use cases.</p>
 
       <div class="bg-white border border-neutral-200 rounded-lg p-6 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">display-lg</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">60px · 700 · 1.2<br>-0.02em</div>
+        <template x-for="type in tokens.typography.scale" :key="type.token">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
+            <div class="w-48 shrink-0">
+              <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1" x-text="type.token"></div>
+              <div class="text-[11px] text-neutral-400 font-mono leading-tight">
+                <span x-text="type.px"></span> · <span x-text="type.weight"></span> · <span x-text="type.lh"></span>
+                <template x-if="type.letter">
+                  <span><br><span x-text="type.letter"></span></span>
+                </template>
+              </div>
+            </div>
+            <div class="text-charcoal break-words whitespace-normal min-w-0"
+                 :class="type.token.startsWith('display') ? 'tracking-tight' : (type.token.startsWith('heading') ? 'tracking-normal' : '')"
+                 :style="`font-size: ${type.px}; font-weight: ${type.weight}; line-height: ${type.lh}; letter-spacing: ${type.letter || 'normal'}`"
+                 x-text="type.example || 'Abound Design System'">
+            </div>
           </div>
-          <div class="text-charcoal truncate text-[60px] font-bold leading-[1.2] tracking-[-0.02em]">Your loan, simplified</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">display-md</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">48px · 700 · 1.2<br>-0.02em</div>
-          </div>
-          <div class="text-charcoal truncate text-[48px] font-bold leading-[1.2] tracking-[-0.02em]">Personal loans</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">display-sm</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">36px · 700 · 1.2<br>-0.02em</div>
-          </div>
-          <div class="text-charcoal truncate text-[36px] font-bold leading-[1.2] tracking-[-0.02em]">How it works</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">heading-lg</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">30px · 700 · 1.3<br>-0.01em</div>
-          </div>
-          <div class="text-charcoal truncate text-[30px] font-bold leading-[1.3] tracking-[-0.01em]">Loan details</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">heading-md</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">24px · 700 · 1.3<br>-0.01em</div>
-          </div>
-          <div class="text-charcoal truncate text-[24px] font-bold leading-[1.3] tracking-[-0.01em]">Repayment schedule</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">heading-sm</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">20px · 500 · 1.4</div>
-          </div>
-          <div class="text-charcoal truncate text-[20px] font-medium leading-[1.4]">Your monthly payment</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">body-lg</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">18px · 400 · 1.6</div>
-          </div>
-          <div class="text-charcoal text-[18px] font-normal leading-[1.6]">Get a personalised quote in minutes with no impact to your credit score. Borrow from £1,000 to £10,000.</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">body-md</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">16px · 400 · 1.6</div>
-          </div>
-          <div class="text-charcoal text-[16px] font-normal leading-[1.6]">We'll check your eligibility with a soft search that won't affect your credit score. You can then choose a loan offer that works for you.</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">body-sm</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">14px · 400 · 1.5</div>
-          </div>
-          <div class="text-charcoal text-[14px] font-normal leading-[1.5]">Representative APR 9.9% (variable). Loans subject to status and affordability checks.</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">label-lg</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">16px · 500 · 1.5</div>
-          </div>
-          <div class="text-charcoal text-[16px] font-medium leading-[1.5]">Loan amount</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">label-md</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">14px · 500 · 1.4</div>
-          </div>
-          <div class="text-charcoal text-[14px] font-medium leading-[1.4]">Get my quote</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 border-b border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">label-sm</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">12px · 500 · 1.4</div>
-          </div>
-          <div class="text-charcoal text-[12px] font-medium leading-[1.4] uppercase tracking-wider">PRE-APPROVED</div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12 py-8 last:border-b-0 border-neutral-100 hover:bg-neutral-50/50 transition-colors duration-150">
-          <div class="w-48 shrink-0">
-            <div class="text-sm font-bold font-mono text-neutral-600 bg-neutral-100 px-2 py-0.5 rounded-md inline-block mb-1">numeric</div>
-            <div class="text-[11px] text-neutral-400 font-mono leading-tight">varies · 500<br>tabular-nums</div>
-          </div>
-          <div class="text-charcoal tabular-nums">
-            <span class="text-[36px] font-medium text-brand">£5,000.00</span>
-            <span class="text-[16px] text-neutral-500 ml-4">£193.51/mo</span>
-          </div>
-        </div>
+        </template>
+      </div>
       </div>
     </div>
 
@@ -616,6 +551,7 @@
         </p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- ============================================================
@@ -631,18 +567,13 @@
       <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">All spacing derives from a 4px base unit. Use tokens instead of arbitrary values.</p>
 
       <div class="flex flex-col gap-2">
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-1</span><div class="h-4 bg-brand rounded-sm" style="width:4px;"></div><span class="text-xs font-mono text-neutral-400">4px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-2</span><div class="h-4 bg-brand rounded-sm" style="width:8px;"></div><span class="text-xs font-mono text-neutral-400">8px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-3</span><div class="h-4 bg-brand rounded-sm" style="width:12px;"></div><span class="text-xs font-mono text-neutral-400">12px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-4</span><div class="h-4 bg-brand rounded-sm" style="width:16px;"></div><span class="text-xs font-mono text-neutral-400">16px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-5</span><div class="h-4 bg-brand rounded-sm" style="width:20px;"></div><span class="text-xs font-mono text-neutral-400">20px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-6</span><div class="h-4 bg-brand rounded-sm" style="width:24px;"></div><span class="text-xs font-mono text-neutral-400">24px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-8</span><div class="h-4 bg-brand rounded-sm" style="width:32px;"></div><span class="text-xs font-mono text-neutral-400">32px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-10</span><div class="h-4 bg-brand rounded-sm" style="width:40px;"></div><span class="text-xs font-mono text-neutral-400">40px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-12</span><div class="h-4 bg-brand rounded-sm" style="width:48px;"></div><span class="text-xs font-mono text-neutral-400">48px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-16</span><div class="h-4 bg-brand rounded-sm" style="width:64px;"></div><span class="text-xs font-mono text-neutral-400">64px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-20</span><div class="h-4 bg-brand rounded-sm" style="width:80px;"></div><span class="text-xs font-mono text-neutral-400">80px</span></div>
-        <div class="flex items-center gap-4 h-8"><span class="w-20 font-mono text-xs text-neutral-500">space-24</span><div class="h-4 bg-brand rounded-sm" style="width:96px;"></div><span class="text-xs font-mono text-neutral-400">96px</span></div>
+        <template x-for="item in tokens.spacing" :key="item.token">
+          <div class="flex items-center gap-2 md:gap-4 h-8 transition-all hover:translate-x-1 group">
+            <span class="w-20 md:w-24 font-mono text-[10px] md:text-xs text-neutral-500 shrink-0" x-text="'space-' + item.token"></span>
+            <div class="h-3 bg-brand rounded-sm flex-shrink" :style="`width: ${Math.min(parseInt(item.value) * 1, 320)}px; max-width: 60%;`" :title="item.value"></div>
+            <span class="text-[10px] md:text-xs font-mono text-neutral-400 shrink-0" x-text="item.value"></span>
+          </div>
+        </template>
       </div>
 
       <div class="overflow-x-auto mb-6 rounded-lg border border-neutral-200 mt-8">
@@ -651,13 +582,19 @@
             <tr>
               <th class="text-left p-3 px-4 font-medium text-neutral-600 border-b border-neutral-200 whitespace-nowrap">Token</th>
               <th class="text-left p-3 px-4 font-medium text-neutral-600 border-b border-neutral-200 whitespace-nowrap">Value</th>
+              <th class="text-left p-3 px-4 font-medium text-neutral-600 border-b border-neutral-200 whitespace-nowrap">Tailwind class</th>
               <th class="text-left p-3 px-4 font-medium text-neutral-600 border-b border-neutral-200 whitespace-nowrap">Use</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">space-1</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">4px</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Tight inline spacing</td></tr>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">space-4</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">16px</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Default component padding, form gap</td></tr>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">space-8</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">32px</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Section separation</td></tr>
+            <template x-for="item in tokens.spacing" :key="item.token">
+              <tr class="hover:bg-neutral-50 transition-colors">
+                <td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600" x-text="'space-' + item.token"></code></td>
+                <td class="p-3 px-4 border-b border-neutral-200 text-charcoal font-mono" x-text="item.value"></td>
+                <td class="p-3 px-4 border-b border-neutral-200 text-charcoal font-mono text-neutral-500" x-text="`p-${item.token} / gap-${item.token}`"></td>
+                <td class="p-3 px-4 border-b border-neutral-200 text-neutral-600" x-text="item.use"></td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -669,10 +606,10 @@
 
       <h4 class="text-lg font-bold text-charcoal mb-2 mt-6">Marketing (Webflow)</h4>
       <p class="text-base text-neutral-600 leading-relaxed mb-4">12-column grid, 1280px max-width, 24px gutters.</p>
-      <div class="grid grid-cols-6 sm:grid-cols-12 gap-6 h-20 bg-neutral-50 p-4 rounded-lg border border-neutral-100 mb-8">
+      <div class="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-3 md:gap-6 h-20 bg-neutral-50 p-4 rounded-lg border border-neutral-100 mb-8">
         <div class="bg-brand/10 rounded-sm"></div><div class="bg-brand/10 rounded-sm"></div><div class="bg-brand/10 rounded-sm"></div><div class="bg-brand/10 rounded-sm"></div>
-        <div class="bg-brand/10 rounded-sm"></div><div class="bg-brand/10 rounded-sm"></div><div class="bg-brand/10 rounded-sm hidden sm:block"></div><div class="bg-brand/10 rounded-sm hidden sm:block"></div>
         <div class="bg-brand/10 rounded-sm hidden sm:block"></div><div class="bg-brand/10 rounded-sm hidden sm:block"></div><div class="bg-brand/10 rounded-sm hidden sm:block"></div><div class="bg-brand/10 rounded-sm hidden sm:block"></div>
+        <div class="bg-brand/10 rounded-sm hidden lg:block"></div><div class="bg-brand/10 rounded-sm hidden lg:block"></div><div class="bg-brand/10 rounded-sm hidden lg:block"></div><div class="bg-brand/10 rounded-sm hidden lg:block"></div>
       </div>
 
       <h4 class="text-lg font-bold text-charcoal mb-2 mt-6">Application (React)</h4>
@@ -702,10 +639,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">radius-sm</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">6px</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><div class="w-10 h-10 bg-brand rounded-sm"></div></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Small badges, tags</td></tr>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">radius-md</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">8px</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><div class="w-10 h-10 bg-brand rounded-md"></div></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Input fields, buttons</td></tr>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">radius-lg</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">12px</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><div class="w-10 h-10 bg-brand rounded-lg"></div></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Cards, panels</td></tr>
-            <tr><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600">radius-full</code></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Pill</td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal"><div class="w-10 h-10 bg-brand rounded-full"></div></td><td class="p-3 px-4 border-b border-neutral-200 text-charcoal">Avatars, rounded buttons</td></tr>
+            <template x-for="radius in tokens.radii" :key="radius.token">
+              <tr>
+                <td class="p-3 px-4 border-b border-neutral-200 text-charcoal">
+                  <code class="font-mono text-[13px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600" x-text="'radius-' + radius.token"></code>
+                </td>
+                <td class="p-3 px-4 border-b border-neutral-200 text-charcoal" x-text="radius.value"></td>
+                <td class="p-3 px-4 border-b border-neutral-100 text-charcoal">
+                  <div class="w-10 h-10 bg-brand shadow-sm" :style="`border-radius: ${radius.value}`"></div>
+                </td>
+                <td class="p-3 px-4 border-b border-neutral-100 text-neutral-500 italic" x-text="radius.use"></td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -748,9 +693,12 @@
 
         <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Ghost / Tertiary</div>
         <div class="flex flex-wrap gap-4 mb-10">
-          <button class="inline-flex items-center justify-center px-4 h-11 text-brand rounded-md font-medium text-sm hover:bg-brand/5 transition-all">Learn more</button>
-          <button class="inline-flex items-center justify-center px-4 h-11 text-brand rounded-md font-medium text-sm hover:bg-brand/5 transition-all">Skip this step</button>
+          <button class="inline-flex items-center justify-center px-4 h-11 text-brand rounded-md font-medium text-sm hover:bg-brand-subtle transition-all">Learn more</button>
+          <button class="inline-flex items-center justify-center px-4 h-11 text-brand rounded-md font-medium text-sm hover:bg-brand-subtle transition-all">Skip this step</button>
         </div>
+        <p class="text-xs text-neutral-500 border-t border-neutral-100 pt-3 mb-0">
+          <strong class="font-semibold text-neutral-600">Hover rule:</strong> Primary &amp; ghost buttons use <code class="font-mono bg-neutral-100 px-1 rounded">hover:bg-brand-hover</code> / <code class="font-mono bg-neutral-100 px-1 rounded">hover:bg-brand-subtle</code> (semantic tokens). Never hardcode <code class="font-mono bg-neutral-100 px-1 rounded">hover:bg-brand/5</code> — opacity modifiers bypass the token layer and break in dark-surface contexts.
+        </p>
 
         <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Destructive</div>
         <div class="flex flex-wrap gap-4 mb-10">
@@ -930,7 +878,159 @@
       </div>
     </div>
 
-    <!-- 5e. Slider / Range Input (P0 — loan amount) -->
+    <!-- 5e. Selection Vocabularies -->
+    <div class="mb-16" id="selections">
+      <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-2">Selection Vocabularies</h3>
+      <p class="text-base text-neutral-600 leading-relaxed mb-2 max-w-[640px]">Two distinct patterns for multi-option choices in the application flow. Choose based on whether the decision is <strong class="text-charcoal">visual/emotional</strong> or <strong class="text-charcoal">factual/administrative</strong>.</p>
+      <div class="flex gap-4 mb-8">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-lime/30 text-brand border border-lime/50">Grid Pattern — visual choices</span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-neutral-100 text-neutral-600 border border-neutral-200">List Pattern — status/factual choices</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- GRID PATTERN -->
+        <div>
+          <div class="text-[12px] font-bold text-neutral-400 mb-2 uppercase tracking-wider">Grid Pattern — Loan Purpose</div>
+          <p class="text-[13px] text-neutral-500 mb-4 leading-relaxed">Used for visual, icon-heavy choices where the <em>what</em> is the primary question. Square tiles with 12px radius icon containers. Selection communicates with border + bg-brand-subtle.</p>
+          <div class="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm">
+            <p class="text-sm font-bold text-charcoal mb-4">What's the loan for?</p>
+            <div class="grid grid-cols-3 gap-3" role="radiogroup" aria-label="Loan purpose">
+
+              <!-- Selected tile -->
+              <label class="relative flex flex-col items-center gap-2.5 p-4 rounded-xl border-2 border-brand bg-brand-subtle cursor-pointer transition-all ring-4 ring-brand/8">
+                <input type="radio" name="gp1" class="sr-only" checked>
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:#0E4533;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4F19B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <span class="text-[12px] font-bold text-brand text-center leading-tight">Home improvement</span>
+                <div class="absolute top-2.5 right-2.5 w-4 h-4 rounded-full bg-brand flex items-center justify-center">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1.5 4l2 2 3-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </label>
+
+              <!-- Unselected tile -->
+              <label class="relative flex flex-col items-center gap-2.5 p-4 rounded-xl border-2 border-neutral-200 bg-white cursor-pointer hover:border-brand hover:bg-brand-subtle transition-all">
+                <input type="radio" name="gp1" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#586858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <span class="text-[12px] font-medium text-neutral-600 text-center leading-tight">Debt consolidation</span>
+              </label>
+
+              <!-- Unselected tile -->
+              <label class="relative flex flex-col items-center gap-2.5 p-4 rounded-xl border-2 border-neutral-200 bg-white cursor-pointer hover:border-brand hover:bg-brand-subtle transition-all">
+                <input type="radio" name="gp1" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#586858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <span class="text-[12px] font-medium text-neutral-600 text-center leading-tight">Car purchase</span>
+              </label>
+
+              <label class="relative flex flex-col items-center gap-2.5 p-4 rounded-xl border-2 border-neutral-200 bg-white cursor-pointer hover:border-brand hover:bg-brand-subtle transition-all">
+                <input type="radio" name="gp1" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#586858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                </div>
+                <span class="text-[12px] font-medium text-neutral-600 text-center leading-tight">Wedding</span>
+              </label>
+
+              <label class="relative flex flex-col items-center gap-2.5 p-4 rounded-xl border-2 border-neutral-200 bg-white cursor-pointer hover:border-brand hover:bg-brand-subtle transition-all">
+                <input type="radio" name="gp1" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#586858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <span class="text-[12px] font-medium text-neutral-600 text-center leading-tight">Holiday</span>
+              </label>
+
+              <label class="relative flex flex-col items-center gap-2.5 p-4 rounded-xl border-2 border-neutral-200 bg-white cursor-pointer hover:border-brand hover:bg-brand-subtle transition-all">
+                <input type="radio" name="gp1" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#586858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                </div>
+                <span class="text-[12px] font-medium text-neutral-600 text-center leading-tight">Something else</span>
+              </label>
+            </div>
+            <p class="text-[11px] text-neutral-400 mt-4">Unselected: <code class="font-mono bg-neutral-50 px-1 rounded">border-neutral-200 bg-white</code> → Selected: <code class="font-mono bg-neutral-50 px-1 rounded">border-brand bg-brand-subtle ring-4 ring-brand/8</code></p>
+          </div>
+        </div>
+
+        <!-- LIST PATTERN -->
+        <div>
+          <div class="text-[12px] font-bold text-neutral-400 mb-2 uppercase tracking-wider">List Pattern — Employment Status</div>
+          <p class="text-[13px] text-neutral-500 mb-4 leading-relaxed">Used for factual/administrative choices where labels carry more weight than icons. Flat rows with a 3px left-border accent that animates <code class="font-mono bg-neutral-50 px-0.5 rounded text-[11px]">scaleY(1)</code> on selection.</p>
+          <div class="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm">
+            <p class="text-sm font-bold text-charcoal mb-4">What's your employment status?</p>
+            <div class="flex flex-col gap-2" role="radiogroup" aria-label="Employment status">
+
+              <!-- Selected row -->
+              <label class="relative flex items-center gap-4 px-4 py-3.5 rounded-lg border border-brand/20 bg-brand-subtle cursor-pointer transition-all overflow-hidden">
+                <input type="radio" name="lp1" class="sr-only" checked>
+                <!-- Animated left accent bar -->
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-brand rounded-l-lg" style="transform: scaleY(1); transform-origin: center;"></div>
+                <div class="flex-1">
+                  <div class="text-sm font-bold text-brand">Full-time employed</div>
+                  <div class="text-[12px] text-brand/60 mt-0.5">Permanent or fixed-term contract</div>
+                </div>
+                <div class="w-5 h-5 rounded-full bg-brand flex items-center justify-center flex-shrink-0">
+                  <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2.5 2.5 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </label>
+
+              <!-- Unselected row -->
+              <label class="relative flex items-center gap-4 px-4 py-3.5 rounded-lg border border-neutral-200 bg-white cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all overflow-hidden group">
+                <input type="radio" name="lp1" class="sr-only">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-brand rounded-l-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                <div class="flex-1">
+                  <div class="text-sm font-medium text-charcoal">Part-time employed</div>
+                  <div class="text-[12px] text-neutral-500 mt-0.5">Less than 30 hours per week</div>
+                </div>
+              </label>
+
+              <label class="relative flex items-center gap-4 px-4 py-3.5 rounded-lg border border-neutral-200 bg-white cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all overflow-hidden group">
+                <input type="radio" name="lp1" class="sr-only">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-brand rounded-l-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                <div class="flex-1">
+                  <div class="text-sm font-medium text-charcoal">Self-employed</div>
+                  <div class="text-[12px] text-neutral-500 mt-0.5">Sole trader or limited company director</div>
+                </div>
+              </label>
+
+              <label class="relative flex items-center gap-4 px-4 py-3.5 rounded-lg border border-neutral-200 bg-white cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all overflow-hidden group">
+                <input type="radio" name="lp1" class="sr-only">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-brand rounded-l-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                <div class="flex-1">
+                  <div class="text-sm font-medium text-charcoal">Retired</div>
+                  <div class="text-[12px] text-neutral-500 mt-0.5">Receiving pension income</div>
+                </div>
+              </label>
+
+              <label class="relative flex items-center gap-4 px-4 py-3.5 rounded-lg border border-neutral-200 bg-white cursor-pointer hover:border-neutral-300 hover:bg-neutral-50 transition-all overflow-hidden group">
+                <input type="radio" name="lp1" class="sr-only">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-brand rounded-l-lg opacity-0 group-hover:opacity-30 transition-opacity"></div>
+                <div class="flex-1">
+                  <div class="text-sm font-medium text-charcoal">Not currently employed</div>
+                  <div class="text-[12px] text-neutral-500 mt-0.5">Including homemakers and students</div>
+                </div>
+              </label>
+            </div>
+            <p class="text-[11px] text-neutral-400 mt-4">Left border accent: 3px <code class="font-mono bg-neutral-50 px-1 rounded">bg-brand</code> · Selected: <code class="font-mono bg-neutral-50 px-1 rounded">border-brand/20 bg-brand-subtle</code> · Unselected: <code class="font-mono bg-neutral-50 px-1 rounded">border-neutral-200 bg-white</code></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Decision guide -->
+      <div class="mt-6 p-5 rounded-xl bg-neutral-50 border border-neutral-200">
+        <div class="text-[12px] font-bold text-charcoal uppercase tracking-widest mb-3">When to use each pattern</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-neutral-600">
+          <div class="flex gap-3"><span class="text-lime text-base font-bold">⊞</span><div><strong class="text-charcoal">Grid Pattern</strong> — choices that benefit from visual differentiation: loan purpose, repayment term, account type. Max 6 options per grid.</div></div>
+          <div class="flex gap-3"><span class="text-brand text-base font-bold">≡</span><div><strong class="text-charcoal">List Pattern</strong> — status or classification choices: employment type, residential status, ID type. Scales beyond 6 options without visual noise.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5f. Slider / Range Input (P0 — loan amount) -->
     <div class="mb-16" id="slider">
       <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Slider / Range Input</h3>
       <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Used for loan amount and term selection. The slider must always be paired with a numeric display. Min 44px touch target height. Custom thumb on Forest Green track.</p>
@@ -941,25 +1041,26 @@
           <div class="mb-8">
             <div class="flex items-end justify-between mb-2">
               <label class="text-sm font-semibold text-charcoal">Loan amount</label>
-              <span id="loanDisplay" class="text-2xl font-bold text-brand tabular-nums tracking-tight">£5,000</span>
+              <span class="text-2xl font-bold text-brand tabular-nums tracking-tight" x-text="'£' + Number(loanAmount).toLocaleString()"></span>
             </div>
+            <!-- Slider with CSS foreground-fill hack via background-size -->
             <input
-              id="loanSlider"
+              x-model="loanAmount"
               type="range"
-              class="brand-range w-full"
-              min="1000"
-              max="10000"
+              class="brand-range w-full h-2 rounded-full appearance-none bg-neutral-100 cursor-pointer accent-brand"
+              :min="minLoan"
+              :max="maxLoan"
               step="100"
-              value="5000"
-              aria-label="Select loan amount between £1,000 and £10,000"
+              :style="`background: linear-gradient(to right, #0E4533 0%, #0E4533 ${sliderPercentage}%, #E8EDEA ${sliderPercentage}%, #E8EDEA 100%)`"
+              aria-label="Select loan amount"
             >
             <div class="flex justify-between text-xs text-neutral-400 font-mono mt-2">
-              <span>£1,000</span>
-              <span>£10,000</span>
+              <span x-text="'£' + Number(minLoan).toLocaleString()"></span>
+              <span x-text="'£' + Number(maxLoan).toLocaleString()"></span>
             </div>
             <div class="mt-4 p-4 bg-neutral-50 rounded-lg flex items-center justify-between">
               <span class="text-sm text-neutral-600">Estimated monthly repayment</span>
-              <span id="loanMonthly" class="text-lg font-bold text-charcoal tabular-nums">£166.49</span>
+              <span class="text-lg font-bold text-charcoal tabular-nums" x-text="'£' + monthlyPayment.toFixed(2)"></span>
             </div>
           </div>
 
@@ -1224,21 +1325,31 @@
         <!-- Live demo -->
         <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Live demo — click to trigger</div>
         <div class="flex flex-wrap gap-3 mb-6">
-          <button onclick="showToast('toast-live-default')" class="inline-flex items-center justify-center px-4 h-9 bg-charcoal text-white rounded-md font-medium text-xs hover:bg-neutral-700 transition-all shadow-sm">Default toast</button>
-          <button onclick="showToast('toast-live-success')" class="inline-flex items-center justify-center px-4 h-9 bg-success text-white rounded-md font-medium text-xs hover:bg-success/90 transition-all shadow-sm">Success toast</button>
+          <button @click="showToast('default', 'Application saved automatically.')" class="inline-flex items-center justify-center px-4 h-9 bg-charcoal text-white rounded-md font-medium text-xs hover:bg-neutral-700 transition-all shadow-sm">Default toast</button>
+          <button @click="showToast('success', 'Document verified successfully.')" class="inline-flex items-center justify-center px-4 h-9 bg-success text-white rounded-md font-medium text-xs hover:bg-success/90 transition-all shadow-sm">Success toast</button>
         </div>
 
-        <!-- Live toast elements (hidden by default) -->
-        <div id="toast-live-default" class="fixed bottom-6 right-6 z-[9000] toast-demo opacity-0 translate-y-2 pointer-events-none transition-all duration-200">
-          <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5M10 6h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <div><div class="font-semibold text-sm">Application saved</div><div class="text-xs text-white/60 mt-0.5">Auto-dismisses in 3 seconds.</div></div>
-        </div>
-        <div id="toast-live-success" class="fixed bottom-6 right-6 z-[9000] toast-demo success-toast opacity-0 translate-y-2 pointer-events-none transition-all duration-200">
-          <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><div class="font-semibold text-sm">Document verified</div><div class="text-xs text-white/60 mt-0.5">Auto-dismisses in 3 seconds.</div></div>
+        <!-- Global Toast Container (Alpine-rendered) -->
+        <div class="fixed bottom-6 right-6 z-[9999] flex flex-col gap-3 pointer-events-none">
+          <template x-for="toast in activeToasts" :key="toast.id">
+            <div class="toast-demo pointer-events-auto shadow-xl" 
+                 :class="{ 'success-toast': toast.type === 'success', 'warning-toast': toast.type === 'warning', 'danger-toast': toast.type === 'danger' }">
+              <template x-if="toast.type === 'success'">
+                <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </template>
+              <template x-if="toast.type !== 'success'">
+                <svg class="w-5 h-5 shrink-0 mt-0.5 text-white/70" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5M10 6h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </template>
+              <div class="flex-1">
+                <div class="font-semibold text-sm" x-text="toast.type === 'success' ? 'Success' : 'Notification'"></div>
+                <div class="text-xs text-white/60 mt-0.5" x-text="toast.message"></div>
+              </div>
+            </div>
+          </template>
         </div>
 
         <p class="text-xs text-neutral-400 mt-4">Position: bottom-right, 24px from edge. Stack multiple toasts vertically (newest on top). Max 3 at once.</p>
+      </div>
       </div>
     </div>
 
@@ -1343,7 +1454,7 @@
       <div class="bg-neutral-50 border border-neutral-200 rounded-lg p-8">
         <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden shadow-md">
           <div class="flex items-center justify-between px-8 py-4 border-b border-neutral-100">
-            <span class="text-2xl font-black tracking-tighter text-brand">abound</span>
+            <img src="../brand-assest/wordmark.png" alt="Abound" class="h-5" onerror="this.outerHTML='<span class=\'text-xl font-black tracking-tighter text-brand\'>abound</span>'">
             <ul class="hidden md:flex items-center gap-8">
               <li><a href="#" class="text-sm font-bold text-brand border-b-2 border-brand pb-1">Personal loans</a></li>
               <li><a href="#" class="text-sm font-medium text-neutral-500 hover:text-charcoal transition-colors">How it works</a></li>
@@ -1382,43 +1493,30 @@
     <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">Abound 2026 has transitioned to a "Flat & High-Contrast" hierarchy. Traditional drop shadows are deprecated for UI components. Instead, elevation and state are communicated through borders and spacing.</p>
 
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
-      <div class="p-6 bg-white rounded-xl border border-neutral-100 flex flex-col items-center justify-center text-center shadow-xs transition-transform hover:-translate-y-1">
+      <div v-for="shadow in tokens.shadows" :key="shadow.token" 
+           class="p-6 bg-white rounded-xl border border-neutral-100 flex flex-col items-center justify-center text-center transition-transform hover:-translate-y-1"
+           :class="'shadow-' + shadow.token">
         <div class="h-12 w-full mb-4 bg-neutral-50 rounded-lg"></div>
-        <div class="text-sm font-bold text-charcoal font-mono">shadow-xs</div>
-        <p class="text-[11px] text-neutral-400 mt-1 uppercase tracking-wider">Subtle inputs</p>
-      </div>
-      <div class="p-6 bg-white rounded-xl border border-neutral-100 flex flex-col items-center justify-center text-center shadow-sm transition-transform hover:-translate-y-1">
-        <div class="h-12 w-full mb-4 bg-neutral-50 rounded-lg"></div>
-        <div class="text-sm font-bold text-charcoal font-mono">shadow-sm</div>
-        <p class="text-[11px] text-neutral-400 mt-1 uppercase tracking-wider">Cards default</p>
-      </div>
-      <div class="p-6 bg-white rounded-xl border border-neutral-100 flex flex-col items-center justify-center text-center shadow-md transition-transform hover:-translate-y-1">
-        <div class="h-12 w-full mb-4 bg-neutral-50 rounded-lg"></div>
-        <div class="text-sm font-bold text-charcoal font-mono">shadow-md</div>
-        <p class="text-[11px] text-neutral-400 mt-1 uppercase tracking-wider">Hover states</p>
-      </div>
-      <div class="p-6 bg-white rounded-xl border border-neutral-100 flex flex-col items-center justify-center text-center shadow-lg transition-transform hover:-translate-y-1">
-        <div class="h-12 w-full mb-4 bg-neutral-50 rounded-lg"></div>
-        <div class="text-sm font-bold text-charcoal font-mono">shadow-lg</div>
-        <p class="text-[11px] text-neutral-400 mt-1 uppercase tracking-wider">Modals</p>
-      </div>
-      <div class="p-6 bg-white rounded-xl border border-neutral-100 flex flex-col items-center justify-center text-center shadow-xl transition-transform hover:-translate-y-1">
-        <div class="h-12 w-full mb-4 bg-neutral-50 rounded-lg"></div>
-        <div class="text-sm font-bold text-charcoal font-mono">shadow-xl</div>
-        <p class="text-[11px] text-neutral-400 mt-1 uppercase tracking-wider">Overlays</p>
+        <div class="text-sm font-bold text-charcoal font-mono">shadow-{{ shadow.token }}</div>
+        <p class="text-[11px] text-neutral-400 mt-1 uppercase tracking-wider">{{ shadow.token === 'xs' ? 'Subtle inputs' : (shadow.token === 'sm' ? 'Cards default' : (shadow.token === 'md' ? 'Hover states' : (shadow.token === 'lg' ? 'Modals' : 'Overlays'))) }}</p>
       </div>
     </div>
 
-    <div class="token-table-wrap mt-12">
-      <table>
-        <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+    <div class="token-table-wrap mt-12 overflow-x-auto rounded-lg border border-neutral-200">
+      <table class="w-full border-collapse text-sm">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="text-left p-3 px-4 font-medium text-neutral-600 border-b border-neutral-200">Token</th>
+            <th class="text-left p-3 px-4 font-medium text-neutral-600 border-b border-neutral-200">Value</th>
+            <th class="text-left p-3 px-4 font-medium text-neutral-600 border-b border-neutral-200">Use</th>
+          </tr>
+        </thead>
         <tbody>
-          <!-- Values use Charcoal (32,31,29) as shadow colour — warmer, brand-aligned, matches Tailwind config -->
-          <tr><td><code>shadow-xs</code></td><td class="mono">0 1px 2px rgba(32,31,29,0.06)</td><td>Subtle inputs</td></tr>
-          <tr><td><code>shadow-sm</code></td><td class="mono">0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06)</td><td>Cards default</td></tr>
-          <tr><td><code>shadow-md</code></td><td class="mono">0 4px 8px -2px rgba(32,31,29,0.10), 0 2px 4px -2px rgba(32,31,29,0.06)</td><td>Card hover, dropdowns</td></tr>
-          <tr><td><code>shadow-lg</code></td><td class="mono">0 12px 16px -4px rgba(32,31,29,0.09), 0 4px 6px -2px rgba(32,31,29,0.04)</td><td>Modals, popovers</td></tr>
-          <tr><td><code>shadow-xl</code></td><td class="mono">0 20px 24px -4px rgba(32,31,29,0.09), 0 8px 8px -4px rgba(32,31,29,0.04)</td><td>Full overlays</td></tr>
+          <tr v-for="shadow in tokens.shadows" :key="shadow.token" class="hover:bg-neutral-50 transition-colors">
+            <td class="p-3 px-4 border-b border-neutral-200 text-charcoal font-mono"><code>shadow-{{ shadow.token }}</code></td>
+            <td class="p-3 px-4 border-b border-neutral-200 text-charcoal font-mono text-[12px]">{{ shadow.value }}</td>
+            <td class="p-3 px-4 border-b border-neutral-200 text-charcoal text-neutral-500 italic">{{ shadow.token === 'xs' ? 'Subtle inputs' : (shadow.token === 'sm' ? 'Cards default' : (shadow.token === 'md' ? 'Hover states' : (shadow.token === 'lg' ? 'Modals' : 'Overlays'))) }}</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1963,7 +2061,7 @@
       </div>
       <p class="text-sm text-neutral-600 mb-5 max-w-[560px]">Full-width outcome page. Approved variant uses Forest Green hero with abstract background. Declined variant uses a soft neutral card, never red — maintains trust even in bad news.</p>
 
-      <div class="grid grid-cols-3 gap-4 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <!-- Approved -->
         <div class="rounded-xl overflow-hidden border border-neutral-200 shadow-sm">
           <div class="p-4 text-white text-xs font-bold" style="background:#0E4533;">
@@ -2084,7 +2182,7 @@
     <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">Real microcopy examples for every touchpoint. When generating UI text, match the pattern for the current step and context — never use generic placeholder copy.</p>
 
     <!-- Tone principles -->
-    <div class="grid grid-cols-3 gap-4 mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
       <div class="p-5 rounded-xl bg-white border border-neutral-200">
         <div class="text-2xl mb-3">🧭</div>
         <div class="text-sm font-bold text-charcoal mb-2">Clear, not clever</div>
@@ -2158,7 +2256,7 @@
     <!-- Error messages -->
     <div class="mb-10">
       <h3 class="text-lg font-semibold text-charcoal mb-4">Form Validation Messages</h3>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <div class="text-[10px] font-bold text-success uppercase tracking-wider mb-3">Use these patterns</div>
           <div class="space-y-3">
@@ -2258,7 +2356,7 @@
     <!-- Financial copy rules -->
     <div class="mb-10">
       <h3 class="text-lg font-semibold text-charcoal mb-4">Financial Copy Rules</h3>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="p-5 rounded-xl bg-white border border-neutral-200">
           <div class="text-xs font-bold text-charcoal mb-3 uppercase tracking-wider">Number formatting</div>
           <div class="space-y-2 text-xs text-neutral-600">
@@ -2300,7 +2398,7 @@
     <div>
       <h3 class="text-lg font-semibold text-charcoal mb-4">Trust Signal Copy</h3>
       <p class="text-sm text-neutral-600 mb-5 max-w-[560px]">These appear in the footer of each application step and on the eligibility page. Always use SVG icons from the design system, never emoji.</p>
-      <div class="grid grid-cols-3 gap-3">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="p-4 rounded-xl bg-off-white border border-neutral-200">
           <div class="flex items-center gap-2.5 mb-2">
             <div class="w-7 h-7 rounded-md bg-brand-subtle flex items-center justify-center flex-shrink-0">
@@ -2331,6 +2429,8 @@
       </div>
     </div>
   </section>
+  </div>
+</main>
 
   <hr class="divider">
 
@@ -2356,69 +2456,81 @@
     </div>
   </footer>
 
-</main>
+</div><!-- #app end -->
 
 <script>
-// Highlight active nav item on scroll
-const sections = document.querySelectorAll('section[id], div[id]');
-const navLinks = document.querySelectorAll('#sideNav a');
+  function appData() {
+    return {
+      tokens: window.DESIGN_TOKENS,
+      tokenGroups: {},
+      loanAmount: 5000,
+      minLoan: 1000,
+      maxLoan: 10000,
+      loanTerm: 36,
+      interestRate: 0.099,
+      activeToasts: [],
+      activeNavId: 'top',
+      isMobileMenuOpen: false,
 
-function highlightNav() {
-  let current = '';
-  const scrollY = window.scrollY + 120;
+      init() {
+        // Initialize tokenGroups
+        this.tokenGroups = {
+          'Brand Colours': this.tokens.colors.brand ? { 'Forest Green': this.tokens.colors.brand, 'Charcoal': this.tokens.colors.charcoal, 'White': '#FFFFFF' } : {},
+          'Background Surfaces': { 'Off-White': this.tokens.colors['off-white'], 'Pale Yellow-Green': this.tokens.colors['pale-yellow-green'], 'Teal/Sage': this.tokens.colors['teal-sage'] },
+          'Accents': { 'Khaki': this.tokens.colors.khaki, 'Lime': this.tokens.colors.lime },
+          'Extended Neutrals': this.tokens.colors.neutral,
+          'Feedback Colours': { 
+              'Success': this.tokens.colors.success.DEFAULT, 
+              'Success Subtle': this.tokens.colors.success.bg,
+              'Danger': this.tokens.colors.danger.DEFAULT,
+              'Danger Subtle': this.tokens.colors.danger.bg,
+              'Warning': this.tokens.colors.warning.DEFAULT,
+              'Warning Subtle': this.tokens.colors.warning.bg
+          }
+        };
 
-  sections.forEach(section => {
-    if (section.offsetTop <= scrollY) {
-      current = section.getAttribute('id');
-    }
-  });
+        window.addEventListener('scroll', () => this.highlightNav(), { passive: true });
+        this.highlightNav();
+      },
 
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.classList.add('active');
-    }
-  });
-}
+      get monthlyPayment() {
+        const val = parseFloat(this.loanAmount);
+        return (val / this.loanTerm) * (1 + this.interestRate);
+      },
 
-window.addEventListener('scroll', highlightNav, { passive: true });
-highlightNav();
+      get sliderPercentage() {
+        return ((this.loanAmount - this.minLoan) / (this.maxLoan - this.minLoan)) * 100;
+      },
 
-// Loan slider interactive demo
-const loanSlider = document.getElementById('loanSlider');
-const loanDisplay = document.getElementById('loanDisplay');
-const loanMonthly = document.getElementById('loanMonthly');
-const loanTrackFill = document.getElementById('loanTrackFill');
+      toggleMobileMenu() {
+        this.isMobileMenuOpen = !this.isMobileMenuOpen;
+        if (this.isMobileMenuOpen) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      },
 
-function updateLoanSlider() {
-  if (!loanSlider) return;
-  const val = parseInt(loanSlider.value);
-  const min = parseInt(loanSlider.min);
-  const max = parseInt(loanSlider.max);
-  const pct = ((val - min) / (max - min)) * 100;
-  if (loanDisplay) loanDisplay.textContent = '£' + val.toLocaleString('en-GB');
-  if (loanMonthly) loanMonthly.textContent = '£' + Math.round((val / 36) * 1.099).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Update track fill via CSS custom property
-  if (loanSlider) loanSlider.style.background =
-    `linear-gradient(to right, #0E4533 0%, #0E4533 ${pct}%, #E8EDEA ${pct}%, #E8EDEA 100%)`;
-}
+      showToast(type, message) {
+        const id = Date.now();
+        this.activeToasts.push({ id, type, message });
+        setTimeout(() => {
+          const index = this.activeToasts.findIndex(t => t.id === id);
+          if (index !== -1) this.activeToasts.splice(index, 1);
+        }, 3000);
+      },
 
-if (loanSlider) {
-  loanSlider.addEventListener('input', updateLoanSlider);
-  updateLoanSlider();
-}
-
-// Toast demo
-function showToast(id) {
-  const toast = document.getElementById(id);
-  if (!toast) return;
-  toast.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
-  toast.classList.add('opacity-100', 'translate-y-0');
-  setTimeout(() => {
-    toast.classList.remove('opacity-100', 'translate-y-0');
-    toast.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
-  }, 3000);
-}
+      highlightNav() {
+        const sections = document.querySelectorAll('section[id], div[id]');
+        let current = 'top';
+        const scrollY = window.scrollY + 120;
+        sections.forEach(sec => {
+          if (sec.offsetTop <= scrollY) current = sec.getAttribute('id');
+        });
+        this.activeNavId = current;
+      }
+    };
+  }
 </script>
 
 </body>
