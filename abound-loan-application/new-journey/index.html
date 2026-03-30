@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Abound</title>
 
   <!-- Tailwind CSS CDN -->
@@ -11,8 +11,13 @@
 
   <style type="text/tailwindcss">
     @layer base {
+      html, body {
+        @apply h-full overflow-hidden;
+        overscroll-behavior: none;
+        -webkit-overflow-scrolling: touch;
+      }
       body {
-        @apply bg-bg text-charcoal font-sans antialiased;
+        @apply bg-bg text-charcoal font-sans antialiased overflow-y-auto;
         background-image: 
           radial-gradient(ellipse at 110% -10%, rgba(212, 241, 155, 0.2) 0%, transparent 55%),
           radial-gradient(ellipse at -10% 110%, rgba(184, 220, 210, 0.15) 0%, transparent 45%);

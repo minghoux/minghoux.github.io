@@ -10,8 +10,8 @@ const JOURNEY_CONTENT = {
       aprLabel: "Guaranteed APR (Inc. fee)",
       monthlyLabel: "monthly payment"
     },
-    amountMin: 1000,
-    amountMax: 5000,
+    amountMin: 2000,
+    amountMax: 12000,
     amountStep: 100,
     termOptions: [
       { value: 12, label: "12" },

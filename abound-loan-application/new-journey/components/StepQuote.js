@@ -112,7 +112,7 @@ export default {
     const content = JOURNEY_CONTENT.stepQuote;
     
     // State
-    const amount = ref(3000);
+    const amount = ref(5000);
     const termMonths = ref(36);
 
     // Helpers
