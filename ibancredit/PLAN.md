@@ -11,11 +11,12 @@ Rebrand the Ibancar user journey to align with the new Abound brand identity, ut
 ## 2. Design System Integration
 - Reference the Abound design system (`abound-brand-2026/design-system/abound-design-system.html`) for styling, components, colors, and typography.
 - **Typography:** Load the primary brand font (`Saans`) with web-safe fallbacks (`DM Sans`, `sans-serif`) as defined in the design system. Ensure fonts load correctly in a no-build environment using `@font-face` and relative paths.
-- **Assets:** Utilize existing brand assets (logos, images) from the `abound-brand-2026/brand-assest` directory when available. If specific icons or assets are missing, use best judgment to find suitable, brand-aligned alternatives or SVG icons.
+- **Assets:** Utilize brand assets (logos, images) from the local `ibancredit/brand-assest` directory when available. **Crucially**, replace all instances of the old Ibancar wordmark and branding text with the new Abound logo (`wordmark.svg`). If specific icons or assets are missing, use best judgment to find suitable, brand-aligned alternatives or SVG icons.
 
 ## 3. Technical Setup & Architecture
 - **Tech Stack:** HTML, CSS, JavaScript (Vue 3 via CDN), Tailwind CSS via Tailwind Play CDN. The absolute priority is **no build process**—it must be accessible simply by double-clicking the HTML file.
 - **Architecture:** Implement a Single Page Application (SPA) structure. Use Vue.js's reactive state to smoothly transition between journey steps without triggering page reloads.
+- **Content-UI Separation:** Extract all UI text, step labels, and option lists into a centralized `journeyContent` JavaScript object. Reference this object within Vue components to ensure the UI is purely a presentation layer that's easily scalable and configurable.
 - **Styling:** Configure the Tailwind Play CDN script with the custom Abound theme (colors, typography, spacing, border radius) extracted from the design system so tokens are globally reusable.
 - **Componentization:** Keep the architecture modular. Utilize Vue components (e.g., `<script type="text/x-template">` or separate JS files if feasible) to maintain clean and reusable code structure.
 

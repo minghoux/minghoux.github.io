@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibancredit App</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          backgroundImage: {
+            'gradient-1': 'linear-gradient(to bottom, #EAF1EA, #CBE4C8)',
+            'gradient-2': 'linear-gradient(to top, #F0EDC3, #CBDAD9)',
+            'gradient-3': 'linear-gradient(to bottom, #EAF1EA, #B8DCD2)',
+            'gradient-4': 'linear-gradient(to bottom, #FFF9F4, #D4F19B)'
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#0E4533',
+              hover: '#0A3325',
+              pressed: '#071F17',
+              subtle: '#EBF2ED',
+            },
+            charcoal: '#201F1D',
+            lime: '#D4F19B',
+            khaki: '#EDEABE',
+            'off-white': '#F4F8F3',
+            'pale-yellow-green': '#F7F7E9',
+            'teal-sage': '#B8DCD2',
+            success: { DEFAULT: '#0A5C3A', bg: '#EBF5EF' },
+            danger: { DEFAULT: '#C4320A', bg: '#FEF3F2' },
+            warning: { DEFAULT: '#B54708', bg: '#FDF6E8' },
+            info: { DEFAULT: '#175CD3', bg: '#EDF6F5' },
+            neutral: {
+              50: '#F4F7F4', 100: '#E8EDEA', 200: '#D3DCCF', 300: '#B4C2B0',
+              400: '#829080', 500: '#586858', 600: '#3F4F3F', 700: '#2C3A2C',
+              800: '#1C271C', 900: '#111A11',
+            },
+          },
+          fontFamily: {
+            sans: ['Saans', 'DM Sans', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Base Custom Styles & Fonts -->
+  <style>
+    @font-face {
+      font-family: 'Saans';
+      src: url('../../abound-brand-2026/brand-assest/Saans font/Saans-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Saans';
+      src: url('../../abound-brand-2026/brand-assest/Saans font/Saans-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Saans';
+      src: url('../../abound-brand-2026/brand-assest/Saans font/Saans-SemiBold.woff2') format('woff2');
+      font-weight: 600 700;
+      font-display: swap;
+    }
+    body {
+      background-color: #F4F8F3; /* bg-off-white */
+      color: #201F1D; /* text-charcoal */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overscroll-behavior: none; /* Prevents "pull-to-refresh" and elastic dragging */
+      overflow-x: hidden; /* Prevents horizontal shifts */
+    }
+
+    /* Standard Abound Input State */
+    .abound-input {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px;
+      background: white;
+      border: 1px solid #D0D5DD;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #201F1D;
+      transition: all 150ms ease-out;
+    }
+    .abound-input::placeholder { color: #98A2B3; }
+    .abound-input:focus {
+      outline: none;
+      border-color: #0E4533;
+      box-shadow: 0 0 0 4px rgba(14, 69, 51, 0.1);
+    }
+    
+    .abound-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 48px;
+      background: #0E4533;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: background 150ms ease-out, transform 150ms ease-out, box-shadow 150ms ease-out;
+      border: calc(max(2px, 0em)) solid transparent;
+    }
+    .abound-btn:hover { background: #0A3325; }
+    .abound-btn:active { background: #071F17; transform: scale(0.98); }
+    .abound-btn:focus-visible { outline: 2px solid #0E4533; outline-offset: 4px; }
+    
+    .abound-btn:disabled {
+      background: #E8EDEA;
+      color: #98A2B3;
+      cursor: not-allowed;
+      transform: none;
+    }
+  </style>
+
+  <!-- Google Fonts Fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  
+  <!-- Import Map for ES Modules -->
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen font-sans">
+
+<div id="app" class="flex flex-col min-h-screen">
+  
+  <!-- Header Shell -->
+  <header class="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-neutral-200 h-16 flex items-center px-4 md:px-8">
+    <div class="max-w-[1024px] w-full mx-auto flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 no-underline">
+        <img src="../brand-assest/wordmark.svg" alt="Abound" class="h-6" />
+      </a>
+      <div class="text-xs font-bold px-3 py-1 bg-neutral-50 rounded-full text-neutral-500 border border-neutral-200">
+        Préstamo Rápido
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col items-center p-4 md:p-8 w-full max-w-[560px] mx-auto">
+    <component :is="currentStepComponent" @next-step="handleNextStep"></component>
+  </main>
+
+</div>
+
+<!-- ES Module Application Entry -->
+<script type="module">
+  import { createApp, ref, computed, onMounted } from 'vue';
+  import StepInitial from './components/StepInitial.js';
+  import StepCalculator from './components/StepCalculator.js';
+  import StepMotivo from './components/StepMotivo.js';
+  import StepEmployment from './components/StepEmployment.js';
+  import StepHousing from './components/StepHousing.js';
+  import StepBancos from './components/StepBancos.js';
+  import StepOutcome from './components/StepOutcome.js';
+
+  const app = createApp({
+    components: {
+      StepInitial,
+      StepCalculator,
+      StepMotivo,
+      StepEmployment,
+      StepHousing,
+      StepBancos,
+      StepOutcome
+    },
+    setup() {
+      // Start at Initial Step (Lead Capture)
+      const currentStepId = ref('StepInitial');
+      const currentStepComponent = computed(() => currentStepId.value);
+
+      const handleNextStep = (event) => {
+        console.log('Next step triggered:', event);
+        
+        let nextStep = '';
+
+        // State Machine Router
+        if (event.step === 'initial') {
+          nextStep = 'StepCalculator';
+        } else if (event.step === 'calculator') {
+          nextStep = 'StepMotivo';
+        } else if (event.step === 'motivo') {
+          nextStep = 'StepEmployment';
+        } else if (event.step === 'employment') {
+          nextStep = 'StepHousing';
+        } else if (event.step === 'housing') {
+          nextStep = 'StepBancos';
+        } else if (event.step === 'bancos') {
+          nextStep = 'StepOutcome';
+        }
+
+        if (nextStep) {
+          currentStepId.value = nextStep;
+          // Pushing to URL history
+          history.pushState({ stepId: nextStep }, '', `#${nextStep}`);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      };
+
+      // Handle Browser Back/Forward navigation
+      onMounted(() => {
+        // Set initial state
+        history.replaceState({ stepId: 'StepInitial' }, '', '#StepInitial');
+
+        window.addEventListener('popstate', (event) => {
+          if (event.state && event.state.stepId) {
+            currentStepId.value = event.state.stepId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+
+      return {
+        currentStepComponent,
+        handleNextStep
+      };
+    }
+  });
+
+  app.mount('#app');
+</script>
+
+<style>
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+</body>
+</html>
