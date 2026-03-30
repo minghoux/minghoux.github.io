@@ -135,15 +135,420 @@
 
   <!-- ═══════════════ STEP TABS (demo switcher) ═══════════════ -->
   <div class="bg-white border-b border-neutral-200 px-8">
-    <div class="max-w-[1100px] mx-auto flex gap-1">
-      <button onclick="showStep(1)" id="tab-1" class="step-tab active relative px-4 py-3.5 text-sm transition-colors text-brand font-bold">Step 1 · Eligibility</button>
-      <button onclick="showStep(2)" id="tab-2" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal">Step 2 · Loan design</button>
-      <button onclick="showStep(3)" id="tab-3" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal">Step 3 · About you</button>
-      <button onclick="showStep(4)" id="tab-4" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal">Step 4 · Processing</button>
-      <button onclick="showStep(5)" id="tab-5" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal">Step 4 · Approved</button>
-      <button onclick="showStep(6)" id="tab-6" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal">Step 4 · Declined</button>
+    <div class="max-w-[1100px] mx-auto flex gap-1 overflow-x-auto">
+      <button onclick="showStep(0)" id="tab-0" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal whitespace-nowrap">🎨 Brand Compositions</button>
+      <button onclick="showStep(1)" id="tab-1" class="step-tab active relative px-4 py-3.5 text-sm transition-colors text-brand font-bold whitespace-nowrap">Step 1 · Eligibility</button>
+      <button onclick="showStep(2)" id="tab-2" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal whitespace-nowrap">Step 2 · Loan design</button>
+      <button onclick="showStep(3)" id="tab-3" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal whitespace-nowrap">Step 3 · About you</button>
+      <button onclick="showStep(4)" id="tab-4" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal whitespace-nowrap">Step 4 · Processing</button>
+      <button onclick="showStep(5)" id="tab-5" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal whitespace-nowrap">Step 5 · Approved</button>
+      <button onclick="showStep(6)" id="tab-6" class="step-tab relative px-4 py-3.5 text-sm transition-colors text-neutral-500 hover:text-charcoal whitespace-nowrap">Step 6 · Declined</button>
     </div>
   </div>
+
+  <!-- ═══════════════ STEP 0 — BRAND COMPOSITIONS ═══════════════ -->
+  <main id="view-0" class="hidden w-full">
+
+    <!-- ── Label bar ── -->
+    <div class="bg-charcoal text-white text-[11px] font-bold uppercase tracking-widest text-center py-2 letter-spacing-wider">
+      Brand Composition Examples — showing gradients, abstract imagery, Lime / Khaki / Teal in context
+    </div>
+
+    <!-- ══ COMPOSITION 1: Marketing Hero (Forest Green + Abstract Imagery + Lime) ══ -->
+    <div class="relative overflow-hidden" style="min-height:560px; background:#0E4533;">
+      <!-- Abstract brand texture -->
+      <div class="absolute inset-0" style="background-image:url('../brand-assest/abstract-1.jpg'); background-size:cover; background-position:center top; opacity:0.18; mix-blend-mode:luminosity;"></div>
+      <!-- Gradient veil: bottom fade to brand -->
+      <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(14,69,51,0.2) 0%, rgba(14,69,51,0.85) 100%);"></div>
+      <!-- Lime blob top-right -->
+      <div class="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full opacity-[0.07]" style="background:#D4F19B;"></div>
+      <!-- Teal blob bottom-left -->
+      <div class="absolute -bottom-16 -left-16 w-72 h-72 rounded-full opacity-[0.06]" style="background:#B8DCD2;"></div>
+
+      <div class="relative z-10 max-w-[1100px] mx-auto px-8 py-20 flex flex-col lg:flex-row items-center gap-14">
+        <div class="flex-1">
+          <!-- Wordmark -->
+          <img src="../brand-assest/wordmark-white.png" alt="Abound" class="h-6 mb-10 opacity-90" onerror="this.outerHTML='<span class=\'text-2xl font-bold tracking-tighter text-white opacity-90\'>abound</span>'">
+
+          <!-- Eyebrow -->
+          <div class="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full text-[11px] font-bold tracking-widest uppercase border border-white/20" style="color:#D4F19B; background:rgba(212,241,155,0.08);">
+            FCA Authorised · Soft search · No fees
+          </div>
+
+          <h1 class="text-[48px] md:text-[58px] font-semibold tracking-[-0.03em] leading-[1.05] text-white mb-6 max-w-[540px]">
+            A personal loan<br>that actually <em class="not-italic" style="color:#D4F19B;">fits</em> you.
+          </h1>
+          <p class="text-[16px] leading-[1.75] max-w-[440px] mb-10" style="color:rgba(255,255,255,0.65);">
+            We look at your full financial picture — not just a credit score — to find the fairest rate for you. From £1,000 to £25,000.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <button class="inline-flex items-center gap-2 h-[52px] px-8 rounded-full font-bold text-brand text-[15px] hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-lg" style="background:#D4F19B;">
+              Check my rate
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="inline-flex items-center gap-2 h-[52px] px-8 rounded-full font-semibold text-[15px] border border-white/25 text-white hover:bg-white/10 transition-all">
+              How it works
+            </button>
+          </div>
+
+          <p class="text-[12px] mt-5" style="color:rgba(255,255,255,0.4);">No impact on your credit score · Decision in minutes</p>
+        </div>
+
+        <!-- Loan calculator card on dark surface -->
+        <div class="w-full lg:w-[340px] shrink-0">
+          <div class="rounded-2xl p-6 shadow-xl" style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(12px);">
+            <div class="text-[11px] font-bold uppercase tracking-widest mb-4" style="color:rgba(255,255,255,0.5);">Your personalised rate</div>
+            <div class="flex items-baseline gap-1 mb-1">
+              <span class="text-[48px] font-bold text-white tracking-tight tabular-nums leading-none">9.9</span>
+              <span class="text-[24px] font-semibold text-white/70 self-start mt-3">%</span>
+              <span class="text-[14px] text-white/50 ml-1 self-end mb-1">APR</span>
+            </div>
+            <div class="text-[13px] mb-6" style="color:rgba(255,255,255,0.5);">Representative. Your rate may differ.</div>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex justify-between items-center py-2.5 px-3 rounded-lg" style="background:rgba(255,255,255,0.06);">
+                <span class="text-[13px] text-white/60">Amount</span>
+                <span class="text-[14px] font-bold text-white tabular-nums">£5,000</span>
+              </div>
+              <div class="flex justify-between items-center py-2.5 px-3 rounded-lg" style="background:rgba(255,255,255,0.06);">
+                <span class="text-[13px] text-white/60">Monthly payment</span>
+                <span class="text-[14px] font-bold text-white tabular-nums">£229/mo</span>
+              </div>
+              <div class="flex justify-between items-center py-2.5 px-3 rounded-lg" style="background:rgba(255,255,255,0.06);">
+                <span class="text-[13px] text-white/60">Term</span>
+                <span class="text-[14px] font-bold text-white">24 months</span>
+              </div>
+            </div>
+
+            <!-- Lime progress bar on dark surface -->
+            <div class="mb-1">
+              <div class="flex justify-between text-[11px] mb-2" style="color:rgba(255,255,255,0.4);">
+                <span>Eligibility check</span><span>Complete</span>
+              </div>
+              <div class="h-1.5 rounded-full w-full" style="background:rgba(255,255,255,0.12);">
+                <div class="h-1.5 rounded-full" style="background:#D4F19B; width:25%;"></div>
+              </div>
+            </div>
+          </div>
+          <p class="text-center text-[11px] mt-3" style="color:rgba(255,255,255,0.35);">Representative example for illustration only</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Label ── -->
+    <div class="bg-neutral-800 text-neutral-400 text-[10px] font-mono px-8 py-1.5">Composition 1 · Hero — bg-brand #0E4533 + abstract-1.jpg + Lime #D4F19B accent + glassmorphism card on dark surface</div>
+
+    <!-- ══ TRUST STRIP ══ -->
+    <div class="bg-white border-b border-neutral-200 px-8 py-6">
+      <div class="max-w-[1100px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:#EBF5EF;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A5C3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div><div class="text-[13px] font-bold text-charcoal">FCA authorised</div><div class="text-[12px] text-neutral-500">FRN 913090</div></div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:#EBF2ED;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E4533" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div><div class="text-[13px] font-bold text-charcoal">Decision in minutes</div><div class="text-[12px] text-neutral-500">Instant soft search</div></div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:#F7F7E9;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#586858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div><div class="text-[13px] font-bold text-charcoal">No hidden fees</div><div class="text-[12px] text-neutral-500">No arrangement fee</div></div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:#EBF5EF;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A5C3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div><div class="text-[13px] font-bold text-charcoal">Fair by design</div><div class="text-[12px] text-neutral-500">Full picture, not a score</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ COMPOSITION 2: How it works — Gradient 1 (Pale Green → Green Tint) ══ -->
+    <div style="background:linear-gradient(to bottom, #EAF1EA, #CBE4C8);" class="px-8 py-20">
+      <div class="max-w-[1100px] mx-auto">
+        <div class="text-center mb-14">
+          <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full text-[11px] font-bold tracking-widest uppercase bg-white/60 text-brand border border-brand/15">
+            Simple process
+          </div>
+          <h2 class="text-[38px] font-semibold tracking-tight text-charcoal leading-tight mb-4">How Abound works</h2>
+          <p class="text-[16px] text-neutral-600 leading-relaxed max-w-[440px] mx-auto">Three steps to your personalised rate. No paperwork, no branch visits.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-7 shadow-sm relative">
+            <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white font-bold text-[15px] mb-5">1</div>
+            <h3 class="text-[17px] font-bold text-charcoal mb-2">Tell us about yourself</h3>
+            <p class="text-[14px] text-neutral-500 leading-relaxed">A quick eligibility check — no hard credit search, no impact on your score.</p>
+            <div class="absolute top-7 right-7 w-2 h-2 rounded-full bg-lime"></div>
+          </div>
+          <div class="bg-white rounded-2xl p-7 shadow-sm relative">
+            <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white font-bold text-[15px] mb-5">2</div>
+            <h3 class="text-[17px] font-bold text-charcoal mb-2">See your personalised rate</h3>
+            <p class="text-[14px] text-neutral-500 leading-relaxed">We review your full financial picture and return a rate built for you — not a representative one.</p>
+            <div class="absolute top-7 right-7 w-2 h-2 rounded-full bg-teal-sage"></div>
+          </div>
+          <div class="bg-white rounded-2xl p-7 shadow-sm relative">
+            <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white font-bold text-[15px] mb-5">3</div>
+            <h3 class="text-[17px] font-bold text-charcoal mb-2">Get your money</h3>
+            <p class="text-[14px] text-neutral-500 leading-relaxed">Accept your offer and receive funds in as little as 24 hours. Direct to your bank account.</p>
+            <div class="absolute top-7 right-7 w-2 h-2 rounded-full bg-khaki"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-800 text-neutral-400 text-[10px] font-mono px-8 py-1.5">Composition 2 · How it works — bg-gradient-1 (linear-gradient to bottom, #EAF1EA → #CBE4C8) · White cards on green tint</div>
+
+    <!-- ══ COMPOSITION 3: Loan calculator — bg-tertiary Pale Yellow-Green + Teal/Sage accent ══ -->
+    <div style="background:#F7F7E9;" class="px-8 py-20">
+      <div class="max-w-[1100px] mx-auto flex flex-col lg:flex-row gap-16 items-center">
+        <div class="flex-1">
+          <div class="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full text-[11px] font-bold tracking-widest uppercase text-brand bg-brand/8 border border-brand/15">
+            Tailored for you
+          </div>
+          <h2 class="text-[36px] font-semibold tracking-tight text-charcoal leading-snug mb-4">Design a loan around your life</h2>
+          <p class="text-[15px] text-neutral-600 leading-relaxed mb-8 max-w-[380px]">Adjust the amount and term until the monthly payment feels right. We'll show you exactly what you'd pay — with no surprises.</p>
+
+          <div class="space-y-4">
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-neutral-200">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#B8DCD2;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2C3A2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 6v6l4 2"/></svg>
+              </div>
+              <div><div class="text-[13px] font-bold text-charcoal">No early repayment charges</div><div class="text-[12px] text-neutral-500">Pay back early, pay less interest.</div></div>
+            </div>
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-neutral-200">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#EDEABE;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3F4F3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14l-4-4 4-4M15 10l4 4-4 4"/></svg>
+              </div>
+              <div><div class="text-[13px] font-bold text-charcoal">Fixed rate, fixed payments</div><div class="text-[12px] text-neutral-500">Same amount every month. No surprises.</div></div>
+            </div>
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-white border border-neutral-200">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#EBF2ED;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E4533" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div><div class="text-[13px] font-bold text-charcoal">No arrangement fee</div><div class="text-[12px] text-neutral-500">The amount you borrow is the amount we send.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculator widget -->
+        <div class="w-full lg:w-[400px] shrink-0">
+          <div class="bg-white rounded-2xl shadow-md border border-neutral-200 overflow-hidden">
+            <!-- Header with Teal/Sage accent -->
+            <div class="px-7 py-5 border-b border-neutral-100" style="background:linear-gradient(to right, #F4F8F3, #EAF4F1);">
+              <div class="text-[12px] font-bold text-neutral-500 uppercase tracking-widest mb-1">Loan calculator</div>
+              <div class="text-[13px] text-neutral-600">See your personalised monthly payment</div>
+            </div>
+            <div class="p-7 space-y-5">
+              <!-- Amount display -->
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <label class="text-[13px] font-bold text-charcoal">Borrow amount</label>
+                  <span class="text-[20px] font-bold text-charcoal tabular-nums tracking-tight">£5,000</span>
+                </div>
+                <!-- Slider track — Lime fill on neutral track -->
+                <div class="relative h-2 rounded-full" style="background:#E8EDEA;">
+                  <div class="absolute left-0 top-0 h-2 rounded-full" style="background:#D4F19B; width:40%;"></div>
+                  <div class="absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-[3px] border-white shadow-md cursor-grab" style="background:#0E4533; left:calc(40% - 10px);"></div>
+                </div>
+                <div class="flex justify-between text-[11px] text-neutral-400 mt-1.5"><span>£1,000</span><span>£25,000</span></div>
+              </div>
+
+              <!-- Term display -->
+              <div>
+                <div class="flex justify-between items-center mb-3">
+                  <label class="text-[13px] font-bold text-charcoal">Repayment term</label>
+                  <span class="text-[15px] font-bold text-charcoal">24 months</span>
+                </div>
+                <div class="grid grid-cols-4 gap-2">
+                  <div class="flex flex-col items-center py-2 rounded-lg border border-neutral-200 text-neutral-400 text-[12px] font-medium cursor-pointer hover:border-brand transition-all"><span class="font-bold">12</span><span class="text-[10px]">mo</span></div>
+                  <div class="flex flex-col items-center py-2 rounded-lg border-2 border-brand bg-brand-subtle text-brand text-[12px] font-bold"><span>24</span><span class="text-[10px]">mo</span></div>
+                  <div class="flex flex-col items-center py-2 rounded-lg border border-neutral-200 text-neutral-400 text-[12px] font-medium cursor-pointer hover:border-brand transition-all"><span class="font-bold">36</span><span class="text-[10px]">mo</span></div>
+                  <div class="flex flex-col items-center py-2 rounded-lg border border-neutral-200 text-neutral-400 text-[12px] font-medium cursor-pointer hover:border-brand transition-all"><span class="font-bold">60</span><span class="text-[10px]">mo</span></div>
+                </div>
+              </div>
+
+              <!-- Summary -->
+              <div class="rounded-xl p-4 space-y-2" style="background:#F4F8F3;">
+                <div class="flex justify-between items-center">
+                  <span class="text-[13px] text-neutral-600">Monthly payment</span>
+                  <span class="text-[18px] font-bold text-charcoal tabular-nums">£229</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-[13px] text-neutral-600">Representative APR</span>
+                  <span class="text-[13px] font-bold text-charcoal">9.9%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-[13px] text-neutral-600">Total repayable</span>
+                  <span class="text-[13px] font-bold text-charcoal tabular-nums">£5,496</span>
+                </div>
+              </div>
+
+              <button class="w-full h-12 rounded-full font-bold text-white text-[14px] hover:bg-brand-hover transition-all flex items-center justify-center gap-2" style="background:#0E4533;">
+                Check my rate — it's free
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-800 text-neutral-400 text-[10px] font-mono px-8 py-1.5">Composition 3 · Loan Calculator — bg-tertiary #F7F7E9 (Pale Yellow-Green) · Teal/Sage #B8DCD2 icon bg · Khaki #EDEABE icon bg · Lime slider fill</div>
+
+    <!-- ══ COMPOSITION 4: Testimonials — Gradient 2 (Pale Yellow → Greyish Teal) ══ -->
+    <div style="background:linear-gradient(to top, #F0EDC3, #CBDAD9);" class="px-8 py-20">
+      <div class="max-w-[1100px] mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-[34px] font-semibold tracking-tight text-charcoal mb-3">Trusted by thousands</h2>
+          <p class="text-[15px] text-neutral-600">Real customers. Real results.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center gap-1 mb-4">
+              <span class="text-lime text-lg">★★★★★</span>
+            </div>
+            <p class="text-[14px] text-charcoal leading-relaxed mb-5">"The process was genuinely painless. I had a rate in under 10 minutes and money in my account the next day."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#0E4533;">S</div>
+              <div><div class="text-[13px] font-bold text-charcoal">Sarah M.</div><div class="text-[11px] text-neutral-500">Home improvement · £8,000</div></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center gap-1 mb-4">
+              <span class="text-lime text-lg">★★★★★</span>
+            </div>
+            <p class="text-[14px] text-charcoal leading-relaxed mb-5">"Every other lender gave me a generic 12%. Abound looked at my actual situation and offered 7.4%. Big difference."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#2C3A2C;">J</div>
+              <div><div class="text-[13px] font-bold text-charcoal">James K.</div><div class="text-[11px] text-neutral-500">Debt consolidation · £12,000</div></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center gap-1 mb-4">
+              <span class="text-lime text-lg">★★★★★</span>
+            </div>
+            <p class="text-[14px] text-charcoal leading-relaxed mb-5">"No jargon, no pressure, no hidden fees. Exactly what it says. Would recommend to anyone."</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#3F4F3F;">P</div>
+              <div><div class="text-[13px] font-bold text-charcoal">Priya T.</div><div class="text-[11px] text-neutral-500">Car purchase · £6,500</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-800 text-neutral-400 text-[10px] font-mono px-8 py-1.5">Composition 4 · Testimonials — bg-gradient-2 (linear-gradient to top, #F0EDC3 → #CBDAD9) · Pale Yellow to Greyish Teal · White review cards</div>
+
+    <!-- ══ COMPOSITION 5: CTA Band — Gradient 4 (Warm Off-White → Lime) ══ -->
+    <div style="background:linear-gradient(to bottom, #FFF9F4, #D4F19B);" class="px-8 py-24">
+      <div class="max-w-[680px] mx-auto text-center">
+        <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full text-[12px] font-bold tracking-wider uppercase bg-white/70 text-brand border border-brand/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span>
+          Start in 2 minutes
+        </div>
+        <h2 class="text-[42px] font-semibold tracking-tight text-charcoal leading-tight mb-5">Ready to see <em class="not-italic text-brand">your</em> rate?</h2>
+        <p class="text-[16px] text-neutral-600 leading-relaxed mb-10 max-w-[420px] mx-auto">A soft search tells us a lot. No impact on your credit score. Just a rate that's actually yours.</p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <button class="inline-flex items-center justify-center gap-2 h-[56px] px-10 rounded-full font-bold text-white text-[16px] hover:bg-brand-hover transition-all shadow-md" style="background:#0E4533;">
+            Check my rate
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="inline-flex items-center justify-center h-[56px] px-8 rounded-full font-medium text-charcoal text-[15px] border border-charcoal/20 hover:bg-white/50 transition-all">
+            Learn more
+          </button>
+        </div>
+        <p class="text-[12px] text-neutral-500 mt-5">From £1,000 to £25,000 · 9.9%–39.9% APR representative · FCA authorised</p>
+      </div>
+    </div>
+    <div class="bg-neutral-800 text-neutral-400 text-[10px] font-mono px-8 py-1.5">Composition 5 · CTA Band — bg-gradient-4 (linear-gradient to bottom, #FFF9F4 → #D4F19B) · Warm Off-White to Lime · Dark brand CTA on warm gradient</div>
+
+    <!-- ══ COMPOSITION 6: Brand Footer — Dark Forest Green panel ══ -->
+    <div style="background:#0E4533;" class="px-8 py-16 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10" style="background-image:url('../brand-assest/abstract-1.jpg'); background-size:cover; background-position:center; mix-blend-mode:luminosity;"></div>
+      <div class="relative z-10 max-w-[1100px] mx-auto">
+        <div class="flex flex-col md:flex-row justify-between gap-10 pb-10 border-b border-white/10">
+          <div class="max-w-[280px]">
+            <img src="../brand-assest/wordmark-white.png" alt="Abound" class="h-5 mb-5 opacity-80" onerror="this.outerHTML='<span class=\'text-xl font-bold tracking-tighter text-white opacity-80\'>abound</span>'">
+            <p class="text-[13px] leading-relaxed" style="color:rgba(255,255,255,0.5);">A personal loan that looks at the full picture. Fair rates for real people.</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div>
+              <div class="text-[11px] font-bold uppercase tracking-widest mb-3" style="color:rgba(255,255,255,0.35);">Product</div>
+              <ul class="space-y-2">
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">Personal loans</a></li>
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">How it works</a></li>
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">Rate calculator</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-[11px] font-bold uppercase tracking-widest mb-3" style="color:rgba(255,255,255,0.35);">Company</div>
+              <ul class="space-y-2">
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">About us</a></li>
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">Blog</a></li>
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">Careers</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="text-[11px] font-bold uppercase tracking-widest mb-3" style="color:rgba(255,255,255,0.35);">Legal</div>
+              <ul class="space-y-2">
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">Privacy</a></li>
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">Terms</a></li>
+                <li><a href="#" class="text-[13px] no-underline hover:text-white transition-colors" style="color:rgba(255,255,255,0.6);">Accessibility</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-[12px]" style="color:rgba(255,255,255,0.35);">© 2026 Abound (Fintern Ltd). Authorised and regulated by the FCA (FRN 913090).</p>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold" style="background:rgba(212,241,155,0.15); color:#D4F19B; border:1px solid rgba(212,241,155,0.25);">
+              <span class="w-1.5 h-1.5 rounded-full bg-lime inline-block"></span>WCAG 2.1 AA
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-neutral-800 text-neutral-400 text-[10px] font-mono px-8 py-1.5">Composition 6 · Brand Footer — bg-brand #0E4533 + abstract-1.jpg overlay + Lime badge on dark · Pattern for all dark-surface components</div>
+
+    <!-- ══ COMPOSITION LEGEND ══ -->
+    <div class="bg-neutral-50 border-t border-neutral-200 px-8 py-12">
+      <div class="max-w-[1100px] mx-auto">
+        <h3 class="text-[13px] font-bold text-charcoal uppercase tracking-widest mb-6">Tokens used across these compositions</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-neutral-200">
+            <div class="w-6 h-6 rounded-md flex-shrink-0" style="background:#0E4533;"></div>
+            <div><div class="text-[11px] font-bold text-charcoal">bg-brand</div><div class="text-[10px] text-neutral-400 font-mono">#0E4533</div></div>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-neutral-200">
+            <div class="w-6 h-6 rounded-md flex-shrink-0" style="background:#D4F19B; border:1px solid #C8E88F;"></div>
+            <div><div class="text-[11px] font-bold text-charcoal">lime</div><div class="text-[10px] text-neutral-400 font-mono">#D4F19B</div></div>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-neutral-200">
+            <div class="w-6 h-6 rounded-md flex-shrink-0" style="background:#B8DCD2; border:1px solid #A8CEC4;"></div>
+            <div><div class="text-[11px] font-bold text-charcoal">teal-sage</div><div class="text-[10px] text-neutral-400 font-mono">#B8DCD2</div></div>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-neutral-200">
+            <div class="w-6 h-6 rounded-md flex-shrink-0" style="background:#EDEABE; border:1px solid #E0DDA8;"></div>
+            <div><div class="text-[11px] font-bold text-charcoal">khaki</div><div class="text-[10px] text-neutral-400 font-mono">#EDEABE</div></div>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-neutral-200">
+            <div class="w-6 h-6 rounded-md flex-shrink-0" style="background:linear-gradient(to bottom, #EAF1EA, #CBE4C8);"></div>
+            <div><div class="text-[11px] font-bold text-charcoal">gradient-1</div><div class="text-[10px] text-neutral-400 font-mono">How it works</div></div>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-neutral-200">
+            <div class="w-6 h-6 rounded-md flex-shrink-0" style="background:linear-gradient(to bottom, #FFF9F4, #D4F19B);"></div>
+            <div><div class="text-[11px] font-bold text-charcoal">gradient-4</div><div class="text-[10px] text-neutral-400 font-mono">CTA band</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
 
   <!-- ═══════════════ STEP 1 — ELIGIBILITY ═══════════════ -->
   <main id="view-1" class="flex-1 flex flex-col lg:flex-row items-start justify-center pt-12 pb-20 px-5 md:px-8 gap-10 max-w-[1100px] mx-auto w-full">
@@ -799,7 +1204,7 @@ const trustHTML = `
 
 // ─── Step tab switching ───
 function showStep(n) {
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 0; i <= 6; i++) {
     const view = document.getElementById('view-' + i);
     const tab  = document.getElementById('tab-' + i);
     if (view) {

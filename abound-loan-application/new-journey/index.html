@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abound — Solicitud de préstamo</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#0E4533',
+              hover: '#0A3325',
+              pressed: '#071F17',
+              subtle: '#EBF2ED',
+            },
+            charcoal: '#1A1917',
+            lime: '#D4F19B',
+            'teal-sage': '#B8DCD2',
+            success: { DEFAULT: '#0A5C3A', bg: '#EBF5EF' },
+            danger: { DEFAULT: '#C4320A', bg: '#FEF3F2' },
+            warning: { DEFAULT: '#B54708', bg: '#FDF6E8' },
+            info: { DEFAULT: '#175CD3', bg: '#EDF6F5' },
+            neutral: {
+              50: '#F4F7F4', 100: '#E8EDEA', 200: '#D3DCCF', 300: '#B4C2B0',
+              400: '#829080', 500: '#586858', 600: '#3F4F3F', 700: '#2C3A2C',
+              800: '#1C271C', 900: '#111A11',
+            },
+          },
+          fontFamily: {
+            sans: ['Saans', 'DM Sans', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Inline overrides: accent-color for native form controls -->
+  <style>
+    * { accent-color: #0E4533; }
+  </style>
+
+  <!-- Google Fonts Fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Abound Design System Core CSS -->
+  <link rel="stylesheet" href="assets/styles/main.css">
+
+  <!-- Import Map for ES Modules -->
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen">
+
+<div id="app" class="flex flex-col min-h-screen">
+  
+  <!-- Header Shared Component -->
+  <app-header :progress="currentProgress" title="Préstamo"></app-header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col w-full max-w-[480px] mx-auto px-6 py-10 md:py-16">
+    <component :is="currentStepComponent" @next-step="handleNextStep"></component>
+  </main>
+
+</div>
+
+<!-- ES Module Application Entry -->
+<script type="module">
+  import { createApp, ref, computed, onMounted } from 'vue';
+  import AppHeader from './components/shared/AppHeader.js';
+  import StepLayout from './components/shared/StepLayout.js';
+  import AboundButton from './components/shared/AboundButton.js';
+  
+  import StepQuote from './components/StepQuote.js';
+  import StepVerifyEmail from './components/StepVerifyEmail.js';
+  import StepFinance from './components/StepFinance.js';
+  import StepConnectBank from './components/StepConnectBank.js';
+  import StepSubmit from './components/StepSubmit.js';
+  import StepOutcome from './components/StepOutcome.js';
+
+  const app = createApp({
+    setup() {
+      // Start at Step 1: Quote (Welcome & Quote)
+      const currentStepId = ref('StepQuote');
+      const currentStepComponent = computed(() => currentStepId.value);
+
+      // 6-Step Sequence (Figma v5)
+      const steps = [
+        'StepQuote', 
+        'StepVerifyEmail', 
+        'StepFinance', 
+        'StepConnectBank', 
+        'StepSubmit', 
+        'StepOutcome'
+      ];
+
+      const currentProgress = computed(() => {
+        const index = steps.indexOf(currentStepId.value);
+        if (index === steps.length - 1) return 100;
+        return ((index + 1) / steps.length) * 100;
+      });
+
+      const handleNextStep = (event) => {
+        console.log('Next step triggered:', event);
+        
+        let nextStep = '';
+
+        // State Machine Router (Figma v5)
+        if (event.step === 'quote') {
+          nextStep = 'StepVerifyEmail';
+        } else if (event.step === 'verify-email') {
+          nextStep = 'StepFinance';
+        } else if (event.step === 'finance') {
+          nextStep = 'StepConnectBank';
+        } else if (event.step === 'connect-bank') {
+          nextStep = 'StepSubmit';
+        } else if (event.step === 'submit') {
+          nextStep = 'StepOutcome';
+        }
+
+        if (nextStep) {
+          currentStepId.value = nextStep;
+          // Pushing to URL history
+          history.pushState({ stepId: nextStep }, '', `#${nextStep}`);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      };
+
+      // Handle Browser Back/Forward navigation
+      onMounted(() => {
+        // Set initial state
+        history.replaceState({ stepId: 'StepInitial' }, '', '#StepInitial');
+
+        window.addEventListener('popstate', (event) => {
+          if (event.state && event.state.stepId) {
+            currentStepId.value = event.state.stepId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+
+      return {
+        currentStepComponent,
+        currentProgress,
+        handleNextStep
+      };
+    }
+  });
+
+  // Global Components (Nested in other steps)
+  app.component('AppHeader', AppHeader);
+  app.component('StepLayout', StepLayout);
+  app.component('AboundButton', AboundButton);
+
+  // Step Components (Target of :is)
+  app.component('StepQuote', StepQuote);
+  app.component('StepVerifyEmail', StepVerifyEmail);
+  app.component('StepFinance', StepFinance);
+  app.component('StepConnectBank', StepConnectBank);
+  app.component('StepSubmit', StepSubmit);
+  app.component('StepOutcome', StepOutcome);
+
+  app.mount('#app');
+</script>
+
+
+</body>
+</html>
