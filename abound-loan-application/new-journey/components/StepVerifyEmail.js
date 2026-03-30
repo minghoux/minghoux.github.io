@@ -1,7 +1,7 @@
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_280ms_cubic-bezier(0.16,1,0.3,1)_both] flex flex-col gap-10">
+  <div class="w-full animate-fade-slide-in flex flex-col gap-10">
     
     <!-- Branding Header -->
     <div class="flex flex-col gap-2">

@@ -10,7 +10,7 @@ export default {
     <button 
       :type="type"
       :disabled="disabled || loading"
-      class="abound-btn h-[64px] text-[17px] disabled:opacity-100 disabled:bg-[#E2E8E2] disabled:text-[#9CA89C] disabled:border-charcoal/10 transition-all font-bold"
+      class="w-full h-[64px] bg-brand text-white font-black text-[17px] rounded-standard transition-all hover:bg-brand-hover active:bg-brand-pressed disabled:opacity-100 disabled:bg-[#E2E8E2] disabled:text-[#9CA89C] disabled:border-charcoal/10 transition-all"
     >
       <span v-if="loading" class="animate-spin mr-2">
         <i class="fa-solid fa-spinner"></i>

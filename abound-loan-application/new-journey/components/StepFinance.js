@@ -2,7 +2,7 @@ import { ref, computed } from 'vue';
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_280ms_cubic-bezier(0.16,1,0.3,1)_both] flex flex-col gap-10">
+  <div class="w-full animate-fade-slide-in flex flex-col gap-10">
     
     <!-- Branding Header -->
     <div class="flex flex-col gap-2">
@@ -28,7 +28,7 @@ const template = `
             v-for="opt in q.options" 
             :key="opt.value"
             @click="selectOption(q.id, opt.value)"
-            class="h-14 rounded-[14px] border-1.5 flex items-center justify-center font-bold text-[15px] transition-all"
+            class="h-14 rounded-standard border-1.5 flex items-center justify-center font-bold text-[15px] transition-all"
             :class="[
               selections[q.id] === opt.value 
                 ? 'bg-brand text-white border-brand' 

@@ -1,7 +1,7 @@
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_280ms_cubic-bezier(0.16,1,0.3,1)_both] flex flex-col gap-10">
+  <div class="w-full animate-fade-slide-in flex flex-col gap-10">
     
     <!-- Header Section -->
     <div class="flex flex-col gap-2">
@@ -11,7 +11,7 @@ const template = `
 
     <div class="flex flex-col gap-8">
       <!-- Loan Summary Module -->
-      <div class="bg-brand border-1.5 border-brand/10 rounded-[20px] p-8 flex flex-col gap-8 text-white">
+      <div class="bg-brand border-1.5 border-brand/10 rounded-large p-8 flex flex-col gap-8 text-white">
         <h3 class="text-[11px] font-bold uppercase tracking-widest text-white/50 text-center">
           {{ content.summaryTitle }}
         </h3>

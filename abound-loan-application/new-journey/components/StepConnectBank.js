@@ -1,7 +1,7 @@
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_280ms_cubic-bezier(0.16,1,0.3,1)_both] flex flex-col gap-10">
+  <div class="w-full animate-fade-slide-in flex flex-col gap-10">
     
     <!-- Header Section -->
     <div class="flex flex-col gap-2">
@@ -14,7 +14,7 @@ const template = `
         {{ content.description }}
       </p>
 
-      <div class="flex flex-col gap-6 bg-white border-1.5 border-charcoal/5 rounded-[20px] p-6">
+      <div class="flex flex-col gap-6 bg-white border-1.5 border-charcoal/5 rounded-large p-6">
         <div v-for="prop in content.props" :key="prop.title" class="flex items-start gap-4">
           <div class="w-10 h-10 rounded-full bg-brand/5 flex items-center justify-center text-brand flex-shrink-0">
             <i :class="prop.icon" class="text-lg"></i>

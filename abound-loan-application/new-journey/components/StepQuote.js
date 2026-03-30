@@ -5,7 +5,7 @@ const template = `
   <div class="w-full flex flex-col gap-10">
     
     <!-- Referral Header Transition -->
-    <div class="w-full bg-[#FCFCE9] border-1.5 border-[#E7E7D5] rounded-2xl py-3 px-5 flex items-center justify-center gap-3 animate-[fadeSlideIn_400ms_cubic-bezier(0.16,1,0.3,1)_both]">
+    <div class="w-full bg-[#FCFCE9] border-1.5 border-[#E7E7D5] rounded-large py-3 px-5 flex items-center justify-center gap-3 animate-fade-slide-in">
       <div class="flex items-center gap-1.5 grayscale opacity-70">
         <div class="w-4 h-4 bg-charcoal rounded-[3px] flex items-center justify-center text-[8px] text-white font-bold">C</div>
         <span class="text-[12px] font-bold tracking-tight text-charcoal">ClearScore</span>
@@ -20,7 +20,7 @@ const template = `
     </div>
 
     <!-- Main Content Section -->
-    <div class="animate-[fadeSlideIn_320ms_200ms_cubic-bezier(0.16,1,0.3,1)_both] flex flex-col gap-10">
+    <div class="flex flex-col gap-10 animate-fade-slide-in" style="animation-delay: 200ms">
       <!-- Header Section -->
       <div class="flex flex-col gap-5">
         <div class="flex justify-between items-start">
@@ -87,7 +87,7 @@ const template = `
       </div>
 
       <!-- Summary Info — Improved contrast against background -->
-      <div class="bg-brand/[0.04] border-1.5 border-brand/10 rounded-[14px] p-5 flex flex-col gap-1">
+      <div class="bg-brand/[0.04] border-1.5 border-brand/10 rounded-standard p-5 flex flex-col gap-1">
         <label class="abound-label text-brand/60">{{ content.stats.aprLabel }}</label>
         <div class="text-[20px] font-black text-brand">{{ (content.apr * 100).toFixed(1) }}%</div>
       </div>
@@ -102,6 +102,7 @@ const template = `
       </div>
     </form>
   </div>
+</div>
 `;
 
 export default {
