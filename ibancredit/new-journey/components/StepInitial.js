@@ -2,40 +2,42 @@ import { ref, computed } from 'vue';
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] flex flex-col gap-8">
-      <div class="flex flex-col gap-2">
-        <h1 class="text-3xl font-black text-[var(--color-charcoal)] tracking-tighter leading-tight">{{ content.title }}</h1>
-        <p class="text-neutral-600 text-base leading-relaxed">
-          {{ content.description }}
-        </p>
-      </div>
+  <div class="w-full animate-[fadeSlideIn_280ms_cubic-bezier(0.16,1,0.3,1)_both] flex flex-col gap-8">
+    <div class="flex flex-col gap-2">
+      <h1 class="text-[28px] font-black text-[var(--color-charcoal)] tracking-tighter leading-snug">{{ content.title }}</h1>
+      <p class="text-[14px] text-neutral-500 leading-relaxed">{{ content.description }}</p>
+    </div>
 
-      <form @submit.prevent="submitStep" class="flex flex-col gap-6">
-        <div v-for="(field, key) in content.fields" :key="key" :class="field.gridClass || ''" class="flex flex-col gap-2">
-          <label class="text-sm font-black text-neutral-600 uppercase tracking-widest px-1" :for="key">{{ field.label }}</label>
-        <input 
-          :type="field.type || 'text'" 
-          :id="key" 
-          v-model="formData[key]" 
-          class="abound-input" 
+    <form @submit.prevent="submitStep" class="flex flex-col gap-5">
+      <div v-for="(field, key) in content.fields" :key="key" :class="field.gridClass || ''">
+        <label class="abound-label" :for="key">{{ field.label }}</label>
+        <input
+          :type="field.type || 'text'"
+          :id="key"
+          v-model="formData[key]"
+          class="abound-input"
           :class="field.inputClass || ''"
           :placeholder="field.placeholder"
         >
       </div>
 
-      <!-- Privacy Checkbox -->
-      <div class="flex items-start gap-4 mt-4 bg-white p-6 rounded-2xl border border-neutral-200">
-        <div class="relative flex items-center mt-1">
-          <input type="checkbox" id="privacy" v-model="formData.privacy" class="w-6 h-6 border-2 border-neutral-200 rounded-lg text-brand focus:ring-brand focus:ring-2 focus:ring-offset-2 transition-colors cursor-pointer accent-brand">
-        </div>
-        <label for="privacy" class="text-xs font-medium text-neutral-500 leading-relaxed cursor-pointer select-none">
-          {{ content.privacyLabel }} 
-          <a href="#" class="text-brand font-bold hover:underline">{{ content.privacyLinkText }}</a> 
+      <!-- Privacy Checkbox — cleaner, less boxed -->
+      <div class="flex items-start gap-3 pt-2">
+        <input
+          type="checkbox"
+          id="privacy"
+          v-model="formData.privacy"
+          class="mt-0.5 w-5 h-5 rounded cursor-pointer shrink-0"
+          style="accent-color: #0E4533;"
+        >
+        <label for="privacy" class="text-[12px] font-medium text-neutral-500 leading-relaxed cursor-pointer select-none">
+          {{ content.privacyLabel }}
+          <a href="#" class="text-brand font-semibold hover:underline">{{ content.privacyLinkText }}</a>
           {{ content.privacySuffix }}
         </label>
       </div>
 
-      <button type="submit" class="abound-btn mt-8">
+      <button type="submit" class="abound-btn mt-4">
         {{ content.cta }}
       </button>
     </form>

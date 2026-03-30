@@ -2,64 +2,63 @@ import { ref } from 'vue';
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] flex flex-col gap-8">
-    <h1 class="text-3xl font-black text-charcoal tracking-tighter leading-tight">{{ content.title }}</h1>
+  <div class="w-full animate-[fadeSlideIn_280ms_cubic-bezier(0.16,1,0.3,1)_both] flex flex-col gap-8">
+    <h1 class="text-[28px] font-black text-charcoal tracking-tighter leading-snug">{{ content.title }}</h1>
 
     <form @submit.prevent="submitStep" class="flex flex-col gap-8">
-      <!-- Selection Grid -->
+      <!-- Selection Grid — rounded-square icons, not circles -->
       <div class="grid grid-cols-2 gap-3">
-        <button 
-          v-for="opt in content.options" 
+        <button
+          v-for="opt in content.options"
           :key="opt.id"
           type="button"
           @click="selectOption(opt.id)"
-          class="flex flex-col items-center justify-center gap-4 p-5 border-2 rounded-2xl transition-all duration-200 group h-36 bg-white"
-          :class="selectedId === opt.id ? 'border-brand bg-brand/5' : 'border-neutral-200 hover:border-neutral-300' "
+          class="flex flex-col items-center justify-center gap-3 p-5 border-[1.5px] rounded-2xl transition-all duration-200 h-[136px] bg-white"
+          :class="selectedId === opt.id ? 'border-brand/40 bg-brand/[0.03]' : 'border-[#E2E8E2] hover:border-[#C5D3C5]'"
         >
-            <div 
-              class="w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-200"
-              :class="selectedId === opt.id ? 'bg-brand text-white' : 'bg-neutral-200 text-neutral-500 group-hover:bg-neutral-300'"
-            >
-               <i :class="opt.icon" class="text-xl"></i>
-            </div>
-          
-          <span class="text-xs font-black text-center tracking-tight leading-tight uppercase px-1" :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-600'">
-            {{ opt.label }}
-          </span>
+          <!-- Rounded-square container — more intentional than a generic circle -->
+          <div
+            class="select-icon-square"
+            :class="selectedId === opt.id ? 'active' : 'idle'"
+          >
+            <i :class="opt.icon"></i>
+          </div>
+
+          <span
+            class="text-[11px] font-semibold text-center leading-snug px-1"
+            :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-600'"
+          >{{ opt.label }}</span>
         </button>
       </div>
 
-        <!-- Custom Input Area -->
-        <div class="mt-4">
-          <label class="block text-sm font-semibold text-charcoal mb-2">{{ content.customLabel }}</label>
-          <div class="relative group">
-            <input 
-              type="text" 
-              v-model="customMotivo" 
-              class="abound-input pr-12 focus:border-brand transition-colors" 
-              placeholder="..."
-              @input="selectedId = null"
-            >
-            <button 
-               type="submit" 
-               v-show="customMotivo.length > 2"
-               class="absolute right-1 top-1 bottom-1 w-10 flex items-center justify-center bg-brand text-white rounded-lg hover:bg-brand-hover transition-colors"
-            >
-               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </button>
-          </div>
+      <!-- Custom Input Area -->
+      <div>
+        <label class="abound-label">{{ content.customLabel }}</label>
+        <div class="relative">
+          <input
+            type="text"
+            v-model="customMotivo"
+            class="abound-input pr-14"
+            placeholder="..."
+            @input="selectedId = null"
+          >
+          <button
+            type="submit"
+            v-show="customMotivo.length > 2"
+            class="absolute right-1.5 top-1.5 bottom-1.5 w-10 flex items-center justify-center bg-brand text-white rounded-xl hover:bg-[#0A3325] transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
         </div>
+      </div>
 
-        <button 
-          v-if="selectedId" 
-          type="submit" 
-          class="abound-btn mt-4 animate-[fadeSlideIn_200ms_linear_both]"
-        >
-          {{ content.cta }}
-        </button>
+      <button
+        v-if="selectedId"
+        type="submit"
+        class="abound-btn animate-[fadeSlideIn_280ms_cubic-bezier(0.16,1,0.3,1)_both]"
+      >{{ content.cta }}</button>
 
-      </form>
-    </div>
+    </form>
   </div>
 `;
 

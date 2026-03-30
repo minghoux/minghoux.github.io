@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ibancredit App</title>
+  <title>Abound — Solicitud de préstamo</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -48,79 +48,9 @@
     }
   </script>
 
-  <!-- Base Custom Styles & Fonts -->
+  <!-- Inline overrides: accent-color for native form controls -->
   <style>
-    @font-face {
-      font-family: 'Saans';
-      src: url('../../abound-brand-2026/brand-assest/Saans font/Saans-Regular.woff2') format('woff2');
-      font-weight: 400;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Saans';
-      src: url('../../abound-brand-2026/brand-assest/Saans font/Saans-Medium.woff2') format('woff2');
-      font-weight: 500;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Saans';
-      src: url('../../abound-brand-2026/brand-assest/Saans font/Saans-SemiBold.woff2') format('woff2');
-      font-weight: 600 700;
-      font-display: swap;
-    }
-    body {
-      background-color: #F8FAFA; /* Subtle Mint-OffWhite for visual depth */
-      color: #201F1D; /* text-charcoal */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overscroll-behavior: none;
-      overflow-x: hidden;
-    }
-
-    /* Standard Abound Input State */
-    .abound-input {
-      width: 100%;
-      height: 52px;
-      padding: 0 16px;
-      background: white; /* Inputs pop on subtle page background */
-      border: 1px solid #E4E7EC;
-      border-radius: 14px;
-      font-size: 16px;
-      color: #201F1D;
-      transition: all 150ms ease-out;
-    }
-    .abound-input::placeholder { color: #98A2B3; }
-    .abound-input:focus {
-      outline: none;
-      border-color: #0E4533;
-      box-shadow: 0 0 0 4px rgba(14, 69, 51, 0.1);
-    }
-    
-    .abound-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 56px;
-      background: #0E4533;
-      color: white;
-      font-weight: 700;
-      font-size: 16px;
-      border-radius: 14px;
-      transition: all 150ms ease-out;
-      border: none;
-      box-shadow: 0 4px 6px -1px rgba(14, 69, 51, 0.1), 0 2px 4px -1px rgba(14, 69, 51, 0.05);
-    }
-    .abound-btn:hover { background: #0A3325; transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgba(14, 69, 51, 0.15); }
-    .abound-btn:active { background: #071F17; transform: translateY(0) scale(0.98); }
-    
-    .abound-btn:disabled {
-      background: #E8EDEA;
-      color: #98A2B3;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
+    * { accent-color: #0E4533; }
   </style>
 
   <!-- Google Fonts Fallback -->
@@ -253,12 +183,6 @@
   app.mount('#app');
 </script>
 
-<style>
-  @keyframes fadeSlideIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
 
 </body>
 </html>

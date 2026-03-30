@@ -2,29 +2,29 @@ import { ref } from 'vue';
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] flex flex-col gap-8">
-    <h1 class="text-3xl font-black text-charcoal tracking-tighter leading-tight">{{ content.title }}</h1>
+  <div class="w-full animate-[fadeSlideIn_280ms_cubic-bezier(0.16,1,0.3,1)_both] flex flex-col gap-8">
+    <h1 class="text-[28px] font-black text-charcoal tracking-tighter leading-snug">{{ content.title }}</h1>
 
-    <div class="flex flex-col gap-3">
-      <button 
-        v-for="opt in content.options" 
+    <!-- Flat list rows — consistent with StepEmployment -->
+    <div class="flex flex-col gap-2">
+      <button
+        v-for="opt in content.options"
         :key="opt.id"
         type="button"
         @click="selectOption(opt.id)"
-        class="flex items-center gap-4 p-5 border-2 rounded-2xl transition-all duration-200 text-left bg-white"
-        :class="selectedId === opt.id ? 'border-brand bg-brand/5' : 'border-neutral-200 hover:border-neutral-300'"
+        class="select-row"
+        :class="selectedId === opt.id ? 'active' : ''"
       >
-        <div 
-          class="w-14 h-14 rounded-full flex items-center justify-center shrink-0 transition-colors"
-          :class="selectedId === opt.id ? 'bg-brand text-white' : 'bg-neutral-200 text-neutral-500'"
-        >
-           <i :class="opt.icon" class="text-xl"></i>
+        <div class="select-row-icon" :class="selectedId === opt.id ? 'active' : 'idle'">
+          <i :class="opt.icon"></i>
         </div>
-        <span class="font-black text-sm uppercase tracking-tight" :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-600'">
+        <span class="select-row-label" :class="selectedId === opt.id ? 'active' : 'idle'">
           {{ opt.label }}
         </span>
-        <div v-show="selectedId === opt.id" class="ml-auto text-brand">
-           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+        <div v-show="selectedId === opt.id" class="ml-auto shrink-0">
+          <svg class="w-5 h-5 text-brand" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
         </div>
       </button>
     </div>
