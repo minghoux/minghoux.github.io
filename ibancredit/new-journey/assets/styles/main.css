@@ -1,0 +1,71 @@
+/* Abound Design System 2026 - Styles Core */
+
+@font-face {
+  font-family: 'Saans';
+  src: url('../../brand-assest/Saans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Saans';
+  src: url('../../brand-assest/Saans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Saans';
+  src: url('../../brand-assest/Saans-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+
+:root {
+  --color-brand: #0E4533;
+  --color-brand-hover: #0A3325;
+  --color-success: #3FD3A6;
+  --color-mint-offwhite: #F8FAFA;
+  --color-charcoal: #201F1D;
+}
+
+body {
+  background-color: var(--color-mint-offwhite);
+  color: var(--color-charcoal);
+  font-family: 'Saans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+/* Custom Animations */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.animate-fade-slide-in {
+  animation: fadeSlideIn 300ms cubic-bezier(0.2, 0, 0.2, 1) both;
+}
+
+/* Base Form Overrides */
+input::placeholder {
+  color: #98A2B3;
+  opacity: 1;
+}
+
+/* Progress-specific utilities */
+.progress-container {
+  background: rgba(0, 0, 0, 0.1);
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--color-success);
+  transition: width 800ms cubic-bezier(0.65, 0, 0.35, 1);
+}

@@ -69,23 +69,23 @@
       font-display: swap;
     }
     body {
-      background-color: #F4F8F3; /* bg-off-white */
+      background-color: #F8FAFA; /* Subtle Mint-OffWhite for visual depth */
       color: #201F1D; /* text-charcoal */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overscroll-behavior: none; /* Prevents "pull-to-refresh" and elastic dragging */
-      overflow-x: hidden; /* Prevents horizontal shifts */
+      overscroll-behavior: none;
+      overflow-x: hidden;
     }
 
     /* Standard Abound Input State */
     .abound-input {
       width: 100%;
-      height: 48px;
+      height: 52px;
       padding: 0 16px;
-      background: white;
-      border: 1px solid #D0D5DD;
-      border-radius: 8px;
-      font-size: 14px;
+      background: white; /* Inputs pop on subtle page background */
+      border: 1px solid #E4E7EC;
+      border-radius: 14px;
+      font-size: 16px;
       color: #201F1D;
       transition: all 150ms ease-out;
     }
@@ -101,32 +101,38 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: 48px;
+      height: 56px;
       background: #0E4533;
       color: white;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 16px;
-      border-radius: 8px;
-      transition: background 150ms ease-out, transform 150ms ease-out, box-shadow 150ms ease-out;
-      border: calc(max(2px, 0em)) solid transparent;
+      border-radius: 14px;
+      transition: all 150ms ease-out;
+      border: none;
+      box-shadow: 0 4px 6px -1px rgba(14, 69, 51, 0.1), 0 2px 4px -1px rgba(14, 69, 51, 0.05);
     }
-    .abound-btn:hover { background: #0A3325; }
-    .abound-btn:active { background: #071F17; transform: scale(0.98); }
-    .abound-btn:focus-visible { outline: 2px solid #0E4533; outline-offset: 4px; }
+    .abound-btn:hover { background: #0A3325; transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgba(14, 69, 51, 0.15); }
+    .abound-btn:active { background: #071F17; transform: translateY(0) scale(0.98); }
     
     .abound-btn:disabled {
       background: #E8EDEA;
       color: #98A2B3;
       cursor: not-allowed;
       transform: none;
+      box-shadow: none;
     }
   </style>
 
   <!-- Google Fonts Fallback -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Abound Design System Core CSS -->
+  <link rel="stylesheet" href="assets/styles/main.css">
+
   <!-- Import Map for ES Modules -->
   <script type="importmap">
     {
@@ -136,24 +142,15 @@
     }
   </script>
 </head>
-<body class="min-h-screen font-sans">
+<body class="min-h-screen">
 
 <div id="app" class="flex flex-col min-h-screen">
   
-  <!-- Header Shell -->
-  <header class="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-neutral-200 h-16 flex items-center px-4 md:px-8">
-    <div class="max-w-[1024px] w-full mx-auto flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2 no-underline">
-        <img src="../brand-assest/wordmark.svg" alt="Abound" class="h-6" />
-      </a>
-      <div class="text-xs font-bold px-3 py-1 bg-neutral-50 rounded-full text-neutral-500 border border-neutral-200">
-        Préstamo Rápido
-      </div>
-    </div>
-  </header>
+  <!-- Header Shared Component -->
+  <app-header :progress="currentProgress" title="Préstamo"></app-header>
 
   <!-- Main Content Area -->
-  <main class="flex-1 flex flex-col items-center p-4 md:p-8 w-full max-w-[560px] mx-auto">
+  <main class="flex-1 flex flex-col w-full max-w-[480px] mx-auto px-6 py-10 md:py-16">
     <component :is="currentStepComponent" @next-step="handleNextStep"></component>
   </main>
 
@@ -162,6 +159,7 @@
 <!-- ES Module Application Entry -->
 <script type="module">
   import { createApp, ref, computed, onMounted } from 'vue';
+  import AppHeader from './components/shared/AppHeader.js';
   import StepInitial from './components/StepInitial.js';
   import StepCalculator from './components/StepCalculator.js';
   import StepMotivo from './components/StepMotivo.js';
@@ -172,6 +170,7 @@
 
   const app = createApp({
     components: {
+      AppHeader,
       StepInitial,
       StepCalculator,
       StepMotivo,
@@ -184,6 +183,23 @@
       // Start at Initial Step (Lead Capture)
       const currentStepId = ref('StepInitial');
       const currentStepComponent = computed(() => currentStepId.value);
+
+      // Simple Step Index logic for Progress Bar
+      const steps = [
+        'StepInitial', 
+        'StepCalculator', 
+        'StepMotivo', 
+        'StepEmployment', 
+        'StepHousing', 
+        'StepBancos', 
+        'StepOutcome'
+      ];
+
+      const currentProgress = computed(() => {
+        const index = steps.indexOf(currentStepId.value);
+        if (index === steps.length - 1) return 100;
+        return ((index + 1) / steps.length) * 100;
+      });
 
       const handleNextStep = (event) => {
         console.log('Next step triggered:', event);
@@ -228,6 +244,7 @@
 
       return {
         currentStepComponent,
+        currentProgress,
         handleNextStep
       };
     }

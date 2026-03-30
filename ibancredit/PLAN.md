@@ -1,32 +1,34 @@
 # Goal
-Rebrand the Ibancar user journey to align with the new Abound brand identity, utilizing the Abound design system and style guidelines. The final deliverable must be a functional, interactive frontend prototype showcasing the entire flow.
+Rebrand the Ibancar user journey to align with the new Abound brand identity, utilizing the Abound design system and modular atomic architecture. The final deliverable is a functional, interactive, and scalable frontend prototype.
 
-# Execution Steps
+## Technical Stack
+- **Framework**: Vue 3 (Composition API) via CDN ESM
+- **Styling**: Tailwind CSS (CDN) + Abound Design System 2026 Core CSS
+- **Architecture**: Modular "No-Build" SPA with **Atomic UI Components**
+- **Assets**: Local brand assets from `/brand-assest` (wordmark, font saans)
+- **Icons**: FontAwesome 6 (CDN)
 
-## 1. Journey Analysis & Extraction
-- Analyze the screenshots of the current Ibancar journey located in the `ibancredit/current-journey` directory.
-- Extract all UI text, step sequences, and form field requirements into `ibancredit/current-journey/current-journey.md`.
-- Document the logical flow of the application (e.g., from loan purpose -> loan calculator -> personal details -> result).
+## Architecture: Modular Atomic UI
+The project utilizes a scalable, reusable architecture:
+- **`/components/shared/`**: Houses "Atoms" like `AboundInput`, `AboundButton`, `AppHeader`, and `StepLayout`.
+- **`/assets/styles/main.css`**: Central source of truth for branding, typography, and global animations.
+- **`index.html`**: Acts strictly as a state machine router and entry point with History API support.
 
-## 2. Design System Integration
-- Reference the Abound design system (`abound-brand-2026/design-system/abound-design-system.html`) for styling, components, colors, and typography.
-- **Typography:** Load the primary brand font (`Saans`) with web-safe fallbacks (`DM Sans`, `sans-serif`) as defined in the design system. Ensure fonts load correctly in a no-build environment using `@font-face` and relative paths.
-- **Assets:** Utilize brand assets (logos, images) from the local `ibancredit/brand-assest` directory when available. **Crucially**, replace all instances of the old Ibancar wordmark and branding text with the new Abound logo (`wordmark.svg`). If specific icons or assets are missing, use best judgment to find suitable, brand-aligned alternatives or SVG icons.
+## Completed Roadmap
+1. [x] **Phase 1: Project Setup** (Define ESM structure, Import Maps, Tailwind config)
+2. [x] **Phase 2: Lead Capture** (Implement Step 1 - Personal Details)
+3. [x] **Phase 3: Core Journey Logic** (Loan Calculator, Purpose Grid, Situation Lists)
+4. [x] **Phase 4: Design Refinement** (Immersive green header, FA Icons, Page "pop" aesthetics)
+5. [x] **Phase 5: UX Enhancements** (Standardized progress bar, Browser Back button support)
+6. [x] **Phase 6: Architectural Refactor** (Modularized Shared UI Library & Externalized CSS)
 
-## 3. Technical Setup & Architecture
-- **Tech Stack:** HTML, CSS, JavaScript (Vue 3 via CDN), Tailwind CSS via Tailwind Play CDN. The absolute priority is **no build process**—it must be accessible simply by double-clicking the HTML file.
-- **Architecture:** Implement a Single Page Application (SPA) structure. Use Vue.js's reactive state to smoothly transition between journey steps without triggering page reloads.
-- **Content-UI Separation:** Extract all UI text, step labels, and option lists into a centralized `journeyContent` JavaScript object. Reference this object within Vue components to ensure the UI is purely a presentation layer that's easily scalable and configurable.
-- **Styling:** Configure the Tailwind Play CDN script with the custom Abound theme (colors, typography, spacing, border radius) extracted from the design system so tokens are globally reusable.
-- **Componentization:** Keep the architecture modular. Utilize Vue components (e.g., `<script type="text/x-template">` or separate JS files if feasible) to maintain clean and reusable code structure.
-
-## 4. Prototype Development
-- Rebuild the journey step-by-step, starting from the initial step.
-- Recreate the functional logic of the original Ibancar form, replacing the visual design entirely with a premium, dynamic Abound aesthetic.
-- Ensure the layout is responsive, adhering to mobile-first best practices common in consumer lending.
-- Incorporate subtle animations and transitions between states to create a modern, high-quality user experience.
-
-## 5. Review & Refinement
-- Validate that all original UI text extracted in Step 1 has been accurately incorporated into the new prototype.
-- Verify that the prototype remains entirely dependency-free for the end user (no `npm install` needed).
-- When encountering ambiguity, prioritize simplicity, rapid prototyping efficiency, and strict adherence to the Abound visual brand.
+## Component Checklist
+- [x] **AppHeader.js**: Branded header + reactive progress bar
+- [x] **StepLayout.js**: Standardized page animation and header structure
+- [x] **AboundInput.js / AboundButton.js**: Atomic UI elements
+- [x] **StepInitial.js**: Lead Capture
+- [x] **StepCalculator.js**: Interactive Math Engine
+- [x] **StepMotivo.js**: Purpose Grid (FA Icons)
+- [x] **StepEmployment.js / StepHousing.js**: Situation Lists (FA Icons)
+- [x] **StepBancos.js**: Searchable Bank Grid + Persistent Loan Summary
+- [x] **StepOutcome.js**: Final Status & CTAs (WhatsApp/Call)

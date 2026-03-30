@@ -2,44 +2,43 @@ import { ref, computed } from 'vue';
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] mt-4 md:mt-8">
-    <!-- Surface Card -->
-    <div class="bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-neutral-200 w-full relative overflow-hidden">
-      <h1 class="text-2xl md:text-3xl font-bold text-charcoal mb-2 tracking-tight">{{ content.title }}</h1>
-      <p class="text-neutral-500 text-sm mb-8 leading-relaxed max-w-[400px]">
+  <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] flex flex-col gap-8">
+    <div class="flex flex-col gap-2">
+      <h1 class="text-3xl font-black text-charcoal tracking-tighter leading-tight">{{ content.title }}</h1>
+      <p class="text-neutral-500 text-base leading-relaxed">
         {{ content.description }}
       </p>
-
-      <form @submit.prevent="submitStep" class="flex flex-col gap-5">
-        <div v-for="(field, key) in content.fields" :key="key" :class="field.gridClass || ''">
-          <label class="block text-sm font-semibold text-charcoal mb-1.5" :for="key">{{ field.label }}</label>
-          <input 
-            :type="field.type || 'text'" 
-            :id="key" 
-            v-model="formData[key]" 
-            class="abound-input" 
-            :class="field.inputClass || ''"
-            :placeholder="field.placeholder"
-          >
-        </div>
-
-        <!-- Privacy Checkbox -->
-        <div class="flex items-start gap-3 mt-4 bg-neutral-50 p-4 rounded-xl border border-neutral-100">
-          <div class="relative flex items-center mt-0.5">
-            <input type="checkbox" id="privacy" v-model="formData.privacy" class="w-5 h-5 border-2 border-neutral-300 rounded text-brand focus:ring-brand focus:ring-2 focus:ring-offset-2 transition-colors cursor-pointer">
-          </div>
-          <label for="privacy" class="text-xs text-neutral-600 leading-relaxed cursor-pointer select-none">
-            {{ content.privacyLabel }} 
-            <a href="#" class="text-brand font-semibold hover:underline">{{ content.privacyLinkText }}</a> 
-            {{ content.privacySuffix }}
-          </label>
-        </div>
-
-        <button type="submit" class="abound-btn mt-6">
-          {{ content.cta }}
-        </button>
-      </form>
     </div>
+
+    <form @submit.prevent="submitStep" class="flex flex-col gap-6">
+      <div v-for="(field, key) in content.fields" :key="key" :class="field.gridClass || ''" class="flex flex-col gap-2">
+        <label class="text-sm font-bold text-charcoal/60 uppercase tracking-widest px-1" :for="key">{{ field.label }}</label>
+        <input 
+          :type="field.type || 'text'" 
+          :id="key" 
+          v-model="formData[key]" 
+          class="abound-input" 
+          :class="field.inputClass || ''"
+          :placeholder="field.placeholder"
+        >
+      </div>
+
+      <!-- Privacy Checkbox -->
+      <div class="flex items-start gap-4 mt-4 bg-white p-6 rounded-2xl border border-neutral-200/50 shadow-sm shadow-neutral-100">
+        <div class="relative flex items-center mt-1">
+          <input type="checkbox" id="privacy" v-model="formData.privacy" class="w-6 h-6 border-2 border-neutral-200 rounded-lg text-brand focus:ring-brand focus:ring-2 focus:ring-offset-2 transition-colors cursor-pointer accent-brand">
+        </div>
+        <label for="privacy" class="text-xs font-medium text-neutral-500 leading-relaxed cursor-pointer select-none">
+          {{ content.privacyLabel }} 
+          <a href="#" class="text-brand font-bold hover:underline">{{ content.privacyLinkText }}</a> 
+          {{ content.privacySuffix }}
+        </label>
+      </div>
+
+      <button type="submit" class="abound-btn mt-8">
+        {{ content.cta }}
+      </button>
+    </form>
   </div>
 `;
 

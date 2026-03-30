@@ -2,42 +2,32 @@ import { ref } from 'vue';
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] mt-4 md:mt-8">
-    
-    <div class="mb-6 flex items-center md:hidden">
-        <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest">Motivo</span>
-    </div>
+  <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] flex flex-col gap-8">
+    <h1 class="text-3xl font-black text-charcoal tracking-tighter leading-tight">{{ content.title }}</h1>
 
-    <!-- Surface Card -->
-    <div class="bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-neutral-200 w-full relative overflow-hidden">
-      
-      <h1 class="text-2xl md:text-3xl font-bold text-charcoal mb-8 tracking-tight">{{ content.title }}</h1>
-
-      <form @submit.prevent="submitStep" class="flex flex-col gap-6">
-        
-        <!-- Selection Grid -->
-        <div class="grid grid-cols-2 gap-4">
-          <button 
-            v-for="opt in content.options" 
-            :key="opt.id"
-            type="button"
-            @click="selectOption(opt.id)"
-            class="flex flex-col items-center justify-center gap-3 p-4 border-2 rounded-2xl transition-all duration-200 group h-32"
-            :class="selectedId === opt.id ? 'border-brand bg-brand/5' : 'border-neutral-100 hover:border-neutral-200 hover:bg-neutral-50 active:scale-[0.98]'"
-          >
-            <!-- Minimal Icon Placeholder (Replacing with unique Abound style SVGs in a real build) -->
+    <form @submit.prevent="submitStep" class="flex flex-col gap-8">
+      <!-- Selection Grid -->
+      <div class="grid grid-cols-2 gap-3">
+        <button 
+          v-for="opt in content.options" 
+          :key="opt.id"
+          type="button"
+          @click="selectOption(opt.id)"
+          class="flex flex-col items-center justify-center gap-4 p-5 border-2 rounded-2xl transition-all duration-200 group h-36 bg-white shadow-xl shadow-neutral-200/40"
+          :class="selectedId === opt.id ? 'border-brand ring-4 ring-brand/5' : 'border-neutral-50 hover:border-neutral-100 hover:scale-[1.02]' "
+        >
             <div 
-              class="w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200"
-              :class="selectedId === opt.id ? 'bg-brand text-white' : 'bg-neutral-100 text-neutral-400 group-hover:bg-neutral-200 group-hover:text-neutral-500'"
+              class="w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-200"
+              :class="selectedId === opt.id ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'bg-neutral-50 text-neutral-400 group-hover:bg-neutral-100'"
             >
-               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+               <i :class="opt.icon" class="text-xl"></i>
             </div>
-            
-            <span class="text-xs font-bold text-center tracking-tight leading-tight" :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-600'">
-              {{ opt.label }}
-            </span>
-          </button>
-        </div>
+          
+          <span class="text-xs font-black text-center tracking-tight leading-tight uppercase px-1" :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-500'">
+            {{ opt.label }}
+          </span>
+        </button>
+      </div>
 
         <!-- Custom Input Area -->
         <div class="mt-4">

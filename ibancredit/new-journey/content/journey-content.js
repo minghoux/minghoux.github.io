@@ -37,12 +37,12 @@ const JOURNEY_CONTENT = {
   stepMotivo: {
     title: "¿Cuál es el motivo del préstamo que solicita?",
     options: [
-      { id: 'deudas', label: 'Consolidación de deudas' },
-      { id: 'reforma', label: 'Reforma de vivienda' },
-      { id: 'vehiculo', label: 'Adquisición de vehículo' },
-      { id: 'evento', label: 'Evento: boda, comunión...' },
-      { id: 'vacaciones', label: 'Vacaciones' },
-      { id: 'estudios', label: 'Estudios' }
+      { id: 'deudas', label: 'Consolidación de deudas', icon: 'fa-solid fa-file-invoice-dollar' },
+      { id: 'reforma', label: 'Reforma de vivienda', icon: 'fa-solid fa-house-chimney-window' },
+      { id: 'vehiculo', label: 'Adquisición de vehículo', icon: 'fa-solid fa-car-side' },
+      { id: 'evento', label: 'Evento: boda, comunión...', icon: 'fa-solid fa-champagne-glasses' },
+      { id: 'vacaciones', label: 'Vacaciones', icon: 'fa-solid fa-umbrella-beach' },
+      { id: 'estudios', label: 'Estudios', icon: 'fa-solid fa-user-graduate' }
     ],
     customLabel: "O escribe el tuyo aquí",
     cta: "Continuar"
@@ -50,23 +50,23 @@ const JOURNEY_CONTENT = {
   stepEmployment: {
     title: "¿Cuál es tu situación laboral actual?",
     options: [
-      { id: 'full-time', label: 'Trabajo a tiempo completo' },
-      { id: 'part-time', label: 'Trabajo a tiempo parcial' },
-      { id: 'freelance', label: 'Autónomo' },
-      { id: 'student', label: 'Estudiante' },
-      { id: 'pension', label: 'Recibo pensión' },
-      { id: 'none', label: 'No trabajo' }
+      { id: 'full-time', label: 'Trabajo a tiempo completo', icon: 'fa-solid fa-briefcase' },
+      { id: 'part-time', label: 'Trabajo a tiempo parcial', icon: 'fa-solid fa-business-time' },
+      { id: 'freelance', label: 'Autónomo', icon: 'fa-solid fa-user-gear' },
+      { id: 'student', label: 'Estudiante', icon: 'fa-solid fa-book-open-reader' },
+      { id: 'pension', label: 'Recibo pensión', icon: 'fa-solid fa-hand-holding-dollar' },
+      { id: 'none', label: 'No trabajo', icon: 'fa-solid fa-user-slash' }
     ],
     cta: "Continuar"
   },
   stepHousing: {
     title: "¿Cuál es tu situación de vivienda actual?",
     options: [
-      { id: 'mortgage', label: 'Pago hipoteca' },
-      { id: 'rent-bank', label: 'Pago alquiler (por banco)' },
-      { id: 'rent-cash', label: 'Pago alquiler (en efectivo)' },
-      { id: 'none', label: 'No pago por vivienda' },
-      { id: 'other', label: 'Otra situación' }
+      { id: 'mortgage', label: 'Pago hipoteca', icon: 'fa-solid fa-house-circle-check' },
+      { id: 'rent-bank', label: 'Pago alquiler (por banco)', icon: 'fa-solid fa-building-user' },
+      { id: 'rent-cash', label: 'Pago alquiler (en efectivo)', icon: 'fa-solid fa-money-bill-wave' },
+      { id: 'none', label: 'No pago por vivienda', icon: 'fa-solid fa-house-lock' },
+      { id: 'other', label: 'Otra situación', icon: 'fa-solid fa-ellipsis' }
     ],
     cta: "Continuar"
   },
