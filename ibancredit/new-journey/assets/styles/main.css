@@ -53,6 +53,24 @@ input::placeholder {
   opacity: 1;
 }
 
+/* Atomic UI Core - No Shadows, High Contrast */
+.abound-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  background: var(--color-brand);
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 14px;
+  transition: all 150ms ease-out;
+  border: none;
+}
+.abound-btn:hover { background: var(--color-brand-hover); }
+.abound-btn:active { background: #071F17; transform: scale(0.98); }
+
 /* Progress-specific utilities */
 .progress-container {
   background: rgba(0, 0, 0, 0.1);

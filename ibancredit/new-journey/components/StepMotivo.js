@@ -13,12 +13,12 @@ const template = `
           :key="opt.id"
           type="button"
           @click="selectOption(opt.id)"
-          class="flex flex-col items-center justify-center gap-4 p-5 border-2 rounded-2xl transition-all duration-200 group h-36 bg-white shadow-xl shadow-neutral-200/40"
-          :class="selectedId === opt.id ? 'border-brand ring-4 ring-brand/5' : 'border-neutral-50 hover:border-neutral-100 hover:scale-[1.02]' "
+          class="flex flex-col items-center justify-center gap-4 p-5 border-2 rounded-2xl transition-all duration-200 group h-36 bg-white"
+          :class="selectedId === opt.id ? 'border-brand bg-brand/5' : 'border-neutral-200 hover:border-neutral-300' "
         >
             <div 
               class="w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-200"
-              :class="selectedId === opt.id ? 'bg-brand text-white shadow-lg shadow-brand/20' : 'bg-neutral-50 text-neutral-400 group-hover:bg-neutral-100'"
+              :class="selectedId === opt.id ? 'bg-brand text-white' : 'bg-neutral-100 text-neutral-400 group-hover:bg-neutral-200'"
             >
                <i :class="opt.icon" class="text-xl"></i>
             </div>
