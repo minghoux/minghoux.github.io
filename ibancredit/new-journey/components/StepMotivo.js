@@ -18,12 +18,12 @@ const template = `
         >
             <div 
               class="w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-200"
-              :class="selectedId === opt.id ? 'bg-brand text-white' : 'bg-neutral-100 text-neutral-400 group-hover:bg-neutral-200'"
+              :class="selectedId === opt.id ? 'bg-brand text-white' : 'bg-neutral-200 text-neutral-500 group-hover:bg-neutral-300'"
             >
                <i :class="opt.icon" class="text-xl"></i>
             </div>
           
-          <span class="text-xs font-black text-center tracking-tight leading-tight uppercase px-1" :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-500'">
+          <span class="text-xs font-black text-center tracking-tight leading-tight uppercase px-1" :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-600'">
             {{ opt.label }}
           </span>
         </button>

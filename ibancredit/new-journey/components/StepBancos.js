@@ -5,7 +5,7 @@ const template = `
   <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] flex flex-col gap-6">
     
     <!-- Summary Header -->
-    <div class="bg-brand text-white rounded-2xl p-6 flex justify-around items-center shadow-lg shadow-brand/10">
+    <div class="bg-brand text-white rounded-2xl p-6 flex justify-around items-center border-b-4 border-black/10">
       <div class="flex flex-col items-center">
         <span class="text-[10px] uppercase tracking-[0.2em] font-black opacity-60 mb-1">Importe</span>
         <span class="text-sm font-black">3.000€</span>
@@ -36,7 +36,7 @@ const template = `
           class="abound-input pl-12" 
           :placeholder="content.searchPlaceholder"
         >
-        <div class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400">
+        <div class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600">
            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
       </div>
@@ -47,13 +47,18 @@ const template = `
           v-for="bank in filteredBanks" 
           :key="bank.id"
           @click="selectBank(bank.id)"
-          class="flex flex-col items-center justify-center p-4 border-2 rounded-2xl h-28 transition-all shadow-sm shadow-neutral-100"
-          :class="selectedBank === bank.id ? 'border-brand bg-brand/5' : 'border-neutral-50 hover:bg-neutral-50'"
+          class="flex flex-col items-center justify-center p-4 border-2 rounded-2xl h-28 transition-all bg-white group"
+          :class="selectedBank === bank.id ? 'border-brand bg-brand/5' : 'border-neutral-200 hover:border-neutral-300'"
         >
-          <div class="w-14 h-8 bg-neutral-50 rounded mb-3 flex items-center justify-center text-[10px] font-black text-neutral-300 uppercase tracking-tighter">
-            {{ bank.name }}
+          <div 
+            class="w-12 h-12 rounded-full flex items-center justify-center mb-2 transition-colors duration-200"
+            :class="selectedBank === bank.id ? 'bg-brand text-white' : 'bg-neutral-200 text-neutral-500 group-hover:bg-neutral-300'"
+          >
+             <i class="fa-solid fa-building-columns text-lg"></i>
           </div>
-          <span class="text-[10px] font-black text-neutral-400 uppercase tracking-widest">{{ bank.name }}</span>
+          <span class="text-[10px] font-black uppercase tracking-widest text-center px-1" :class="selectedBank === bank.id ? 'text-brand' : 'text-neutral-600'">
+            {{ bank.name }}
+          </span>
         </button>
       </div>
     </div>

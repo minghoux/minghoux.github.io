@@ -15,7 +15,7 @@ export default {
       <label 
         v-if="label" 
         :for="id" 
-        class="text-sm font-bold text-charcoal/60 px-1"
+        class="text-sm font-black text-neutral-600 px-1"
         :class="{ 'uppercase tracking-widest text-[11px]': labelUpperCase }"
       >
         {{ label }}
@@ -25,7 +25,7 @@ export default {
         :type="type"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
-        class="w-full h-[52px] px-4 bg-white border border-[#E4E7EC] rounded-[14px] text-base text-[#201F1D] focus:outline-none focus:border-[#0E4533] focus:ring-4 focus:ring-[#0E4533]/5 transition-all duration-200"
+        class="w-full h-[52px] px-4 bg-white border border-[#D1D5DB] rounded-[14px] text-base text-[var(--color-charcoal)] focus:outline-none focus:border-[var(--color-brand)] focus:ring-4 focus:ring-[var(--color-brand)]/5 transition-all duration-200"
         :class="inputClass"
         :placeholder="placeholder"
       >

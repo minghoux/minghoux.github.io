@@ -3,16 +3,16 @@ import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
   <div class="w-full animate-[fadeSlideIn_200ms_ease-out_both] flex flex-col gap-8">
-    <div class="flex flex-col gap-2">
-      <h1 class="text-3xl font-black text-charcoal tracking-tighter leading-tight">{{ content.title }}</h1>
-      <p class="text-neutral-500 text-base leading-relaxed">
-        {{ content.description }}
-      </p>
-    </div>
+      <div class="flex flex-col gap-2">
+        <h1 class="text-3xl font-black text-[var(--color-charcoal)] tracking-tighter leading-tight">{{ content.title }}</h1>
+        <p class="text-neutral-600 text-base leading-relaxed">
+          {{ content.description }}
+        </p>
+      </div>
 
-    <form @submit.prevent="submitStep" class="flex flex-col gap-6">
-      <div v-for="(field, key) in content.fields" :key="key" :class="field.gridClass || ''" class="flex flex-col gap-2">
-        <label class="text-sm font-bold text-charcoal/60 uppercase tracking-widest px-1" :for="key">{{ field.label }}</label>
+      <form @submit.prevent="submitStep" class="flex flex-col gap-6">
+        <div v-for="(field, key) in content.fields" :key="key" :class="field.gridClass || ''" class="flex flex-col gap-2">
+          <label class="text-sm font-black text-neutral-600 uppercase tracking-widest px-1" :for="key">{{ field.label }}</label>
         <input 
           :type="field.type || 'text'" 
           :id="key" 
@@ -24,7 +24,7 @@ const template = `
       </div>
 
       <!-- Privacy Checkbox -->
-      <div class="flex items-start gap-4 mt-4 bg-white p-6 rounded-2xl border border-neutral-200/50 shadow-sm shadow-neutral-100">
+      <div class="flex items-start gap-4 mt-4 bg-white p-6 rounded-2xl border border-neutral-200">
         <div class="relative flex items-center mt-1">
           <input type="checkbox" id="privacy" v-model="formData.privacy" class="w-6 h-6 border-2 border-neutral-200 rounded-lg text-brand focus:ring-brand focus:ring-2 focus:ring-offset-2 transition-colors cursor-pointer accent-brand">
         </div>

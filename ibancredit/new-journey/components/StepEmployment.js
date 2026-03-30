@@ -11,16 +11,16 @@ const template = `
         :key="opt.id"
         type="button"
         @click="selectOption(opt.id)"
-        class="flex items-center gap-4 p-5 border-2 rounded-2xl transition-all duration-200 text-left bg-white shadow-xl shadow-neutral-200/40"
-        :class="selectedId === opt.id ? 'border-brand ring-4 ring-brand/5' : 'border-neutral-50 hover:bg-neutral-50 hover:scale-[1.01] active:scale-[0.99]'"
+        class="flex items-center gap-4 p-5 border-2 rounded-2xl transition-all duration-200 text-left bg-white"
+        :class="selectedId === opt.id ? 'border-brand bg-brand/5' : 'border-neutral-200 hover:border-neutral-300'"
       >
         <div 
-          class="w-14 h-14 rounded-full flex items-center justify-center shrink-0 transition-colors shadow-sm"
-          :class="selectedId === opt.id ? 'bg-brand text-white shadow-brand/20' : 'bg-neutral-50 text-neutral-400'"
+          class="w-14 h-14 rounded-full flex items-center justify-center shrink-0 transition-colors"
+          :class="selectedId === opt.id ? 'bg-brand text-white' : 'bg-neutral-200 text-neutral-500'"
         >
            <i :class="opt.icon" class="text-xl"></i>
         </div>
-        <span class="font-black text-sm uppercase tracking-tight" :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-500'">
+        <span class="font-black text-sm uppercase tracking-tight" :class="selectedId === opt.id ? 'text-brand' : 'text-neutral-600'">
           {{ opt.label }}
         </span>
         <div v-show="selectedId === opt.id" class="ml-auto text-brand">
@@ -30,8 +30,8 @@ const template = `
     </div>
 
     <!-- Footer Help Section -->
-    <div class="mt-8 py-8 border-t border-neutral-100 text-center">
-      <p class="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-4">¿Necesitas ayuda?</p>
+    <div class="mt-8 py-8 border-t border-neutral-200 text-center">
+      <p class="text-[10px] font-black text-neutral-400 uppercase tracking-[0.2em] mb-4">¿Necesitas ayuda?</p>
       <a href="#" class="text-sm font-black text-brand hover:underline">FAQ & Ayuda</a>
     </div>
   </div>

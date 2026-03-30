@@ -12,10 +12,10 @@ const template = `
     <form @submit.prevent="submitStep" class="flex flex-col gap-10">
       <!-- Slider Section -->
       <div>
-        <label class="block text-sm font-black text-neutral-400 uppercase tracking-widest mb-6">{{ content.amountLabel }}</label>
+        <label class="block text-sm font-black text-neutral-600 uppercase tracking-widest mb-6">{{ content.amountLabel }}</label>
         
         <div class="flex justify-center items-baseline gap-1 mb-10">
-          <span class="text-6xl font-black text-brand tracking-tighter">{{ formatCurrencyDisplay(amount) }}</span>
+          <span class="text-6xl font-black text-[var(--color-brand)] tracking-tighter">{{ formatCurrencyDisplay(amount) }}</span>
         </div>
 
         <input 
@@ -26,7 +26,7 @@ const template = `
           :step="content.amountStep"
           class="w-full h-3 bg-neutral-100 rounded-lg appearance-none cursor-pointer accent-brand"
         >
-        <div class="flex justify-between text-xs font-black text-neutral-300 mt-4 px-1 uppercase tracking-widest">
+        <div class="flex justify-between text-xs font-black text-neutral-400 mt-4 px-1 uppercase tracking-widest">
           <span>{{ formatCurrency(content.amountMin) }}</span>
           <span>{{ formatCurrency(content.amountMax) }}</span>
         </div>
@@ -34,7 +34,7 @@ const template = `
 
       <!-- Term Length Selection -->
       <div class="flex flex-col gap-2">
-        <label class="text-sm font-black text-neutral-400 uppercase tracking-widest px-1">{{ content.termLabel }}</label>
+        <label class="text-sm font-black text-neutral-600 uppercase tracking-widest px-1">{{ content.termLabel }}</label>
         <div class="relative">
           <select v-model.number="termMonths" class="abound-input appearance-none pr-10 font-black text-xl">
             <option v-for="opt in content.termOptions" :key="opt.value" :value="opt.value">
@@ -48,9 +48,9 @@ const template = `
       </div>
 
       <!-- Calculation Display Box -->
-      <div class="bg-success/5 border border-success/10 rounded-2xl p-6 flex flex-col gap-1 items-center shadow-inner">
-        <div class="text-xs font-black text-success uppercase tracking-[0.2em]">{{ content.calculationLabel }}</div>
-        <div class="text-4xl font-black text-success tracking-tighter">{{ formatCurrency(monthlyPayment) }}</div>
+      <div class="bg-success/5 border border-success/10 rounded-2xl p-6 flex flex-col gap-1 items-center">
+        <div class="text-xs font-black text-[var(--color-success-text)] uppercase tracking-[0.2em]">{{ content.calculationLabel }}</div>
+        <div class="text-4xl font-black text-[var(--color-success-text)] tracking-tighter">{{ formatCurrency(monthlyPayment) }}</div>
       </div>
 
       <button type="submit" class="abound-btn mt-4">
