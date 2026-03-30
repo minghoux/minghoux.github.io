@@ -67,7 +67,7 @@
   <app-header :progress="currentProgress" title="Préstamo"></app-header>
 
   <!-- Main Content Area -->
-  <main class="flex-1 flex flex-col w-full max-w-[480px] mx-auto px-6 py-10 md:py-16">
+  <main class="flex-1 flex flex-col w-full max-w-[480px] mx-auto p-6">
     <component :is="currentStepComponent" @next-step="handleNextStep"></component>
   </main>
 

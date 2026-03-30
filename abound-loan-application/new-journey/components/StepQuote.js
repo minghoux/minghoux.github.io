@@ -2,41 +2,29 @@ import { ref, computed } from 'vue';
 import JOURNEY_CONTENT from '../content/journey-content.js';
 
 const template = `
-  <div class="w-full flex flex-col gap-10">
+  <div class="w-full flex flex-col gap-2">
     
     <!-- Referral Header Transition -->
-    <div class="w-full bg-[#FCFCE9] border-1.5 border-[#E7E7D5] rounded-large py-3 px-5 flex items-center justify-center gap-3 animate-fade-slide-in">
-      <div class="flex items-center gap-1.5 grayscale opacity-70">
-        <div class="w-4 h-4 bg-charcoal rounded-[3px] flex items-center justify-center text-[8px] text-white font-bold">C</div>
-        <span class="text-[12px] font-bold tracking-tight text-charcoal">ClearScore</span>
+    <div class="w-full py-6 px-5 flex items-center justify-center gap-6 animate-fade-slide-in">
+      <div class="flex items-center">
+        <span class="text-[20px] font-black tracking-tight text-charcoal/40 uppercase">ClearScore</span>
       </div>
       <div class="text-charcoal/20">
-        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        <i class="fa-solid fa-arrow-right text-[16px]"></i>
       </div>
-      <div class="flex items-center gap-1.5">
-        <img src="../../brand-assest/logo.svg" alt="Abound" class="h-4 w-4" />
-        <span class="text-[13px] font-black tracking-tight text-brand uppercase">Abound</span>
+      <div class="flex items-center">
+        <span class="text-[20px] font-black tracking-tight text-brand uppercase">Abound</span>
       </div>
     </div>
 
     <!-- Main Content Section -->
     <div class="flex flex-col gap-10 animate-fade-slide-in" style="animation-delay: 200ms">
       <!-- Header Section -->
-      <div class="flex flex-col gap-5">
-        <div class="flex justify-between items-start">
-          <div class="flex flex-col gap-3">
-            <h2 class="text-[13px] font-bold text-brand/60 uppercase tracking-widest">{{ content.header }}</h2>
-          </div>
-          <div class="bg-lime text-brand font-black text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-full">
-            {{ content.badge }}
-          </div>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h1 class="text-[32px] font-black text-charcoal tracking-tight leading-tight">{{ content.title }}</h1>
-          <p class="text-[17px] text-charcoal/70 leading-relaxed font-medium">
-            {{ content.subtitle }}
-          </p>
-        </div>
+      <div class="flex flex-col gap-2">
+        <h1 class="text-[32px] font-black text-charcoal tracking-tight leading-tight">{{ content.title }}</h1>
+        <p class="text-[17px] text-charcoal/70 leading-relaxed font-medium">
+          {{ content.subtitle }}
+        </p>
       </div>
 
     <!-- Calculator Section -->
@@ -44,10 +32,13 @@ const template = `
       <div class="flex flex-col gap-8">
         <div>
           <label class="abound-label text-charcoal/40 mb-3">{{ content.stats.amountLabel }}</label>
-          <div class="flex justify-center items-baseline gap-1 mb-8">
+          <div class="flex flex-col items-center gap-3 mb-8">
             <span class="text-[64px] font-black text-brand tracking-tighter leading-none tabular-nums">
               {{ formatCurrencyDisplay(amount) }}
             </span>
+            <div class="bg-lime text-brand font-black text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-full inline-block">
+              {{ content.badge }}
+            </div>
           </div>
           <input
             type="range"
