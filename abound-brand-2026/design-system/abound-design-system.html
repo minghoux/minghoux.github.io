@@ -12,6 +12,12 @@
   tailwind.config = {
     theme: {
       extend: {
+        backgroundImage: {
+          'gradient-1': 'linear-gradient(to bottom, #EAF1EA, #CBE4C8)',
+          'gradient-2': 'linear-gradient(to top, #F0EDC3, #CBDAD9)',
+          'gradient-3': 'linear-gradient(to bottom, #EAF1EA, #B8DCD2)',
+          'gradient-4': 'linear-gradient(to bottom, #FFF9F4, #D4F19B)'
+        },
         colors: {
           brand: {
             DEFAULT: '#0E4533',
@@ -389,7 +395,7 @@
   <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between">
     <div class="flex items-center gap-10">
       <a href="abound-design-system.html" class="flex items-center gap-2 text-2xl font-bold text-brand tracking-tighter no-underline">
-        <span>abound</span>
+        <img src="../brand-assest/wordmark.png" alt="Abound" class="h-6" />
       </a>
       <nav class="hidden md:flex gap-8">
         <a href="abound-design-system.html" class="nav-link text-sm font-bold text-brand transition-colors relative py-1 after:content-[''] after:absolute after:-bottom-[20px] after:left-0 after:right-0 after:h-[2px] after:bg-brand">Design System</a>
@@ -399,7 +405,7 @@
     </div>
     
     <div class="flex items-center">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-lime text-brand">v1.0 <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span></span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-lime text-brand">v2.0.26 <span class="w-1.5 h-1.5 rounded-full bg-brand inline-block"></span></span>
     </div>
   </div>
 </header>
@@ -464,7 +470,7 @@
       <!-- Wordmark image -->
       <img src="../brand-assest/wordmark-white.png" alt="Abound" class="h-7 mb-10 opacity-90">
 
-      <div class="text-[11px] font-bold tracking-[0.18em] uppercase mb-4" style="color:#D4F19B;">Design System · v1.0 · March 2026</div>
+      <div class="text-[11px] font-bold tracking-[0.18em] uppercase mb-4" style="color:#D4F19B;">Design System · v2.0.26 · March 2026</div>
       <h1 class="text-[48px] md:text-[56px] font-semibold tracking-[-0.03em] leading-[1.05] mb-5 text-white max-w-[560px]">The foundation for <em class="not-italic" style="color:#D4F19B;">every</em> Abound experience.</h1>
       <p class="text-[15px] max-w-[480px] leading-[1.7]" style="color:rgba(255,255,255,0.65);">Tokens, components, and patterns built to deliver premium, accessible financial products — from marketing pages to the loan application flow.</p>
 
@@ -713,7 +719,56 @@
       </div>
     </div>
 
-    <!-- 2c. Accessibility Matrix -->
+    <!-- 2c. Gradients -->
+    <div class="mb-16" id="colour-gradients">
+      <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Gradients</h3>
+      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">The following are the official brand gradients defined in the "Colour Gradients" guidelines, used to enrich backgrounds and transition spaces:</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
+          <div class="h-24 w-full bg-gradient-1"></div>
+          <div class="p-4 bg-white flex flex-col h-[180px]">
+            <div class="text-[14px] font-bold text-charcoal mb-1">Gradient 1</div>
+            <div class="text-[12px] text-neutral-500 mb-3">Pale Green to Green Tint</div>
+            <code class="font-mono text-[11px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600 self-start mb-3 border border-neutral-200">bg-gradient-1</code>
+            <p class="text-[12px] text-neutral-600 mt-auto">Primary textured background element</p>
+          </div>
+        </div>
+        
+        <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
+          <div class="h-24 w-full bg-gradient-2"></div>
+          <div class="p-4 bg-white flex flex-col h-[180px]">
+            <div class="text-[14px] font-bold text-charcoal mb-1">Gradient 2</div>
+            <div class="text-[12px] text-neutral-500 mb-3">Pale Yellow to Greyish Teal</div>
+            <code class="font-mono text-[11px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600 self-start mb-3 border border-neutral-200">bg-gradient-2</code>
+            <p class="text-[12px] text-neutral-600 mt-auto">Secondary background element</p>
+          </div>
+        </div>
+        
+        <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
+          <div class="h-24 w-full bg-gradient-3"></div>
+          <div class="p-4 bg-white flex flex-col h-[180px]">
+            <div class="text-[14px] font-bold text-charcoal mb-1">Gradient 3</div>
+            <div class="text-[12px] text-neutral-500 mb-3">Pale Green to Sage/Teal</div>
+            <code class="font-mono text-[11px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600 self-start mb-3 border border-neutral-200">bg-gradient-3</code>
+            <p class="text-[12px] text-neutral-600 mt-auto">Brand transition elements</p>
+          </div>
+        </div>
+        
+        <div class="rounded-lg overflow-hidden border border-neutral-200 shadow-sm transition-transform duration-150 hover:-translate-y-1 hover:shadow-md">
+          <div class="h-24 w-full bg-gradient-4"></div>
+          <div class="p-4 bg-white flex flex-col h-[180px]">
+            <div class="text-[14px] font-bold text-charcoal mb-1">Gradient 4</div>
+            <div class="text-[12px] text-neutral-500 mb-3">Warm Off-White to Lime</div>
+            <code class="font-mono text-[11px] bg-neutral-50 px-1.5 py-0.5 rounded text-neutral-600 self-start mb-3 border border-neutral-200">bg-gradient-4</code>
+            <p class="text-[12px] text-neutral-600 mt-auto">Soft but distinct warm texture over hero sections</p>
+          </div>
+        </div>
+      </div>
+      <p class="text-[13px] text-neutral-500 mt-6">*(Note: Additional functional gradients exist such as the shimmering <code class="font-mono text-[12px] bg-neutral-50 px-1 rounded text-neutral-600 border border-neutral-200">linear-gradient(90deg, #E8EDEA 25%, #F4F7F4 50%, #E8EDEA 75%)</code> uniquely used for Loading Skeletons background animation).*</p>
+    </div>
+
+    <!-- 2d. Accessibility Matrix -->
     <div class="mb-16" id="colour-accessibility">
       <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Colour Accessibility Matrix</h3>
       <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Contrast ratios for key text/background combinations. All primary pairings pass WCAG AA (4.5:1 for body text, 3:1 for large text and UI).</p>
@@ -1722,7 +1777,7 @@
       </div>
     </div>
 
-    <div class="token-table-wrap" style="margin-top:var(--space-8);">
+    <div class="token-table-wrap mt-12">
       <table>
         <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
         <tbody>
@@ -2654,7 +2709,7 @@
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div>
         <img src="../brand-assest/wordmark.png" alt="Abound" class="h-5 mb-3 opacity-60">
-        <p class="text-sm text-neutral-400">Design System · v1.0 · March 2026</p>
+        <p class="text-sm text-neutral-400">Design System · v2.0.26 · March 2026</p>
         <p class="text-xs text-neutral-300 mt-1">Questions? Reach the design team on Slack <span class="font-mono">#design-system</span></p>
       </div>
       <div class="flex items-center gap-2">
