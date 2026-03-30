@@ -8,7 +8,7 @@ export default {
   <header class="sticky top-0 left-0 right-0 z-50 bg-[#0E4533] border-b border-black/10 flex flex-col h-[72px] px-6">
     <div class="flex-1 max-w-[1024px] w-full mx-auto flex items-center justify-center">
       <a href="#" class="no-underline">
-        <img src="../../../brand-assest/wordmark.svg" alt="Abound" class="h-6 brightness-0 invert" />
+        <img src="../brand-assest/wordmark.svg" alt="Abound" class="h-6 brightness-0 invert" />
       </a>
     </div>
     <!-- Linear Progress Bar -->

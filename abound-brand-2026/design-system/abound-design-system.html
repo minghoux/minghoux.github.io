@@ -8,377 +8,11 @@
 
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        backgroundImage: {
-          'gradient-1': 'linear-gradient(to bottom, #EAF1EA, #CBE4C8)',
-          'gradient-2': 'linear-gradient(to top, #F0EDC3, #CBDAD9)',
-          'gradient-3': 'linear-gradient(to bottom, #EAF1EA, #B8DCD2)',
-          'gradient-4': 'linear-gradient(to bottom, #FFF9F4, #D4F19B)'
-        },
-        colors: {
-          brand: {
-            DEFAULT: '#0E4533',
-            hover: '#0A3325',
-            pressed: '#071F17',
-            subtle: '#EBF2ED',
-          },
-          charcoal: '#201F1D',
-          lime: '#D4F19B',
-          khaki: '#EDEABE',
-          'off-white': '#F4F8F3',
-          'pale-yellow-green': '#F7F7E9',
-          'teal-sage': '#B8DCD2',
-          success: {
-            DEFAULT: '#0A5C3A',
-            bg: '#EBF5EF',
-          },
-          danger: {
-            DEFAULT: '#C4320A',
-            bg: '#FEF3F2',
-          },
-          warning: {
-            DEFAULT: '#B54708',
-            bg: '#FDF6E8',
-          },
-          info: {
-            DEFAULT: '#175CD3',
-            bg: '#EDF6F5',
-          },
-          neutral: {
-            50: '#F4F7F4',
-            100: '#E8EDEA',
-            200: '#D3DCCF',
-            300: '#B4C2B0',
-            400: '#829080',
-            500: '#586858',
-            600: '#3F4F3F',
-            700: '#2C3A2C',
-            800: '#1C271C',
-            900: '#111A11',
-          },
-        },
-        spacing: {
-          '1': '4px',
-          '2': '8px',
-          '3': '12px',
-          '4': '16px',
-          '5': '20px',
-          '6': '24px',
-          '8': '32px',
-          '10': '40px',
-          '12': '48px',
-          '14': '56px',
-          '16': '64px',
-          '20': '80px',
-          '24': '96px',
-          '32': '128px',
-          '40': '160px',
-        },
-        borderRadius: {
-          'sm': '6px',
-          'md': '8px',
-          'lg': '12px',
-          'xl': '16px',
-          '2xl': '24px',
-        },
-        boxShadow: {
-          'xs': '0 1px 2px rgba(32,31,29,0.06)',
-          'sm': '0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06)',
-          'md': '0 4px 8px -2px rgba(32,31,29,0.10), 0 2px 4px -2px rgba(32,31,29,0.06)',
-          'lg': '0 12px 16px -4px rgba(32,31,29,0.09), 0 4px 6px -2px rgba(32,31,29,0.04)',
-          'xl': '0 20px 24px -4px rgba(32,31,29,0.09), 0 8px 8px -4px rgba(32,31,29,0.04)',
-        },
-        fontFamily: {
-          /* Saans is the Abound brand typeface — files are in brand-assest/Saans font/ */
-          sans: ['Saans', 'DM Sans', 'sans-serif'],
-        },
-      }
-    }
-  }
-</script>
+<script src="tailwind.config.js"></script>
+<link rel="stylesheet" href="abound-design-system.css">
+<!-- DM Sans fallback -->
 
-<!-- Saans — Abound brand typeface (loaded from local assets) -->
-<style>
-  @font-face {
-    font-family: 'Saans';
-    src: url('../brand-assest/Saans font/Saans-Regular.woff2') format('woff2'),
-         url('../brand-assest/Saans font/Saans-Regular.woff') format('woff'),
-         url('../brand-assest/Saans font/Saans-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Saans';
-    src: url('../brand-assest/Saans font/Saans-Medium.woff2') format('woff2'),
-         url('../brand-assest/Saans font/Saans-Medium.woff') format('woff'),
-         url('../brand-assest/Saans font/Saans-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Saans';
-    src: url('../brand-assest/Saans font/Saans-SemiBold.woff2') format('woff2'),
-         url('../brand-assest/Saans font/Saans-SemiBold.woff') format('woff'),
-         url('../brand-assest/Saans font/Saans-SemiBold.ttf') format('truetype');
-    font-weight: 600 700;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  /* ── Shared component classes used across multiple sections ── */
-
-  /* Divider */
-  hr.divider {
-    border: none;
-    height: 1px;
-    background: #E8EDEA;
-    margin: 4rem 0;
-  }
-
-  /* Token reference tables */
-  .token-table-wrap {
-    overflow-x: auto;
-    margin-bottom: 1.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #E8EDEA;
-  }
-  .token-table-wrap table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.875rem;
-  }
-  .token-table-wrap thead {
-    background: #F4F7F4;
-  }
-  .token-table-wrap th {
-    text-align: left;
-    padding: 0.75rem 1rem;
-    font-weight: 500;
-    color: #3F4F3F;
-    border-bottom: 1px solid #E8EDEA;
-    white-space: nowrap;
-  }
-  .token-table-wrap td {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #E8EDEA;
-    color: #201F1D;
-    vertical-align: middle;
-  }
-  .token-table-wrap tr:last-child td { border-bottom: none; }
-  .token-table-wrap code {
-    font-family: ui-monospace, 'SF Mono', monospace;
-    font-size: 0.8125rem;
-    background: #F4F7F4;
-    padding: 0.125rem 0.375rem;
-    border-radius: 4px;
-    color: #3F4F3F;
-  }
-  .token-table-wrap .mono { font-family: ui-monospace, 'SF Mono', monospace; }
-  .color-dot {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    vertical-align: middle;
-    margin-right: 0.5rem;
-    border: 1px solid rgba(0,0,0,0.08);
-  }
-
-  /* Card system (used in Accessibility section) */
-  .card {
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    border: 1px solid #E8EDEA;
-  }
-  .card-default {
-    background: #ffffff;
-    box-shadow: 0 1px 3px rgba(32,31,29,0.10), 0 1px 2px rgba(32,31,29,0.06);
-  }
-  .section { margin-bottom: 6rem; }
-  .section-title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    color: #0E4533;
-    margin-bottom: 0.5rem;
-  }
-  .section-subtitle {
-    font-size: 1.125rem;
-    font-weight: 400;
-    line-height: 1.65;
-    color: #3F4F3F;
-    margin-bottom: 2rem;
-    max-width: 640px;
-  }
-
-  /* Focus ring demo (Accessibility section) */
-  .focus-ring-demo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1.25rem;
-    height: 44px;
-    background: #0E4533;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.875rem;
-    border: none;
-    cursor: pointer;
-    transition: background 150ms ease-out;
-  }
-  .focus-ring-demo:hover { background: #0A3325; }
-  .focus-ring-demo:focus-visible {
-    outline: 2px solid #0E4533;
-    outline-offset: 4px;
-    background: #0A3325;
-  }
-
-  /* Active side-nav link */
-  #sideNav a.active {
-    background: #F4F7F4;
-    color: #0E4533;
-    font-weight: 600;
-  }
-
-  /* Skeleton shimmer animation */
-  @keyframes skeleton-shimmer {
-    0%   { background-position: -400px 0; }
-    100% { background-position: 400px 0; }
-  }
-  .skeleton {
-    border-radius: 6px;
-    background: linear-gradient(90deg, #E8EDEA 25%, #F4F7F4 50%, #E8EDEA 75%);
-    background-size: 800px 100%;
-    animation: skeleton-shimmer 1.4s ease-in-out infinite;
-  }
-
-  /* Slider thumb styling */
-  input[type=range].brand-range {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 6px;
-    border-radius: 999px;
-    background: #E8EDEA;
-    outline: none;
-    cursor: pointer;
-  }
-  input[type=range].brand-range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #0E4533;
-    border: 3px solid #fff;
-    box-shadow: 0 1px 6px rgba(14,69,51,0.35);
-    cursor: grab;
-    transition: box-shadow 150ms ease-out, transform 150ms ease-out;
-  }
-  input[type=range].brand-range::-webkit-slider-thumb:active {
-    cursor: grabbing;
-    transform: scale(1.15);
-    box-shadow: 0 2px 10px rgba(14,69,51,0.4);
-  }
-  input[type=range].brand-range:focus-visible::-webkit-slider-thumb {
-    outline: 2px solid #0E4533;
-    outline-offset: 3px;
-  }
-  input[type=range].brand-range::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #0E4533;
-    border: 3px solid #fff;
-    box-shadow: 0 1px 6px rgba(14,69,51,0.35);
-    cursor: grab;
-    transition: box-shadow 150ms ease-out, transform 150ms ease-out;
-  }
-  input[type=range].brand-range::-moz-range-progress {
-    background: #0E4533;
-    border-radius: 999px;
-    height: 6px;
-  }
-
-  /* Toast notification */
-  .toast-demo {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 14px 16px;
-    border-radius: 10px;
-    background: #201F1D;
-    color: #fff;
-    font-size: 0.875rem;
-    box-shadow: 0 8px 24px rgba(32,31,29,0.2);
-    max-width: 360px;
-  }
-  .toast-demo.success-toast { background: #0A5C3A; }
-  .toast-demo.warning-toast { background: #B54708; }
-  .toast-demo.danger-toast  { background: #C4320A; }
-
-  /* Tooltip */
-  .tooltip-wrap { position: relative; display: inline-flex; }
-  .tooltip-wrap .tooltip-bubble {
-    position: absolute;
-    bottom: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: #201F1D;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 6px 10px;
-    border-radius: 6px;
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 150ms ease-out, transform 150ms ease-out;
-    transform: translateX(-50%) translateY(4px);
-    z-index: 10;
-  }
-  .tooltip-wrap .tooltip-bubble::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 5px solid transparent;
-    border-top-color: #201F1D;
-  }
-  .tooltip-wrap:hover .tooltip-bubble,
-  .tooltip-wrap:focus-within .tooltip-bubble {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  /* Motion entry demo */
-  @keyframes fadeSlideIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .motion-entry-demo { animation: fadeSlideIn 200ms ease-out both; }
-
-  @keyframes fadeSlideOut {
-    from { opacity: 1; transform: translateY(0); }
-    to   { opacity: 0; transform: translateY(8px); }
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-</style>
+<!-- DM Sans fallback -->
 
 <!-- DM Sans as fallback if Saans hasn't loaded yet -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -690,7 +324,7 @@
       </div>
 
       <h4>Border Tokens</h4>
-      <div class="token-table-wrap">
+      <div class="overflow-x-auto mb-6 rounded-lg border border-neutral-100">
         <table>
           <thead><tr><th>Token</th><th>Value</th><th>Swatch</th><th>Use</th></tr></thead>
           <tbody>
@@ -704,7 +338,7 @@
       </div>
 
       <h4>Interactive Tokens</h4>
-      <div class="token-table-wrap">
+      <div class="overflow-x-auto mb-6 rounded-lg border border-neutral-100">
         <table>
           <thead><tr><th>Token</th><th>Value</th><th>Swatch</th><th>Use</th></tr></thead>
           <tbody>
@@ -799,7 +433,7 @@
     </div>
   </section>
 
-  <hr class="divider">
+  <hr class="border-none h-px bg-neutral-100 my-16">
 
   <!-- ============================================================
        SECTION 3: TYPOGRAPHY
@@ -1078,7 +712,7 @@
     </div>
   </section>
 
-  <hr class="divider">
+  <hr class="border-none h-px bg-neutral-100 my-16">
 
   <!-- ============================================================
        SECTION 5: COMPONENTS
@@ -1356,9 +990,9 @@
       <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Cards</h3>
       <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Four card variants for different contexts, plus a specialised loan summary card.</p>
 
-      <div class="bg-neutral-50 border border-neutral-200 rounded-lg p-8">
+      <div class="rounded-lg overflow-hidden border border-neutral-100 p-8 shadow-sm">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <div class="p-6 rounded-xl shadow-sm border bg-white border-neutral-200">
+          <div class="p-6 rounded-xl bg-white border border-neutral-100 shadow-sm transition-all hover:shadow-md">
             <h3 class="text-lg font-bold text-charcoal mb-2">Default Card</h3>
             <p class="text-sm text-neutral-500 leading-relaxed">White background, subtle border and shadow. Used for general content containers.</p>
           </div>
@@ -1617,7 +1251,7 @@
         <div class="text-[12px] font-bold text-neutral-400 mb-6 uppercase tracking-wider">Hover or focus each element</div>
         <div class="flex flex-wrap gap-8 items-end mb-8">
           <!-- Tooltip on text link -->
-          <div class="tooltip-wrap">
+          <div class="group relative inline-flex">
             <button class="text-brand text-sm font-semibold border-b border-dashed border-brand/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 rounded-sm">
               Representative APR
             </button>
@@ -1625,7 +1259,7 @@
           </div>
 
           <!-- Tooltip on icon button -->
-          <div class="tooltip-wrap">
+          <div class="group relative inline-flex">
             <button class="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-500 hover:bg-neutral-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 6.5v3.5M7 4.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </button>
@@ -1636,7 +1270,7 @@
           <div class="flex flex-col gap-1.5">
             <div class="flex items-center gap-1.5">
               <label class="text-sm font-semibold text-charcoal">Annual income</label>
-              <div class="tooltip-wrap">
+              <div class="group relative inline-flex">
                 <button class="w-5 h-5 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-400 hover:bg-neutral-200 transition-colors focus:outline-none">
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.3"/><path d="M5 4.5v2.5M5 3.5h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
                 </button>
@@ -1916,7 +1550,7 @@
        SECTION 8: ACCESSIBILITY
        ============================================================ -->
   <section class="section" id="accessibility">
-    <h2 class="section-title">Accessibility Checklist</h2>
+    <h2 class="text-4xl font-bold leading-tight tracking-tight text-brand mb-2">Accessibility Checklist</h2>
     <p class="section-subtitle">WCAG 2.1 AA compliance is the baseline, not the goal. These rules are non-negotiable.</p>
 
     <div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-6">
