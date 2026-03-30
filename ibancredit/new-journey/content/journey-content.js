@@ -16,7 +16,7 @@ const JOURNEY_CONTENT = {
     cta: "Solicitar préstamo"
   },
   stepCalculator: {
-    title: "Solicita tu préstamo con Ibancredit. ¿Qué importe necesitas?",
+    title: "Solicita tu préstamo con Abound. ¿Qué importe necesitas?",
     howItWorksText: "¿Cómo funciona?",
     amountLabel: "Necesito un préstamo de:",
     amountMin: 1000,

@@ -1090,16 +1090,16 @@
     <!-- 5a. Buttons -->
     <div class="mb-16" id="buttons">
       <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Buttons</h3>
-      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">44px default height, radius-md (8px). Primary uses Forest Green; secondary uses bordered white.</p>
+      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">44px default height. Primary uses Forest Green and is heavily pill-shaped (`radius-full`); secondary uses bordered white.</p>
 
       <div class="bg-white border border-neutral-200 rounded-lg p-8 shadow-sm">
-        <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Primary</div>
+        <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Primary (Rounded CTA)</div>
         <div class="flex flex-wrap gap-4 mb-10">
-          <button class="inline-flex items-center justify-center px-3 h-9 bg-brand text-white rounded-md font-medium text-xs hover:bg-brand-hover transition-all shadow-sm">Continue</button>
-          <button class="inline-flex items-center justify-center px-5 h-11 bg-brand text-white rounded-md font-medium text-sm hover:bg-brand-hover transition-all shadow-sm">Get my quote</button>
-          <button class="inline-flex items-center justify-center px-8 h-12 bg-brand text-white rounded-md font-medium text-base hover:bg-brand-hover transition-all shadow-sm">Submit application</button>
-          <button class="inline-flex items-center justify-center px-5 h-11 bg-neutral-100 text-neutral-400 rounded-md font-medium text-sm cursor-not-allowed">Disabled</button>
-          <button class="inline-flex items-center justify-center px-5 h-11 bg-brand text-white rounded-md font-medium text-sm opacity-80 cursor-wait">
+          <button class="inline-flex items-center justify-center px-4 h-9 bg-brand text-white rounded-xl font-medium text-xs hover:bg-brand-hover transition-all">Continue</button>
+          <button class="inline-flex items-center justify-center px-6 h-11 bg-brand text-white rounded-xl font-medium text-sm hover:bg-brand-hover transition-all">Get my quote</button>
+          <button class="inline-flex items-center justify-center px-8 h-12 bg-brand text-white rounded-xl font-medium text-base hover:bg-brand-hover transition-all">Submit application</button>
+          <button class="inline-flex items-center justify-center px-6 h-11 bg-neutral-100 text-neutral-400 rounded-xl font-medium text-sm cursor-not-allowed">Disabled</button>
+          <button class="inline-flex items-center justify-center px-6 h-11 bg-brand text-white rounded-xl font-medium text-sm opacity-80 cursor-wait">
             <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
             Loading
           </button>
@@ -1124,11 +1124,11 @@
           <button class="inline-flex items-center justify-center px-5 h-11 bg-danger/20 text-danger/50 rounded-md font-medium text-sm cursor-not-allowed">Delete (disabled)</button>
         </div>
 
-        <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Pill Variant (Marketing CTAs)</div>
+        <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Marketing / Hero CTAs</div>
         <div class="flex flex-wrap gap-4">
-          <button class="inline-flex items-center justify-center px-6 h-11 bg-brand text-white rounded-full font-medium text-sm hover:bg-brand-hover transition-all shadow-sm">Get started</button>
-          <button class="inline-flex items-center justify-center px-6 h-11 bg-white border border-neutral-300 text-charcoal rounded-full font-medium text-sm hover:bg-neutral-50 transition-all shadow-sm">How it works</button>
-          <button class="inline-flex items-center justify-center px-10 h-14 bg-brand text-white rounded-full font-medium text-lg hover:bg-brand-hover transition-all shadow-md">Check your rate</button>
+          <button class="inline-flex items-center justify-center px-6 h-11 bg-brand text-white rounded-xl font-medium text-sm hover:bg-brand-hover transition-all shadow-sm">Get started</button>
+          <button class="inline-flex items-center justify-center px-6 h-11 bg-white border border-neutral-300 text-charcoal rounded-xl font-medium text-sm hover:bg-neutral-50 transition-all shadow-sm">How it works</button>
+          <button class="inline-flex items-center justify-center px-10 h-14 bg-brand text-white rounded-xl font-medium text-lg hover:bg-brand-hover transition-all shadow-md">Check your rate</button>
         </div>
       </div>
     </div>
@@ -1379,8 +1379,6 @@
         <div>
           <div class="text-[12px] font-bold text-neutral-400 mb-4 uppercase tracking-wider">Loan Summary Card</div>
           <div class="bg-brand rounded-2xl p-8 text-white shadow-xl relative overflow-hidden transition-transform hover:scale-[1.01] duration-300">
-            <!-- Decorative circle -->
-            <div class="absolute -right-12 -top-12 w-48 h-48 bg-white/5 rounded-full"></div>
             <div class="text-sm font-medium opacity-80 uppercase tracking-widest mb-1">Your personal loan</div>
             <div class="text-4xl font-bold tabular-nums mb-8 tracking-tight">£5,000.00</div>
             <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10">
@@ -1463,7 +1461,7 @@
     <!-- 5h. Progress -->
     <div class="mb-16" id="progress">
       <h3 class="text-2xl font-bold leading-snug tracking-tight text-charcoal mb-4">Progress Indicator</h3>
-      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Step-based progress for the loan application flow.</p>
+      <p class="text-base text-neutral-600 leading-relaxed mb-6 max-w-[640px]">Step-based progress for the loan application flow. The neutral track must be underlying a Lime (#D4F19B) active filled layer. Never use a "glow" effect.</p>
 
       <div class="bg-white border border-neutral-200 rounded-lg p-10 shadow-sm overflow-hidden">
         <!-- Step 3 of 4 active — progress bar shows 62.5% -->
@@ -1472,7 +1470,7 @@
           <!-- Track: full neutral bg -->
           <div class="absolute h-0.5 bg-neutral-100 top-4 left-0 right-0 z-0"></div>
           <!-- Track: filled progress (steps 1→3 = 2 of 3 gaps = 66%) -->
-          <div class="absolute h-0.5 bg-brand top-4 left-0 z-0 transition-all duration-500" style="width: 62.5%;"></div>
+          <div class="absolute h-0.5 bg-lime top-4 left-0 z-0 transition-all duration-500" style="width: 62.5%;"></div>
 
           <!-- Step 1 (Completed) -->
           <div class="flex flex-col items-center gap-2 relative z-10">
@@ -1492,7 +1490,7 @@
 
           <!-- Step 3 (Current) -->
           <div class="flex flex-col items-center gap-2 relative z-10">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-white border-2 border-brand text-brand ring-4 ring-brand/10 shadow-sm">3</div>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-white border-2 border-brand text-brand shadow-sm">3</div>
             <span class="text-[11px] font-bold text-brand uppercase tracking-wider">Offers</span>
           </div>
 
@@ -1746,8 +1744,8 @@
        SECTION 6: SHADOWS & ELEVATION
        ============================================================ -->
   <section class="mb-24" id="shadows">
-    <h2 class="text-4xl font-bold leading-tight tracking-tight text-brand mb-2">Shadows &amp; Elevation</h2>
-    <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">Five elevation levels from subtle input shadows to full overlay shadows.</p>
+    <h2 class="text-4xl font-bold leading-tight tracking-tight text-brand mb-2">Elevation &amp; Motion (Flat UI Standard)</h2>
+    <p class="text-lg font-normal leading-relaxed text-neutral-600 mb-8 max-w-[640px]">Abound 2026 has transitioned to a "Flat & High-Contrast" hierarchy. Traditional drop shadows are deprecated for UI components. Instead, elevation and state are communicated through borders and spacing.</p>
 
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
       <div class="p-6 bg-white rounded-xl border border-neutral-100 flex flex-col items-center justify-center text-center shadow-xs transition-transform hover:-translate-y-1">

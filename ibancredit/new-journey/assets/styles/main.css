@@ -113,7 +113,7 @@ input::placeholder {
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.01em;
-  border-radius: 9999px;      /* Full pill — distinctive & modern */
+  border-radius: 14px;      /* Rounded-rectangle — professional & consistent */
   transition: background 140ms ease-out, transform 100ms ease-out, box-shadow 140ms ease-out;
   border: none;
   cursor: pointer;

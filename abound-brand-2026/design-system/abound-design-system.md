@@ -96,14 +96,16 @@ The spacing scale is an extensive 12-token system based on a multiples-of-4 math
 
 ---
 
-## 5. Shadows, Elevation & Motion
+## 5. Elevation & Motion (Flat UI Standard)
 
-### Shadows
+### Shadowless Layouts
 
-Shadow values use a unified **Charcoal** base instead of generic grays to look warmer and more brand-aligned.
-- `box-shadow-sm`: `0 1px 3px rgba(32,31,29,0.10)`
-- `box-shadow-md`: `0 4px 8px -2px rgba(32,31,29,0.10)`
-- `box-shadow-lg`: `0 12px 16px -4px rgba(32,31,29,0.09)`
+Abound 2026 has transitioned to a **"Flat & High-Contrast"** hierarchy. Traditional drop shadows are deprecated for UI components. Instead, elevation and state are communicated through:
+- **Borders:** 1.5px `neutral-200` or `#E2E8E2` for idle states, transitioning to `brand` or `brand/40` for active states.
+- **Background Tints:** Subtle brand tints (`rgba(14,69,51,0.03)`) for selected surfaces.
+- **Spacing & Scale:** Using robust gaps (`space-base`) rather than visual floating.
+
+*(Note: Legacy charcoal shadows `0 4px 8px rgba(32,31,29,0.10)` are reserved strictly for floating modals and sticky bottom-bars, not content cards).*
 
 ### Motion
 
@@ -118,11 +120,14 @@ Motion should feel snappy, intentional, and provide immediate responsive feedbac
 Essential UI components and standard patterns tailored for lending apps.
 
 ### Core Components
-- **Buttons:** Implement the `interactive-primary` token. Hover states exclusively use the `bg-brand-hover` variable.
+- **Buttons (Rounded CTA):** Primary buttons use a professional rounded-rectangle shape (`border-radius: 14px`). Implement the `interactive-primary` token. Hover states exclusively use the `bg-brand-hover` variable.
+- **Selection Vocabularies:**
+  - **Grid Pattern:** Used for visual, icon-heavy choices (e.g., Loan Purpose). Uses square tiles with `rounded-[12px]` icon containers inside.
+  - **List Pattern:** Used for status selections (e.g., Employment). Features flat rows with a 3px left-border inset accent that animates in `scaleY(1)` upon selection.
+- **Form Controls:** Use the global `accent-color: #0E4533` in CSS to instantly brand native browser inputs (range sliders, checkboxes, radios) without complex custom overrides.
 - **Cards (Surface Cards):** Use `bg-off-white` consistently down to the HTML tags (don't mix with `bg-white`). Used interchangeably to break up visual space without overwhelming standard background colors.
 - **Navigation:** Side navigation active states must be styled (`.active` link state configured with `text-brand` and `bg-neutral-50`). Branding must use the literal Abound wordmark image asset instead of standard system text.
-- **Progress Indicators:** Crucial for multi-stage lending forms. The neutral track must be underlying a brand-colored active filled layer (dynamic `width: %`) indicating clear stage progression.
-- **Range & Slider Inputs:** Loan amount selection should default to sliders mapped securely to `brand-range` styled browser inputs.
+- **Progress Indicators:** Crucial for multi-stage lending forms. The neutral track must be underlying a **Lime** (`#D4F19B`) active filled layer. Never use a "glow" effect—the high-contrast lime on dark green is sufficient.
 
 ### Feedback States & Helpers
 - **Loading Skeletons:** Animated shimmer loops built with `linear-gradient`, using `E8EDEA` and `#F4F7F4`, giving UI placeholders until queries complete (essential for Open Banking identity checks).
