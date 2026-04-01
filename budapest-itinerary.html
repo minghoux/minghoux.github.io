@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Budapest Itinerary · Premium Hungarian Edition</title>
+  <title>Budapest · Family Itinerary · April 2026</title>
 
-  <!-- Vue 3 -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
@@ -15,18 +13,8 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Outfit', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'],
-          },
-          colors: {
-            hun: {
-              red:   '#CE2029',
-              green: '#2B5336',
-              gold:  '#D4AF37',
-              dark:  '#1C2833',
-              cream: '#FAFAFA',
-              paper: '#FDFCFB',
-            }
+            sans: ["'Plus Jakarta Sans'", 'sans-serif'],
+            serif: ["'Playfair Display'", 'serif'],
           }
         }
       }
@@ -35,359 +23,562 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
 
   <style>
-    html { scroll-behavior: smooth; }
-    body { background-color: #EDEDEB; color: #1c2833; }
+    :root {
+      --red:    #BE3144;
+      --green:  #1B6840;
+      --gold:   #B8860B;
+      --dark:   #18202B;
+      --bg:     #EAE0C3;       /* light warm yellowish-brown — main page background */
+      --bg-alt: #F4EDD6;       /* lighter wheat — used for weather ribbon */
+      --card:   #FFFFFF;       /* pure white cards pop against taupe */
+      --sidebar:#18202B;
+    }
 
-    /* Scrollbar hiding for horizontal mobile nav */
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--dark); }
+    [v-cloak] { display: none; }
+
+    /* Scrollbar hiding */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    [v-cloak] { display: none; }
+    /* Sidebar */
+    .sidebar {
+      position: sticky; top: 0; height: 100vh; overflow-y: auto;
+      scrollbar-width: thin; scrollbar-color: var(--gold) rgba(255,255,255,0.1);
+      background: var(--sidebar);
+    }
+    .sidebar::-webkit-scrollbar { width: 3px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-    /* Card elevation */
-    .card-shadow {
-      box-shadow: 0 2px 12px -2px rgba(0,0,0,0.06), 0 0 1px rgba(0,0,0,0.04);
+    /* Cards — white on rich taupe = strong pop */
+    .card {
+      background: var(--card);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.10);
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
-    .card-shadow:hover {
-      box-shadow: 0 8px 28px -4px rgba(0,0,0,0.10), 0 0 2px rgba(0,0,0,0.04);
-      transform: translateY(-1px);
+    .card:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.10), 0 20px 40px rgba(0,0,0,0.14);
+      transform: translateY(-2px);
     }
 
-    /* Sidebar sticky panel */
-    .sidebar-panel {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #d4af37 transparent;
-    }
-    .sidebar-panel::-webkit-scrollbar { width: 4px; }
-    .sidebar-panel::-webkit-scrollbar-track { background: transparent; }
-    .sidebar-panel::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
-
-    /* Folk pattern for sidebar */
-    .folk-bg {
-      background-image: repeating-linear-gradient(
-        135deg,
-        rgba(212,175,55,0.04) 0px,
-        rgba(212,175,55,0.04) 1px,
-        transparent 1px,
-        transparent 8px
+    /* Folk stripe */
+    .folk-stripe {
+      height: 8px;
+      background: repeating-linear-gradient(90deg,
+        var(--red)   0, var(--red)   22px,
+        #fff        22px, #fff        26px,
+        var(--green) 26px, var(--green) 48px,
+        #fff        48px, #fff        52px
       );
     }
+
+    /* Hungarian dot pattern for hero */
+    .hun-dots {
+      background-image: radial-gradient(circle, rgba(184,134,11,0.14) 1.5px, transparent 1.5px);
+      background-size: 20px 20px;
+    }
+
+    /* Rain bar */
+    .rain-bar { background: linear-gradient(to right, #93c5fd, #3b82f6); border-radius: 3px; }
+
+    /* Collapsible sections */
+    .collapsible {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease, opacity 0.25s ease;
+      opacity: 0;
+    }
+    .collapsible.open { grid-template-rows: 1fr; opacity: 1; }
+    .collapsible-inner { overflow: hidden; }
+
+    /* Sidebar dot pattern */
+    .sidebar-dots {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    /* Trip essentials strip */
+    .essentials-strip { background: var(--dark); }
+
+    /* Restaurant verdict indicator */
+    .verdict-green { border-left-color: var(--green); }
+    .verdict-yellow { border-left-color: var(--gold); }
+    .verdict-red { border-left-color: var(--red); }
+
+    /* Weather card active highlight */
+    .weather-today { background: rgba(255,255,255,0.12); border-radius: 12px; }
+
+    ::selection { background: rgba(184,134,11,0.25); color: var(--dark); }
   </style>
 </head>
-<body class="antialiased selection:bg-hun-gold/20 selection:text-hun-dark">
 
-<div id="app" v-cloak class="min-h-screen">
+<body class="antialiased font-sans">
+<div id="app" v-cloak>
 
-  <!-- ══════════════════════════════════════
-       FOLK STRIPE — full width, always
-  ══════════════════════════════════════ -->
-  <div style="width:100%;height:14px;background:repeating-linear-gradient(90deg,#CE1126 0px,#CE1126 18px,#fff 18px,#fff 22px,#437A3A 22px,#437A3A 40px,#fff 40px,#fff 44px);position:relative;z-index:20;flex-shrink:0;"></div>
+  <!-- ═══════════════════ FOLK STRIPE ═══════════════════ -->
+  <div class="folk-stripe w-full sticky top-0 z-40 flex-shrink-0"></div>
 
-  <!-- ══════════════════════════════════════
-       HERO — full width
-  ══════════════════════════════════════ -->
-  <header class="text-white relative overflow-hidden flex flex-col justify-end"
-          style="min-height: clamp(340px, 45vw, 560px);">
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <header class="relative overflow-hidden text-white" style="min-height:clamp(300px,44vw,520px);">
 
-    <!-- Dark gradient background -->
-    <div class="absolute inset-0 z-0"
-         style="background: linear-gradient(150deg, #12131F 0%, #222440 40%, #162F3E 100%);"></div>
+    <!-- Dark BG -->
+    <div class="absolute inset-0" style="background:linear-gradient(145deg,#0B1520 0%,#162436 50%,#0E1C2D 100%);"></div>
 
-    <!-- Geometric accent: vertical gold rule on desktop -->
-    <div class="absolute top-0 right-0 bottom-0 w-px bg-gradient-to-b from-transparent via-hun-gold/20 to-transparent hidden lg:block z-0"></div>
+    <!-- Dot grid -->
+    <div class="absolute inset-y-0 right-0 w-2/5 hun-dots hidden lg:block pointer-events-none"></div>
 
-    <!-- Decorative dots grid (desktop right side) -->
-    <div class="absolute inset-y-0 right-0 w-1/3 opacity-[0.06] hidden lg:block z-0"
-         style="background-image: radial-gradient(circle, #D4AF37 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <!-- Vertical gold rule -->
+    <div class="absolute top-0 bottom-0 hidden lg:block pointer-events-none"
+         style="right:40%;width:1px;background:linear-gradient(to bottom,transparent,rgba(184,134,11,0.35),transparent);"></div>
 
-    <!-- Budapest skyline SVG -->
-    <svg class="absolute bottom-0 left-0 right-0 w-full opacity-[0.15] z-0 pointer-events-none"
-         style="height: clamp(100px, 18vw, 200px);"
-         viewBox="0 0 1200 180" preserveAspectRatio="xMidYMax slice"
-         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- River base -->
-      <rect x="0" y="158" width="1200" height="22" fill="rgba(255,255,255,0.12)"/>
-      <!-- Parliament (center) -->
-      <rect x="500" y="80" width="200" height="80" fill="white"/>
-      <polygon points="510,80 600,28 690,80" fill="white"/>
-      <ellipse cx="600" cy="32" rx="20" ry="22" fill="white"/>
-      <rect x="594" y="10" width="12" height="22" fill="white"/>
-      <!-- Parliament side towers -->
-      <rect x="512" y="50" width="10" height="32" fill="white"/>
-      <polygon points="512,50 517,34 522,50" fill="white"/>
-      <rect x="526" y="56" width="9" height="26" fill="white"/>
-      <polygon points="526,56 530,43 535,56" fill="white"/>
-      <rect x="678" y="50" width="10" height="32" fill="white"/>
-      <polygon points="678,50 683,34 688,50" fill="white"/>
-      <rect x="665" y="56" width="9" height="26" fill="white"/>
-      <polygon points="665,56 670,43 675,56" fill="white"/>
-      <!-- Parliament windows -->
-      <rect x="518" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
-      <rect x="545" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
-      <rect x="572" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
-      <rect x="599" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
-      <rect x="626" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
-      <rect x="653" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
-      <rect x="680" y="100" width="14" height="20" rx="7" fill="rgba(0,0,0,0.2)"/>
+    <!-- Budapest Skyline SVG -->
+    <svg class="absolute bottom-0 left-0 right-0 w-full pointer-events-none opacity-[0.13]"
+         style="height:clamp(90px,17vw,200px);"
+         viewBox="0 0 1200 180" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="0" y="158" width="1200" height="22" fill="white"/>
+      <rect x="495" y="78" width="210" height="82" fill="white"/>
+      <polygon points="505,78 600,25 695,78" fill="white"/>
+      <ellipse cx="600" cy="29" rx="22" ry="24" fill="white"/>
+      <rect x="593" y="6" width="14" height="23" fill="white"/>
+      <rect x="510" y="48" width="11" height="32" fill="white"/><polygon points="510,48 516,32 522,48" fill="white"/>
+      <rect x="528" y="55" width="10" height="25" fill="white"/><polygon points="528,55 533,41 538,55" fill="white"/>
+      <rect x="679" y="48" width="11" height="32" fill="white"/><polygon points="679,48 685,32 691,48" fill="white"/>
+      <rect x="662" y="55" width="10" height="25" fill="white"/><polygon points="662,55 667,41 672,55" fill="white"/>
+      <rect x="516" y="98" width="15" height="21" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="545" y="98" width="15" height="21" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="574" y="98" width="15" height="21" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="600" y="98" width="15" height="21" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="626" y="98" width="15" height="21" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="655" y="98" width="15" height="21" rx="7" fill="rgba(0,0,0,0.2)"/>
+      <rect x="683" y="98" width="15" height="21" rx="7" fill="rgba(0,0,0,0.2)"/>
       <!-- Left skyline -->
-      <rect x="0" y="100" width="70" height="60" fill="white"/>
-      <rect x="70" y="108" width="60" height="52" fill="white"/>
-      <rect x="130" y="88" width="55" height="72" fill="white"/>
-      <rect x="185" y="100" width="70" height="60" fill="white"/>
-      <rect x="255" y="106" width="60" height="54" fill="white"/>
-      <rect x="315" y="94" width="50" height="66" fill="white"/>
-      <rect x="365" y="110" width="65" height="50" fill="white"/>
-      <rect x="430" y="118" width="70" height="42" fill="white"/>
-      <!-- Spire on left side -->
-      <rect x="155" y="70" width="16" height="22" fill="white"/>
-      <polygon points="153,70 163,50 173,70" fill="white"/>
+      <rect x="0" y="102" width="72" height="58" fill="white"/>
+      <rect x="72" y="110" width="58" height="50" fill="white"/>
+      <rect x="130" y="90" width="54" height="70" fill="white"/>
+      <rect x="184" y="104" width="70" height="56" fill="white"/>
+      <rect x="254" y="108" width="62" height="52" fill="white"/>
+      <rect x="316" y="95" width="52" height="65" fill="white"/>
+      <rect x="368" y="112" width="65" height="48" fill="white"/>
+      <rect x="433" y="120" width="62" height="40" fill="white"/>
+      <rect x="154" y="72" width="18" height="20" fill="white"/>
+      <polygon points="152,72 163,50 174,72" fill="white"/>
       <!-- Right skyline -->
-      <rect x="700" y="116" width="70" height="44" fill="white"/>
-      <rect x="770" y="100" width="60" height="60" fill="white"/>
-      <rect x="830" y="90" width="70" height="70" fill="white"/>
-      <rect x="900" y="104" width="65" height="56" fill="white"/>
-      <rect x="965" y="112" width="70" height="48" fill="white"/>
-      <rect x="1035" y="96" width="60" height="64" fill="white"/>
-      <rect x="1095" y="108" width="105" height="52" fill="white"/>
-      <!-- Chain bridge cables -->
-      <path d="M250,158 Q310,108 370,158" stroke="white" stroke-width="1.5" fill="none"/>
-      <path d="M830,158 Q890,108 950,158" stroke="white" stroke-width="1.5" fill="none"/>
+      <rect x="705" y="118" width="68" height="42" fill="white"/>
+      <rect x="773" y="102" width="60" height="58" fill="white"/>
+      <rect x="833" y="92" width="68" height="68" fill="white"/>
+      <rect x="901" y="106" width="64" height="54" fill="white"/>
+      <rect x="965" y="114" width="68" height="46" fill="white"/>
+      <rect x="1033" y="98" width="60" height="62" fill="white"/>
+      <rect x="1093" y="110" width="107" height="50" fill="white"/>
+      <!-- Chain bridges -->
+      <path d="M240,158 Q300,105 360,158" stroke="white" stroke-width="2" fill="none"/>
+      <rect x="278" y="120" width="8" height="38" fill="white"/>
+      <rect x="334" y="120" width="8" height="38" fill="white"/>
+      <path d="M840,158 Q900,105 960,158" stroke="white" stroke-width="2" fill="none"/>
+      <rect x="878" y="120" width="8" height="38" fill="white"/>
+      <rect x="934" y="120" width="8" height="38" fill="white"/>
     </svg>
 
-    <!-- Hero content — left-aligned on desktop, centered on mobile -->
-    <div class="relative z-10 w-full px-6 sm:px-10 lg:px-16 pt-12 lg:pt-16 pb-10 lg:pb-14 max-w-7xl mx-auto">
-      <div class="lg:max-w-2xl">
-        <div class="text-[11px] sm:text-[12px] tracking-[0.3em] uppercase text-hun-gold font-bold mb-3 font-sans flex items-center gap-2">
-          <span>✈</span><span>Family Adventure</span>
+    <!-- Hero content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-end pb-12 lg:pb-16 pt-14 lg:pt-20" style="min-height:inherit;">
+      <div class="lg:max-w-xl">
+        <div class="flex items-center gap-3 mb-5">
+          <div style="width:28px;height:1px;background:#B8860B;"></div>
+          <span class="text-[11px] tracking-[0.3em] uppercase font-bold" style="color:#B8860B;">Family Adventure · BA XER2CA</span>
         </div>
-        <h1 class="font-bold leading-[1.05] mb-3 text-white font-serif"
-            style="font-size: clamp(36px, 6vw, 64px);">
-          A Week in <em class="text-hun-gold italic">Budapest</em>
+        <h1 class="font-serif font-bold leading-[1.02] text-white mb-4" style="font-size:clamp(40px,7vw,76px);">
+          A Week in<br><em class="italic" style="color:#D4AF37;">Budapest</em>
         </h1>
-        <p class="text-white/65 mb-7 font-sans font-light"
-           style="font-size: clamp(14px, 1.5vw, 18px);">
-          2 – 7 April 2026 · Ming, Trista &amp; Isabella
+        <p class="mb-8 font-light" style="color:rgba(255,255,255,0.55);font-size:clamp(14px,1.6vw,18px);">
+          2–7 April 2026 · Ming, Trista &amp; Hayley
         </p>
-
-        <!-- Stat pills -->
-        <div class="flex gap-2.5 flex-wrap">
-          <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-[12px] sm:text-[13px] text-white/90 flex items-center gap-1.5 font-medium backdrop-blur-sm">🏛 6 Days</span>
-          <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-[12px] sm:text-[13px] text-white/90 flex items-center gap-1.5 font-medium backdrop-blur-sm">🏨 2 Hotels</span>
-          <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-[12px] sm:text-[13px] text-white/90 flex items-center gap-1.5 font-medium backdrop-blur-sm">💧 Aquaworld &amp; More</span>
-          <span class="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-[12px] sm:text-[13px] text-white/90 flex items-center gap-1.5 font-medium backdrop-blur-sm">🍽 6 Restaurants</span>
+        <div class="flex flex-wrap gap-2">
+          <span class="rounded-full px-4 py-2 text-[12px] font-semibold text-white/90" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(8px);">✈ 5 Nights</span>
+          <span class="rounded-full px-4 py-2 text-[12px] font-semibold text-white/90" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(8px);">🏨 2 Hotels</span>
+          <span class="rounded-full px-4 py-2 text-[12px] font-semibold text-white/90" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(8px);">💧 Aquaworld</span>
+          <span class="rounded-full px-4 py-2 text-[12px] font-semibold text-white/90" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(8px);">🍽 12 Restaurants</span>
+          <span class="rounded-full px-4 py-2 text-[12px] font-semibold text-white/90" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(8px);">🎡 Kids-first</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- ══════════════════════════════════════
-       MAIN LAYOUT: sidebar (desktop) + content
-  ══════════════════════════════════════ -->
+  <!-- ═══════════════════ TRIP ESSENTIALS ═══════════════════ -->
+  <div class="essentials-strip text-white">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-5">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+
+        <div class="rounded-xl p-4" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);">
+          <div class="text-[9px] tracking-[0.22em] uppercase font-bold mb-2" style="color:#D4AF37;">✈ Outbound</div>
+          <div class="font-bold text-[15px] mb-0.5">BA866 · Thu 2 Apr</div>
+          <div class="text-[13px]" style="color:rgba(255,255,255,0.65);">LHR 13:30 → BUD 17:00</div>
+          <div class="text-[10px] mt-2 font-mono" style="color:rgba(255,255,255,0.35);">Ref: XER2CA · T5</div>
+        </div>
+
+        <div class="rounded-xl p-4" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);">
+          <div class="text-[9px] tracking-[0.22em] uppercase font-bold mb-2" style="color:#D4AF37;">✈ Return</div>
+          <div class="font-bold text-[15px] mb-0.5">BA865 · Tue 7 Apr</div>
+          <div class="text-[13px]" style="color:rgba(255,255,255,0.65);">BUD 14:35 → LHR 16:20</div>
+          <div class="text-[10px] mt-2 font-mono" style="color:rgba(255,255,255,0.35);">Ref: XER2CA · T2B</div>
+        </div>
+
+        <div class="rounded-xl p-4" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);">
+          <div class="text-[9px] tracking-[0.22em] uppercase font-bold mb-2" style="color:#1B6840;">🏨 Hotel 1</div>
+          <div class="font-bold text-[14px] mb-0.5">7Seasons Apartments</div>
+          <div class="text-[12px]" style="color:rgba(255,255,255,0.65);">Thu 2 – Sun 5 Apr · 3 nights</div>
+          <div class="text-[10px] mt-2 font-mono" style="color:rgba(255,255,255,0.35);">Agoda 601693503 · €663</div>
+        </div>
+
+        <div class="rounded-xl p-4" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);">
+          <div class="text-[9px] tracking-[0.22em] uppercase font-bold mb-2" style="color:#1B6840;">🏨 Hotel 2</div>
+          <div class="font-bold text-[14px] mb-0.5">Aquaworld Resort</div>
+          <div class="text-[12px]" style="color:rgba(255,255,255,0.65);">Sun 5 – Tue 7 Apr · 2 nights</div>
+          <div class="text-[10px] mt-2 font-mono" style="color:rgba(255,255,255,0.35);">Agoda 601691731 · €860 B+D incl.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ WEATHER RIBBON ═══════════════════ -->
+  <div style="background:#FFFFFF;border-bottom:2px solid rgba(0,0,0,0.08);border-top:1px solid rgba(0,0,0,0.06);">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+      <div class="flex overflow-x-auto no-scrollbar gap-1 py-3 items-stretch">
+
+        <div v-for="(w, i) in weather" :key="w.date"
+             class="flex-shrink-0 flex flex-col items-center px-3.5 py-2.5 rounded-xl"
+             style="min-width:70px;">
+          <div class="text-[9px] font-bold uppercase tracking-widest mb-0.5" style="color:#374151;">{{w.day}}</div>
+          <div class="text-[9px] font-semibold mb-1.5" style="color:#6B7280;">{{w.date}}</div>
+          <div class="text-xl mb-1.5 leading-none">{{w.icon}}</div>
+          <div class="text-[13px] font-bold" style="color:#111827;">{{w.high}}°</div>
+          <div class="text-[11px] font-medium" style="color:#6B7280;">{{w.low}}°</div>
+          <div class="mt-2" style="width:36px;">
+            <div class="rain-bar" :style="{height:'3px',width: w.rain + '%'}"></div>
+            <div class="text-[9px] font-bold mt-0.5 text-center" style="color:#2563EB;">{{w.rain}}%</div>
+          </div>
+        </div>
+
+        <div class="flex-shrink-0 w-px self-stretch my-1 mx-2" style="background:#E5E7EB;"></div>
+
+        <div class="flex-shrink-0 flex items-center px-3 text-[11px] font-medium leading-snug" style="max-width:150px;color:#4B5563;">
+          🌡 Mild spring. Light rain possible. Pack layers!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ MAIN LAYOUT ═══════════════════ -->
   <div class="lg:flex lg:items-start">
 
-    <!-- ── DESKTOP SIDEBAR ─────────────────── -->
-    <aside class="hidden lg:flex flex-col flex-shrink-0 bg-white border-r border-stone-200/80 folk-bg sidebar-panel"
-           style="width: clamp(220px, 18vw, 280px);">
+    <!-- ─── DESKTOP SIDEBAR ─── -->
+    <aside class="hidden lg:flex flex-col flex-shrink-0 sidebar sidebar-dots" style="width:clamp(210px,17vw,258px);">
+      <div class="p-5 flex flex-col h-full">
 
-      <div class="p-5 xl:p-6 flex flex-col h-full">
+        <p class="text-[9px] font-bold uppercase tracking-[0.28em] mb-5 px-1" style="color:rgba(255,255,255,0.35);">Itinerary</p>
 
-        <!-- Sidebar label -->
-        <p class="text-[9px] font-bold uppercase tracking-[0.25em] text-stone-400 mb-4 px-1">Itinerary</p>
-
-        <!-- Day nav buttons -->
         <nav class="space-y-1 flex-1">
           <button v-for="day in days" :key="day.id"
                   @click="scrollToDay(day.id)"
-                  class="w-full text-left flex items-center gap-3 px-2.5 py-2.5 rounded-xl transition-all duration-200 group"
-                  :class="activeDay === day.id
-                    ? 'bg-hun-green text-white shadow-md shadow-hun-green/20'
-                    : 'text-stone-600 hover:bg-stone-50 hover:text-hun-dark'">
+                  class="w-full text-left flex items-center gap-3 px-2.5 py-2.5 rounded-xl transition-all duration-200"
+                  :style="activeDay === day.id
+                    ? 'background:rgba(255,255,255,0.14);color:white;'
+                    : 'color:rgba(255,255,255,0.55);'">
 
-            <!-- Date badge -->
-            <span class="w-10 h-10 rounded-lg flex-shrink-0 flex flex-col items-center justify-center border"
-                  :class="activeDay === day.id
-                    ? 'bg-white/20 border-white/20 text-white'
-                    : 'bg-stone-50 border-stone-100 text-stone-700'">
-              <span class="text-[15px] font-bold leading-none font-serif">{{day.date}}</span>
-              <span class="text-[8px] uppercase font-bold leading-none mt-0.5 opacity-70">{{day.month}}</span>
+            <span class="w-10 h-10 rounded-xl flex-shrink-0 flex flex-col items-center justify-center border font-serif flex-shrink-0"
+                  :style="activeDay === day.id
+                    ? 'background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.22);color:white;'
+                    : 'background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);'">
+              <span class="text-[15px] font-bold leading-none">{{day.date}}</span>
+              <span class="text-[7px] uppercase font-bold leading-none mt-0.5 opacity-60">{{day.month}}</span>
             </span>
 
-            <!-- Label -->
-            <span class="leading-snug text-[12px] xl:text-[13px] font-semibold">{{day.title}}</span>
+            <span class="text-[12px] font-semibold leading-snug">{{day.title}}</span>
           </button>
         </nav>
 
-        <!-- Divider -->
-        <div class="border-t border-stone-100 mt-3 pt-3">
+        <div class="mt-3 pt-3 space-y-1" style="border-top:1px solid rgba(255,255,255,0.08);">
           <button @click="scrollToDay('backup')"
-                  class="w-full text-left flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-[12px] xl:text-[13px] font-semibold text-stone-500 hover:bg-stone-50 hover:text-hun-dark transition-colors">
-            <span class="w-10 h-10 rounded-lg bg-amber-50 border border-amber-100 flex items-center justify-center text-base flex-shrink-0">🗺</span>
+                  class="w-full text-left flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-[12px] font-semibold transition-all duration-200"
+                  style="color:rgba(255,255,255,0.5);">
+            <span class="w-10 h-10 rounded-xl flex items-center justify-center text-base flex-shrink-0" style="background:rgba(184,134,11,0.18);border:1px solid rgba(184,134,11,0.25);">🗺</span>
             <span>Backup Picks</span>
+          </button>
+          <button @click="scrollToDay('restaurants')"
+                  class="w-full text-left flex items-center gap-3 px-2.5 py-2.5 rounded-xl text-[12px] font-semibold transition-all duration-200"
+                  style="color:rgba(255,255,255,0.5);">
+            <span class="w-10 h-10 rounded-xl flex items-center justify-center text-base flex-shrink-0" style="background:rgba(190,49,68,0.18);border:1px solid rgba(190,49,68,0.25);">🍽</span>
+            <span>Restaurant Guide</span>
           </button>
         </div>
 
-        <!-- Footer note -->
-        <p class="mt-5 text-[10px] text-stone-300 text-center tracking-widest uppercase font-medium">Budapest · Apr 2026</p>
+        <p class="mt-5 text-center text-[9px] tracking-[0.25em] uppercase font-bold" style="color:rgba(255,255,255,0.2);">Budapest · Apr 2026</p>
       </div>
     </aside>
 
-    <!-- ── MOBILE HORIZONTAL NAV ───────────── -->
-    <nav class="lg:hidden sticky top-0 z-20 bg-hun-cream/95 backdrop-blur-md shadow-sm border-b border-stone-200">
-      <div class="flex overflow-x-auto py-3 px-4 gap-2.5 no-scrollbar">
+    <!-- ─── MOBILE NAV ─── -->
+    <nav class="lg:hidden sticky top-[8px] z-20 backdrop-blur-md border-b shadow-sm" style="background:rgba(234,224,195,0.97);border-color:rgba(0,0,0,0.12);">
+      <div class="flex overflow-x-auto no-scrollbar px-4 py-2.5 gap-2">
         <button v-for="day in days" :key="day.id"
                 @click="scrollToDay(day.id)"
-                class="flex-shrink-0 flex items-center justify-center px-4 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 border"
-                :class="activeDay === day.id
-                  ? 'bg-hun-green border-hun-green text-white shadow-md'
-                  : 'bg-white border-stone-200 text-stone-600 hover:border-hun-green/30 hover:text-hun-green'">
-          <span class="mr-1.5 font-bold">{{day.date}}</span>{{day.month}}
+                class="flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-[12px] font-bold transition-all duration-200 border"
+                :style="activeDay === day.id
+                  ? 'background:#1B6840;color:white;border-color:#1B6840;'
+                  : 'background:white;color:#374151;border-color:rgba(0,0,0,0.15);'">
+          <span class="font-serif">{{day.date}}</span> {{day.month}}
         </button>
-
-        <!-- Separator -->
-        <div class="flex-shrink-0 w-px bg-stone-200 self-stretch my-1 mx-0.5"></div>
-
-        <!-- Backup Picks button -->
-        <button @click="scrollToDay('backup')"
-                class="flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 border bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100">
-          <span class="text-base leading-none">🗺</span> Backup
-        </button>
+        <div class="flex-shrink-0 w-px self-stretch my-0.5" style="background:rgba(0,0,0,0.15);"></div>
+        <button @click="scrollToDay('backup')" class="flex-shrink-0 px-4 py-2 rounded-full text-[12px] font-bold border" style="background:rgba(184,134,11,0.15);border-color:rgba(184,134,11,0.35);color:#6B4800;">🗺 Backup</button>
+        <button @click="scrollToDay('restaurants')" class="flex-shrink-0 px-4 py-2 rounded-full text-[12px] font-bold border" style="background:rgba(190,49,68,0.12);border-color:rgba(190,49,68,0.3);color:#7F1D1D;">🍽 Guide</button>
       </div>
     </nav>
 
-    <!-- ── MAIN CONTENT ────────────────────── -->
-    <main class="flex-1 min-w-0 bg-hun-cream">
-      <div class="max-w-3xl mx-auto px-5 sm:px-8 lg:px-10 xl:px-14 py-10 lg:py-14 space-y-20 lg:space-y-24">
+    <!-- ─── MAIN CONTENT ─── -->
+    <main class="flex-1 min-w-0" style="background:var(--bg);">
+      <div class="max-w-3xl mx-auto px-5 sm:px-8 lg:px-10 xl:px-14 py-10 lg:py-14 space-y-24">
 
-        <!-- ─────── DAY SECTIONS ─────── -->
-        <section v-for="day in days"
-                 :key="day.id"
-                 :id="day.id"
-                 class="scroll-mt-28 lg:scroll-mt-16 observer-section">
+        <!-- ═══════ DAY SECTIONS ═══════ -->
+        <section v-for="day in days" :key="day.id" :id="day.id" class="scroll-mt-28 lg:scroll-mt-16 observer-section">
 
           <!-- Day header -->
-          <div class="mb-8 lg:mb-10 flex items-start gap-5">
-            <div class="bg-white border-2 border-hun-gold rounded-2xl w-14 h-14 lg:w-16 lg:h-16 flex flex-col items-center justify-center flex-shrink-0 shadow-sm shadow-hun-gold/10 mt-1">
-              <span class="text-xl lg:text-2xl font-bold leading-none font-serif text-hun-dark">{{day.date}}</span>
-              <span class="text-[8px] lg:text-[9px] font-bold uppercase tracking-widest mt-1 text-stone-400">{{day.month}}</span>
+          <div class="flex items-start gap-4 mb-8">
+            <div class="flex-shrink-0 mt-0.5 rounded-2xl flex flex-col items-center justify-center font-serif flex-shrink-0"
+                 style="width:58px;height:58px;background:white;border:2px solid #B8860B;box-shadow:0 3px 10px rgba(184,134,11,0.18);">
+              <span class="font-bold leading-none" style="font-size:22px;color:var(--dark);">{{day.date}}</span>
+              <span class="font-bold uppercase leading-none mt-1" style="font-size:7px;letter-spacing:0.1em;color:#9CA3AF;">{{day.month}}</span>
             </div>
-            <div class="pt-0.5">
-              <h2 class="font-bold font-serif text-hun-dark mb-1.5 leading-tight"
-                  style="font-size: clamp(22px, 3vw, 30px);">{{day.title}}</h2>
-              <p class="text-[11px] lg:text-[12px] tracking-[0.07em] text-hun-green font-semibold uppercase">{{day.subtitle}}</p>
+
+            <div class="flex-1 pt-1">
+              <h2 class="font-serif font-bold leading-tight mb-1.5" style="font-size:clamp(22px,3.2vw,30px);color:var(--dark);">{{day.title}}</h2>
+              <p class="font-bold uppercase text-[11px] tracking-[0.06em]" style="color:var(--green);">{{day.subtitle}}</p>
+            </div>
+
+            <div v-if="day.weather" class="flex-shrink-0">
+              <div class="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-[12px] font-semibold"
+                   style="background:rgba(255,255,255,0.75);border:1px solid rgba(0,0,0,0.1);backdrop-filter:blur(6px);">
+                <span class="text-lg leading-none">{{day.weather.icon}}</span>
+                <span style="color:var(--dark);">{{day.weather.high}}°<span style="color:#9CA3AF;" class="font-normal">/{{day.weather.low}}°</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transport comparison (Day 1 only) -->
+          <div v-if="day.transport" class="mb-8 rounded-2xl overflow-hidden card">
+            <div class="px-5 py-3.5 flex items-center gap-2" style="border-bottom:1px solid rgba(0,0,0,0.06);">
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em]" style="color:var(--dark);">🚖 Airport → 7Seasons Options</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x" style="divide-color:rgba(0,0,0,0.06);">
+              <div v-for="opt in day.transport" :key="opt.name" class="p-5 relative"
+                   :style="opt.recommended ? 'background:linear-gradient(135deg,#f0fdf4,#ecfdf5);' : 'background:white;'">
+                <div v-if="opt.recommended" class="absolute top-3 right-3 text-[9px] font-bold px-2 py-1 rounded-full uppercase tracking-wider text-white" style="background:#1B6840;">✓ Best Pick</div>
+                <div class="font-bold text-[14px] mb-1" style="color:var(--dark);">{{opt.name}}</div>
+                <div class="text-[12px] font-semibold mb-2.5" style="color:#6B7280;">{{opt.time}} · <span style="color:var(--gold);" class="font-bold">{{opt.cost}}</span></div>
+                <div class="text-[12px] leading-relaxed" style="color:#6B7280;">{{opt.note}}</div>
+              </div>
             </div>
           </div>
 
           <!-- Event cards -->
-          <div class="space-y-5 lg:space-y-6">
-            <div v-for="(event, index) in day.events" :key="index"
-                 class="bg-white rounded-2xl overflow-hidden card-shadow relative"
-                 :class="getCardBorder(event.typeLabel)">
+          <div class="space-y-4">
+            <div v-for="(event, idx) in day.events" :key="idx"
+                 class="card rounded-2xl overflow-hidden"
+                 :style="'border-left:5px solid ' + getTypeColor(event.typeLabel) + ';background:white;'">
 
-              <!-- Card inner -->
-              <div class="p-6 lg:p-7">
+              <div class="p-5 lg:p-6">
 
-                <!-- Top row: time + pill -->
-                <div class="flex justify-between items-center mb-4">
-                  <div class="flex items-center gap-2 text-stone-400">
-                    <svg class="w-3.5 h-3.5 flex-shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    <span class="text-[13px] lg:text-[14px] font-bold tracking-wider">{{event.time}}</span>
+                <!-- Top row: time + badges -->
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:#9CA3AF;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <span class="text-[13px] font-bold tracking-widest" style="color:#9CA3AF;font-variant-numeric:tabular-nums;">{{event.time}}</span>
                   </div>
-                  <span class="px-3 py-1.5 rounded-full text-[10px] lg:text-[11px] font-bold uppercase tracking-widest"
-                        :class="getPillClass(event.typeLabel)">{{event.typeLabel}}</span>
+                  <div class="flex items-center gap-2 flex-wrap justify-end">
+                    <span v-if="event.bookingRequired"
+                          class="text-[9px] font-bold px-2 py-1 rounded-md uppercase tracking-wider"
+                          style="background:#fef3c7;color:#92400e;border:1px solid #fde68a;">📅 Book Ahead</span>
+                    <span class="px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider"
+                          :class="getPillClass(event.typeLabel)">{{event.typeLabel}}</span>
+                  </div>
                 </div>
 
                 <!-- Title -->
-                <h3 class="font-bold text-hun-dark mb-2.5 leading-snug tracking-tight"
-                    style="font-size: clamp(16px, 1.8vw, 20px);">{{event.title}}</h3>
+                <h3 class="font-bold leading-snug mb-2" style="font-size:clamp(15px,2vw,18px);color:var(--dark);">{{event.title}}</h3>
 
                 <!-- Description -->
-                <p class="text-stone-500 leading-relaxed font-light mb-4"
-                   style="font-size: clamp(14px, 1.2vw, 15px);">{{event.desc}}</p>
+                <p class="leading-relaxed font-light mb-4" style="font-size:clamp(13px,1.2vw,14.5px);color:#6B7280;">{{event.desc}}</p>
 
                 <!-- Rating -->
-                <div v-if="event.rating"
-                     class="inline-flex items-center gap-1.5 text-[12px] lg:text-[13px] font-medium text-stone-500 mb-4 bg-stone-50 rounded-lg px-3 py-1.5">
-                  <span class="text-hun-gold text-[14px] leading-none">★</span>
-                  <span>{{event.rating}}</span>
+                <div v-if="event.rating" class="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 mb-4 text-[12px] font-medium" style="background:#F9FAFB;color:#6B7280;">
+                  <span style="color:var(--gold);font-size:14px;">★</span> {{event.rating}}
                 </div>
 
                 <!-- Tip box -->
-                <div v-if="event.tip"
-                     class="bg-amber-50 border border-amber-200/60 rounded-xl p-4 lg:p-5 mb-4 flex gap-3.5 items-start">
-                  <span class="text-xl leading-none mt-0.5 flex-shrink-0" v-html="event.tipIcon || '💡'"></span>
-                  <span class="text-[13px] lg:text-[14px] font-medium text-amber-900 leading-relaxed">{{event.tip}}</span>
+                <div v-if="event.tip" class="rounded-xl p-4 mb-4 flex gap-3 items-start" style="background:#fffbeb;border:1px solid rgba(234,179,8,0.3);">
+                  <span class="text-lg leading-none flex-shrink-0 mt-0.5">{{event.tipIcon || '💡'}}</span>
+                  <span class="text-[13px] font-medium leading-relaxed" style="color:#78350f;">{{event.tip}}</span>
                 </div>
 
-                <!-- Map button -->
+                <!-- Map link -->
                 <a :href="'https://www.google.com/maps/search/?api=1&query=' + event.mapQuery"
                    target="_blank" rel="noopener"
-                   class="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-50 hover:bg-stone-100 border border-stone-200 text-hun-dark font-semibold rounded-xl text-[12px] lg:text-[13px] transition-colors">
-                  <svg class="w-3.5 h-3.5 fill-current opacity-60 flex-shrink-0" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
-                  </svg>
+                   class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[12px] font-semibold transition-colors"
+                   style="background:#F9FAFB;border:1px solid #E5E7EB;color:var(--dark);"
+                   onmouseover="this.style.background='#F3F4F6'" onmouseout="this.style.background='#F9FAFB'">
+                  <svg class="w-3.5 h-3.5 fill-current flex-shrink-0" style="opacity:0.5;" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
                   View on Map
                 </a>
               </div>
             </div>
           </div>
 
+          <!-- Flexible Alternatives toggle -->
+          <div v-if="day.alternatives" class="mt-5">
+            <button @click="toggleAlt(day.id)"
+                    class="w-full flex items-center justify-between px-5 py-3.5 rounded-2xl font-semibold text-[13px] transition-all duration-200 border"
+                    style="background:rgba(255,255,255,0.6);border-color:rgba(0,0,0,0.12);color:var(--dark);"
+                    onmouseover="this.style.background='rgba(255,255,255,0.85)'" onmouseout="this.style.background='rgba(255,255,255,0.6)'">
+              <span class="flex items-center gap-2">
+                <span>🔄</span>
+                <span>Flexible Alternatives ({{day.alternatives.length}})</span>
+              </span>
+              <span class="text-[18px] font-light transition-transform duration-200" style="color:#9CA3AF;" :style="showAlt[day.id] ? 'transform:rotate(180deg)' : ''">⌄</span>
+            </button>
+
+            <div class="collapsible mt-2" :class="showAlt[day.id] ? 'open' : ''">
+              <div class="collapsible-inner">
+                <div class="card rounded-2xl p-5" style="background:white;">
+                  <div v-for="(alt, i) in day.alternatives" :key="i"
+                       class="flex gap-3 items-start"
+                       :style="i > 0 ? 'margin-top:1rem;padding-top:1rem;border-top:1px solid #F3F4F6;' : ''">
+                    <span class="text-xl leading-none flex-shrink-0 mt-0.5">{{alt.icon}}</span>
+                    <div>
+                      <div class="font-bold text-[13px] mb-0.5" style="color:var(--dark);">{{alt.title}}</div>
+                      <div class="text-[12px] leading-relaxed" style="color:#6B7280;">{{alt.desc}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Day-level tip -->
-          <div v-if="day.dayLevelTip"
-               class="mt-8 bg-white border border-stone-100 rounded-2xl p-5 lg:p-6 flex gap-4 items-start card-shadow">
-            <span class="text-2xl leading-none mt-0.5 flex-shrink-0" v-html="day.dayLevelTipIcon || '💡'"></span>
-            <span class="text-[13px] lg:text-[14px] font-medium text-hun-dark leading-relaxed">{{day.dayLevelTip}}</span>
+          <div v-if="day.dayTip" class="mt-5 card rounded-2xl p-5 flex gap-4 items-start" style="background:white;">
+            <span class="text-2xl leading-none flex-shrink-0 mt-0.5">{{day.dayTipIcon || '💡'}}</span>
+            <p class="text-[13px] font-medium leading-relaxed" style="color:var(--dark);">{{day.dayTip}}</p>
           </div>
         </section>
 
-        <!-- ─────── DIVIDER ─────── -->
-        <div class="flex justify-center items-center py-4 gap-4 opacity-30">
-          <div class="h-px flex-1 bg-gradient-to-r from-transparent to-hun-dark"></div>
-          <span class="text-hun-gold text-2xl leading-none">❖</span>
-          <div class="h-px flex-1 bg-gradient-to-l from-transparent to-hun-dark"></div>
+        <!-- ─── DIVIDER ─── -->
+        <div class="flex items-center gap-4" style="opacity:0.22;">
+          <div class="flex-1 h-px" style="background:linear-gradient(to right,transparent,var(--dark));"></div>
+          <span style="color:var(--gold);font-size:20px;">❖</span>
+          <div class="flex-1 h-px" style="background:linear-gradient(to left,transparent,var(--dark));"></div>
         </div>
 
-        <!-- ─────── BACKUP DISCOVERIES ─────── -->
+        <!-- ═══════ BACKUP PICKS ═══════ -->
         <section id="backup" class="scroll-mt-28 lg:scroll-mt-16 observer-section">
-          <div class="mb-8 lg:mb-10 flex items-start gap-5">
-            <div class="bg-hun-gold text-white rounded-2xl w-14 h-14 lg:w-16 lg:h-16 flex flex-col items-center justify-center flex-shrink-0 shadow-md shadow-hun-gold/25 mt-1">
-              <span class="text-2xl lg:text-3xl leading-none">🗺</span>
-            </div>
-            <div class="pt-0.5">
-              <h2 class="font-bold font-serif text-hun-dark mb-1.5 leading-tight"
-                  style="font-size: clamp(22px, 3vw, 30px);">Backup Discoveries</h2>
-              <p class="text-[11px] lg:text-[12px] tracking-[0.07em] text-stone-400 font-semibold uppercase">Alternate Inspiration</p>
+          <div class="flex items-start gap-4 mb-8">
+            <div class="flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center text-2xl mt-0.5"
+                 style="background:#B8860B;box-shadow:0 4px 14px rgba(184,134,11,0.35);">🗺</div>
+            <div class="pt-1">
+              <h2 class="font-serif font-bold leading-tight mb-1.5" style="font-size:clamp(22px,3.2vw,30px);color:var(--dark);">Backup Discoveries</h2>
+              <p class="text-[11px] font-bold uppercase tracking-[0.06em]" style="color:rgba(24,32,43,0.45);">Alternate Inspiration</p>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
-            <div v-for="(place, index) in backups" :key="index"
-                 class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col"
-                 :class="getCardBorder(place.category)">
-              <div class="p-6 flex flex-col flex-1">
-                <span class="inline-block px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4 w-fit"
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+            <div v-for="(place, i) in backups" :key="i"
+                 class="card rounded-2xl overflow-hidden flex flex-col"
+                 :style="'border-left:5px solid ' + getTypeColor(place.category) + ';background:white;'">
+              <div class="p-5 flex flex-col flex-1">
+                <span class="inline-block px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-4 w-fit"
                       :class="getPillClass(place.category)">{{place.category}}</span>
-                <h3 class="text-[15px] lg:text-[17px] font-bold text-hun-dark mb-1.5 leading-tight">{{place.title}}</h3>
-                <div class="inline-flex items-center gap-1.5 text-[12px] font-medium text-stone-400 mb-3">
-                  <span class="text-hun-gold text-[13px] leading-none">★</span>
-                  <span>{{place.rating}}</span>
+                <h3 class="font-bold text-[15px] lg:text-[16px] mb-1.5 leading-tight" style="color:var(--dark);">{{place.title}}</h3>
+                <div class="flex items-center gap-1.5 text-[12px] font-medium mb-3" style="color:#9CA3AF;">
+                  <span style="color:var(--gold);">★</span> {{place.rating}}
                 </div>
-                <p class="text-[13px] lg:text-[14px] text-stone-500 leading-relaxed font-light mb-5 flex-grow">{{place.desc}}</p>
+                <p class="text-[13px] leading-relaxed font-light mb-5 flex-grow" style="color:#6B7280;">{{place.desc}}</p>
                 <a :href="'https://www.google.com/maps/search/?api=1&query=' + place.mapQuery"
                    target="_blank" rel="noopener"
-                   class="flex items-center justify-center gap-2 w-full py-2.5 bg-stone-50 hover:bg-stone-100 border border-stone-200 text-hun-dark font-semibold rounded-xl text-[12px] lg:text-[13px] transition-colors mt-auto">
-                  <svg class="w-3.5 h-3.5 fill-current opacity-60 flex-shrink-0" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
-                  </svg>
+                   class="flex items-center justify-center gap-2 py-2.5 rounded-xl text-[12px] font-semibold transition-colors"
+                   style="background:#F9FAFB;border:1px solid #E5E7EB;color:var(--dark);"
+                   onmouseover="this.style.background='#F3F4F6'" onmouseout="this.style.background='#F9FAFB'">
+                  <svg class="w-3.5 h-3.5 fill-current flex-shrink-0" style="opacity:0.5;" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
                   View on Map
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── DIVIDER ─── -->
+        <div class="flex items-center gap-4" style="opacity:0.22;">
+          <div class="flex-1 h-px" style="background:linear-gradient(to right,transparent,var(--dark));"></div>
+          <span style="color:var(--gold);font-size:20px;">❖</span>
+          <div class="flex-1 h-px" style="background:linear-gradient(to left,transparent,var(--dark));"></div>
+        </div>
+
+        <!-- ═══════ RESTAURANT GUIDE ═══════ -->
+        <section id="restaurants" class="scroll-mt-28 lg:scroll-mt-16">
+          <div class="flex items-start gap-4 mb-8">
+            <div class="flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center text-2xl mt-0.5"
+                 style="background:rgba(190,49,68,0.1);border:2px solid rgba(190,49,68,0.25);">🍽</div>
+            <div class="pt-1">
+              <h2 class="font-serif font-bold leading-tight mb-1.5" style="font-size:clamp(22px,3.2vw,30px);color:var(--dark);">Restaurant Guide</h2>
+              <p class="text-[11px] font-bold uppercase tracking-[0.06em]" style="color:rgba(24,32,43,0.45);">Ranked for Ming, Trista &amp; Hayley</p>
+            </div>
+          </div>
+
+          <!-- Verdict legend -->
+          <div class="flex flex-wrap gap-3 mb-6">
+            <div class="flex items-center gap-2 text-[12px] font-semibold" style="color:#374151;">
+              <div class="w-3 h-3 rounded-full flex-shrink-0" style="background:var(--green);"></div>
+              🟢 Family-first
+            </div>
+            <div class="flex items-center gap-2 text-[12px] font-semibold" style="color:#374151;">
+              <div class="w-3 h-3 rounded-full flex-shrink-0" style="background:var(--gold);"></div>
+              🟡 Good option
+            </div>
+            <div class="flex items-center gap-2 text-[12px] font-semibold" style="color:#374151;">
+              <div class="w-3 h-3 rounded-full flex-shrink-0" style="background:var(--red);"></div>
+              🔴 Adults only
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div v-for="(r, i) in restaurants" :key="i"
+                 class="card rounded-2xl overflow-hidden"
+                 :style="'border-left:5px solid ' + (r.verdict==='🟢' ? 'var(--green)' : r.verdict==='🟡' ? 'var(--gold)' : 'var(--red)') + ';background:white;'">
+              <div class="p-5 lg:p-6">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                  <div>
+                    <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                      <span class="text-[9px] font-bold uppercase tracking-widest" style="color:#9CA3AF;">#{{i + 1}}</span>
+                      <span v-if="r.mustBook" class="text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a;">📅 Book Ahead</span>
+                      <span v-if="r.bestFor" class="text-[10px] font-semibold px-2 py-0.5 rounded-md" style="background:rgba(27,104,64,0.1);color:var(--green);">{{r.bestFor}}</span>
+                    </div>
+                    <h3 class="font-bold text-[16px] lg:text-[17px] leading-tight" style="color:var(--dark);">{{r.name}}</h3>
+                  </div>
+                  <div class="text-right flex-shrink-0">
+                    <div class="text-xl leading-none mb-1">{{r.verdict}}</div>
+                    <div class="text-[11px] font-semibold" style="color:#9CA3AF;">{{r.price}}</div>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-x-3 gap-y-1 mb-3">
+                  <span class="inline-flex items-center gap-1 text-[12px] font-medium" style="color:#6B7280;">
+                    <span style="color:var(--gold);">★</span> {{r.rating}}
+                  </span>
+                  <span style="color:#D1D5DB;">·</span>
+                  <span class="text-[12px] font-medium" style="color:#6B7280;">{{r.location}}</span>
+                </div>
+
+                <p class="text-[13px] leading-relaxed font-light mb-3" style="color:#6B7280;">{{r.desc}}</p>
+
+                <div v-if="r.review" class="italic text-[12px] leading-relaxed pl-3 py-1" style="color:#9CA3AF;border-left:2px solid #E5E7EB;">"{{r.review}}"</div>
               </div>
             </div>
           </div>
@@ -396,171 +587,214 @@
       </div><!-- /max-w-3xl -->
 
       <!-- Footer -->
-      <footer class="text-center py-10 lg:py-12 text-[10px] font-bold tracking-[0.25em] text-stone-400 uppercase border-t border-stone-200/60">
-        Have a wonderful trip to Budapest
+      <footer class="text-center py-10 lg:py-14" style="border-top:1px solid rgba(0,0,0,0.1);">
+        <div class="folk-stripe mx-auto mb-5 rounded" style="width:60px;"></div>
+        <p class="text-[10px] font-bold tracking-[0.3em] uppercase" style="color:rgba(24,32,43,0.4);">Have a wonderful trip to Budapest 🇭🇺</p>
       </footer>
-    </main><!-- /main -->
+    </main>
 
   </div><!-- /lg:flex -->
 </div><!-- /#app -->
 
 <script type="module">
-  const { createApp, ref, onMounted } = Vue;
+const { createApp, ref, reactive, onMounted } = Vue;
 
-  const app = createApp({
-    setup() {
-      const activeDay = ref('day1');
+createApp({
+  setup() {
+    const activeDay = ref('day1');
+    const showAlt = reactive({});
+    const toggleAlt = (id) => { showAlt[id] = !showAlt[id]; };
 
-      const getCardBorder = (type) => {
-        const borders = {
-          'Sightseeing': 'border-l-[5px] border-l-hun-red',
-          'Kids':        'border-l-[5px] border-l-hun-green',
-          'Travel':      'border-l-[5px] border-l-blue-400',
-          'Water':       'border-l-[5px] border-l-sky-400',
-          'Hotel':       'border-l-[5px] border-l-hun-dark',
-          'Dining':      'border-l-[5px] border-l-hun-gold',
-        };
-        return borders[type] || 'border-l-[5px] border-l-stone-200';
-      };
+    const TYPE_COLORS = {
+      'Sightseeing': '#BE3144',
+      'Kids':        '#1B6840',
+      'Travel':      '#3B82F6',
+      'Water':       '#0EA5E9',
+      'Hotel':       '#18202B',
+      'Dining':      '#B8860B',
+    };
+    const getTypeColor = (t) => TYPE_COLORS[t] || '#D1D5DB';
 
-      const getPillClass = (type) => {
-        const pills = {
-          'Sightseeing': 'bg-red-50 text-hun-red',
-          'Kids':        'bg-green-50 text-hun-green',
-          'Travel':      'bg-blue-50 text-blue-600',
-          'Water':       'bg-sky-50 text-sky-600',
-          'Hotel':       'bg-stone-100 text-hun-dark',
-          'Dining':      'bg-amber-50 text-amber-700',
-        };
-        return pills[type] || 'bg-stone-100 text-stone-600';
-      };
+    const getPillClass = (t) => ({
+      'Sightseeing': 'bg-red-50 text-red-700',
+      'Kids':        'bg-green-50 text-green-800',
+      'Travel':      'bg-blue-50 text-blue-700',
+      'Water':       'bg-sky-50 text-sky-700',
+      'Hotel':       'bg-stone-100 text-stone-700',
+      'Dining':      'bg-amber-50 text-amber-800',
+    }[t] || 'bg-stone-100 text-stone-600');
 
-      // ── ITINERARY DATA ───────────────────────────────────────────
-      const days = [
-        {
-          id: 'day1',
-          date: '2',
-          month: 'Apr',
-          title: 'Arrival & First Taste',
-          subtitle: 'Wednesday · Check in to 7Seasons · Evening stroll',
-          events: [
-            { time: '13:30', title: 'Depart London Heathrow', typeLabel: 'Travel', desc: 'British Airways from Terminal 5. Check in 2 hrs early. Flight time ~2h 30m.', mapQuery: 'London+Heathrow+Terminal+5' },
-            { time: '18:00', title: 'Check in · 7Seasons Apartments', typeLabel: 'Hotel', desc: 'Settle in, freshen up. Take the 100E Airport Express bus to Deák tér (~35 min) or taxi (~30 min, HUF 10–15k).', mapQuery: '7Seasons+Apartments+Budapest' },
-            { time: '19:00', title: 'St. Stephen\'s Basilica', typeLabel: 'Sightseeing', desc: 'Beautiful at night when illuminated. Walk around the outside — free, impressive, short stroll from the city centre.', rating: '4.7 · 75,676 reviews', mapQuery: 'St.+Stephen%27s+Basilica+Budapest' },
-            { time: '20:00', title: 'Dinner · Fat Mama', typeLabel: 'Dining', desc: 'Budapest\'s most-reviewed neighbourhood restaurant. Casual, fun, perfect for a tired family after travel day. Hearty portions.', rating: '4.8 · 32,464 reviews · ££', mapQuery: 'Fat+Mama+Restaurant+Budapest' }
-          ]
-        },
-        {
-          id: 'day2',
-          date: '3',
-          month: 'Apr',
-          title: 'Zoo, City Park & Medieval Feast',
-          subtitle: 'Thursday · Városliget · Heroes\' Square · Sir Lancelot',
-          events: [
-            { time: '09:00', title: 'Budapest Zoo & Botanical Garden', typeLabel: 'Kids', desc: 'One of the world\'s oldest zoos — gorgeous Art Nouveau entrance gates. Allow 3 hrs. Book tickets online to skip queues.', rating: '4.5 · 47,247 reviews', mapQuery: 'Budapest+Zoo+and+Botanical+Garden' },
-            { time: '12:30', title: 'Lunch · Parasztkonyha Restaurant', typeLabel: 'Dining', desc: 'Beloved traditional Hungarian kitchen. The goulash and chicken paprikash are outstanding. Very family-friendly with a warm atmosphere.', rating: '4.8 · 8,710 reviews · ££', mapQuery: 'Parasztkonyha+Restaurant+Budapest' },
-            { time: '14:00', title: 'Heroes\' Square', typeLabel: 'Sightseeing', desc: 'Hungary\'s most iconic square — enormous statues of the Magyar chieftains. Free, open air, great photo spot.', rating: '4.7 · 84,827 reviews · Free', mapQuery: 'Heroes+Square+Budapest' },
-            { time: '14:30', title: 'Main Playground in Városliget', typeLabel: 'Kids', desc: 'Budapest\'s best-loved public playground — huge variety of equipment, safe surfaces, beautiful tree-lined surroundings. A 6-year-old\'s paradise!', rating: '4.8 · 5,942 reviews · Free', mapQuery: 'Main+Playground+Városliget+Budapest' },
-            { time: '16:30', title: 'House of Music Hungary', typeLabel: 'Sightseeing', desc: 'Spectacular building with interactive music exhibits. Kids can make sounds, explore instruments — the whole family gets absorbed in it.', rating: '4.8 · 9,855 reviews', mapQuery: 'House+of+Music+Hungary+Budapest' },
-            { time: '18:45', title: 'Dinner · Sir Lancelot Medieval Restaurant', typeLabel: 'Dining', desc: '⭐ TOP PICK FOR KIDS. Costumed waiters, sword fights, fire shows — dinner is entertainment. Arrive for 18:45 to catch the 19:00 main show!', rating: '4.4 · 12,352 reviews · £££', tip: 'Book in advance for 18:45. Request seats near the performance area for your little one to see the fire shows!', tipIcon: '🔥', mapQuery: 'Sir+Lancelot+Medieval+Restaurant+Budapest' }
-          ]
-        },
-        {
-          id: 'day3',
-          date: '4',
-          month: 'Apr',
-          title: 'Castle Hill, Buda & IKONO',
-          subtitle: 'Friday · Fisherman\'s Bastion · Funicular · Market Hall',
-          events: [
-            { time: '09:30', title: 'Central Market Hall', typeLabel: 'Sightseeing', desc: 'Start your day at Budapest\'s grandest iron-and-glass market hall. Try a chimney cake (kürtőskalács) — a guaranteed hit with kids. Great for souvenirs!', rating: '4.3 · 117,150 reviews', mapQuery: 'Central+Market+Hall+Budapest' },
-            { time: '11:00', title: 'Gellérthegyi Playground with Slides', typeLabel: 'Kids', desc: 'Cross Liberty Bridge to the Buda side. Long natural slides carved into the hillside — a hidden gem that locals adore. High energy fun!', rating: '4.7 · 915 reviews · Free', mapQuery: 'Gellérthegyi+playground+Budapest' },
-            { time: '12:30', title: 'Budapest Castle Hill Funicular', typeLabel: 'Kids', desc: 'Fun 2-minute ride up Castle Hill with panoramic views of the Danube and Chain Bridge. Memorable for kids!', rating: '3.6 · 834 reviews · Small fee', mapQuery: 'Budapest+Castle+Hill+Funicular' },
-            { time: '13:00', title: 'Fisherman\'s Bastion', typeLabel: 'Sightseeing', desc: 'Explore fairy-tale towers and spectacular views. This route saves a lot of walking by using the funicular first!', rating: '4.8 · 110,647 reviews', mapQuery: 'Fisherman%27s+Bastion+Budapest' },
-            { time: '14:30', title: 'Lunch · Retek Bisztro', typeLabel: 'Dining', desc: 'Cross back to Pest via the Chain Bridge for a late lunch. Honest Hungarian comfort food — the chicken paprikash is legendary.', rating: '4.8 · 5,865 reviews · ££', mapQuery: 'Retek+Bisztro+Budapest' },
-            { time: '16:30', title: 'IKONO Budapest', typeLabel: 'Kids', desc: 'Immersive pop-art rooms, giant rubber ducks, and mirror mazes. A perfect, fun shelter for the late afternoon.', rating: '4.7 · 13,522 reviews', mapQuery: 'IKONO+Budapest' },
-            { time: '19:00', title: 'Dinner · Spinoza Restaurant', typeLabel: 'Dining', desc: 'Artsy atmosphere in the Jewish Quarter. Enjoy Hungarian-Jewish cuisine with live piano music.', rating: '4.4 · 3,045 reviews · ££', mapQuery: 'Spinoza+Restaurant+Budapest' }
-          ]
-        },
-        {
-          id: 'day4',
-          date: '5',
-          month: 'Apr',
-          title: 'Parliament & Check-in',
-          subtitle: 'Saturday · Hotel changeover · Water park evening',
-          events: [
-            { time: '09:00', title: 'Hungarian Parliament Tour', typeLabel: 'Sightseeing', desc: 'One of the world\'s most beautiful parliament buildings — the guided tour includes the crown jewels, grand staircase, and stunning chambers.', rating: '4.7 · Pre-book required', tip: 'Book tickets at jegy.parlament.hu — they sell out quickly on weekends.', tipIcon: '📌', mapQuery: 'Hungarian+Parliament+Building+Budapest' },
-            { time: '10:30', title: 'Batthyány tér & Danube Riverfront', typeLabel: 'Sightseeing', desc: 'Beautiful Buda-side square with direct view back across the river to the Parliament. Stop for a coffee and let the little one run around.', rating: '4.4 · 638 reviews', mapQuery: 'Batthyány+tér+Budapest' },
-            { time: '12:00', title: 'Lunch · Tosti Budapest', typeLabel: 'Dining', desc: 'Budapest\'s top-rated sandwich spot. Delicious artisan toasties — quick, casual and super kid-friendly.', rating: '4.9 · 714 reviews · HUF 2–4k', mapQuery: 'Tosti+Budapest' },
-            { time: '14:30', title: 'Check in · Aquaworld Resort', typeLabel: 'Hotel', desc: 'Located in north Budapest. Take a ~25 min Bolt ride with luggage from the city centre (~HUF 6,000–8,000).', mapQuery: 'Aquaworld+Resort+Budapest' },
-            { time: '15:00', title: 'Aquaworld Indoor Water Park', typeLabel: 'Water', desc: 'Europe\'s largest indoor tropical water park — 12 slides, wave pool, lazy river, children\'s splash zone. Open until 22:00.', mapQuery: 'Aquaworld+Resort+Budapest' }
-          ]
-        },
-        {
-          id: 'day5',
-          date: '6',
-          month: 'Apr',
-          title: 'Aquaworld & Evening Out',
-          subtitle: 'Sunday · Water park morning · Elevenpark · Dinner',
-          events: [
-            { time: '09:00', title: 'Aquaworld — Morning Session', typeLabel: 'Water', desc: 'Start early before it gets busy. The children\'s zone has a pirate ship splash area and toddler-safe pools.', mapQuery: 'Aquaworld+Resort+Budapest' },
-            { time: '14:30', title: 'Elevenpark — Indoor Play Centre', typeLabel: 'Kids', desc: 'Large indoor children\'s activity hall with climbing frames, ball pools, trampolines and play structures.', rating: '4.5 · 6,229 reviews', mapQuery: 'Elevenpark+Budapest' },
-            { time: '16:00', title: 'Olympics Playground', typeLabel: 'Kids', desc: 'One of Budapest\'s best-rated public playgrounds — spacious, varied equipment, lovely surroundings.', rating: '4.7 · 1,131 reviews · Free', mapQuery: 'Olympics+playground+Budapest' },
-            { time: '19:00', title: 'Dinner · Firkász Restaurant', typeLabel: 'Dining', desc: 'Charming Budapest classic named after journalists who once gathered here. Relaxed, slightly retro atmosphere with excellent traditional food.', rating: '4.5 · 1,960 reviews · ££', mapQuery: 'Firkász+Restaurant+Budapest' }
-          ]
-        },
-        {
-          id: 'day6',
-          date: '7',
-          month: 'Apr',
-          title: 'Water Fun & Flight Home',
-          subtitle: 'Tuesday · Aquaworld Morning · BA865 Return Flight',
-          dayLevelTip: 'Don\'t forget to use up your remaining Forints! Market halls or airport shops are great for last-minute paprika or sweets.',
-          dayLevelTipIcon: '🇭🇺',
-          events: [
-            { time: '09:00', title: 'Aquaworld Final Splash', typeLabel: 'Water', desc: 'One last splash! Enjoy the pools and slides before checking out. Best way to tire out the little one before the flight.', mapQuery: 'Aquaworld+Resort+Budapest' },
-            { time: '11:00', title: 'Check Out & Lunch', typeLabel: 'Hotel', desc: 'Check out of Aquaworld. Have a final relaxed lunch at the resort restaurant before heading to the airport.', mapQuery: 'Aquaworld+Resort+Budapest' },
-            { time: '14:35', title: 'Flight BA865 to London', typeLabel: 'Travel', desc: 'Depart Budapest T2B. Fly back to London Heathrow T5. Flight time ~2h 45m. Arrive LHR at 16:20.', mapQuery: 'Budapest+Airport+Terminal+2B' }
-          ]
-        }
-      ];
+    /* ─── WEATHER ─── */
+    const weather = [
+      { day:'Thu', date:'2 Apr', icon:'☁️',  high:16, low:6,  rain:10 },
+      { day:'Fri', date:'3 Apr', icon:'⛅', high:16, low:7,  rain:5  },
+      { day:'Sat', date:'4 Apr', icon:'☀️',  high:16, low:7,  rain:5  },
+      { day:'Sun', date:'5 Apr', icon:'⛅', high:19, low:9,  rain:15 },
+      { day:'Mon', date:'6 Apr', icon:'☁️',  high:18, low:7,  rain:20 },
+      { day:'Tue', date:'7 Apr', icon:'☀️',  high:17, low:6,  rain:5  },
+    ];
 
-      const backups = [
-        { title: 'The Diner Co. by Felisa', category: 'Dining', rating: '4.8 · 470 reviews', desc: 'A sleek, upscale American diner near the Basilica. Great comfort-food option if the little one needs a familiar meal mid-trip.', mapQuery: 'The+Diner+Co.+by+Felisa+Budapest' },
-        { title: 'Pólós Játszótér', category: 'Kids', rating: '4.7 · 153 reviews', desc: 'A quieter, community-style playground popular with locals. A good alternative if the main Városliget playground is too busy.', mapQuery: 'Pólós+Játszótér+Budapest' },
-        { title: 'Twentysix Budapest', category: 'Dining', rating: '4.5 · 20,188 reviews', desc: 'A stunning tropical jungle restaurant with a glass ceiling and lush greenery. Perfect for a relaxed daytime brunch or lunch.', mapQuery: 'Twentysix+Budapest+Restaurant' },
-        { title: 'Gellért Hill Cave', category: 'Sightseeing', rating: '4.6 · 2,403 reviews', desc: 'A unique church carved into the hillside rock. A short walk from Liberty bridge, offering a cool, mysterious exploration for kids.', mapQuery: 'Gellert+Hill+Cave+Budapest' }
-      ];
+    /* ─── ITINERARY ─── */
+    const days = [
+      {
+        id:'day1', date:'2', month:'Apr',
+        title:'Arrival & First Taste',
+        subtitle:'Thursday · Check in to 7Seasons · Evening stroll',
+        weather:{ icon:'☁️', high:16, low:6 },
+        transport:[
+          { name:'Bolt', time:'30–40 min', cost:'HUF 9,000–12,000', note:'Dedicated kiosk at Terminal 2. Easiest with luggage and a 6-year-old. Book in the app.', recommended:true },
+          { name:'Official Taxi (Főtaxi)', time:'30–40 min', cost:'HUF 10,000–14,000', note:'Booth right outside arrivals. Reliable but can queue after busy flights.' },
+          { name:'100E Airport Bus', time:'50–60 min', cost:'HUF 1,350/person', note:'Bus to Deák tér, then 10 min walk. Cheapest but awkward with luggage and a tired child.' },
+        ],
+        events:[
+          { time:'13:30', title:'Depart London Heathrow T5', typeLabel:'Travel', desc:'British Airways BA866. Flight time ~2h 30m. Check in online up to 24 hrs before.', mapQuery:'London+Heathrow+Terminal+5' },
+          { time:'17:00', title:'Arrive Budapest BUD T2B', typeLabel:'Travel', desc:'Clear immigration. Bolt or taxi is waiting outside — see transport options above.', mapQuery:'Budapest+Airport+Terminal+2' },
+          { time:'18:30', title:'Check in · 7Seasons Apartments', typeLabel:'Hotel', desc:'Kiraly Street 8, District VII — the Jewish Quarter. Settle in and freshen up.', mapQuery:'7Seasons+Apartments+Budapest+Kiraly+Street' },
+          { time:'19:30', title:'St. Stephen\'s Basilica', typeLabel:'Sightseeing', desc:'Spectacular when illuminated at night. Free to walk around the exterior — 10 min from the hotel.', rating:'4.7 · 75,676 reviews · Free', mapQuery:'St.+Stephen%27s+Basilica+Budapest' },
+          { time:'20:30', title:'Dinner · Fat Mama', typeLabel:'Dining', desc:'Budapest\'s most-reviewed neighbourhood spot. Casual, buzzing, hearty portions — ideal after a travel day. 5 min walk from hotel.', rating:'4.8 · 32,464 reviews · ££', mapQuery:'Fat+Mama+Restaurant+Budapest' },
+        ],
+        alternatives:[
+          { icon:'🍽', title:'Alt Dinner: Firkász Restaurant ⭐4.5', desc:'Charming retro journalist-café atmosphere. Quieter than Fat Mama — great for winding down after a travel day.' },
+          { icon:'🍔', title:'Alt Dinner: The Diner Co. ⭐4.8', desc:'American-style burgers near St. Stephen\'s Basilica. Good comfort-food pick if Hayley wants something familiar on night one.' },
+        ],
+      },
+      {
+        id:'day2', date:'3', month:'Apr',
+        title:'City Park & Medieval Feast',
+        subtitle:'Friday · Városliget · Heroes\' Square · Sir Lancelot',
+        weather:{ icon:'⛅', high:16, low:7 },
+        events:[
+          { time:'09:30', title:'Heroes\' Square', typeLabel:'Sightseeing', desc:'Hungary\'s most iconic plaza — massive statues of the Magyar chieftains. Free, open-air, great photos before the park.', rating:'4.7 · 84,827 reviews · Free', mapQuery:'Heroes+Square+Budapest' },
+          { time:'10:00', title:'Main Playground in Városliget', typeLabel:'Kids', desc:'Budapest\'s best-loved public playground — huge variety of equipment, perfect for a 6yo. Completely free!', rating:'4.8 · 5,942 reviews · Free', mapQuery:'Main+Playground+Városliget+Budapest' },
+          { time:'12:30', title:'Lunch · Pántlika Bistro', typeLabel:'Dining', desc:'Beloved retro bistro right in the park. Burgers, schnitzel & Hungarian classics. 7–10 min walk from the playground.', rating:'4.4 · 8,710 reviews · ££', mapQuery:'Pántlika+Restaurant+Budapest' },
+          { time:'14:00', title:'Vajdahunyad Castle', typeLabel:'Sightseeing', desc:'Fairy-tale castle exterior walk. Free to explore the courtyards and walk the park area.', rating:'4.7 · 45,123 reviews · Free', mapQuery:'Vajdahunyad+Castle+Budapest' },
+          { time:'15:30', title:'House of Music Hungary', typeLabel:'Sightseeing', desc:'Spectacular building with interactive music exhibits — kids can make sounds, explore instruments, and discover music history.', rating:'4.8 · 9,855 reviews', mapQuery:'House+of+Music+Hungary+Budapest' },
+          { time:'18:30', title:'Dinner · Sir Lancelot Medieval Restaurant', typeLabel:'Dining', desc:'TOP PICK FOR KIDS. Costumed waiters, sword fights, fire shows. Booking confirmed for 18:30 — main show starts at 19:00!', rating:'4.4 · 12,352 reviews · £££', bookingRequired:true, tip:'Request seats near the performance area so Hayley can see the fire shows! No bill splitting — settle as one table.', tipIcon:'🔥', mapQuery:'Sir+Lancelot+Medieval+Restaurant+Budapest' },
+        ],
+        alternatives:[
+          { icon:'🎡', title:'If Hayley won\'t leave the playground', desc:'Skip Vajdahunyad Castle and let her play longer — the playground is enormous. House of Music also makes a great rainy-day fallback.' },
+          { icon:'☀️', title:'If the weather is perfect', desc:'Swap House of Music for extra outdoor time at the park lake, or a walk around the Városliget grounds.' },
+          { icon:'🎪', title:'Pólós Játszótér ⭐4.7', desc:'A quieter neighbourhood playground a short walk from Városliget — good for a calm wind-down before the medieval dinner.' },
+        ],
+        dayTip:'Sir Lancelot: Confirmed booking at 18:30. Main show starts 19:00 — arrive on time. Request front seats near the performance stage. Whole roasted lamb + medieval platters incoming.',
+        dayTipIcon:'🏰',
+      },
+      {
+        id:'day3', date:'4', month:'Apr',
+        title:'Castle Hill & River Cruise',
+        subtitle:'Saturday · Fisherman\'s Bastion · Gellért Slides · Danube',
+        weather:{ icon:'☀️', high:16, low:7 },
+        events:[
+          { time:'09:15', title:'Bolt to Gellért Hill', typeLabel:'Travel', desc:'Use the Bolt app — drops you right at the slide entrance, avoiding the steep hill climb.', mapQuery:'Gellérthegyi+playground+Budapest' },
+          { time:'09:30', title:'Gellérthegyi Hillside Slides', typeLabel:'Kids', desc:'Long natural slides carved into the hillside — 1.5 hrs of pure fun! Entirely free. Cross Liberty Bridge to reach the Buda side.', rating:'4.7 · Free', mapQuery:'Gellérthegyi+playground+Budapest' },
+          { time:'11:15', title:'Castle Hill Funicular & Fisherman\'s Bastion', typeLabel:'Sightseeing', desc:'Short fun funicular ride up, then fairy-tale towers and sweeping Danube views.', rating:'4.8 · 110,647 reviews', mapQuery:'Fisherman%27s+Bastion+Budapest' },
+          { time:'12:30', title:'Lunch · VakVarjú (Paulay Ede utca)', typeLabel:'Dining', desc:'Most famous kid-friendly restaurant in Budapest. Dedicated play corner with a babysitter at weekends — adults eat well while Hayley is looked after.', rating:'4.7 · ££ · ~HUF 5,000–10,000/head', mapQuery:'VakVarjú+Budapest' },
+          { time:'14:30', title:'Pest Leisure Afternoon', typeLabel:'Sightseeing', desc:'Relaxed stroll along the Danube riverfront. Grab an ice cream and let everyone recharge before the evening.', mapQuery:'Vigadó+tér+Budapest' },
+          { time:'18:00', title:'Dinner · Jewish Quarter', typeLabel:'Dining', desc:'Spinoza Restaurant (live piano, warm art-deco atmosphere) or Fat Mama — both near 7Seasons, ideal before the cruise.', mapQuery:'Jewish+Quarter+Budapest' },
+          { time:'20:00', title:'Danube River Sightseeing Cruise', typeLabel:'Water', desc:'60-min evening cruise seeing the entire city illuminated at night. Departs Vigadó tér Dock 7. 2 adults €50 total · Hayley (age 6) is FREE.', rating:'4.8 · Legenda City Cruises', tip:'Book the 20:00 slot at vigado.hu to see the city lit up. Adults €25 each, Hayley FREE. One of the most magical moments of the trip.', tipIcon:'🚢', mapQuery:'Legenda+City+Cruises+Dock+7+Budapest' },
+        ],
+        alternatives:[
+          { icon:'🌧', title:'If it rains: IKONO Budapest ⭐4.7', desc:'Fully indoor — swap the outdoor sections and spend the afternoon here instead of the riverfront.' },
+          { icon:'🎠', title:'Slow down option', desc:'Schedule allows 1.5–2 hrs at Gellért slides. If Hayley wants more time, skip the Funicular and go straight to VakVarjú at 13:00.' },
+          { icon:'🌿', title:'Backup: Margaret Island', desc:'Large river island with parks, fountains, and a small zoo — great if you want a gentler outdoor alternative to the slides.' },
+        ],
+        dayTip:'River Cruise: Book the 20:00 Legenda City Cruises slot at vigado.hu. 2 adults €50 total, Hayley (age 6) is FREE. Dock 7, 15 min stroll from 7Seasons.',
+        dayTipIcon:'🌊',
+      },
+      {
+        id:'day4', date:'5', month:'Apr',
+        title:'Parliament & Aquaworld',
+        subtitle:'Sunday · Hotel changeover · Water park begins',
+        weather:{ icon:'⛅', high:19, low:9 },
+        events:[
+          { time:'09:00', title:'Hungarian Parliament Tour', typeLabel:'Sightseeing', desc:'Crown jewels, grand staircase, and breathtaking chambers. Pre-booking essential — sells out fast on Sundays.', rating:'4.7 · jegy.parlament.hu', bookingRequired:true, tip:'Book online at jegy.parlament.hu before the trip. Crown jewels are the absolute highlight. Not to be missed.', tipIcon:'👑', mapQuery:'Hungarian+Parliament+Building+Budapest' },
+          { time:'10:30', title:'Scenic Tram No. 2', typeLabel:'Travel', desc:'The iconic yellow tram from Kossuth Lajos tér — one of the most beautiful tram lines in Europe. Ride to Margaret Bridge.', rating:'4.9 · Most scenic tram in Budapest', mapQuery:'Kossuth+Lajos+tér+Tram+2+Budapest' },
+          { time:'11:30', title:'Batthyány tér Viewpoint', typeLabel:'Sightseeing', desc:'The best viewpoint in the city — looking back at the Parliament across the Danube. Perfect family photo stop.', rating:'4.4', mapQuery:'Batthyány+tér+Budapest' },
+          { time:'13:00', title:'Lunch · Tosti Budapest', typeLabel:'Dining', desc:'Top-rated artisan sandwiches — quick, casual, super kid-friendly. Perfect before the Aquaworld move.', rating:'4.9 · HUF 2,000–4,000/head', mapQuery:'Tosti+Budapest' },
+          { time:'14:30', title:'Bolt to Aquaworld Resort', typeLabel:'Travel', desc:'~25 min via Bolt. Safest and easiest way with luggage.', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'15:00', title:'Check in · Aquaworld Resort', typeLabel:'Hotel', desc:'16 Ives Street. Check-in from 15:00. Breakfast & Dinner included throughout your entire Aquaworld stay!', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'15:30', title:'Aquaworld Indoor Water Park', typeLabel:'Water', desc:'Europe\'s largest indoor tropical water park — 12 slides, wave pool, lazy river. Open until 22:00!', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'19:00', title:'Resort Dinner (Included)', typeLabel:'Dining', desc:'Included with your stay — relax at the Aquaworld restaurant after a full and action-packed day.', mapQuery:'Aquaworld+Resort+Budapest' },
+        ],
+      },
+      {
+        id:'day5', date:'6', month:'Apr',
+        title:'Aquaworld Full Day',
+        subtitle:'Monday · Fully immersed at the resort',
+        weather:{ icon:'☁️', high:18, low:7 },
+        events:[
+          { time:'09:00', title:'Breakfast at the Resort (Included)', typeLabel:'Dining', desc:'Included with your stay. Start the day fuelled and ready for the water park.', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'10:00', title:'Aquaworld Morning Session', typeLabel:'Water', desc:'Bongo Land kids\' club, toddler-safe pools, and the pirate-themed water playground. Hayley will be in heaven.', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'13:00', title:'Lunch at the Resort', typeLabel:'Dining', desc:'Casual snack bar or main restaurant — no need to leave the complex. Keep the momentum going.', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'14:30', title:'Oriental Spa & Downtime', typeLabel:'Water', desc:'Child-safe thermal sections for the family, or enjoy quiet downtime in the resort\'s soft play areas.', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'16:30', title:'Wave Pool & Main Slides', typeLabel:'Water', desc:'The big slides stay open into the evening — plenty of time for more action before dinner.', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'19:00', title:'Dinner at Duna Restaurant (Included)', typeLabel:'Dining', desc:'Relaxed evening meal at the resort\'s Duna Restaurant. Included with your Aquaworld stay.', mapQuery:'Aquaworld+Resort+Budapest' },
+        ],
+      },
+      {
+        id:'day6', date:'7', month:'Apr',
+        title:'Final Splash & Home',
+        subtitle:'Tuesday · BA865 · Home to London',
+        weather:{ icon:'☀️', high:17, low:6 },
+        events:[
+          { time:'09:00', title:'Final Breakfast & Pool Session (Included)', typeLabel:'Water', desc:'One last hour on the slides before packing. Breakfast included — make the most of it!', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'11:30', title:'Check out · Aquaworld Resort', typeLabel:'Hotel', desc:'Check out by 11:30. Leave bags at reception and enjoy the resort until lunch.', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'12:30', title:'Final Lunch at Aquaworld', typeLabel:'Dining', desc:'Eat comfortably before the airport ride — avoids dragging luggage around the city.', mapQuery:'Aquaworld+Resort+Budapest' },
+          { time:'13:45', title:'Bolt to Budapest Airport', typeLabel:'Travel', desc:'~30 min direct ride via M0 motorway. Plenty of time before check-in closes.', mapQuery:'Budapest+Airport+BUD' },
+          { time:'14:35', title:'BA865 Departs BUD T2B', typeLabel:'Travel', desc:'British Airways from Terminal 2B. Flight time ~2h 45m. Wave goodbye to Budapest!', mapQuery:'Budapest+Airport+BUD' },
+          { time:'16:20', title:'Arrive London Heathrow T5', typeLabel:'Travel', desc:'Welcome home — what an adventure!', mapQuery:'London+Heathrow+Terminal+5' },
+        ],
+        dayTip:'Allow 1.5–2 hrs at the airport before departure. Your 13:45 Bolt leaves plenty of buffer. Cabin bags only — no check-in required.',
+        dayTipIcon:'✈️',
+      },
+    ];
 
-      // ── SCROLL RECOGNITION ────────────────────────────────────────
-      onMounted(() => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const id = entry.target.id;
-              if (days.find(d => d.id === id)) {
-                activeDay.value = id;
-              }
-            }
-          });
-        }, { root: null, rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    /* ─── BACKUP PICKS ─── */
+    const backups = [
+      { title:'The Diner Co. by Felisa', category:'Dining', rating:'4.8 · 470 reviews', desc:'Upscale American diner near St. Stephen\'s Basilica. Great comfort-food night if Hayley needs something familiar.', mapQuery:'The+Diner+Co.+by+Felisa+Budapest' },
+      { title:'Pólós Játszótér', category:'Kids', rating:'4.7 · 153 reviews', desc:'Quieter neighbourhood playground popular with locals — a good alternative if Városliget is too busy.', mapQuery:'Pólós+Játszótér+Budapest' },
+      { title:'IKONO Budapest', category:'Kids', rating:'4.7', desc:'Fully indoor experiential attraction. Perfect rainy-day swap for Day 3 outdoor sections.', mapQuery:'IKONO+Budapest' },
+      { title:'Twentysix Budapest', category:'Dining', rating:'4.5 · 20,188 reviews', desc:'Stunning tropical jungle restaurant with a glass ceiling. Perfect for a long, lazy brunch.', mapQuery:'Twentysix+Budapest+Restaurant' },
+      { title:'Gellért Hill Cave', category:'Sightseeing', rating:'4.6 · 2,403 reviews', desc:'A unique church carved into the hillside rock near Liberty Bridge. Cool, mysterious — great for curious kids.', mapQuery:'Gellert+Hill+Cave+Budapest' },
+      { title:'Margaret Island', category:'Kids', rating:'4.8', desc:'River island with parks, a small zoo, and fountains. Ideal for a relaxed extra outdoor day.', mapQuery:'Margaret+Island+Budapest' },
+    ];
 
-        document.querySelectorAll('.observer-section').forEach(el => observer.observe(el));
-      });
+    /* ─── RESTAURANT GUIDE ─── */
+    const restaurants = [
+      { name:'Sir Lancelot Medieval Restaurant', rating:'4.4 · 12,352 reviews', price:'HUF 8–15k/head', location:'District V', bestFor:'Day 2 Dinner', verdict:'🟢', mustBook:true, desc:'The highlight of the trip for a 6-year-old. Costumed waiters, sword fights, fire shows, enormous medieval platters. Request seats near the performance area. Note: no bill splitting.', review:'A complete experience — sword fights, fire shows, and giant portions. Kids absolutely love it.' },
+      { name:'Fat Mama', rating:'4.8 · 32,464 reviews', price:'HUF 4–8k/head', location:'5 min from 7Seasons', bestFor:'Day 1 Dinner', verdict:'🟢', desc:'Budapest\'s most-reviewed neighbourhood restaurant. Casual, loud, hearty portions. 12-hr smoked brisket, BBQ ribs, chicken paprikash. Perfect when you\'re tired after travel.', review:'Exactly right when you\'re tired. The brisket is incredible.' },
+      { name:'VakVarjú (Paulay Ede utca)', rating:'4.7', price:'HUF 5–10k/head', location:'District VI', bestFor:'Day 3 Lunch', verdict:'🟢', mustBook:true, desc:'Most famous kid-friendly restaurant in Budapest. Dedicated play corner with babysitter at weekends. Adults eat real Hungarian food while the kids are entertained.', review:'The play corner is a lifesaver. Adults eat well, kids are happy.' },
+      { name:'Pántlika Bistro', rating:'4.4 · 8,710 reviews', price:'HUF 4–8k/head', location:'Városliget (City Park)', bestFor:'Day 2 Lunch', verdict:'🟢', desc:'Beloved retro bistro right in the park. Burgers, giant schnitzel, park goulash, Hungarian pancakes. 7–10 min walk from the main playground.', review:'A retro gem. The schnitzel was enormous and the goulash was perfect.' },
+      { name:'Tosti Budapest', rating:'4.9', price:'HUF 2–4k/head', location:'District V', bestFor:'Day 4 Lunch', verdict:'🟢', desc:'Top-rated artisan sandwiches — quick, casual, and super kid-friendly. Classic, Old Amsterdam, and Chicken Tosti. Great before the Aquaworld move.', review:'Simple, perfect, and so cheap for the quality.' },
+      { name:'Retek Bisztro', rating:'4.8 · 5,877 reviews', price:'HUF 5–10k/head', location:'District II (Buda)', bestFor:'Near Funicular', verdict:'🟢', mustBook:true, desc:'Ranked #10 of 3,500+ Budapest restaurants. Best chicken paprikash in the city. Modern Hungarian comfort food with live piano. Note: 15% service charge added automatically.', review:'Absolutely amazing — most tasty chicken paprikash. Warm, cosy, live piano was a lovely touch.' },
+      { name:'Firkász Restaurant', rating:'4.5 · 1,961 reviews', price:'HUF 4–9k/head', location:'District XIII (10 min Bolt)', bestFor:'Any Evening', verdict:'🟡', desc:'Charming retro journalists\' café with walls of newspaper clippings and antique gramophones. Veal paprikash, duck, game meats. Genuinely unpretentious and local.', review:'Charmingly antique interior. The veal paprikash with dumplings was wonderful.' },
+      { name:'Spinoza Café & Restaurant', rating:'4.4 · 3,047 reviews', price:'HUF 5–10k/head', location:'5 min from 7Seasons', bestFor:'Day 3 Dinner', verdict:'🟡', desc:'Art-deco Hungarian-Jewish cuisine in the old Jewish Quarter. Live klezmer music every Friday from 7pm — magical atmosphere if your Day 3 falls on a Friday.', review:'A very traditional art-deco restaurant with a family atmosphere and live piano.' },
+      { name:'The Diner Co. by Felisa', rating:'4.8 · 470 reviews', price:'HUF 6–8k/head', location:'Near Basilica', bestFor:'Comfort food night', verdict:'🟡', desc:'Upscale American diner opened Jan 2026. Black Angus burgers, wings, cocktails. Use when Hayley needs something familiar — nothing uniquely Hungarian so save as a fallback.', review:'Finally, a real American burger in Budapest. Great food and cocktails.' },
+      { name:'Stand25 Bistro', rating:'4.5', price:'HUF 20,000+/head', location:'Buda side', bestFor:'Adults splurge', verdict:'🔴', mustBook:true, desc:'Michelin Bib Gourmand. Hungary\'s finest bistro — serious technique, traditional roots. 2 or 3-course set menus only, no à la carte. Better enjoyed without a 6-year-old.', review:'The salmon on risotto was sensational. Best lángos and goulash soup in Budapest.' },
+      { name:'Borkonyha Winekitchen', rating:'4.6', price:'HUF 30,000+/head', location:'District V', bestFor:'Adults only', verdict:'🔴', mustBook:true, desc:'Michelin One Star since 2014. Wine-forward contemporary Hungarian cuisine. One of the best wine programs in Central Europe. Not suited for young children.', review:'Michelin star meal at an average meal price. The foie gras with Tokaj aszú is extraordinary.' },
+    ];
 
-      // ── MANUAL SCROLL ─────────────────────────────────────────────
-      const scrollToDay = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-          activeDay.value = id;
-        }
-      };
+    /* ─── SCROLL & OBSERVER ─── */
+    const scrollToDay = (id) => {
+      const el = document.getElementById(id);
+      if (el) { el.scrollIntoView({ behavior:'smooth' }); activeDay.value = id; }
+    };
 
-      return { days, backups, activeDay, scrollToDay, getCardBorder, getPillClass };
-    }
-  });
+    onMounted(() => {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const id = e.target.id;
+            if (days.find(d => d.id === id)) activeDay.value = id;
+          }
+        });
+      }, { rootMargin:'-40% 0px -40% 0px' });
+      document.querySelectorAll('.observer-section').forEach(el => obs.observe(el));
+    });
 
-  app.mount('#app');
+    return { activeDay, showAlt, toggleAlt, weather, days, backups, restaurants, scrollToDay, getTypeColor, getPillClass };
+  }
+}).mount('#app');
 </script>
 </body>
 </html>
