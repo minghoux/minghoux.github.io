@@ -227,27 +227,6 @@
             -webkit-text-fill-color: transparent;
             white-space: nowrap;
         }
-        .warm-word .stroke {
-            position: absolute;
-            left: -1%;
-            right: -1%;
-            bottom: -0.19em;
-            width: 102%;
-            height: 0.3em;
-            overflow: visible;
-        }
-        .warm-word .stroke path {
-            fill: none;
-            stroke: url(#warmStroke);
-            stroke-width: 5.5;
-            stroke-linecap: round;
-            stroke-dasharray: 640;
-            stroke-dashoffset: 640;
-        }
-        .hero.lit .warm-word .stroke path {
-            animation: draw 1.1s var(--ease) 0.5s forwards;
-        }
-        @keyframes draw { to { stroke-dashoffset: 0; } }
 
         .hero-lede {
             max-width: 620px;
@@ -627,7 +606,6 @@
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .ambient::before, .dot { animation: none; }
-            .warm-word .stroke path { animation: none; stroke-dashoffset: 0; }
             .reveal { opacity: 1; transform: none; transition: none; }
             .btn, .cap, .exp, .nav-cta { transition: none; }
         }
@@ -638,17 +616,6 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP5PW3G"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Shared gradient defs for the underline stroke -->
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-        <defs>
-            <linearGradient id="warmStroke" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#ff8a3d"/>
-                <stop offset="0.5" stop-color="#ffab33"/>
-                <stop offset="1" stop-color="#ffd15c"/>
-            </linearGradient>
-        </defs>
-    </svg>
 
     <div class="ambient" aria-hidden="true"></div>
 
@@ -674,7 +641,7 @@
             <section class="hero" id="hero">
                 <div class="container">
                     <span class="badge reveal"><span class="dot"></span> <b>Available</b>&nbsp;for select projects · London, UK</span>
-                    <h1 class="reveal">Product designer crafting<br><span class="warm-word">useful, delightful<svg class="stroke" viewBox="0 0 300 12" preserveAspectRatio="none"><path d="M2 8 C 60 3, 120 11, 180 6 S 260 3, 298 7"/></svg></span> digital products.</h1>
+                    <h1 class="reveal">Product designer crafting<br><span class="warm-word">useful, delightful</span> digital products.</h1>
                     <p class="hero-lede reveal">Hi, I'm Ming Ho — a product designer with <strong>12 years</strong> of experience shaping responsive websites and native &amp; hybrid mobile apps for startups and multinational companies. Originally from Hong Kong, now based in London.</p>
                     <div class="hero-actions reveal">
                         <a href="mailto:hcming138@gmail.com" class="btn btn-primary">
@@ -847,9 +814,6 @@
         const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
-
-        // Trigger the hero underline draw once painted
-        requestAnimationFrame(() => document.getElementById('hero').classList.add('lit'));
 
         // Current year
         document.getElementById('year').textContent = new Date().getFullYear();
