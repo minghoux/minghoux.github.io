@@ -65,6 +65,23 @@
             animation: floatTwo 26s ease-in-out infinite;
         }
 
+        /* warm complementary glow to add contrast/depth against the blues */
+        .glow-accent {
+            content: "";
+            position: fixed;
+            width: 55vw;
+            height: 55vw;
+            top: 30%;
+            left: 65%;
+            border-radius: 50%;
+            filter: blur(85px);
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(circle, #ff8c3d, transparent 65%);
+            animation: floatThree 30s ease-in-out infinite;
+        }
+
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -79,6 +96,12 @@
         @keyframes floatTwo {
             0%, 100% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(-6vw, -6vh) scale(1.08); }
+        }
+
+        @keyframes floatThree {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-8vw, 6vh) scale(1.15); }
+            66% { transform: translate(5vw, -5vh) scale(0.9); }
         }
 
         main {
@@ -113,7 +136,8 @@
         @media (prefers-reduced-motion: reduce) {
             body,
             body::before,
-            body::after {
+            body::after,
+            .glow-accent {
                 animation: none;
             }
         }
@@ -124,6 +148,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP5PW3G"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <div class="glow-accent"></div>
     <main>
         <div class="hero-banner">
             <div class="container">
