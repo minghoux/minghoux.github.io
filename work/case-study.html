@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: replace description with the real project summary -->
+    <meta name="description" content="Case study by Ming Ho, product designer — the thinking, process and outcome behind a real product project.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#070b18"/>
+    <!-- TODO: replace title with '<Project> — Case study · Ming Ho' -->
+    <title>Case study — Ming Ho</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Case study — Ming Ho">
+    <meta property="og:description" content="The thinking, process and outcome behind a real product project.">
+    <meta property="og:type" content="article">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MP5PW3G');</script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        :root {
+            --bg: #070b18;
+            --surface: rgba(255, 255, 255, 0.035);
+            --surface-hover: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.09);
+            --border-strong: rgba(255, 255, 255, 0.16);
+            --text: #e8eefb;
+            --text-muted: #9aa8c4;
+            --text-dim: #6b7896;
+            --blue: #5c8dff;
+            --blue-bright: #8fb4ff;
+            --warm: #ff8a3d;
+            --amber: #ffab33;
+            --gold: #ffd15c;
+            --warm-tint: rgba(255, 138, 61, 0.14);
+            --max: 1120px;
+            --reading: 760px;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin: 0; color: var(--text); background: var(--bg);
+            line-height: 1.6; overflow-x: hidden; position: relative;
+        }
+        .ambient { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+        .ambient::before {
+            content: ""; position: absolute; inset: -20%;
+            background:
+                radial-gradient(38% 38% at 12% 10%, rgba(42, 92, 201, 0.28), transparent 70%),
+                radial-gradient(42% 42% at 90% 18%, rgba(255, 138, 61, 0.14), transparent 70%),
+                linear-gradient(160deg, #060a16, #0a1226 40%, #070b18);
+        }
+        .ambient::after {
+            content: ""; position: absolute; inset: 0; opacity: 0.4;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+        }
+        .wrap { position: relative; z-index: 1; }
+        .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+        .reading { max-width: var(--reading); margin-left: auto; margin-right: auto; }
+        a { color: inherit; text-decoration: none; }
+
+        /* ---------- Nav ---------- */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+            transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease), border-color 0.4s var(--ease);
+            border-bottom: 1px solid transparent; }
+        .nav.scrolled {
+            background: rgba(7, 11, 24, 0.72);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 600; letter-spacing: -0.01em; font-size: 16px; }
+        .brand-mark {
+            width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+            font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; color: #fff;
+            background: linear-gradient(140deg, var(--blue) 15%, #2a5cc9 50%, var(--warm) 105%);
+            box-shadow: 0 4px 18px rgba(92, 141, 255, 0.35);
+        }
+        .back-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 14.5px; color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
+        .back-link:hover { color: var(--text); }
+        .back-link svg { transition: transform 0.25s var(--ease); }
+        .back-link:hover svg { transform: translateX(-3px); }
+
+        /* ---------- Shared bits ---------- */
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--amber); font-weight: 600; margin-bottom: 18px;
+        }
+        .eyebrow::before { content: ""; width: 26px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--warm), var(--amber)); }
+        .btn {
+            display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px;
+            border-radius: 999px; font-weight: 600; font-size: 15px; cursor: pointer;
+            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+        .btn-primary { color: #241000; background: linear-gradient(135deg, var(--gold), var(--amber) 55%, var(--warm)); box-shadow: 0 10px 30px -8px rgba(255, 138, 61, 0.5); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 42px -8px rgba(255, 138, 61, 0.62); }
+        .btn-ghost { color: var(--text); border: 1px solid var(--border-strong); background: var(--surface); }
+        .btn-ghost:hover { transform: translateY(-2px); border-color: var(--blue); background: var(--surface-hover); }
+        .btn svg { transition: transform 0.25s var(--ease); }
+        .btn:hover svg { transform: translateX(3px); }
+
+        /* placeholder image panel — replace each .shot with a real <img> */
+        .shot {
+            position: relative; border: 1px solid var(--border); border-radius: 18px; overflow: hidden;
+            background:
+                radial-gradient(120% 120% at 15% 0%, rgba(92,141,255,0.22), transparent 60%),
+                radial-gradient(120% 120% at 100% 100%, rgba(255,138,61,0.20), transparent 60%),
+                #0b1326;
+        }
+        .shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .shot .ph {
+            display: grid; place-items: center; gap: 8px; text-align: center;
+            min-height: 260px; color: var(--text-dim); font-size: 13px; letter-spacing: 0.02em; padding: 24px;
+        }
+        .shot--hero .ph { min-height: 420px; }
+        .shot--tall .ph { min-height: 460px; }
+        figure { margin: 0; }
+        figcaption { margin-top: 12px; font-size: 13.5px; color: var(--text-dim); text-align: center; }
+
+        /* ---------- Case study hero ---------- */
+        .cs-hero { padding: 130px 0 60px; }
+        .cs-hero h1 {
+            font-family: 'Fraunces', Georgia, serif; font-weight: 500;
+            font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.04; letter-spacing: -0.02em;
+            margin: 20px 0 0; max-width: 900px;
+        }
+        .cs-hero .summary { max-width: 640px; margin: 24px 0 0; font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-muted); }
+        .cs-meta {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+            margin: 46px 0 40px; padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        }
+        .cs-meta .k { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 7px; }
+        .cs-meta .v { font-size: 15px; color: var(--text); font-weight: 500; }
+
+        /* ---------- Content blocks ---------- */
+        section.cs { padding: 56px 0; }
+        .cs-block h2 {
+            font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+            letter-spacing: -0.02em; line-height: 1.14; margin: 0 0 18px;
+        }
+        .cs-block p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.75; margin: 0 0 20px; }
+        .cs-block p strong { color: var(--text); font-weight: 600; }
+        .cs-block ul { color: var(--text-muted); font-size: 1.08rem; line-height: 1.7; padding-left: 22px; margin: 0 0 20px; }
+        .cs-block li { margin-bottom: 10px; }
+        .cs-block li::marker { color: var(--amber); }
+        .pull {
+            font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+            font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.3; color: var(--text);
+            border-left: 2px solid var(--amber); padding-left: 26px; margin: 46px 0;
+        }
+        .figure-wide { margin: 20px 0 8px; }
+        .figure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0 8px; }
+
+        /* process steps */
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 12px; }
+        .step { border: 1px solid var(--border); border-radius: 16px; padding: 24px 22px; background: var(--surface); }
+        .step .idx { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--amber); }
+        .step h3 { margin: 10px 0 8px; font-size: 1.05rem; font-weight: 600; }
+        .step p { margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.55; }
+
+        /* impact tiles */
+        .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 12px; }
+        .impact { border: 1px solid var(--border); border-radius: 18px; padding: 30px 26px; background: var(--surface); }
+        .impact .big {
+            font-family: 'Fraunces', serif; font-weight: 600; font-size: 2.6rem; line-height: 1;
+            background: linear-gradient(120deg, var(--gold), var(--warm)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .impact .cap { margin-top: 10px; color: var(--text-muted); font-size: 0.98rem; }
+
+        /* ---------- Next / footer CTA ---------- */
+        .cs-end { padding: 90px 0; }
+        .cs-end-card {
+            border: 1px solid var(--border); border-radius: 26px; padding: 60px 40px; text-align: center;
+            background:
+                radial-gradient(70% 130% at 20% 0%, rgba(92,141,255,0.16), transparent 55%),
+                radial-gradient(70% 130% at 85% 100%, rgba(255,138,61,0.16), transparent 55%),
+                var(--surface);
+        }
+        .cs-end-card h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.8rem); letter-spacing: -0.02em; margin: 0 auto 14px; max-width: 560px; }
+        .cs-end-card h2 em { font-style: italic; color: var(--gold); }
+        .cs-end-card p { color: var(--text-muted); font-size: 1.08rem; margin: 0 auto 30px; max-width: 460px; }
+        .cs-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        footer { border-top: 1px solid var(--border); padding: 40px 0; }
+        .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; color: var(--text-dim); font-size: 14px; }
+        .foot-links { display: flex; gap: 24px; }
+        .foot-links a { transition: color 0.2s ease; }
+        .foot-links a:hover { color: var(--amber); }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+        .reveal.in { opacity: 1; transform: none; }
+
+        @media (max-width: 880px) {
+            .cs-meta { grid-template-columns: 1fr 1fr; gap: 22px; }
+            .steps { grid-template-columns: 1fr 1fr; }
+            .impact-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 560px) {
+            .container { padding: 0 20px; }
+            .cs-hero { padding: 110px 0 40px; }
+            .figure-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .cs-end-card { padding: 44px 24px; }
+            .back-link span { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .btn { transition: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP5PW3G"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="ambient" aria-hidden="true"></div>
+
+    <div class="wrap">
+        <!-- Nav -->
+        <header class="nav" id="nav">
+            <div class="container nav-inner">
+                <a href="../index.html" class="brand">
+                    <span class="brand-mark">M</span>
+                    <span>Ming&nbsp;Ho</span>
+                </a>
+                <a href="../index.html#selected-work" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+                    <span>All work</span>
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <!-- ============================================================
+                 CASE STUDY TEMPLATE
+                 Everything in 〔 〕 is a placeholder — replace with the real
+                 content from your Webflow case study. Swap each .shot block
+                 for a real <img>. Add images under work/assets/.
+                 ============================================================ -->
+
+            <!-- Hero -->
+            <section class="cs-hero">
+                <div class="container">
+                    <span class="eyebrow reveal">Case study</span>
+                    <h1 class="reveal">〔 A one-line headline that captures the project's outcome 〕</h1>
+                    <p class="summary reveal">〔 A short paragraph framing the project: what it was, who it was for, and the result you drove. 〕</p>
+
+                    <div class="cs-meta reveal">
+                        <div><div class="k">My role</div><div class="v">〔 e.g. Lead Product Designer 〕</div></div>
+                        <div><div class="k">Timeline</div><div class="v">〔 e.g. 2023 · 4 months 〕</div></div>
+                        <div><div class="k">Platform</div><div class="v">〔 e.g. iOS &amp; Web 〕</div></div>
+                        <div><div class="k">Team</div><div class="v">〔 e.g. 2 designers, 5 engineers 〕</div></div>
+                    </div>
+
+                    <figure class="reveal">
+                        <div class="shot shot--hero">
+                            <!-- TODO: <img src="assets/hero.jpg" alt="〔 project hero 〕"> -->
+                            <div class="ph">〔 Hero image — the finished product 〕</div>
+                        </div>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- Overview / Challenge -->
+            <section class="cs">
+                <div class="container reading cs-block reveal">
+                    <span class="eyebrow">The challenge</span>
+                    <h2>〔 What problem were you solving? 〕</h2>
+                    <p>〔 Set the context. What was the business or user problem? What was broken, missing, or underperforming? Why did it matter? Bring in a stat or a quote if you have one. 〕</p>
+                    <p>〔 Add any constraints you were working within — timeline, tech, platform, existing patterns. 〕</p>
+                </div>
+            </section>
+
+            <!-- Pull quote -->
+            <div class="container reading">
+                <p class="pull reveal">〔 A sharp sentence that captures the core insight or guiding principle of the project. 〕</p>
+            </div>
+
+            <!-- Process -->
+            <section class="cs">
+                <div class="container">
+                    <div class="reading cs-block reveal">
+                        <span class="eyebrow">Process</span>
+                        <h2>How I approached it.</h2>
+                        <p>〔 A sentence describing your overall approach. The four steps below are a common shape — rename them to match how the project actually ran. 〕</p>
+                    </div>
+                    <div class="steps reveal">
+                        <div class="step"><div class="idx">01</div><h3>〔 Discover 〕</h3><p>〔 Research, interviews, data — what you learned. 〕</p></div>
+                        <div class="step"><div class="idx">02</div><h3>〔 Define 〕</h3><p>〔 Framing, problem statement, priorities. 〕</p></div>
+                        <div class="step"><div class="idx">03</div><h3>〔 Design 〕</h3><p>〔 Flows, wireframes, iterations, testing. 〕</p></div>
+                        <div class="step"><div class="idx">04</div><h3>〔 Deliver 〕</h3><p>〔 Handoff, ship, measure. 〕</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research / artefacts -->
+            <section class="cs">
+                <div class="container reading cs-block reveal">
+                    <span class="eyebrow">Research &amp; insight</span>
+                    <h2>〔 What the research told me 〕</h2>
+                    <p>〔 Summarise the key findings that shaped the design. Bullet the insights if that reads cleaner: 〕</p>
+                    <ul>
+                        <li>〔 Insight one 〕</li>
+                        <li>〔 Insight two 〕</li>
+                        <li>〔 Insight three 〕</li>
+                    </ul>
+                </div>
+                <div class="container">
+                    <figure class="figure-grid reveal">
+                        <div class="shot"><div class="ph">〔 Research artefact — e.g. journey map 〕</div></div>
+                        <div class="shot"><div class="ph">〔 Research artefact — e.g. affinity map 〕</div></div>
+                    </figure>
+                    <figcaption>〔 Caption describing the artefacts above. 〕</figcaption>
+                </div>
+            </section>
+
+            <!-- Solution -->
+            <section class="cs">
+                <div class="container reading cs-block reveal">
+                    <span class="eyebrow">The solution</span>
+                    <h2>〔 What I designed 〕</h2>
+                    <p>〔 Walk through the key parts of the solution. Pair each idea with a screen below. Explain the decisions and trade-offs — this is the heart of the case study. 〕</p>
+                </div>
+                <div class="container">
+                    <figure class="figure-wide reveal">
+                        <div class="shot shot--tall"><div class="ph">〔 Key screen / flow 〕</div></div>
+                        <figcaption>〔 Caption: what this screen does and why it works. 〕</figcaption>
+                    </figure>
+                    <figure class="figure-grid reveal">
+                        <div class="shot"><div class="ph">〔 Detail screen 〕</div></div>
+                        <div class="shot"><div class="ph">〔 Detail screen 〕</div></div>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- Impact -->
+            <section class="cs">
+                <div class="container">
+                    <div class="reading cs-block reveal">
+                        <span class="eyebrow">Impact</span>
+                        <h2>The outcome.</h2>
+                        <p>〔 What changed after shipping? Lead with numbers where you have them. 〕</p>
+                    </div>
+                    <div class="impact-grid reveal">
+                        <div class="impact"><div class="big">〔 00% 〕</div><div class="cap">〔 Metric this moved 〕</div></div>
+                        <div class="impact"><div class="big">〔 00k 〕</div><div class="cap">〔 Metric this moved 〕</div></div>
+                        <div class="impact"><div class="big">〔 0.0★ 〕</div><div class="cap">〔 Metric this moved 〕</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reflection -->
+            <section class="cs">
+                <div class="container reading cs-block reveal">
+                    <span class="eyebrow">Reflection</span>
+                    <h2>What I'd take forward.</h2>
+                    <p>〔 What did you learn? What would you do differently? A short, honest reflection lands well with hiring managers. 〕</p>
+                </div>
+            </section>
+
+            <!-- End CTA -->
+            <section class="cs-end">
+                <div class="container">
+                    <div class="cs-end-card reveal">
+                        <h2>Want to see <em>more?</em></h2>
+                        <p>Happy to walk you through the details, or talk about what you're building.</p>
+                        <div class="cs-actions">
+                            <a href="mailto:hcming138@gmail.com" class="btn btn-primary">
+                                Get in touch
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                            </a>
+                            <a href="../index.html" class="btn btn-ghost">Back to home</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container foot-inner">
+                <span>© <span id="year">2026</span> Ming Ho · Product Designer</span>
+                <div class="foot-links">
+                    <a href="mailto:hcming138@gmail.com">Email</a>
+                    <a href="https://www.linkedin.com/in/chimingho/" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="../index.html">Home</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const nav = document.getElementById('nav');
+        const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const reveals = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+            reveals.forEach(el => io.observe(el));
+        } else {
+            reveals.forEach(el => el.classList.add('in'));
+        }
+    </script>
+</body>
+</html>

@@ -437,6 +437,97 @@
             line-height: 1.6;
         }
 
+        /* ---------- Selected work ---------- */
+        .work-card {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--surface);
+            transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+        }
+        .work-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-strong);
+        }
+        .work-thumb {
+            position: relative;
+            min-height: 340px;
+            background:
+                radial-gradient(120% 120% at 20% 0%, rgba(92,141,255,0.28), transparent 60%),
+                radial-gradient(120% 120% at 100% 100%, rgba(255,138,61,0.26), transparent 60%),
+                #0c1428;
+            overflow: hidden;
+        }
+        /* placeholder chrome — swap the whole .work-thumb for a real <img> */
+        .work-thumb .ph {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 13px;
+            letter-spacing: 0.02em;
+            gap: 8px;
+        }
+        .work-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .work-body {
+            padding: 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .work-kicker {
+            display: inline-flex;
+            gap: 8px;
+            font-size: 12.5px;
+            color: var(--text-dim);
+            letter-spacing: 0.04em;
+            margin-bottom: 16px;
+        }
+        .work-kicker b { color: var(--amber); font-weight: 500; }
+        .work-body h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: clamp(1.7rem, 3vw, 2.2rem);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin: 0 0 14px;
+        }
+        .work-body p {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            margin: 0 0 22px;
+            line-height: 1.6;
+        }
+        .work-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 26px;
+        }
+        .work-tags span {
+            font-size: 12px;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 999px;
+        }
+        .work-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--gold);
+            align-self: flex-start;
+        }
+        .work-link svg { transition: transform 0.25s var(--ease); }
+        .work-card:hover .work-link svg { transform: translateX(4px); }
+
         /* ---------- Experience ---------- */
         .exp-list {
             display: flex;
@@ -565,6 +656,8 @@
             .cap-grid { grid-template-columns: 1fr 1fr; }
             .exp { grid-template-columns: 40px 1fr auto; gap: 6px 18px; }
             .exp-role { grid-column: 2 / -1; }
+            .work-card { grid-template-columns: 1fr; }
+            .work-thumb { min-height: 220px; }
             .nav-links a:not(.nav-cta) { display: none; }
         }
         @media (max-width: 560px) {
@@ -576,6 +669,7 @@
             .warm-word { white-space: normal; }
             .nav-cta { display: none; }
             .exp-company { font-size: 1.3rem; }
+            .work-body { padding: 30px 24px; }
             .cta-card { padding: 50px 24px; }
         }
 
@@ -606,6 +700,7 @@
                 <nav class="nav-links">
                     <a href="#about">About</a>
                     <a href="#work">What I do</a>
+                    <a href="#selected-work">Work</a>
                     <a href="#experience">Experience</a>
                     <a href="mailto:hcming138@gmail.com" class="nav-cta">Get in touch</a>
                 </nav>
@@ -712,6 +807,41 @@
                             <p>iOS and Android apps designed to platform conventions, with the ergonomics and polish mobile users expect.</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Selected work -->
+            <section id="selected-work">
+                <div class="container">
+                    <div class="reveal">
+                        <span class="eyebrow">Selected work</span>
+                        <h2 class="section-title">A closer look at the craft.</h2>
+                        <p class="section-intro">One project, start to finish — the thinking, the trade-offs, and the outcome.</p>
+                    </div>
+                    <!-- TODO: replace the placeholder copy, tags, and thumbnail below with the real case study from the Webflow site. -->
+                    <a class="work-card reveal" href="work/case-study.html">
+                        <div class="work-thumb">
+                            <!-- TODO: swap this placeholder for a real cover image, e.g. <img src="work/assets/cover.jpg" alt="..."> -->
+                            <div class="ph">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                                <span>〔 Project cover image 〕</span>
+                            </div>
+                        </div>
+                        <div class="work-body">
+                            <span class="work-kicker"><b>Case study</b> · 〔 Company / Product 〕</span>
+                            <h3>〔 Project title goes here 〕</h3>
+                            <p>〔 One or two sentences on what the project was, who it was for, and the impact — pulled from your Webflow case study. 〕</p>
+                            <div class="work-tags">
+                                <span>〔 Role 〕</span>
+                                <span>〔 Platform 〕</span>
+                                <span>〔 Year 〕</span>
+                            </div>
+                            <span class="work-link">
+                                Read the case study
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                            </span>
+                        </div>
+                    </a>
                 </div>
             </section>
 
