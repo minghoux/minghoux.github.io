@@ -6,17 +6,18 @@
     <meta name="description" content="Ming Ho is a product designer based in London, originally from Hong Kong, with 12 years of experience crafting useful, delightful digital products for startups and multinational companies.">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#070b18"/>
-    <title>Ming Ho — Product (UI/UX) Designer</title>
+    <title>Ming Ho · Product (UI/UX) Designer</title>
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Ming Ho — Product (UI/UX) Designer">
+    <meta property="og:title" content="Ming Ho · Product (UI/UX) Designer">
     <meta property="og:description" content="Product designer in London crafting useful, delightful digital products. 12 years across startups and multinationals.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://minghoux.github.io/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -25,567 +26,6 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-MP5PW3G');</script>
     <!-- End Google Tag Manager -->
-
-    <style>
-        :root {
-            --bg: #070b18;
-            --bg-2: #0a1024;
-            --surface: rgba(255, 255, 255, 0.035);
-            --surface-hover: rgba(255, 255, 255, 0.06);
-            --border: rgba(255, 255, 255, 0.09);
-            --border-strong: rgba(255, 255, 255, 0.16);
-            --text: #e8eefb;
-            --text-muted: #9aa8c4;
-            --text-dim: #6b7896;
-            /* Primary — cool blue (structure) */
-            --blue: #5c8dff;
-            --blue-bright: #8fb4ff;
-            /* Complement — warm amber → gold (energy, focal points) */
-            --warm: #ff8a3d;
-            --amber: #ffab33;
-            --gold: #ffd15c;
-            --warm-tint: rgba(255, 138, 61, 0.14);
-            --max: 1120px;
-            --ease: cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        * { box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            margin: 0;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Ambient animated gradient field */
-        .ambient {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .ambient::before {
-            content: "";
-            position: absolute;
-            inset: -20%;
-            background:
-                radial-gradient(38% 38% at 12% 16%, rgba(42, 92, 201, 0.30), transparent 70%),
-                radial-gradient(42% 42% at 88% 26%, rgba(27, 143, 214, 0.20), transparent 70%),
-                radial-gradient(46% 46% at 78% 82%, rgba(255, 138, 61, 0.16), transparent 65%),
-                linear-gradient(120deg, #060a16, #0c1630, #081022, #0e1b38);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 300% 300%;
-            animation: gradientShift 24s ease infinite;
-        }
-        /* subtle grain overlay */
-        .ambient::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            opacity: 0.4;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0 0, 0 0, 0 0, 0% 50%; }
-            50% { background-position: 0 0, 0 0, 0 0, 100% 50%; }
-            100% { background-position: 0 0, 0 0, 0 0, 0% 50%; }
-        }
-
-        .wrap { position: relative; z-index: 1; }
-
-        .container {
-            width: 100%;
-            max-width: var(--max);
-            margin: 0 auto;
-            padding: 0 28px;
-        }
-
-        a { color: inherit; text-decoration: none; }
-
-        /* ---------- Navigation ---------- */
-        .nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 50;
-            transition: background 0.4s var(--ease), backdrop-filter 0.4s var(--ease), border-color 0.4s var(--ease);
-            border-bottom: 1px solid transparent;
-        }
-        .nav.scrolled {
-            background: rgba(7, 11, 24, 0.72);
-            backdrop-filter: blur(14px) saturate(140%);
-            -webkit-backdrop-filter: blur(14px) saturate(140%);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 11px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            font-size: 16px;
-        }
-        .brand-mark {
-            position: relative;
-            width: 30px; height: 30px;
-            border-radius: 9px;
-            display: grid; place-items: center;
-            font-family: 'Fraunces', serif;
-            font-weight: 600;
-            font-size: 16px;
-            color: #fff;
-            background: linear-gradient(140deg, var(--blue) 15%, #2a5cc9 50%, var(--warm) 105%);
-            box-shadow: 0 4px 18px rgba(92, 141, 255, 0.35);
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 34px;
-            font-size: 14.5px;
-            color: var(--text-muted);
-        }
-        .nav-links a { transition: color 0.2s ease; }
-        .nav-links a:hover { color: var(--text); }
-        .nav-cta {
-            padding: 9px 18px;
-            border: 1px solid var(--border-strong);
-            border-radius: 999px;
-            color: var(--text) !important;
-            font-weight: 500;
-            transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
-        }
-        .nav-cta:hover {
-            background: var(--warm-tint);
-            border-color: var(--amber);
-            transform: translateY(-1px);
-        }
-
-        /* ---------- Hero ---------- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 0 80px;
-        }
-        .hero h1 {
-            font-family: 'Fraunces', Georgia, serif;
-            font-weight: 500;
-            font-size: clamp(2.8rem, 7vw, 5.4rem);
-            line-height: 1.02;
-            letter-spacing: -0.02em;
-            margin: 0;
-            color: var(--text);
-        }
-        /* Complementary focal phrase — warm amber→gold against the blue field */
-        .warm-word {
-            position: relative;
-            font-style: italic;
-            background: linear-gradient(96deg, var(--warm) 5%, var(--amber) 45%, var(--gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            white-space: nowrap;
-        }
-
-        .hero-lede {
-            max-width: 620px;
-            margin: 32px 0 0;
-            font-size: clamp(1.05rem, 2.2vw, 1.28rem);
-            color: var(--text-muted);
-            line-height: 1.62;
-        }
-        .hero-lede strong { color: var(--text); font-weight: 600; }
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 38px;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            padding: 14px 26px;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 15px;
-            cursor: pointer;
-            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
-        }
-        /* Primary CTA carries the warm complement — the single loudest accent */
-        .btn-primary {
-            color: #241000;
-            background: linear-gradient(135deg, var(--gold), var(--amber) 55%, var(--warm));
-            box-shadow: 0 10px 30px -8px rgba(255, 138, 61, 0.5);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 42px -8px rgba(255, 138, 61, 0.62);
-        }
-        .btn-ghost {
-            color: var(--text);
-            border: 1px solid var(--border-strong);
-            background: var(--surface);
-        }
-        .btn-ghost:hover {
-            transform: translateY(-2px);
-            border-color: var(--blue);
-            background: var(--surface-hover);
-        }
-        .btn svg { transition: transform 0.25s var(--ease); }
-        .btn:hover svg { transform: translateX(3px); }
-
-        .hero-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 44px;
-            margin-top: 60px;
-            padding-top: 34px;
-            border-top: 1px solid var(--border);
-        }
-        .stat { position: relative; padding-left: 16px; }
-        .stat::before {
-            content: "";
-            position: absolute;
-            left: 0; top: 4px; bottom: 4px;
-            width: 2px;
-            border-radius: 2px;
-            background: linear-gradient(var(--amber), var(--warm));
-        }
-        .stat .num {
-            font-family: 'Fraunces', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--text);
-            line-height: 1;
-        }
-        .stat .label {
-            font-size: 13.5px;
-            color: var(--text-dim);
-            margin-top: 6px;
-            letter-spacing: 0.02em;
-        }
-
-        /* ---------- Section shell ---------- */
-        section { padding: 100px 0; }
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--amber);
-            font-weight: 600;
-            margin-bottom: 18px;
-        }
-        .eyebrow::before {
-            content: "";
-            width: 26px; height: 2px;
-            border-radius: 2px;
-            background: linear-gradient(90deg, var(--warm), var(--amber));
-        }
-        .section-title {
-            font-family: 'Fraunces', serif;
-            font-weight: 500;
-            font-size: clamp(1.9rem, 4.2vw, 2.9rem);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin: 0 0 20px;
-            max-width: 760px;
-        }
-        .section-intro {
-            max-width: 620px;
-            color: var(--text-muted);
-            font-size: 1.08rem;
-            margin: 0 0 54px;
-        }
-
-        /* ---------- About ---------- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 60px;
-            align-items: start;
-        }
-        .about-body p {
-            font-size: 1.14rem;
-            color: var(--text-muted);
-            margin: 0 0 22px;
-            line-height: 1.7;
-        }
-        .about-body strong { color: var(--text); font-weight: 600; }
-        /* warm ink for the signature phrase */
-        .about-body .mark { color: var(--gold); font-weight: 500; font-style: italic; }
-        .about-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-        }
-        .about-card h3 {
-            margin: 0 0 20px;
-            font-size: 14px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            font-weight: 600;
-        }
-        .meta-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 0;
-            border-top: 1px solid var(--border);
-        }
-        .meta-row:first-of-type { border-top: none; padding-top: 0; }
-        .meta-ico {
-            flex: none;
-            width: 38px; height: 38px;
-            border-radius: 11px;
-            display: grid; place-items: center;
-            background: rgba(92, 141, 255, 0.12);
-            color: var(--blue-bright);
-        }
-        /* alternate accent so the card isn't monotone */
-        .meta-row:nth-child(odd) .meta-ico {
-            background: var(--warm-tint);
-            color: var(--amber);
-        }
-        .meta-row .k { font-size: 12.5px; color: var(--text-dim); }
-        .meta-row .v { font-size: 15px; color: var(--text); font-weight: 500; }
-
-        /* ---------- Capabilities ---------- */
-        .cap-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .cap {
-            position: relative;
-            overflow: hidden;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 30px 28px;
-            transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease);
-        }
-        /* editorial index numeral — reads as hand-composed */
-        .cap-index {
-            position: absolute;
-            top: 18px; right: 22px;
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-            font-feature-settings: "tnum";
-            color: var(--warm);
-            opacity: 0.32;
-            transition: opacity 0.4s var(--ease);
-        }
-        .cap::after {
-            content: "";
-            position: absolute;
-            left: 0; right: 0; top: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--warm), var(--amber), var(--gold));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.45s var(--ease);
-        }
-        .cap:hover {
-            transform: translateY(-5px);
-            border-color: var(--border-strong);
-            background: var(--surface-hover);
-        }
-        .cap:hover::after { transform: scaleX(1); }
-        .cap:hover .cap-index { opacity: 0.7; }
-        .cap-ico {
-            width: 46px; height: 46px;
-            border-radius: 13px;
-            display: grid; place-items: center;
-            background: linear-gradient(135deg, rgba(92,141,255,0.2), rgba(255,138,61,0.16));
-            color: var(--blue-bright);
-            margin-bottom: 20px;
-        }
-        .cap h3 {
-            margin: 0 0 10px;
-            font-size: 1.18rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-        .cap p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            line-height: 1.6;
-        }
-
-        /* ---------- Experience ---------- */
-        .exp-list {
-            display: flex;
-            flex-direction: column;
-        }
-        .exp {
-            display: grid;
-            grid-template-columns: 54px 200px 1fr auto;
-            gap: 28px;
-            align-items: baseline;
-            padding: 30px 8px;
-            border-top: 1px solid var(--border);
-            transition: padding 0.4s var(--ease), background 0.4s var(--ease);
-            border-radius: 14px;
-        }
-        .exp:last-child { border-bottom: 1px solid var(--border); }
-        .exp:hover {
-            background: var(--surface);
-            padding-left: 22px;
-            padding-right: 22px;
-        }
-        .exp-index {
-            font-family: 'Fraunces', serif;
-            font-size: 1rem;
-            font-weight: 500;
-            font-feature-settings: "tnum";
-            color: var(--amber);
-            letter-spacing: 0.02em;
-        }
-        .exp-company {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--text);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 0.3s var(--ease);
-        }
-        .exp:hover .exp-company { color: var(--gold); }
-        .exp-company .arrow {
-            opacity: 0;
-            transform: translate(-6px, 0);
-            transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-            color: var(--amber);
-        }
-        .exp:hover .exp-company .arrow { opacity: 1; transform: translate(0,0); }
-        .exp-role { color: var(--text-muted); font-size: 1.02rem; }
-        .exp-role .tag {
-            display: inline-block;
-            margin-top: 8px;
-            font-size: 12px;
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-            padding: 3px 10px;
-            border-radius: 999px;
-        }
-        .exp-when {
-            color: var(--text-dim);
-            font-size: 14px;
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-        }
-        .exp-when.now { color: var(--amber); }
-
-        /* ---------- CTA ---------- */
-        .cta { padding: 110px 0; }
-        .cta-card {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 70px 40px;
-            text-align: center;
-            background:
-                radial-gradient(70% 130% at 20% 0%, rgba(92, 141, 255, 0.16), transparent 55%),
-                radial-gradient(70% 130% at 85% 100%, rgba(255, 138, 61, 0.16), transparent 55%),
-                var(--surface);
-        }
-        .cta h2 {
-            font-family: 'Fraunces', serif;
-            font-weight: 500;
-            font-size: clamp(2rem, 5vw, 3.4rem);
-            letter-spacing: -0.02em;
-            line-height: 1.08;
-            margin: 0 auto 18px;
-            max-width: 640px;
-        }
-        .cta h2 em { font-style: italic; color: var(--gold); }
-        .cta p {
-            color: var(--text-muted);
-            font-size: 1.12rem;
-            margin: 0 auto 34px;
-            max-width: 500px;
-        }
-
-        /* ---------- Footer ---------- */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
-        }
-        .foot-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 18px;
-            color: var(--text-dim);
-            font-size: 14px;
-        }
-        .foot-links { display: flex; gap: 24px; }
-        .foot-links a { transition: color 0.2s ease; }
-        .foot-links a:hover { color: var(--amber); }
-
-        /* ---------- Reveal animation ---------- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(26px);
-            transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-        }
-        .reveal.in { opacity: 1; transform: none; }
-
-        /* ---------- Responsive ---------- */
-        @media (max-width: 880px) {
-            .about-grid { grid-template-columns: 1fr; gap: 34px; }
-            .cap-grid { grid-template-columns: 1fr 1fr; }
-            .exp { grid-template-columns: 40px 1fr auto; gap: 6px 18px; }
-            .exp-role { grid-column: 2 / -1; }
-            .nav-links a:not(.nav-cta) { display: none; }
-        }
-        @media (max-width: 560px) {
-            .container { padding: 0 20px; }
-            section { padding: 72px 0; }
-            .hero { padding: 110px 0 60px; }
-            .cap-grid { grid-template-columns: 1fr; }
-            .hero-stats { gap: 22px 26px; }
-            .warm-word { white-space: normal; }
-            .nav-cta { display: none; }
-            .exp-company { font-size: 1.3rem; }
-            .cta-card { padding: 50px 24px; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            .ambient::before { animation: none; }
-            .reveal { opacity: 1; transform: none; transition: none; }
-            .btn, .cap, .exp, .nav-cta { transition: none; }
-        }
-    </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -604,9 +44,9 @@
                     <span>Ming&nbsp;Ho</span>
                 </a>
                 <nav class="nav-links">
+                    <a href="#experience">Experience</a>
                     <a href="#about">About</a>
                     <a href="#work">What I do</a>
-                    <a href="#experience">Experience</a>
                     <a href="mailto:hcming138@gmail.com" class="nav-cta">Get in touch</a>
                 </nav>
             </div>
@@ -617,7 +57,7 @@
             <section class="hero" id="hero">
                 <div class="container">
                     <h1 class="reveal">Product designer crafting<br><span class="warm-word">useful, delightful</span> digital products.</h1>
-                    <p class="hero-lede reveal">Hi, I'm Ming Ho — a product designer with <strong>12 years</strong> of experience shaping responsive websites and native &amp; hybrid mobile apps for startups and multinational companies. Originally from Hong Kong, now based in London.</p>
+                    <p class="hero-lede reveal">Hi, I'm Ming Ho, a product designer with <strong>12 years</strong> of experience shaping responsive websites and native &amp; hybrid mobile apps for startups and multinational companies. Originally from Hong Kong, now based in London.</p>
                     <div class="hero-actions reveal">
                         <a href="mailto:hcming138@gmail.com" class="btn btn-primary">
                             Start a conversation
@@ -625,43 +65,38 @@
                         </a>
                         <a href="#experience" class="btn btn-ghost">View experience</a>
                     </div>
-                    <div class="hero-stats reveal">
-                        <div class="stat"><div class="num">12+</div><div class="label">Years of practice</div></div>
-                        <div class="stat"><div class="num">4</div><div class="label">Companies shaped</div></div>
-                        <div class="stat"><div class="num">Web &amp; Mobile</div><div class="label">End-to-end product</div></div>
+                </div>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience">
+                <div class="container">
+                    <div class="reveal">
+                        <h2 class="section-title">Where I've made an impact.</h2>
+                        <p class="section-intro">A closer look at a project I'm proud of: unifying job discovery for one of the world's largest employment marketplaces.</p>
                     </div>
+                    <a class="feature-case reveal" href="seek-case-study.html">
+                        <div class="feature-case-media">
+                            <img src="img/seek/before-after.jpeg" alt="Before and after comparison of the legacy JobStreet/JobsDB experience and the unified SEEK job discovery experience" loading="lazy">
+                        </div>
+                        <div class="feature-case-body">
+                            <h3 class="feature-case-title">SEEK <span class="arrow">↗</span></h3>
+                            <p>Product design lead on SEEK's "One SEEK" unification project, rebuilding job discovery as a single experience across JobStreet and JobsDB, serving 40M+ job seekers monthly across Asia Pacific.</p>
+                            <span class="feature-case-cta">View case study
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                            </span>
+                        </div>
+                    </a>
                 </div>
             </section>
 
             <!-- About -->
             <section id="about">
                 <div class="container">
-                    <div class="about-grid">
-                        <div class="about-body reveal">
-                            <span class="eyebrow">About</span>
-                            <h2 class="section-title">Designing at the intersection of usefulness and delight.</h2>
-                            <p>I believe great products earn their place in people's lives by being genuinely useful first — then delightful in the details. My work spans the full arc of product design: from research and problem framing, through interaction and interface design, to shipping polished, accessible experiences alongside engineering teams.</p>
-                            <p>Over <strong>12 years</strong> I've designed for early-stage startups finding their footing and multinational companies operating at scale — across <strong>responsive web</strong> and <strong>native &amp; hybrid mobile</strong>. Different contexts, one constant: <span class="mark">sweat the human details.</span></p>
-                        </div>
-                        <aside class="about-card reveal">
-                            <h3>At a glance</h3>
-                            <div class="meta-row">
-                                <span class="meta-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-                                <div><div class="k">Based in</div><div class="v">London, UK</div></div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></span>
-                                <div><div class="k">From</div><div class="v">Hong Kong</div></div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></span>
-                                <div><div class="k">Currently</div><div class="v">Designing at Abound</div></div>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
-                                <div><div class="k">Focus</div><div class="v">Web &amp; mobile product</div></div>
-                            </div>
-                        </aside>
+                    <div class="about-body reveal">
+                        <h2 class="section-title">How I approach the work.</h2>
+                        <p>Great products solve the real problem first, then earn their place in people's lives with details worth noticing. My work spans the full arc of product design: research and problem framing, interaction and interface design, and shipping polished, accessible experiences alongside engineering teams.</p>
+                        <p>Over <strong>12 years</strong> I've designed for early-stage startups finding their footing and multinational companies operating at scale, across <strong>responsive web</strong> and <strong>native &amp; hybrid mobile</strong>. Different contexts, one constant: <span class="mark">sweat the human details.</span></p>
                     </div>
                 </div>
             </section>
@@ -670,16 +105,15 @@
             <section id="work">
                 <div class="container">
                     <div class="reveal">
-                        <span class="eyebrow">What I do</span>
                         <h2 class="section-title">A full-stack design toolkit.</h2>
-                        <p class="section-intro">From first insight to final pixel — the disciplines I bring to every product I touch.</p>
+                        <p class="section-intro">The disciplines I bring to every product I touch, from first insight to final pixel.</p>
                     </div>
                     <div class="cap-grid">
                         <div class="cap reveal">
                             <span class="cap-index">01</span>
                             <div class="cap-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
                             <h3>Research &amp; Discovery</h3>
-                            <p>Framing the real problem through user research, interviews and data — so we build the right thing before building it right.</p>
+                            <p>Framing the real problem through user research, interviews and data, so we build the right thing before building it right.</p>
                         </div>
                         <div class="cap reveal">
                             <span class="cap-index">02</span>
@@ -691,63 +125,14 @@
                             <span class="cap-index">03</span>
                             <div class="cap-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="12" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="13" r="2.5"/><path d="M12 22a10 10 0 010-20"/></svg></div>
                             <h3>UI &amp; Visual Design</h3>
-                            <p>Crafting refined, accessible interfaces with type, colour and motion — pixel-precise and grounded in hierarchy.</p>
+                            <p>Crafting refined, accessible interfaces with type, colour and motion, pixel-precise and grounded in hierarchy.</p>
                         </div>
                         <div class="cap reveal">
                             <span class="cap-index">04</span>
                             <div class="cap-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg></div>
                             <h3>Design Systems</h3>
-                            <p>Scalable component libraries and design tokens that keep products consistent, fast to build and easy to evolve.</p>
+                            <p>Scalable component libraries and design tokens that hold up from responsive web to native and hybrid mobile.</p>
                         </div>
-                        <div class="cap reveal">
-                            <span class="cap-index">05</span>
-                            <div class="cap-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10M7 12h6"/><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8M12 18v4"/></svg></div>
-                            <h3>Responsive Web</h3>
-                            <p>Marketing sites to complex web apps — experiences that feel effortless from widescreen down to the smallest phone.</p>
-                        </div>
-                        <div class="cap reveal">
-                            <span class="cap-index">06</span>
-                            <div class="cap-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
-                            <h3>Native &amp; Hybrid Mobile</h3>
-                            <p>iOS and Android apps designed to platform conventions, with the ergonomics and polish mobile users expect.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Experience -->
-            <section id="experience">
-                <div class="container">
-                    <div class="reveal">
-                        <span class="eyebrow">Experience</span>
-                        <h2 class="section-title">Where I've made an impact.</h2>
-                        <p class="section-intro">A dozen years designing across fintech, careers, events and books — for teams big and small.</p>
-                    </div>
-                    <div class="exp-list">
-                        <a class="exp reveal" href="https://www.getabound.com/" target="_blank" rel="noreferrer">
-                            <span class="exp-index">01</span>
-                            <span class="exp-company">Abound <span class="arrow">↗</span></span>
-                            <span class="exp-role">Product designer building thoughtful fintech experiences.<br><span class="tag">Present · Fintech</span></span>
-                            <span class="exp-when now">Current</span>
-                        </a>
-                        <a class="exp reveal" href="https://www.seek.com/" target="_blank" rel="noreferrer">
-                            <span class="exp-index">02</span>
-                            <span class="exp-company">SEEK <span class="arrow">↗</span></span>
-                            <span class="exp-role">Designing at scale for one of the world's largest employment marketplaces.<br><span class="tag">Careers · Marketplace</span></span>
-                            <span class="exp-when">Previously</span>
-                        </a>
-                        <a class="exp reveal" href="https://www.weconvene.com/" target="_blank" rel="noreferrer">
-                            <span class="exp-index">03</span>
-                            <span class="exp-company">WeConvene <span class="arrow">↗</span></span>
-                            <span class="exp-role">Shaping the product for a corporate access &amp; events platform.<br><span class="tag">Fintech · Events</span></span>
-                            <span class="exp-when">Previously</span>
-                        </a>
-                        <a class="exp reveal" href="http://www.anobii.com/" target="_blank" rel="noreferrer">
-                            <span class="exp-index">04</span>
-                            <span class="exp-company">aNobii <span class="arrow">↗</span></span>
-                            <span class="exp-role">Crafting web &amp; mobile experiences for a global community of readers.<br><span class="tag">Social · Books</span></span>
-                            <span class="exp-when">Previously</span>
-                        </a>
                     </div>
                 </div>
             </section>
@@ -756,7 +141,6 @@
             <section class="cta" id="contact">
                 <div class="container">
                     <div class="cta-card reveal">
-                        <span class="eyebrow" style="justify-content:center;">Say hello</span>
                         <h2>Let's talk <em>design.</em></h2>
                         <p>Always happy to trade ideas, chat about craft, or hear what you're building. My inbox is open.</p>
                         <div class="hero-actions" style="justify-content:center; margin-top: 0;">
