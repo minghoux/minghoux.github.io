@@ -138,13 +138,20 @@ a { color: inherit; text-decoration: none; }
     background: var(--warm-tint);
     border-color: var(--amber);
 }
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    transition: color 0.2s ease, gap 0.2s ease;
+}
+.back-link:hover { color: var(--text); }
+.back-link svg { transition: transform 0.25s var(--ease); }
+.back-link:hover svg { transform: translateX(-3px); }
 
 /* ---------- Hero ---------- */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 120px 0 80px;
+    padding: 170px 0 110px;
 }
 .hero h1 {
     font-weight: 700;
@@ -207,6 +214,11 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Section shell ---------- */
 section { padding: 100px 0; }
+/* About and What I do continue the same personal narrative as the section
+   before them, so they sit closer together; Experience and the CTA are real
+   breaks and keep the full, generous gap. */
+#about { padding-top: 56px; }
+#work { padding-top: 56px; }
 .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -240,7 +252,7 @@ section { padding: 100px 0; }
 }
 
 /* ---------- About ---------- */
-.about-body { max-width: 720px; }
+.about-body { max-width: 720px; margin: 0 auto; }
 .about-body p {
     font-size: 1.14rem;
     color: var(--text-muted);
@@ -337,7 +349,9 @@ section { padding: 100px 0; }
 .feature-case-media img {
     display: block;
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top center;
     transition: transform 0.5s var(--ease);
 }
 .feature-case:hover .feature-case-media img { transform: scale(1.02); }
