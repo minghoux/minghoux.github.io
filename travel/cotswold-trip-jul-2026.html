@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotswolds · 2026年7-8月</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { navy: 'oklch(24% 0.075 263)', 'navy-mid': 'oklch(36% 0.065 263)', cream: 'oklch(97% 0.02 85)', 'cream-dark': 'oklch(94% 0.024 82)', bordeaux: 'oklch(48% 0.16 18)', gold: 'oklch(78% 0.16 75)', 'gold-dark': 'oklch(66% 0.15 72)', sage: 'oklch(62% 0.11 145)', 'sage-dark': 'oklch(46% 0.08 145)', ink: 'oklch(26% 0.03 265)', 'ink-mid': 'oklch(52% 0.03 265)', 'ink-faint': 'oklch(74% 0.02 265)', rule: 'oklch(89% 0.02 82)' }, fontFamily: { display: ['Josefin Sans', 'Noto Sans TC', 'sans-serif'], sans: ['Nunito', 'Noto Sans TC', 'sans-serif'] } } } }
+  </script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Nunito:wght@300;400;600&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    [v-cloak] { display: none !important; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    @media (min-width: 768px) {
+      html {
+        font-size: 17.5px;
+      }
+    }
+    .reveal { opacity: 0; transform: translateY(1.8rem); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+
+    /* ── HERO (CSS-only Cotswolds hills, no external image) ─ */
+    .hero-cotswolds {
+      background:
+        radial-gradient(ellipse 70% 55% at 82% 15%, oklch(78% 0.16 75 / 0.4), transparent 60%),
+        linear-gradient(180deg, oklch(24% 0.075 263) 0%, oklch(30% 0.085 250) 38%, oklch(40% 0.09 200) 62%, oklch(48% 0.10 165) 100%);
+    }
+    .hero-hill {
+      position: absolute;
+      left: -5%;
+      width: 110%;
+      bottom: 0;
+    }
+    .hero-hill svg { width: 100%; height: auto; display: block; }
+    .hero-vignette {
+      background: radial-gradient(ellipse 90% 70% at 50% 100%, oklch(24% 0.075 263 / 0.55), transparent 70%);
+    }
+
+    /* ── MAP ──────────────────────────────── */
+    .day-map {
+      height: 420px;
+      border-radius: 4px;
+      overflow: hidden;
+      outline: 1px solid oklch(89% 0.02 82);
+    }
+    .leaflet-popup-content-wrapper {
+      border-radius: 3px !important;
+      box-shadow: 0 4px 18px oklch(24% 0.075 263 / 0.18) !important;
+      border: 1px solid oklch(89% 0.02 82) !important;
+      padding: 0 !important;
+    }
+    .leaflet-popup-content {
+      margin: 0 !important;
+      min-width: 180px;
+    }
+    .map-popup-inner {
+      padding: 0.85rem 1rem;
+    }
+    .map-popup-title {
+      font-family: 'Josefin Sans', 'Noto Sans TC', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: oklch(26% 0.03 265);
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+    }
+    .map-popup-cat {
+      font-family: 'Josefin Sans', 'Noto Sans TC', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: oklch(48% 0.16 18);
+    }
+    .leaflet-popup-tip-container { display: none !important; }
+    .leaflet-popup-close-button {
+      top: 6px !important;
+      right: 6px !important;
+      color: oklch(52% 0.03 265) !important;
+      font-size: 1rem !important;
+    }
+    .map-pin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 2px 8px oklch(24% 0.075 263 / 0.28);
+      border: 2px solid white;
+    }
+    .map-pin i {
+      transform: rotate(45deg);
+      font-size: 0.7rem;
+      color: white;
+    }
+  </style>
+</head>
+<body class="font-sans bg-cream text-ink font-normal leading-[1.8] antialiased">
+
+<div id="app" v-cloak>
+  <header class="hero hero-cotswolds relative h-[58vh] min-h-[420px] max-h-[640px] flex items-end overflow-hidden">
+    <!-- Rolling hill silhouettes, CSS/SVG only -->
+    <div class="hero-hill" style="opacity:0.55;">
+      <svg viewBox="0 0 1200 220" preserveAspectRatio="none"><path fill="oklch(46% 0.08 145)" d="M0,140 C180,60 340,190 520,110 C700,35 860,150 1040,90 C1130,60 1180,80 1200,95 L1200,220 L0,220 Z"/></svg>
+    </div>
+    <div class="hero-hill" style="opacity:0.85;">
+      <svg viewBox="0 0 1200 180" preserveAspectRatio="none"><path fill="oklch(36% 0.07 145)" d="M0,120 C220,170 380,70 600,120 C780,160 940,80 1200,130 L1200,180 L0,180 Z"/></svg>
+    </div>
+    <div class="hero-hill">
+      <svg viewBox="0 0 1200 140" preserveAspectRatio="none"><path fill="oklch(24% 0.06 145)" d="M0,90 C260,40 460,120 700,70 C900,30 1040,90 1200,60 L1200,140 L0,140 Z"/></svg>
+    </div>
+    <div class="absolute inset-0 hero-vignette z-10 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent md:bg-gradient-to-r md:from-navy/95 md:via-navy/55 md:to-transparent z-10 pointer-events-none"></div>
+
+    <!-- Hero Content Overlay -->
+    <div class="hero-inner relative z-20 p-[clamp(1.5rem,4vw,4rem)] max-w-[860px] pb-[clamp(2.2rem,4vw,3.5rem)]">
+      <p class="font-display text-[0.8rem] md:text-[0.75rem] tracking-[0.3em] uppercase text-gold mb-[0.9rem] flex items-center gap-[0.6rem] before:content-[''] before:inline-block before:w-8 before:h-[1px] before:bg-gold before:opacity-60">{{ meta.eyebrow }}</p>
+      <h1 class="font-display text-[clamp(2.2rem,7vw,5rem)] font-bold text-[oklch(98%_0.012_82)] leading-[0.95] tracking-tight mb-6">
+        <span class="block font-light text-[0.4em] tracking-[0.15em] uppercase text-gold mb-[0.15em] italic">{{ meta.subtitle }}</span>
+        {{ meta.title }}
+      </h1>
+      <div class="flex flex-wrap gap-x-8 gap-y-3.5 items-center">
+        <span class="font-display text-[1rem] md:text-[0.85rem] tracking-wider text-[oklch(90%_0.02_82)] flex items-center gap-2"><i class="fas fa-users text-gold text-[0.8rem] md:text-[0.7rem]"></i> {{ meta.travellers }}</span>
+        <span class="font-display text-[1rem] md:text-[0.85rem] tracking-wider text-[oklch(90%_0.02_82)] flex items-center gap-2"><i class="fas fa-calendar-alt text-gold text-[0.8rem] md:text-[0.7rem]"></i> {{ meta.dates }}</span>
+        <span class="font-display text-[1rem] md:text-[0.85rem] tracking-wider text-[oklch(90%_0.02_82)] flex items-center gap-2"><i class="fas fa-car text-gold text-[0.8rem] md:text-[0.7rem]"></i> {{ meta.transport }}</span>
+        <span class="font-display text-[1rem] md:text-[0.85rem] tracking-wider text-[oklch(90%_0.02_82)] flex items-center gap-2"><i class="fas fa-map-marker-alt text-gold text-[0.8rem] md:text-[0.7rem]"></i> {{ meta.route }}</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="bg-navy px-[clamp(2rem,5vw,5rem)] flex items-stretch overflow-x-auto scrollbar-none">
+    <div v-for="stat in stats" :key="stat.label" class="py-[1.6rem] pr-10 mr-10 border-r border-[oklch(42%_0.04_263)] shrink-0 last:border-r-0 last:mr-0" :style="stat.isFirst ? 'padding-left:clamp(1.5rem,5vw,5rem)' : ''">
+      <div class="font-display text-[1.9rem] font-bold text-gold leading-none tracking-tight">{{ stat.value }}</div>
+      <div class="font-display text-[0.75rem] md:text-[0.68rem] tracking-[0.12em] uppercase text-[oklch(64%_0.03_263)] mt-1">{{ stat.label }}</div>
+    </div>
+  </div>
+
+  <div v-for="day in days" :key="day.num" class="reveal py-[clamp(3.5rem,7vw,6rem)] border-b border-rule" :id="'day' + day.num" :class="day.isDark ? 'bg-cream-dark' : 'bg-cream'">
+    <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <!-- Day Header -->
+      <div class="grid grid-cols-[clamp(3.5rem,7vw,6rem)_1fr] gap-[clamp(1rem,3vw,2.5rem)] items-start mb-[clamp(2rem,4vw,3.5rem)] pb-6 border-b-2 border-bordeaux">
+        <div class="font-display text-[clamp(3rem,7vw,5.5rem)] font-bold text-bordeaux opacity-18 leading-[0.85] select-none pt-[0.1em]">{{ day.num }}</div>
+        <div>
+          <p class="font-display text-[0.8rem] md:text-[0.75rem] tracking-[0.18em] uppercase text-gold-dark mb-1.5">{{ day.date }}</p>
+          <h2 class="font-display text-[clamp(1.4rem,3.5vw,2.1rem)] font-semibold text-ink tracking-[0.02em] leading-snug">{{ day.title }}</h2>
+          <p class="text-[1.1rem] md:text-[1.02rem] text-ink-mid mt-2 leading-[1.8]">{{ day.sub }}</p>
+        </div>
+      </div>
+      <!-- Two-column: activities + map -->
+      <div class="flex flex-col lg:grid lg:grid-cols-[1fr_360px] lg:gap-10 lg:items-start">
+        <!-- Activities column -->
+        <div class="flex flex-col">
+          <div v-for="(act, idx) in day.activities" :key="idx" class="grid grid-cols-[2.6rem_1fr_auto] gap-[1.2rem] items-start py-[1.5rem] md:py-[1.35rem] border-b border-rule last:border-b-0 max-[600px]:grid-cols-[2.2rem_1fr]" :class="{ 'cursor-pointer transition-colors hover:bg-bordeaux/[0.035]': act.pt !== undefined }" @click="focusPoint(day, act.pt)">
+            <div class="w-[2.6rem] h-[2.6rem] rounded-full flex items-center justify-center text-[0.95rem] md:text-[0.88rem] shrink-0 mt-[0.15rem] max-[600px]:w-[2.2rem] max-[600px]:h-[2.2rem]" :class="{'bg-bordeaux text-[oklch(98%_0.012_82)]': act.type === 'hi', 'bg-sage text-[oklch(98%_0.012_82)]': act.type === 'fun', 'bg-gold text-navy': act.type === 'food', 'bg-navy text-[oklch(87%_0.022_82)]': act.type === 'move', 'bg-cream-dark text-bordeaux': !['hi', 'fun', 'food', 'move'].includes(act.type)}">
+              <i class="fas" :class="act.icon"></i>
+            </div>
+            <div>
+              <p class="font-display text-[1.12rem] md:text-[1.05rem] font-semibold text-ink tracking-[0.01em] leading-[1.4]">{{ act.title }}</p>
+              <p class="text-[1.05rem] md:text-[0.98rem] text-ink-mid mt-1.5 leading-[1.8]">{{ act.desc }}</p>
+              <span v-if="act.note" class="block mt-[0.6rem] py-[0.4rem] px-[0.8rem] border-l-2 border-bordeaux bg-bordeaux/5 text-[0.88rem] md:text-[0.8rem] text-bordeaux leading-[1.6]">{{ act.note }}</span>
+              <!-- Mobile-only Activity Tag -->
+              <div v-if="act.tag" class="mt-2.5 min-[601px]:hidden">
+                <span class="font-display text-[0.75rem] tracking-[0.04em] py-[0.15rem] px-[0.5rem] border rounded-[2px] inline-block" :class="['免費', '全免', 'included'].includes(act.tag) ? 'border-sage/35 bg-sage/8 text-sage' : 'border-gold/35 bg-gold/8 text-gold-dark'">{{ act.tag }}</span>
+              </div>
+            </div>
+            <span v-if="act.tag" class="font-display text-[0.75rem] md:text-[0.68rem] tracking-[0.04em] py-[0.22rem] px-[0.6rem] border rounded-[2px] whitespace-nowrap self-start mt-[0.15rem] shrink-0 max-[600px]:hidden" :class="['免費', '全免', 'included'].includes(act.tag) ? 'border-sage/35 bg-sage/8 text-sage' : 'border-gold/35 bg-gold/8 text-gold-dark'">{{ act.tag }}</span>
+          </div>
+          <div v-if="day.tipBox" class="mt-8 flex gap-4 items-start p-[1.4rem_1.6rem] bg-navy/[0.04] border border-navy/10 [&_strong]:font-display [&_strong]:font-semibold [&_strong]:tracking-wide [&_a]:text-bordeaux [&_a]:underline [&_a]:underline-offset-2">
+            <i class="fas text-gold-dark shrink-0 mt-[0.3rem] md:mt-[0.15rem]" :class="day.tipBox.icon"></i>
+            <p class="text-[0.98rem] md:text-[0.88rem] text-ink leading-[1.7]" v-html="day.tipBox.text"></p>
+          </div>
+        </div>
+        <!-- Sticky Map Panel -->
+        <div v-if="day.mapPoints && day.mapPoints.length" class="mt-10 lg:mt-0 lg:sticky lg:top-6">
+          <p class="font-display text-[0.68rem] tracking-[0.18em] uppercase text-gold-dark mb-3 flex items-center gap-2">
+            <i class="fas fa-map-marked-alt text-bordeaux"></i> 今日路線
+          </p>
+          <div class="day-map" :id="'map-day-' + day.num"></div>
+          <div class="mt-3 flex flex-col gap-1.5">
+            <div v-for="(pt, i) in day.mapPoints" :key="i" class="flex items-center gap-2.5 text-[0.82rem] text-ink-mid cursor-pointer transition-colors hover:text-bordeaux" @click="focusPoint(day, i)">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-[0.55rem] font-bold" :style="{ background: pt.color || 'oklch(48% 0.16 18)' }">{{ i + 1 }}</span>
+              <span>{{ pt.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="reveal bg-navy py-[clamp(3.5rem,7vw,6rem)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-display text-[0.8rem] md:text-[0.68rem] tracking-[0.25em] uppercase text-gold mb-2">訂票需知</p>
+      <h2 class="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-semibold text-[oklch(97%_0.018_82)] tracking-[0.02em] leading-snug mb-10">準備清單 Action Checklist</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-0">
+        <div v-for="col in checklistGroups" :key="col.title" class="pr-10 border-r border-[oklch(42%_0.04_263)] last:border-r-0 [&:not(:first-child)]:pl-10 max-[600px]:py-6 max-[600px]:border-r-0 max-[600px]:border-b max-[600px]:last:border-b-0 max-[600px]:px-0">
+          <p class="font-display text-[0.78rem] md:text-[0.68rem] tracking-[0.18em] uppercase text-gold pb-3 border-b border-[oklch(42%_0.04_263)] mb-4">{{ col.title }}</p>
+          <div v-for="item in col.items" :key="item.id" class="flex gap-[0.85rem] items-start py-[0.75rem] md:py-[0.55rem] border-b border-[oklch(38%_0.04_263)] last:border-b-0 text-[1.02rem] md:text-[0.9rem] leading-[1.5] text-[oklch(82%_0.02_263)] cursor-pointer select-none" @click="toggleCheck(item)">
+            <i class="fas text-[0.9rem] md:text-[0.72rem] mt-[0.35rem] md:mt-[0.25rem] shrink-0" :class="item.done ? 'fa-check-square text-gold opacity-100' : 'fa-square text-bordeaux opacity-80'"></i>
+            <span :class="{'line-through opacity-60': item.done}">{{ item.text }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal py-[clamp(3.5rem,7vw,6rem)] bg-cream-dark">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-display text-[0.8rem] md:text-[0.68rem] tracking-[0.25em] uppercase text-gold-dark mb-2">財務預算</p>
+      <h2 class="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-semibold text-ink tracking-[0.02em] leading-snug mb-10">旅費預算 Trip Budget</h2>
+      <table class="w-full max-w-[680px] border-collapse">
+        <thead>
+          <tr>
+            <th class="font-display text-[0.78rem] md:text-[0.68rem] tracking-[0.15em] uppercase text-ink-faint p-[0.6rem_1rem] text-left border-b-2 border-bordeaux">項目</th>
+            <th class="font-display text-[0.78rem] md:text-[0.68rem] tracking-[0.15em] uppercase text-ink-faint p-[0.6rem_1rem] text-right border-b-2 border-bordeaux">慳錢預算</th>
+            <th class="font-display text-[0.78rem] md:text-[0.68rem] tracking-[0.15em] uppercase text-ink-faint p-[0.6rem_1rem] text-right border-b-2 border-bordeaux">中等消費</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, idx) in budgetItems" :key="idx">
+            <td class="p-[1.05rem_1rem] md:p-[0.85rem_1rem] border-b border-rule text-[1.02rem] md:text-[0.92rem] text-ink"><i class="fas text-gold-dark mr-2 text-[0.8rem] md:text-[0.72rem]" :class="row.icon"></i>{{ row.name }}</td>
+            <td class="p-[1.05rem_1rem] md:p-[0.85rem_1rem] border-b border-rule text-[0.95rem] md:text-[0.85rem] text-right font-display" :class="row.booked ? 'text-sage' : 'text-ink-mid'">{{ row.booked ? '✓ 已訂' : '£' + row.budget }}</td>
+            <td class="p-[1.05rem_1rem] md:p-[0.85rem_1rem] border-b border-rule text-[0.95rem] md:text-[0.85rem] text-right font-display" :class="row.booked ? 'text-sage' : 'text-ink-mid'">{{ row.booked ? '✓ 已訂' : '£' + row.mid }}</td>
+          </tr>
+          <tr class="total">
+            <td class="p-[1.05rem_1rem] md:p-[0.85rem_1rem] border-t-2 border-ink border-b-0 font-display font-semibold text-[1.12rem] md:text-base">總計</td>
+            <td class="p-[1.05rem_1rem] md:p-[0.85rem_1rem] border-t-2 border-ink border-b-0 font-display font-semibold text-[1.18rem] md:text-[1.08rem] text-bordeaux text-right">~£{{ totalBudget }}</td>
+            <td class="p-[1.05rem_1rem] md:p-[0.85rem_1rem] border-t-2 border-ink border-b-0 font-display font-semibold text-[1.18rem] md:text-[1.08rem] text-bordeaux text-right">~£{{ totalMidRange }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-6 text-[0.95rem] md:text-[0.85rem] text-ink-mid max-w-[560px] leading-[1.8]">
+        Airbnb 已經訂好（7a Steep Rise, Headington）。剩餘行程開支大約 <strong class="font-semibold text-ink">~£{{ totalBudget }}–{{ totalMidRange }}</strong>，主要係門票、觀光巴士、餐飲同一次 Supercharger 叉電。
+      </p>
+    </div>
+  </section>
+
+  <section class="reveal py-[clamp(3.5rem,7vw,6rem)] bg-cream">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-display text-[0.8rem] md:text-[0.68rem] tracking-[0.25em] uppercase text-gold-dark mb-2">出發前必看</p>
+      <h2 class="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-semibold text-ink tracking-[0.02em] leading-snug mb-10">實用貼士 Practical Notes</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-12">
+        <div v-for="group in tips" :key="group.title">
+          <p class="font-display text-[0.78rem] md:text-[0.68rem] tracking-[0.18em] uppercase text-gold-dark pb-[0.8rem] border-b-2 border-bordeaux mb-4">{{ group.title }}</p>
+          <div v-for="(item, idx) in group.items" :key="idx" class="flex gap-[0.8rem] items-start py-[0.75rem] md:py-[0.55rem] border-b border-rule last:border-b-0 text-[1.02rem] md:text-[0.9rem] text-ink leading-[1.7]">
+            <i class="fas fa-circle text-bordeaux text-[0.62rem] md:text-[0.52rem] mt-[0.6rem] md:mt-[0.5rem] shrink-0"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal py-[clamp(3.5rem,7vw,6rem)] bg-cream-dark">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-display text-[0.8rem] md:text-[0.68rem] tracking-[0.25em] uppercase text-gold-dark mb-2">附錄</p>
+      <h2 class="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-semibold text-ink tracking-[0.02em] leading-snug mb-2">Day 1 午餐選擇 · Bourton-on-the-Water</h2>
+      <p class="text-[1rem] md:text-[0.92rem] text-ink-mid mb-10 max-w-[680px] leading-[1.8]">5 間河畔／近河餐廳，全部步行可達，方便長者行完河畔就直接坐低食飯。</p>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
+        <div v-for="opt in lunchOptions" :key="opt.name" class="p-[1.4rem_1.6rem] bg-cream border border-rule relative">
+          <span v-if="opt.tag" class="absolute top-4 right-4 font-display text-[0.7rem] tracking-wide py-[0.15rem] px-[0.5rem] border rounded-[2px] border-sage/35 bg-sage/8 text-sage">{{ opt.tag }}</span>
+          <p class="font-display text-[1.05rem] font-semibold text-ink pr-12">{{ opt.name }}</p>
+          <p class="text-[0.92rem] text-ink-mid mt-2 leading-[1.75]">{{ opt.desc }}</p>
+          <a :href="opt.mapUrl" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1.5 font-display text-[0.78rem] tracking-wide text-bordeaux hover:opacity-70"><i class="fas fa-map-marker-alt text-[0.72rem]"></i> 睇相同評價（Google Maps）</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-navy p-[2rem_clamp(1.5rem,5vw,5rem)] flex justify-between items-center flex-wrap gap-4 border-t-2 border-bordeaux">
+    <div class="font-display text-[1.35rem] font-bold text-gold tracking-tight">{{ meta.title }} · 2026</div>
+    <p class="font-display text-[0.65rem] tracking-[0.15em] uppercase text-[oklch(50%_0.03_263)]">{{ meta.dates }} · Kingston upon Thames → 7a Steep Rise, Headington, Oxford OX3 9QG</p>
+    <p class="font-display text-[0.65rem] tracking-[0.15em] uppercase text-[oklch(50%_0.03_263)]">家庭行程 · 5 位同行 · Tesla Model Y</p>
+  </footer>
+</div>
+
+<script>
+  const itineraryData = {
+    meta: {
+      title: "Cotswolds",
+      subtitle: "家庭之旅",
+      eyebrow: "家庭行程 · 2026",
+      travellers: "2 位大人 · 1 位 7 歲女兒 · 2 位 70 歲長者",
+      dates: "2026年7月31日 – 8月2日",
+      transport: "自駕 · Tesla Model Y",
+      route: "Kingston upon Thames → Headington, Oxford"
+    },
+    stats: [
+      { value: "3", label: "日數", isFirst: true },
+      { value: "2", label: "晚數" },
+      { value: "5", label: "同行人數" },
+      { value: "Headington Airbnb", label: "住宿 ✓" },
+      { value: "~£445–635", label: "預計餘下開支" }
+    ],
+    days: [
+      {
+        num: "01",
+        date: "7月31日 · 星期五",
+        title: "水鄉漫遊 · Bourton-on-the-Water",
+        sub: "由 Kingston 直接出發去 Bourton-on-the-Water，河畔漫步、迷你村莊，再前往 Headington 入住",
+        isDark: false,
+        mapPoints: [
+          { name: "Kingston upon Thames — 出發", lat: 51.4085, lng: -0.3064, color: "oklch(36% 0.065 263)" },
+          { name: "M40 Oxford Services — 叉電 + 洗手間", lat: 51.7679, lng: -1.1148, color: "oklch(78% 0.16 75)" },
+          { name: "Bourton-on-the-Water — 河畔散步 + 迷你村莊", lat: 51.8767, lng: -1.7551, color: "oklch(48% 0.16 18)" },
+          { name: "7a Steep Rise, Headington — 登記入住", lat: 51.7573, lng: -1.2028, color: "oklch(36% 0.065 263)" },
+          { name: "附近傳統 Pub — 晚餐", lat: 51.7565, lng: -1.2035, color: "oklch(78% 0.16 75)" }
+        ],
+        tipBox: {
+          icon: "fa-exclamation-triangle",
+          text: "<strong>Day 1 係全程最攰嘅一日：</strong> 車程近 130 miles，加上 31 Jul 好大機會撞正暑假第一個星期五嘅出行車流，一定要早出發，唔好貪瞓。Bourton 嘅河畔散步同 Model Village 戶外部分冇室內避雨後備，出發前要留意天氣預報。"
+        },
+        activities: [
+          {
+            type: "move",
+            icon: "fa-car",
+            pt: 0,
+            title: "早出發",
+            desc: "由 Kingston 出發，因為去 Bourton 車程比較長，加上 31 Jul 好大機會撞正好多學校啱啱放暑假嘅第一個星期五，建議食完早餐就走，唔好等到 09:30。",
+            tag: "07:30 – 08:00"
+          },
+          {
+            type: "move",
+            icon: "fa-charging-station",
+            pt: 1,
+            title: "M40 Oxford Services 中途站",
+            desc: "喺 M40 Junction 8 附近嘅 Oxford Services（Extra）稍作休息，上洗手間，順便喺場內嘅 Tesla Supercharger 叉多 15-20 分鐘電。過咗呢度就轉入 A40 單線雙程路直到 Bourton，冇乜快叉選擇，喺呢度叉定會安心好多。",
+            tag: "08:45 – 09:05"
+          },
+          {
+            type: "hi",
+            icon: "fa-parking",
+            pt: 2,
+            title: "抵達 Bourton",
+            desc: "建議喺 Rissington Road 或 Station Road 停車場開閘前後就到！暑假第一個星期五雖然唔及 8 月旺季星期日咁誇張，但都算旺季開始，遲少少去到可能都會搵車位搵得辛苦。",
+            tag: "09:30 – 10:00"
+          },
+          {
+            type: "fun",
+            icon: "fa-water",
+            pt: 2,
+            title: "河畔慢步",
+            desc: "喺極度平坦嘅 River Windrush 兩岸散步。步道冇樓梯，沿河畔全是長櫈，可以買飼料喺河邊餵鴨仔。長者可以隨時搵張櫈坐低睇風景。",
+            tag: "10:00 – 12:00"
+          },
+          {
+            type: "food",
+            icon: "fa-cookie",
+            pt: 2,
+            title: "傳統下午茶／早午餐",
+            desc: "搵間河畔傳統茶室（例如 Bakery on the Water）食 Scones 配奶油果醬，或者揀間有正餐嘅 pub 食早午餐。",
+            tag: "12:00 – 13:30"
+          },
+          {
+            type: "fun",
+            icon: "fa-city",
+            pt: 2,
+            title: "迷你村莊 The Model Village",
+            desc: "入面有少量唔平嘅狹窄路徑，但場地細，小朋友睇迷你屋會好開心。",
+            note: "長者如果唔想行，可以喺村莊入口旁邊嘅 The Old New Inn 坐低飲茶等。",
+            tag: "13:30 – 14:45"
+          },
+          {
+            type: "move",
+            icon: "fa-car-side",
+            pt: 3,
+            title: "前往 Headington",
+            desc: "取車離開 Bourton，經 A429/A40 前往 Headington，約 50–55 分鐘。",
+            tag: "15:00 – 15:55"
+          },
+          {
+            type: "move",
+            icon: "fa-key",
+            pt: 3,
+            title: "登記入住",
+            desc: "Check-in，讓長者休息。",
+            tag: "16:00 – 16:30"
+          },
+          {
+            type: "food",
+            icon: "fa-beer",
+            pt: 4,
+            title: "晚餐",
+            desc: "於住宿附近嘅傳統英式 Pub 食晚餐，然後早點休息（Day 1 車程長，早啲瞓好緊要）。",
+            tag: "18:30"
+          }
+        ]
+      },
+      {
+        num: "02",
+        date: "8月1日 · 星期六",
+        title: "平坦大自然與動物園火車 · Cotswold Wildlife Park",
+        sub: "全程平路睇動物，仲有窄軌小火車坐住遊園，遷就兩位長者",
+        isDark: true,
+        mapPoints: [
+          { name: "7a Steep Rise, Headington — 出發", lat: 51.7573, lng: -1.2028, color: "oklch(36% 0.065 263)" },
+          { name: "Cotswold Wildlife Park, Burford", lat: 51.7797, lng: -1.6330, color: "oklch(48% 0.16 18)" },
+          { name: "Witney — 後備快速充電", lat: 51.7862, lng: -1.4832, color: "oklch(78% 0.16 75)" }
+        ],
+        tipBox: {
+          icon: "fa-exclamation-triangle",
+          text: "<strong>電子門票要預先網上購買：</strong> Cotswold Wildlife Park 唔可以即日入口買，8 月旺季建議提早成個星期買。"
+        },
+        activities: [
+          {
+            type: "move",
+            icon: "fa-mug-hot",
+            pt: 0,
+            title: "早餐與出發",
+            desc: "在 Airbnb 享用早餐，09:00 出發。",
+            tag: "09:00 – 09:45"
+          },
+          {
+            type: "move",
+            icon: "fa-car",
+            pt: 1,
+            title: "前往 Wildlife Park",
+            desc: "由 Headington 經 A40 前往 Burford，約 45-50 分鐘。",
+            tag: "09:45 – 10:35"
+          },
+          {
+            type: "hi",
+            icon: "fa-paw",
+            pt: 1,
+            title: "平路看動物",
+            desc: "抵達 Cotswold Wildlife Park（官方認證全平坦場地）。沿路睇企鵝、狐獴及長頸鹿，步道闊落，長凳處處。",
+            tag: "10:35 – 12:30"
+          },
+          {
+            type: "food",
+            icon: "fa-utensils",
+            pt: 1,
+            title: "午餐時光",
+            desc: "Oak Tree Restaurant 食午餐，或喺大草地野餐。",
+            tag: "12:30 – 14:00"
+          },
+          {
+            type: "fun",
+            icon: "fa-train",
+            pt: 1,
+            title: "窄軌火車",
+            desc: "全家一齊坐「窄軌小火車」環繞半個動物園，長者可以舒舒服服坐住睇犀牛。",
+            tag: "14:00 – 14:30"
+          },
+          {
+            type: "fun",
+            icon: "fa-ice-cream",
+            pt: 1,
+            title: "最後逛逛",
+            desc: "參觀熱帶溫室或行逛手信店。",
+            tag: "14:30 – 15:30"
+          },
+          {
+            type: "move",
+            icon: "fa-car",
+            pt: 0,
+            title: "回程",
+            desc: "返回 Headington（約 45-50 分鐘），傍晚讓長者休息。",
+            tag: "15:30 – 16:20"
+          },
+          {
+            type: "food",
+            icon: "fa-home",
+            pt: 0,
+            title: "晚餐",
+            desc: "外出用膳或在 Airbnb 煮簡單晚餐。",
+            tag: "18:30"
+          }
+        ]
+      },
+      {
+        num: "03",
+        date: "8月2日 · 星期日",
+        title: "牛津大學漫遊與回程 · Oxford University Sightseeing",
+        sub: "坐定定觀光巴士睇牛津地標，再回程 Kingston",
+        isDark: false,
+        mapPoints: [
+          { name: "7a Steep Rise, Headington — 出發", lat: 51.7573, lng: -1.2028, color: "oklch(36% 0.065 263)" },
+          { name: "Redbridge Park & Ride — 泊車 + 叉電", lat: 51.7248, lng: -1.2705, color: "oklch(78% 0.16 75)" },
+          { name: "牛津市中心 — Christ Church / Radcliffe Camera / Bodleian", lat: 51.7534, lng: -1.2540, color: "oklch(48% 0.16 18)" },
+          { name: "Ashmolean Museum", lat: 51.7548, lng: -1.2599, color: "oklch(62% 0.11 145)" },
+          { name: "Covered Market — 午餐", lat: 51.7519, lng: -1.2578, color: "oklch(78% 0.16 75)" },
+          { name: "Oxford (Thame Road) Supercharger", lat: 51.7476, lng: -1.1592, color: "oklch(78% 0.16 75)" },
+          { name: "Kingston upon Thames — 返抵家", lat: 51.4085, lng: -0.3064, color: "oklch(36% 0.065 263)" }
+        ],
+        tipBox: {
+          icon: "fa-info-circle",
+          text: "<strong>Oxford 市中心週日泊車位少兼貴</strong>，用 Park & Ride（Redbridge / Thornhill / Seacourt 都得）泊車轉巴士係最方便嘅方法，仲可以順便喺 Redbridge Supercharger 叉電。Hop-on-hop-off 巴士（City Sightseeing Oxford）建議出發前網上買飛，慳返排隊時間。<strong>回程</strong>前建議再係 Thame Road Supercharger 叉多次，確保有信心舒服咁返到 Kingston。"
+        },
+        activities: [
+          {
+            type: "move",
+            icon: "fa-suitcase-rolling",
+            pt: 1,
+            title: "退房與出發",
+            desc: "食完早餐並 Check-out，泊車建議揀 Park & Ride（例如 Redbridge，同時可以順路叉電）再轉巴士入市中心，避開市中心週日泊車難兼慢叉。",
+            tag: "09:00 – 09:30"
+          },
+          {
+            type: "move",
+            icon: "fa-bus",
+            pt: 2,
+            title: "抵達市中心",
+            desc: "由 Park & Ride 巴士到市中心（約 15 分鐘）。",
+            tag: "09:45 – 10:00"
+          },
+          {
+            type: "hi",
+            icon: "fa-landmark",
+            pt: 2,
+            title: "坐定定觀光：Hop-on Hop-off 開篷觀光巴士",
+            desc: "全程有位坐，唔使行，一次過睇晒 Christ Church、Radcliffe Camera、Bodleian Library、Bridge of Sighs 呢啲地標。對長者嚟講係最舒服嘅牛津觀光方式。",
+            tag: "10:00 – 11:00"
+          },
+          {
+            type: "hi",
+            icon: "fa-university",
+            pt: 3,
+            title: "Ashmolean Museum",
+            desc: "全館平路＋有升降機，館內有咖啡廳可以隨時坐低休息。細路可以睇埃及木乃伊，長者可以坐喺大堂或 café 唞氣。",
+            tag: "免費"
+          },
+          {
+            type: "food",
+            icon: "fa-utensils",
+            pt: 4,
+            title: "Covered Market 午餐",
+            desc: "牛津有蓋市場，選擇多、有得坐、唔使日曬雨淋。",
+            tag: "12:15 – 13:30"
+          },
+          {
+            type: "fun",
+            icon: "fa-tree",
+            pt: 2,
+            title: "自由活動：Christ Church Meadow / 河邊 Pub",
+            desc: "想睇多啲嘅可以行去 Christ Church Meadow（平路河畔草地）；或者想輕鬆啲可以去 The Head of the River（Folly Bridge 邊，睇人撐 punt，長者又有位坐）。",
+            note: "留意：Christ Church 學院內部同 Carfax Tower 有樓梯／唔算太適合長者，可以列為自由選擇，唔勉強行程入面。",
+            tag: "13:30 – 14:30"
+          },
+          {
+            type: "move",
+            icon: "fa-bus",
+            pt: 1,
+            title: "取車",
+            desc: "Park & Ride 搭巴士返停車場取車。",
+            tag: "14:30 – 15:00"
+          },
+          {
+            type: "move",
+            icon: "fa-car-side",
+            pt: 6,
+            title: "回程",
+            desc: "出發返 Kingston。留意星期日下午/傍晚 A40/M40 沿線會有唔少度假回程車流，如果順利就照原定時間走；如塞車，可以考慮喺 Oxford 附近食定晚飯先等 7 點後上路。",
+            tag: "15:00 – 17:00"
+          }
+        ]
+      }
+    ],
+    checklistGroups: [
+      {
+        title: "呢個星期就要做 🔴",
+        items: [
+          { text: "Cotswold Wildlife Park 電子門票 — 網上預購" },
+          { text: "City Sightseeing Oxford 開篷巴士飛 — 建議網上預購" },
+          { text: "問 Airbnb host 有冇慢叉（3-pin/granny charger）可用 — Day 1 一落機就用咗成 60% 電，充電安排好緊要" }
+        ]
+      },
+      {
+        title: "出發前一星期 🟡",
+        items: [
+          { text: "Print / save 晒所有 booking confirmation" },
+          { text: "睇天氣預報 — Day 1 Bourton 冇室內後備，落雨要有心理準備" },
+          { text: "查清楚 Oxford Park & Ride（Redbridge／Thornhill／Seacourt）位置同巴士班次" },
+          { text: "喺 Tesla App 記低最近 Supercharger 位置，尤其確保 Day 1 晚有位叉電" }
+        ]
+      },
+      {
+        title: "出發前一日 🟢",
+        items: [
+          { text: "再次確認 Wildlife Park 電子門票已成功購買" },
+          { text: "Charge 定電話、下載定離線地圖" },
+          { text: "兩位長者藥物、暈車丸執齊（各自分開執）" },
+          { text: "小朋友娛樂準備定，應付 Day 1 較長車程" }
+        ]
+      }
+    ],
+    budget: [
+      { icon: "fa-bed", name: "住宿 — 7a Steep Rise, Headington（2晚）✓ 已訂", budget: 0, mid: 0, booked: true },
+      { icon: "fa-bolt", name: "電動車充電（Supercharger 叉電，Day 1 晚 + Day 3 回程前）", budget: 20, mid: 35 },
+      { icon: "fa-paw", name: "Cotswold Wildlife Park 門票（5人）", budget: 65, mid: 90 },
+      { icon: "fa-bus", name: "City Sightseeing Oxford 開篷觀光巴士（5人）", budget: 45, mid: 60 },
+      { icon: "fa-university", name: "Ashmolean Museum（全免入場，捐獻隨意）", budget: 0, mid: 0 },
+      { icon: "fa-train", name: "迷你村莊 + 動物園窄軌小火車（5人）", budget: 35, mid: 50 },
+      { icon: "fa-utensils", name: "餐飲 — 3日5人（茶室／野餐／晚餐）", budget: 250, mid: 350 },
+      { icon: "fa-shopping-bag", name: "手信、雪糕、餵鴨仔飼料等雜項", budget: 30, mid: 50 }
+    ],
+    tips: [
+      {
+        title: "自駕與泊車",
+        items: [
+          "Day 1 係全程最長一日（Kingston→Bourton→Headington 近 130 miles），建議 07:30-08:00 早出發",
+          "Bourton 車位喺旺季開始首個星期五都可能爆滿，建議喺 Rissington Road / Station Road 開閘前後到達",
+          "後備：Cotswold School 季節性泊車場（£5 全日捐獻）",
+          "Oxford 市中心週日車位有限兼貴，用 Park & Ride 最方便；千祈唔好諗住直接揸車入市中心搵路邊位",
+          "31 Jul 同 2 Aug 都可能撞正暑假出行車流，建議預留 buffer 時間"
+        ]
+      },
+      {
+        title: "電動車充電",
+        items: [
+          "Model Y Standard Range 用 LFP 電池，可以放心叉滿 100%",
+          "Day 1 出發前確保叉滿 100%，單單 Day 1 就用晒接近 130 miles，落到 Airbnb 大概剩返 40–50% 電",
+          "Day 1 去程順路喺 M40 Oxford Services（Junction 8）叉多 15-20 分鐘，同時上洗手間，過咗嗰度轉入 A40 就冇乜快叉選擇",
+          "問清楚 Airbnb host 有冇慢叉（granny charger），Day 1 晚（一家人休息緊嗰陣）叉一晚，翌日應該可以叉返成 8-9 成",
+          "如果冇慢叉，Day 1 晚或 Day 2 朝早一定要去 Oxford (Thame Road) 或 Redbridge Supercharger 叉一叉（~15-20 分鐘）",
+          "Day 3 番程前（Oxford 觀光之後）建議再係 Thame Road Supercharger 叉多次，確保舒服咁返到 Kingston",
+          "後備：Witney 鎮中心快叉（The Leys 50kW / Woolgate 75kW）啱啱好喺 Day 2 去 Wildlife Park 途中"
+        ]
+      },
+      {
+        title: "長者與家庭舒適度",
+        items: [
+          "每日行程都揀平路＋多座位休息點嘅選項，長者舒服為重",
+          "Model Y Standard Range 5 座位坐晒 5 人，盡量帶軟身袋慳返車尾廂空間",
+          "兩位長者藥物、暈車丸分開執，另備一張列明過敏史/病歷嘅字條以防萬一",
+          "帶備小朋友娛樂用品應付 Day 1 較長車程",
+          "太陽帽、防曬同水樽，8 月 Cotswolds 可能好熱",
+          "Day 3 嘅 Hop-on-hop-off 巴士同 Ashmolean 特登揀咗全程坐得低、唔使行嘅選項嚟遷就兩位長者"
+        ]
+      }
+    ],
+    lunchOptions: [
+      {
+        name: "The Old Manse",
+        desc: "18世紀 Cotswold 石屋，就喺 Mill Bridge 同 River Windrush 旁邊，有河景露台。啱曬長者同小朋友，供應 Brunch、正餐同小食，全日都有得食。啱啱好喺河畔散步路線上，唔使特登行過去。",
+        tag: "推薦",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Old+Manse+Bourton-on-the-Water"
+      },
+      {
+        name: "Kingsbridge",
+        desc: "傳統石砌 Pub，有河畔花園，夏天坐戶外一流。有 Sausage & Mash、Fish & Chips 呢啲經典 Pub 餐，亦有素食／純素選擇，想食返餐正嘅可以揀呢間。",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Kingsbridge+Bourton-on-the-Water"
+      },
+      {
+        name: "The Rose Tree Restaurant",
+        desc: "喺 Victoria Street 河邊嘅正式餐廳，環境靚，主菜 £20 有找，評價好。星期日 11:30-15:00，平時開到 20:30，時間彈性大。",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Rose+Tree+Restaurant+Bourton-on-the-Water"
+      },
+      {
+        name: "Bourton Riverside Café",
+        desc: "河邊 Café，有三文治、Panini、焗薯等輕食，坐位多，氣氛輕鬆。想食快啲、唔使坐足成粒鐘嘅話呢間啱。",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Bourton+Riverside+Cafe+Bourton-on-the-Water"
+      },
+      {
+        name: "Smiths of Bourton",
+        desc: "以漢堡包出名，環境休閒，小朋友揀嘢食唔駛頭痕，想食簡單啲可以揀呢間。",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Smiths+of+Bourton+Bourton-on-the-Water"
+      }
+    ]
+  };
+
+  const { createApp, ref, computed, onMounted, nextTick } = Vue;
+
+  createApp({
+    setup() {
+      const meta = ref(itineraryData.meta);
+      const stats = ref(itineraryData.stats);
+      const days = ref(itineraryData.days);
+      const budgetItems = ref(itineraryData.budget);
+      const tips = ref(itineraryData.tips);
+      const lunchOptions = ref(itineraryData.lunchOptions);
+
+      const checklistGroups = ref(itineraryData.checklistGroups.map(group => {
+        return {
+          title: group.title,
+          items: group.items.map(entry => {
+            const id = `chk_cotswold_alt_${entry.text.replace(/\W/g, '_').toLowerCase()}`;
+            return {
+              id,
+              text: entry.text,
+              done: localStorage.getItem(id) === 'true'
+            };
+          })
+        };
+      }));
+
+      const toggleCheck = (item) => {
+        item.done = !item.done;
+        localStorage.setItem(item.id, item.done ? 'true' : 'false');
+      };
+
+      // Leaflet map + marker registry, keyed by day.num (filled in onMounted)
+      const dayMaps = {};
+
+      const focusPoint = (day, idx) => {
+        if (idx === undefined) return;
+        const entry = dayMaps[day.num];
+        if (!entry) return;
+        const marker = entry.markers[idx];
+        if (!marker) return;
+        const mapEl = document.getElementById('map-day-' + day.num);
+        if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        entry.map.flyTo(marker.getLatLng(), Math.max(entry.map.getZoom(), 14), { duration: 0.8 });
+        marker.openPopup();
+      };
+
+      const totalBudget = computed(() => {
+        return budgetItems.value.reduce((sum, item) => sum + item.budget, 0);
+      });
+
+      const totalMidRange = computed(() => {
+        return budgetItems.value.reduce((sum, item) => sum + item.mid, 0);
+      });
+
+      onMounted(() => {
+        nextTick(() => {
+          // ── Scroll-reveal ──────────────────────────
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+              if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('visible'), i * 60);
+                io.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.06 });
+          document.querySelectorAll('.day, .reveal')
+            .forEach(el => io.observe(el));
+
+          // ── Leaflet Maps ───────────────────────────
+          const typeColors = {
+            hi:   'oklch(48% 0.16 18)',
+            fun:  'oklch(62% 0.11 145)',
+            food: 'oklch(78% 0.16 75)',
+            move: 'oklch(36% 0.065 263)',
+            '':   'oklch(52% 0.03 265)'
+          };
+
+          days.value.forEach(day => {
+            if (!day.mapPoints || !day.mapPoints.length) return;
+            const mapEl = document.getElementById('map-day-' + day.num);
+            if (!mapEl) return;
+
+            const dayMarkers = [];
+
+            const map = L.map(mapEl, {
+              zoomControl: true,
+              scrollWheelZoom: false,
+              attributionControl: false
+            });
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+              subdomains: 'abcd',
+              maxZoom: 19
+            }).addTo(map);
+
+            // Attribution (compact)
+            L.control.attribution({ prefix: false, position: 'bottomright' }).addTo(map);
+
+            const bounds = [];
+            day.mapPoints.forEach((pt, idx) => {
+              const color = pt.color || typeColors[pt.type] || typeColors[''];
+              const pinHtml = `
+                <div class="map-pin" style="width:28px;height:28px;background:${color};">
+                  <span style="transform:rotate(45deg);font-family:'Josefin Sans','Noto Sans TC',sans-serif;font-size:0.65rem;font-weight:700;color:white;">${idx + 1}</span>
+                </div>`;
+
+              const icon = L.divIcon({
+                html: pinHtml,
+                className: '',
+                iconSize: [28, 28],
+                iconAnchor: [14, 28],
+                popupAnchor: [0, -30]
+              });
+
+              const popupContent = `
+                <div class="map-popup-inner">
+                  <div class="map-popup-cat">第 ${idx + 1} 站</div>
+                  <div class="map-popup-title">${pt.name}</div>
+                </div>`;
+
+              const marker = L.marker([pt.lat, pt.lng], { icon })
+                .addTo(map)
+                .bindPopup(popupContent, { maxWidth: 240, minWidth: 160, autoPan: false });
+              dayMarkers.push(marker);
+
+              bounds.push([pt.lat, pt.lng]);
+            });
+
+            if (bounds.length > 1) {
+              map.fitBounds(bounds, { padding: [36, 36] });
+            } else if (bounds.length === 1) {
+              map.setView(bounds[0], 15);
+            }
+
+            dayMaps[day.num] = { map, markers: dayMarkers };
+          });
+        });
+      });
+
+      return {
+        meta,
+        stats,
+        days,
+        checklistGroups,
+        budgetItems,
+        tips,
+        lunchOptions,
+        toggleCheck,
+        focusPoint,
+        totalBudget,
+        totalMidRange
+      };
+    }
+  }).mount('#app');
+</script>
+</body>
+</html>
