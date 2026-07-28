@@ -238,7 +238,7 @@
         </tbody>
       </table>
       <p class="mt-6 text-[0.95rem] md:text-[0.85rem] text-ink-mid max-w-[560px] leading-[1.8]">
-        Airbnb 已經訂好（7a Steep Rise, Headington）。剩餘行程開支大約 <strong class="font-semibold text-ink">~£{{ totalBudget }}–{{ totalMidRange }}</strong>，主要係門票、觀光巴士、餐飲同一次 Supercharger 叉電。
+        Airbnb 已經訂好（7a Steep Rise, Headington，Host 已確認 3pm 後可以 check-in）。Cotswold Wildlife Park 門票亦已買。剩餘行程開支大約 <strong class="font-semibold text-ink">~£{{ totalBudget }}–{{ totalMidRange }}</strong>，主要係觀光巴士、餐飲同一次 Supercharger 叉電。
       </p>
     </div>
   </section>
@@ -332,7 +332,7 @@
             icon: "fa-charging-station",
             pt: 1,
             title: "M40 Oxford Services 中途站",
-            desc: "喺 M40 Junction 8 附近嘅 Oxford Services（Extra）稍作休息，上洗手間，順便喺場內嘅 Tesla Supercharger 叉多 15-20 分鐘電。過咗呢度就轉入 A40 單線雙程路直到 Bourton，冇乜快叉選擇，喺呢度叉定會安心好多。",
+            desc: "由 Kingston 出發時叉滿 100%，行完呢 ~45 miles（大部分係 M25/A3/M40 高速路段）大約剩返 75-80% 電。喺 Oxford Services 嘅 Tesla Supercharger 叉多 15-20 分鐘，叉到 90% 左右就夠（80% 之後叉電速度會開始 taper 變慢，唔使勉強叉到 100%），上洗手間順便休息。過咗呢度轉入 A40 單線雙程路直到 Bourton，冇乜快叉選擇，喺呢度叉定會安心好多。",
             tag: "08:45 – 09:05"
           },
           {
@@ -381,7 +381,7 @@
             icon: "fa-key",
             pt: 3,
             title: "登記入住",
-            desc: "Check-in，讓長者休息。",
+            desc: "Check-in（Host 已確認 3pm 後可以入住），讓長者休息。",
             tag: "16:00 – 16:30"
           },
           {
@@ -406,8 +406,8 @@
           { name: "Witney — 後備快速充電", lat: 51.7862, lng: -1.4832, color: "oklch(78% 0.16 75)" }
         ],
         tipBox: {
-          icon: "fa-exclamation-triangle",
-          text: "<strong>電子門票要預先網上購買：</strong> Cotswold Wildlife Park 唔可以即日入口買，8 月旺季建議提早成個星期買。"
+          icon: "fa-check-circle",
+          text: "<strong>電子門票已購買 ✓：</strong> Cotswold Wildlife Park 門票已經網上買好，記得落機前 print / save 定 QR code。"
         },
         activities: [
           {
@@ -568,9 +568,8 @@
       {
         title: "呢個星期就要做 🔴",
         items: [
-          { text: "Cotswold Wildlife Park 電子門票 — 網上預購" },
           { text: "City Sightseeing Oxford 開篷巴士飛 — 建議網上預購" },
-          { text: "問 Airbnb host 有冇慢叉（3-pin/granny charger）可用 — Day 1 一落機就用咗成 60% 電，充電安排好緊要" }
+          { text: "問 Airbnb host 有冇慢叉（3-pin/granny charger）可用 — Day 1 落到 Airbnb 大概剩返 60-65% 電，有慢叉先可以安心叉一整晚" }
         ]
       },
       {
@@ -585,7 +584,6 @@
       {
         title: "出發前一日 🟢",
         items: [
-          { text: "再次確認 Wildlife Park 電子門票已成功購買" },
           { text: "Charge 定電話、下載定離線地圖" },
           { text: "兩位長者藥物、暈車丸執齊（各自分開執）" },
           { text: "小朋友娛樂準備定，應付 Day 1 較長車程" }
@@ -595,7 +593,7 @@
     budget: [
       { icon: "fa-bed", name: "住宿 — 7a Steep Rise, Headington（2晚）✓ 已訂", budget: 0, mid: 0, booked: true },
       { icon: "fa-bolt", name: "電動車充電（Supercharger 叉電，Day 1 晚 + Day 3 回程前）", budget: 20, mid: 35 },
-      { icon: "fa-paw", name: "Cotswold Wildlife Park 門票（5人）", budget: 65, mid: 90 },
+      { icon: "fa-paw", name: "Cotswold Wildlife Park 門票（5人）✓ 已買", budget: 65, mid: 90, booked: true },
       { icon: "fa-bus", name: "City Sightseeing Oxford 開篷觀光巴士（5人）", budget: 45, mid: 60 },
       { icon: "fa-university", name: "Ashmolean Museum（全免入場，捐獻隨意）", budget: 0, mid: 0 },
       { icon: "fa-train", name: "迷你村莊 + 動物園窄軌小火車（5人）", budget: 35, mid: 50 },
@@ -614,15 +612,15 @@
         ]
       },
       {
-        title: "電動車充電",
+        title: "電動車充電（全程淨係叉 2 次：Day 1 + Day 3，Airbnb 冇得叉電）",
         items: [
-          "Model Y Standard Range 用 LFP 電池，可以放心叉滿 100%",
-          "Day 1 出發前確保叉滿 100%，單單 Day 1 就用晒接近 130 miles，落到 Airbnb 大概剩返 40–50% 電",
-          "Day 1 去程順路喺 M40 Oxford Services（Junction 8）叉多 15-20 分鐘，同時上洗手間，過咗嗰度轉入 A40 就冇乜快叉選擇",
-          "問清楚 Airbnb host 有冇慢叉（granny charger），Day 1 晚（一家人休息緊嗰陣）叉一晚，翌日應該可以叉返成 8-9 成",
-          "如果冇慢叉，Day 1 晚或 Day 2 朝早一定要去 Oxford (Thame Road) 或 Redbridge Supercharger 叉一叉（~15-20 分鐘）",
-          "Day 3 番程前（Oxford 觀光之後）建議再係 Thame Road Supercharger 叉多次，確保舒服咁返到 Kingston",
-          "後備：Witney 鎮中心快叉（The Leys 50kW / Woolgate 75kW）啱啱好喺 Day 2 去 Wildlife Park 途中"
+          "Model Y Standard Range（2023）用 LFP 電池，可以放心定期叉滿 100%（LFP 唔似 NCA/NMC 咁忌諱長期滿電，Tesla 官方仲建議 LFP 車款定期叉到 100% 校準電量顯示）",
+          "【Day 1 出發】Kingston 出發前叉滿 100%，一開電動閘就往 M40 Oxford Services（~45 miles，主要行 M25/A3/M40 高速路），預計去到嗰度大概剩 75-80% 電",
+          "【叉電 #1・M40 Oxford Services】因為 Airbnb 冇得叉電，呢度係之後兩日半嘅唯一一次叉電，建議叉耐啲、叉到 95-100%（LFP 叉滿冇問題，多等 15-20 分鐘好過之後心大心細）",
+          "之後行程：Bourton（到達 ~85-90%）→ Headington/Airbnb（到達 ~70-75%）→ Day 2 Wildlife Park 來回 ~32 miles（到達 ~58-63%）→ Day 3 去 Redbridge P&R（到達 ~55-60%），全程唔使再叉電",
+          "【叉電 #2・Thame Road Supercharger（Day 3，離開 Redbridge 之後、番程前）】呢個位電量預計剩 ~50-55%（全程最低點，仍然安全有 buffer），叉到 90-100% 先番 Kingston（~65-70 miles），到家仲有 55-65% 剩底",
+          "呢個 2-叉電計劃嘅安全邊際：就算天氣熱開多咗冷氣、或者塞車揸多咗，令實際耗電高過預算 10-15%，全程最低點都只係跌到 35-45%，仍然安全，唔使加叉電次數",
+          "建議 Day 1 去到 Airbnb 嗰刻同 Day 2 出發前留意吓 Tesla App 嘅實際剩餘電量，同計劃對一對，如果差距大過預期就考慮加插 Witney 快叉（The Leys 50kW / Woolgate 75kW，Day 2 去 Wildlife Park 途中）作後備，唔使勉強跟 2 次充電"
         ]
       },
       {
