@@ -484,7 +484,7 @@
         isDark: false,
         mapPoints: [
           { name: "7a Steep Rise, Headington — 出發", lat: 51.7573, lng: -1.2028, color: "oklch(36% 0.065 263)" },
-          { name: "Redbridge Park & Ride — 泊車 + 叉電", lat: 51.7248, lng: -1.2705, color: "oklch(78% 0.16 75)" },
+          { name: "18 Sadler Walk — 泊車 ✓ 已訂（JustPark 9am-5pm）", lat: 51.7455, lng: -1.2605, color: "oklch(78% 0.16 75)" },
           { name: "牛津市中心 — Christ Church / Radcliffe Camera / Bodleian", lat: 51.7534, lng: -1.2540, color: "oklch(48% 0.16 18)" },
           { name: "Ashmolean Museum", lat: 51.7548, lng: -1.2599, color: "oklch(62% 0.11 145)" },
           { name: "Covered Market — 午餐", lat: 51.7519, lng: -1.2578, color: "oklch(78% 0.16 75)" },
@@ -492,8 +492,8 @@
           { name: "Kingston upon Thames — 返抵家", lat: 51.4085, lng: -0.3064, color: "oklch(36% 0.065 263)" }
         ],
         tipBox: {
-          icon: "fa-info-circle",
-          text: "<strong>Oxford 市中心週日泊車位少兼貴</strong>，用 Park & Ride（Redbridge / Thornhill / Seacourt 都得）泊車轉巴士係最方便嘅方法，仲可以順便喺 Redbridge Supercharger 叉電。Hop-on-hop-off 巴士（City Sightseeing Oxford）建議出發前網上買飛，慳返排隊時間。<strong>回程</strong>前建議再係 Thame Road Supercharger 叉多次，確保有信心舒服咁返到 Kingston。"
+          icon: "fa-check-circle",
+          text: "<strong>泊車已搞掂 ✓：</strong> 已經喺 JustPark 訂咗 18 Sadler Walk 車位，9am-5pm，就喺 Christ Church Meadow / Folly Bridge 附近，唔使再用 Park & Ride，直接揸車去、泊低就可以行入市中心。Hop-on-hop-off 巴士（City Sightseeing Oxford）建議出發前網上買飛，慳返排隊時間。因為冇咗 Redbridge 順便叉電嘅機會，<strong>回程</strong>前記得去 Thame Road Supercharger 叉電，確保有信心舒服咁返到 Kingston。"
         },
         activities: [
           {
@@ -501,15 +501,15 @@
             icon: "fa-suitcase-rolling",
             pt: 1,
             title: "退房與出發",
-            desc: "食完早餐並 Check-out，泊車建議揀 Park & Ride（例如 Redbridge，同時可以順路叉電）再轉巴士入市中心，避開市中心週日泊車難兼慢叉。",
+            desc: "食完早餐並 Check-out，直接揸車去 18 Sadler Walk（已喺 JustPark 訂咗 9am-5pm 車位），泊低就得，唔使搭 Park & Ride。",
             tag: "09:00 – 09:30"
           },
           {
             type: "move",
-            icon: "fa-bus",
+            icon: "fa-walking",
             pt: 2,
-            title: "抵達市中心",
-            desc: "由 Park & Ride 巴士到市中心（約 15 分鐘）。",
+            title: "步行入市中心",
+            desc: "Sadler Walk 就喺 Christ Church Meadow / Folly Bridge 附近，慢慢行入市中心大約 10-15 分鐘。",
             tag: "09:45 – 10:00"
           },
           {
@@ -547,10 +547,10 @@
           },
           {
             type: "move",
-            icon: "fa-bus",
+            icon: "fa-walking",
             pt: 1,
             title: "取車",
-            desc: "Park & Ride 搭巴士返停車場取車。",
+            desc: "行返去 18 Sadler Walk 取車，5pm 前記得走（車位訂到 5pm 為止）。",
             tag: "14:30 – 15:00"
           },
           {
@@ -577,7 +577,7 @@
         items: [
           { text: "Print / save 晒所有 booking confirmation" },
           { text: "睇天氣預報 — Day 1 Bourton 冇室內後備，落雨要有心理準備" },
-          { text: "查清楚 Oxford Park & Ride（Redbridge／Thornhill／Seacourt）位置同巴士班次" },
+          { text: "Print / save 定 18 Sadler Walk JustPark 嘅車位 booking（8月2日 9am-5pm），同記低車位進出方法" },
           { text: "喺 Tesla App 記低最近 Supercharger 位置，尤其確保 Day 1 晚有位叉電" }
         ]
       },
@@ -606,7 +606,7 @@
         items: [
           "Day 1 係全程最長一日（Kingston→Bourton→Headington 近 130 miles），建議 07:30-08:00 早出發",
           "Bourton 車位 ✓ 已訂：JustPark 已經訂咗 2 Moore Rd 全日車位，唔使再驚爆滿，去到直接泊就得",
-          "Oxford 市中心週日車位有限兼貴，用 Park & Ride 最方便；千祈唔好諗住直接揸車入市中心搵路邊位",
+          "Oxford 車位 ✓ 已訂：JustPark 已經訂咗 18 Sadler Walk 車位，8月2日 9am-5pm，就喺市中心附近，唔使搭 Park & Ride，記得 5pm 前返去取車",
           "31 Jul 同 2 Aug 都可能撞正暑假出行車流，建議預留 buffer 時間"
         ]
       },
@@ -616,8 +616,8 @@
           "Model Y Standard Range（2023）用 LFP 電池，可以放心定期叉滿 100%（LFP 唔似 NCA/NMC 咁忌諱長期滿電，Tesla 官方仲建議 LFP 車款定期叉到 100% 校準電量顯示）",
           "【Day 1 出發】Kingston 出發前叉滿 100%，一開電動閘就往 M40 Oxford Services（~45 miles，主要行 M25/A3/M40 高速路），預計去到嗰度大概剩 75-80% 電",
           "【叉電 #1・M40 Oxford Services】因為 Airbnb 冇得叉電，呢度係之後兩日半嘅唯一一次叉電，建議叉耐啲、叉到 95-100%（LFP 叉滿冇問題，多等 15-20 分鐘好過之後心大心細）",
-          "之後行程：Bourton（到達 ~85-90%）→ Headington/Airbnb（到達 ~70-75%）→ Day 2 Wildlife Park 來回 ~32 miles（到達 ~58-63%）→ Day 3 去 Redbridge P&R（到達 ~55-60%），全程唔使再叉電",
-          "【叉電 #2・Thame Road Supercharger（Day 3，離開 Redbridge 之後、番程前）】呢個位電量預計剩 ~50-55%（全程最低點，仍然安全有 buffer），叉到 90-100% 先番 Kingston（~65-70 miles），到家仲有 55-65% 剩底",
+          "之後行程：Bourton（到達 ~85-90%）→ Headington/Airbnb（到達 ~70-75%）→ Day 2 Wildlife Park 來回 ~32 miles（到達 ~58-63%）→ Day 3 去 18 Sadler Walk 泊車（到達 ~55-60%），全程唔使再叉電；留意 Sadler Walk 淨係泊車位，冇叉電設施，成日停晒喺度都唔會叉到電",
+          "【叉電 #2・Thame Road Supercharger（Day 3，攞返車之後、番程前）】呢個位電量預計剩 ~50-55%（全程最低點，仍然安全有 buffer），叉到 90-100% 先番 Kingston（~65-70 miles），到家仲有 55-65% 剩底",
           "呢個 2-叉電計劃嘅安全邊際：就算天氣熱開多咗冷氣、或者塞車揸多咗，令實際耗電高過預算 10-15%，全程最低點都只係跌到 35-45%，仍然安全，唔使加叉電次數",
           "建議 Day 1 去到 Airbnb 嗰刻同 Day 2 出發前留意吓 Tesla App 嘅實際剩餘電量，同計劃對一對，如果差距大過預期就考慮加插 Witney 快叉（The Leys 50kW / Woolgate 75kW，Day 2 去 Wildlife Park 途中）作後備，唔使勉強跟 2 次充電"
         ]
