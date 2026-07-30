@@ -238,7 +238,7 @@
         </tbody>
       </table>
       <p class="mt-6 text-[0.95rem] md:text-[0.85rem] text-ink-mid max-w-[560px] leading-[1.8]">
-        Airbnb 已經訂好（7a Steep Rise, Headington，Host 已確認 3pm 後可以 check-in）。Cotswold Wildlife Park 門票亦已買。剩餘行程開支大約 <strong class="font-semibold text-ink">~£{{ totalBudget }}–{{ totalMidRange }}</strong>，主要係觀光巴士、餐飲同一次 Supercharger 叉電。
+        Airbnb 已經訂好（7a Steep Rise, Headington，Host 已確認 3pm 後可以 check-in）。Cotswold Wildlife Park 門票亦已買。剩餘行程開支大約 <strong class="font-semibold text-ink">~£{{ totalBudget }}–{{ totalMidRange }}</strong>，主要係餐飲同一次 Supercharger 叉電。
       </p>
     </div>
   </section>
@@ -480,7 +480,7 @@
         num: "03",
         date: "8月2日 · 星期日",
         title: "牛津大學漫遊與回程 · Oxford University Sightseeing",
-        sub: "坐定定觀光巴士睇牛津地標，再回程 Kingston",
+        sub: "自由步行遊覽牛津大學地標，再回程 Kingston",
         isDark: false,
         mapPoints: [
           { name: "7a Steep Rise, Headington — 出發", lat: 51.7573, lng: -1.2028, color: "oklch(36% 0.065 263)" },
@@ -493,7 +493,7 @@
         ],
         tipBox: {
           icon: "fa-check-circle",
-          text: "<strong>泊車已搞掂 ✓：</strong> 已經喺 JustPark 訂咗 18 Sadler Walk 車位，9am-5pm，就喺 Christ Church Meadow / Folly Bridge 附近，唔使再用 Park & Ride，直接揸車去、泊低就可以行入市中心。Hop-on-hop-off 巴士（City Sightseeing Oxford）建議出發前網上買飛，慳返排隊時間。因為冇咗 Redbridge 順便叉電嘅機會，<strong>回程</strong>前記得去 Thame Road Supercharger 叉電，確保有信心舒服咁返到 Kingston。"
+          text: "<strong>泊車已搞掂 ✓：</strong> 已經喺 JustPark 訂咗 18 Sadler Walk 車位，9am-5pm，就喺 Christ Church Meadow / Folly Bridge 附近，唔使再用 Park & Ride，直接揸車去、泊低就可以行入市中心。今次唔搭 Hop-on-hop-off 觀光巴士，改為自由步行睇地標，記得留意長者步速，途中多啲坐低休息。因為冇咗 Redbridge 順便叉電嘅機會，<strong>回程</strong>前記得去 Thame Road Supercharger 叉電，確保有信心舒服咁返到 Kingston。"
         },
         activities: [
           {
@@ -516,9 +516,9 @@
             type: "hi",
             icon: "fa-landmark",
             pt: 2,
-            title: "坐定定觀光：Hop-on Hop-off 開篷觀光巴士",
-            desc: "全程有位坐，唔使行，一次過睇晒 Christ Church、Radcliffe Camera、Bodleian Library、Bridge of Sighs 呢啲地標。對長者嚟講係最舒服嘅牛津觀光方式。",
-            tag: "10:00 – 11:00"
+            title: "自由步行：牛津大學地標",
+            desc: "慢慢行，由外圍睇晒 Christ Church、Radcliffe Camera、Bodleian Library、Bridge of Sighs 呢啲地標（大部分得體驗外觀，唔使入場）。全部集中喺市中心一帶，路程平坦，行得慢慢嚟，途中隨時可以搵張長凳或 café 坐低休息。",
+            tag: "10:00 – 12:00"
           },
           {
             type: "hi",
@@ -558,7 +558,7 @@
             icon: "fa-car-side",
             pt: 6,
             title: "回程",
-            desc: "出發返 Kingston。留意星期日下午/傍晚 A40/M40 沿線會有唔少度假回程車流，如果順利就照原定時間走；如塞車，可以考慮喺 Oxford 附近食定晚飯先等 7 點後上路。",
+            desc: "出發返 Kingston。留意星期日下午/傍晚 A40/M40 沿線會有唔少度假回程車流。中途可以喺 Henley-on-Thames／Marlow 一帶（大約半路位置）食晚飯，順便休息一下 2 小時車程：Banana Tree Henley（泛亞洲菜，Thai/Vietnamese，4.6★）或 Suum Kitchen（Marlow，正宗越南菜，4.3-4.5★）都係好選擇。",
             tag: "15:00 – 17:00"
           }
         ]
@@ -568,7 +568,6 @@
       {
         title: "呢個星期就要做 🔴",
         items: [
-          { text: "City Sightseeing Oxford 開篷巴士飛 — 建議網上預購" },
           { text: "問 Airbnb host 有冇慢叉（3-pin/granny charger）可用 — Day 1 落到 Airbnb 大概剩返 60-65% 電，有慢叉先可以安心叉一整晚" }
         ]
       },
@@ -594,7 +593,6 @@
       { icon: "fa-bed", name: "住宿 — 7a Steep Rise, Headington（2晚）✓ 已訂", budget: 0, mid: 0, booked: true },
       { icon: "fa-bolt", name: "電動車充電（Supercharger 叉電，Day 1 晚 + Day 3 回程前）", budget: 20, mid: 35 },
       { icon: "fa-paw", name: "Cotswold Wildlife Park 門票（5人）✓ 已買", budget: 65, mid: 90, booked: true },
-      { icon: "fa-bus", name: "City Sightseeing Oxford 開篷觀光巴士（5人）", budget: 45, mid: 60 },
       { icon: "fa-university", name: "Ashmolean Museum（全免入場，捐獻隨意）", budget: 0, mid: 0 },
       { icon: "fa-train", name: "迷你村莊 + 動物園窄軌小火車（5人）", budget: 35, mid: 50 },
       { icon: "fa-utensils", name: "餐飲 — 3日5人（茶室／野餐／晚餐）", budget: 250, mid: 350 },
@@ -630,7 +628,7 @@
           "兩位長者藥物、暈車丸分開執，另備一張列明過敏史/病歷嘅字條以防萬一",
           "帶備小朋友娛樂用品應付 Day 1 較長車程",
           "太陽帽、防曬同水樽，8 月 Cotswolds 可能好熱",
-          "Day 3 嘅 Hop-on-hop-off 巴士同 Ashmolean 特登揀咗全程坐得低、唔使行嘅選項嚟遷就兩位長者"
+          "Day 3 改為自由步行遊覽牛津地標，注意跟長者步速慢慢行，途中多啲搵長凳或 café 坐低休息；Ashmolean 就仍然係坐得低、唔使企嘅好選擇"
         ]
       }
     ],
