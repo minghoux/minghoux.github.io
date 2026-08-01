@@ -238,7 +238,7 @@
         </tbody>
       </table>
       <p class="mt-6 text-[0.95rem] md:text-[0.85rem] text-ink-mid max-w-[560px] leading-[1.8]">
-        Airbnb 已經訂好（7a Steep Rise, Headington，Host 已確認 3pm 後可以 check-in）。Cotswold Wildlife Park 門票亦已買。剩餘行程開支大約 <strong class="font-semibold text-ink">~£{{ totalBudget }}–{{ totalMidRange }}</strong>，主要係餐飲同一次 Supercharger 叉電。
+        Airbnb 已經訂好（7a Steep Rise, Headington，Host 已確認 3pm 後可以 check-in）。Cotswold Wildlife Park 門票亦已買。剩餘行程開支大約 <strong class="font-semibold text-ink">~£{{ totalBudget }}–{{ totalMidRange }}</strong>，主要係餐飲、Christ Church 門票同一次 Supercharger 叉電。
       </p>
     </div>
   </section>
@@ -298,7 +298,7 @@
       { value: "2", label: "晚數" },
       { value: "5", label: "同行人數" },
       { value: "Headington Airbnb", label: "住宿 ✓" },
-      { value: "~£445–635", label: "預計餘下開支" }
+      { value: "~£495–771", label: "預計餘下開支" }
     ],
     days: [
       {
@@ -480,20 +480,23 @@
         num: "03",
         date: "8月2日 · 星期日",
         title: "牛津大學漫遊與回程 · Oxford University Sightseeing",
-        sub: "自由步行遊覽牛津大學地標，再回程 Kingston",
+        sub: "深度遊覽牛津大學地標（Christ Church／Radcliffe Camera／Bodleian／Wadham／Ashmolean），再回程 Kingston",
         isDark: false,
         mapPoints: [
           { name: "7a Steep Rise, Headington — 出發", lat: 51.7573, lng: -1.2028, color: "oklch(36% 0.065 263)" },
           { name: "59 Trinity Street, OX1 1TX — 泊車 ✓", lat: 51.7458, lng: -1.2600, color: "oklch(78% 0.16 75)" },
-          { name: "牛津市中心 — Christ Church / Radcliffe Camera / Bodleian", lat: 51.7534, lng: -1.2540, color: "oklch(48% 0.16 18)" },
-          { name: "Ashmolean Museum", lat: 51.7548, lng: -1.2599, color: "oklch(62% 0.11 145)" },
+          { name: "Christ Church College", lat: 51.7506, lng: -1.2555, color: "oklch(48% 0.16 18)" },
           { name: "Covered Market — 午餐", lat: 51.7519, lng: -1.2578, color: "oklch(78% 0.16 75)" },
+          { name: "Radcliffe Camera & Bodleian Library", lat: 51.7534, lng: -1.2540, color: "oklch(48% 0.16 18)" },
+          { name: "Wadham College", lat: 51.7556, lng: -1.2537, color: "oklch(62% 0.11 145)" },
+          { name: "Ashmolean Museum", lat: 51.7548, lng: -1.2599, color: "oklch(62% 0.11 145)" },
+          { name: "G&D's Ice Cream — St Aldate's", lat: 51.7500, lng: -1.2571, color: "oklch(78% 0.16 75)" },
           { name: "Oxford (Thame Road) Supercharger", lat: 51.7476, lng: -1.1592, color: "oklch(78% 0.16 75)" },
           { name: "Kingston upon Thames — 返抵家", lat: 51.4085, lng: -0.3064, color: "oklch(36% 0.065 263)" }
         ],
         tipBox: {
           icon: "fa-check-circle",
-          text: "<strong>泊車已搞掂 ✓：</strong> 車位喺 59 Trinity Street, OX1 1TX，就喺 Christ Church Meadow / Folly Bridge 附近（同之前計劃嘅 Sadler Walk 屬同一個 Grandpont 小社區），唔使再用 Park & Ride，直接揸車去、泊低就可以行入市中心。今次唔搭 Hop-on-hop-off 觀光巴士，改為自由步行睇地標，記得留意長者步速，途中多啲坐低休息。因為冇咗 Redbridge 順便叉電嘅機會，<strong>回程</strong>前記得去 Thame Road Supercharger 叉電，確保有信心舒服咁返到 Kingston。"
+          text: "<strong>泊車已搞掂 ✓：</strong> 車位喺 59 Trinity Street, OX1 1TX，就喺 Christ Church Meadow / Folly Bridge 附近（同之前計劃嘅 Sadler Walk 屬同一個 Grandpont 小社區），一落車就可以直接行去 Christ Church，唔使搭 Park & Ride。今日行程加密咗（Christ Church + Radcliffe Camera/Bodleian + Wadham + Ashmolean + 雪糕），<strong>Christ Church 記得預先上官網買定 timed entry 飛</strong>（星期日 10:30 先開門，建議提前至少一星期）；Bodleian 嘅導覽團大部分要即日去 Weston Library 現場買飛，唔一定訂到，可以當靈活選擇，唔想博就淨係睇 Radcliffe Camera 外觀就夠。長者/小朋友如果攰，Radcliffe Camera/Bodleian 同 Wadham 呢兩段可以彈性刪減，直接跳去 Ashmolean 坐低休息。因為冇咗 Redbridge 順便叉電嘅機會，<strong>回程</strong>前記得去 Thame Road Supercharger 叉電，確保有信心舒服咁返到 Kingston。"
         },
         activities: [
           {
@@ -508,42 +511,91 @@
             type: "move",
             icon: "fa-walking",
             pt: 2,
-            title: "步行入市中心",
-            desc: "Trinity Street 就喺 Christ Church Meadow / Folly Bridge 附近，慢慢行入市中心大約 10-15 分鐘。",
+            title: "步行去 Christ Church",
+            desc: "由 59 Trinity Street 沿 Speedwell Street / St Aldate's 行入市中心，大約 5-8 分鐘就到 Christ Church，就喺路口，唔使深入市中心。",
             tag: "09:45 – 10:00"
           },
           {
             type: "hi",
-            icon: "fa-landmark",
+            icon: "fa-church",
             pt: 2,
-            title: "自由步行：牛津大學地標",
-            desc: "慢慢行，由外圍睇晒 Christ Church、Radcliffe Camera、Bodleian Library、Bridge of Sighs 呢啲地標（大部分得體驗外觀，唔使入場）。全部集中喺市中心一帶，路程平坦，行得慢慢嚟，途中隨時可以搵張長凳或 café 坐低休息。",
-            tag: "10:00 – 12:00"
+            title: "Christ Church College",
+            desc: "星期日開放時間 10:30–17:00，有 multimedia guide 自導導覽同 30/60 分鐘導覽團。2026年夏季（25 Jun–1 Sep）有暫時 VAT 優惠：成人 timed entry 網上大約 £22.50-24.50，小童（5-17歲）大約 £17.50-19.50，現場買會貴啲。細路可以留意呢度係 Harry Potter Great Hall 取景地。",
+            note: "官網 chch.ox.ac.uk/visit — 記得提前至少一星期網上訂定 timed entry 飛",
+            tag: "10:30 – 11:30"
           },
           {
-            type: "hi",
-            icon: "fa-university",
+            type: "move",
+            icon: "fa-walking",
             pt: 3,
-            title: "Ashmolean Museum",
-            desc: "全館平路＋有升降機，館內有咖啡廳可以隨時坐低休息。細路可以睇埃及木乃伊，長者可以坐喺大堂或 café 唞氣。",
-            tag: "免費"
+            title: "步行去 Covered Market",
+            desc: "經 St Aldate's → High Street → Market Street，約 8-10 分鐘。",
+            tag: "11:30 – 11:45"
           },
           {
             type: "food",
             icon: "fa-utensils",
-            pt: 4,
+            pt: 3,
             title: "Covered Market 午餐",
-            desc: "牛津有蓋市場，選擇多、有得坐、唔使日曬雨淋。",
-            tag: "12:15 – 13:30"
+            desc: "牛津有蓋市場，選擇多、有得坐、唔使日曬雨淋，土耳其/中東小食、英式 pie、Ben's Cookies 都啱一家大細。",
+            tag: "11:45 – 12:45"
+          },
+          {
+            type: "move",
+            icon: "fa-walking",
+            pt: 4,
+            title: "步行去 Radcliffe Camera / Bodleian",
+            desc: "經 Market Street → Turl Street → Broad Street，約 5-8 分鐘。",
+            tag: "12:45 – 13:00"
+          },
+          {
+            type: "hi",
+            icon: "fa-book",
+            pt: 4,
+            title: "Radcliffe Camera & Bodleian Library",
+            desc: "Radcliffe Camera 外觀可以免費影相。想入 Old Bodleian Library 嘅導覽團要留意：呢個大部分係即日喺 Weston Library 資訊台現場買飛，未必預先網上訂到，旺季會賣晒，可以當靈活選擇；唔想博就睇外觀已經好靚。",
+            note: "長者/小朋友攰嘅話，呢段同下一段 Wadham 可以彈性刪減，直接跳去 Ashmolean",
+            tag: "13:00 – 13:45"
           },
           {
             type: "fun",
             icon: "fa-tree",
-            pt: 2,
-            title: "自由活動：Christ Church Meadow / 河邊 Pub",
-            desc: "想睇多啲嘅可以行去 Christ Church Meadow（平路河畔草地）；或者想輕鬆啲可以去 The Head of the River（Folly Bridge 邊，睇人撐 punt，長者又有位坐）。",
-            note: "留意：Christ Church 學院內部同 Carfax Tower 有樓梯／唔算太適合長者，可以列為自由選擇，唔勉強行程入面。",
-            tag: "13:30 – 14:30"
+            pt: 5,
+            title: "Wadham College",
+            desc: "行去 Wadham College，約 3-5 分鐘。庭院寧靜、綠意多，好適合一家人慢慢行、影相，一般免費入內參觀庭院（留意可能有臨時關閉）。",
+            tag: "13:50 – 14:15"
+          },
+          {
+            type: "move",
+            icon: "fa-walking",
+            pt: 6,
+            title: "步行去 Ashmolean",
+            desc: "經 Beaumont Street，約 8-10 分鐘。",
+            tag: "14:15 – 14:30"
+          },
+          {
+            type: "hi",
+            icon: "fa-university",
+            pt: 6,
+            title: "Ashmolean Museum",
+            desc: "全館平路＋有升降機，免費入場，館內有咖啡廳可以隨時坐低休息。細路可以睇埃及木乃伊，長者可以坐喺大堂或 café 唞氣。",
+            tag: "14:30 – 15:15"
+          },
+          {
+            type: "move",
+            icon: "fa-walking",
+            pt: 7,
+            title: "步行返南面",
+            desc: "經 Cornmarket Street → St Aldate's 行返南面，約 15-18 分鐘，順路去 G&D's 食雪糕，就喺 Christ Church 對面、貼近泊車位。",
+            tag: "15:15 – 15:35"
+          },
+          {
+            type: "food",
+            icon: "fa-ice-cream",
+            pt: 7,
+            title: "G&D's Ice Cream",
+            desc: "St Aldate's 分店，手工雪糕多款選擇，坐低歎返杯總結一日遊，行返去泊車位得返幾步路。",
+            tag: "15:35 – 15:55"
           },
           {
             type: "move",
@@ -551,15 +603,15 @@
             pt: 1,
             title: "取車",
             desc: "行返去 59 Trinity Street 取車。",
-            tag: "14:30 – 15:00"
+            tag: "15:55 – 16:10"
           },
           {
             type: "move",
             icon: "fa-car-side",
-            pt: 6,
+            pt: 9,
             title: "回程",
             desc: "出發返 Kingston。留意星期日下午/傍晚 A40/M40 沿線會有唔少度假回程車流。中途可以喺 Henley-on-Thames／Marlow 一帶（大約半路位置）食晚飯，順便休息一下 2 小時車程：Banana Tree Henley（泛亞洲菜，Thai/Vietnamese，4.6★）或 Suum Kitchen（Marlow，正宗越南菜，4.3-4.5★）都係好選擇。",
-            tag: "15:00 – 17:00"
+            tag: "16:10 – 18:00"
           }
         ]
       }
@@ -577,6 +629,7 @@
           { text: "Print / save 晒所有 booking confirmation" },
           { text: "睇天氣預報 — Day 1 Bourton 冇室內後備，落雨要有心理準備" },
           { text: "Print / save 定 59 Trinity Street, OX1 1TX 嘅車位 booking，同記低車位進出方法" },
+          { text: "上 chch.ox.ac.uk/visit 買定 Day 3 Christ Church timed entry 飛（星期日 10:30 開門，建議提前一星期），Print / save 定 QR code" },
           { text: "喺 Tesla App 記低最近 Supercharger 位置，尤其確保 Day 1 晚有位叉電" }
         ]
       },
@@ -594,6 +647,8 @@
       { icon: "fa-bolt", name: "電動車充電（Supercharger 叉電，Day 1 晚 + Day 3 回程前）", budget: 20, mid: 35 },
       { icon: "fa-paw", name: "Cotswold Wildlife Park 門票（5人）✓ 已買", budget: 65, mid: 90, booked: true },
       { icon: "fa-university", name: "Ashmolean Museum（全免入場，捐獻隨意）", budget: 0, mid: 0 },
+      { icon: "fa-church", name: "Christ Church timed entry（2 大人 + 2 長者 + 1 小童，2026暑假 VAT 優惠價，網上訂）", budget: 95, mid: 106 },
+      { icon: "fa-book", name: "Bodleian Library 導覽團（視乎即日 Weston Library 有冇位，彈性選擇）", budget: 0, mid: 90 },
       { icon: "fa-train", name: "迷你村莊 + 動物園窄軌小火車（5人）", budget: 35, mid: 50 },
       { icon: "fa-utensils", name: "餐飲 — 3日5人（茶室／野餐／晚餐）", budget: 250, mid: 350 },
       { icon: "fa-shopping-bag", name: "手信、雪糕、餵鴨仔飼料等雜項", budget: 30, mid: 50 }
@@ -628,7 +683,7 @@
           "兩位長者藥物、暈車丸分開執，另備一張列明過敏史/病歷嘅字條以防萬一",
           "帶備小朋友娛樂用品應付 Day 1 較長車程",
           "太陽帽、防曬同水樽，8 月 Cotswolds 可能好熱",
-          "Day 3 改為自由步行遊覽牛津地標，注意跟長者步速慢慢行，途中多啲搵長凳或 café 坐低休息；Ashmolean 就仍然係坐得低、唔使企嘅好選擇"
+          "Day 3 行程加密咗（Christ Church + Radcliffe Camera/Bodleian + Wadham + Ashmolean），注意跟長者步速慢慢行，途中多啲搵長凳或 café 坐低休息；如果太趕，Radcliffe Camera/Bodleian 同 Wadham 呢兩段可以彈性刪減，直接留多啲時間喺 Ashmolean 坐低休息"
         ]
       }
     ],
