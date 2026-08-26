@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>巴黎 · 2026年8-9月</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    /* ── TRICOLORE ON ZINC & PLASTER ──────────────────────────────────
+       Haussmann's real materials are cool, not warm: pale lime plaster
+       facades, zinc roofscape, wrought-iron balconies. So the field is a
+       cool near-white rather than wheat cream — no gold anywhere.
+
+       Tricolore, used with a job for each colour rather than decoratively:
+         BLANC  the plaster field — the page is mostly this
+         BLEU   structural typography: dates, small-caps labels, price tags
+         ROUGE  emphasis only: day numerals, rules, warnings, open to-dos
+
+       Legacy token names are kept as aliases so existing markup keeps
+       working; they now point at the tricolore values.
+         navy      → fer       (wrought iron, cool near-black)
+         cream     → blanc     (pale lime render)
+         bordeaux  → rouge     (the emphasis colour)
+         gold      → étain     (pale pewter, for use on dark)
+         gold-dark → bleu      (saturated French blue, for use on light)
+         sage      → vert-de-gris (oxidised copper, quiet tertiary)   */
+    tailwind.config = { theme: { extend: { colors: {
+      navy: 'oklch(18% 0.018 255)', 'navy-mid': 'oklch(30% 0.020 252)',
+      cream: 'oklch(96% 0.004 250)', 'cream-dark': 'oklch(92.5% 0.006 250)',
+      bordeaux: 'oklch(51% 0.205 27)',
+      gold: 'oklch(80% 0.045 248)', 'gold-dark': 'oklch(45% 0.170 264)',
+      sage: 'oklch(45% 0.055 178)',
+      rouge: 'oklch(51% 0.205 27)', bleu: 'oklch(45% 0.170 264)',
+      ink: 'oklch(24% 0.012 255)', 'ink-mid': 'oklch(46% 0.012 255)', 'ink-faint': 'oklch(57% 0.010 255)',
+      rule: 'oklch(86% 0.007 250)'
+    }, fontFamily: {
+      /* CJK fallbacks are load-bearing: the copy is majority Traditional Chinese
+         and neither Latin face covers it. Serif CJK for display, sans for body. */
+      display: ['Cormorant Garamond', 'Songti TC', 'Noto Serif TC', 'Times New Roman', 'serif'],
+      sans: ['Jost', 'PingFang TC', 'Hiragino Sans TC', 'Noto Sans TC', 'sans-serif']
+    } } } }
+  </script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    [v-cloak] { display: none !important; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    @media (min-width: 768px) {
+      html {
+        font-size: 17.5px;
+      }
+    }
+    .reveal { opacity: 0; transform: translateY(1.8rem); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+
+    /* Cormorant ships oldstyle figures by default, which turn "01" into
+       something that reads as "OI". Force lining figures everywhere the
+       display face carries numerals (day numbers, stats, prices). */
+    .font-display {
+      font-feature-settings: "liga" 1, "calt" 1, "lnum" 1;
+      font-variant-numeric: lining-nums;
+    }
+
+    /* ── EDITORIAL DETAILS ────────────────── */
+    /* Hairline double rule — the Haussmann/broadsheet masthead device. */
+    .rule-double {
+      border-bottom: 1px solid oklch(51% 0.205 27 / 0.5);
+      box-shadow: 0 3px 0 -2px oklch(51% 0.205 27 / 0.3);
+    }
+    /* Letterspaced small-caps label with a leading hairline. */
+    .label-rule::before {
+      content: "";
+      display: inline-block;
+      width: 1.6rem;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.5;
+      vertical-align: middle;
+      margin-right: 0.6rem;
+    }
+    /* Guillemets on the tip boxes — a small, genuinely French typographic mark. */
+    .tip-guillemet::before {
+      content: "«";
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.9em;
+      line-height: 0;
+      position: relative;
+      top: 0.28em;
+      margin-right: 0.1em;
+      color: oklch(45% 0.170 264);
+    }
+
+    /* Visible keyboard focus — the checklist rows are the only interactive
+       elements on the page, and they were previously unreachable by keyboard. */
+    .chk-row:focus-visible {
+      outline: 2px solid oklch(80% 0.045 248);
+      outline-offset: 3px;
+    }
+
+    /* ── MAP ──────────────────────────────── */
+    .day-map {
+      height: 300px;
+      border-radius: 0;
+      overflow: hidden;
+      outline: 1px solid oklch(86% 0.007 250);
+    }
+    @media (min-width: 1024px) {
+      .day-map { height: 420px; }
+    }
+    .leaflet-popup-content-wrapper {
+      border-radius: 0 !important;
+      box-shadow: 0 4px 18px oklch(18% 0.018 255 / 0.18) !important;
+      border: 1px solid oklch(86% 0.007 250) !important;
+      padding: 0 !important;
+      background: oklch(96% 0.004 250) !important;
+    }
+    .leaflet-popup-content {
+      margin: 0 !important;
+      min-width: 180px;
+    }
+    .map-popup-inner {
+      padding: 0.85rem 1rem;
+    }
+    .map-popup-title {
+      font-family: 'Cormorant Garamond', 'Songti TC', 'Noto Serif TC', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: oklch(24% 0.012 255);
+      margin-bottom: 0.15rem;
+      line-height: 1.25;
+    }
+    .map-popup-cat {
+      font-family: 'Jost', 'PingFang TC', 'Noto Sans TC', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: oklch(45% 0.170 264);
+    }
+    .leaflet-popup-tip-container { display: none !important; }
+    .leaflet-popup-close-button {
+      top: 6px !important;
+      right: 6px !important;
+      color: oklch(46% 0.012 255) !important;
+      font-size: 1rem !important;
+    }
+    .map-pin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 2px 8px oklch(18% 0.018 255 / 0.28);
+      border: 2px solid oklch(96% 0.004 250);
+    }
+    .map-pin i {
+      transform: rotate(45deg);
+      font-size: 0.7rem;
+      color: white;
+    }
+
+    @media print {
+      .hero { height: auto !important; min-height: 0 !important; background-image: none !important; padding-top: 2rem; }
+      .day-map, .leaflet-container { display: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* Respect the OS motion preference — the staggered reveal is decorative. */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ── AMBIENT TRICOLORE WASH ───────────────────────────────────────
+       A first attempt anchored this to <body> with background-attachment:
+       fixed, sized as percentages of the whole document. That put visible
+       colour only at the very top and bottom of a long page — everything
+       in the middle (most of it) stayed flat, which is why it read as
+       "no background" in practice.
+
+       Applied per-section instead: every light section gets its own
+       corner-to-corner wash sized relative to its own box (default
+       scroll-relative background, so it scales to that section's own
+       height, however long the page is). Bleu top-left, rouge bottom-
+       right, consistent everywhere. The section's own bg-cream/NN colour
+       (set via Tailwind class) shows through the transparent middle. */
+    .tricolore-wash {
+      background-image:
+        radial-gradient(ellipse 65% 70% at 0% 0%,     oklch(45% 0.170 264 / 0.22), transparent 62%),
+        radial-gradient(ellipse 65% 70% at 100% 100%, oklch(51% 0.205 27 / 0.16),  transparent 62%);
+    }
+    body { background-color: oklch(96% 0.004 250); }
+  </style>
+</head>
+<body class="font-sans text-ink font-normal leading-[1.8] antialiased">
+
+<div id="app" v-cloak>
+  <header class="hero relative h-[92vh] min-h-[560px] bg-navy bg-[url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=2000&q=85')] bg-cover bg-[center_55%] flex items-end overflow-hidden">
+    <!-- Gradient overlay for text readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/55 to-transparent md:bg-gradient-to-r md:from-navy/95 md:via-navy/60 md:to-transparent z-10 pointer-events-none"></div>
+
+    <!-- Hero Content Overlay -->
+    <div class="hero-inner relative z-20 p-[clamp(2rem,5vw,5rem)] max-w-[860px] pb-[clamp(3rem,6vw,5rem)]">
+      <p class="font-sans text-[0.7rem] md:text-[0.68rem] tracking-[0.32em] uppercase text-gold mb-[1.1rem] label-rule">{{ meta.eyebrow }}</p>
+      <h1 class="font-display text-[clamp(4.2rem,12vw,10rem)] font-medium text-[oklch(97%_0.004_250)] leading-[0.86] tracking-[-0.01em] mb-9">
+        <span class="block font-sans font-light text-[0.13em] tracking-[0.4em] uppercase text-gold mb-[0.9em] not-italic">{{ meta.subtitle }}</span>
+        {{ meta.title }}
+      </h1>
+      <div class="w-16 h-px bg-gold/50 mb-7"></div>
+      <div class="flex flex-wrap gap-x-9 gap-y-3 items-center">
+        <span class="font-sans text-[0.88rem] md:text-[0.8rem] tracking-[0.03em] text-[oklch(86%_0.008_250)] flex items-center gap-2.5"><i class="fas fa-users text-gold text-[0.72rem] md:text-[0.66rem]"></i> {{ meta.travellers }}</span>
+        <span class="font-sans text-[0.88rem] md:text-[0.8rem] tracking-[0.03em] text-[oklch(86%_0.008_250)] flex items-center gap-2.5"><i class="fas fa-calendar-alt text-gold text-[0.72rem] md:text-[0.66rem]"></i> {{ meta.dates }}</span>
+        <span class="font-sans text-[0.88rem] md:text-[0.8rem] tracking-[0.03em] text-[oklch(86%_0.008_250)] flex items-center gap-2.5"><i class="fas fa-train text-gold text-[0.72rem] md:text-[0.66rem]"></i> {{ meta.transport }}</span>
+        <span class="font-sans text-[0.88rem] md:text-[0.8rem] tracking-[0.03em] text-[oklch(86%_0.008_250)] flex items-center gap-2.5"><i class="fas fa-map-marker-alt text-gold text-[0.72rem] md:text-[0.66rem]"></i> {{ meta.route }}</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="bg-navy px-[clamp(2rem,5vw,5rem)] flex items-stretch overflow-x-auto scrollbar-none">
+    <div v-for="stat in stats" :key="stat.label" class="py-[1.6rem] pr-10 mr-10 border-r border-[oklch(33%_0.022_252)] shrink-0 last:border-r-0 last:mr-0" :style="stat.isFirst ? 'padding-left:clamp(1.5rem,5vw,5rem)' : ''">
+      <div class="font-display text-[2.1rem] font-medium text-gold leading-none tracking-[-0.005em]">{{ stat.value }}</div>
+      <div class="font-sans text-[0.66rem] md:text-[0.62rem] font-light tracking-[0.24em] uppercase text-[oklch(72%_0.014_252)] mt-1.5">{{ stat.label }}</div>
+    </div>
+  </div>
+
+  <div v-for="day in days" :key="day.num" class="reveal tricolore-wash py-[clamp(3.5rem,7vw,6rem)] border-b border-rule" :id="'day' + day.num" :class="day.isDark ? 'bg-[oklch(92.5%_0.006_250_/_78%)]' : 'bg-[oklch(96%_0.004_250_/_65%)]'">
+    <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <!-- Day Header -->
+      <div class="grid grid-cols-[clamp(3.5rem,7vw,6rem)_1fr] gap-[clamp(1rem,3vw,2.5rem)] items-start mb-[clamp(2rem,4vw,3.5rem)] pb-7 rule-double">
+        <div class="font-display text-[clamp(3.2rem,7.5vw,6rem)] font-light text-bordeaux opacity-[0.22] leading-[0.8] select-none pt-[0.06em] tracking-[-0.02em]">{{ day.num }}</div>
+        <div>
+          <p class="font-sans text-[0.68rem] md:text-[0.65rem] tracking-[0.26em] uppercase text-gold-dark mb-2">{{ day.date }}</p>
+          <h2 class="font-display text-[clamp(1.75rem,4vw,2.6rem)] font-medium text-ink tracking-[0.005em] leading-[1.25]">{{ day.title }}</h2>
+          <p class="text-[1.02rem] md:text-[0.96rem] text-ink-mid mt-2.5 leading-[1.75] max-w-[62ch]">{{ day.sub }}</p>
+        </div>
+      </div>
+      <!-- Two-column: activities + map -->
+      <div class="flex flex-col lg:grid lg:grid-cols-[1fr_360px] lg:gap-10 lg:items-start">
+        <!-- Activities column -->
+        <div class="flex flex-col">
+          <div v-for="(act, idx) in day.activities" :key="idx" class="grid grid-cols-[2.6rem_1fr_auto] gap-[1.2rem] items-start py-[1.5rem] md:py-[1.35rem] border-b border-rule last:border-b-0 max-[600px]:grid-cols-[2.2rem_1fr]">
+            <div class="w-[2.6rem] h-[2.6rem] rounded-full flex items-center justify-center text-[0.95rem] md:text-[0.88rem] shrink-0 mt-[0.15rem] max-[600px]:w-[2.2rem] max-[600px]:h-[2.2rem]" :class="{'bg-bordeaux text-[oklch(97%_0.004_250)]': act.type === 'hi', 'bg-sage text-[oklch(97%_0.004_250)]': act.type === 'fun', 'bg-sage text-[oklch(97%_0.004_250)]': act.type === 'food', 'bg-navy text-[oklch(86%_0.010_250)]': act.type === 'move', 'bg-cream-dark text-bordeaux': !['hi', 'fun', 'food', 'move'].includes(act.type)}">
+              <i class="fas" :class="act.icon"></i>
+            </div>
+            <div>
+              <p class="font-display text-[1.3rem] md:text-[1.22rem] font-medium text-ink tracking-[0.005em] leading-[1.3]">{{ act.title }}</p>
+              <p class="text-[1rem] md:text-[0.95rem] text-ink-mid mt-2 leading-[1.8] max-w-[64ch]">{{ act.desc }}</p>
+              <span v-if="act.note" class="block mt-[0.7rem] py-[0.5rem] px-[0.9rem] border-l border-bordeaux/60 bg-bordeaux/[0.045] text-[0.86rem] md:text-[0.8rem] text-bordeaux leading-[1.65] max-w-[62ch]">{{ act.note }}</span>
+              <!-- Mobile-only Activity Tag -->
+              <div v-if="act.tag" class="mt-3 min-[601px]:hidden">
+                <span class="font-sans text-[0.68rem] font-light tracking-[0.14em] uppercase py-[0.25rem] px-[0.6rem] border rounded-none inline-block" :class="['free', 'free entry', 'included'].includes(act.tag.toLowerCase()) ? 'border-sage/40 text-sage' : 'border-gold-dark/35 text-gold-dark'">{{ act.tag }}</span>
+              </div>
+            </div>
+            <span v-if="act.tag" class="font-sans text-[0.64rem] font-light tracking-[0.14em] uppercase py-[0.3rem] px-[0.65rem] border rounded-none whitespace-nowrap self-start mt-[0.3rem] shrink-0 max-[600px]:hidden" :class="['free', 'free entry', 'included'].includes(act.tag.toLowerCase()) ? 'border-sage/40 text-sage' : 'border-gold-dark/35 text-gold-dark'">{{ act.tag }}</span>
+          </div>
+          <div v-if="day.tipBox" class="mt-9 p-[1.5rem_1.7rem] bg-bordeaux/[0.035] border-y border-bordeaux/20 [&_strong]:font-medium [&_strong]:text-ink [&_a]:text-bordeaux [&_a]:underline [&_a]:underline-offset-2">
+            <p class="tip-guillemet text-[0.96rem] md:text-[0.9rem] text-ink-mid leading-[1.8] max-w-[68ch]" v-html="day.tipBox.text"></p>
+          </div>
+        </div>
+        <!-- Sticky Map Panel -->
+        <div v-if="day.mapPoints && day.mapPoints.length" class="mt-10 lg:mt-0 lg:sticky lg:top-6">
+          <p class="font-sans text-[0.62rem] font-light tracking-[0.26em] uppercase text-gold-dark mb-3 flex items-center gap-2">
+            <i class="fas fa-map-marked-alt text-bordeaux"></i> 今日路線
+          </p>
+          <div class="day-map" :id="'map-day-' + day.num"></div>
+          <div class="mt-3 flex flex-col gap-1.5">
+            <div v-for="(pt, i) in day.mapPoints" :key="i" class="flex items-center gap-2.5 text-[0.82rem] text-ink-mid">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-[0.55rem] font-bold" :style="{ background: pt.color || 'oklch(45% 0.170 264)' }">{{ i + 1 }}</span>
+              <span>{{ pt.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="reveal bg-navy py-[clamp(3.5rem,7vw,6rem)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.64rem] font-light tracking-[0.3em] uppercase text-gold mb-3 label-rule">Action required</p>
+      <h2 class="font-display text-[clamp(1.9rem,4.5vw,2.8rem)] font-medium text-[oklch(96%_0.006_250)] tracking-[0.005em] leading-[1.2] mb-10">訂票清單</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-0">
+        <div v-for="col in checklistGroups" :key="col.title" class="min-[601px]:pr-10 border-r border-[oklch(33%_0.022_252)] last:border-r-0 min-[601px]:[&:not(:first-child)]:pl-10 max-[600px]:py-6 max-[600px]:border-r-0 max-[600px]:border-b max-[600px]:last:border-b-0 max-[600px]:px-0">
+          <p class="font-sans text-[0.63rem] font-light tracking-[0.26em] uppercase text-gold pb-3 border-b border-[oklch(33%_0.022_252)] mb-4">{{ col.title }}</p>
+          <div v-for="item in col.items" :key="item.id" role="checkbox" tabindex="0" :aria-checked="item.done ? 'true' : 'false'" class="chk-row flex gap-[0.85rem] items-start min-h-[44px] py-[0.8rem] md:py-[0.6rem] border-b border-[oklch(29%_0.020_252)] last:border-b-0 text-[1.02rem] md:text-[0.9rem] text-[oklch(79%_0.014_252)] leading-[1.5] cursor-pointer select-none transition-colors duration-200 hover:text-[oklch(90%_0.010_250)]" @click="toggleCheck(item)" @keydown.enter.prevent="toggleCheck(item)" @keydown.space.prevent="toggleCheck(item)">
+            <i class="fas text-[0.9rem] md:text-[0.72rem] mt-[0.35rem] md:mt-[0.25rem] shrink-0" :class="item.done ? 'fa-check-square text-gold opacity-100' : 'fa-square text-bordeaux opacity-80'"></i>
+            <span :class="{'line-through opacity-60': item.done}">{{ item.text }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal tricolore-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(92.5%_0.006_250_/_78%)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.64rem] font-light tracking-[0.3em] uppercase text-gold-dark mb-3 label-rule">Financial planning</p>
+      <h2 class="font-display text-[clamp(1.9rem,4.5vw,2.8rem)] font-medium text-ink tracking-[0.005em] leading-[1.2] mb-10">旅費預算</h2>
+      <table class="w-full max-w-[680px] border-collapse">
+        <thead>
+          <tr>
+            <th class="font-sans text-[0.62rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-left border-b border-bordeaux">項目</th>
+            <!-- Three columns will not fit at 375px, so the two price columns
+                 collapse into a single range below 600px. -->
+            <th class="max-[600px]:hidden font-sans text-[0.62rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_1rem] text-right border-b border-bordeaux">慳皮價</th>
+            <th class="max-[600px]:hidden font-sans text-[0.62rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_1rem] text-right border-b border-bordeaux">中等消費</th>
+            <th class="min-[601px]:hidden font-sans text-[0.62rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] text-right border-b border-bordeaux">預算</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, idx) in budgetItems" :key="idx">
+            <td class="p-[0.95rem_0.5rem] md:p-[0.85rem_1rem] border-b border-rule text-[0.95rem] md:text-[0.92rem] text-ink"><i class="fas text-gold-dark mr-2.5 text-[0.75rem] md:text-[0.72rem]" :class="row.icon"></i>{{ row.name }}</td>
+            <td class="max-[600px]:hidden p-[0.85rem_1rem] border-b border-rule text-[0.85rem] text-right font-display whitespace-nowrap" :class="row.booked ? 'text-sage' : 'text-ink-mid'">{{ row.booked ? '✓ 已訂' : '£' + row.budget }}</td>
+            <td class="max-[600px]:hidden p-[0.85rem_1rem] border-b border-rule text-[0.85rem] text-right font-display whitespace-nowrap" :class="row.booked ? 'text-sage' : 'text-ink-mid'">{{ row.booked ? '✓ 已訂' : '£' + row.mid }}</td>
+            <td class="min-[601px]:hidden p-[0.95rem_0.5rem] border-b border-rule text-[0.9rem] text-right font-display whitespace-nowrap" :class="row.booked ? 'text-sage' : 'text-ink-mid'">{{ rowRange(row) }}</td>
+          </tr>
+          <tr class="total">
+            <td class="p-[0.95rem_0.5rem] md:p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-medium text-[1.1rem] md:text-base">總計</td>
+            <td class="max-[600px]:hidden p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-medium text-[1.08rem] text-bordeaux text-right whitespace-nowrap">~£{{ totalBudget }}</td>
+            <td class="max-[600px]:hidden p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-medium text-[1.08rem] text-bordeaux text-right whitespace-nowrap">~£{{ totalMidRange }}</td>
+            <td class="min-[601px]:hidden p-[0.95rem_0.5rem] border-t border-ink border-b-0 font-display font-medium text-[1.05rem] text-bordeaux text-right whitespace-nowrap">~£{{ totalBudget }}–{{ totalMidRange }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-6 text-[0.95rem] md:text-[0.85rem] text-ink-mid max-w-[560px] leading-[1.8]">
+        Eurostar、酒店、艾菲爾鐵塔同羅浮宮飛全部訂晒，餘下嘅開支大約 <strong class="font-semibold text-ink">~£385–575</strong>，而且<strong class="font-semibold text-ink">再冇任何要提前訂嘅門票</strong>。淨低嘅係現場俾錢嘅嘢：Parc Floral 入場（視乎當日有冇活動，可能免費）、餐飲、交通同手信。
+      </p>
+    </div>
+  </section>
+
+  <section class="reveal tricolore-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(96%_0.004_250_/_65%)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.64rem] font-light tracking-[0.3em] uppercase text-gold-dark mb-3 label-rule">Before you go</p>
+      <h2 class="font-display text-[clamp(1.9rem,4.5vw,2.8rem)] font-medium text-ink tracking-[0.005em] leading-[1.2] mb-10">實用貼士</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-12">
+        <div v-for="group in tips" :key="group.title">
+          <p class="font-sans text-[0.63rem] font-light tracking-[0.26em] uppercase text-gold-dark pb-[0.8rem] border-b border-bordeaux mb-4">{{ group.title }}</p>
+          <div v-for="(item, idx) in group.items" :key="idx" class="flex gap-[0.8rem] items-start py-[0.75rem] md:py-[0.55rem] border-b border-rule last:border-b-0 text-[1.02rem] md:text-[0.9rem] text-ink leading-[1.7]">
+            <i class="fas fa-circle text-bordeaux text-[0.62rem] md:text-[0.52rem] mt-[0.6rem] md:mt-[0.5rem] shrink-0"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal tricolore-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(92.5%_0.006_250_/_78%)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.64rem] font-light tracking-[0.3em] uppercase text-gold-dark mb-3 label-rule">Where to eat</p>
+      <h2 class="font-display text-[clamp(1.9rem,4.5vw,2.8rem)] font-medium text-ink tracking-[0.005em] leading-[1.2] mb-3">餐廳參考</h2>
+      <p class="text-[0.95rem] md:text-[0.88rem] text-ink-mid mb-6 max-w-[68ch] leading-[1.8]">按行程日子分類，全部都喺當日路線附近。落單前建議打電話或上網再確認一次開放時間 —— 8 月尾巴黎大部分餐廳嘅年假已經放完，但夜晚要訂位嗰幾間出發前一日再確認一次會穩陣啲。</p>
+      <div class="mb-10 p-[1.5rem_1.7rem] bg-bordeaux/[0.035] border-y border-bordeaux/20 [&_strong]:font-medium [&_strong]:text-ink">
+        <p class="tip-guillemet text-[0.96rem] md:text-[0.9rem] text-ink-mid leading-[1.8] max-w-[68ch]"><strong>兩個容易忽略嘅結構性限制：</strong>① Day 1 冇早餐 —— 07:45 由 Kingston 出門，13:59 先到巴黎，抵達日根本冇「早餐」呢一項，所以 Utopie / Blé Sucré 呢類名店星期一休息完全唔影響（早餐留返 Day 2/3/4）。② 遲午餐（Day 1 ~15:00、Day 3 13:40）一定要揀 <strong>service continu（全日供應）</strong>嘅餐廳 —— 好多正經小酒館中午 14:30 就收爐，遲少少去就撲個空，下面每個「午餐」都已經標明。</p>
+      </div>
+      <div class="flex flex-col gap-12">
+        <div v-for="group in restaurants" :key="group.day">
+          <p class="font-sans text-[0.63rem] font-light tracking-[0.26em] uppercase text-gold-dark pb-[0.7rem] border-b border-bordeaux mb-1">{{ group.day }}</p>
+          <div v-for="(r, idx) in group.items" :key="idx" class="flex flex-wrap gap-x-4 gap-y-1 items-baseline py-[0.9rem] md:py-[0.7rem] border-b border-rule last:border-b-0">
+            <a :href="r.mapUrl" target="_blank" rel="noopener" class="font-display text-[1.15rem] md:text-[1.05rem] font-medium text-ink hover:text-bleu transition-colors duration-200 underline decoration-rule underline-offset-4 hover:decoration-bleu">{{ r.name }}</a>
+            <span class="font-sans text-[0.66rem] font-light tracking-[0.1em] uppercase text-gold-dark shrink-0">{{ r.type }}</span>
+            <span class="basis-full text-[0.92rem] md:text-[0.86rem] text-ink-mid leading-[1.7] max-w-[64ch]">{{ r.note }}</span>
+            <span v-if="r.dish" class="basis-full text-[0.92rem] md:text-[0.86rem] text-ink leading-[1.7] max-w-[64ch]"><i class="fas fa-utensils text-bleu text-[0.72rem] mr-1.5"></i>{{ r.dish }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-navy p-[2rem_clamp(1.5rem,5vw,5rem)] flex justify-between items-center flex-wrap gap-4 border-t-2 border-bordeaux">
+    <div class="font-display text-[1.35rem] font-bold text-gold tracking-tight">{{ meta.title }} · 2026</div>
+    <p class="font-display text-[0.65rem] tracking-[0.2em] uppercase text-[oklch(52%_0.020_252)]">{{ meta.dates }} · Kingston upon Thames → Gare du Nord · Eurostar 訂票編號 KWQF6C</p>
+    <p class="font-display text-[0.65rem] tracking-[0.2em] uppercase text-[oklch(52%_0.020_252)]">家庭旅程 · 3 人同行</p>
+  </footer>
+</div>
+
+<script>
+  const itineraryData = {
+    meta: {
+      title: "巴黎",
+      subtitle: "Voyage à",
+      eyebrow: "家庭行程 · 2026",
+      travellers: "2 位大人 · 1 位小朋友 (7歲)",
+      dates: "2026年8月31日 – 9月3日",
+      transport: "Eurostar · 訂票編號 KWQF6C",
+      route: "Kingston upon Thames → 巴黎"
+    },
+    stats: [
+      { value: "4", label: "天數", isFirst: true },
+      { value: "3", label: "晚數" },
+      { value: "3", label: "同行人數" },
+      { value: "ibis Bastille", label: "酒店 ✓" },
+      { value: "£385–575", label: "餘下開支" },
+    ],
+    days: [
+      {
+        num: "D1",
+        date: "週一，8月31日",
+        title: "Kingston → Eurostar → 抵達 · Le Marais",
+        sub: "由 Kingston 出發，搭 Eurostar 過海，13:59 抵達巴黎 — 今日只做三件事，早抖",
+        isDark: false,
+        tipBox: {
+          icon: "fa-bed",
+          text: "<strong>今日刻意留白：</strong>一家人由早上 07:45 就開始趕路，到步已經係下午 2 點。所以今日只安排「食飯 → 遊樂場 → 晚餐」三件事，全部喺酒店 15 分鐘步程內，唔安排任何要買飛或者趕時間嘅節目。真正嘅行程由聽日先開始。"
+        },
+        mapPoints: [
+          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(30% 0.020 252)", label: "出發" },
+          { name: "St Pancras International", lat: 51.5320, lng: -0.1233, color: "oklch(30% 0.020 252)", label: "Eurostar check-in" },
+          { name: "Gare du Nord", lat: 48.8809, lng: 2.3553, color: "oklch(30% 0.020 252)", label: "13:59 抵達" },
+          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "酒店" },
+          { name: "L'As du Fallafel", lat: 48.8572, lng: 2.3590, color: "oklch(45% 0.055 178)", label: "午餐" },
+          { name: "Place des Vosges", lat: 48.8557, lng: 2.3651, color: "oklch(45% 0.170 264)", label: "遊樂場" },
+          { name: "11 區晚餐", lat: 48.8556, lng: 2.3745, color: "oklch(45% 0.055 178)", label: "晚餐" }
+        ],
+        activities: [
+          {
+            type: "move",
+            icon: "fa-home",
+            title: "Kingston 出發 — 前往 St Pancras",
+            desc: "由 Kingston 搭 South Western Railway去 London Waterloo（約 30 分鐘），再轉地鐵（Circle / Hammersmith & City / Northern 線皆可）去 King's Cross St Pancras（約 20–25 分鐘）。連轉車、拖行李、買飛，預留成 1 個鐘以上唔好太趕。",
+            tag: "~07:45 出發"
+          },
+          {
+            type: "move",
+            icon: "fa-passport",
+            title: "Eurostar Check-in — St Pancras International",
+            desc: "Eurostar 建議喺開車前 60–90 分鐘到達，要經過護照檢查同安檢先可以落月台，暑假旺季人流多，唔好卡住死線先到。三個人記得攞齊護照同電子車票（Apple Wallet + 打印備份）。",
+            tag: "建議 09:00 前到"
+          },
+          {
+            type: "move",
+            icon: "fa-train",
+            title: "Eurostar 去巴黎 — 10:31 開出",
+            desc: "4 卡座位（爸爸 42 座、媽媽 41 座、女兒 45 座）。全程經英法海底隧道，車程 2 小時 28 分鐘，車上可以食早餐/小食，等女兒望住窗外風景慢慢消磨呢程。",
+            tag: "2h28m"
+          },
+          {
+            type: "move",
+            icon: "fa-suitcase-rolling",
+            title: "抵達 Gare du Nord — 13:59",
+            desc: "喺 ibis Bastille Opéra 放低行李（15 rue Breguet, 11 區）— 行 5 分鐘就到 Le Marais。",
+            tag: "13:59"
+          },
+          {
+            type: "food",
+            icon: "fa-utensils",
+            title: "遲少少食午餐 — L'As du Fallafel",
+            desc: "由酒店行 10 分鐘穿過 Le Marais 就到。Rue des Rosiers 上嗰間傳奇 falafel pita 店 — 快、平、小朋友又鍾意。行過去嗰段路本身就已經睇晒 Marais 嘅中世紀窄街，唔使特登再安排一次「街區漫步」。",
+            tag: "~£8–10/人"
+          },
+          {
+            type: "fun",
+            icon: "fa-child",
+            title: "遊樂場 — Place des Vosges",
+            desc: "巴黎最古老最靚嘅廣場，離酒店 5 分鐘。磚拱廊底下有個免費遊樂場。坐咗成朝火車之後，畀佢喺度放晒啲電先係今日最重要嘅一件事。",
+            tag: "Free"
+          },
+          {
+            type: "food",
+            icon: "fa-pizza-slice",
+            title: "晚餐 — 11 區隨便搵一間",
+            desc: "唔使訂位，酒店附近 rue de la Roquette / rue Saint-Sabin 一帶好多 brasserie 同 pizzeria。如果三個人仲有精神，可以搭 15 分鐘車去 La Felicità（Gare de Lyon 附近嘅大型意大利美食廣場，夠嘈，小朋友幾嘈都冇所謂）。食完早抖。",
+            tag: "~£15–20/人"
+          }
+        ]
+      },
+      {
+        num: "D2",
+        date: "週二，9月1日",
+        title: "艾菲爾鐵塔 · Champ de Mars 遊樂場 · rue Cler 午餐",
+        sub: "西邊全日步行區 — 出去一程車、返嚟一程車，中間唔使再搭",
+        isDark: true,
+        tipBox: {
+          icon: "fa-shoe-prints",
+          text: "<strong>今日全部行得到：</strong>Trocadéro → 鐵塔 → Champ de Mars → rue Cler 全部連埋一齊，唔使搭車。<br><strong>刻意輕鬆：</strong>聽日係羅浮宮 + Parc Floral，兩件都係大嘢，所以今日下午 4 點就收工返酒店儲返體力。<br><strong>可選加碼：</strong>想多一個正式遊樂場嘅話，<strong>Parc André Citroën</strong>（15 區，離鐵塔約 20 分鐘）有繫留氦氣球升到 150 米高（真刺激但完全唔係過山車），仲有大型噴水柱。要買飛、大風唔飛，所以冇當預設。"
+        },
+        mapPoints: [
+          { name: "Trocadéro", lat: 48.8625, lng: 2.2888, color: "oklch(50% 0.012 255)", label: "09:00 影相" },
+          { name: "艾菲爾鐵塔", lat: 48.8584, lng: 2.2945, color: "oklch(51% 0.205 27)", label: "第二層電梯" },
+          { name: "rue Cler 市集街", lat: 48.8556, lng: 2.3050, color: "oklch(45% 0.055 178)", label: "午餐" },
+          { name: "Champ de Mars 遊樂場", lat: 48.8560, lng: 2.2980, color: "oklch(45% 0.170 264)", label: "下午放電" },
+          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~16:00 返酒店" }
+        ],
+        activities: [
+          {
+            type: "hi",
+            icon: "fa-camera",
+            title: "Trocadéro 影相 — 09:00",
+            desc: "影鐵塔全景最靚嘅位就喺呢度。影完行落去鐵塔腳下，順便避開最曬嗰段時間。",
+            tag: "09:00 · Free"
+          },
+          {
+            type: "hi",
+            icon: "fa-monument",
+            title: "艾菲爾鐵塔第二層 — 09:30 ✓ 飛已買",
+            desc: "已訂咗 9 月 1 日 09:30 第二層電梯票。時段票係指入閘時間，唔係上塔時間 — 早 15–20 分鐘到，因為入口要過安檢。",
+            note: "電子票放定 Apple Wallet，另外印一份備份。小童優惠價可能要出示證件核對年齡，帶埋女兒本護照。",
+            tag: "✓ 已訂 · 09:30"
+          },
+          {
+            type: "food",
+            icon: "fa-cheese",
+            title: "午餐 — rue Cler 市集街",
+            desc: "離鐵塔行 10 分鐘嘅行人市集街，芝士鋪、麵包鋪、生果檔、正經小酒館（Café du Marché、Le Petit Cler）都喺度。今日嘅「好嘢食」就係呢餐 — 中午 formule midi 套餐比夜晚平好多，細路狀態亦好過夜晚 8 點。",
+            tag: "~£18–25/人"
+          },
+          {
+            type: "fun",
+            icon: "fa-child",
+            title: "Champ de Mars 遊樂場 + Trocadéro 噴泉",
+            desc: "鐵塔腳下有 4 個免費遊樂場，Trocadéro 嗰邊有水花可以玩。排完隊上完塔之後，正好喺度放電減壓 — 零車程，行幾步就到，攰就隨時走。",
+            tag: "Free"
+          },
+          {
+            type: "move",
+            icon: "fa-bed",
+            title: "~16:00 返酒店休息",
+            desc: "今日刻意收得早。返到 Bastille 沖涼攤一陣 — 聽日羅浮宮要 9 點開門就入，今晚要早抖。",
+            tag: "~16:00"
+          },
+          {
+            type: "food",
+            icon: "fa-utensils",
+            title: "晚餐 — 酒店附近，19:00，唔使訂位",
+            desc: "rue de la Roquette / rue Saint-Sabin 一帶好多 brasserie 同 pizzeria。今日個「好嘢食」已經喺午餐用咗，夜晚求其輕鬆就得。",
+            tag: "~£15–20/人"
+          }
+        ]
+      },
+      {
+        num: "D3",
+        date: "週三，9月2日",
+        title: "羅浮宮 11:00 · Parc Floral · 全程 1 號線",
+        sub: "上晝慢慢嚟，11 點入羅浮宮，落午去公園放電 — 全程 1 號線唔使轉車",
+        isDark: false,
+        tipBox: {
+          icon: "fa-clock",
+          text: "<strong>✓ 羅浮宮飛已買：9月2日 11:00 入場。</strong>時間比原先計劃嘅 09:00 遲咗兩個鐘，所以成日重新編過：<br>• <strong>上晝變咗空閒</strong> —— 唔好硬塞節目入去。琴日鐵塔日 9 點就要出門，今日就慢慢食個早餐，10:20 左右出門啱啱好。<br>• <strong>⚠️ 午餐會好遲（13:40 左右）</strong> —— 好多法國餐廳廚房 14:30 就收爐，所以一定要揀「service continu」（全日供應）嗰啲。<strong>Café Marly</strong> 就係全日供應，而且就喺羅浮宮入面，行都唔使行。出門前記得食飽早餐、袋定零食。<br>• <strong>⚠️ 11 點入場人多過 9 點</strong> —— 蒙娜麗莎嗰間房 11:15 會比 09:15 逼好多。入到去就直接殺去 Denon 翼，唔好沿路遊花園。"
+        },
+        mapPoints: [
+          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~10:20 出門" },
+          { name: "羅浮宮", lat: 48.8606, lng: 2.3376, color: "oklch(51% 0.205 27)", label: "11:00 · 限 2.5 個鐘" },
+          { name: "Café Marly（全日供應）", lat: 48.8625, lng: 2.3395, color: "oklch(45% 0.055 178)", label: "13:40 遲午餐" },
+          { name: "Parc Floral de Paris", lat: 48.8380, lng: 2.4450, color: "oklch(45% 0.170 264)", label: "15:30–18:00 玩" },
+          { name: "Château de Vincennes", lat: 48.8444, lng: 2.4406, color: "oklch(30% 0.020 252)", label: "1 號線總站" }
+        ],
+        activities: [
+          {
+            type: "food",
+            icon: "fa-mug-hot",
+            title: "上晝慢慢嚟 — 早餐食飽佢",
+            desc: "今日 11 點先入羅浮宮，10:20 出門就夠。琴日 9 點要出門，今日呢個 slack 係好事，唔好用嚟塞多個景點。酒店附近 boulangerie 慢慢食個早餐 — 而且今日午餐會遲到 13:40，早餐一定要食飽，袋度再放定零食。",
+            tag: "~10:20 出門"
+          },
+          {
+            type: "hi",
+            icon: "fa-landmark",
+            title: "羅浮宮 — 11:00 入場 ✓ 飛已買，硬性限 2.5 個鐘",
+            desc: "由 Carrousel du Louvre（99 rue de Rivoli 地下商場）入，通常快過金字塔正門。入到去直接殺去 Denon 翼睇蒙娜麗莎 → 米羅嘅維納斯 → 然後落埃及館。11 點人流比 9 點多，所以更加唔好沿路遊花園。",
+            note: "睇完就走，唔好諗住「行晒羅浮宮」—— 呢個係全程最容易搞到大家崩潰嘅陷阱。13:30 就要出返嚟食飯。",
+            tag: "✓ 已訂 · 11:00"
+          },
+          {
+            type: "fun",
+            icon: "fa-khanda",
+            title: "埃及館 — 大獅身人面像同木乃伊",
+            desc: "蒙娜麗莎係大人嘅打卡位；埃及館先係 7 歲真正記得住嗰部分。大獅身人面像、石棺、木乃伊 — 留返最後至少 45 分鐘畀呢度，唔好趕。",
+            tag: "已包門票"
+          },
+          {
+            type: "food",
+            icon: "fa-utensils",
+            title: "遲午餐 13:40 — Café Marly（全日供應）",
+            desc: "13:30 出羅浮宮，行幾步就到 Café Marly（Richelieu 翼露台，望住玻璃金字塔食飯，細路會好興奮）。今日特登揀佢因為佢係 service continu 全日供應 —— 13:40 先坐低，好多其他餐廳廚房就快收爐。今日嘅「好嘢食」就係呢餐。",
+            note: "貴同遊客多，但呢個時間點佢係最穩陣嘅選擇。想平啲靜啲可以試 Le Fumoir，但去之前確認返佢當日午市做到幾點。",
+            tag: "~£20–30/人"
+          },
+          {
+            type: "move",
+            icon: "fa-subway",
+            title: "~14:55 1 號線 → Château de Vincennes",
+            desc: "由 Palais-Royal–Musée du Louvre 直達總站，約 25 分鐘，唔使轉車。落車再行約 10 分鐘，大約 15:30 到 Parc Floral。",
+            tag: "~35 分鐘"
+          },
+          {
+            type: "hi",
+            icon: "fa-tree",
+            title: "Parc Floral de Paris — 15:30 至 18:00",
+            desc: "今程真正嘅遊樂場。大型彈床、飛索、繩網陣、超大沙池、迷你高爾夫、蝴蝶園 — 純遊樂設施，完全冇機動遊戲同過山車。因為羅浮宮遲咗兩個鐘，呢度由原本 3.5 個鐘縮到 2.5 個鐘，但落午反而冇咁曬，跑跳更舒服。",
+            note: "旺季／有活動期間圍住嘅遊樂區要收少少入場費（約 €7/人），其他時候多數免費 — 出發前上網確認當日收費同閉園時間（尤其而家係落午先到，唔好撞正閉園）。記得帶多套換洗衫褲，玩沙玩水一定會濕。",
+            tag: "~€7/人（或免費）"
+          },
+          {
+            type: "food",
+            icon: "fa-utensils",
+            title: "晚餐 — 返 Bastille，~19:00",
+            desc: "18:00 左右離開，1 號線直接返到 Bastille，大約 18:40 到。因為午餐遲，今晚未必好肚餓 — 唔使搏正經晚餐，酒店附近搵間坐低，甚至食輕啲都得。",
+            tag: "~£15–20/人"
+          }
+        ]
+      },
+      {
+        num: "D4",
+        date: "週四，9月3日",
+        title: "早上隨便行 · 搭 Eurostar 返屋企",
+        sub: "只做一件事，然後返屋企 — Eurostar 16:02 喺 Gare du Nord 開出",
+        isDark: true,
+        tipBox: {
+          icon: "fa-hourglass-half",
+          text: "<strong>今日得一個景點，唔好貪心：</strong>15:00 一定要到 Gare du Nord，扣返 check-out、寄存同攞行李、搭車嘅時間，其實淨返 3 個鐘左右。原本排咗 Marché des Enfants Rouges 早午餐＋Passage Jouffroy 兩個點，宜家二揀一。<br><strong>建議揀 Passage Jouffroy</strong> —— 玩具店、糖果店、蠟像館，7 歲小朋友嘅興趣度高好多；早餐就喺酒店附近或者拱廊入面解決。<br><strong>如果想食好啲</strong>先揀 Marché des Enfants Rouges（離酒店行 10 分鐘，摩洛哥/日本/法國檔口），咁就唔好再兜去 Jouffroy。"
+        },
+        mapPoints: [
+          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "Check-out · 寄存行李" },
+          { name: "Passage Jouffroy", lat: 48.8729, lng: 2.3455, color: "oklch(45% 0.055 178)", label: "首選 · 有蓋拱廊" },
+          { name: "Marché des Enfants Rouges", lat: 48.8629, lng: 2.3609, color: "oklch(50% 0.012 255)", label: "後備選擇（二揀一）" },
+          { name: "Gare du Nord", lat: 48.8809, lng: 2.3553, color: "oklch(30% 0.020 252)", label: "15:00 前到" }
+        ],
+        activities: [
+          {
+            type: "food",
+            icon: "fa-coffee",
+            title: "最後一次牛角包 — 附近 boulangerie",
+            desc: "等佢自己入去落單：「Bonjour, un croissant et un pain au chocolat, s'il vous plaît。」到呢刻佢應該已經講到好熟練。麵包師傅一定會眼前一亮。",
+            tag: "~£4"
+          },
+          {
+            type: "move",
+            icon: "fa-box-open",
+            title: "Check-out · 寄存行李",
+            desc: "中午前 check-out，行李全部擺低喺 reception。今日唔好拖住喼周圍行 — 出去玩之前一定要先安頓好行李。",
+            tag: "中午前"
+          },
+          {
+            type: "hi",
+            icon: "fa-store-alt",
+            title: "Passage Jouffroy — 9 區（今日唯一景點）",
+            desc: "1847 年嘅維多利亞式有蓋拱廊商場。玩具店、糖果店、古書店、蠟像館，全部喺一條玻璃頂通道入面。免費入場，隨便逛，對 7 歲小朋友嚟講超奇幻 — 亦係全程最容易買到佢真係想要嗰件手信嘅地方。",
+            note: "地鐵 8/9 號線 Grands Boulevards 站落車。逛完由 Grands Boulevards 去 Gare du Nord 約 15 分鐘。",
+            tag: "Free entry"
+          },
+          {
+            type: "move",
+            icon: "fa-suitcase",
+            title: "攞返行李 · 出發去 Gare du Nord",
+            desc: "喺酒店攞返行李，然後喺 Bréguet-Sabin 搭地鐵 5 號線直達 Gare du Nord（約 20 分鐘）。閘口提早 30 分鐘關閉，Eurostar 建議提早 60–90 分鐘到 — 要喺 15:00 前到車站。",
+            tag: "16:02 開出"
+          },
+          {
+            type: "move",
+            icon: "fa-train",
+            title: "Eurostar 返倫敦 St Pancras",
+            desc: "連過隧道全程 2 小時 33 分鐘。17:35 抵達 St Pancras。夜晚就返到 Kingston 屋企。佢應該有排故仔講畀人聽。",
+            tag: "17:35 抵達"
+          }
+        ]
+      }
+    ],
+    checklistGroups: [
+      {
+        title: "而家就要做",
+        items: [
+          { text: "Eurostar 已訂 — 訂票編號 KWQF6C · 週一 8月31日去程 / 週四 9月3日回程", done: true },
+          { text: "酒店已訂 — ibis Bastille Opéra 11th · 訂房編號 QKNLFRRF_0200000154924604PP", done: true },
+          { text: "艾菲爾鐵塔第二層電梯票已訂 — 3 人，週二 9月1日 09:30", done: true },
+          { text: "羅浮宮時段票已訂 — 2 張大人（女兒免費），週三 9月2日 11:00 入場", done: true },
+          { text: "確認 Parc Floral 週三嘅閉園時間同入場收費 — 今次落午 15:30 先到，唔好撞正閉園【而家最急】" },
+          { text: "檢查三本護照 — 有效期要覆蓋成程旅行" },
+          { text: "買定一家人旅遊保險 — 三人份" }
+        ]
+      },
+      {
+        title: "出發前一星期",
+        items: [
+          { text: "Download：Citymapper · Eurostar · Notre-Dame de Paris app · Google Maps offline · Google Translate" },
+          { text: "確認兩部電話開咗漫遊，或者到達 Gare du Nord 再買法國 SIM 卡" },
+          { text: "同女兒練習講：bonjour · merci · un croissant · s'il vous plaît" },
+          { text: "Print 定所有 booking confirmation 嘅備份" },
+          { text: "同女兒講定羅浮宮要睇乜（蒙娜麗莎、木乃伊、獅身人面像）— 有期待感會好玩好多" }
+        ]
+      },
+      {
+        title: "喺巴黎期間",
+        items: [
+          { text: "週二：鐵塔落嚟之後唔好再加節目，下午 4 點就返酒店抖" },
+          { text: "週三：羅浮宮 2.5 個鐘一到就走，唔好戀戰" },
+          { text: "週四早上：中午前 check-out，行李寄存喺酒店 reception，出發去車站前先攞返" },
+          { text: "週四：Passage Jouffroy 同 Marché des Enfants Rouges 二揀一，唔好兩個都去" }
+        ]
+      }
+    ],
+    budget: [
+      { icon: "fa-train", name: "Eurostar 來回（3 人）", budget: 0, mid: 0, booked: true },
+      { icon: "fa-bed", name: "ibis Bastille — 3 晚", budget: 0, mid: 0, booked: true },
+      { icon: "fa-monument", name: "艾菲爾鐵塔（2 大 1 細）", budget: 0, mid: 0, booked: true },
+      { icon: "fa-landmark", name: "羅浮宮（2 張大人票，細路免費）", budget: 0, mid: 0, booked: true },
+      { icon: "fa-tree", name: "Parc Floral（入場，如當日收費）", budget: 15, mid: 25 },
+      { icon: "fa-utensils", name: "餐飲 — 4 日（兩餐正式午餐 + 其餘從簡）", budget: 200, mid: 300 },
+      { icon: "fa-store-alt", name: "Passage Jouffroy · Champ de Mars 遊樂場（免費）", budget: 0, mid: 0 },
+      { icon: "fa-subway", name: "巴黎交通（Navigo 卡 + RER）", budget: 50, mid: 50 },
+      { icon: "fa-shopping-bag", name: "零食、雪糕、手信", budget: 50, mid: 80 },
+      { icon: "fa-shield-alt", name: "旅遊保險 + SIM 卡", budget: 70, mid: 120 }
+    ],
+    tips: [
+      {
+        title: "行路交通",
+        items: [
+          "地鐵 14 號線每個月台都有升降機 — 帶住小朋友盡量搭呢條線",
+          "巴士（用 Citymapper 揀「accessible」）通常比地鐵樓梯好行",
+          "每人買張 Navigo Easy 卡 — Tap 一嘢搞掂地鐵、巴士、RER",
+          "1 號線係今程最重要嗰條 — 羅浮宮、Bastille、Château de Vincennes 全部喺同一條線上，週三唔使轉車",
+          "出發前下載定 Google Maps 巴黎離線地圖"
+        ]
+      },
+      {
+        title: "食嘢 + Café",
+        items: [
+          "坐 café 記得先同侍應對到眼先好坐低",
+          "大部分 brasserie 有 menu enfant（兒童餐）— 一整餐 £8–12",
+          "喺 Monoprix 或 Franprix 買嘢整野餐，慳錢之餘其實仲好玩過落餐廳",
+          "巴黎成街有 1,200 個免費 Wallace 飲水機 — 隨身帶個水樽",
+          "Amorino 雪糕：玫瑰花形嘅一球，小朋友一定日日嗌住要食"
+        ]
+      },
+      {
+        title: "天氣 + 安全",
+        items: [
+          "8 月尾氣溫可以超過 30°C。盡早出發，中午 12–3 點休息，用番水池玩水降溫",
+          "高係數防曬乳，每 2 個鐘補一次。太陽帽一定要戴。",
+          "Sacré-Cœur 附近友誼手繩騙案：講句 \"non merci\"，唔好停低繼續行",
+          "每個袋、女兒個背囊都放定 AirTag。貴重物品用斜孭袋。",
+          "千祈唔好著新鞋。鵝卵石路面好㷫腳。鞋要着熟至少 6 個星期。"
+        ]
+      }
+    ],
+    restaurants: [
+      {
+        day: "Day 1 · 週一 8月31日 — 午餐 ~15:00（要 service continu，冇早餐）",
+        items: [
+          { name: "★ Café de l'Industrie", type: "午餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，09:00–02:00 全日供應，Belle Époque 裝修，午市套餐 €12。", dish: "推介：duck confit（鴨脾）、pot-au-feu（燉牛肉）、escargots de Bourgogne（勃艮第蝸牛）、法式洋蔥湯，甜品試 crème brûlée。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
+          { name: "Bouillon République", type: "午餐 · 老字號", note: "39 bd du Temple。12:00–24:00 全日供應，官方推薦帶小朋友嘅家庭，水煮蛋 €2.70。", dish: "推介：œuf mayonnaise（水煮蛋沙律）、火腿松露意粉、steak frites（牛排薯條）、生蠔（半打 €9.90）、profiteroles 收尾。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+R%C3%A9publique+39+boulevard+du+Temple+Paris" },
+          { name: "Breizh Café", type: "午餐 · 可麗餅", note: "Le Marais。布列塔尼 galette，對 7 歲細路嚟講最保險嘅選擇。", dish: "推介：Complète galette（芝士火腿太陽蛋）；細路多數鍾意火腿芝士 galette，甜 crêpe 配香蕉/焦糖/雲呢拿雪糕；配蘋果酒 cidre（大人）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Breizh+Caf%C3%A9+Marais+Paris" },
+          { name: "Norma", type: "午餐 · 意大利粉", note: "北 Marais。罕有星期一都有午市（好多店星期一休息）。", dish: "推介：招牌 paccheri/maccheroncini alla norma（茄汁茄子鹹芝士）、蝦青口鮭魚子意粉；甜品 tiramisu。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Norma+restaurant+Marais+Paris" },
+          { name: "Café Charlot", type: "午餐 · Brasserie", note: "Le Marais。燒雞、法式鹹批、沙律，戶外座位。", dish: "推介：蜜糖蒜香焗 Camembert（分享裝）、Caesar 沙律、芝士漢堡薯條、三文魚 bagel。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Charlot+Marais+Paris" },
+          { name: "Le QG", type: "午餐 · Brasserie", note: "Roquette／Lappe 街口。長露台，睇晒成條街。", dish: "推介：分享菜 — falafel、芝士薯條、炸雞、魷魚圈。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+QG+Bastille+Paris" },
+          { name: "Au Bourguignon du Marais", type: "午餐 · 勃艮第菜", note: "Le Marais。裝修現代，牛肉料理出名。", dish: "推介：boeuf bourguignon（紅酒燉牛肉）、勃艮第蝸牛蒜蓉牛油汁、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Au+Bourguignon+du+Marais+Paris" },
+          { name: "L'Ours Martin", type: "午餐 · 平民 Brasserie", note: "Le Marais。庫斯庫斯出名，唔使拘謹。", dish: "推介：庫斯庫斯（couscous）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=L%27Ours+Martin+Marais+Paris" }
+        ]
+      },
+      {
+        day: "Day 1–3 · 晚餐（酒店附近，通用選擇）",
+        items: [
+          { name: "★ Bofinger", type: "晚餐 · 歷史名店", note: "5–7 rue de la Bastille。1864 年老字號，玻璃穹頂，18:30–24:00 逢日開放，大圓頂對 7 歲小朋友嚟講好震撼。", dish: "推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）、plateau de fruits de mer 海鮮拼盤（大人想豪就叫）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bofinger+5+rue+de+la+Bastille+Paris" },
+          { name: "Café de l'Industrie", type: "晚餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，唔使訂位。", dish: "推介：同午餐一樣 — duck confit、pot-au-feu、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
+          { name: "Le Bistrot du Peintre", type: "晚餐 · 法式小酒館", note: "116 av Ledru-Rollin。逢日 07:00–02:00，可以 walk-in，Art Nouveau 裝修，有 menu enfant。", dish: "推介：傳統小酒館牛排薯條、鴨扒；有兒童餐可揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Bistrot+du+Peintre+116+avenue+Ledru-Rollin+Paris" },
+          { name: "Chez Paul", type: "晚餐 · 法式小酒館", note: "Bastille。逢日 12:00–01:00。", dish: "推介：傳統法式小酒館菜，兔肉、鴨胸，老饕之選。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Chez+Paul+Bastille+Paris" },
+          { name: "Bouillon République", type: "晚餐 · 老字號", note: "39 bd du Temple。抵食、出餐快。", dish: "推介：同上晝一樣 — œuf mayonnaise、steak frites、profiteroles。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+R%C3%A9publique+39+boulevard+du+Temple+Paris" },
+          { name: "Le Président（⚠️ 其實係老字號中菜館，唔係法式 Brasserie）", type: "晚餐 · 中菜", note: "120–124 rue du Faubourg du Temple。1986 年開業，圓頂 + 迴旋大圓枱，最適合一家人分享。", dish: "推介：北京鴨、廣式點心、分享大碟菜，小朋友會俾個場面同轉盤逗到好開心。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Pr%C3%A9sident+120+rue+du+Faubourg+du+Temple+Paris" },
+          { name: "À La Renaissance", type: "晚餐 · 復古小酒館", note: "rue de la Roquette。每日套餐抵食。", dish: "推介：睇餐牌上嘅 plat du jour（每日精選），通常最抵食又新鮮。", mapUrl: "https://www.google.com/maps/search/?api=1&query=%C3%80+La+Renaissance+rue+de+la+Roquette+Paris" },
+          { name: "Café Charbon", type: "晚餐 · 歷史名店", note: "rue Oberkampf。1900 年老字號，紅木長吧枱，鏡面雕花。", dish: "推介：croque-monsieur／croque-madame（招牌）、走地蛋奄列、火腿拼盤、罐頭海鮮（沙甸魚/青口/八爪魚）拼盤。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Charbon+rue+Oberkampf+Paris" }
+        ]
+      },
+      {
+        day: "Day 2 · 週二 9月1日 — 午餐（rue Cler 一帶），早餐酒店附近",
+        items: [
+          { name: "★ Café du Marché", type: "午餐 · 市集街 Brasserie", note: "rue Cler。「brasserie on speed」，出餐快、抵食、露天座位靚，鴨扒/燒雞/牛扒薯條都有。", dish: "推介：duck confit（招牌，皮脆肉嫩）、法式洋蔥湯（好多人推）、雞扒配薯蓉、crème brûlée 收尾。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+du+March%C3%A9+rue+Cler+Paris" },
+          { name: "La Terrasse du 7ème", type: "午餐", note: "明確推薦帶小朋友嚟食 lunch，座位多，€20–40。", dish: "推介：勃艮第蝸牛、烤鴨胸、牛柳；甜品 tarte Tatin（反烤蘋果批）、île flottante（漂浮島）、profiteroles。", mapUrl: "https://www.google.com/maps/search/?api=1&query=La+Terrasse+du+7eme+Paris" },
+          { name: "Carmine Café", type: "午餐 · Brasserie", note: "牛扒／三文治／pizza 都有，好夾小朋友。", dish: "推介：Pizza 或者三文治，選擇多元適合唔同口味嘅一家人。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Carmine+Caf%C3%A9+Paris+7" },
+          { name: "Le Petit Cler", type: "午餐後備", note: "29 rue Cler。Poilâne 麵包 tartine，評價參差做後備。", dish: "推介：boeuf bourguignon、法式洋蔥湯、duck confit、croque monsieur、escargots，crème brûlée 出名。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Petit+Cler+29+rue+Cler+Paris" }
+        ]
+      },
+      {
+        day: "Day 3 · 週三 9月2日 — 遲午餐 13:40（要 service continu），早餐酒店附近",
+        items: [
+          { name: "★ Café Marly", type: "遲午餐 · 羅浮宮拱廊下", note: "93 rue de Rivoli。08:00–02:00 全日供應，就喺羅浮宮入面，唔使行出去，望住玻璃金字塔食飯。", dish: "推介：tartare de thon épicé（辣吞拿魚他他）、côte de veau（牛仔排）、雞肉咖喱、XL 閃電泡芙、招牌紅莓 pavlova。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Marly+93+rue+de+Rivoli+Paris" },
+          { name: "Le Fumoir", type: "遲午餐後備", note: "6 rue de l'Amiral de Coligny。全日供應，平啲靜啲，老書房氣氛。", dish: "推介：牛肉他他（beef tartare）、白蘆筍配 sauce gribiche（時令）、香煎鱈魚，甜品朱古力慕絲一流。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Fumoir+6+rue+de+l%27Amiral+de+Coligny+Paris" },
+          { name: "Le Nemours", type: "遲午餐後備", note: "Galerie de Nemours, Palais-Royal。全日供應抵食休閒；⚠️ 露台淨係 12:00–14:00 開放，13:40 岌岌可危。", dish: "推介：croque monsieur、Quiche Lorraine（洛林鹹批配菠菜藍芝士）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Nemours+Palais+Royal+Paris" },
+          { name: "Macéo", type: "遲午餐後備", note: "近 Palais-Royal。開揚，多素食選擇。", dish: "推介：睇當造季節菜單，蔬食選擇多，適合唔想淨食肉嘅人。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Mac%C3%A9o+restaurant+Paris" },
+          { name: "Sam Sun", type: "遲午餐後備 · 韓菜", note: "Palais-Royal。中途換換口味。", dish: "推介：炸雞（starter 一流）、石鍋醃牛肉、Bibimbap 拌飯、部隊鍋 jjamppong 辣海鮮麵；甜品黑芝麻布丁、抹茶 tiramisu。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Sam+Sun+restaurant+Paris" }
+        ]
+      },
+      {
+        day: "Day 4 · 週四 9月3日（Passage Jouffroy / Grands Boulevards）",
+        items: [
+          { name: "★ Bouillon Chartier", type: "早午餐 · 百年老字號", note: "7 rue du Faubourg Montmartre。1896 年老字號，冇得訂位，11:30–午夜全日供應，一餐 3 人埋單通常 <£60。就喺 Passage Jouffroy 出口、Grands Boulevards 地鐵站旁 — 建議 11:30 開門就到，避開排隊。", dish: "推介：œuf mayonnaise（水煮蛋，€2）、escargots（蝸牛，六隻 €7.40）、steak frites（牛排薯條，招牌）、confit de canard（鴨脾）、boeuf bourguignon aux coquillettes；甜品試招牌 profiterole（巨型泡芙配朱古力醬）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+Chartier+Grands+Boulevards+7+rue+du+Faubourg+Montmartre+Paris" },
+          { name: "Le Valentin", type: "甜品 / 早茶", note: "就喺 Passage Jouffroy 入面嘅茶室，行街行到攰可以坐低歎茶食餅。", dish: "推介：精緻法式甜點／馬卡龍拼盤，配茶或咖啡。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Valentin+Passage+Jouffroy+Paris" },
+          { name: "Grand Café Capucines", type: "午餐後備", note: "近 Opéra Garnier。1875 年老字號，Belle Époque，全日供應。", dish: "推介：plateau de fruits de mer 海鮮拼盤（生蠔、蟹、蝦、螺）、吞拿魚三文魚他他。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Grand+Caf%C3%A9+Capucines+Paris" },
+          { name: "Au Petit Riche", type: "午餐後備", note: "9 區。1854 年 brasserie，羅亞爾河菜系，酒單出名。", dish: "推介：escargots de Bourgogne（半打 €9）、pâté en croûte、oeufs mimosa；逢星期二 pollack（鱈魚）、星期五 whiting Colbert（牙鱈）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Au+Petit+Riche+Paris" },
+          { name: "Alesti", type: "午餐後備", note: "近 Grands Boulevards。Brasserie，抵食，套餐 entrée-plat-dessert。", dish: "推介：法式經典家常菜，睇當日套餐（前菜+主菜+甜品）最抵食。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Alesti+Grands+Boulevards+Paris" }
+        ]
+      },
+      {
+        day: "早餐 · Day 2 / 3 / 4（全部星期一休息，Day 1 用不著）",
+        items: [
+          { name: "★ Boulangerie Utopie", type: "早餐 · Boulangerie", note: "20 rue Jean-Pierre Timbaud。傳說中 11 區最好食嘅牛角包，酸種底，2024 年攞過巴黎最佳法包獎。", dish: "推介：招牌牛角包、時令水果撻（牛角包皮底）、pain suisse。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Boulangerie+Utopie+20+rue+Jean-Pierre+Timbaud+Paris" },
+          { name: "Sain（⚠️ 實際喺 10 區 Canal Saint-Martin，唔係 11 區）", type: "早餐 · Boulangerie", note: "15 rue Marie et Louise。長發酵有機麵團。", dish: "推介：招牌酸種牛角包（蜜糖香）、榛子卷（brioche 酥皮包榛子醬）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Sain+Boulangerie+15+rue+Marie+et+Louise+Paris" },
+          { name: "Blé Sucré", type: "早餐 · Boulangerie", note: "7 rue Antoine Vollon，近 Bastille（12 區）。07:00 開門，主廚曾任 Le Bristol 甜品主管。", dish: "推介：牛角包（大隻、牛油味重）、招牌 kouign amann（布列塔尼牛油酥）、瑪德蓮。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bl%C3%A9+Sucr%C3%A9+7+rue+Antoine+Vollon+Paris" },
+          { name: "Frappe", type: "早餐 · Boulangerie", note: "近 Bastille。現代化麵包店，離酒店最近。", dish: "推介：招牌 Frappe Roll。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Frappe+Boulangerie+Bastille+Paris" }
+        ]
+      }
+    ]
+  };
+
+  const { createApp, ref, computed, onMounted, nextTick } = Vue;
+
+  createApp({
+    setup() {
+      const meta = ref(itineraryData.meta);
+      const stats = ref(itineraryData.stats);
+      const days = ref(itineraryData.days);
+      const budgetItems = ref(itineraryData.budget);
+      const tips = ref(itineraryData.tips);
+      const restaurants = ref(itineraryData.restaurants);
+
+      // localStorage can throw (private mode, blocked storage, data: URLs) —
+      // tick state is a nicety, so never let it take the whole page down.
+      const readStored = (id) => {
+        try { return localStorage.getItem(id); } catch (e) { return null; }
+      };
+
+      const checklistGroups = ref(itineraryData.checklistGroups.map(group => {
+        return {
+          title: group.title,
+          items: group.items.map(item => {
+            const id = `chk_${item.text.replace(/\W/g, '_').toLowerCase()}`;
+            const stored = readStored(id);
+            return {
+              id,
+              text: item.text,
+              done: stored === null ? !!item.done : stored === 'true'
+            };
+          })
+        };
+      }));
+
+      const toggleCheck = (item) => {
+        item.done = !item.done;
+        try { localStorage.setItem(item.id, item.done ? 'true' : 'false'); } catch (e) { /* not persisted */ }
+      };
+
+      const totalBudget = computed(() => {
+        return budgetItems.value.reduce((sum, item) => sum + item.budget, 0);
+      });
+
+      const totalMidRange = computed(() => {
+        return budgetItems.value.reduce((sum, item) => sum + item.mid, 0);
+      });
+
+      // Mobile collapses the two price columns into one cell. Collapse the
+      // range too when both ends match, so it reads "£50" rather than "£50–50".
+      const rowRange = (row) => {
+        if (row.booked) return '✓ 已訂';
+        return row.budget === row.mid ? `£${row.budget}` : `£${row.budget}–${row.mid}`;
+      };
+
+      onMounted(() => {
+        nextTick(() => {
+          // ── Scroll-reveal ──────────────────────────
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+              if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('visible'), i * 60);
+                io.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.06 });
+          document.querySelectorAll('.day, .reveal')
+            .forEach(el => io.observe(el));
+
+          // ── Leaflet Maps ───────────────────────────
+          const typeColors = {
+            hi:   'oklch(51% 0.205 27)',
+            fun:  'oklch(45% 0.170 264)',
+            food: 'oklch(45% 0.055 178)',
+            move: 'oklch(30% 0.020 252)',
+            '':   'oklch(50% 0.012 255)'
+          };
+
+          days.value.forEach(day => {
+            if (!day.mapPoints || !day.mapPoints.length) return;
+            const mapEl = document.getElementById('map-day-' + day.num);
+            if (!mapEl) return;
+
+            const map = L.map(mapEl, {
+              zoomControl: true,
+              scrollWheelZoom: false,
+              attributionControl: false
+            });
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+              subdomains: 'abcd',
+              maxZoom: 19
+            }).addTo(map);
+
+            // Attribution (compact)
+            L.control.attribution({ prefix: false, position: 'bottomright' }).addTo(map);
+
+            const bounds = [];
+            day.mapPoints.forEach((pt, idx) => {
+              const color = pt.color || typeColors[pt.type] || typeColors[''];
+              const pinHtml = `
+                <div class="map-pin" style="width:28px;height:28px;background:${color};">
+                  <span style="transform:rotate(45deg);font-family:'Josefin Sans',sans-serif;font-size:0.65rem;font-weight:700;color:white;">${idx + 1}</span>
+                </div>`;
+
+              const icon = L.divIcon({
+                html: pinHtml,
+                className: '',
+                iconSize: [28, 28],
+                iconAnchor: [14, 28],
+                popupAnchor: [0, -30]
+              });
+
+              const popupContent = `
+                <div class="map-popup-inner">
+                  <div class="map-popup-cat">${pt.label || ''}</div>
+                  <div class="map-popup-title">${pt.name}</div>
+                </div>`;
+
+              L.marker([pt.lat, pt.lng], { icon })
+                .addTo(map)
+                .bindPopup(popupContent, { maxWidth: 240, minWidth: 160 });
+
+              bounds.push([pt.lat, pt.lng]);
+            });
+
+            if (bounds.length > 1) {
+              map.fitBounds(bounds, { padding: [36, 36] });
+            } else if (bounds.length === 1) {
+              map.setView(bounds[0], 15);
+            }
+          });
+        });
+      });
+
+      return {
+        meta,
+        stats,
+        days,
+        checklistGroups,
+        budgetItems,
+        tips,
+        restaurants,
+        toggleCheck,
+        totalBudget,
+        totalMidRange,
+        rowRange
+      };
+    }
+  }).mount('#app');
+</script>
+</body>
+</html>
