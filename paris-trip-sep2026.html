@@ -87,16 +87,12 @@
       vertical-align: middle;
       margin-right: 0.6rem;
     }
-    /* Guillemets on the tip boxes — a small, genuinely French typographic mark. */
-    .tip-guillemet::before {
-      content: "«";
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.9em;
-      line-height: 0;
-      position: relative;
-      top: 0.28em;
-      margin-right: 0.1em;
-      color: oklch(45% 0.170 264);
+    /* Tip-box callout mark — was a « guillemet, but the glyph rendered
+       oddly (looked like "<<") at this size in some fonts, so it's a
+       plain rule now instead of relying on a special character. */
+    .tip-guillemet {
+      padding-left: 0.9rem;
+      border-left: 2px solid oklch(45% 0.170 264 / 0.45);
     }
 
     /* Visible keyboard focus — the checklist rows are the only interactive
@@ -482,7 +478,7 @@
         isDark: true,
         tipBox: {
           icon: "fa-shoe-prints",
-          text: "<strong>今日全部行得到：</strong>Trocadéro → 鐵塔 → Champ de Mars → rue Cler 全部連埋一齊，唔使搭車。<br><strong>刻意輕鬆：</strong>下午 4 點就收工返酒店休息，儲返體力先出去食 Bofinger 晚餐 —— 呢個返房休息嘅窗口就係專登留返畀一餐大啲嘅晚飯。聽日羅浮宮 11:00 先入場，10:20 先出門，唔使擔心今晚食晏啲會影響聽朝。<br><strong>可選加碼：</strong>想多一個正式遊樂場嘅話，<strong>Parc André Citroën</strong>（15 區，離鐵塔約 20 分鐘）有繫留氦氣球升到 150 米高（真刺激但完全唔係過山車），仲有大型噴水柱。要買飛、大風唔飛，所以冇當預設。"
+          text: "<strong>今日全部行得到：</strong>Trocadéro → 鐵塔 → Champ de Mars → rue Cler 全部連埋一齊，唔使搭車。<br><strong>刻意輕鬆：</strong>下午 4 點就收工返酒店休息，儲返體力先出去食 Bofinger 晚餐（✓ 已訂位 18:30）—— 呢個返房休息嘅窗口就係專登留返畀一餐大啲嘅晚飯。聽日羅浮宮 11:00 先入場，10:20 先出門，唔使擔心今晚食晏啲會影響聽朝。<br><strong>可選加碼：</strong>想多一個正式遊樂場嘅話，<strong>Parc André Citroën</strong>（15 區，離鐵塔約 20 分鐘）有繫留氦氣球升到 150 米高（真刺激但完全唔係過山車），仲有大型噴水柱。要買飛、大風唔飛，所以冇當預設。"
         },
         mapPoints: [
           { name: "Trocadéro", lat: 48.8625, lng: 2.2888, color: "oklch(50% 0.012 255)", label: "09:00 影相" },
@@ -490,7 +486,7 @@
           { name: "rue Cler 市集街", lat: 48.8556, lng: 2.3050, color: "oklch(45% 0.055 178)", label: "午餐" },
           { name: "Champ de Mars 遊樂場", lat: 48.8560, lng: 2.2980, color: "oklch(45% 0.170 264)", label: "下午放電" },
           { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~16:00 返酒店" },
-          { name: "Bofinger", lat: 48.8531, lng: 2.3690, color: "oklch(45% 0.055 178)", label: "晚餐" }
+          { name: "Bofinger", lat: 48.8531, lng: 2.3690, color: "oklch(45% 0.055 178)", label: "✓ 18:30 晚餐" }
         ],
         activities: [
           {
@@ -532,10 +528,10 @@
           {
             type: "food",
             icon: "fa-utensils",
-            title: "晚餐 — Bofinger",
-            desc: "5–7 rue de la Bastille，行約 10 分鐘。1864 年老字號，玻璃穹頂，18:30–24:00 逢日開放，大圓頂對 7 歲小朋友嚟講好震撼。推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）。",
-            note: "建議提前訂位（非強制，但夜晚多人）— 網上或電話 +33 1 42 72 87 82。",
-            tag: "~£25–35/人"
+            title: "晚餐 — Bofinger ✓ 已訂位",
+            desc: "5–7 rue de la Bastille，行約 10 分鐘。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）。",
+            note: "已訂位：3 人，18:30。記得帶埋 booking confirmation。",
+            tag: "✓ 18:30 已訂"
           }
         ]
       },
@@ -676,7 +672,7 @@
           { text: "艾菲爾鐵塔第二層電梯票已訂 — 3 人，週二 9月1日 09:30", done: true },
           { text: "羅浮宮時段票已訂 — 2 張大人（女兒免費），週三 9月2日 11:00 入場", done: true },
           { text: "確認 Parc Floral 週三嘅閉園時間同入場收費 — 今次落午 15:30 先到，唔好撞正閉園【而家最急】" },
-          { text: "訂 Bofinger 位 — 週二 9月1日 19:00 左右，3 人，+33 1 42 72 87 82 或網上訂位" },
+          { text: "Bofinger 位已訂 — 週二 9月1日 18:30，3 人", done: true },
           { text: "檢查三本護照 — 有效期要覆蓋成程旅行" },
           { text: "買定一家人旅遊保險 — 三人份" }
         ]
@@ -762,7 +758,7 @@
       {
         day: "Day 1–3 · 晚餐（酒店附近，通用選擇）",
         items: [
-          { name: "★ Bofinger", type: "晚餐 · 歷史名店", note: "5–7 rue de la Bastille。1864 年老字號，玻璃穹頂，18:30–24:00 逢日開放，大圓頂對 7 歲小朋友嚟講好震撼。", dish: "推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）、plateau de fruits de mer 海鮮拼盤（大人想豪就叫）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bofinger+5+rue+de+la+Bastille+Paris" },
+          { name: "★ Bofinger（✓ 已訂 Day 2 晚餐 18:30）", type: "晚餐 · 歷史名店", note: "5–7 rue de la Bastille。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。", dish: "推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）、plateau de fruits de mer 海鮮拼盤（大人想豪就叫）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bofinger+5+rue+de+la+Bastille+Paris" },
           { name: "Café de l'Industrie", type: "晚餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，唔使訂位。", dish: "推介：同午餐一樣 — duck confit、pot-au-feu、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
           { name: "Le Bistrot du Peintre", type: "晚餐 · 法式小酒館", note: "116 av Ledru-Rollin。逢日 07:00–02:00，可以 walk-in，Art Nouveau 裝修，有 menu enfant。", dish: "推介：傳統小酒館牛排薯條、鴨扒；有兒童餐可揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Bistrot+du+Peintre+116+avenue+Ledru-Rollin+Paris" },
           { name: "Chez Paul", type: "晚餐 · 法式小酒館", note: "Bastille。逢日 12:00–01:00。", dish: "推介：傳統法式小酒館菜，兔肉、鴨胸，老饕之選。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Chez+Paul+Bastille+Paris" },
