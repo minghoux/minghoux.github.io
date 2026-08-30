@@ -335,6 +335,42 @@
     </div>
   </section>
 
+  <section class="reveal tricolore-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(92.5%_0.006_250_/_78%)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.64rem] font-light tracking-[0.3em] uppercase text-gold-dark mb-3 label-rule">Getting around</p>
+      <h2 class="font-display text-[clamp(1.9rem,4.5vw,2.8rem)] font-medium text-ink tracking-[0.005em] leading-[1.2] mb-3">交通指南</h2>
+      <div class="mb-8 p-[1.5rem_1.7rem] bg-bordeaux/[0.035] border-y border-bordeaux/20 [&_strong]:font-medium [&_strong]:text-ink">
+        <p class="tip-guillemet text-[0.96rem] md:text-[0.9rem] text-ink-mid leading-[1.8] max-w-[68ch]"><strong>⚠️ 紙飛已經停用：</strong>由 2026 年 6 月開始，巴黎地鐵嘅磁卡紙飛全線停用，得返 <strong>Navigo Easy 卡</strong>或者官方 Île-de-France Mobilités app 先可以搭車 —— 唔好指意去到先臨時買紙飛。</p>
+      </div>
+      <div class="mb-10 grid gap-2 text-[0.95rem] md:text-[0.88rem] text-ink-mid leading-[1.8] max-w-[68ch]">
+        <p>每人一張 <strong class="text-ink font-medium">Navigo Easy 卡</strong>（€2/張，一次性儲值卡）— 喺月台自動售票機或者官方 app 增值。成人單程 <strong class="text-ink font-medium">€2.55</strong>；女兒（7 歲，4–9 歲半價）單程 <strong class="text-ink font-medium">€1.30</strong>。10 張飛一齊買（loaded 落 Navigo Easy）平啲：€17.35，但半價飛淨係可以逐張買。全程大約要搭 9 程，2 個大人 + 1 個女兒單獨買飛大約 <strong class="text-ink font-medium">€57–60（~£50）</strong>。</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full max-w-[820px] border-collapse">
+          <thead>
+            <tr>
+              <th class="font-sans text-[0.62rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-left border-b border-bordeaux">Day</th>
+              <th class="font-sans text-[0.62rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-left border-b border-bordeaux">路段</th>
+              <th class="font-sans text-[0.62rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-left border-b border-bordeaux">路線</th>
+              <th class="font-sans text-[0.62rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-right border-b border-bordeaux whitespace-nowrap">車程</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(r, idx) in transportRoutes" :key="idx">
+              <td class="p-[0.75rem_0.5rem] md:p-[0.7rem_1rem] border-b border-rule text-[0.85rem] font-display text-bordeaux">{{ r.day }}</td>
+              <td class="p-[0.75rem_0.5rem] md:p-[0.7rem_1rem] border-b border-rule text-[0.92rem] md:text-[0.88rem] text-ink">{{ r.leg }}</td>
+              <td class="p-[0.75rem_0.5rem] md:p-[0.7rem_1rem] border-b border-rule text-[0.88rem] md:text-[0.82rem] text-ink-mid">{{ r.line }}</td>
+              <td class="p-[0.75rem_0.5rem] md:p-[0.7rem_1rem] border-b border-rule text-[0.85rem] text-ink-mid text-right whitespace-nowrap">{{ r.time }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 text-[0.92rem] md:text-[0.85rem] text-ink-mid max-w-[68ch] leading-[1.8]">
+        <strong class="text-ink font-medium">1 號線係全程最重要嗰條</strong> —— 羅浮宮、Bastille、Château de Vincennes 全部喺同一條線上，Day 3 由頭到尾唔使轉車。<strong class="text-ink font-medium">République</strong> 站係最常用嘅轉車樞紐（3、5、8、9、11 號線交匯）。車程時間係大約估算，出發前用 Citymapper 或者官方 app 即時查一查最準。
+      </p>
+    </div>
+  </section>
+
   <section class="reveal tricolore-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(96%_0.004_250_/_65%)]">
     <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <p class="font-sans text-[0.64rem] font-light tracking-[0.3em] uppercase text-gold-dark mb-3 label-rule">Before you go</p>
@@ -444,8 +480,8 @@
             type: "move",
             icon: "fa-suitcase-rolling",
             title: "抵達 Gare du Nord — 13:59",
-            desc: "喺 ibis Bastille Opéra 放低行李（15 rue Breguet, 11 區）— 行 5 分鐘就到 Le Marais。",
-            tag: "13:59"
+            desc: "搭 M5 直達 Bréguet-Sabin（6 個站，~15 分鐘，唔使轉車），再行 3 分鐘去 ibis Bastille Opéra 放低行李（15 rue Breguet, 11 區）— 行 5 分鐘就到 Le Marais。單程成人 €2.55 / 女兒 €1.30。",
+            tag: "13:59 · M5"
           },
           {
             type: "food",
@@ -474,11 +510,11 @@
         num: "D2",
         date: "週二，9月1日",
         title: "艾菲爾鐵塔 · Champ de Mars 遊樂場 · rue Cler 午餐",
-        sub: "西邊全日步行區 — 出去一程車、返嚟一程車，中間唔使再搭",
+        sub: "西邊全日步行區 — 出程 M1→M6（1 次轉車），返程 M8 直達",
         isDark: true,
         tipBox: {
           icon: "fa-shoe-prints",
-          text: "<strong>今日全部行得到：</strong>Trocadéro → 鐵塔 → Champ de Mars → rue Cler 全部連埋一齊，唔使搭車。<br><strong>刻意輕鬆：</strong>下午 4 點就收工返酒店休息，儲返體力先出去食 Bofinger 晚餐（✓ 已訂位 18:30）—— 呢個返房休息嘅窗口就係專登留返畀一餐大啲嘅晚飯。聽日羅浮宮 11:00 先入場，10:20 先出門，唔使擔心今晚食晏啲會影響聽朝。<br><strong>可選加碼：</strong>想多一個正式遊樂場嘅話，<strong>Parc André Citroën</strong>（15 區，離鐵塔約 20 分鐘）有繫留氦氣球升到 150 米高（真刺激但完全唔係過山車），仲有大型噴水柱。要買飛、大風唔飛，所以冇當預設。"
+          text: "<strong>今日全部行得到：</strong>Trocadéro → 鐵塔 → Champ de Mars → rue Cler 全部連埋一齊，唔使搭車。<br><strong>出程：</strong>行 8 分鐘去 Bastille，搭 M1 → Charles de Gaulle–Étoile（10 個站）→ 轉 M6 → Trocadéro（2 個站），1 次轉車，約 25–30 分鐘。<strong>返程：</strong>École Militaire 搭 M8 直達 Bastille（14 個站，唔使轉車），約 20–25 分鐘。單程成人 €2.55 / 女兒 €1.30。<br><strong>刻意輕鬆：</strong>下午 4 點就收工返酒店休息，儲返體力先出去食 Bofinger 晚餐（✓ 已訂位 18:30）—— 呢個返房休息嘅窗口就係專登留返畀一餐大啲嘅晚飯。聽日羅浮宮 11:00 先入場，10:20 先出門，唔使擔心今晚食晏啲會影響聽朝。<br><strong>可選加碼：</strong>想多一個正式遊樂場嘅話，<strong>Parc André Citroën</strong>（15 區，離鐵塔約 20 分鐘）有繫留氦氣球升到 150 米高（真刺激但完全唔係過山車），仲有大型噴水柱。要買飛、大風唔飛，所以冇當預設。"
         },
         mapPoints: [
           { name: "Trocadéro", lat: 48.8625, lng: 2.2888, color: "oklch(50% 0.012 255)", label: "09:00 影相" },
@@ -550,7 +586,8 @@
           { name: "羅浮宮", lat: 48.8606, lng: 2.3376, color: "oklch(51% 0.205 27)", label: "11:00 · 限 2.5 個鐘" },
           { name: "Café Marly（全日供應）", lat: 48.8625, lng: 2.3395, color: "oklch(45% 0.055 178)", label: "13:40 遲午餐" },
           { name: "Parc Floral de Paris", lat: 48.8380, lng: 2.4450, color: "oklch(45% 0.170 264)", label: "15:30–18:00 玩" },
-          { name: "Château de Vincennes", lat: 48.8444, lng: 2.4406, color: "oklch(30% 0.020 252)", label: "1 號線總站" }
+          { name: "Château de Vincennes", lat: 48.8444, lng: 2.4406, color: "oklch(30% 0.020 252)", label: "1 號線總站" },
+          { name: "Café de l'Industrie", lat: 48.8556, lng: 2.3718, color: "oklch(45% 0.055 178)", label: "晚餐" }
         ],
         activities: [
           {
@@ -601,8 +638,8 @@
           {
             type: "food",
             icon: "fa-utensils",
-            title: "晚餐 — 返 Bastille，~19:00",
-            desc: "18:00 左右離開，1 號線直接返到 Bastille，大約 18:40 到。因為午餐遲，今晚未必好肚餓 — 唔使搏正經晚餐，酒店附近搵間坐低，甚至食輕啲都得。",
+            title: "晚餐 — Café de l'Industrie",
+            desc: "16 rue Saint-Sabin，18:00 左右離開 Parc Floral，1 號線返到 Bastille 大約 18:40，再行 5–8 分鐘就到 —— 今日全日路程最短嘅一餐。因為午餐遲，今晚未必好肚餓，唔使搏正經晚餐；呢度可以食輕啲（例如淨係嗌法式洋蔥湯）都得，唔使訂位。",
             tag: "~£15–20/人"
           }
         ]
@@ -680,7 +717,7 @@
       {
         title: "出發前一星期",
         items: [
-          { text: "Download：Citymapper · Eurostar · Notre-Dame de Paris app · Google Maps offline · Google Translate" },
+          { text: "Download：Citymapper · Eurostar · Google Maps offline · Google Translate" },
           { text: "確認兩部電話開咗漫遊，或者到達 Gare du Nord 再買法國 SIM 卡" },
           { text: "同女兒練習講：bonjour · merci · un croissant · s'il vous plaît" },
           { text: "Print 定所有 booking confirmation 嘅備份" },
@@ -708,6 +745,17 @@
       { icon: "fa-subway", name: "巴黎交通（Navigo 卡 + RER）", budget: 50, mid: 50 },
       { icon: "fa-shopping-bag", name: "零食、雪糕、手信", budget: 50, mid: 80 },
       { icon: "fa-shield-alt", name: "旅遊保險 + SIM 卡", budget: 70, mid: 120 }
+    ],
+    transportRoutes: [
+      { day: "1", leg: "Gare du Nord → Bréguet-Sabin（酒店）", line: "M5 直達（6 個站）", time: "~15 分鐘" },
+      { day: "2", leg: "酒店（行去 Bastille）→ Trocadéro", line: "M1 → Étoile（10 站）→ 轉 M6 → Trocadéro（2 站）", time: "~25–30 分鐘" },
+      { day: "2", leg: "École Militaire → Bastille（返酒店）", line: "M8 直達（14 個站）", time: "~20–25 分鐘" },
+      { day: "3", leg: "Bastille → 羅浮宮（Palais-Royal）", line: "M1 直達（4 個站）", time: "~10 分鐘" },
+      { day: "3", leg: "羅浮宮 → Château de Vincennes（Parc Floral）", line: "M1 直達（11 個站）", time: "~25 分鐘" },
+      { day: "3", leg: "Château de Vincennes → Bastille（返酒店）", line: "M1 直達（7 個站）", time: "~15–18 分鐘" },
+      { day: "4", leg: "酒店（行去 Bastille）→ Grands Boulevards", line: "M8 直達（7 個站）", time: "~14–16 分鐘" },
+      { day: "4", leg: "Grands Boulevards → Bastille（返酒店攞行李）", line: "M8 原路折返", time: "~14–16 分鐘" },
+      { day: "4", leg: "Bréguet-Sabin → Gare du Nord", line: "M5 直達（6 個站）", time: "~15–20 分鐘" }
     ],
     tips: [
       {
@@ -759,7 +807,7 @@
         day: "Day 1–3 · 晚餐（酒店附近，通用選擇）",
         items: [
           { name: "★ Bofinger（✓ 已訂 Day 2 晚餐 18:30）", type: "晚餐 · 歷史名店", note: "5–7 rue de la Bastille。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。", dish: "推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）、plateau de fruits de mer 海鮮拼盤（大人想豪就叫）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bofinger+5+rue+de+la+Bastille+Paris" },
-          { name: "Café de l'Industrie", type: "晚餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，唔使訂位。", dish: "推介：同午餐一樣 — duck confit、pot-au-feu、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
+          { name: "Café de l'Industrie（★ 已排 Day 1 午餐 + Day 3 晚餐）", type: "晚餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，唔使訂位。", dish: "推介：同午餐一樣 — duck confit、pot-au-feu、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
           { name: "Le Bistrot du Peintre", type: "晚餐 · 法式小酒館", note: "116 av Ledru-Rollin。逢日 07:00–02:00，可以 walk-in，Art Nouveau 裝修，有 menu enfant。", dish: "推介：傳統小酒館牛排薯條、鴨扒；有兒童餐可揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Bistrot+du+Peintre+116+avenue+Ledru-Rollin+Paris" },
           { name: "Chez Paul", type: "晚餐 · 法式小酒館", note: "Bastille。逢日 12:00–01:00。", dish: "推介：傳統法式小酒館菜，兔肉、鴨胸，老饕之選。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Chez+Paul+Bastille+Paris" },
           { name: "Bouillon République", type: "晚餐 · 老字號", note: "39 bd du Temple。抵食、出餐快。", dish: "推介：同上晝一樣 — œuf mayonnaise、steak frites、profiteroles。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+R%C3%A9publique+39+boulevard+du+Temple+Paris" },
@@ -818,6 +866,7 @@
       const days = ref(itineraryData.days);
       const budgetItems = ref(itineraryData.budget);
       const tips = ref(itineraryData.tips);
+      const transportRoutes = ref(itineraryData.transportRoutes);
       const restaurants = ref(itineraryData.restaurants);
 
       // localStorage can throw (private mode, blocked storage, data: URLs) —
@@ -949,6 +998,7 @@
         checklistGroups,
         budgetItems,
         tips,
+        transportRoutes,
         restaurants,
         toggleCheck,
         totalBudget,
