@@ -449,14 +449,14 @@
         isDark: false,
         tipBox: {
           icon: "fa-bed",
-          text: "<strong>今日刻意留白：</strong>一家人由早上 07:45 就開始趕路，到步已經係下午 2 點。所以今日只安排「食飯 → 遊樂場 → 晚餐」三件事，唔安排任何要買飛或者趕時間嘅節目。真正嘅行程由聽日先開始。<br><strong>午餐今次要搭一程地鐵：</strong>因為想食正宗 pho，Dong Huong（14 rue Louis Bonnet，Belleville）唔喺酒店步程範圍，要搭 15 分鐘地鐵，12:00–22:30 全日供應（逢星期二休息，今日星期一唔使擔心），唔使搏收爐時間，慢慢嚟就得。食完飯再搭地鐵返 Marais 去遊樂場。"
+          text: "<strong>今日刻意留白：</strong>一家人由早上 07:45 就開始趕路，到步已經係下午 2 點。所以今日只安排「食飯 → 遊樂場 → 晚餐」三件事，全部喺酒店 15 分鐘步程內，唔安排任何要買飛或者趕時間嘅節目。真正嘅行程由聽日先開始。"
         },
         mapPoints: [
           { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(30% 0.020 252)", label: "出發" },
           { name: "St Pancras International", lat: 51.5320, lng: -0.1233, color: "oklch(30% 0.020 252)", label: "Eurostar check-in" },
           { name: "Gare du Nord", lat: 48.8809, lng: 2.3553, color: "oklch(30% 0.020 252)", label: "13:59 抵達" },
           { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "酒店" },
-          { name: "Dong Huong（正宗 pho）", lat: 48.8716, lng: 2.3775, color: "oklch(45% 0.055 178)", label: "~14:30 · 午餐" },
+          { name: "Café de l'Industrie", lat: 48.8556, lng: 2.3718, color: "oklch(45% 0.055 178)", label: "午餐" },
           { name: "Place des Vosges", lat: 48.8557, lng: 2.3651, color: "oklch(45% 0.170 264)", label: "遊樂場" },
           { name: "Le Bistrot du Peintre", lat: 48.8501, lng: 2.3742, color: "oklch(45% 0.055 178)", label: "晚餐" }
         ],
@@ -492,17 +492,9 @@
           {
             type: "food",
             icon: "fa-utensils",
-            title: "正宗 pho 午餐 — Dong Huong",
-            desc: "14 rue Louis Bonnet，Belleville。放低行李之後出發：Bréguet-Sabin 搭 M5 → République（3 站）→ 轉 M11 → Belleville（2 站），約 15 分鐘，落車行 3 分鐘就到。1984 年開業嘅 Belleville 老字號，北越風味 pho，係公認巴黎其中一間最正宗、最耐用嘅老店。",
-            note: "接受信用卡，唔使淨帶現金。地方樸實、枱位貼得幾埋，出餐快，旺市時間會逼少少 —— 遲少少去（~14:30）會靜啲。",
-            tag: "~£8–10/人"
-          },
-          {
-            type: "move",
-            icon: "fa-subway",
-            title: "Dong Huong → Place des Vosges",
-            desc: "Belleville 搭 M11 → République（2 站）→ 轉 M8 → Chemin Vert（2 站），約 15 分鐘，落車行 5 分鐘就到 Place des Vosges。",
-            tag: "~15–20 分鐘"
+            title: "遲少少食午餐 — Café de l'Industrie",
+            desc: "16 rue Saint-Sabin，由酒店行 5–8 分鐘就到，全程唔使兜路。Belle Époque 裝修——坐咗成朝火車之後，畀呢個氣氛做「終於到咗巴黎」嘅第一印象。推介：duck confit（鴨脾）、pot-au-feu（燉牛肉）、法式洋蔥湯，甜品 crème brûlée。",
+            tag: "~£15–20/人"
           },
           {
             type: "fun",
@@ -602,7 +594,7 @@
           { name: "Café Marly（全日供應）", lat: 48.8625, lng: 2.3395, color: "oklch(45% 0.055 178)", label: "13:40 遲午餐" },
           { name: "Parc Floral de Paris", lat: 48.8380, lng: 2.4450, color: "oklch(45% 0.170 264)", label: "15:30–18:00 玩" },
           { name: "Château de Vincennes", lat: 48.8444, lng: 2.4406, color: "oklch(30% 0.020 252)", label: "1 號線總站" },
-          { name: "Café de l'Industrie", lat: 48.8556, lng: 2.3718, color: "oklch(45% 0.055 178)", label: "晚餐" }
+          { name: "Do et Riz（正宗越南菜）", lat: 48.8503, lng: 2.3773, color: "oklch(45% 0.055 178)", label: "晚餐" }
         ],
         activities: [
           {
@@ -668,8 +660,9 @@
           {
             type: "food",
             icon: "fa-utensils",
-            title: "晚餐 — Café de l'Industrie",
-            desc: "16 rue Saint-Sabin，18:00 左右離開 Parc Floral，1 號線返到 Bastille 大約 18:40，再行 5–8 分鐘就到 —— 今日全日路程最短嘅一餐。因為午餐遲，今晚未必好肚餓，唔使搏正經晚餐；呢度可以食輕啲（例如淨係嗌法式洋蔥湯）都得，唔使訂位。",
+            title: "晚餐 — Do et Riz（正宗越南菜）",
+            desc: "31 rue de Cotte，18:00 左右離開 Parc Floral，1 號線返到 Bastille 大約 18:40，再行 8–10 分鐘就到。菜式選擇多——phở、bò bún（牛肉/蝦肉）、tofu 素食版，啱曬一家人唔同口味。因為午餐遲，今晚未必好肚餓，呢度食輕啲都得。",
+            note: "19:00–22:30 開，逢星期日休息，唔使訂位。",
             tag: "~£15–20/人"
           }
         ]
@@ -779,8 +772,6 @@
     ],
     transportRoutes: [
       { day: "1", leg: "Gare du Nord → Bréguet-Sabin（酒店）", line: "M5 直達（6 個站）", time: "~15 分鐘" },
-      { day: "1", leg: "酒店 → Dong Huong（Belleville）", line: "M5 → République（3 站）→ 轉 M11 → Belleville（2 站）", time: "~15 分鐘" },
-      { day: "1", leg: "Dong Huong → Place des Vosges", line: "M11 → République（2 站）→ 轉 M8 → Chemin Vert（2 站）", time: "~15–20 分鐘" },
       { day: "2", leg: "酒店（行去 Bastille）→ Trocadéro", line: "M1 → Étoile（10 站）→ 轉 M6 → Trocadéro（2 站）", time: "~25–30 分鐘" },
       { day: "2", leg: "École Militaire → Bastille（返酒店）", line: "M8 直達（14 個站）", time: "~20–25 分鐘" },
       { day: "3", leg: "Bastille → 聖母院（Cité 站）", line: "M5 → Châtelet（3 站）→ 轉 M4 → Cité（1 站）", time: "~15 分鐘" },
@@ -827,8 +818,7 @@
       {
         day: "Day 1 · 週一 8月31日 — 午餐 ~14:30（要 service continu，冇早餐）",
         items: [
-          { name: "★ Dong Huong", type: "午餐 · 正宗 pho", note: "14 rue Louis Bonnet，Belleville。1984 年開業嘅老字號，北越風味，公認巴黎其中一間最正宗、最耐用嘅 pho 老店。12:00–22:30 全日供應，逢星期二休息（今日星期一冇問題），接受信用卡。地方樸實、枱位貼近，旺市會逼。", dish: "推介：pho gà（雞肉河粉）、pho bò（牛肉河粉）、bún riêu（蟹肉番茄米線）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Dong+Huong+14+rue+Louis+Bonnet+Paris" },
-          { name: "Café de l'Industrie（後備）", type: "午餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，09:00–02:00 全日供應，Belle Époque 裝修，午市套餐 €12。想慳返一程地鐵嘅話就直接轉嚟呢度。", dish: "推介：duck confit（鴨脾）、pot-au-feu（燉牛肉）、escargots de Bourgogne（勃艮第蝸牛）、法式洋蔥湯，甜品試 crème brûlée。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
+          { name: "★ Café de l'Industrie", type: "午餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，09:00–02:00 全日供應，Belle Époque 裝修，午市套餐 €12。", dish: "推介：duck confit（鴨脾）、pot-au-feu（燉牛肉）、escargots de Bourgogne（勃艮第蝸牛）、法式洋蔥湯，甜品試 crème brûlée。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
           { name: "Bouillon République", type: "午餐 · 老字號", note: "39 bd du Temple。12:00–24:00 全日供應，官方推薦帶小朋友嘅家庭，水煮蛋 €2.70。", dish: "推介：œuf mayonnaise（水煮蛋沙律）、火腿松露意粉、steak frites（牛排薯條）、生蠔（半打 €9.90）、profiteroles 收尾。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+R%C3%A9publique+39+boulevard+du+Temple+Paris" },
           { name: "Breizh Café", type: "午餐 · 可麗餅", note: "Le Marais。布列塔尼 galette，對 7 歲細路嚟講最保險嘅選擇。", dish: "推介：Complète galette（芝士火腿太陽蛋）；細路多數鍾意火腿芝士 galette，甜 crêpe 配香蕉/焦糖/雲呢拿雪糕；配蘋果酒 cidre（大人）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Breizh+Caf%C3%A9+Marais+Paris" },
           { name: "Norma", type: "午餐 · 意大利粉", note: "北 Marais。罕有星期一都有午市（好多店星期一休息）。", dish: "推介：招牌 paccheri/maccheroncini alla norma（茄汁茄子鹹芝士）、蝦青口鮭魚子意粉；甜品 tiramisu。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Norma+restaurant+Marais+Paris" },
@@ -842,8 +832,9 @@
         day: "Day 1–3 · 晚餐（酒店附近，通用選擇）",
         items: [
           { name: "★ Bofinger（✓ 已訂 Day 2 晚餐 18:30）", type: "晚餐 · 歷史名店", note: "5–7 rue de la Bastille。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。", dish: "推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）、plateau de fruits de mer 海鮮拼盤（大人想豪就叫）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bofinger+5+rue+de+la+Bastille+Paris" },
-          { name: "Café de l'Industrie（★ 已排 Day 1 午餐 + Day 3 晚餐）", type: "晚餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，唔使訂位。", dish: "推介：同午餐一樣 — duck confit、pot-au-feu、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
-          { name: "Le Bistrot du Peintre", type: "晚餐 · 法式小酒館", note: "116 av Ledru-Rollin。逢日 07:00–02:00，可以 walk-in，Art Nouveau 裝修，有 menu enfant。", dish: "推介：傳統小酒館牛排薯條、鴨扒；有兒童餐可揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Bistrot+du+Peintre+116+avenue+Ledru-Rollin+Paris" },
+          { name: "★ Do et Riz（★ 已排 Day 3 晚餐 · 正宗越南菜）", type: "晚餐 · 越南菜", note: "31 rue de Cotte。離 Bastille 行 8–10 分鐘。19:00–22:30 開，逢星期日休息，唔使訂位。", dish: "推介：phở（牛肉/雞肉河粉）、bò bún（牛肉檬粉）、tofu 素食版。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Do+et+Riz+31+rue+de+Cotte+Paris" },
+          { name: "Café de l'Industrie（★ 已排 Day 1 午餐）", type: "晚餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，唔使訂位。", dish: "推介：同午餐一樣 — duck confit、pot-au-feu、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
+          { name: "Le Bistrot du Peintre（★ 已排 Day 1 晚餐）", type: "晚餐 · 法式小酒館", note: "116 av Ledru-Rollin。逢日 07:00–02:00，可以 walk-in，Art Nouveau 裝修，有 menu enfant。", dish: "推介：傳統小酒館牛排薯條、鴨扒；有兒童餐可揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Bistrot+du+Peintre+116+avenue+Ledru-Rollin+Paris" },
           { name: "Chez Paul", type: "晚餐 · 法式小酒館", note: "Bastille。逢日 12:00–01:00。", dish: "推介：傳統法式小酒館菜，兔肉、鴨胸，老饕之選。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Chez+Paul+Bastille+Paris" },
           { name: "Bouillon République", type: "晚餐 · 老字號", note: "39 bd du Temple。抵食、出餐快。", dish: "推介：同上晝一樣 — œuf mayonnaise、steak frites、profiteroles。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+R%C3%A9publique+39+boulevard+du+Temple+Paris" },
           { name: "Le Président（⚠️ 其實係老字號中菜館，唔係法式 Brasserie）", type: "晚餐 · 中菜", note: "120–124 rue du Faubourg du Temple。1986 年開業，圓頂 + 迴旋大圓枱，最適合一家人分享。", dish: "推介：北京鴨、廣式點心、分享大碟菜，小朋友會俾個場面同轉盤逗到好開心。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Pr%C3%A9sident+120+rue+du+Faubourg+du+Temple+Paris" },
