@@ -225,6 +225,12 @@
     </div>
   </header>
 
+  <!-- Day shortcut nav — sticks to the top once the hero scrolls past, so
+       jumping between days doesn't mean scrolling all the way back up. -->
+  <nav class="sticky top-0 z-30 bg-navy/95 backdrop-blur border-b border-[oklch(33%_0.022_252)] px-[clamp(1.5rem,5vw,5rem)] flex items-center gap-8 overflow-x-auto scrollbar-none">
+    <a v-for="day in days" :key="'nav-' + day.num" :href="'#day' + day.num" class="font-sans text-[0.68rem] font-light tracking-[0.2em] uppercase text-[oklch(72%_0.014_252)] hover:text-gold transition-colors duration-200 shrink-0 py-3 whitespace-nowrap">{{ day.num }} · {{ (day.date.split('，')[1] || day.date) }}</a>
+  </nav>
+
   <div class="bg-navy px-[clamp(2rem,5vw,5rem)] flex items-stretch overflow-x-auto scrollbar-none">
     <div v-for="stat in stats" :key="stat.label" class="py-[1.6rem] pr-10 mr-10 border-r border-[oklch(33%_0.022_252)] shrink-0 last:border-r-0 last:mr-0" :style="stat.isFirst ? 'padding-left:clamp(1.5rem,5vw,5rem)' : ''">
       <div class="font-display text-[2.1rem] font-medium text-gold leading-none tracking-[-0.005em]">{{ stat.value }}</div>
