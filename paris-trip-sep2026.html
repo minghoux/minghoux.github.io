@@ -449,14 +449,14 @@
         isDark: false,
         tipBox: {
           icon: "fa-bed",
-          text: "<strong>今日刻意留白：</strong>一家人由早上 07:45 就開始趕路，到步已經係下午 2 點。所以今日只安排「食飯 → 遊樂場 → 晚餐」三件事，全部喺酒店 15 分鐘步程內，唔安排任何要買飛或者趕時間嘅節目。真正嘅行程由聽日先開始。"
+          text: "<strong>今日刻意留白：</strong>一家人由早上 07:45 就開始趕路，到步已經係下午 2 點。所以今日只安排「食飯 → 遊樂場 → 晚餐」三件事，唔安排任何要買飛或者趕時間嘅節目。真正嘅行程由聽日先開始。<br><strong>⚠️ 午餐今次要搭一程地鐵：</strong>因為想食正宗 pho，Song Heng（3 rue Volta）唔喺酒店步程範圍，要搭 15 分鐘地鐵，而且佢 16:00 就收爐 —— 放低行李之後一定要即刻出發，唔好諗住抖一陣先走。食完飯慢慢行返 Marais 就得，唔使再搭車。"
         },
         mapPoints: [
           { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(30% 0.020 252)", label: "出發" },
           { name: "St Pancras International", lat: 51.5320, lng: -0.1233, color: "oklch(30% 0.020 252)", label: "Eurostar check-in" },
           { name: "Gare du Nord", lat: 48.8809, lng: 2.3553, color: "oklch(30% 0.020 252)", label: "13:59 抵達" },
           { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "酒店" },
-          { name: "Café de l'Industrie", lat: 48.8556, lng: 2.3718, color: "oklch(45% 0.055 178)", label: "午餐" },
+          { name: "Song Heng（正宗 pho）", lat: 48.8666, lng: 2.3580, color: "oklch(45% 0.055 178)", label: "14:30 前後 · 午餐" },
           { name: "Place des Vosges", lat: 48.8557, lng: 2.3651, color: "oklch(45% 0.170 264)", label: "遊樂場" },
           { name: "Le Bistrot du Peintre", lat: 48.8501, lng: 2.3742, color: "oklch(45% 0.055 178)", label: "晚餐" }
         ],
@@ -492,9 +492,17 @@
           {
             type: "food",
             icon: "fa-utensils",
-            title: "遲少少食午餐 — Café de l'Industrie",
-            desc: "16 rue Saint-Sabin，由酒店行 5–8 分鐘就到，全程唔使兜路。Belle Époque 裝修——坐咗成朝火車之後，畀呢個氣氛做「終於到咗巴黎」嘅第一印象。推介：duck confit（鴨脾）、pot-au-feu（燉牛肉）、法式洋蔥湯，甜品 crème brûlée。",
-            tag: "~£15–20/人"
+            title: "正宗 pho 午餐 — Song Heng",
+            desc: "3 rue Volta（Arts et Métiers 站旁）。放低行李之後即刻出發：Bréguet-Sabin 搭 M5 → République（3 站）→ 轉 M3 → Arts et Métiers（1 站），約 15 分鐘，落車行 1 分鐘就到。餐牌淨係 pho 同 bún bò Huế 兩款，反而樣樣做到極致，湯底出晒名靚，係巴黎公認最正宗嗰間之一。",
+            note: "得 20 個位，經常大排長龍，淨收現金（記得帶定散紙），逢日 11:15–16:00 開，過咗 4 點就冇得食，所以一放低行李就要出發，唔好拖到 15:00 後先諗住去。排隊太耐嘅話，Café de l'Industrie（16 rue Saint-Sabin，酒店行 5 分鐘）係穩陣後備。",
+            tag: "~£8–10/人"
+          },
+          {
+            type: "move",
+            icon: "fa-walking",
+            title: "Song Heng → Place des Vosges — 慢慢行返 Marais",
+            desc: "食完飯唔使急，慢慢行返 Marais，沿路經過好多靚小店同老建築，大約 20 分鐘就到 Place des Vosges，唔使再搭車。",
+            tag: "~20 分鐘"
           },
           {
             type: "fun",
@@ -771,6 +779,8 @@
     ],
     transportRoutes: [
       { day: "1", leg: "Gare du Nord → Bréguet-Sabin（酒店）", line: "M5 直達（6 個站）", time: "~15 分鐘" },
+      { day: "1", leg: "酒店 → Song Heng（Arts et Métiers）", line: "M5 → République（3 站）→ 轉 M3 → Arts et Métiers（1 站）", time: "~15 分鐘" },
+      { day: "1", leg: "Song Heng → Place des Vosges", line: "行路，唔使搭車", time: "~20 分鐘" },
       { day: "2", leg: "酒店（行去 Bastille）→ Trocadéro", line: "M1 → Étoile（10 站）→ 轉 M6 → Trocadéro（2 站）", time: "~25–30 分鐘" },
       { day: "2", leg: "École Militaire → Bastille（返酒店）", line: "M8 直達（14 個站）", time: "~20–25 分鐘" },
       { day: "3", leg: "Bastille → 聖母院（Cité 站）", line: "M5 → Châtelet（3 站）→ 轉 M4 → Cité（1 站）", time: "~15 分鐘" },
@@ -815,9 +825,10 @@
     ],
     restaurants: [
       {
-        day: "Day 1 · 週一 8月31日 — 午餐 ~15:00（要 service continu，冇早餐）",
+        day: "Day 1 · 週一 8月31日 — 午餐 ~14:30（要 service continu，冇早餐）",
         items: [
-          { name: "★ Café de l'Industrie", type: "午餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，09:00–02:00 全日供應，Belle Époque 裝修，午市套餐 €12。", dish: "推介：duck confit（鴨脾）、pot-au-feu（燉牛肉）、escargots de Bourgogne（勃艮第蝸牛）、法式洋蔥湯，甜品試 crème brûlée。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
+          { name: "★ Song Heng", type: "午餐 · 正宗 pho", note: "3 rue Volta，Arts et Métiers 站旁。淨賣 pho 同 bún bò Huế 兩款，湯底出晒名，公認巴黎其中一間最正宗。11:15–16:00，逢星期日休息，淨收現金，得 20 個位要有心理準備排隊。", dish: "推介：pho（牛肉河粉，湯底熬足鐘數）、bún bò Huế（順化辣牛肉米線）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Song+Heng+3+rue+Volta+Paris" },
+          { name: "Café de l'Industrie（後備）", type: "午餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，09:00–02:00 全日供應，Belle Époque 裝修，午市套餐 €12。Song Heng 排隊太耐或者已經過咗 16:00 就轉嚟呢度。", dish: "推介：duck confit（鴨脾）、pot-au-feu（燉牛肉）、escargots de Bourgogne（勃艮第蝸牛）、法式洋蔥湯，甜品試 crème brûlée。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
           { name: "Bouillon République", type: "午餐 · 老字號", note: "39 bd du Temple。12:00–24:00 全日供應，官方推薦帶小朋友嘅家庭，水煮蛋 €2.70。", dish: "推介：œuf mayonnaise（水煮蛋沙律）、火腿松露意粉、steak frites（牛排薯條）、生蠔（半打 €9.90）、profiteroles 收尾。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+R%C3%A9publique+39+boulevard+du+Temple+Paris" },
           { name: "Breizh Café", type: "午餐 · 可麗餅", note: "Le Marais。布列塔尼 galette，對 7 歲細路嚟講最保險嘅選擇。", dish: "推介：Complète galette（芝士火腿太陽蛋）；細路多數鍾意火腿芝士 galette，甜 crêpe 配香蕉/焦糖/雲呢拿雪糕；配蘋果酒 cidre（大人）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Breizh+Caf%C3%A9+Marais+Paris" },
           { name: "Norma", type: "午餐 · 意大利粉", note: "北 Marais。罕有星期一都有午市（好多店星期一休息）。", dish: "推介：招牌 paccheri/maccheroncini alla norma（茄汁茄子鹹芝士）、蝦青口鮭魚子意粉；甜品 tiramisu。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Norma+restaurant+Marais+Paris" },
