@@ -574,15 +574,16 @@
       {
         num: "D3",
         date: "週三，9月2日",
-        title: "羅浮宮 11:00 · Parc Floral · 全程 1 號線",
-        sub: "上晝慢慢嚟，11 點入羅浮宮，落午去公園放電 — 全程 1 號線唔使轉車",
+        title: "巴黎聖母院 · 羅浮宮 11:00 · Parc Floral",
+        sub: "早上先去聖母院打卡，再過河去羅浮宮 11 點入場，落午去公園放電",
         isDark: false,
         tipBox: {
           icon: "fa-clock",
-          text: "<strong>✓ 羅浮宮飛已買：9月2日 11:00 入場。</strong>時間比原先計劃嘅 09:00 遲咗兩個鐘，所以成日重新編過：<br>• <strong>上晝變咗空閒</strong> —— 唔好硬塞節目入去。琴日鐵塔日 9 點就要出門，今日就慢慢食個早餐，10:20 左右出門啱啱好。<br>• <strong>⚠️ 午餐會好遲（13:40 左右）</strong> —— 好多法國餐廳廚房 14:30 就收爐，所以一定要揀「service continu」（全日供應）嗰啲。<strong>Café Marly</strong> 就係全日供應，而且就喺羅浮宮入面，行都唔使行。出門前記得食飽早餐、袋定零食。<br>• <strong>⚠️ 11 點入場人多過 9 點</strong> —— 蒙娜麗莎嗰間房 11:15 會比 09:15 逼好多。入到去就直接殺去 Denon 翼，唔好沿路遊花園。"
+          text: "<strong>✓ 羅浮宮飛已買：9月2日 11:00 入場。</strong>時間比原先計劃嘅 09:00 遲咗兩個鐘，所以成日重新編過：<br>• <strong>上晝加咗巴黎聖母院</strong> —— 08:45 出門，09:15 左右到西堤島，睇個外觀同廣場，想入內部就要睇現場排隊。10:00 左右起身沿塞納河邊行去羅浮宮，路上經過書檔同 Pont Neuf，10:15–10:30 到，仲有少少寬裕先入場。<br>• <strong>⚠️ 午餐會好遲（13:40 左右）</strong> —— 好多法國餐廳廚房 14:30 就收爐，所以一定要揀「service continu」（全日供應）嗰啲。<strong>Café Marly</strong> 就係全日供應，而且就喺羅浮宮入面，行都唔使行。出門前記得食飽早餐、袋定零食。<br>• <strong>⚠️ 11 點入場人多過 9 點</strong> —— 蒙娜麗莎嗰間房 11:15 會比 09:15 逼好多。入到去就直接殺去 Denon 翼，唔好沿路遊花園。"
         },
         mapPoints: [
-          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~10:20 出門" },
+          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~08:45 出門" },
+          { name: "巴黎聖母院", lat: 48.8530, lng: 2.3499, color: "oklch(51% 0.205 27)", label: "09:15–10:00" },
           { name: "羅浮宮", lat: 48.8606, lng: 2.3376, color: "oklch(51% 0.205 27)", label: "11:00 · 限 2.5 個鐘" },
           { name: "Café Marly（全日供應）", lat: 48.8625, lng: 2.3395, color: "oklch(45% 0.055 178)", label: "13:40 遲午餐" },
           { name: "Parc Floral de Paris", lat: 48.8380, lng: 2.4450, color: "oklch(45% 0.170 264)", label: "15:30–18:00 玩" },
@@ -593,9 +594,24 @@
           {
             type: "food",
             icon: "fa-mug-hot",
-            title: "上晝慢慢嚟 — 早餐食飽佢",
-            desc: "今日 11 點先入羅浮宮，10:20 出門就夠。琴日 9 點要出門，今日呢個 slack 係好事，唔好用嚟塞多個景點。酒店附近 boulangerie 慢慢食個早餐 — 而且今日午餐會遲到 13:40，早餐一定要食飽，袋度再放定零食。",
-            tag: "~10:20 出門"
+            title: "早餐 — 酒店附近 boulangerie",
+            desc: "今日加咗聖母院，08:00 起身、08:45 就要出門，唔可以再瞓晏覺。今日午餐仲會遲到 13:40，早餐一定要食飽，袋定零食先出門。",
+            tag: "~08:45 出門"
+          },
+          {
+            type: "hi",
+            icon: "fa-church",
+            title: "巴黎聖母院 — Île de la Cité",
+            desc: "由酒店搭地鐵（M5 → 轉 M4 往 Cité，或 M1 → 轉 M4）到西堤島，行到廣場影相，2019 年大火後重建咗嘅外觀同尖塔值得慢慢睇。想入內部就要睇現場排隊情況 — 通常一開門去人流最少。",
+            note: "免費入場，但想入內部參觀建議預留 45 分鐘–1 個鐘（包排隊）。出發前上網睇下有冇最新開放時間或者預約安排。",
+            tag: "09:15–10:00"
+          },
+          {
+            type: "move",
+            icon: "fa-walking",
+            title: "聖母院 → 羅浮宮 — 沿塞納河邊行",
+            desc: "沿河邊行，經過 Pont Neuf 同河邊嘅二手書檔（bouquinistes），大約 10–15 分鐘就到羅浮宮，仲有少少寬裕先入 11:00 場。",
+            tag: "~10–15 分鐘"
           },
           {
             type: "hi",
@@ -728,6 +744,7 @@
         title: "喺巴黎期間",
         items: [
           { text: "週二：鐵塔落嚟之後唔好再加節目，下午 4 點就返酒店抖" },
+          { text: "週三：08:45 出門去聖母院，09:15–10:00 睇完就沿河邊行去羅浮宮" },
           { text: "週三：羅浮宮 2.5 個鐘一到就走，唔好戀戰" },
           { text: "週四早上：中午前 check-out，行李寄存喺酒店 reception，出發去車站前先攞返" },
           { text: "週四：Passage Jouffroy 同 Marché des Enfants Rouges 二揀一，唔好兩個都去" }
@@ -750,7 +767,8 @@
       { day: "1", leg: "Gare du Nord → Bréguet-Sabin（酒店）", line: "M5 直達（6 個站）", time: "~15 分鐘" },
       { day: "2", leg: "酒店（行去 Bastille）→ Trocadéro", line: "M1 → Étoile（10 站）→ 轉 M6 → Trocadéro（2 站）", time: "~25–30 分鐘" },
       { day: "2", leg: "École Militaire → Bastille（返酒店）", line: "M8 直達（14 個站）", time: "~20–25 分鐘" },
-      { day: "3", leg: "Bastille → 羅浮宮（Palais-Royal）", line: "M1 直達（4 個站）", time: "~10 分鐘" },
+      { day: "3", leg: "Bastille → 聖母院（Cité 站）", line: "M5 → Châtelet（3 站）→ 轉 M4 → Cité（1 站）", time: "~15 分鐘" },
+      { day: "3", leg: "聖母院 → 羅浮宮", line: "沿塞納河邊行，唔使搭車", time: "~10–15 分鐘" },
       { day: "3", leg: "羅浮宮 → Château de Vincennes（Parc Floral）", line: "M1 直達（11 個站）", time: "~25 分鐘" },
       { day: "3", leg: "Château de Vincennes → Bastille（返酒店）", line: "M1 直達（7 個站）", time: "~15–18 分鐘" },
       { day: "4", leg: "酒店（行去 Bastille）→ Grands Boulevards", line: "M8 直達（7 個站）", time: "~14–16 分鐘" },
