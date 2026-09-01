@@ -515,19 +515,21 @@
       {
         num: "D2",
         date: "週二，9月1日",
-        title: "艾菲爾鐵塔 · Champ de Mars 遊樂場 · rue Cler 午餐",
-        sub: "西邊全日步行區 — 出程 M1→M6（1 次轉車），返程 M8 直達",
+        title: "艾菲爾鐵塔 · rue Cler 午餐 · Montmartre 蒙馬特",
+        sub: "上晝西邊鐵塔區，落午轉去北邊 Montmartre — 出程 M1→M6，中途 M8→M12，返程 M12→M1",
         isDark: true,
         tipBox: {
           icon: "fa-shoe-prints",
-          text: "<strong>今日全部行得到：</strong>Trocadéro → 鐵塔 → Champ de Mars → rue Cler 全部連埋一齊，唔使搭車。<br><strong>出程：</strong>行 8 分鐘去 Bastille，搭 M1 → Charles de Gaulle–Étoile（10 個站）→ 轉 M6 → Trocadéro（2 個站），1 次轉車，約 25–30 分鐘。<strong>返程：</strong>École Militaire 搭 M8 直達 Bastille（14 個站，唔使轉車），約 20–25 分鐘。單程成人 €2.55 / 女兒 €1.30。<br><strong>刻意輕鬆：</strong>下午 4 點就收工返酒店休息，儲返體力先出去食 Bofinger 晚餐（✓ 已訂位 18:30）—— 呢個返房休息嘅窗口就係專登留返畀一餐大啲嘅晚飯。聽日羅浮宮 11:00 先入場，10:20 先出門，唔使擔心今晚食晏啲會影響聽朝。<br><strong>可選加碼：</strong>想多一個正式遊樂場嘅話，<strong>Parc André Citroën</strong>（15 區，離鐵塔約 20 分鐘）有繫留氦氣球升到 150 米高（真刺激但完全唔係過山車），仲有大型噴水柱。要買飛、大風唔飛，所以冇當預設。"
+          text: "<strong>⚠️ 加咗 Montmartre 之後，今日冇晒返酒店休息嘅窗口：</strong>原本設計係鐵塔玩完 4 點就返酒店抖，儲精神先去 Bofinger。宜家落午直接轉去 Montmartre，一路玩到接近晚飯時間先返 Bastille，變咗成日冇停過，對 7 歲小朋友嚟講會攰好多，記得叫佢中途執下腳骨力。<br><strong>出程（去鐵塔）：</strong>行 8 分鐘去 Bastille，搭 M1 → Charles de Gaulle–Étoile（10 個站）→ 轉 M6 → Trocadéro（2 個站），約 25–30 分鐘。<br><strong>中途（École Militaire → Montmartre）：</strong>搭 M8 → Madeleine（轉車站）→ 轉 M12 → Abbesses，約 23 分鐘，1 次轉車。<br><strong>返程（Montmartre → Bastille）：</strong>Abbesses 冇直達 Bastille，搭 M12 → Concorde → 轉 M1 → Bastille，約 28 分鐘。<br><strong>時間預算：</strong>13:15 由 rue Cler 出發，13:40 左右到 Montmartre，玩到 16:15 就要走，先夠時間返酒店梳洗再去 18:30 嘅 Bofinger。"
         },
         mapPoints: [
           { name: "Trocadéro", lat: 48.8625, lng: 2.2888, color: "oklch(50% 0.012 255)", label: "09:00 影相" },
           { name: "艾菲爾鐵塔", lat: 48.8584, lng: 2.2945, color: "oklch(51% 0.205 27)", label: "第二層電梯" },
           { name: "rue Cler 市集街", lat: 48.8556, lng: 2.3050, color: "oklch(45% 0.055 178)", label: "午餐" },
-          { name: "Champ de Mars 遊樂場", lat: 48.8560, lng: 2.2980, color: "oklch(45% 0.170 264)", label: "下午放電" },
-          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~16:00 返酒店" },
+          { name: "Champ de Mars 遊樂場", lat: 48.8560, lng: 2.2980, color: "oklch(45% 0.170 264)", label: "快閃放電" },
+          { name: "Sacré-Cœur · Montmartre", lat: 48.8867, lng: 2.3431, color: "oklch(51% 0.205 27)", label: "13:40–16:15" },
+          { name: "Place du Tertre", lat: 48.8865, lng: 2.3405, color: "oklch(45% 0.170 264)", label: "畫家廣場" },
+          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~17:00 返酒店梳洗" },
           { name: "Bofinger", lat: 48.8531, lng: 2.3690, color: "oklch(45% 0.055 178)", label: "✓ 18:30 晚餐" }
         ],
         activities: [
@@ -556,16 +558,38 @@
           {
             type: "fun",
             icon: "fa-child",
-            title: "Champ de Mars 遊樂場 + Trocadéro 噴泉",
-            desc: "鐵塔腳下有 4 個免費遊樂場，Trocadéro 嗰邊有水花可以玩。排完隊上完塔之後，正好喺度放電減壓 — 零車程，行幾步就到，攰就隨時走。",
-            tag: "Free"
+            title: "Champ de Mars 遊樂場 — 快閃放電",
+            desc: "鐵塔腳下有 4 個免費遊樂場。因為落午加咗 Montmartre，呢度今日淨係快閃 20–30 分鐘，唔再係全程重點，攰就即刻起身去食飯。",
+            tag: "Free · ~20–30 分鐘"
+          },
+          {
+            type: "move",
+            icon: "fa-subway",
+            title: "rue Cler → Montmartre",
+            desc: "13:15 左右由 École Militaire 站出發：搭 M8 → Madeleine（轉車）→ 轉 M12 → Abbesses，約 23 分鐘，1 次轉車。Abbesses 站本身都值得睇——巴黎最深嘅月台之一，仲有 Art Nouveau 玻璃頂出入口。",
+            tag: "~23 分鐘"
+          },
+          {
+            type: "hi",
+            icon: "fa-church",
+            title: "Sacré-Cœur 同 Place du Tertre",
+            desc: "由 Abbesses 行上山（或搭 Funiculaire de Montmartre，用返地鐵飛就得，慳返爬樓梯）先到 Sacré-Cœur。教堂免費入場，山頂平台可以睇成個巴黎景。跟住行 5 分鐘去 Place du Tertre 畫家廣場，好多街頭畫家即場幫遊客畫像，好熱鬧。",
+            note: "今日時間趕，圓頂登高（要買飛加排隊）就冇安排，睇教堂外觀同平台景已經好正。Square Willette（山腳）有個懷舊木馬轉圈，女兒應該會鍾意，唔想爬太多樓梯嘅話可以喺呢度停一停。",
+            tag: "13:40–16:15"
+          },
+          {
+            type: "move",
+            icon: "fa-subway",
+            title: "Montmartre → Bastille",
+            desc: "16:15 左右由 Abbesses 出發：搭 M12 → Concorde（轉車）→ 轉 M1 → Bastille，約 28 分鐘（冇直達，要轉一次車）。落車再行 5 分鐘返到酒店。",
+            tag: "~28 分鐘"
           },
           {
             type: "move",
             icon: "fa-bed",
-            title: "~16:00 返酒店休息",
-            desc: "返到 Bastille 沖涼攤一陣，儲定精神。今晚特登留咗個大啲嘅晚飯，唔使匆忙。",
-            tag: "~16:00"
+            title: "~17:00 返酒店梳洗",
+            desc: "返到 Bastille 沖返身、換件衫，儲定少少精神先去食飯。今日冇晒原本嘅休息窗口，呢度得返 1 個鐘左右緩衝，準時 18:15 就要出門。",
+            tag: "~17:00"
           },
           {
             type: "food",
@@ -773,7 +797,8 @@
     transportRoutes: [
       { day: "1", leg: "Gare du Nord → Bréguet-Sabin（酒店）", line: "M5 直達（6 個站）", time: "~15 分鐘" },
       { day: "2", leg: "酒店（行去 Bastille）→ Trocadéro", line: "M1 → Étoile（10 站）→ 轉 M6 → Trocadéro（2 站）", time: "~25–30 分鐘" },
-      { day: "2", leg: "École Militaire → Bastille（返酒店）", line: "M8 直達（14 個站）", time: "~20–25 分鐘" },
+      { day: "2", leg: "École Militaire → Montmartre（Abbesses）", line: "M8 → Madeleine（轉車）→ 轉 M12 → Abbesses", time: "~23 分鐘" },
+      { day: "2", leg: "Montmartre（Abbesses）→ Bastille（返酒店）", line: "M12 → Concorde（轉車）→ 轉 M1 → Bastille", time: "~28 分鐘" },
       { day: "3", leg: "Bastille → 聖母院（Cité 站）", line: "M5 → Châtelet（3 站）→ 轉 M4 → Cité（1 站）", time: "~15 分鐘" },
       { day: "3", leg: "聖母院 → 羅浮宮", line: "沿塞納河邊行，唔使搭車", time: "~10–15 分鐘" },
       { day: "3", leg: "羅浮宮 → Château de Vincennes（Parc Floral）", line: "M1 直達（11 個站）", time: "~25 分鐘" },
