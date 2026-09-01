@@ -520,7 +520,7 @@
         isDark: true,
         tipBox: {
           icon: "fa-shoe-prints",
-          text: "<strong>⚠️ 加咗 Montmartre 之後，今日冇晒返酒店休息嘅窗口：</strong>原本設計係鐵塔玩完 4 點就返酒店抖，儲精神先去 Bofinger。宜家落午直接轉去 Montmartre，一路玩到接近晚飯時間先返 Bastille，變咗成日冇停過，對 7 歲小朋友嚟講會攰好多，記得叫佢中途執下腳骨力。<br><strong>出程（去鐵塔）：</strong>行 8 分鐘去 Bastille，搭 M1 → Charles de Gaulle–Étoile（10 個站）→ 轉 M6 → Trocadéro（2 個站），約 25–30 分鐘。<br><strong>中途（École Militaire → Montmartre）：</strong>搭 M8 → Madeleine（轉車站）→ 轉 M12 → Abbesses，約 23 分鐘，1 次轉車。<br><strong>返程（Montmartre → Bastille）：</strong>Abbesses 冇直達 Bastille，搭 M12 → Concorde → 轉 M1 → Bastille，約 28 分鐘。<br><strong>時間預算：</strong>13:15 由 rue Cler 出發，13:40 左右到 Montmartre，玩到 16:15 就要走，先夠時間返酒店梳洗再去 18:30 嘅 Bofinger。"
+          text: "<strong>⚠️ 加咗 Montmartre 之後，今日冇晒返酒店休息嘅窗口：</strong>原本設計係鐵塔玩完 4 點就返酒店抖，儲精神先去 Bofinger。宜家落午直接轉去 Montmartre，玩完直接搭地鐵去 Bofinger（唔使繞返酒店），一路玩到接近晚飯時間，變咗成日冇停過，對 7 歲小朋友嚟講會攰好多，記得叫佢中途執下腳骨力。<br><strong>出程（去鐵塔）：</strong>行 8 分鐘去 Bastille，搭 M1 → Charles de Gaulle–Étoile（10 個站）→ 轉 M6 → Trocadéro（2 個站），約 25–30 分鐘。<br><strong>中途（École Militaire → Montmartre）：</strong>搭 M8 → Madeleine（轉車站）→ 轉 M12 → Abbesses，約 23 分鐘，1 次轉車。<br><strong>返程（Montmartre → Bofinger）：</strong>Abbesses 冇直達 Bastille，搭 M12 → Concorde → 轉 M1 → Bastille，約 28 分鐘，落車行 2 分鐘就到 Bofinger（就喺 Bastille 出口）。<br><strong>時間預算：</strong>13:15 由 rue Cler 出發，13:40 左右到 Montmartre，玩到 16:30 就要走，直接搭車去 Bofinger，仲有少少寬裕先到 18:30。"
         },
         mapPoints: [
           { name: "Trocadéro", lat: 48.8625, lng: 2.2888, color: "oklch(50% 0.012 255)", label: "09:00 影相" },
@@ -529,7 +529,6 @@
           { name: "Champ de Mars 遊樂場", lat: 48.8560, lng: 2.2980, color: "oklch(45% 0.170 264)", label: "快閃放電" },
           { name: "Sacré-Cœur · Montmartre", lat: 48.8867, lng: 2.3431, color: "oklch(51% 0.205 27)", label: "13:40–16:15" },
           { name: "Place du Tertre", lat: 48.8865, lng: 2.3405, color: "oklch(45% 0.170 264)", label: "畫家廣場" },
-          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~17:00 返酒店梳洗" },
           { name: "Bofinger", lat: 48.8531, lng: 2.3690, color: "oklch(45% 0.055 178)", label: "✓ 18:30 晚餐" }
         ],
         activities: [
@@ -580,23 +579,16 @@
           {
             type: "move",
             icon: "fa-subway",
-            title: "Montmartre → Bastille",
-            desc: "16:15 左右由 Abbesses 出發：搭 M12 → Concorde（轉車）→ 轉 M1 → Bastille，約 28 分鐘（冇直達，要轉一次車）。落車再行 5 分鐘返到酒店。",
-            tag: "~28 分鐘"
-          },
-          {
-            type: "move",
-            icon: "fa-bed",
-            title: "~17:00 返酒店梳洗",
-            desc: "返到 Bastille 沖返身、換件衫，儲定少少精神先去食飯。今日冇晒原本嘅休息窗口，呢度得返 1 個鐘左右緩衝，準時 18:15 就要出門。",
-            tag: "~17:00"
+            title: "Montmartre → Bofinger",
+            desc: "16:30 左右由 Abbesses 出發：搭 M12 → Concorde（轉車）→ 轉 M1 → Bastille，約 28 分鐘（冇直達，要轉一次車）。落車行 2 分鐘就直接到 Bofinger，唔使繞返酒店。",
+            tag: "~28 分鐘 + 2 分鐘行路"
           },
           {
             type: "food",
             icon: "fa-utensils",
             title: "晚餐 — Bofinger ✓ 已訂位",
-            desc: "5–7 rue de la Bastille，行約 10 分鐘。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）。",
-            note: "已訂位：3 人，18:30。記得帶埋 booking confirmation。",
+            desc: "5–7 rue de la Bastille，就喺 Bastille 地鐵站出口。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）。",
+            note: "已訂位：3 人，18:30。記得帶埋 booking confirmation。今日冇返酒店，出發前記得喺 Montmartre 度執齊隨身嘢（尤其行李寄存喺酒店嘅嘢就唔使理，但相機、散紙呢啲記得帶足）。",
             tag: "✓ 18:30 已訂"
           }
         ]
