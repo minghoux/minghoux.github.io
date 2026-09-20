@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>巴斯 + 布里斯托 · 2026年10月</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    /* ── BATH STONE & HARBOUR IRON ────────────────────────────────────
+       Two cities, two materials, and the palette comes from the fabric
+       of each rather than from a mood board.
+
+         STONE    Bath is built from one thing — oolitic limestone
+                  quarried at Combe Down. Warm ochre, not greige cream.
+                  It is the page field; most of the page is this.
+         HARBOUR  Bristol is water and paint: the Floating Harbour,
+                  the hulls along Hotwells. A cool teal, and the
+                  structural colour — labels, links, stats, rules.
+         OXIDE    Brunel's ironwork (Clifton chains, ss Great Britain)
+                  and late-October leaf. Emphasis only: day numerals,
+                  warnings, open to-dos. Never as a field.
+         MOSS     Prior Park's landscape and Longleat's parkland —
+                  the quiet tertiary, used for "free / outdoors".
+
+       The two-city split is also load-bearing information, not decor:
+       every day is tagged BATH / BRISTOL / ON THE ROAD and that tag
+       drives the day numeral, the date label and the map pins, so you
+       can tell at a glance which city you wake up in.                 */
+    tailwind.config = { theme: { extend: { colors: {
+      stone: 'oklch(93.5% 0.022 85)', 'stone-dark': 'oklch(89% 0.028 82)',
+      slate: 'oklch(21% 0.028 225)', 'slate-mid': 'oklch(31% 0.030 222)',
+      ink: 'oklch(25% 0.018 70)', 'ink-mid': 'oklch(47% 0.016 72)', 'ink-faint': 'oklch(58% 0.014 74)',
+      harbour: 'oklch(44% 0.082 215)', oxide: 'oklch(49% 0.142 42)',
+      moss: 'oklch(45% 0.052 148)', brass: 'oklch(80% 0.068 80)',
+      rule: 'oklch(84% 0.020 80)'
+    }, fontFamily: {
+      /* The copy is majority Traditional Chinese and neither Latin face
+         covers it, so the CJK fallbacks are load-bearing, not polish.
+         Baskerville is the deliberate pick: an English transitional cut
+         from the 1750s — the same decade Bath's Georgian terraces went up. */
+      display: ['Libre Baskerville', 'Songti TC', 'Noto Serif TC', 'Times New Roman', 'serif'],
+      sans: ['Archivo', 'PingFang TC', 'Hiragino Sans TC', 'Noto Sans TC', 'sans-serif']
+    } } } }
+  </script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    [v-cloak] { display: none !important; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    @media (min-width: 768px) { html { font-size: 17px; } }
+    body { background-color: oklch(93.5% 0.022 85); }
+
+    .reveal { opacity: 0; transform: translateY(1.8rem); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+
+    .font-display { font-variant-numeric: lining-nums; }
+
+    /* ── QUARRY STRATA RULE ───────────────────────────────────────────
+       Bath stone is bedded limestone — it reads as stacked horizontal
+       seams in every wall in the city. The day-header rule is three
+       hairlines of decreasing weight rather than one, borrowed from
+       that bedding. */
+    .rule-strata {
+      border-bottom: 1px solid oklch(49% 0.142 42 / 0.45);
+      box-shadow:
+        0 3px 0 -2px oklch(49% 0.142 42 / 0.26),
+        0 6px 0 -5px oklch(49% 0.142 42 / 0.16);
+    }
+    .label-rule::before {
+      content: ""; display: inline-block; width: 1.6rem; height: 1px;
+      background: currentColor; opacity: 0.5; vertical-align: middle; margin-right: 0.6rem;
+    }
+    .tip-mark { padding-left: 0.9rem; border-left: 2px solid oklch(44% 0.082 215 / 0.5); }
+    .chk-row:focus-visible { outline: 2px solid oklch(80% 0.068 80); outline-offset: 3px; }
+
+    /* City tag — small caps chip carrying the day's accent. */
+    .city-tag {
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 0.22rem 0.55rem; border: 1px solid currentColor; display: inline-block;
+      line-height: 1.5;
+    }
+
+    /* ── MAP ──────────────────────────────── */
+    .day-map { height: 300px; overflow: hidden; outline: 1px solid oklch(84% 0.020 80); }
+    @media (min-width: 1024px) { .day-map { height: 420px; } }
+    .leaflet-popup-content-wrapper {
+      border-radius: 0 !important;
+      box-shadow: 0 4px 18px oklch(25% 0.018 70 / 0.20) !important;
+      border: 1px solid oklch(84% 0.020 80) !important;
+      padding: 0 !important; background: oklch(95% 0.018 85) !important;
+    }
+    .leaflet-popup-content { margin: 0 !important; min-width: 180px; }
+    .map-popup-inner { padding: 0.85rem 1rem; }
+    .map-popup-title {
+      font-family: 'Libre Baskerville', 'Songti TC', 'Noto Serif TC', serif;
+      font-size: 0.98rem; font-weight: 700; color: oklch(25% 0.018 70);
+      margin-bottom: 0.15rem; line-height: 1.3;
+    }
+    .map-popup-cat {
+      font-family: 'Archivo', 'PingFang TC', 'Noto Sans TC', sans-serif;
+      font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: oklch(44% 0.082 215);
+    }
+    .leaflet-popup-tip-container { display: none !important; }
+    .leaflet-popup-close-button { top: 6px !important; right: 6px !important; color: oklch(47% 0.016 72) !important; }
+    .map-pin {
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+      box-shadow: 0 2px 8px oklch(25% 0.018 70 / 0.30);
+      border: 2px solid oklch(95% 0.018 85);
+    }
+
+    /* ── STONE WASH ───────────────────────────────────────────────────
+       Applied per-section (not fixed to body) so it scales to each
+       section's own box however long the page runs: a warm quarry glow
+       from the top-left, harbour cool bleeding in bottom-right — the
+       page literally travels from Bath to Bristol as you scroll. */
+    .stone-wash {
+      background-image:
+        radial-gradient(ellipse 65% 70% at 0% 0%,     oklch(49% 0.142 42 / 0.13), transparent 62%),
+        radial-gradient(ellipse 70% 72% at 100% 100%, oklch(44% 0.082 215 / 0.15), transparent 62%);
+    }
+
+    @media print {
+      .hero { height: auto !important; min-height: 0 !important; background-image: none !important; padding-top: 2rem; }
+      .day-map, .leaflet-container { display: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body class="font-sans text-ink font-normal leading-[1.8] antialiased">
+
+<div id="app" v-cloak>
+  <!-- ── HERO ─────────────────────────────────────────────────────── -->
+  <header class="hero relative h-[92vh] min-h-[560px] bg-slate bg-[url('img/bath-bristol/bath-royal-crescent.jpg')] bg-cover bg-[center_58%] flex items-end overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-slate via-slate/60 to-transparent md:bg-gradient-to-r md:from-slate/95 md:via-slate/55 md:to-transparent z-10 pointer-events-none"></div>
+    <div class="relative z-20 p-[clamp(2rem,5vw,5rem)] max-w-[900px] pb-[clamp(3rem,6vw,5rem)]">
+      <p class="font-sans text-[0.7rem] md:text-[0.66rem] tracking-[0.32em] uppercase text-brass mb-[1.1rem] label-rule">{{ meta.eyebrow }}</p>
+      <h1 class="font-display text-[clamp(2.6rem,7.5vw,5.6rem)] font-bold text-[oklch(97%_0.012_85)] leading-[1.02] tracking-[-0.015em] mb-8">
+        <span class="block font-sans font-light text-[0.2em] tracking-[0.4em] uppercase text-brass mb-[1.1em] not-italic">{{ meta.subtitle }}</span>
+        {{ meta.title }}
+      </h1>
+      <div class="w-16 h-px bg-brass/50 mb-7"></div>
+      <div class="flex flex-wrap gap-x-9 gap-y-3 items-center">
+        <span class="font-sans text-[0.86rem] md:text-[0.78rem] tracking-[0.03em] text-[oklch(88%_0.014_85)] flex items-center gap-2.5"><i class="fas fa-users text-brass text-[0.7rem]"></i> {{ meta.travellers }}</span>
+        <span class="font-sans text-[0.86rem] md:text-[0.78rem] tracking-[0.03em] text-[oklch(88%_0.014_85)] flex items-center gap-2.5"><i class="fas fa-calendar-alt text-brass text-[0.7rem]"></i> {{ meta.dates }}</span>
+        <span class="font-sans text-[0.86rem] md:text-[0.78rem] tracking-[0.03em] text-[oklch(88%_0.014_85)] flex items-center gap-2.5"><i class="fas fa-car-side text-brass text-[0.7rem]"></i> {{ meta.transport }}</span>
+        <span class="font-sans text-[0.86rem] md:text-[0.78rem] tracking-[0.03em] text-[oklch(88%_0.014_85)] flex items-center gap-2.5"><i class="fas fa-route text-brass text-[0.7rem]"></i> {{ meta.route }}</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── STAT RIBBON ──────────────────────────────────────────────── -->
+  <div class="bg-slate px-[clamp(1.5rem,5vw,5rem)] flex items-stretch overflow-x-auto scrollbar-none">
+    <div v-for="stat in stats" :key="stat.label" class="py-[1.6rem] pr-10 mr-10 border-r border-slate-mid shrink-0 last:border-r-0 last:mr-0">
+      <div class="font-display text-[1.75rem] md:text-[2rem] font-bold text-brass leading-none">{{ stat.value }}</div>
+      <div class="font-sans text-[0.64rem] md:text-[0.6rem] font-light tracking-[0.24em] uppercase text-[oklch(74%_0.018_82)] mt-2">{{ stat.label }}</div>
+    </div>
+  </div>
+
+  <!-- ── DAYS ─────────────────────────────────────────────────────── -->
+  <div v-for="day in days" :key="day.num" class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] border-b border-rule" :id="'day' + day.num" :class="day.isAlt ? 'bg-[oklch(89%_0.028_82_/_80%)]' : 'bg-[oklch(93.5%_0.022_85_/_70%)]'">
+    <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <!-- Day header -->
+      <div class="grid grid-cols-[clamp(3rem,6vw,5rem)_1fr] gap-[clamp(1rem,3vw,2.5rem)] items-start mb-[clamp(2rem,4vw,3.5rem)] pb-7 rule-strata">
+        <div class="font-display text-[clamp(2.4rem,5.5vw,4.2rem)] font-bold leading-[0.85] select-none pt-[0.1em] opacity-[0.28]" :style="{ color: cityColor(day.city) }">{{ day.num }}</div>
+        <div>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2.5">
+            <p class="font-sans text-[0.68rem] md:text-[0.64rem] tracking-[0.26em] uppercase" :style="{ color: cityColor(day.city) }">{{ day.date }}</p>
+            <span class="font-sans city-tag" :style="{ color: cityColor(day.city) }">{{ cityLabel(day.city) }}</span>
+          </div>
+          <h2 class="font-display text-[clamp(1.35rem,3vw,2rem)] font-bold text-ink leading-[1.35]">{{ day.title }}</h2>
+          <p class="text-[1rem] md:text-[0.94rem] text-ink-mid mt-3 leading-[1.8] max-w-[62ch]">{{ day.sub }}</p>
+        </div>
+      </div>
+
+      <!-- Activities + map -->
+      <div class="flex flex-col lg:grid lg:grid-cols-[1fr_360px] lg:gap-10 lg:items-start">
+        <div class="flex flex-col">
+          <div v-for="(act, idx) in day.activities" :key="idx" class="grid grid-cols-[2.6rem_1fr_auto] gap-[1.2rem] items-start py-[1.5rem] md:py-[1.35rem] border-b border-rule last:border-b-0 max-[600px]:grid-cols-[2.2rem_1fr]">
+            <div class="w-[2.6rem] h-[2.6rem] rounded-full flex items-center justify-center text-[0.9rem] shrink-0 mt-[0.15rem] text-[oklch(96%_0.014_85)] max-[600px]:w-[2.2rem] max-[600px]:h-[2.2rem]" :style="{ background: actColor(act.type) }">
+              <i class="fas" :class="act.icon"></i>
+            </div>
+            <div>
+              <p class="font-display text-[1.02rem] md:text-[1.05rem] font-bold text-ink leading-[1.45]">{{ act.title }}</p>
+              <p class="text-[0.98rem] md:text-[0.93rem] text-ink-mid mt-2 leading-[1.8] max-w-[64ch]">{{ act.desc }}</p>
+              <span v-if="act.note" class="block mt-[0.7rem] py-[0.5rem] px-[0.9rem] border-l-2 border-oxide/60 bg-oxide/[0.05] text-[0.85rem] md:text-[0.8rem] text-oxide leading-[1.7] max-w-[62ch]">{{ act.note }}</span>
+              <div v-if="act.tag" class="mt-3 min-[601px]:hidden">
+                <span class="font-sans text-[0.66rem] font-light tracking-[0.14em] uppercase py-[0.25rem] px-[0.6rem] border inline-block" :class="tagClass(act.tag)">{{ act.tag }}</span>
+              </div>
+            </div>
+            <span v-if="act.tag" class="font-sans text-[0.62rem] font-light tracking-[0.14em] uppercase py-[0.3rem] px-[0.65rem] border whitespace-nowrap self-start mt-[0.3rem] shrink-0 max-[600px]:hidden" :class="tagClass(act.tag)">{{ act.tag }}</span>
+          </div>
+          <div v-if="day.tipBox" class="mt-9 p-[1.5rem_1.7rem] bg-harbour/[0.05] border-y border-harbour/25 [&_strong]:font-semibold [&_strong]:text-ink">
+            <p class="tip-mark text-[0.94rem] md:text-[0.89rem] text-ink-mid leading-[1.85] max-w-[68ch]" v-html="day.tipBox"></p>
+          </div>
+        </div>
+
+        <!-- Sticky map -->
+        <div v-if="day.mapPoints && day.mapPoints.length" class="mt-10 lg:mt-0 lg:sticky lg:top-6">
+          <p class="font-sans text-[0.6rem] font-light tracking-[0.26em] uppercase text-harbour mb-3 flex items-center gap-2">
+            <i class="fas fa-map-marked-alt" :style="{ color: cityColor(day.city) }"></i> 今日路線
+          </p>
+          <div class="day-map" :id="'map-day-' + day.num"></div>
+          <div class="mt-3 flex flex-col gap-1.5">
+            <div v-for="(pt, i) in day.mapPoints" :key="i" class="flex items-center gap-2.5 text-[0.8rem] text-ink-mid">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-[0.55rem] font-bold" :style="{ background: pt.color || cityColor(day.city) }">{{ i + 1 }}</span>
+              <span>{{ pt.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHARGING PLAN ────────────────────────────────────────────── -->
+  <section class="reveal bg-slate py-[clamp(3.5rem,7vw,6rem)]">
+    <div class="max-w-[1100px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-brass mb-3 label-rule">Charging plan</p>
+      <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-[oklch(96%_0.014_85)] leading-[1.25] mb-4">⚡ 叉電計劃</h2>
+      <p class="text-[0.95rem] md:text-[0.88rem] text-[oklch(78%_0.018_82)] max-w-[68ch] leading-[1.85] mb-9">
+        Tesla Model Y 2023 Standard Range（LFP，~57.5kWh 可用電量），假設出發 <strong class="text-brass font-medium">100% 電</strong>。10 月天氣、開暖氣、載齊三個人同行李，粗略估計高速實際續航 <strong class="text-brass font-medium">~170 miles</strong>。下面 % 係保守推算，出發前用 A Better Route Planner 再核實一次。
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <div v-for="c in chargeStops" :key="c.name" class="border border-slate-mid p-[1.4rem_1.5rem] bg-[oklch(25%_0.030_224)]">
+          <p class="font-sans text-[0.6rem] tracking-[0.24em] uppercase text-brass mb-2">{{ c.when }}</p>
+          <p class="font-display text-[1.05rem] font-bold text-[oklch(96%_0.014_85)] leading-[1.4] mb-1">{{ c.name }}</p>
+          <p class="font-sans text-[0.78rem] text-[oklch(70%_0.018_82)] mb-3">{{ c.addr }}</p>
+          <p class="text-[0.9rem] md:text-[0.85rem] text-[oklch(80%_0.018_82)] leading-[1.8]">{{ c.note }}</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-[oklch(68%_0.018_82)] p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-left border-b border-brass/50">路段</th>
+              <th class="font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-[oklch(68%_0.018_82)] p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-right border-b border-brass/50 whitespace-nowrap">距離</th>
+              <th class="font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-[oklch(68%_0.018_82)] p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-right border-b border-brass/50 whitespace-nowrap">粗估耗電</th>
+              <th class="max-[700px]:hidden font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-[oklch(68%_0.018_82)] p-[0.6rem_1rem] text-left border-b border-brass/50">備註</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(r, idx) in chargeLegs" :key="idx">
+              <td class="p-[0.7rem_0.5rem] md:p-[0.7rem_1rem] border-b border-slate-mid text-[0.88rem] md:text-[0.85rem] text-[oklch(90%_0.014_84)]">{{ r.leg }}</td>
+              <td class="p-[0.7rem_0.5rem] md:p-[0.7rem_1rem] border-b border-slate-mid text-[0.82rem] text-right text-[oklch(75%_0.018_82)] font-display whitespace-nowrap">{{ r.miles }}</td>
+              <td class="p-[0.7rem_0.5rem] md:p-[0.7rem_1rem] border-b border-slate-mid text-[0.82rem] text-right font-display text-brass whitespace-nowrap">{{ r.pct }}</td>
+              <td class="max-[700px]:hidden p-[0.7rem_1rem] border-b border-slate-mid text-[0.82rem] text-[oklch(72%_0.018_82)]">{{ r.note }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 text-[0.9rem] md:text-[0.85rem] text-[oklch(74%_0.018_82)] max-w-[68ch] leading-[1.85]">
+        兩間住宿（The Annex 同 Hotwells apartments）都有免費私家泊車位，但都係普通屋企插座，只當過夜泊車，唔好當叉電站。真係要補電，Bristol 巿內有 BP Pulse、InstaVolt 公共充電位。
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CHECKLIST ────────────────────────────────────────────────── -->
+  <section class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(89%_0.028_82_/_80%)]">
+    <div class="max-w-[1100px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Action required</p>
+      <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-10">訂票清單</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-0">
+        <div v-for="col in checklistGroups" :key="col.title" class="min-[601px]:pr-10 border-r border-rule last:border-r-0 min-[601px]:[&:not(:first-child)]:pl-10 max-[600px]:py-6 max-[600px]:border-r-0 max-[600px]:border-b max-[600px]:last:border-b-0 max-[600px]:px-0">
+          <p class="font-sans text-[0.62rem] font-light tracking-[0.26em] uppercase pb-3 border-b mb-4" :style="{ color: col.color, borderColor: col.color + '' }">{{ col.title }}</p>
+          <div v-for="item in col.items" :key="item.id" role="checkbox" tabindex="0" :aria-checked="item.done ? 'true' : 'false'" class="chk-row flex gap-[0.85rem] items-start min-h-[44px] py-[0.8rem] md:py-[0.6rem] border-b border-rule last:border-b-0 text-[0.98rem] md:text-[0.88rem] text-ink leading-[1.6] cursor-pointer select-none transition-colors duration-200 hover:text-harbour" @click="toggleCheck(item)" @keydown.enter.prevent="toggleCheck(item)" @keydown.space.prevent="toggleCheck(item)">
+            <i class="fas text-[0.85rem] md:text-[0.72rem] mt-[0.4rem] md:mt-[0.3rem] shrink-0" :class="item.done ? 'fa-check-square text-moss' : 'fa-square text-oxide opacity-75'"></i>
+            <span :class="{'line-through opacity-55': item.done}">{{ item.text }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BRISTOL DIVIDER ──────────────────────────────────────────── -->
+  <section class="reveal relative h-[38vh] min-h-[260px] bg-slate bg-[url('img/bath-bristol/clifton-bridge.jpg')] bg-cover bg-center flex items-end">
+    <!-- The gorge shot is bright where the caption sits (river + mud bank), so
+         this band has to be heavier than the hero's: near-solid at the base,
+         still 70% at mid-height, only clearing in the top third. -->
+    <div class="absolute inset-0 bg-gradient-to-t from-slate via-slate/72 to-slate/15 z-10"></div>
+    <div class="relative z-20 px-[clamp(1.5rem,5vw,5rem)] pb-[clamp(2rem,4vw,3rem)] max-w-[800px]">
+      <p class="font-sans text-[0.6rem] tracking-[0.3em] uppercase text-brass mb-2 label-rule">Clifton Suspension Bridge · Bristol</p>
+      <p class="font-display text-[clamp(1.1rem,2.6vw,1.6rem)] font-bold text-[oklch(96%_0.014_85)] leading-[1.45] max-w-[46ch]">由巴斯嘅石灰岩，去到布里斯托嘅鐵同水</p>
+    </div>
+  </section>
+
+  <!-- ── BUDGET ───────────────────────────────────────────────────── -->
+  <section class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(93.5%_0.022_85_/_70%)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Financial planning</p>
+      <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-10">旅費預算</h2>
+      <table class="w-full max-w-[700px] border-collapse">
+        <thead>
+          <tr>
+            <th class="font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-left border-b border-oxide">項目</th>
+            <th class="max-[600px]:hidden font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_1rem] text-right border-b border-oxide">慳皮價</th>
+            <th class="max-[600px]:hidden font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_1rem] text-right border-b border-oxide">中等消費</th>
+            <th class="min-[601px]:hidden font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] text-right border-b border-oxide">預算</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, idx) in budgetItems" :key="idx">
+            <td class="p-[0.9rem_0.5rem] md:p-[0.85rem_1rem] border-b border-rule text-[0.93rem] md:text-[0.9rem] text-ink"><i class="fas mr-2.5 text-[0.75rem]" :class="row.icon" :style="{ color: row.booked ? 'oklch(45% 0.052 148)' : 'oklch(44% 0.082 215)' }"></i>{{ row.name }}</td>
+            <td class="max-[600px]:hidden p-[0.85rem_1rem] border-b border-rule text-[0.85rem] text-right font-display whitespace-nowrap" :class="row.booked ? 'text-moss' : 'text-ink-mid'">{{ row.booked ? '✓ ' + row.paid : '£' + row.budget }}</td>
+            <td class="max-[600px]:hidden p-[0.85rem_1rem] border-b border-rule text-[0.85rem] text-right font-display whitespace-nowrap" :class="row.booked ? 'text-moss' : 'text-ink-mid'">{{ row.booked ? '✓ ' + row.paid : '£' + row.mid }}</td>
+            <td class="min-[601px]:hidden p-[0.9rem_0.5rem] border-b border-rule text-[0.88rem] text-right font-display whitespace-nowrap" :class="row.booked ? 'text-moss' : 'text-ink-mid'">{{ rowRange(row) }}</td>
+          </tr>
+          <tr>
+            <td class="p-[0.9rem_0.5rem] md:p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-bold text-[1rem]">總計（連已訂住宿）</td>
+            <td class="max-[600px]:hidden p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-bold text-[1rem] text-oxide text-right whitespace-nowrap">~£{{ totalLow }}</td>
+            <td class="max-[600px]:hidden p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-bold text-[1rem] text-oxide text-right whitespace-nowrap">~£{{ totalHigh }}</td>
+            <td class="min-[601px]:hidden p-[0.9rem_0.5rem] border-t border-ink border-b-0 font-display font-bold text-[0.98rem] text-oxide text-right whitespace-nowrap">~£{{ totalLow }}–{{ totalHigh }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-6 text-[0.93rem] md:text-[0.86rem] text-ink-mid max-w-[64ch] leading-[1.85]">
+        兩晚住宿已經訂晒，合共 <strong class="font-semibold text-ink">£364</strong>（Bath £120 + Bristol £244）。餘下大約 <strong class="font-semibold text-ink">~£505–805</strong> 係要現場／提前買嘅嘢：三個景點門票、叉電、餐飲同手信。
+      </p>
+    </div>
+  </section>
+
+  <!-- ── DRIVING ──────────────────────────────────────────────────── -->
+  <section class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(89%_0.028_82_/_80%)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Getting around</p>
+      <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">自駕 · 泊車</h2>
+      <div class="mb-9 p-[1.4rem_1.6rem] bg-oxide/[0.05] border-y border-oxide/25 [&_strong]:font-semibold [&_strong]:text-ink">
+        <p class="tip-mark text-[0.94rem] md:text-[0.88rem] text-ink-mid leading-[1.85] max-w-[68ch]"><strong>⚠️ Bath 巿中心對私家車唔友善：</strong>The Annex 喺 Larkhall，屋企對面就有巴士站，入城 10–15 分鐘。Day 2 朝早去 Roman Baths，搭巴士或者泊 park &amp; ride 都好過揸入巿中心兜圈搵位。</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-left border-b border-oxide">Day</th>
+              <th class="font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-left border-b border-oxide">路段</th>
+              <th class="max-[700px]:hidden font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_1rem] text-left border-b border-oxide">路線</th>
+              <th class="font-sans text-[0.6rem] font-light tracking-[0.24em] uppercase text-ink-faint p-[0.6rem_0.5rem] md:p-[0.6rem_1rem] text-right border-b border-oxide whitespace-nowrap">車程</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(r, idx) in drivingRoutes" :key="idx">
+              <td class="p-[0.72rem_0.5rem] md:p-[0.7rem_1rem] border-b border-rule text-[0.82rem] font-display font-bold" :style="{ color: cityColor(r.city) }">{{ r.day }}</td>
+              <td class="p-[0.72rem_0.5rem] md:p-[0.7rem_1rem] border-b border-rule text-[0.9rem] md:text-[0.86rem] text-ink">{{ r.leg }}</td>
+              <td class="max-[700px]:hidden p-[0.7rem_1rem] border-b border-rule text-[0.84rem] text-ink-mid">{{ r.line }}</td>
+              <td class="p-[0.72rem_0.5rem] md:p-[0.7rem_1rem] border-b border-rule text-[0.83rem] text-ink-mid text-right whitespace-nowrap">{{ r.time }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 text-[0.9rem] md:text-[0.85rem] text-ink-mid max-w-[68ch] leading-[1.85]">
+        <strong class="text-ink font-semibold">Longleat 同 Stonehenge 都有自己大停車場</strong>，唔使擔心搵位。A303 段嘅充電站比 M4 疏，所以 Day 1 喺 Amesbury 叉飽先入 Bath 係最穩陣嘅做法。
+      </p>
+    </div>
+  </section>
+
+  <!-- ── TIPS ─────────────────────────────────────────────────────── -->
+  <section class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(93.5%_0.022_85_/_70%)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Before you go</p>
+      <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-10">實用貼士</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-10">
+        <div v-for="group in tips" :key="group.title">
+          <p class="font-sans text-[0.62rem] font-light tracking-[0.26em] uppercase text-harbour pb-[0.8rem] border-b border-oxide mb-4">{{ group.title }}</p>
+          <div v-for="(item, idx) in group.items" :key="idx" class="flex gap-[0.8rem] items-start py-[0.7rem] border-b border-rule last:border-b-0 text-[0.96rem] md:text-[0.88rem] text-ink leading-[1.75]">
+            <i class="fas fa-circle text-oxide text-[0.5rem] mt-[0.65rem] shrink-0"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESTAURANTS ──────────────────────────────────────────────── -->
+  <section class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(89%_0.028_82_/_80%)]">
+    <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
+      <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Where to eat</p>
+      <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">餐廳參考</h2>
+      <p class="text-[0.93rem] md:text-[0.87rem] text-ink-mid mb-9 max-w-[68ch] leading-[1.85]">按行程日子分類，全部都喺當日路線附近。大部分英式 pub 同連鎖家庭餐廳都有兒童餐，價錢 £6–10 一份。</p>
+      <div class="flex flex-col gap-11">
+        <div v-for="group in restaurants" :key="group.day">
+          <p class="font-sans text-[0.62rem] font-light tracking-[0.26em] uppercase pb-[0.7rem] border-b mb-1" :style="{ color: cityColor(group.city), borderColor: cityColor(group.city) }">{{ group.day }}</p>
+          <div v-for="(r, idx) in group.items" :key="idx" class="flex flex-wrap gap-x-4 gap-y-1 items-baseline py-[0.85rem] border-b border-rule last:border-b-0">
+            <a :href="r.mapUrl" target="_blank" rel="noopener" class="font-display text-[1rem] md:text-[0.98rem] font-bold text-ink hover:text-harbour transition-colors duration-200 underline decoration-rule underline-offset-4 hover:decoration-harbour">{{ r.name }}</a>
+            <span class="font-sans text-[0.64rem] font-light tracking-[0.1em] uppercase text-harbour shrink-0">{{ r.type }}</span>
+            <span class="basis-full text-[0.9rem] md:text-[0.85rem] text-ink-mid leading-[1.75] max-w-[64ch]">{{ r.note }}</span>
+            <span v-if="r.dish" class="basis-full text-[0.9rem] md:text-[0.85rem] text-ink leading-[1.75] max-w-[64ch]"><i class="fas fa-utensils text-oxide text-[0.7rem] mr-1.5"></i>{{ r.dish }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────── -->
+  <footer class="bg-slate p-[2rem_clamp(1.5rem,5vw,5rem)] flex justify-between items-center flex-wrap gap-4 border-t-2 border-oxide">
+    <div class="font-display text-[1.1rem] font-bold text-brass">{{ meta.title }} · 2026</div>
+    <p class="font-sans text-[0.62rem] tracking-[0.2em] uppercase text-[oklch(56%_0.024_222)]">{{ meta.dates }} · Kingston upon Thames → Stonehenge → Bath → Bristol → Longleat</p>
+    <p class="font-sans text-[0.62rem] tracking-[0.2em] uppercase text-[oklch(56%_0.024_222)]">家庭旅程 · 3 人同行 · 自駕</p>
+  </footer>
+</div>
+
+<script>
+  const CITY = {
+    bath:    { color: 'oklch(49% 0.142 42)',  label: 'Bath' },
+    bristol: { color: 'oklch(44% 0.082 215)', label: 'Bristol' },
+    road:    { color: 'oklch(45% 0.052 148)', label: 'On the road' }
+  };
+
+  const itineraryData = {
+    meta: {
+      title: "巴斯 + 布里斯托",
+      subtitle: "Road trip to",
+      eyebrow: "家庭行程 · 2026年10月",
+      travellers: "2 位大人 · 1 位小朋友 (7歲)",
+      dates: "2026年10月25–28日",
+      transport: "自駕 · Tesla Model Y",
+      route: "Kingston upon Thames → Bath → Bristol"
+    },
+    stats: [
+      { value: "4", label: "天數" },
+      { value: "3", label: "晚數" },
+      { value: "2", label: "個城市" },
+      { value: "£364", label: "住宿已訂 ✓" },
+      { value: "~£505–805", label: "餘下開支" }
+    ],
+    days: [
+      {
+        num: "D1", city: "road", isAlt: false,
+        date: "週日，10月25日",
+        title: "Kingston → Stonehenge → Bath",
+        sub: "今日淨係一件事：Stonehenge。睇完就慢慢揸入 Bath check-in，唔使急。",
+        tipBox: "<strong>今日刻意輕鬆：</strong>之前個版本 Day 1 塞埋 Longleat，成日都喺趕。而家 Longleat 挪咗去 Day 4 返程順路玩，Day 1 淨返 Stonehenge 一個景點 —— 唔好又手痕加嘢返去。<br><strong>叉電同景點合併：</strong>Amesbury Supercharger 就喺 Stonehenge 隔籬（去石陣前最後一個服務區），泊低叉電、去廁所、伸展，然後先過去睇石陣，一次過搞掂。",
+        mapPoints: [
+          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "早上出發" },
+          { name: "Amesbury Supercharger", lat: 51.1668, lng: -1.7473, color: "oklch(45% 0.052 148)", label: "叉電 + 廁所" },
+          { name: "Stonehenge", lat: 51.1789, lng: -1.8262, color: "oklch(49% 0.142 42)", label: "今日唯一景點" },
+          { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "過夜 · 免費泊車" },
+          { name: "Bath 巿中心", lat: 51.3811, lng: -2.3590, color: "oklch(44% 0.082 215)", label: "傍晚晚餐" }
+        ],
+        activities: [
+          { type: "move", icon: "fa-car-side", title: "Kingston 出發 — 行 A303 西行", desc: "由 Kingston 上 A303 一路西行，車程約 1.5–2 小時。今日唔趕時間，可以食完早餐先慢慢出發。", tag: "~1.5–2 小時" },
+          { type: "charge", icon: "fa-bolt", title: "Amesbury Supercharger（Solstice Park）", desc: "Tesla V3 超充站，16 個位，最高 250kW，24 小時開放。呢個係去 Stonehenge 之前最後一個服務區 —— 泊低叉電，順便去廁所、落車伸展下。建議叉到 85–90%，夠晒去 Bath 仲有好多落。", note: "A303 段嘅充電站比 M4 疏，所以呢一 stop 唔好慳。", tag: "~10:30 · 叉到 85–90%" },
+          { type: "hi", icon: "fa-monument", title: "Stonehenge — 今日唯一景點", desc: "圍住石陣慢慢行一圈、影相，唔使急住走。English Heritage 要網上預約時段飛，記得出發前訂定。有自己大停車場，泊車唔使擔心。", note: "🔴 飛未訂 —— 記得上 English Heritage 預約 10月25日時段。", tag: "~11:00–12:30" },
+          { type: "food", icon: "fa-utensils", title: "午餐 — Solstice Park 一帶", desc: "睇完石陣返到 Amesbury / Solstice Park 附近食個便餐，唔使講究，留返肚同時間畀 Bath。", tag: "便餐" },
+          { type: "move", icon: "fa-key", title: "揸去 Bath — The Annex check-in", desc: "由 Stonehenge 去 Bath 約 45 分鐘至 1 個鐘。The Annex 喺 Larkhall（Lower Fairfield Park），2 房獨立成套，有免費私家車道，self check-in 用 lockbox，14:00 之後就入得。", note: "冇提供浴巾，記得自己帶。", tag: "14:00 後 check-in" },
+          { type: "fun", icon: "fa-bus", title: "傍晚入 Bath 巿中心", desc: "屋企對面就有巴士站，10–15 分鐘入到巿中心。行下 Abbey、Pulteney Bridge 一帶，食個晚餐就返去休息，養返精神聽日行 Roman Baths。", tag: "巴士 10–15 分鐘" }
+        ]
+      },
+      {
+        num: "D2", city: "bath", isAlt: true,
+        date: "週一，10月26日",
+        title: "Roman Baths · Victoria Park · Prior Park → 搬去 Bristol",
+        sub: "Bath 行程日，泊一次車搞掂三個點，黃昏先搬去 Bristol 嘅 Hotwells。",
+        tipBox: "<strong>⚠️ 10 月尾日落好早（約 16:30–17:00）：</strong>Prior Park 係今日最靠自然光嘅一個點，想影到秋日金黃山谷景就唔好留到太夜先去 —— 所以行程特登排咗 14:00–15:30。<br><strong>Prior Park 入口有段斜路</strong>先入到花園，帶定舒服鞋。<br><strong>搬酒店安排：</strong>The Annex 10:00 前 check-out，行李擺車尾箱，玩足一日先去 Bristol。Hotwells apartments 15:00 後先 check-in，時間啱啱好夾得上。",
+        mapPoints: [
+          { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "10:00 前 check-out" },
+          { name: "Roman Baths", lat: 51.3811, lng: -2.3590, color: "oklch(49% 0.142 42)", label: "09:30–11:30 · 時段飛" },
+          { name: "Royal Victoria Park", lat: 51.3856, lng: -2.3703, color: "oklch(45% 0.052 148)", label: "午餐 + 放電" },
+          { name: "Prior Park Landscape Garden", lat: 51.3696, lng: -2.3510, color: "oklch(45% 0.052 148)", label: "14:00–15:30 秋色" },
+          { name: "Hotwells apartments, Bristol", lat: 51.4487, lng: -2.6195, color: "oklch(44% 0.082 215)", label: "15:00 後 check-in" }
+        ],
+        activities: [
+          { type: "move", icon: "fa-suitcase-rolling", title: "The Annex check-out — 10:00 前", desc: "行李全部擺落車尾箱，今日唔使再返嚟。然後入巿中心泊車，或者搭巴士入去都得。", tag: "10:00 前" },
+          { type: "hi", icon: "fa-water", title: "Roman Baths — 建議 09:30–11:30", desc: "綠色溫泉水、羅馬柱、2000 年歷史嘅浴池，就喺 Bath 巿中心。一定要訂時段飛，half term 前夕都會開始搶飛。", note: "🔴 飛未訂 —— 鎖實日子之後即刻上網訂時段票。", tag: "🔴 未訂 · ~2 小時" },
+          { type: "fun", icon: "fa-child", title: "Royal Victoria Park — 午餐後放電", desc: "行完 Roman Baths，去公園食個午餐再放電。有遊樂場同大草地，免費，正好喺兩個「大人景點」中間插返個純玩嘅位。", tag: "Free" },
+          { type: "fun", icon: "fa-leaf", title: "Prior Park Landscape Garden — 14:00–15:30", desc: "National Trust 景點，Palladian 橋加成個山谷嘅秋日金黃景 —— 10 月尾正係最靚嘅時候，亦係全程最值得影相嘅一個點。", note: "入口有段斜路要行，帶定舒服鞋；日落前一定要到。", tag: "National Trust" },
+          { type: "move", icon: "fa-key", title: "揸去 Bristol — Hotwells check-in", desc: "Bath 去 Bristol 約 20 分鐘。Hotwells apartments flat 7：2 房（2 張 double bed）、有 1 個指定免費車位、離 Harbourside 幾步路。", note: "⚠️ 3 樓冇電梯，搬行李預留返時間同體力。", tag: "15:00 後 · 3 樓冇𨋢" },
+          { type: "food", icon: "fa-utensils", title: "Bristol 第一晚晚餐", desc: "Harbourside 一帶有唔少選擇。想食返啖好嘅亞洲菜，Wapping Wharf 嘅 Seven Lucky Gods 就喺附近（日式 izakaya 小食、壽司、韓式炸雞）。睇下同朋友夾唔夾到時間。", tag: "睇朋友時間" }
+        ]
+      },
+      {
+        num: "D3", city: "bristol", isAlt: false,
+        date: "週二，10月27日",
+        title: "Bristol Harbourside & Ferry",
+        sub: "今日唔使搬酒店、唔使揸長途車 —— 純粹喺 Bristol 巿內行，最適合約朋友。",
+        tipBox: "<strong>今日係全程最鬆嘅一日：</strong>住嘅地方就喺 Harbourside 隔籬，行出去就係碼頭，所以唔使諗泊車、唔使諗車程。<br><strong>落雨後備：</strong>We The Curious（harbourside 嘅科學館）係最好嘅落雨方案 —— 唔使特登編入行程，落雨先臨場加。<br><strong>想行遠少少：</strong>Clifton Suspension Bridge 由 Hotwells 揸車 5 分鐘，橋邊有個木製遊樂場同 Leigh Woods 秋葉林，時間夠嘅話可以加。",
+        mapPoints: [
+          { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "住呢度" },
+          { name: "SS Great Britain", lat: 51.4490, lng: -2.6081, color: "oklch(44% 0.082 215)", label: "行過會經過" },
+          { name: "Bristol Harbourside", lat: 51.4482, lng: -2.5993, color: "oklch(49% 0.142 42)", label: "碼頭 + ferry" },
+          { name: "We The Curious", lat: 51.4500, lng: -2.5991, color: "oklch(45% 0.052 148)", label: "落雨後備" },
+          { name: "Clifton Suspension Bridge", lat: 51.4549, lng: -2.6278, color: "oklch(45% 0.052 148)", label: "可選 · 車程 5 分鐘" }
+        ],
+        activities: [
+          { type: "fun", icon: "fa-ship", title: "Bristol Harbourside — 上晝", desc: "由 Hotwells 行出去就係碼頭。沿住彩色碼頭邊行，會經過 SS Great Britain（Brunel 嘅大船），街頭表演、船隻、倉庫改建嘅咖啡店一路睇落去。", tag: "行得到" },
+          { type: "fun", icon: "fa-anchor", title: "Harbour Ferry — 搭一程船", desc: "碼頭有小渡輪穿梭唔同碼頭點，對 7 歲嚟講係「坐船」多過「交通」，好抵玩又慳腳力。", tag: "~£3–5/人" },
+          { type: "food", icon: "fa-utensils", title: "午餐 — Harbourside", desc: "No.1 Harbourside（河邊景、肉食素食都齊）或者 Pieminister（地道批店，出餐快）。約咗朋友就一齊食呢餐。", tag: "河邊" },
+          { type: "fun", icon: "fa-flask", title: "下晝 — 睇天氣決定", desc: "天氣好就留喺 harbourside 慢慢行，或者揸 5 分鐘車去 Clifton Suspension Bridge 行吊橋、去橋邊個木製遊樂場。落雨就轉入 We The Curious 玩科學館。", tag: "彈性" },
+          { type: "food", icon: "fa-bowl-food", title: "晚餐 — Bristol 最後一晚", desc: "Bristol 嘅亞洲菜幾好：Seven Lucky Gods（Wapping Wharf，日式小食 + 韓式炸雞，行得到）、Hao Wei（全巿評價最高嘅中菜，仲有越式河粉）、The Saigon Kitchen（正宗越南菜，喺 Redland）。", tag: "亞洲菜" }
+        ]
+      },
+      {
+        num: "D4", city: "road", isAlt: true,
+        date: "週三，10月28日",
+        title: "Bristol → Longleat → Kingston",
+        sub: "返程順路入 Longleat 玩足大半日，先再上 A303 / M4 返屋企。",
+        tipBox: "<strong>今日先係全程最花時間嘅一日：</strong>Longleat 一個景點 + 2–2.5 個鐘車程返屋企。所以 10:00 check-out 之後唔好慢慢嚟，早啲出發，唔好貪玩到太夜先上路。<br><strong>🔴 Longleat 飛記住訂返 10月28日</strong> —— 呢個景點之前排喺 Day 1，改咗行程之後好容易訂錯日子。網上訂平啲，亦可以早入場。<br><strong>出發前一星期確認：</strong>10 月尾部分動物展區同活動可能已經轉咗冬季時間。",
+        mapPoints: [
+          { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "10:00 前 check-out" },
+          { name: "Longleat Safari Park", lat: 51.1877, lng: -2.2679, color: "oklch(49% 0.142 42)", label: "全日主菜" },
+          { name: "Membury Services", lat: 51.4336, lng: -1.5446, color: "oklch(45% 0.052 148)", label: "叉電 + 廁所" },
+          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "傍晚到屋企" }
+        ],
+        activities: [
+          { type: "move", icon: "fa-suitcase-rolling", title: "Hotwells check-out — 10:00 前", desc: "3 樓冇電梯，落行李預留返時間。之後直接出發去 Longleat，車程約 50 分鐘至 1 個鐘。", tag: "10:00 前" },
+          { type: "hi", icon: "fa-hippo", title: "Longleat Safari Drive — 全日主菜", desc: "自己架車慢慢兜 safari，獅子、長頸鹿、犀牛就喺車窗外面 —— 對 7 歲嚟講係最震撼嗰個景點。兜完 safari 有精神再落車行迷宮同遊樂場。", note: "🔴 飛未訂 —— 一定要訂 10月28日（唔好用返舊日期）。", tag: "🔴 未訂 · 全日" },
+          { type: "food", icon: "fa-utensils", title: "午餐 — Longleat 園內", desc: "園內餐飲區解決，慳返出出入入嘅時間。或者自備輕便零食擺車上。", tag: "園內" },
+          { type: "charge", icon: "fa-bolt", title: "Membury Services（M4）— 叉電 + 抖返", desc: "Tesla 超充站，東行／西行分開，最高 150kW，24 小時開放，連正常 motorway services 有廁所同食嘢。大約喺 Longleat → Kingston 中間。", note: "就算電量夠都建議停 —— 玩足一日之後再揸長途，中途落車行下對細路好重要。", tag: "中途站" },
+          { type: "move", icon: "fa-home", title: "返到 Kingston", desc: "由 Membury 返 Kingston 大約 1 個鐘。趁未撞正晚繁忙時間上路最舒服。", tag: "傍晚到屋企" }
+        ]
+      }
+    ],
+    chargeStops: [
+      {
+        when: "Day 1 · 10月25日",
+        name: "Amesbury Supercharger",
+        addr: "Solstice Park, Mid Summer Place, SP4 7SQ",
+        note: "Tesla V3，16 個位，最高 250kW，24 小時開放。去 Stonehenge 前最後一個服務區 —— 叉電同睇石陣一次過搞掂。建議叉到 85–90%，之後去 Bath 仲有大把電。"
+      },
+      {
+        when: "Day 4 · 10月28日",
+        name: "Membury Services（M4）",
+        addr: "Hungerford, RG17 7TZ · 東行 6 位 / 西行 8 位",
+        note: "最高 150kW，24 小時開放，連正常 motorway services。大約喺 Longleat → Kingston 中間，玩完成日返程嗰陣停一停，叉電 + 去廁所 + 落車行下。"
+      }
+    ],
+    chargeLegs: [
+      { leg: "Kingston → Amesbury (Solstice Park)", miles: "~88 mi", pct: "~52%", note: "Day 1 · 喺呢度叉電 + 去 Stonehenge" },
+      { leg: "Amesbury → Bath", miles: "~35 mi", pct: "~21%", note: "叉完電之後仲好夠用" },
+      { leg: "Bath → Bristol", miles: "~13 mi", pct: "~8%", note: "Day 2 · 好足夠" },
+      { leg: "Bristol → Longleat", miles: "~35 mi", pct: "~21%", note: "Day 4 出發" },
+      { leg: "Longleat → Membury Services", miles: "~45 mi", pct: "~26%", note: "經 A36 / A303" },
+      { leg: "Membury → Kingston", miles: "~57 mi", pct: "~34%", note: "M4 東行，最後一段" }
+    ],
+    drivingRoutes: [
+      { day: "D1", city: "road",    leg: "Kingston → Stonehenge", line: "A303 西行（中途 Amesbury 叉電）", time: "~1.5–2 小時" },
+      { day: "D1", city: "bath",    leg: "Stonehenge → Bath（The Annex）", line: "A36 / A303", time: "~45 分鐘–1 小時" },
+      { day: "D2", city: "bath",    leg: "Larkhall → Bath 巿中心", line: "巴士（屋企對面有站）或 park & ride", time: "~10–15 分鐘" },
+      { day: "D2", city: "bristol", leg: "Bath → Bristol（Hotwells）", line: "A4 / A37", time: "~20 分鐘" },
+      { day: "D3", city: "bristol", leg: "Hotwells → Harbourside", line: "行得到（幾步路）", time: "步行" },
+      { day: "D3", city: "bristol", leg: "Hotwells → Clifton Suspension Bridge", line: "可選加碼", time: "~5 分鐘" },
+      { day: "D4", city: "road",    leg: "Bristol → Longleat", line: "A38 / A36", time: "~50 分鐘–1 小時" },
+      { day: "D4", city: "road",    leg: "Longleat → Kingston（中途 Membury）", line: "A36 / A303 / M4", time: "~2–2.5 小時" }
+    ],
+    checklistGroups: [
+      {
+        title: "🔴 而家就要做", color: "oklch(49% 0.142 42)",
+        items: [
+          { text: "落實 The Annex 訂位（£120，10月25日）" },
+          { text: "同 Hotwells host 確認「唔啱細路」個 safety flag 實際意思" },
+          { text: "訂 Roman Baths 時段飛（Day 2）" },
+          { text: "訂 Longleat 飛 —— 記住用 10月28日", },
+          { text: "訂 Stonehenge 飛（English Heritage 預約時段）" }
+        ]
+      },
+      {
+        title: "🟡 出發前一星期", color: "oklch(44% 0.082 215)",
+        items: [
+          { text: "確認 Longleat 冬季開放時間有冇改動" },
+          { text: "用 A Better Route Planner 核實實際續航" },
+          { text: "同 Bristol 朋友夾實見面時間" },
+          { text: "攞齊兩間住宿嘅 self check-in lockbox 詳情" },
+          { text: "Download Google Maps offline + ABRP" },
+          { text: "Print / 存低所有 booking confirmation" }
+        ]
+      },
+      {
+        title: "🟢 出發期間", color: "oklch(45% 0.052 148)",
+        items: [
+          { text: "Day 1：唔好手痕加景點，睇完石陣就去 Bath" },
+          { text: "Day 2：10:00 前 check-out；Prior Park 唔好留到日落" },
+          { text: "Day 3：落雨就轉 We The Curious" },
+          { text: "Day 4：Longleat 早啲出發，唔好太夜先上路" },
+          { text: "帶定浴巾（The Annex 冇提供）" }
+        ]
+      }
+    ],
+    budget: [
+      { icon: "fa-house", name: "住宿 — Bath（1 晚，The Annex）", budget: 120, mid: 120, booked: true, paid: "£120" },
+      { icon: "fa-building", name: "住宿 — Bristol（2 晚，Hotwells apartments）", budget: 244, mid: 244, booked: true, paid: "£244" },
+      { icon: "fa-bolt", name: "充電（Kingston ↔ Bristol 來回 + 當地）", budget: 40, mid: 70 },
+      { icon: "fa-monument", name: "Stonehenge（一家三口）", budget: 45, mid: 60 },
+      { icon: "fa-hippo", name: "Longleat（一家三口）", budget: 100, mid: 180 },
+      { icon: "fa-water", name: "Roman Baths（一家三口）", budget: 50, mid: 80 },
+      { icon: "fa-ship", name: "Bristol Harbourside / harbour ferry", budget: 20, mid: 30 },
+      { icon: "fa-leaf", name: "Prior Park / Victoria Park（免費或幾蚊泊車）", budget: 0, mid: 15 },
+      { icon: "fa-utensils", name: "餐飲 — 4 日（混合出街食 + 簡便）", budget: 220, mid: 320 },
+      { icon: "fa-bag-shopping", name: "手信、零食", budget: 30, mid: 50 }
+    ],
+    tips: [
+      {
+        title: "自駕 + 泊車",
+        items: [
+          "Bath 巿中心對私家車唔友善 —— Day 2 搭巴士或泊 park & ride 好過揸入去兜圈",
+          "Longleat 同 Stonehenge 都有自己大停車場，唔使擔心搵位",
+          "A303 段充電站比 M4 疏 —— Day 1 喺 Amesbury 叉飽先入 Bath",
+          "兩間住宿都有免費私家車位，但都係普通插座，只當過夜泊車",
+          "Bath / Bristol 巿中心有泊車時限同收費，落車前睇清楚路牌"
+        ]
+      },
+      {
+        title: "天氣 + 裝備",
+        items: [
+          "10 月尾日落好早（16:30–17:00）—— 戶外景點盡量排早晝到下晝早段",
+          "早晚溫差大，記得帶外套同防水褸",
+          "Prior Park 入口有斜路，帶定舒服行山鞋",
+          "帶定浴巾 —— The Annex 冇提供",
+          "長途車程預備：平板下載定劇集、水樽、零食"
+        ]
+      },
+      {
+        title: "住宿 + 食嘢",
+        items: [
+          "Hotwells 喺 3 樓冇電梯 —— 搬行李預留時間同體力",
+          "Hotwells listing 寫住「唔啱細路」，出發前同 host 確認清楚",
+          "兩間都係 self check-in（lockbox），出發前攞定密碼",
+          "英式 pub 同連鎖家庭餐廳大部分有兒童餐，£6–10 一份",
+          "落雨後備：We The Curious 就喺 Bristol harbourside"
+        ]
+      }
+    ],
+    restaurants: [
+      {
+        day: "Day 1 · 週日 10月25日 — Bath 晚餐", city: "bath",
+        items: [
+          { name: "★ The Rose and Crown", type: "晚餐 · 英式 Pub", note: "地道英式 pub，氣氛輕鬆，啱一家人揸咗成日車之後坐低食返餐熱嘢。", dish: "推介：sausage and mash（香腸薯蓉）、自家製 pie of the day。", mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Rose+and+Crown+Bath" },
+          { name: "Giraffe", type: "晚餐後備 · 家庭餐廳", note: "早午晚都開，餐牌選擇多，夾到唔同人口味，有兒童餐。", dish: "推介：環球菜式，細路揀到自己鍾意嗰款。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Giraffe+restaurant+Bath" }
+        ]
+      },
+      {
+        day: "Day 2 · 週一 10月26日 — Bath 午餐 / Bristol 晚餐", city: "bath",
+        items: [
+          { name: "★ Thaikhun", type: "午餐 · 泰菜", note: "Bath 巿中心，有花園位同沙發位，細路可以郁動下，啱 Roman Baths 之後嗰餐。", dish: "推介：Pad Thai、綠咖喱、泰式炸雞；細路唔食辣有得揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Thaikhun+Bath" },
+          { name: "★ Seven Lucky Gods", type: "晚餐 · 日式 Izakaya", note: "Wapping Wharf，由 Hotwells 行得到。日式小食、壽司同韓式炸雞，4.3★。貨櫃屋改建，夜晚有少少 bar 氣氛，早少少去啱細路啲。", dish: "推介：karaage 韓式炸雞、壽司拼盤、日式小食分享。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Seven+Lucky+Gods+Wapping+Wharf+Bristol" },
+          { name: "The Watershed Café and Bar", type: "晚餐後備 · Harbourside", note: "空間大、有兒童餐（意粉、迷你漢堡），推 BB 車都入得，啱攰咗嗰晚。", dish: "推介：兒童餐意粉、迷你漢堡。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Watershed+Cafe+Bar+Bristol" },
+          { name: "Salt & Malt", type: "晚餐後備 · 炸魚薯條", note: "得獎炸魚薯條，河邊靚景，casual 唔使訂位。", dish: "推介：fish and chips、fish cakes。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Salt+and+Malt+Bristol+Harbourside" }
+        ]
+      },
+      {
+        day: "Day 3 · 週二 10月27日 — Bristol Harbourside", city: "bristol",
+        items: [
+          { name: "★ No.1 Harbourside", type: "午餐 · 河邊", note: "河邊景，肉食／素食／純素都齊全，出餐快，就喺碼頭邊。", dish: "推介：當日 special、素食碗餐。", mapUrl: "https://www.google.com/maps/search/?api=1&query=No.1+Harbourside+Bristol" },
+          { name: "Pieminister", type: "午餐後備 · 地道批店", note: "Bristol 出身嘅名物批店，出餐快，細路容易搞掂。", dish: "推介：招牌牛肉批配薯蓉同青豆蓉（mothership 食法）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Pieminister+Bristol" },
+          { name: "Hao Wei", type: "晚餐 · 中菜", note: "成日被評為 Bristol 最好嘅中菜，130+ 款菜式，仲有越式河粉，出餐快。", dish: "推介：經典粵菜、越式牛肉河粉。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hao+Wei+Chinese+restaurant+Bristol" },
+          { name: "The Saigon Kitchen", type: "晚餐 · 越南菜", note: "Redland。主廚 Trung 喺越南長大，正宗家常越南菜，pho 最出名。", dish: "推介：pho（牛肉河粉）、越式春卷。", mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Saigon+Kitchen+Bristol" },
+          { name: "Bokman", type: "晚餐 · 韓國菜", note: "Bristol 韓菜代表，菜單有唔少特色菜。", dish: "推介：octopus bibim salad、韓式炸雞。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bokman+Bristol" }
+        ]
+      },
+      {
+        day: "Day 4 · 週三 10月28日 — Longleat / 回程路上", city: "road",
+        items: [
+          { name: "Longleat 園內餐飲區", type: "午餐 · 園內", note: "喺園內解決最慳時間，唔使出出入入搞泊車。", dish: "推介：簡便熱食，或者自備零食擺車上。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Longleat+Safari+Park" },
+          { name: "Membury Services", type: "中途站 · M4", note: "叉電嗰陣順便解決，有廁所同簡便食肆。", dish: "推介：快餐／咖啡，抖返先再上路。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Membury+Services+M4" }
+        ]
+      }
+    ]
+  };
+
+  const { createApp, ref, computed, onMounted, nextTick } = Vue;
+
+  createApp({
+    setup() {
+      const meta = ref(itineraryData.meta);
+      const stats = ref(itineraryData.stats);
+      const days = ref(itineraryData.days);
+      const budgetItems = ref(itineraryData.budget);
+      const tips = ref(itineraryData.tips);
+      const drivingRoutes = ref(itineraryData.drivingRoutes);
+      const restaurants = ref(itineraryData.restaurants);
+      const chargeStops = ref(itineraryData.chargeStops);
+      const chargeLegs = ref(itineraryData.chargeLegs);
+
+      const cityColor = (c) => (CITY[c] || CITY.road).color;
+      const cityLabel = (c) => (CITY[c] || CITY.road).label;
+
+      const ACT = {
+        hi:     'oklch(49% 0.142 42)',
+        fun:    'oklch(45% 0.052 148)',
+        food:   'oklch(44% 0.082 215)',
+        charge: 'oklch(52% 0.105 250)',
+        move:   'oklch(31% 0.030 222)'
+      };
+      const actColor = (t) => ACT[t] || ACT.move;
+
+      // Free / outdoor tags read green; anything still unbooked reads oxide.
+      const tagClass = (tag) => {
+        const t = (tag || '').toLowerCase();
+        if (t.includes('未訂') || t.includes('🔴')) return 'border-oxide/50 text-oxide';
+        if (t.includes('free') || t.includes('步行') || t.includes('行得到')) return 'border-moss/45 text-moss';
+        return 'border-harbour/35 text-harbour';
+      };
+
+      // localStorage can throw (private mode, blocked storage) — tick state
+      // is a nicety, so never let it take the whole page down.
+      const readStored = (id) => {
+        try { return localStorage.getItem(id); } catch (e) { return null; }
+      };
+
+      const checklistGroups = ref(itineraryData.checklistGroups.map(group => ({
+        title: group.title,
+        color: group.color,
+        items: group.items.map(item => {
+          const id = `bb_chk_${item.text.replace(/\W/g, '_').toLowerCase()}`;
+          const stored = readStored(id);
+          return { id, text: item.text, done: stored === null ? !!item.done : stored === 'true' };
+        })
+      })));
+
+      const toggleCheck = (item) => {
+        item.done = !item.done;
+        try { localStorage.setItem(item.id, item.done ? 'true' : 'false'); } catch (e) { /* not persisted */ }
+      };
+
+      const totalLow  = computed(() => budgetItems.value.reduce((s, i) => s + i.budget, 0));
+      const totalHigh = computed(() => budgetItems.value.reduce((s, i) => s + i.mid, 0));
+
+      const rowRange = (row) => {
+        if (row.booked) return '✓ ' + row.paid;
+        return row.budget === row.mid ? `£${row.budget}` : `£${row.budget}–${row.mid}`;
+      };
+
+      onMounted(() => {
+        nextTick(() => {
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+              if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('visible'), i * 60);
+                io.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.06 });
+          document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+          days.value.forEach(day => {
+            if (!day.mapPoints || !day.mapPoints.length) return;
+            const mapEl = document.getElementById('map-day-' + day.num);
+            if (!mapEl) return;
+
+            const map = L.map(mapEl, { zoomControl: true, scrollWheelZoom: false, attributionControl: false });
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+              subdomains: 'abcd', maxZoom: 19
+            }).addTo(map);
+            L.control.attribution({ prefix: false, position: 'bottomright' }).addTo(map);
+
+            const bounds = [];
+            day.mapPoints.forEach((pt, idx) => {
+              const color = pt.color || cityColor(day.city);
+              const pinHtml = `
+                <div class="map-pin" style="width:28px;height:28px;background:${color};">
+                  <span style="transform:rotate(45deg);font-family:'Archivo',sans-serif;font-size:0.65rem;font-weight:600;color:white;">${idx + 1}</span>
+                </div>`;
+              const icon = L.divIcon({ html: pinHtml, className: '', iconSize: [28, 28], iconAnchor: [14, 28], popupAnchor: [0, -30] });
+              const popupContent = `
+                <div class="map-popup-inner">
+                  <div class="map-popup-cat">${pt.label || ''}</div>
+                  <div class="map-popup-title">${pt.name}</div>
+                </div>`;
+              L.marker([pt.lat, pt.lng], { icon }).addTo(map).bindPopup(popupContent, { maxWidth: 240, minWidth: 160 });
+              bounds.push([pt.lat, pt.lng]);
+            });
+
+            if (bounds.length > 1) map.fitBounds(bounds, { padding: [36, 36] });
+            else if (bounds.length === 1) map.setView(bounds[0], 14);
+          });
+        });
+      });
+
+      return {
+        meta, stats, days, checklistGroups, budgetItems, tips,
+        drivingRoutes, restaurants, chargeStops, chargeLegs,
+        toggleCheck, totalLow, totalHigh, rowRange,
+        cityColor, cityLabel, actColor, tagClass
+      };
+    }
+  }).mount('#app');
+</script>
+</body>
+</html>
