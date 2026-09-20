@@ -225,6 +225,12 @@
     </div>
   </header>
 
+  <!-- Day shortcut nav — sticks to the top once the hero scrolls past, so
+       jumping between days doesn't mean scrolling all the way back up. -->
+  <nav class="sticky top-0 z-30 bg-navy border-b border-[oklch(33%_0.022_252)] px-[clamp(1.5rem,5vw,5rem)] flex items-center gap-8 overflow-x-auto scrollbar-none">
+    <a v-for="day in days" :key="'nav-' + day.num" :href="'#day' + day.num" class="font-sans text-[0.68rem] font-medium tracking-[0.2em] uppercase text-[oklch(94%_0.006_250)] hover:text-gold transition-colors duration-200 shrink-0 py-3 whitespace-nowrap">{{ day.num }} · {{ (day.date.split('，')[1] || day.date) }}</a>
+  </nav>
+
   <div class="bg-navy px-[clamp(2rem,5vw,5rem)] flex items-stretch overflow-x-auto scrollbar-none">
     <div v-for="stat in stats" :key="stat.label" class="py-[1.6rem] pr-10 mr-10 border-r border-[oklch(33%_0.022_252)] shrink-0 last:border-r-0 last:mr-0" :style="stat.isFirst ? 'padding-left:clamp(1.5rem,5vw,5rem)' : ''">
       <div class="font-display text-[2.1rem] font-medium text-gold leading-none tracking-[-0.005em]">{{ stat.value }}</div>
@@ -330,7 +336,7 @@
         </tbody>
       </table>
       <p class="mt-6 text-[0.95rem] md:text-[0.85rem] text-ink-mid max-w-[560px] leading-[1.8]">
-        Eurostar、酒店、艾菲爾鐵塔同羅浮宮飛全部訂晒，餘下嘅開支大約 <strong class="font-semibold text-ink">~£415–615</strong>，而且<strong class="font-semibold text-ink">再冇任何要提前訂嘅門票</strong>。淨低嘅係現場俾錢嘅嘢：Parc Floral 入場（視乎當日有冇活動，可能免費）、Bofinger 晚餐（建議提前訂位）、餐飲、交通同手信。
+        Eurostar、酒店、艾菲爾鐵塔同羅浮宮飛全部訂晒，餘下嘅開支大約 <strong class="font-semibold text-ink">~£415–640</strong>，而且<strong class="font-semibold text-ink">再冇任何要提前訂嘅門票</strong>。淨低嘅係現場俾錢嘅嘢：Parc Floral 入場（視乎當日有冇活動，可能免費）、Bofinger 同 Café des Musées 兩餐（位已訂晒，現場找數）、Day 4 嘅 Argonaute 潛水艇（可選，唔入就慳返）、餐飲、交通同手信。
       </p>
     </div>
   </section>
@@ -432,7 +438,7 @@
       { value: "3", label: "晚數" },
       { value: "3", label: "同行人數" },
       { value: "ibis Bastille", label: "酒店 ✓" },
-      { value: "£415–615", label: "餘下開支" },
+      { value: "£415–640", label: "餘下開支" },
     ],
     days: [
       {
@@ -509,19 +515,20 @@
       {
         num: "D2",
         date: "週二，9月1日",
-        title: "艾菲爾鐵塔 · Champ de Mars 遊樂場 · rue Cler 午餐",
-        sub: "西邊全日步行區 — 出程 M1→M6（1 次轉車），返程 M8 直達",
+        title: "艾菲爾鐵塔 · rue Cler 午餐 · Montmartre 蒙馬特",
+        sub: "上晝西邊鐵塔區，落午轉去北邊 Montmartre — 出程 M1→M6，中途 M8→M12，返程 M12→M1",
         isDark: true,
         tipBox: {
           icon: "fa-shoe-prints",
-          text: "<strong>今日全部行得到：</strong>Trocadéro → 鐵塔 → Champ de Mars → rue Cler 全部連埋一齊，唔使搭車。<br><strong>出程：</strong>行 8 分鐘去 Bastille，搭 M1 → Charles de Gaulle–Étoile（10 個站）→ 轉 M6 → Trocadéro（2 個站），1 次轉車，約 25–30 分鐘。<strong>返程：</strong>École Militaire 搭 M8 直達 Bastille（14 個站，唔使轉車），約 20–25 分鐘。單程成人 €2.55 / 女兒 €1.30。<br><strong>刻意輕鬆：</strong>下午 4 點就收工返酒店休息，儲返體力先出去食 Bofinger 晚餐（✓ 已訂位 18:30）—— 呢個返房休息嘅窗口就係專登留返畀一餐大啲嘅晚飯。聽日羅浮宮 11:00 先入場，10:20 先出門，唔使擔心今晚食晏啲會影響聽朝。<br><strong>可選加碼：</strong>想多一個正式遊樂場嘅話，<strong>Parc André Citroën</strong>（15 區，離鐵塔約 20 分鐘）有繫留氦氣球升到 150 米高（真刺激但完全唔係過山車），仲有大型噴水柱。要買飛、大風唔飛，所以冇當預設。"
+          text: "<strong>⚠️ 加咗 Montmartre 之後，今日冇晒返酒店休息嘅窗口：</strong>原本設計係鐵塔玩完 4 點就返酒店抖，儲精神先去 Bofinger。宜家落午直接轉去 Montmartre，玩完直接搭地鐵去 Bofinger（唔使繞返酒店），一路玩到接近晚飯時間，變咗成日冇停過，對 7 歲小朋友嚟講會攰好多，記得叫佢中途執下腳骨力。<br><strong>出程（去鐵塔）：</strong>行 8 分鐘去 Bastille，搭 M1 → Charles de Gaulle–Étoile（10 個站）→ 轉 M6 → Trocadéro（2 個站），約 25–30 分鐘。<br><strong>中途（École Militaire → Montmartre）：</strong>搭 M8 → Madeleine（轉車站）→ 轉 M12 → Abbesses，約 23 分鐘，1 次轉車。<br><strong>返程（Montmartre → Bofinger）：</strong>Abbesses 冇直達 Bastille，搭 M12 → Concorde → 轉 M1 → Bastille，約 28 分鐘，落車行 2 分鐘就到 Bofinger（就喺 Bastille 出口）。<br><strong>時間預算：</strong>13:15 由 rue Cler 出發，13:40 左右到 Montmartre，玩到 16:30 就要走，直接搭車去 Bofinger，仲有少少寬裕先到 18:30。"
         },
         mapPoints: [
           { name: "Trocadéro", lat: 48.8625, lng: 2.2888, color: "oklch(50% 0.012 255)", label: "09:00 影相" },
           { name: "艾菲爾鐵塔", lat: 48.8584, lng: 2.2945, color: "oklch(51% 0.205 27)", label: "第二層電梯" },
           { name: "rue Cler 市集街", lat: 48.8556, lng: 2.3050, color: "oklch(45% 0.055 178)", label: "午餐" },
-          { name: "Champ de Mars 遊樂場", lat: 48.8560, lng: 2.2980, color: "oklch(45% 0.170 264)", label: "下午放電" },
-          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~16:00 返酒店" },
+          { name: "Champ de Mars 遊樂場", lat: 48.8560, lng: 2.2980, color: "oklch(45% 0.170 264)", label: "快閃放電" },
+          { name: "Sacré-Cœur · Montmartre", lat: 48.8867, lng: 2.3431, color: "oklch(51% 0.205 27)", label: "13:40–16:15" },
+          { name: "Place du Tertre", lat: 48.8865, lng: 2.3405, color: "oklch(45% 0.170 264)", label: "畫家廣場" },
           { name: "Bofinger", lat: 48.8531, lng: 2.3690, color: "oklch(45% 0.055 178)", label: "✓ 18:30 晚餐" }
         ],
         activities: [
@@ -550,23 +557,38 @@
           {
             type: "fun",
             icon: "fa-child",
-            title: "Champ de Mars 遊樂場 + Trocadéro 噴泉",
-            desc: "鐵塔腳下有 4 個免費遊樂場，Trocadéro 嗰邊有水花可以玩。排完隊上完塔之後，正好喺度放電減壓 — 零車程，行幾步就到，攰就隨時走。",
-            tag: "Free"
+            title: "Champ de Mars 遊樂場 — 快閃放電",
+            desc: "鐵塔腳下有 4 個免費遊樂場。因為落午加咗 Montmartre，呢度今日淨係快閃 20–30 分鐘，唔再係全程重點，攰就即刻起身去食飯。",
+            tag: "Free · ~20–30 分鐘"
           },
           {
             type: "move",
-            icon: "fa-bed",
-            title: "~16:00 返酒店休息",
-            desc: "返到 Bastille 沖涼攤一陣，儲定精神。今晚特登留咗個大啲嘅晚飯，唔使匆忙。",
-            tag: "~16:00"
+            icon: "fa-subway",
+            title: "rue Cler → Montmartre",
+            desc: "13:15 左右由 École Militaire 站出發：搭 M8 → Madeleine（轉車）→ 轉 M12 → Abbesses，約 23 分鐘，1 次轉車。Abbesses 站本身都值得睇——巴黎最深嘅月台之一，仲有 Art Nouveau 玻璃頂出入口。",
+            tag: "~23 分鐘"
+          },
+          {
+            type: "hi",
+            icon: "fa-church",
+            title: "Sacré-Cœur 同 Place du Tertre",
+            desc: "由 Abbesses 行上山（或搭 Funiculaire de Montmartre，用返地鐵飛就得，慳返爬樓梯）先到 Sacré-Cœur。教堂免費入場，山頂平台可以睇成個巴黎景。跟住行 5 分鐘去 Place du Tertre 畫家廣場，好多街頭畫家即場幫遊客畫像，好熱鬧。",
+            note: "今日時間趕，圓頂登高（要買飛加排隊）就冇安排，睇教堂外觀同平台景已經好正。Square Willette（山腳）有個懷舊木馬轉圈，女兒應該會鍾意，唔想爬太多樓梯嘅話可以喺呢度停一停。",
+            tag: "13:40–16:15"
+          },
+          {
+            type: "move",
+            icon: "fa-subway",
+            title: "Montmartre → Bofinger",
+            desc: "16:30 左右由 Abbesses 出發：搭 M12 → Concorde（轉車）→ 轉 M1 → Bastille，約 28 分鐘（冇直達，要轉一次車）。落車行 2 分鐘就直接到 Bofinger，唔使繞返酒店。",
+            tag: "~28 分鐘 + 2 分鐘行路"
           },
           {
             type: "food",
             icon: "fa-utensils",
             title: "晚餐 — Bofinger ✓ 已訂位",
-            desc: "5–7 rue de la Bastille，行約 10 分鐘。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）。",
-            note: "已訂位：3 人，18:30。記得帶埋 booking confirmation。",
+            desc: "5–7 rue de la Bastille，就喺 Bastille 地鐵站出口。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）。",
+            note: "已訂位：3 人，18:30。記得帶埋 booking confirmation。今日冇返酒店，出發前記得喺 Montmartre 度執齊隨身嘢（尤其行李寄存喺酒店嘅嘢就唔使理，但相機、散紙呢啲記得帶足）。",
             tag: "✓ 18:30 已訂"
           }
         ]
@@ -574,28 +596,44 @@
       {
         num: "D3",
         date: "週三，9月2日",
-        title: "羅浮宮 11:00 · Parc Floral · 全程 1 號線",
-        sub: "上晝慢慢嚟，11 點入羅浮宮，落午去公園放電 — 全程 1 號線唔使轉車",
+        title: "巴黎聖母院 · 羅浮宮 11:00 · Parc Floral",
+        sub: "早上先去聖母院打卡，再過河去羅浮宮 11 點入場，落午去公園放電",
         isDark: false,
         tipBox: {
           icon: "fa-clock",
-          text: "<strong>✓ 羅浮宮飛已買：9月2日 11:00 入場。</strong>時間比原先計劃嘅 09:00 遲咗兩個鐘，所以成日重新編過：<br>• <strong>上晝變咗空閒</strong> —— 唔好硬塞節目入去。琴日鐵塔日 9 點就要出門，今日就慢慢食個早餐，10:20 左右出門啱啱好。<br>• <strong>⚠️ 午餐會好遲（13:40 左右）</strong> —— 好多法國餐廳廚房 14:30 就收爐，所以一定要揀「service continu」（全日供應）嗰啲。<strong>Café Marly</strong> 就係全日供應，而且就喺羅浮宮入面，行都唔使行。出門前記得食飽早餐、袋定零食。<br>• <strong>⚠️ 11 點入場人多過 9 點</strong> —— 蒙娜麗莎嗰間房 11:15 會比 09:15 逼好多。入到去就直接殺去 Denon 翼，唔好沿路遊花園。"
+          text: "<strong>✓ 羅浮宮飛已買：9月2日 11:00 入場。</strong>時間比原先計劃嘅 09:00 遲咗兩個鐘，所以成日重新編過：<br>• <strong>上晝加咗巴黎聖母院</strong> —— 08:45 出門，09:15 左右到西堤島，睇個外觀同廣場，想入內部就要睇現場排隊。10:00 左右起身沿塞納河邊行去羅浮宮，路上經過書檔同 Pont Neuf，10:15–10:30 到，仲有少少寬裕先入場。<br>• <strong>⚠️ 午餐會好遲（13:40 左右）</strong> —— 好多法國餐廳廚房 14:30 就收爐，所以一定要揀「service continu」（全日供應）嗰啲。<strong>Café Marly</strong> 就係全日供應，而且就喺羅浮宮入面，行都唔使行。出門前記得食飽早餐、袋定零食。<br>• <strong>⚠️ 11 點入場人多過 9 點</strong> —— 蒙娜麗莎嗰間房 11:15 會比 09:15 逼好多。入到去就直接殺去 Denon 翼，唔好沿路遊花園。"
         },
         mapPoints: [
-          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~10:20 出門" },
+          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "~08:45 出門" },
+          { name: "巴黎聖母院", lat: 48.8530, lng: 2.3499, color: "oklch(51% 0.205 27)", label: "09:15–10:00" },
           { name: "羅浮宮", lat: 48.8606, lng: 2.3376, color: "oklch(51% 0.205 27)", label: "11:00 · 限 2.5 個鐘" },
           { name: "Café Marly（全日供應）", lat: 48.8625, lng: 2.3395, color: "oklch(45% 0.055 178)", label: "13:40 遲午餐" },
           { name: "Parc Floral de Paris", lat: 48.8380, lng: 2.4450, color: "oklch(45% 0.170 264)", label: "15:30–18:00 玩" },
           { name: "Château de Vincennes", lat: 48.8444, lng: 2.4406, color: "oklch(30% 0.020 252)", label: "1 號線總站" },
-          { name: "Café de l'Industrie", lat: 48.8556, lng: 2.3718, color: "oklch(45% 0.055 178)", label: "晚餐" }
+          { name: "Do et Riz（正宗越南菜）", lat: 48.8503, lng: 2.3773, color: "oklch(45% 0.055 178)", label: "晚餐" }
         ],
         activities: [
           {
             type: "food",
             icon: "fa-mug-hot",
-            title: "上晝慢慢嚟 — 早餐食飽佢",
-            desc: "今日 11 點先入羅浮宮，10:20 出門就夠。琴日 9 點要出門，今日呢個 slack 係好事，唔好用嚟塞多個景點。酒店附近 boulangerie 慢慢食個早餐 — 而且今日午餐會遲到 13:40，早餐一定要食飽，袋度再放定零食。",
-            tag: "~10:20 出門"
+            title: "早餐 — 酒店附近 boulangerie",
+            desc: "今日加咗聖母院，08:00 起身、08:45 就要出門，唔可以再瞓晏覺。今日午餐仲會遲到 13:40，早餐一定要食飽，袋定零食先出門。",
+            tag: "~08:45 出門"
+          },
+          {
+            type: "hi",
+            icon: "fa-church",
+            title: "巴黎聖母院 — Île de la Cité",
+            desc: "由酒店搭地鐵（M5 → 轉 M4 往 Cité，或 M1 → 轉 M4）到西堤島，行到廣場影相，2019 年大火後重建咗嘅外觀同尖塔值得慢慢睇。想入內部就要睇現場排隊情況 — 通常一開門去人流最少。",
+            note: "免費入場，但想入內部參觀建議預留 45 分鐘–1 個鐘（包排隊）。出發前上網睇下有冇最新開放時間或者預約安排。",
+            tag: "09:15–10:00"
+          },
+          {
+            type: "move",
+            icon: "fa-walking",
+            title: "聖母院 → 羅浮宮 — 沿塞納河邊行",
+            desc: "沿河邊行，經過 Pont Neuf 同河邊嘅二手書檔（bouquinistes），大約 10–15 分鐘就到羅浮宮，仲有少少寬裕先入 11:00 場。",
+            tag: "~10–15 分鐘"
           },
           {
             type: "hi",
@@ -638,8 +676,9 @@
           {
             type: "food",
             icon: "fa-utensils",
-            title: "晚餐 — Café de l'Industrie",
-            desc: "16 rue Saint-Sabin，18:00 左右離開 Parc Floral，1 號線返到 Bastille 大約 18:40，再行 5–8 分鐘就到 —— 今日全日路程最短嘅一餐。因為午餐遲，今晚未必好肚餓，唔使搏正經晚餐；呢度可以食輕啲（例如淨係嗌法式洋蔥湯）都得，唔使訂位。",
+            title: "晚餐 — Do et Riz（正宗越南菜）",
+            desc: "31 rue de Cotte，18:00 左右離開 Parc Floral，1 號線返到 Bastille 大約 18:40，再行 8–10 分鐘就到。菜式選擇多——phở、bò bún（牛肉/蝦肉）、tofu 素食版，啱曬一家人唔同口味。因為午餐遲，今晚未必好肚餓，呢度食輕啲都得。",
+            note: "19:00–22:30 開，逢星期日休息，唔使訂位。",
             tag: "~£15–20/人"
           }
         ]
@@ -647,18 +686,19 @@
       {
         num: "D4",
         date: "週四，9月3日",
-        title: "早上隨便行 · 搭 Eurostar 返屋企",
-        sub: "只做一件事，然後返屋企 — Eurostar 16:02 喺 Gare du Nord 開出",
+        title: "La Villette 遊樂場 · 最後一餐 · 搭 Eurostar 返屋企",
+        sub: "M5 由酒店樓下直達，玩全巴黎最好嘅遊樂場，返嚟食餐好，14:30 出發搭車",
         isDark: true,
         tipBox: {
           icon: "fa-hourglass-half",
-          text: "<strong>今日得一個景點，唔好貪心：</strong>15:00 一定要到 Gare du Nord，扣返 check-out、寄存同攞行李、搭車嘅時間，其實淨返 3 個鐘左右。原本排咗 Marché des Enfants Rouges 早午餐＋Passage Jouffroy 兩個點，宜家二揀一。<br><strong>建議揀 Passage Jouffroy</strong> —— 玩具店、糖果店、蠟像館，7 歲小朋友嘅興趣度高好多；早餐就喺酒店附近或者拱廊入面解決。<br><strong>如果想食好啲</strong>先揀 Marché des Enfants Rouges（離酒店行 10 分鐘，摩洛哥/日本/法國檔口），咁就唔好再兜去 Jouffroy。"
+          text: "<strong>去程最靚嘅一點：M5 由 Bréguet-Sabin 直達 Porte de Pantin，唔使轉車。</strong>Bréguet-Sabin 就係酒店樓下（行 3 分鐘），唔使行去 Bastille 轉車。車程約 20 分鐘。<br><strong>⚠️ 唔使太早出門：</strong>Jardin des Vents et des Dunes <strong>10:00 先開門</strong>，所以今日 09:15 check-out 就夠，唔使 08:45。09:50 到公園，先去 Dragon（開放式，冇開放時間限制）玩 20 分鐘熱身，等 Vents et Dunes 開閘。<br><strong>玩邊個：</strong>主力玩 <strong>Vents et Dunes</strong>（0–13 歲分齡區、彈床、飛索、tipi，有圍欄有閘，家長有躺椅同廁所）。Dragon 個 11 米龍舌滑梯建議 8 歲以上先玩，女兒 7 歲爭少少，所以當順路影相同玩繩網就算。兩個都免費。<br><strong>⚠️ 落雨或者太熱會封場：</strong>Vents et Dunes 地面濕滑就會關。但同一個公園入面有大量室內後備 —— Cité des Sciences（Cité des Enfants 5–10 歲區，€12，要預先訂）、Argonaute 真潛水艇（€13，星期一休）、La Géode IMAX 巨蛋、Boom Boom Villette 室內遊樂場 —— 所以就算天氣唔好都唔會白行。<br><strong>返程：</strong>12:00 一定要走（訂咗 12:45 食飯），M5 直達 Bastille 約 22 分鐘，再行 12 分鐘去 rue de Turenne。食完 14:20 攞行李，<strong>14:30 準時出發</strong>，M5 直達 Gare du Nord，約 14:50 到站。"
         },
         mapPoints: [
-          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "Check-out · 寄存行李" },
-          { name: "Passage Jouffroy", lat: 48.8729, lng: 2.3455, color: "oklch(45% 0.055 178)", label: "首選 · 有蓋拱廊" },
-          { name: "Marché des Enfants Rouges", lat: 48.8629, lng: 2.3609, color: "oklch(50% 0.012 255)", label: "後備選擇（二揀一）" },
-          { name: "Gare du Nord", lat: 48.8809, lng: 2.3553, color: "oklch(30% 0.020 252)", label: "15:00 前到" }
+          { name: "ibis Bastille Opéra 11th", lat: 48.8545, lng: 2.3706, color: "oklch(30% 0.020 252)", label: "09:15 check-out · 寄存行李" },
+          { name: "Jardin du Dragon", lat: 48.8895, lng: 2.3893, color: "oklch(50% 0.012 255)", label: "09:50 熱身" },
+          { name: "Jardin des Vents et des Dunes", lat: 48.8918, lng: 2.3903, color: "oklch(45% 0.170 264)", label: "10:00–12:00 主場" },
+          { name: "Café des Musées", lat: 48.8588, lng: 2.3651, color: "oklch(45% 0.055 178)", label: "✓ 12:45 已訂位" },
+          { name: "Gare du Nord", lat: 48.8809, lng: 2.3553, color: "oklch(30% 0.020 252)", label: "~14:50 到站" }
         ],
         activities: [
           {
@@ -671,24 +711,54 @@
           {
             type: "move",
             icon: "fa-box-open",
-            title: "Check-out · 寄存行李",
-            desc: "中午前 check-out，行李全部擺低喺 reception。今日唔好拖住喼周圍行 — 出去玩之前一定要先安頓好行李。",
-            tag: "中午前"
+            title: "09:15 Check-out · 寄存行李",
+            desc: "行李全部擺低喺 reception，今日唔好拖住喼周圍行。唔使似原本咁 08:45 就衝 —— 遊樂場 10:00 先開門，09:15 走啱啱好。",
+            tag: "09:15"
           },
           {
-            type: "hi",
-            icon: "fa-store-alt",
-            title: "Passage Jouffroy — 9 區（今日唯一景點）",
-            desc: "1847 年嘅維多利亞式有蓋拱廊商場。玩具店、糖果店、古書店、蠟像館，全部喺一條玻璃頂通道入面。免費入場，隨便逛，對 7 歲小朋友嚟講超奇幻 — 亦係全程最容易買到佢真係想要嗰件手信嘅地方。",
-            note: "地鐵 8/9 號線 Grands Boulevards 站落車。逛完由 Grands Boulevards 去 Gare du Nord 約 15 分鐘。",
-            tag: "Free entry"
+            type: "move",
+            icon: "fa-subway",
+            title: "09:30 Bréguet-Sabin → Porte de Pantin",
+            desc: "行 3 分鐘去 Bréguet-Sabin（酒店樓下嗰個站），搭 M5 直達 Porte de Pantin，唔使轉車，約 20 分鐘。落車行入公園幾分鐘就到兩個遊樂場嗰頭。",
+            tag: "~25 分鐘"
+          },
+          {
+            type: "fun",
+            icon: "fa-dragon",
+            title: "Jardin du Dragon — 09:50 熱身",
+            desc: "巨型藍黃粉紅大龍，1970 年代就企喺度，2015 年翻新完。有繩網、攀爬架、鞦韆同蹺蹺板，家長有長櫈坐，廁所就喺對面。開放式，冇開放時間限制 —— 啱啱好用嚟等隔籬 Vents et Dunes 10:00 開閘。",
+            note: "由龍口伸出嚟嗰條 11 米隧道滑梯建議 8–14 歲先玩，女兒 7 歲爭一年，所以當影相同玩繩網就算，唔好硬玩。",
+            tag: "Free"
+          },
+          {
+            type: "fun",
+            icon: "fa-child",
+            title: "Jardin des Vents et des Dunes — 10:00 至 12:00",
+            desc: "今日主場，亦係全程最好嗰個遊樂場。0–13 歲分開年齡區，有彈床、攀爬、飛索（tyrolienne）同 tipi 帳篷，風同沙丘做主題。全場有圍欄有閘、封閉式，家長有躺椅坐，場內有廁所，仲有位泊 BB 車。免費，每日 10:00–20:00。",
+            note: "⚠️ 落雨或者太熱令地面濕滑就會封場。撞正嘅話同一個公園入面有室內後備：Cité des Enfants 5–10 歲區（€12，1 個半鐘一節，要預先訂飛，首節 10:30）、Argonaute 真潛水艇（€13，逢 15 分鐘一團要留位）、La Géode IMAX 巨蛋、Boom Boom Villette 室內遊樂場。",
+            tag: "Free · 2 個鐘"
+          },
+          {
+            type: "move",
+            icon: "fa-subway",
+            title: "12:00 Porte de Pantin → 餐廳",
+            desc: "訂咗 12:45 入座，所以 12:00 就要收工走。搭 M5 直達 Bastille（約 22 分鐘，唔使轉車），再行 12 分鐘就到 rue de Turenne，大約 12:35 到，仲有 10 分鐘水位。",
+            tag: "~35 分鐘"
+          },
+          {
+            type: "food",
+            icon: "fa-utensils",
+            title: "最後一餐 — Le Café des Musées ✓ 已訂位",
+            desc: "49 rue de Turenne，由 Bastille 行約 12 分鐘。1924 年開業，保留住 1930 年代巴黎咖啡館嘅馬賽克地磚同木飾，開放式廚房。招牌 boeuf bourguignon 用細鐵鑄鍋上枱，配自家薯蓉 —— 2018 年畀《費加羅報》選為全巴黎最好嘅紅酒燉牛肉。",
+            note: "已訂位：3 人，週四 9月3日 12:45。記得帶埋 booking confirmation。⚠️ 14:00 就一定要走 —— 落單嗰陣同侍應講聲趕火車（「Nous avons un train à prendre」），佢哋會安排出餐快啲，唔好等到食完先講。",
+            tag: "✓ 12:45 已訂"
           },
           {
             type: "move",
             icon: "fa-suitcase",
-            title: "攞返行李 · 出發去 Gare du Nord",
-            desc: "喺酒店攞返行李，然後喺 Bréguet-Sabin 搭地鐵 5 號線直達 Gare du Nord（約 20 分鐘）。閘口提早 30 分鐘關閉，Eurostar 建議提早 60–90 分鐘到 — 要喺 15:00 前到車站。",
-            tag: "16:02 開出"
+            title: "14:20 攞行李 · 14:30 準時出發",
+            desc: "行返酒店攞行李，14:30 一定要出門，喺 Bréguet-Sabin 搭 M5 直達 Gare du Nord（約 20 分鐘），大約 14:50 到站。閘口提早 30 分鐘關閉（15:32），Eurostar 建議提早 60–90 分鐘到 — 咁樣仲有成個鐘水位。",
+            tag: "14:30 出發"
           },
           {
             type: "move",
@@ -710,6 +780,7 @@
           { text: "羅浮宮時段票已訂 — 2 張大人（女兒免費），週三 9月2日 11:00 入場", done: true },
           { text: "確認 Parc Floral 週三嘅閉園時間同入場收費 — 今次落午 15:30 先到，唔好撞正閉園【而家最急】" },
           { text: "Bofinger 位已訂 — 週二 9月1日 18:30，3 人", done: true },
+          { text: "Le Café des Musées 位已訂 — 週四 9月3日 12:45，3 人", done: true },
           { text: "檢查三本護照 — 有效期要覆蓋成程旅行" },
           { text: "買定一家人旅遊保險 — 三人份" }
         ]
@@ -728,9 +799,10 @@
         title: "喺巴黎期間",
         items: [
           { text: "週二：鐵塔落嚟之後唔好再加節目，下午 4 點就返酒店抖" },
+          { text: "週三：08:45 出門去聖母院，09:15–10:00 睇完就沿河邊行去羅浮宮" },
           { text: "週三：羅浮宮 2.5 個鐘一到就走，唔好戀戰" },
-          { text: "週四早上：中午前 check-out，行李寄存喺酒店 reception，出發去車站前先攞返" },
-          { text: "週四：Passage Jouffroy 同 Marché des Enfants Rouges 二揀一，唔好兩個都去" }
+          { text: "週四：09:15 check-out，行李寄存喺 reception（遊樂場 10:00 先開，唔使更早）" },
+          { text: "週四：La Villette 玩到 12:00 就要走，14:30 一定要由酒店出發去 Gare du Nord" }
         ]
       }
     ],
@@ -741,7 +813,7 @@
       { icon: "fa-landmark", name: "羅浮宮（2 張大人票，細路免費）", budget: 0, mid: 0, booked: true },
       { icon: "fa-tree", name: "Parc Floral（入場，如當日收費）", budget: 15, mid: 25 },
       { icon: "fa-utensils", name: "餐飲 — 4 日（兩餐正式午餐 + Bofinger 晚餐 + 其餘從簡）", budget: 230, mid: 340 },
-      { icon: "fa-store-alt", name: "Passage Jouffroy · Champ de Mars 遊樂場（免費）", budget: 0, mid: 0 },
+      { icon: "fa-child", name: "La Villette／Champ de Mars 遊樂場（免費）· Argonaute 潛水艇（可選）", budget: 0, mid: 25 },
       { icon: "fa-subway", name: "巴黎交通（Navigo 卡 + RER）", budget: 50, mid: 50 },
       { icon: "fa-shopping-bag", name: "零食、雪糕、手信", budget: 50, mid: 80 },
       { icon: "fa-shield-alt", name: "旅遊保險 + SIM 卡", budget: 70, mid: 120 }
@@ -749,12 +821,15 @@
     transportRoutes: [
       { day: "1", leg: "Gare du Nord → Bréguet-Sabin（酒店）", line: "M5 直達（6 個站）", time: "~15 分鐘" },
       { day: "2", leg: "酒店（行去 Bastille）→ Trocadéro", line: "M1 → Étoile（10 站）→ 轉 M6 → Trocadéro（2 站）", time: "~25–30 分鐘" },
-      { day: "2", leg: "École Militaire → Bastille（返酒店）", line: "M8 直達（14 個站）", time: "~20–25 分鐘" },
-      { day: "3", leg: "Bastille → 羅浮宮（Palais-Royal）", line: "M1 直達（4 個站）", time: "~10 分鐘" },
+      { day: "2", leg: "École Militaire → Montmartre（Abbesses）", line: "M8 → Madeleine（轉車）→ 轉 M12 → Abbesses", time: "~23 分鐘" },
+      { day: "2", leg: "Montmartre（Abbesses）→ Bastille（返酒店）", line: "M12 → Concorde（轉車）→ 轉 M1 → Bastille", time: "~28 分鐘" },
+      { day: "3", leg: "Bastille → 聖母院（Cité 站）", line: "M5 → Châtelet（3 站）→ 轉 M4 → Cité（1 站）", time: "~15 分鐘" },
+      { day: "3", leg: "聖母院 → 羅浮宮", line: "沿塞納河邊行，唔使搭車", time: "~10–15 分鐘" },
       { day: "3", leg: "羅浮宮 → Château de Vincennes（Parc Floral）", line: "M1 直達（11 個站）", time: "~25 分鐘" },
       { day: "3", leg: "Château de Vincennes → Bastille（返酒店）", line: "M1 直達（7 個站）", time: "~15–18 分鐘" },
-      { day: "4", leg: "酒店（行去 Bastille）→ Grands Boulevards", line: "M8 直達（7 個站）", time: "~14–16 分鐘" },
-      { day: "4", leg: "Grands Boulevards → Bastille（返酒店攞行李）", line: "M8 原路折返", time: "~14–16 分鐘" },
+      { day: "4", leg: "Bréguet-Sabin → Porte de Pantin（La Villette）", line: "M5 直達，唔使轉車", time: "~20 分鐘" },
+      { day: "4", leg: "Porte de Pantin → Bastille（去食晏）", line: "M5 直達，落車行 12 分鐘", time: "~35 分鐘" },
+      { day: "4", leg: "餐廳 → 酒店（攞行李）", line: "行路，唔使搭車", time: "~15 分鐘" },
       { day: "4", leg: "Bréguet-Sabin → Gare du Nord", line: "M5 直達（6 個站）", time: "~15–20 分鐘" }
     ],
     tips: [
@@ -791,7 +866,7 @@
     ],
     restaurants: [
       {
-        day: "Day 1 · 週一 8月31日 — 午餐 ~15:00（要 service continu，冇早餐）",
+        day: "Day 1 · 週一 8月31日 — 午餐 ~14:30（要 service continu，冇早餐）",
         items: [
           { name: "★ Café de l'Industrie", type: "午餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，09:00–02:00 全日供應，Belle Époque 裝修，午市套餐 €12。", dish: "推介：duck confit（鴨脾）、pot-au-feu（燉牛肉）、escargots de Bourgogne（勃艮第蝸牛）、法式洋蔥湯，甜品試 crème brûlée。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
           { name: "Bouillon République", type: "午餐 · 老字號", note: "39 bd du Temple。12:00–24:00 全日供應，官方推薦帶小朋友嘅家庭，水煮蛋 €2.70。", dish: "推介：œuf mayonnaise（水煮蛋沙律）、火腿松露意粉、steak frites（牛排薯條）、生蠔（半打 €9.90）、profiteroles 收尾。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+R%C3%A9publique+39+boulevard+du+Temple+Paris" },
@@ -807,8 +882,9 @@
         day: "Day 1–3 · 晚餐（酒店附近，通用選擇）",
         items: [
           { name: "★ Bofinger（✓ 已訂 Day 2 晚餐 18:30）", type: "晚餐 · 歷史名店", note: "5–7 rue de la Bastille。1864 年老字號，玻璃穹頂，大圓頂對 7 歲小朋友嚟講好震撼。", dish: "推介：choucroute（酸菜配香腸火腿豬肉，招牌菜）、flammekueche（阿爾薩斯薄餅，適合分享）、plateau de fruits de mer 海鮮拼盤（大人想豪就叫）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bofinger+5+rue+de+la+Bastille+Paris" },
-          { name: "Café de l'Industrie（★ 已排 Day 1 午餐 + Day 3 晚餐）", type: "晚餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，唔使訂位。", dish: "推介：同午餐一樣 — duck confit、pot-au-feu、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
-          { name: "Le Bistrot du Peintre", type: "晚餐 · 法式小酒館", note: "116 av Ledru-Rollin。逢日 07:00–02:00，可以 walk-in，Art Nouveau 裝修，有 menu enfant。", dish: "推介：傳統小酒館牛排薯條、鴨扒；有兒童餐可揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Bistrot+du+Peintre+116+avenue+Ledru-Rollin+Paris" },
+          { name: "★ Do et Riz（★ 已排 Day 3 晚餐 · 正宗越南菜）", type: "晚餐 · 越南菜", note: "31 rue de Cotte。離 Bastille 行 8–10 分鐘。19:00–22:30 開，逢星期日休息，唔使訂位。", dish: "推介：phở（牛肉/雞肉河粉）、bò bún（牛肉檬粉）、tofu 素食版。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Do+et+Riz+31+rue+de+Cotte+Paris" },
+          { name: "Café de l'Industrie（★ 已排 Day 1 午餐）", type: "晚餐 · Brasserie", note: "16 rue Saint-Sabin。離酒店最近，唔使訂位。", dish: "推介：同午餐一樣 — duck confit、pot-au-feu、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
+          { name: "Le Bistrot du Peintre（★ 已排 Day 1 晚餐）", type: "晚餐 · 法式小酒館", note: "116 av Ledru-Rollin。逢日 07:00–02:00，可以 walk-in，Art Nouveau 裝修，有 menu enfant。", dish: "推介：傳統小酒館牛排薯條、鴨扒；有兒童餐可揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Bistrot+du+Peintre+116+avenue+Ledru-Rollin+Paris" },
           { name: "Chez Paul", type: "晚餐 · 法式小酒館", note: "Bastille。逢日 12:00–01:00。", dish: "推介：傳統法式小酒館菜，兔肉、鴨胸，老饕之選。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Chez+Paul+Bastille+Paris" },
           { name: "Bouillon République", type: "晚餐 · 老字號", note: "39 bd du Temple。抵食、出餐快。", dish: "推介：同上晝一樣 — œuf mayonnaise、steak frites、profiteroles。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+R%C3%A9publique+39+boulevard+du+Temple+Paris" },
           { name: "Le Président（⚠️ 其實係老字號中菜館，唔係法式 Brasserie）", type: "晚餐 · 中菜", note: "120–124 rue du Faubourg du Temple。1986 年開業，圓頂 + 迴旋大圓枱，最適合一家人分享。", dish: "推介：北京鴨、廣式點心、分享大碟菜，小朋友會俾個場面同轉盤逗到好開心。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Pr%C3%A9sident+120+rue+du+Faubourg+du+Temple+Paris" },
@@ -836,13 +912,13 @@
         ]
       },
       {
-        day: "Day 4 · 週四 9月3日（Passage Jouffroy / Grands Boulevards）",
+        day: "Day 4 · 週四 9月3日 — 最後一餐（酒店附近，主打紅酒燉牛肉）",
         items: [
-          { name: "★ Bouillon Chartier", type: "早午餐 · 百年老字號", note: "7 rue du Faubourg Montmartre。1896 年老字號，冇得訂位，11:30–午夜全日供應，一餐 3 人埋單通常 <£60。就喺 Passage Jouffroy 出口、Grands Boulevards 地鐵站旁 — 建議 11:30 開門就到，避開排隊。", dish: "推介：œuf mayonnaise（水煮蛋，€2）、escargots（蝸牛，六隻 €7.40）、steak frites（牛排薯條，招牌）、confit de canard（鴨脾）、boeuf bourguignon aux coquillettes；甜品試招牌 profiterole（巨型泡芙配朱古力醬）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bouillon+Chartier+Grands+Boulevards+7+rue+du+Faubourg+Montmartre+Paris" },
-          { name: "Le Valentin", type: "甜品 / 早茶", note: "就喺 Passage Jouffroy 入面嘅茶室，行街行到攰可以坐低歎茶食餅。", dish: "推介：精緻法式甜點／馬卡龍拼盤，配茶或咖啡。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Valentin+Passage+Jouffroy+Paris" },
-          { name: "Grand Café Capucines", type: "午餐後備", note: "近 Opéra Garnier。1875 年老字號，Belle Époque，全日供應。", dish: "推介：plateau de fruits de mer 海鮮拼盤（生蠔、蟹、蝦、螺）、吞拿魚三文魚他他。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Grand+Caf%C3%A9+Capucines+Paris" },
-          { name: "Au Petit Riche", type: "午餐後備", note: "9 區。1854 年 brasserie，羅亞爾河菜系，酒單出名。", dish: "推介：escargots de Bourgogne（半打 €9）、pâté en croûte、oeufs mimosa；逢星期二 pollack（鱈魚）、星期五 whiting Colbert（牙鱈）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Au+Petit+Riche+Paris" },
-          { name: "Alesti", type: "午餐後備", note: "近 Grands Boulevards。Brasserie，抵食，套餐 entrée-plat-dessert。", dish: "推介：法式經典家常菜，睇當日套餐（前菜+主菜+甜品）最抵食。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Alesti+Grands+Boulevards+Paris" }
+          { name: "★ Café des Musées", type: "午餐 · 紅酒燉牛肉首選", note: "49 rue de Turenne（3 區）。✓ 已訂位：3 人，週四 12:45。由 Bastille 行 12 分鐘、食完行返酒店 15 分鐘。1924 年開業，1930 年代咖啡館原裝馬賽克地磚同木飾，開放式廚房。電話 +33 1 42 72 96 17。", dish: "推介：boeuf bourguignon（招牌，2018 年《費加羅報》選為全巴黎最好，細鐵鑄鍋上枱配自家薯蓉）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+des+Mus%C3%A9es+49+rue+de+Turenne+Paris" },
+          { name: "Au Bourguignon du Marais", type: "午餐 · 勃艮第專門店", note: "52 rue François Miron（4 區）。由酒店行約 19 分鐘，五間之中最遠。逢日 12:00 開，TheFork 評 9.4/10。勃艮第葡萄酒單好強，可以逐杯叫。⚠️ 評價一致話：專攻招牌菜就好，魚同甜品水準參差。", dish: "推介：boeuf bourguignon（店名就係「勃艮第人」，招牌中嘅招牌）、法式洋蔥湯、jambon persillé（歐芹凍火腿）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Au+Bourguignon+du+Marais+52+rue+Fran%C3%A7ois+Miron+Paris" },
+          { name: "Chez Paul（最穩陣後備）", type: "午餐 · 經典小酒館", note: "13 rue de Charonne（11 區）。離酒店行 9 分鐘，五間之中最近之一。1900 年開業，紅皮卡座、階磚地、銅色天花，牆上掛滿畫。<strong>12:00–01:00 全日供應</strong> —— 唔驚廚房 14:30 收爐，趕火車嗰日最保險嘅選擇。", dish: "推介：傳統燉牛肉／每日 plat du jour、escargots、牛肉他他，甜品 profiteroles。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Chez+Paul+13+rue+de+Charonne+Paris" },
+          { name: "Café de l'Industrie（已排 Day 1 午餐）", type: "午餐 · 最近", note: "16 rue Saint-Sabin。離酒店淨係 5 分鐘，09:00–02:00 全日供應。已經喺 Day 1 食過，想試新嘢就唔好重複；但如果當日行程滯後、想食完即刻返酒店攞行李，佢係最快嗰個。", dish: "推介：pot-au-feu（燉牛肉）、duck confit、法式洋蔥湯。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+de+l%27Industrie+16+rue+Saint-Sabin+Paris" },
+          { name: "Le Bistrot du Peintre（已排 Day 1 晚餐）", type: "午餐 · Art Nouveau", note: "116 av Ledru-Rollin。離酒店行 12 分鐘，07:00–02:00 全日供應，有 menu enfant，唔使訂位。同樣係 Day 1 去過，列喺度做時間好緊時嘅備胎。", dish: "推介：小酒館牛排薯條、鴨扒；有兒童餐。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Le+Bistrot+du+Peintre+116+avenue+Ledru-Rollin+Paris" }
         ]
       },
       {
