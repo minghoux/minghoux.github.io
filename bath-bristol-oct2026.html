@@ -28,13 +28,18 @@
        every day is tagged BATH / BRISTOL / ON THE ROAD and that tag
        drives the day numeral, the date label and the map pins, so you
        can tell at a glance which city you wake up in.                 */
+    /* Every colour carries an <alpha-value> slot. Without it Tailwind cannot
+       apply an opacity modifier to an oklch() colour and drops the whole
+       declaration silently — so `border-oxide/60` fell back to the default
+       grey and `bg-oxide/[0.05]` resolved to transparent. With the slot,
+       /60 and /[0.05] substitute into the colour properly. */
     tailwind.config = { theme: { extend: { colors: {
-      stone: 'oklch(93.5% 0.022 85)', 'stone-dark': 'oklch(89% 0.028 82)',
-      slate: 'oklch(21% 0.028 225)', 'slate-mid': 'oklch(31% 0.030 222)',
-      ink: 'oklch(25% 0.018 70)', 'ink-mid': 'oklch(47% 0.016 72)', 'ink-faint': 'oklch(58% 0.014 74)',
-      harbour: 'oklch(44% 0.082 215)', oxide: 'oklch(49% 0.142 42)',
-      moss: 'oklch(45% 0.052 148)', brass: 'oklch(80% 0.068 80)',
-      rule: 'oklch(84% 0.020 80)'
+      stone: 'oklch(93.5% 0.022 85 / <alpha-value>)', 'stone-dark': 'oklch(89% 0.028 82 / <alpha-value>)',
+      slate: 'oklch(21% 0.028 225 / <alpha-value>)', 'slate-mid': 'oklch(31% 0.030 222 / <alpha-value>)',
+      ink: 'oklch(25% 0.018 70 / <alpha-value>)', 'ink-mid': 'oklch(47% 0.016 72 / <alpha-value>)', 'ink-faint': 'oklch(58% 0.014 74 / <alpha-value>)',
+      harbour: 'oklch(44% 0.082 215 / <alpha-value>)', oxide: 'oklch(49% 0.142 42 / <alpha-value>)',
+      moss: 'oklch(45% 0.052 148 / <alpha-value>)', brass: 'oklch(80% 0.068 80 / <alpha-value>)',
+      rule: 'oklch(84% 0.020 80 / <alpha-value>)'
     }, fontFamily: {
       /* The copy is majority Traditional Chinese and neither Latin face
          covers it, so the CJK fallbacks are load-bearing, not polish.
@@ -195,7 +200,7 @@
             <div>
               <p class="font-display text-[1.02rem] md:text-[1.05rem] font-bold text-ink leading-[1.45]">{{ act.title }}</p>
               <p class="text-[0.98rem] md:text-[0.93rem] text-ink-mid mt-2 leading-[1.8] max-w-[64ch]">{{ act.desc }}</p>
-              <span v-if="act.note" class="block mt-[0.7rem] py-[0.5rem] px-[0.9rem] border-l-2 border-oxide/60 bg-oxide/[0.05] text-[0.85rem] md:text-[0.8rem] text-oxide leading-[1.7] max-w-[62ch]">{{ act.note }}</span>
+              <span v-if="act.note" class="block mt-[0.7rem] py-[0.55rem] px-[0.95rem] border-l-[3px] border-oxide bg-oxide/[0.07] text-[0.85rem] md:text-[0.8rem] text-oxide leading-[1.7] max-w-[62ch]">{{ act.note }}</span>
               <div v-if="act.tag" class="mt-3 min-[601px]:hidden">
                 <span class="font-sans text-[0.66rem] font-light tracking-[0.14em] uppercase py-[0.25rem] px-[0.6rem] border inline-block" :class="tagClass(act.tag)">{{ act.tag }}</span>
               </div>
@@ -441,7 +446,7 @@
         date: "週日，10月25日",
         title: "Kingston → Stonehenge → Bath",
         sub: "今日淨係一件事：Stonehenge。睇完就慢慢揸入 Bath check-in，唔使急。",
-        tipBox: "<strong>今日刻意輕鬆：</strong>之前個版本 Day 1 塞埋 Longleat，成日都喺趕。而家 Longleat 挪咗去 Day 4 返程順路玩，Day 1 淨返 Stonehenge 一個景點 —— 唔好又手痕加嘢返去。<br><strong>叉電同景點合併：</strong>Amesbury Supercharger 就喺 Stonehenge 隔籬（去石陣前最後一個服務區），泊低叉電、去廁所、伸展，然後先過去睇石陣，一次過搞掂。",
+        tipBox: "<strong>今日刻意輕鬆：</strong>全日淨係 Stonehenge 一個景點，唔使趕 —— 亦唔好手痕加嘢返去。<br><strong>叉電同景點合併：</strong>Amesbury Supercharger 就喺 Stonehenge 隔籬（去石陣前最後一個服務區），泊低叉電、去廁所、伸展，然後先過去睇石陣，一次過搞掂。",
         mapPoints: [
           { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "早上出發" },
           { name: "Amesbury Supercharger", lat: 51.1668, lng: -1.7473, color: "oklch(45% 0.052 148)", label: "叉電 + 廁所" },
@@ -506,7 +511,7 @@
         date: "週三，10月28日",
         title: "Bristol → Longleat → Kingston",
         sub: "返程順路入 Longleat 玩足大半日，先再上 A303 / M4 返屋企。",
-        tipBox: "<strong>今日先係全程最花時間嘅一日：</strong>Longleat 一個景點 + 2–2.5 個鐘車程返屋企。所以 10:00 check-out 之後唔好慢慢嚟，早啲出發，唔好貪玩到太夜先上路。<br><strong>🔴 Longleat 飛記住訂返 10月28日</strong> —— 呢個景點之前排喺 Day 1，改咗行程之後好容易訂錯日子。網上訂平啲，亦可以早入場。<br><strong>出發前一星期確認：</strong>10 月尾部分動物展區同活動可能已經轉咗冬季時間。",
+        tipBox: "<strong>今日先係全程最花時間嘅一日：</strong>Longleat 一個景點 + 2–2.5 個鐘車程返屋企。所以 10:00 check-out 之後唔好慢慢嚟，早啲出發，唔好貪玩到太夜先上路。<br><strong>🔴 Longleat 飛記住訂 10月28日</strong> —— 網上訂平啲，亦可以早入場。<br><strong>出發前一星期確認：</strong>10 月尾部分動物展區同活動可能已經轉咗冬季時間。",
         mapPoints: [
           { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "10:00 前 check-out" },
           { name: "Longleat Safari Park", lat: 51.1877, lng: -2.2679, color: "oklch(49% 0.142 42)", label: "全日主菜" },
@@ -515,7 +520,7 @@
         ],
         activities: [
           { type: "move", icon: "fa-suitcase-rolling", title: "Hotwells check-out — 10:00 前", desc: "3 樓冇電梯，落行李預留返時間。之後直接出發去 Longleat，車程約 50 分鐘至 1 個鐘。", tag: "10:00 前" },
-          { type: "hi", icon: "fa-hippo", title: "Longleat Safari Drive — 全日主菜", desc: "自己架車慢慢兜 safari，獅子、長頸鹿、犀牛就喺車窗外面 —— 對 7 歲嚟講係最震撼嗰個景點。兜完 safari 有精神再落車行迷宮同遊樂場。", note: "🔴 飛未訂 —— 一定要訂 10月28日（唔好用返舊日期）。", tag: "🔴 未訂 · 全日" },
+          { type: "hi", icon: "fa-hippo", title: "Longleat Safari Drive — 全日主菜", desc: "自己架車慢慢兜 safari，獅子、長頸鹿、犀牛就喺車窗外面 —— 對 7 歲嚟講係最震撼嗰個景點。兜完 safari 有精神再落車行迷宮同遊樂場。", note: "🔴 飛未訂 —— 一定要訂 10月28日。", tag: "🔴 未訂 · 全日" },
           { type: "food", icon: "fa-utensils", title: "午餐 — Longleat 園內", desc: "園內餐飲區解決，慳返出出入入嘅時間。或者自備輕便零食擺車上。", tag: "園內" },
           { type: "charge", icon: "fa-bolt", title: "Membury Services（M4）— 叉電 + 抖返", desc: "Tesla 超充站，東行／西行分開，最高 150kW，24 小時開放，連正常 motorway services 有廁所同食嘢。大約喺 Longleat → Kingston 中間。", note: "就算電量夠都建議停 —— 玩足一日之後再揸長途，中途落車行下對細路好重要。", tag: "中途站" },
           { type: "move", icon: "fa-home", title: "返到 Kingston", desc: "由 Membury 返 Kingston 大約 1 個鐘。趁未撞正晚繁忙時間上路最舒服。", tag: "傍晚到屋企" }
