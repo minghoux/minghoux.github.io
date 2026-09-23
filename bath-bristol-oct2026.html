@@ -324,7 +324,7 @@
             <td class="min-[601px]:hidden p-[0.9rem_0.5rem] border-b border-rule text-[0.88rem] text-right font-display whitespace-nowrap" :class="row.booked ? 'text-moss' : 'text-ink-mid'">{{ rowRange(row) }}</td>
           </tr>
           <tr>
-            <td class="p-[0.9rem_0.5rem] md:p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-bold text-[1rem]">總計（連已訂住宿）</td>
+            <td class="p-[0.9rem_0.5rem] md:p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-bold text-[1rem]">總計（連已訂項目）</td>
             <td class="max-[600px]:hidden p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-bold text-[1rem] text-oxide text-right whitespace-nowrap">~£{{ totalLow }}</td>
             <td class="max-[600px]:hidden p-[0.85rem_1rem] border-t border-ink border-b-0 font-display font-bold text-[1rem] text-oxide text-right whitespace-nowrap">~£{{ totalHigh }}</td>
             <td class="min-[601px]:hidden p-[0.9rem_0.5rem] border-t border-ink border-b-0 font-display font-bold text-[0.98rem] text-oxide text-right whitespace-nowrap">~£{{ totalLow }}–{{ totalHigh }}</td>
@@ -332,7 +332,7 @@
         </tbody>
       </table>
       <p class="mt-6 text-[0.93rem] md:text-[0.86rem] text-ink-mid max-w-[64ch] leading-[1.85]">
-        兩晚住宿已經訂晒，合共 <strong class="font-semibold text-ink">£364</strong>（Bath £120 + Bristol £244）。餘下大約 <strong class="font-semibold text-ink">~£505–805</strong> 係要現場／提前買嘅嘢：三個景點門票、叉電、餐飲同手信。
+        兩晚住宿已經訂晒，合共 <strong class="font-semibold text-ink">£364</strong>（Bath £120 + Bristol £244）；三個景點門票亦已經買晒（Stonehenge、Roman Baths、Longleat，£253.45）。餘下大約 <strong class="font-semibold text-ink">~£310–485</strong>：叉電、餐飲、ferry 同手信。
       </p>
     </div>
   </section>
@@ -393,7 +393,7 @@
     <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Where to eat</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">餐廳參考</h2>
-      <p class="text-[0.93rem] md:text-[0.87rem] text-ink-mid mb-9 max-w-[68ch] leading-[1.85]">按行程日子分類，全部都喺當日路線附近。大部分英式 pub 同連鎖家庭餐廳都有兒童餐，價錢 £6–10 一份。</p>
+      <p class="text-[0.93rem] md:text-[0.87rem] text-ink-mid mb-9 max-w-[68ch] leading-[1.85]">按行程日子分類，以正宗亞洲菜為主（日、中、韓、泰、越），全部都已對過營業日 —— Bristol 幾間最好嘅韓／日餐廳（Bokman、Dongnae、Tomo No Ramen）星期一休息，所以排咗喺星期二。熱門嗰幾間建議提早訂位。</p>
       <div class="flex flex-col gap-11">
         <div v-for="group in restaurants" :key="group.day">
           <p class="font-sans text-[0.62rem] font-light tracking-[0.26em] uppercase pb-[0.7rem] border-b mb-1" :style="{ color: cityColor(group.city), borderColor: cityColor(group.city) }">{{ group.day }}</p>
@@ -437,8 +437,8 @@
       { value: "4", label: "天數" },
       { value: "3", label: "晚數" },
       { value: "2", label: "個城市" },
-      { value: "£364", label: "住宿已訂 ✓" },
-      { value: "~£505–805", label: "餘下開支" }
+      { value: "£617", label: "已訂 ✓" },
+      { value: "~£310–485", label: "餘下開支" }
     ],
     days: [
       {
@@ -456,8 +456,8 @@
         ],
         activities: [
           { type: "move", icon: "fa-car-side", title: "Kingston 出發 — 行 A303 西行", desc: "由 Kingston 上 A303 一路西行，車程約 1.5–2 小時。今日唔趕時間，可以食完早餐先慢慢出發。", tag: "~1.5–2 小時" },
-          { type: "charge", icon: "fa-bolt", title: "Amesbury Supercharger（Solstice Park）", desc: "Tesla V3 超充站，16 個位，最高 250kW，24 小時開放。呢個係去 Stonehenge 之前最後一個服務區 —— 泊低叉電，順便去廁所、落車伸展下。建議叉到 85–90%，夠晒去 Bath 仲有好多落。", note: "A303 段嘅充電站比 M4 疏，所以呢一 stop 唔好慳。", tag: "~10:30 · 叉到 85–90%" },
-          { type: "hi", icon: "fa-monument", title: "Stonehenge — 今日唯一景點", desc: "圍住石陣慢慢行一圈、影相，唔使急住走。English Heritage 要網上預約時段飛，記得出發前訂定。有自己大停車場，泊車唔使擔心。", note: "🔴 飛未訂 —— 記得上 English Heritage 預約 10月25日時段。", tag: "~11:00–12:30" },
+          { type: "charge", icon: "fa-bolt", title: "Amesbury Supercharger（Solstice Park）", desc: "Tesla V3 超充站，16 個位，最高 250kW，24 小時開放。呢個係去 Stonehenge 之前最後一個服務區 —— 泊低叉電，順便去廁所、落車伸展下。建議叉到 85–90%，夠晒去 Bath 仲有好多落。", note: "A303 段嘅充電站比 M4 疏，所以呢一 stop 唔好慳。", tag: "~10:15 · 叉到 85–90%" },
+          { type: "hi", icon: "fa-monument", title: "Stonehenge — 今日唯一景點", desc: "圍住石陣慢慢行一圈、影相，唔使急住走。入場時間 11:00，有 30 分鐘入場窗口，之後留幾耐都得。有自己大停車場，泊車唔使擔心。", note: "✓ 已訂：10月25日 11:00，一家三口 £71.60。", tag: "✓ 11:00 已訂" },
           { type: "food", icon: "fa-utensils", title: "午餐 — Solstice Park 一帶", desc: "睇完石陣返到 Amesbury / Solstice Park 附近食個便餐，唔使講究，留返肚同時間畀 Bath。", tag: "便餐" },
           { type: "move", icon: "fa-key", title: "揸去 Bath — The Annex check-in", desc: "由 Stonehenge 去 Bath 約 45 分鐘至 1 個鐘。The Annex 喺 Larkhall（Lower Fairfield Park），2 房獨立成套，有免費私家車道，self check-in 用 lockbox，14:00 之後就入得。", note: "冇提供浴巾，記得自己帶。", tag: "14:00 後 check-in" },
           { type: "fun", icon: "fa-bus", title: "傍晚入 Bath 巿中心", desc: "屋企對面就有巴士站，10–15 分鐘入到巿中心。行下 Abbey、Pulteney Bridge 一帶，食個晚餐就返去休息，養返精神聽日行 Roman Baths。", tag: "巴士 10–15 分鐘" }
@@ -478,11 +478,11 @@
         ],
         activities: [
           { type: "move", icon: "fa-suitcase-rolling", title: "The Annex check-out — 10:00 前", desc: "行李全部擺落車尾箱，今日唔使再返嚟。然後入巿中心泊車，或者搭巴士入去都得。", tag: "10:00 前" },
-          { type: "hi", icon: "fa-water", title: "Roman Baths — 建議 09:30–11:30", desc: "綠色溫泉水、羅馬柱、2000 年歷史嘅浴池，就喺 Bath 巿中心。一定要訂時段飛，half term 前夕都會開始搶飛。", note: "🔴 飛未訂 —— 鎖實日子之後即刻上網訂時段票。", tag: "🔴 未訂 · ~2 小時" },
+          { type: "hi", icon: "fa-water", title: "Roman Baths — 09:30 ✓ 已訂", desc: "綠色溫泉水、羅馬柱、2000 年歷史嘅浴池，就喺 Bath 巿中心。記得用小朋友版 audio guide，行 1.5–2 個鐘就夠。", note: "✓ 已訂：10月26日 09:30，family ticket £63。", tag: "✓ 09:30 已訂" },
           { type: "fun", icon: "fa-child", title: "Royal Victoria Park — 午餐後放電", desc: "行完 Roman Baths，去公園食個午餐再放電。有遊樂場同大草地，免費，正好喺兩個「大人景點」中間插返個純玩嘅位。", tag: "Free" },
           { type: "fun", icon: "fa-leaf", title: "Prior Park Landscape Garden — 14:00–15:30", desc: "National Trust 景點，Palladian 橋加成個山谷嘅秋日金黃景 —— 10 月尾正係最靚嘅時候，亦係全程最值得影相嘅一個點。", note: "入口有段斜路要行，帶定舒服鞋；日落前一定要到。", tag: "National Trust" },
           { type: "move", icon: "fa-key", title: "揸去 Bristol — Hotwells check-in", desc: "Bath 去 Bristol 約 20 分鐘。Hotwells apartments flat 7：2 房（2 張 double bed）、有 1 個指定免費車位、離 Harbourside 幾步路。", note: "⚠️ 3 樓冇電梯，搬行李預留返時間同體力。", tag: "15:00 後 · 3 樓冇𨋢" },
-          { type: "food", icon: "fa-utensils", title: "Bristol 第一晚晚餐", desc: "Harbourside 一帶有唔少選擇。想食返啖好嘅亞洲菜，Wapping Wharf 嘅 Seven Lucky Gods 就喺附近（日式 izakaya 小食、壽司、韓式炸雞）。睇下同朋友夾唔夾到時間。", tag: "睇朋友時間" }
+          { type: "food", icon: "fa-utensils", title: "Bristol 第一晚晚餐", desc: "星期一唔少韓／日餐廳休息，今晚揀 Seven Lucky Gods（Wapping Wharf，行得到，日式小食 + 韓式炸雞）或者 Mayflower（地道粵菜老字號，燒鴨、脆皮燒肉）。睇下同朋友夾唔夾到時間。", tag: "睇朋友時間" }
         ]
       },
       {
@@ -503,27 +503,31 @@
           { type: "fun", icon: "fa-anchor", title: "Harbour Ferry — 搭一程船", desc: "碼頭有小渡輪穿梭唔同碼頭點，對 7 歲嚟講係「坐船」多過「交通」，好抵玩又慳腳力。", tag: "~£3–5/人" },
           { type: "food", icon: "fa-utensils", title: "午餐 — Harbourside", desc: "No.1 Harbourside（河邊景、肉食素食都齊）或者 Pieminister（地道批店，出餐快）。約咗朋友就一齊食呢餐。", tag: "河邊" },
           { type: "fun", icon: "fa-flask", title: "下晝 — 睇天氣決定", desc: "天氣好就留喺 harbourside 慢慢行，或者揸 5 分鐘車去 Clifton Suspension Bridge 行吊橋、去橋邊個木製遊樂場。落雨就轉入 We The Curious 玩科學館。", tag: "彈性" },
-          { type: "food", icon: "fa-bowl-food", title: "晚餐 — Bristol 最後一晚", desc: "Bristol 嘅亞洲菜幾好：Seven Lucky Gods（Wapping Wharf，日式小食 + 韓式炸雞，行得到）、Hao Wei（全巿評價最高嘅中菜，仲有越式河粉）、The Saigon Kitchen（正宗越南菜，喺 Redland）。", tag: "亞洲菜" }
+          { type: "food", icon: "fa-bowl-food", title: "晚餐 — Bristol 最後一晚", desc: "揀返最正嘅一餐：Bokman（Michelin 推介韓菜）或 Tomo No Ramen（Bristol 最好拉麵之一）—— 兩間都係星期一休息，所以留返今晚。想食中菜就 Hao Wei。建議提早訂位。", tag: "亞洲菜" }
         ]
       },
       {
         num: "D4", city: "road", isAlt: true,
         date: "週三，10月28日",
         title: "Bristol → Longleat → Kingston",
-        sub: "返程順路入 Longleat 玩足大半日，先再上 A303 / M4 返屋企。",
-        tipBox: "<strong>今日先係全程最花時間嘅一日：</strong>Longleat 一個景點 + 2–2.5 個鐘車程返屋企。所以 10:00 check-out 之後唔好慢慢嚟，早啲出發，唔好貪玩到太夜先上路。<br><strong>🔴 Longleat 飛記住訂 10月28日</strong> —— 網上訂平啲，亦可以早入場。<br><strong>出發前一星期確認：</strong>10 月尾部分動物展區同活動可能已經轉咗冬季時間。",
+        sub: "Longleat 玩 5 個鐘（10:00–15:30），safari 打頭陣，15:30 準時走，約 18:30–19:00 返到屋企。",
+        tipBox: "<strong>今日先係全程最花時間嘅一日：</strong>Longleat 5 個鐘 + 2–2.5 個鐘車程返屋企。10 月尾 16:40 左右天黑（星期日已經轉咗冬令時間），所以 15:30 一定要走。<br><strong>Safari 打頭陣：</strong>朝早動物最精神，而且 half term 下晝 safari 會越排越長。<br><strong>🐒 Monkey Temple 行 bypass：</strong>馬騮會爬上車扯 wiper 同膠邊，Tesla 行旁邊嗰條避開馬騮嘅車道。<br><strong>時間唔夠就刪：</strong>迷宮 → 火車 → Longleat House；safari、Jungle Cruise、Koala Creek 唔好刪。<br><strong>出發前一星期確認：</strong>10 月尾開放時間較短，safari 最後入場通常喺下晝中段。",
         mapPoints: [
-          { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "10:00 前 check-out" },
-          { name: "Longleat Safari Park", lat: 51.1877, lng: -2.2679, color: "oklch(49% 0.142 42)", label: "全日主菜" },
+          { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "~09:15 出發" },
+          { name: "Longleat Safari Park", lat: 51.1877, lng: -2.2679, color: "oklch(49% 0.142 42)", label: "10:00–15:30" },
           { name: "Membury Services", lat: 51.4336, lng: -1.5446, color: "oklch(45% 0.052 148)", label: "叉電 + 廁所" },
-          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "傍晚到屋企" }
+          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "~18:30–19:00 到屋企" }
         ],
         activities: [
-          { type: "move", icon: "fa-suitcase-rolling", title: "Hotwells check-out — 10:00 前", desc: "3 樓冇電梯，落行李預留返時間。之後直接出發去 Longleat，車程約 50 分鐘至 1 個鐘。", tag: "10:00 前" },
-          { type: "hi", icon: "fa-hippo", title: "Longleat Safari Drive — 全日主菜", desc: "自己架車慢慢兜 safari，獅子、長頸鹿、犀牛就喺車窗外面 —— 對 7 歲嚟講係最震撼嗰個景點。兜完 safari 有精神再落車行迷宮同遊樂場。", note: "🔴 飛未訂 —— 一定要訂 10月28日。", tag: "🔴 未訂 · 全日" },
-          { type: "food", icon: "fa-utensils", title: "午餐 — Longleat 園內", desc: "園內餐飲區解決，慳返出出入入嘅時間。或者自備輕便零食擺車上。", tag: "園內" },
-          { type: "charge", icon: "fa-bolt", title: "Membury Services（M4）— 叉電 + 抖返", desc: "Tesla 超充站，東行／西行分開，最高 150kW，24 小時開放，連正常 motorway services 有廁所同食嘢。大約喺 Longleat → Kingston 中間。", note: "就算電量夠都建議停 —— 玩足一日之後再揸長途，中途落車行下對細路好重要。", tag: "中途站" },
-          { type: "move", icon: "fa-home", title: "返到 Kingston", desc: "由 Membury 返 Kingston 大約 1 個鐘。趁未撞正晚繁忙時間上路最舒服。", tag: "傍晚到屋企" }
+          { type: "move", icon: "fa-suitcase-rolling", title: "Hotwells check-out — ~09:15 出發", desc: "3 樓冇電梯，落行李預留返時間。早少少走，約 10:00 開門就到 Longleat（車程約 50 分鐘至 1 個鐘）。", tag: "~09:15" },
+          { type: "hi", icon: "fa-hippo", title: "Safari Drive-Through — 10:00–11:45", desc: "一入門就先揸車兜 safari：獅子、老虎、長頸鹿、犀牛、狼就喺車窗外面。朝早動物最精神，亦趕喺 half term 人潮排長龍之前。", note: "✓ 已訂 10月28日（一家三口）。Monkey Temple 記得行 bypass 車道，保護架 Tesla。", tag: "✓ 已訂 · ~1.75 小時" },
+          { type: "fun", icon: "fa-ship", title: "Jungle Cruise — 11:45–12:15", desc: "泊好車，搭船遊湖：睇海獅，經過大猩猩島。對細路嚟講係「坐船睇動物」，好容易玩得開心。", tag: "已包門票" },
+          { type: "food", icon: "fa-utensils", title: "午餐 — 12:15–13:00", desc: "園內餐飲區解決，慳返出出入入嘅時間。", tag: "園內" },
+          { type: "fun", icon: "fa-paw", title: "Koala Creek + 企鵝 + 狐獴 — 13:00–14:00", desc: "Koala Creek 睇樹熊、企鵝島、Meerkat Mansion，再去 Animal Adventure 近距離接觸細動物。行路為主，啱午飯後消化。", tag: "已包門票" },
+          { type: "fun", icon: "fa-chess-rook", title: "Adventure Castle + Spooktacular — 14:00–15:00", desc: "城堡主題大型遊樂場畀佢放電；再行 Shaun the Sheep 萬聖節 Spooktacular 尋南瓜 trail（10月24日–11月1日，已包喺門票）。", tag: "萬聖節限定" },
+          { type: "fun", icon: "fa-route", title: "樹籬迷宮（可選）— 15:00–15:30", desc: "世界最長嘅樹籬迷宮之一。好玩但好易唔覺意行成 45 分鐘以上 —— 定好時限，15:30 一到就走。", note: "時間唔夠就第一個刪呢樣。", tag: "可選" },
+          { type: "charge", icon: "fa-bolt", title: "Membury Services（M4）— 叉電 + 抖返", desc: "15:30 離開 Longleat，大約喺返程中間停。Tesla 超充站，東行／西行分開，最高 150kW，連廁所同食嘢。", note: "就算電量夠都建議停 —— 玩足一日之後再揸長途，中途落車行下對細路好重要。", tag: "中途站" },
+          { type: "move", icon: "fa-home", title: "返到 Kingston — ~18:30–19:00", desc: "由 Membury 返 Kingston 大約 1 個鐘。", tag: "~18:30–19:00" }
         ]
       }
     ],
@@ -563,11 +567,7 @@
       {
         title: "🔴 而家就要做", color: "oklch(49% 0.142 42)",
         items: [
-          { text: "落實 The Annex 訂位（£120，10月25日）" },
-          { text: "同 Hotwells host 確認「唔啱細路」個 safety flag 實際意思" },
-          { text: "訂 Roman Baths 時段飛（Day 2）" },
-          { text: "訂 Longleat 飛 —— 記住用 10月28日", },
-          { text: "訂 Stonehenge 飛（English Heritage 預約時段）" }
+          { text: "同 Hotwells host 確認「唔啱細路」個 safety flag 實際意思" }
         ]
       },
       {
@@ -596,9 +596,9 @@
       { icon: "fa-house", name: "住宿 — Bath（1 晚，The Annex）", budget: 120, mid: 120, booked: true, paid: "£120" },
       { icon: "fa-building", name: "住宿 — Bristol（2 晚，Hotwells apartments）", budget: 244, mid: 244, booked: true, paid: "£244" },
       { icon: "fa-bolt", name: "充電（Kingston ↔ Bristol 來回 + 當地）", budget: 40, mid: 70 },
-      { icon: "fa-monument", name: "Stonehenge（一家三口）", budget: 45, mid: 60 },
-      { icon: "fa-hippo", name: "Longleat（一家三口）", budget: 100, mid: 180 },
-      { icon: "fa-water", name: "Roman Baths（一家三口）", budget: 50, mid: 80 },
+      { icon: "fa-monument", name: "Stonehenge（一家三口，11:00）", budget: 72, mid: 72, booked: true, paid: "£71.60" },
+      { icon: "fa-hippo", name: "Longleat（一家三口，10月28日）", budget: 119, mid: 119, booked: true, paid: "£118.85" },
+      { icon: "fa-water", name: "Roman Baths（family 2A+1C，09:30）", budget: 63, mid: 63, booked: true, paid: "£63" },
       { icon: "fa-ship", name: "Bristol Harbourside / harbour ferry", budget: 20, mid: 30 },
       { icon: "fa-leaf", name: "Prior Park / Victoria Park（免費或幾蚊泊車）", budget: 0, mid: 15 },
       { icon: "fa-utensils", name: "餐飲 — 4 日（混合出街食 + 簡便）", budget: 220, mid: 320 },
@@ -640,34 +640,50 @@
       {
         day: "Day 1 · 週日 10月25日 — Bath 晚餐", city: "bath",
         items: [
-          { name: "★ The Rose and Crown", type: "晚餐 · 英式 Pub", note: "地道英式 pub，氣氛輕鬆，啱一家人揸咗成日車之後坐低食返餐熱嘢。", dish: "推介：sausage and mash（香腸薯蓉）、自家製 pie of the day。", mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Rose+and+Crown+Bath" },
-          { name: "Giraffe", type: "晚餐後備 · 家庭餐廳", note: "早午晚都開，餐牌選擇多，夾到唔同人口味，有兒童餐。", dish: "推介：環球菜式，細路揀到自己鍾意嗰款。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Giraffe+restaurant+Bath" }
+          { name: "★ Robun", type: "晚餐 · 日式炭火 Robata", note: "Michelin Plate，Bath 巿中心。炭火燒肉、海鮮同蔬菜，仲有壽司、刺身、天婦羅、餃子。星期日 17:00 開，建議訂位。", dish: "推介：炭燒 wagyu、雞肉串燒、刺身拼盤、gyoza。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Robun+Bath" },
+          { name: "East Meets West", type: "晚餐 · 中菜（粵／川）", note: "粵菜、川菜、北方菜都有，仲有點心、餃子、包。出發前確認星期日營業時間。", dish: "推介：點心、手工餃子、川味水煮魚。", mapUrl: "https://www.google.com/maps/search/?api=1&query=East+Meets+West+Chinese+restaurant+Bath" },
+          { name: "The Rose and Crown", type: "晚餐後備 · 英式 Pub", note: "想食返英式就揀呢間，氣氛輕鬆。", dish: "推介：sausage and mash、pie of the day。", mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Rose+and+Crown+Bath" }
         ]
       },
       {
-        day: "Day 2 · 週一 10月26日 — Bath 午餐 / Bristol 晚餐", city: "bath",
+        day: "Day 2 · 週一 10月26日 — Bath 午餐", city: "bath",
         items: [
-          { name: "★ Thaikhun", type: "午餐 · 泰菜", note: "Bath 巿中心，有花園位同沙發位，細路可以郁動下，啱 Roman Baths 之後嗰餐。", dish: "推介：Pad Thai、綠咖喱、泰式炸雞；細路唔食辣有得揀。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Thaikhun+Bath" },
-          { name: "★ Seven Lucky Gods", type: "晚餐 · 日式 Izakaya", note: "Wapping Wharf，由 Hotwells 行得到。日式小食、壽司同韓式炸雞，4.3★。貨櫃屋改建，夜晚有少少 bar 氣氛，早少少去啱細路啲。", dish: "推介：karaage 韓式炸雞、壽司拼盤、日式小食分享。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Seven+Lucky+Gods+Wapping+Wharf+Bristol" },
-          { name: "The Watershed Café and Bar", type: "晚餐後備 · Harbourside", note: "空間大、有兒童餐（意粉、迷你漢堡），推 BB 車都入得，啱攰咗嗰晚。", dish: "推介：兒童餐意粉、迷你漢堡。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Watershed+Cafe+Bar+Bristol" },
-          { name: "Salt & Malt", type: "晚餐後備 · 炸魚薯條", note: "得獎炸魚薯條，河邊靚景，casual 唔使訂位。", dish: "推介：fish and chips、fish cakes。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Salt+and+Malt+Bristol+Harbourside" }
+          { name: "★ Yen Sushi", type: "午餐 · 迴轉壽司", note: "Roman Baths 行過去好近，星期一 12:00–15:00 有午市。迴轉帶對 7 歲細路嚟講本身就係節目。", dish: "推介：三文魚刺身、天婦羅蝦、takoyaki、拉麵。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Yen+Sushi+Bath" },
+          { name: "Thaikhun", type: "午餐後備 · 泰菜", note: "有花園位同沙發位，細路坐唔定都唔緊要。", dish: "推介：Pad Thai、綠咖喱、泰式炸雞。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Thaikhun+Bath" },
+          { name: "Noya's Kitchen（⚠️ 星期日、一休息）", type: "越南菜 · 參考", note: "Bath 最出名嘅正宗越南菜，可惜你哋喺 Bath 嗰兩日（週日、週一）正正休息 —— 放喺度等下次。", dish: "推介：pho、summer rolls、越式咖喱。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Noya's+Kitchen+Bath" }
         ]
       },
       {
-        day: "Day 3 · 週二 10月27日 — Bristol Harbourside", city: "bristol",
+        day: "Day 2 · 週一 10月26日 — Bristol 晚餐（⚠️ 好多韓／日餐廳星期一休息）", city: "bristol",
         items: [
-          { name: "★ No.1 Harbourside", type: "午餐 · 河邊", note: "河邊景，肉食／素食／純素都齊全，出餐快，就喺碼頭邊。", dish: "推介：當日 special、素食碗餐。", mapUrl: "https://www.google.com/maps/search/?api=1&query=No.1+Harbourside+Bristol" },
-          { name: "Pieminister", type: "午餐後備 · 地道批店", note: "Bristol 出身嘅名物批店，出餐快，細路容易搞掂。", dish: "推介：招牌牛肉批配薯蓉同青豆蓉（mothership 食法）。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Pieminister+Bristol" },
-          { name: "Hao Wei", type: "晚餐 · 中菜", note: "成日被評為 Bristol 最好嘅中菜，130+ 款菜式，仲有越式河粉，出餐快。", dish: "推介：經典粵菜、越式牛肉河粉。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hao+Wei+Chinese+restaurant+Bristol" },
-          { name: "The Saigon Kitchen", type: "晚餐 · 越南菜", note: "Redland。主廚 Trung 喺越南長大，正宗家常越南菜，pho 最出名。", dish: "推介：pho（牛肉河粉）、越式春卷。", mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Saigon+Kitchen+Bristol" },
-          { name: "Bokman", type: "晚餐 · 韓國菜", note: "Bristol 韓菜代表，菜單有唔少特色菜。", dish: "推介：octopus bibim salad、韓式炸雞。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bokman+Bristol" }
+          { name: "★ Seven Lucky Gods", type: "晚餐 · 日式 Izakaya", note: "Wapping Wharf，由 Hotwells 行得到，星期一照開。日式小食、壽司、韓式炸雞。貨櫃屋改建，早少少去啱細路。", dish: "推介：韓式炸雞、壽司拼盤、日式小食分享。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Seven+Lucky+Gods+Wapping+Wharf+Bristol" },
+          { name: "★ Mayflower", type: "晚餐 · 粵菜老字號", note: "Haymarket，Bristol 中菜 institution，星期一 18:00 開到凌晨 3 點。地道港式粵菜，唔係外賣式中菜。", dish: "推介：燒鴨、脆皮燒肉、煲仔菜、椒鹽鮮魷。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Mayflower+Chinese+restaurant+Haymarket+Walk+Bristol" },
+          { name: "The Watershed Café and Bar", type: "晚餐後備 · Harbourside", note: "想食西餐同兒童餐嘅話，空間大、就喺碼頭。", dish: "推介：兒童餐意粉、迷你漢堡。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Watershed+Cafe+Bar+Bristol" }
+        ]
+      },
+      {
+        day: "Day 3 · 週二 10月27日 — Bristol 午餐", city: "bristol",
+        items: [
+          { name: "★ Dongnae", type: "午餐 · 韓式燒肉", note: "Michelin Guide 推介，星期二 12:00–15:00 有午市。高級版韓式 BBQ，枱邊燒肉，細路通常好鍾意。", dish: "推介：韓式燒肉拼盤、banchan 小菜、冷麵。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Dongnae+Bristol" },
+          { name: "FoodieVietnam", type: "午餐 · 越南菜", note: "St Nick's Market 隔籬，Harbourside 行過去唔遠，食個快靚正嘅河粉。", dish: "推介：牛肉河粉、春卷、燒豬肉串。", mapUrl: "https://www.google.com/maps/search/?api=1&query=FoodieVietnam+Bristol" },
+          { name: "No.1 Harbourside", type: "午餐後備 · 河邊", note: "就喺碼頭，肉食／素食都齊全，出餐快。", dish: "推介：當日 special。", mapUrl: "https://www.google.com/maps/search/?api=1&query=No.1+Harbourside+Bristol" }
+        ]
+      },
+      {
+        day: "Day 3 · 週二 10月27日 — Bristol 晚餐（最後一晚，揀返最正嘅）", city: "bristol",
+        items: [
+          { name: "★ Bokman", type: "晚餐 · 韓國家常菜", note: "Michelin Guide 推介，Stokes Croft 附近。星期一休息，所以留返星期二食。建議訂位。", dish: "推介：octopus bibim salad、韓式炸雞、燉菜。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bokman+Bristol" },
+          { name: "★ Tomo No Ramen", type: "晚餐 · 拉麵", note: "Old Market，Bristol 公認最好嘅拉麵之一，星期二 17:30 開。", dish: "推介：tonkotsu 豬骨湯拉麵、gyoza。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Tomo+No+Ramen+Bristol" },
+          { name: "Hao Wei", type: "晚餐 · 中菜", note: "成日被評為 Bristol 最好嘅中菜，130+ 款菜式，出餐快。", dish: "推介：經典粵菜、越式牛肉河粉。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hao+Wei+Chinese+restaurant+Bristol" },
+          { name: "The Saigon Kitchen", type: "晚餐 · 越南菜", note: "Redland。主廚喺越南長大，正宗家常越南菜，pho 最出名。", dish: "推介：pho、越式春卷。", mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Saigon+Kitchen+Bristol" },
+          { name: "Everyday Thai", type: "晚餐 · 泰菜", note: "Fishponds（揸車約 15–20 分鐘）。連續幾年 TripAdvisor 同 Bristol Post 最佳泰菜，老闆娘來自泰國 Isan。星期一休息。", dish: "推介：Isan 菜、som tam、泰式燒雞、綠咖喱。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Everyday+Thai+Fishponds+Bristol" }
         ]
       },
       {
         day: "Day 4 · 週三 10月28日 — Longleat / 回程路上", city: "road",
         items: [
-          { name: "Longleat 園內餐飲區", type: "午餐 · 園內", note: "喺園內解決最慳時間，唔使出出入入搞泊車。", dish: "推介：簡便熱食，或者自備零食擺車上。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Longleat+Safari+Park" },
-          { name: "Membury Services", type: "中途站 · M4", note: "叉電嗰陣順便解決，有廁所同簡便食肆。", dish: "推介：快餐／咖啡，抖返先再上路。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Membury+Services+M4" }
+          { name: "Longleat 園內餐飲區", type: "午餐 · 園內", note: "喺園內解決最慳時間。", dish: "推介：簡便熱食，或者自備零食擺車上。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Longleat+Safari+Park" },
+          { name: "Membury Services", type: "中途站 · M4", note: "叉電嗰陣順便解決。", dish: "推介：快餐／咖啡。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Membury+Services+M4" }
         ]
       }
     ]
