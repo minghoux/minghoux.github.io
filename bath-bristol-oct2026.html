@@ -82,6 +82,10 @@
       background: currentColor; opacity: 0.5; vertical-align: middle; margin-right: 0.6rem;
     }
     .tip-mark { padding-left: 0.9rem; border-left: 2px solid oklch(44% 0.082 215 / 0.5); }
+    .pin-row { transition: background-color .2s; }
+    .pin-row:hover { background-color: oklch(44% 0.082 215 / 0.05); }
+    .pin-row:hover .pin-hint { opacity: 1; }
+    .pin-row:focus-visible, .day-map ~ div button:focus-visible { outline: 2px solid oklch(44% 0.082 215); outline-offset: 2px; }
     .chk-row:focus-visible { outline: 2px solid oklch(80% 0.068 80); outline-offset: 3px; }
 
     /* City tag — small caps chip carrying the day's accent. */
@@ -193,12 +197,12 @@
       <!-- Activities + map -->
       <div class="flex flex-col lg:grid lg:grid-cols-[1fr_360px] lg:gap-10 lg:items-start">
         <div class="flex flex-col">
-          <div v-for="(act, idx) in day.activities" :key="idx" class="grid grid-cols-[2.6rem_1fr_auto] gap-[1.2rem] items-start py-[1.5rem] md:py-[1.35rem] border-b border-rule last:border-b-0 max-[600px]:grid-cols-[2.2rem_1fr]">
+          <div v-for="(act, idx) in day.activities" :key="idx" :role="act.pt != null ? 'button' : null" :tabindex="act.pt != null ? 0 : null" :aria-label="act.pt != null ? '喺地圖睇 ' + act.title : null" @click="act.pt != null && focusPoint(day, act.pt)" @keydown.enter.prevent="act.pt != null && focusPoint(day, act.pt)" @keydown.space.prevent="act.pt != null && focusPoint(day, act.pt)" :class="act.pt != null ? 'pin-row cursor-pointer' : ''" class="grid grid-cols-[2.6rem_1fr_auto] gap-[1.2rem] items-start py-[1.5rem] md:py-[1.35rem] border-b border-rule last:border-b-0 max-[600px]:grid-cols-[2.2rem_1fr]">
             <div class="w-[2.6rem] h-[2.6rem] rounded-full flex items-center justify-center text-[0.9rem] shrink-0 mt-[0.15rem] text-[oklch(96%_0.014_85)] max-[600px]:w-[2.2rem] max-[600px]:h-[2.2rem]" :style="{ background: actColor(act.type) }">
               <i class="fas" :class="act.icon"></i>
             </div>
             <div>
-              <p class="font-display text-[1.02rem] md:text-[1.05rem] font-bold text-ink leading-[1.45]">{{ act.title }}</p>
+              <p class="font-display text-[1.02rem] md:text-[1.05rem] font-bold text-ink leading-[1.45]">{{ act.title }}<i v-if="act.pt != null" class="fas fa-location-dot text-[0.7rem] ml-2 align-[0.1em] opacity-40 pin-hint" :class="isFocused(day, act.pt) ? 'opacity-100' : ''" :style="{ color: cityColor(day.city) }"></i></p>
               <p v-if="act.desc" class="text-[0.98rem] md:text-[0.93rem] text-ink-mid mt-2 leading-[1.8] max-w-[64ch]">{{ act.desc }}</p>
               <span v-if="act.note" class="block mt-[0.7rem] py-[0.55rem] px-[0.95rem] border-l-[3px] border-oxide bg-oxide/[0.07] text-[0.85rem] md:text-[0.8rem] text-oxide leading-[1.7] max-w-[62ch]">{{ act.note }}</span>
               <div v-if="act.tag" class="mt-3 min-[601px]:hidden">
@@ -214,15 +218,18 @@
 
         <!-- Sticky map -->
         <div v-if="day.mapPoints && day.mapPoints.length" class="mt-10 lg:mt-0 lg:sticky lg:top-6">
-          <p class="font-sans text-[0.6rem] font-light tracking-[0.26em] uppercase text-harbour mb-3 flex items-center gap-2">
-            <i class="fas fa-map-marked-alt" :style="{ color: cityColor(day.city) }"></i> 今日路線
-          </p>
+          <div class="flex items-center justify-between mb-3">
+            <p class="font-sans text-[0.6rem] font-light tracking-[0.26em] uppercase text-harbour flex items-center gap-2">
+              <i class="fas fa-map-marked-alt" :style="{ color: cityColor(day.city) }"></i> 今日路線
+            </p>
+            <button v-if="focused[day.num] != null" type="button" @click="resetMap(day)" class="font-sans text-[0.62rem] tracking-[0.14em] uppercase text-harbour hover:text-oxide underline underline-offset-4">顯示全日</button>
+          </div>
           <div class="day-map" :id="'map-day-' + day.num"></div>
           <div class="mt-3 flex flex-col gap-1.5">
-            <div v-for="(pt, i) in day.mapPoints" :key="i" class="flex items-center gap-2.5 text-[0.8rem] text-ink-mid">
+            <button v-for="(pt, i) in day.mapPoints" :key="i" type="button" @click="focusPoint(day, i)" class="flex items-center gap-2.5 text-[0.8rem] text-left py-0.5 rounded-sm transition-colors hover:text-ink" :class="isFocused(day, i) ? 'text-ink font-semibold' : 'text-ink-mid'">
               <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-[0.55rem] font-bold" :style="{ background: pt.color || cityColor(day.city) }">{{ i + 1 }}</span>
               <span>{{ pt.name }}</span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -435,12 +442,12 @@
           { name: "Bath 市中心", lat: 51.3811, lng: -2.3590, color: "oklch(44% 0.082 215)", label: "晚餐" }
         ],
         activities: [
-          { type: "move", icon: "fa-car-side", title: "08:30 · Kingston 出發", desc: "行 A303，大約 1.5–2 個鐘。", tag: "08:30" },
-          { type: "charge", icon: "fa-bolt", title: "~10:15 · Amesbury Supercharger", desc: "叉電到 85–90%，順便去廁所。呢度就喺 Stonehenge 隔籬，A303 之後少充電站，呢站唔好慳。", tag: "~10:15" },
-          { type: "hi", icon: "fa-monument", title: "11:00–12:30 · Stonehenge", desc: "有 30 分鐘入場時間，入咗之後想留幾耐都得。有大停車場。", note: "✓ 已訂 11:00，£71.60", tag: "✓ 已訂" },
+          { pt: 0, type: "move", icon: "fa-car-side", title: "08:30 · Kingston 出發", desc: "行 A303，大約 1.5–2 個鐘。", tag: "08:30" },
+          { pt: 1, type: "charge", icon: "fa-bolt", title: "~10:15 · Amesbury Supercharger", desc: "叉電到 85–90%，順便去廁所。呢度就喺 Stonehenge 隔籬，A303 之後少充電站，呢站唔好慳。", tag: "~10:15" },
+          { pt: 2, type: "hi", icon: "fa-monument", title: "11:00–12:30 · Stonehenge", desc: "有 30 分鐘入場時間，入咗之後想留幾耐都得。有大停車場。", note: "✓ 已訂 11:00，£71.60", tag: "✓ 已訂" },
           { type: "food", icon: "fa-utensils", title: "12:30 · 午餐", desc: "Amesbury 附近食個便餐。", tag: "便餐" },
-          { type: "move", icon: "fa-key", title: "~14:30 · The Annex check-in", desc: "喺 Larkhall，2 房獨立單位。車道邊個位都泊得。Lockbox 密碼 host 會喺當日朝早 send 過嚟，佢住喺隔籬，有事可以搵佢。", note: "冇浴巾同沐浴用品，要自己帶。", tag: "14:00 後" },
-          { type: "food", icon: "fa-utensils", title: "18:00 · 晚餐：Opa", desc: "14 North Parade（地庫）。對面就有巴士站，10–15 分鐘入城，17:30 左右出門。", note: "✓ 已訂 10月25日 18:00，3 位", tag: "✓ 18:00 已訂" }
+          { pt: 3, type: "move", icon: "fa-key", title: "~14:30 · The Annex check-in", desc: "喺 Larkhall，2 房獨立單位。車道邊個位都泊得。", note: "冇浴巾同沐浴用品，要自己帶。", tag: "14:00 後" },
+          { pt: 4, type: "food", icon: "fa-utensils", title: "18:00 · 晚餐：Opa", desc: "14 North Parade（地庫）。對面就有巴士站，10–15 分鐘入城，17:30 左右出門。", note: "✓ 已訂 10月25日 18:00，3 位", tag: "✓ 18:00 已訂" }
         ]
       },
       {
@@ -458,12 +465,12 @@
           { name: "Hotwells apartments, Bristol", lat: 51.4487, lng: -2.6195, color: "oklch(44% 0.082 215)", label: "15:00 後 check-in" }
         ],
         activities: [
-          { type: "move", icon: "fa-suitcase-rolling", title: "08:40 · The Annex check-out", desc: "揸車入城，泊 SouthGate 或 Charlotte Street 停車場，成日都泊喺度。", tag: "08:40" },
-          { type: "hi", icon: "fa-water", title: "09:30–11:30 · Roman Baths", desc: "記得攞小朋友版 audio guide，重點睇 Great Bath 同 curse tablets，走之前試飲溫泉水。", note: "✓ 已訂 09:30，family ticket £63", tag: "✓ 已訂" },
-          { type: "food", icon: "fa-utensils", title: "11:45 · 午餐：Yen Sushi", desc: "迴轉壽司，離 Roman Baths 好近，細路一定覺得好玩。", tag: "迴轉壽司" },
-          { type: "fun", icon: "fa-child", title: "12:45–13:45 · Royal Victoria Park", desc: "去遊樂場俾女兒放電。", tag: "Free" },
-          { type: "fun", icon: "fa-leaf", title: "14:00–15:30 · Prior Park", desc: "睇 Palladian 橋同秋天山谷景色。冇停車場，要搭巴士、taxi 或者行上去。", tag: "National Trust" },
-          { type: "move", icon: "fa-key", title: "15:30 · 去 Bristol，Hotwells check-in", desc: "停車場閘要用鎖匙 fob 先開到，所以先喺門口停一停，一個人落車攞鎖匙（步驟同密碼睇 host message，密碼 14:00 send），再用 fob 開閘入車。", note: "15:00 前唔入得；3 樓冇電梯。", tag: "15:00 後" },
+          { pt: 0, type: "move", icon: "fa-suitcase-rolling", title: "08:40 · The Annex check-out", desc: "揸車入城，泊 SouthGate 或 Charlotte Street 停車場，成日都泊喺度。", tag: "08:40" },
+          { pt: 1, type: "hi", icon: "fa-water", title: "09:30–11:30 · Roman Baths", desc: "記得攞小朋友版 audio guide，重點睇 Great Bath 同 curse tablets，走之前試飲溫泉水。", note: "✓ 已訂 09:30，family ticket £63", tag: "✓ 已訂" },
+          { pt: 2, type: "food", icon: "fa-utensils", title: "11:45 · 午餐：Yen Sushi", desc: "迴轉壽司，離 Roman Baths 好近，細路一定覺得好玩。", tag: "迴轉壽司" },
+          { pt: 3, type: "fun", icon: "fa-child", title: "12:45–13:45 · Royal Victoria Park", desc: "去遊樂場俾女兒放電。", tag: "Free" },
+          { pt: 4, type: "fun", icon: "fa-leaf", title: "14:00–15:30 · Prior Park", desc: "睇 Palladian 橋同秋天山谷景色。冇停車場，要搭巴士、taxi 或者行上去。", tag: "National Trust" },
+          { pt: 5, type: "move", icon: "fa-key", title: "15:30 · 去 Bristol，Hotwells check-in", desc: "車程大約 20 分鐘。", note: "15:00 前唔入得；3 樓冇電梯。", tag: "15:00 後" },
           { type: "food", icon: "fa-utensils", title: "晚餐", desc: "Seven Lucky Gods（行得到，日式小食、韓式炸雞）或 Mayflower（粵菜：燒鴨、脆皮燒肉）。", tag: "星期一照開" }
         ]
       },
@@ -481,9 +488,9 @@
           { name: "Clifton Suspension Bridge", lat: 51.4549, lng: -2.6278, color: "oklch(45% 0.052 148)", label: "天氣好就去" }
         ],
         activities: [
-          { type: "fun", icon: "fa-ship", title: "上晝 · Harbourside + ferry", desc: "沿住碼頭行，經過 SS Great Britain，再搭一程 harbour ferry。", tag: "行得到" },
+          { pt: 2, type: "fun", icon: "fa-ship", title: "上晝 · Harbourside + ferry", desc: "沿住碼頭行，經過 SS Great Britain，再搭一程 harbour ferry。", tag: "行得到" },
           { type: "food", icon: "fa-utensils", title: "午餐", desc: "Dongnae（Michelin 韓式燒肉）或 FoodieVietnam（河粉）。", tag: "韓／越" },
-          { type: "fun", icon: "fa-cloud-sun-rain", title: "下晝 · 睇天氣", desc: "天氣好就去 Clifton Suspension Bridge（揸車 5 分鐘）；落雨就去 We The Curious 科學館。", tag: "彈性" },
+          { pt: 4, type: "fun", icon: "fa-cloud-sun-rain", title: "下晝 · 睇天氣", desc: "天氣好就去 Clifton Suspension Bridge（揸車 5 分鐘）；落雨就去 We The Curious 科學館。", tag: "彈性" },
           { type: "food", icon: "fa-bowl-food", title: "晚餐", desc: "Bokman（Michelin 韓菜）或 Tomo No Ramen（拉麵）。兩間都係星期一休息，所以留返今晚。", note: "最好訂定位。", tag: "韓／日" }
         ]
       },
@@ -500,15 +507,15 @@
           { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "18:30–19:00" }
         ],
         activities: [
-          { type: "move", icon: "fa-suitcase-rolling", title: "09:15 · Hotwells check-out", desc: "去 Longleat 大約 1 個鐘。", tag: "09:15" },
-          { type: "hi", icon: "fa-hippo", title: "10:00–11:45 · Safari Drive-Through", desc: "朝早啲動物最精神，又可以避開 half term 人潮。", note: "✓ 已訂 10月28日，£118.85", tag: "✓ 已訂" },
-          { type: "fun", icon: "fa-ship", title: "11:45–12:15 · Jungle Cruise", desc: "海獅、大猩猩島。", tag: "已包門票" },
-          { type: "food", icon: "fa-utensils", title: "12:15–13:00 · 午餐", desc: "園內解決。", tag: "園內" },
-          { type: "fun", icon: "fa-paw", title: "13:00–14:00 · Koala Creek", desc: "樹熊、企鵝、狐獴。", tag: "已包門票" },
-          { type: "fun", icon: "fa-chess-rook", title: "14:00–15:00 · Adventure Castle + Spooktacular", desc: "去遊樂場放電，再行 Shaun the Sheep 萬聖節 trail。", tag: "萬聖節" },
-          { type: "fun", icon: "fa-route", title: "15:00–15:30 · 樹籬迷宮（可選）", desc: "定好時限，一到 15:30 就走。", tag: "可選" },
-          { type: "charge", icon: "fa-bolt", title: "Membury Services", desc: "叉電兼去廁所，大約喺返程中間。", tag: "中途站" },
-          { type: "move", icon: "fa-home", title: "18:30–19:00 · 返到 Kingston", desc: "", tag: "到屋企" }
+          { pt: 0, type: "move", icon: "fa-suitcase-rolling", title: "09:15 · Hotwells check-out", desc: "去 Longleat 大約 1 個鐘。", tag: "09:15" },
+          { pt: 1, type: "hi", icon: "fa-hippo", title: "10:00–11:45 · Safari Drive-Through", desc: "朝早啲動物最精神，又可以避開 half term 人潮。", note: "✓ 已訂 10月28日，£118.85", tag: "✓ 已訂" },
+          { pt: 1, type: "fun", icon: "fa-ship", title: "11:45–12:15 · Jungle Cruise", desc: "海獅、大猩猩島。", tag: "已包門票" },
+          { pt: 1, type: "food", icon: "fa-utensils", title: "12:15–13:00 · 午餐", desc: "園內解決。", tag: "園內" },
+          { pt: 1, type: "fun", icon: "fa-paw", title: "13:00–14:00 · Koala Creek", desc: "樹熊、企鵝、狐獴。", tag: "已包門票" },
+          { pt: 1, type: "fun", icon: "fa-chess-rook", title: "14:00–15:00 · Adventure Castle + Spooktacular", desc: "去遊樂場放電，再行 Shaun the Sheep 萬聖節 trail。", tag: "萬聖節" },
+          { pt: 1, type: "fun", icon: "fa-route", title: "15:00–15:30 · 樹籬迷宮（可選）", desc: "定好時限，一到 15:30 就走。", tag: "可選" },
+          { pt: 2, type: "charge", icon: "fa-bolt", title: "Membury Services", desc: "叉電兼去廁所，大約喺返程中間。", tag: "中途站" },
+          { pt: 3, type: "move", icon: "fa-home", title: "18:30–19:00 · 返到 Kingston", desc: "", tag: "到屋企" }
         ]
       }
     ],
@@ -625,6 +632,8 @@
       const chargeStops = ref(itineraryData.chargeStops);
       const chargeLegs = ref(itineraryData.chargeLegs);
 
+      const mapReg = {};
+      const focused = ref({});
       const cityColor = (c) => (CITY[c] || CITY.road).color;
       const cityLabel = (c) => (CITY[c] || CITY.road).label;
 
@@ -692,13 +701,16 @@
             if (!mapEl) return;
 
             const map = L.map(mapEl, { zoomControl: true, scrollWheelZoom: false, attributionControl: false });
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-              subdomains: 'abcd', maxZoom: 19
+            // CARTO basemaps now need an API key, so use Esri's keyless light-grey canvas + labels.
+            const esri = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+            L.tileLayer(esri + 'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+              attribution: 'Tiles &copy; Esri', maxZoom: 16
             }).addTo(map);
+            L.tileLayer(esri + 'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16 }).addTo(map);
             L.control.attribution({ prefix: false, position: 'bottomright' }).addTo(map);
 
             const bounds = [];
+            const markers = [];
             day.mapPoints.forEach((pt, idx) => {
               const color = pt.color || cityColor(day.city);
               const pinHtml = `
@@ -711,17 +723,49 @@
                   <div class="map-popup-cat">${pt.label || ''}</div>
                   <div class="map-popup-title">${pt.name}</div>
                 </div>`;
-              L.marker([pt.lat, pt.lng], { icon }).addTo(map).bindPopup(popupContent, { maxWidth: 240, minWidth: 160 });
+              const mk = L.marker([pt.lat, pt.lng], { icon }).addTo(map).bindPopup(popupContent, { maxWidth: 240, minWidth: 160 });
+              mk.on('click', () => { focused.value = { ...focused.value, [day.num]: idx }; });
+              markers.push(mk);
               bounds.push([pt.lat, pt.lng]);
             });
 
-            if (bounds.length > 1) map.fitBounds(bounds, { padding: [36, 36] });
-            else if (bounds.length === 1) map.setView(bounds[0], 14);
+            // The container can still be sizing when this runs (Tailwind's CDN styles
+            // land late), which makes fitBounds jump to max zoom with every pin
+            // off-screen. Re-fit whenever the container's real size changes.
+            const fit = () => {
+              map.invalidateSize();
+              if (focused.value[day.num] != null) return; // don't undo a zoom the user asked for
+              if (bounds.length > 1) map.fitBounds(bounds, { padding: [36, 36] });
+              else if (bounds.length === 1) map.setView(bounds[0], 14);
+            };
+            mapReg[day.num] = { map, markers, bounds, fit };
+            fit();
+            new ResizeObserver(fit).observe(mapEl);
+            window.addEventListener('load', fit);
           });
         });
       });
 
+      const focusPoint = (day, i) => {
+        const reg = mapReg[day.num]; if (!reg || !reg.markers[i]) return;
+        focused.value = { ...focused.value, [day.num]: i };
+        const ll = reg.markers[i].getLatLng();
+        reg.map.flyTo(ll, Math.max(reg.map.getZoom(), 14), { duration: 0.6 });
+        reg.markers[i].openPopup();
+        // On a single-column layout the map sits below the list, so bring it into view.
+        const el = document.getElementById('map-day-' + day.num);
+        const r = el.getBoundingClientRect();
+        if (r.top < 0 || r.bottom > window.innerHeight) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+      const resetMap = (day) => {
+        const reg = mapReg[day.num]; if (!reg) return;
+        const f = { ...focused.value }; delete f[day.num]; focused.value = f;
+        reg.map.closePopup(); reg.fit();
+      };
+      const isFocused = (day, i) => focused.value[day.num] === i;
+
       return {
+        focused, focusPoint, resetMap, isFocused,
         meta, stats, days, checklistGroups, budgetItems, tips,
         drivingRoutes, restaurants, chargeStops, chargeLegs,
         toggleCheck, totalLow, totalHigh, rowRange,
