@@ -373,7 +373,7 @@
     <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Where to eat</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">餐廳參考</h2>
-      <p class="text-[0.93rem] md:text-[0.87rem] text-ink-mid mb-9 max-w-[68ch] leading-[1.85]">Bristol 最好嗰幾間韓／日餐廳（Bokman、Dongnae、Tomo No Ramen）星期一休息，所以排咗喺星期二食。Robun 同 Bokman 最好訂定位。</p>
+      <p class="text-[0.93rem] md:text-[0.87rem] text-ink-mid mb-9 max-w-[68ch] leading-[1.85]">Bristol 最好嗰幾間韓／日餐廳（Bokman、Dongnae、Tomo No Ramen）星期一休息，所以排咗喺星期二食。Bokman 最好訂定位。</p>
       <div class="flex flex-col gap-11">
         <div v-for="group in restaurants" :key="group.day">
           <p class="font-sans text-[0.62rem] font-light tracking-[0.26em] uppercase pb-[0.7rem] border-b mb-1" :style="{ color: cityColor(group.city), borderColor: cityColor(group.city) }">{{ group.day }}</p>
@@ -439,8 +439,8 @@
           { type: "charge", icon: "fa-bolt", title: "~10:15 · Amesbury Supercharger", desc: "叉電到 85–90%，順便去廁所。呢度就喺 Stonehenge 隔籬，A303 之後少充電站，呢站唔好慳。", tag: "~10:15" },
           { type: "hi", icon: "fa-monument", title: "11:00–12:30 · Stonehenge", desc: "有 30 分鐘入場時間，入咗之後想留幾耐都得。有大停車場。", note: "✓ 已訂 11:00，£71.60", tag: "✓ 已訂" },
           { type: "food", icon: "fa-utensils", title: "12:30 · 午餐", desc: "Amesbury 附近食個便餐。", tag: "便餐" },
-          { type: "move", icon: "fa-key", title: "~14:30 · The Annex check-in", desc: "喺 Larkhall，2 房獨立單位，私家車道泊車，用 lockbox 自己 check-in。", note: "冇浴巾，要自己帶。", tag: "14:00 後" },
-          { type: "food", icon: "fa-utensils", title: "傍晚 · 入城食晚飯", desc: "對面就有巴士站，10–15 分鐘入城。Robun（日式炭火，最好訂位）或 East Meets West（中菜）。", tag: "巴士 10–15 分鐘" }
+          { type: "move", icon: "fa-key", title: "~14:30 · The Annex check-in", desc: "喺 Larkhall，2 房獨立單位。車道邊個位都泊得。Lockbox 密碼 host 會喺當日朝早 send 過嚟，佢住喺隔籬，有事可以搵佢。", note: "冇浴巾同沐浴用品，要自己帶。", tag: "14:00 後" },
+          { type: "food", icon: "fa-utensils", title: "18:00 · 晚餐：Opa", desc: "14 North Parade（地庫）。對面就有巴士站，10–15 分鐘入城，17:30 左右出門。", note: "✓ 已訂 10月25日 18:00，3 位", tag: "✓ 18:00 已訂" }
         ]
       },
       {
@@ -463,7 +463,7 @@
           { type: "food", icon: "fa-utensils", title: "11:45 · 午餐：Yen Sushi", desc: "迴轉壽司，離 Roman Baths 好近，細路一定覺得好玩。", tag: "迴轉壽司" },
           { type: "fun", icon: "fa-child", title: "12:45–13:45 · Royal Victoria Park", desc: "去遊樂場俾女兒放電。", tag: "Free" },
           { type: "fun", icon: "fa-leaf", title: "14:00–15:30 · Prior Park", desc: "睇 Palladian 橋同秋天山谷景色。冇停車場，要搭巴士、taxi 或者行上去。", tag: "National Trust" },
-          { type: "move", icon: "fa-key", title: "15:30 · 去 Bristol，Hotwells check-in", desc: "車程大約 20 分鐘。有 1 個免費車位，用 lockbox 自己 check-in。", note: "3 樓冇電梯。", tag: "15:00 後" },
+          { type: "move", icon: "fa-key", title: "15:30 · 去 Bristol，Hotwells check-in", desc: "停車場閘要用鎖匙 fob 先開到，所以先喺門口停一停，一個人落車攞鎖匙（步驟同密碼睇 host message，密碼 14:00 send），再用 fob 開閘入車。", note: "15:00 前唔入得；3 樓冇電梯。", tag: "15:00 後" },
           { type: "food", icon: "fa-utensils", title: "晚餐", desc: "Seven Lucky Gods（行得到，日式小食、韓式炸雞）或 Mayflower（粵菜：燒鴨、脆皮燒肉）。", tag: "星期一照開" }
         ]
       },
@@ -532,9 +532,10 @@
       { title: "出發前一星期", color: "oklch(44% 0.082 215)", items: [
           { text: "查清楚 Longleat 開放時間同 safari 最後入場時間" },
           { text: "用 A Better Route Planner 再計一次電夠唔夠" },
-          { text: "攞兩間住宿嘅 lockbox 密碼" },
+          { text: "回覆 Hotwells 大概幾點到（~15:45）" },
+          { text: "25 號朝早留意 Bath 密碼；26 號 14:00 留意 Bristol 密碼" },
           { text: "同 Bristol 朋友夾時間" },
-          { text: "訂 Robun 同 Bokman" },
+          { text: "訂 Bokman" },
           { text: "Download Google Maps offline" },
           { text: "將所有門票同 booking confirmation 存喺手機" }
       ] }
@@ -557,21 +558,23 @@
           "早晚好凍，帶定厚外套同防水褸"
       ] },
       { title: "執拾", items: [
-          "浴巾（The Annex 冇）",
+          "浴巾、沐浴露（The Annex 冇）",
           "叉電線、平板（長途車程）",
           "水樽、摺遮、行山鞋"
       ] },
       { title: "住宿", items: [
-          "兩間都係用 lockbox 自己 check-in",
-          "Hotwells 喺 3 樓冇電梯，唔可以取消"
+          "兩間都係用 lockbox，密碼到當日先 send",
+          "Hotwells 喺 3 樓冇電梯，有洗衣機冇乾衣機"
       ] }
     ],
     restaurants: [
       {
         day: "Day 1 晚 · Bath", city: "bath",
         items: [
-          { name: "★ Robun", type: "日式炭火", note: "Michelin Plate，最好訂位。", dish: "推介：wagyu、串燒、刺身、gyoza。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Robun+Bath" },
-          { name: "East Meets West", type: "中菜", note: "粵菜、川菜同點心。去之前確認星期日有冇開。", dish: "推介：點心、餃子。", mapUrl: "https://www.google.com/maps/search/?api=1&query=East+Meets+West+Chinese+restaurant+Bath" }
+          { name: "★ Opa（✓ 已訂 18:00）", type: "希臘菜 Meze", note: "14 North Parade（地庫），BA2 4AJ。評價最好：Tripadvisor 4.2（1,400+ 評價）、OpenTable 4.5（1,000+）。星期日 12:00 開到夜。週末夜晚會變做夜店，所以早啲去食最好。", dish: "推介：meze 拼盤，份量大，啱一家人分嚟食。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Opa+Bath+14+North+Parade" },
+          { name: "★ East Meets West", type: "中菜（粵／京／川）", note: "33 Southgate Street，BA1 1TP。評分 4.1–4.2，review 讚正宗、份量足。星期日 11:00–22:00。", dish: "推介：粵菜、川菜、點心、餃子。", mapUrl: "https://www.google.com/maps/search/?api=1&query=East+Meets+West+33+Southgate+Street+Bath" },
+          { name: "Robun", type: "日式炭火", note: "Michelin Plate，OpenTable 4.3，但 Tripadvisor 只有 3.9，好多人話唔抵、出菜慢。", dish: "推介：wagyu、bulgogi、串燒。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Robun+Bath" },
+          { name: "Noya's Kitchen（⚠️ 晚餐食唔到）", type: "越南菜", note: "7 St James's Parade，BA1 1UL。評價好高（4.7），但星期日最多只開午市 12:00–15:00（有啲網站話全日休息），你哋 14:30 先到 Bath，所以晚餐去唔到。", dish: "推介：pho、summer rolls、餃子。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Noya's+Kitchen+7+St+James's+Parade+Bath" }
         ]
       },
       {
