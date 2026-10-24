@@ -342,7 +342,7 @@
         </tbody>
       </table>
       <p class="mt-6 text-[0.93rem] md:text-[0.86rem] text-ink-mid max-w-[64ch] leading-[1.85]">
-        兩間住宿同三個景點門票已經俾咗 <strong class="font-semibold text-ink">£617.45</strong>。仲要預大約 <strong class="font-semibold text-ink">£310–485</strong>：叉電、食飯、ferry 同手信。
+        兩間住宿同三個景點門票已經俾咗 <strong class="font-semibold text-ink">£617.45</strong>。仲要預大約 <strong class="font-semibold text-ink">£325–500</strong>：叉電、食飯、泊車、ferry 同手信。
       </p>
     </div>
   </section>
@@ -448,29 +448,36 @@
       { value: "3", label: "晚數" },
       { value: "2", label: "個城市" },
       { value: "£617", label: "已付 ✓" },
-      { value: "£310–485", label: "餘下開支" }
+      { value: "£325–500", label: "餘下開支" }
     ],
     days: [
       {
         num: "D1", city: "road", isAlt: false,
         date: "週日，10月25日",
         title: "Kingston → Stonehenge → Bath",
-        sub: "今日行程輕鬆，淨係去 Stonehenge。凌晨轉冬令時間，可以瞓多一個鐘。",
-        tipBox: null,
+        sub: "朝早去 Stonehenge，之後直接入 Bath 泊 SouthGate，喺 Bath 東邊行吓，食完晚飯先 check-in。凌晨轉冬令時間，可以瞓多一個鐘。",
+        tipBox: "<strong>Stonehenge 風好大：</strong>四圍冇遮擋，要着防風褸、帶帽同手套。<br><strong>落雨點算：</strong>Sydney Gardens 改去隔籬嘅 Holburne Museum（星期日 11:00–17:00，有 café），之後再去 Pulteney Bridge 睇日落。<br><strong>行李成日留喺車：</strong>全部收入車尾箱同前箱，車窗睇唔到；另外揹個袋放厚衫同女兒後備衫。",
         mapPoints: [
           { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "08:30 出發" },
           { name: "Amesbury Supercharger", lat: 51.1668, lng: -1.7473, color: "oklch(45% 0.052 148)", label: "~10:15 叉電" },
           { name: "Stonehenge", lat: 51.1789, lng: -1.8262, color: "oklch(49% 0.142 42)", label: "11:00 ✓ 已訂" },
-          { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "14:00 後 check-in" },
-          { name: "Bath 市中心", lat: 51.3811, lng: -2.3590, color: "oklch(44% 0.082 215)", label: "晚餐" }
+          { name: "SouthGate 停車場", lat: 51.3780, lng: -2.3593, color: "oklch(31% 0.030 222)", label: "~14:50 泊車" },
+          { name: "Pulteney Bridge", lat: 51.3829, lng: -2.3573, color: "oklch(49% 0.142 42)", label: "15:00 · 16:45 日落" },
+          { name: "Sydney Gardens", lat: 51.3858, lng: -2.3474, color: "oklch(45% 0.052 148)", label: "15:30 遊樂場" },
+          { name: "Opa", lat: 51.3807, lng: -2.3576, color: "oklch(44% 0.082 215)", label: "18:00 晚餐" },
+          { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "~20:15 check-in" }
         ],
         activities: [
           { pt: 0, type: "move", icon: "fa-car-side", title: "08:30 · Kingston 出發", desc: "行 A303，大約 1.5–2 個鐘。", tag: "08:30" },
           { pt: 1, type: "charge", icon: "fa-bolt", title: "~10:15 · Amesbury Supercharger", desc: "叉電到 85–90%，順便去廁所。呢度就喺 Stonehenge 隔籬，A303 之後少充電站，呢站唔好慳。", tag: "~10:15" },
-          { pt: 2, type: "hi", icon: "fa-monument", title: "11:00–12:30 · Stonehenge", desc: "有 30 分鐘入場時間，入咗之後想留幾耐都得。有大停車場。", note: "✓ 已訂 11:00，£71.60", tag: "✓ 已訂" },
-          { type: "food", icon: "fa-utensils", title: "12:30 · 午餐", desc: "Amesbury 附近食個便餐。", tag: "便餐" },
-          { pt: 3, type: "move", icon: "fa-key", title: "~14:30 · The Annex check-in", desc: "喺 Larkhall，2 房獨立單位。車道邊個位都泊得。", note: "冇浴巾同沐浴用品，要自己帶。", tag: "14:00 後" },
-          { pt: 4, type: "food", icon: "fa-utensils", title: "18:00 · 晚餐：Opa", desc: "14 North Parade（地庫）。對面就有巴士站，10–15 分鐘入城，17:30 左右出門。", note: "✓ 已訂 10月25日 18:00，3 位", tag: "✓ 18:00 已訂" }
+          { pt: 2, type: "hi", icon: "fa-monument", title: "11:00–13:00 · Stonehenge", desc: "有 30 分鐘入場時間，入咗之後想留幾耐都得。先搭穿梭巴士去石陣（趁人少、女兒最有精神），再返遊客中心睇展覽同入新石器時代小屋。有大停車場。", note: "✓ 已訂 11:00，£71.60", tag: "✓ 已訂" },
+          { type: "food", icon: "fa-utensils", title: "13:00–13:40 · 午餐：Stonehenge Café", desc: "遊客中心入面，唔使再揸車。有湯、pasty、三文治，仲有小朋友午餐盒。", tag: "便餐" },
+          { pt: 3, type: "move", icon: "fa-square-parking", title: "13:40 → ~14:50 · 直接揸車入 Bath，泊 SouthGate", desc: "行 A36，大約 1 個鐘。有蓋，24 小時開，架車泊到食完晚飯先攞。", note: "18:00 前照日間價錢計（睇 lift 大堂個牌），18:00 後每個鐘 50–65p；成日大約 £10–14。", tag: "泊車" },
+          { pt: 4, type: "fun", icon: "fa-bridge-water", title: "15:00–15:30 · Pulteney Bridge、Great Pulteney Street", desc: "沿 Orange Grove 行 8 分鐘，喺 Grand Parade 睇水壩、影相，再行勻 Bath 最闊最靚嘅 Georgian 大街，去到 Holburne Museum。", tag: "Free" },
+          { pt: 5, type: "fun", icon: "fa-child", title: "15:30–16:30 · Sydney Gardens", desc: "有遊樂場俾女兒玩；再沿 Kennet & Avon 運河行一段，睇鐵橋。", note: "可以加：Pulteney Cruisers 遊河 1 個鐘，大人大約 £12，喺 Pulteney Bridge 隔籬上船。有啲年份 10 月尾就停，當日睇吓有冇開。", tag: "Free" },
+          { pt: 4, type: "fun", icon: "fa-sun", title: "16:30–17:50 · 日落、Bath Abbey", desc: "行返 Pulteney Bridge，16:45 左右日落，水壩最靚。之後喺 Bath Abbey 外面行吓（唔使入去，Roman Baths 留返聽日），或者飲杯嘢歇吓。", tag: "16:45 日落" },
+          { pt: 6, type: "food", icon: "fa-utensils", title: "18:00 · 晚餐：Opa", desc: "14 North Parade（地庫），由 Pulteney Bridge 行 3 分鐘。", note: "✓ 已訂 10月25日 18:00，3 位", tag: "✓ 18:00 已訂" },
+          { pt: 7, type: "move", icon: "fa-key", title: "~20:15 · The Annex check-in", desc: "食完飯行返 SouthGate 攞車，揸 10–15 分鐘去 Larkhall。2 房獨立單位，車道邊個位都泊得。用 lockbox 自己 check-in，夜晚到都冇問題；預定電話電筒。", note: "冇浴巾同沐浴用品，要自己帶。", tag: "夜晚 check-in" }
         ]
       },
       {
@@ -482,17 +489,17 @@
         mapPoints: [
           { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "08:40 check-out" },
           { name: "Roman Baths", lat: 51.3811, lng: -2.3590, color: "oklch(49% 0.142 42)", label: "09:30 ✓ 已訂" },
-          { name: "Yen Sushi", lat: 51.3830, lng: -2.3606, color: "oklch(44% 0.082 215)", label: "11:45 午餐" },
-          { name: "Royal Victoria Park", lat: 51.3856, lng: -2.3703, color: "oklch(45% 0.052 148)", label: "12:45 遊樂場" },
-          { name: "Prior Park", lat: 51.3696, lng: -2.3510, color: "oklch(45% 0.052 148)", label: "14:00–15:30" },
+          { name: "Hondo Sushi", lat: 51.3800, lng: -2.3622, color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
+          { name: "Royal Victoria Park", lat: 51.3856, lng: -2.3703, color: "oklch(45% 0.052 148)", label: "13:00 遊樂場" },
+          { name: "Prior Park", lat: 51.3696, lng: -2.3510, color: "oklch(45% 0.052 148)", label: "14:15–15:30" },
           { name: "Hotwells apartments, Bristol", lat: 51.4487, lng: -2.6195, color: "oklch(44% 0.082 215)", label: "15:00 後 check-in" }
         ],
         activities: [
           { pt: 0, type: "move", icon: "fa-suitcase-rolling", title: "08:40 · The Annex check-out", desc: "揸車入城，泊 SouthGate 或 Charlotte Street 停車場，成日都泊喺度。", tag: "08:40" },
           { pt: 1, type: "hi", icon: "fa-water", title: "09:30–11:30 · Roman Baths", desc: "記得攞小朋友版 audio guide，重點睇 Great Bath 同 curse tablets，走之前試飲溫泉水。", note: "✓ 已訂 09:30，family ticket £63", tag: "✓ 已訂" },
-          { pt: 2, type: "food", icon: "fa-utensils", title: "11:45 · 午餐：Yen Sushi", desc: "迴轉壽司，離 Roman Baths 好近，細路一定覺得好玩。", tag: "迴轉壽司" },
-          { pt: 3, type: "fun", icon: "fa-child", title: "12:45–13:45 · Royal Victoria Park", desc: "去遊樂場俾女兒放電。", tag: "Free" },
-          { pt: 4, type: "fun", icon: "fa-leaf", title: "14:00–15:30 · Prior Park", desc: "睇 Palladian 橋同秋天山谷景色。冇停車場，要搭巴士、taxi 或者行上去。", tag: "National Trust" },
+          { pt: 2, type: "food", icon: "fa-utensils", title: "12:00 · 午餐：Hondo Sushi", desc: "St James Parade，由 Roman Baths 行 4 分鐘。細細間嘅獨立日本餐廳，手握壽司、拉麵、便當、丼飯，價錢抵。12:00 先開門，Roman Baths 出嚟可以喺 Abbey 附近行吓先。", note: "後備：itsu（Roman Baths 正對面）。", tag: "壽司・拉麵" },
+          { pt: 3, type: "fun", icon: "fa-child", title: "13:00–14:00 · Royal Victoria Park", desc: "去遊樂場俾女兒放電；順路行過 Royal Crescent 同 The Circus。", tag: "Free" },
+          { pt: 4, type: "fun", icon: "fa-leaf", title: "14:15–15:30 · Prior Park", desc: "睇 Palladian 橋同秋天山谷景色。冇停車場，要搭巴士、taxi 或者行上去。", tag: "National Trust" },
           { pt: 5, type: "move", icon: "fa-key", title: "15:30 · 去 Bristol，Hotwells check-in", desc: "車程大約 20 分鐘。", note: "15:00 前唔入得；3 樓冇電梯。", tag: "15:00 後" },
           { type: "food", icon: "fa-utensils", title: "晚餐", desc: "Seven Lucky Gods（行得到，日式小食、韓式炸雞）或 Mayflower（粵菜：燒鴨、脆皮燒肉）。", tag: "星期一照開" }
         ]
@@ -550,7 +557,8 @@
     chargeLegs: [],
     drivingRoutes: [
       { day: "D1", city: "road",    leg: "Kingston → Stonehenge", line: "A303（中途 Amesbury 叉電）", time: "1.5–2 小時" },
-      { day: "D1", city: "bath",    leg: "Stonehenge → Bath", line: "A36", time: "45 分鐘–1 小時" },
+      { day: "D1", city: "bath",    leg: "Stonehenge → Bath 市中心", line: "A36，直接泊 SouthGate", time: "45 分鐘–1 小時" },
+      { day: "D1", city: "bath",    leg: "SouthGate → Larkhall", line: "食完晚飯先去 check-in", time: "10–15 分鐘" },
       { day: "D2", city: "bath",    leg: "Larkhall → Bath 市中心", line: "泊 SouthGate / Charlotte Street", time: "10–15 分鐘" },
       { day: "D2", city: "bristol", leg: "Bath → Bristol", line: "A4", time: "約 20 分鐘" },
       { day: "D4", city: "road",    leg: "Bristol → Longleat", line: "A36", time: "約 1 小時" },
@@ -579,7 +587,7 @@
       { icon: "fa-bolt", name: "叉電", budget: 40, mid: 70 },
       { icon: "fa-utensils", name: "餐飲", budget: 220, mid: 320 },
       { icon: "fa-ship", name: "Harbour ferry", budget: 20, mid: 30 },
-      { icon: "fa-leaf", name: "Prior Park、泊車", budget: 0, mid: 15 },
+      { icon: "fa-leaf", name: "泊車（Bath 兩日）", budget: 15, mid: 30 },
       { icon: "fa-bag-shopping", name: "手信、零食", budget: 30, mid: 50 }
     ],
     tips: [
@@ -610,7 +618,7 @@
       {
         day: "Day 2 午 · Bath", city: "bath",
         items: [
-          { name: "★ Yen Sushi", type: "迴轉壽司", note: "離 Roman Baths 好近。", dish: "推介：三文魚刺身、天婦羅蝦。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Yen+Sushi+Bath" },
+          { name: "★ Hondo Sushi", type: "壽司・拉麵", note: "8–9 St James Parade，由 Roman Baths 行 4 分鐘。星期一 12:00 開。", dish: "推介：手握壽司、便當。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hondo+Sushi+Bath" },
           { name: "Thaikhun", type: "泰菜", note: "有花園位。", dish: "推介：Pad Thai、綠咖喱。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Thaikhun+Bath" }
         ]
       },
