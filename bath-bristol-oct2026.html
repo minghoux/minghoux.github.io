@@ -265,7 +265,7 @@
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-brass mb-3 label-rule">Charging plan</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-[oklch(96%_0.014_85)] leading-[1.25] mb-4">⚡ 叉電計劃</h2>
       <p class="text-[0.95rem] md:text-[0.88rem] text-[oklch(78%_0.018_82)] max-w-[68ch] leading-[1.85] mb-9">
-        架 Model Y 2023 Standard Range 喺 10 月開暖氣、坐滿人，高速大約跑到 <strong class="text-brass font-medium">170 miles</strong>。出發前叉滿 <strong class="text-brass font-medium">100%</strong>，中途停兩個站就夠。
+        架 Model Y 2023 Standard Range 喺 10 月開暖氣、坐滿人，高速大約跑到 <strong class="text-brass font-medium">170 miles</strong>。出發前叉滿 <strong class="text-brass font-medium">100%</strong>，成程停三次：Day 1 Amesbury、Day 4 朝早 Bristol Eastgate、Day 4 返程再停 Amesbury。
       </p>
 
       <div class="grid md:grid-cols-2 gap-6 mb-10">
@@ -278,7 +278,7 @@
       </div>
 
       <p class="mt-6 text-[0.9rem] md:text-[0.85rem] text-[oklch(74%_0.018_82)] max-w-[68ch] leading-[1.85]">
-        兩間住宿都只有普通插座，唔好靠佢叉電。真係要叉，Bristol 有 BP Pulse 同 InstaVolt。
+        兩間住宿都只有普通插座，唔好靠佢叉電。Day 4 唔叉 Eastgate 嘅話，到 Longleat 只剩大約 25%，去唔到 Membury，返程一定要停 Amesbury。Longleat Silver Birch 停車場有 7.4kW 慢叉，要自己帶 Type 2 線。
       </p>
     </div>
   </section>
@@ -342,7 +342,7 @@
         </tbody>
       </table>
       <p class="mt-6 text-[0.93rem] md:text-[0.86rem] text-ink-mid max-w-[64ch] leading-[1.85]">
-        兩間住宿同三個景點門票已經俾咗 <strong class="font-semibold text-ink">£617.45</strong>。仲要預大約 <strong class="font-semibold text-ink">£325–500</strong>：叉電、食飯、泊車、ferry 同手信。
+        兩間住宿同三個景點門票已經俾咗 <strong class="font-semibold text-ink">£617.45</strong>。仲要預大約 <strong class="font-semibold text-ink">£350–555</strong>：叉電、食飯、泊車、taxi、ferry 同手信。
       </p>
     </div>
   </section>
@@ -353,7 +353,7 @@
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Getting around</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">自駕 · 泊車</h2>
       <div class="mb-9 p-[1.4rem_1.6rem] bg-oxide/[0.05] border-y border-oxide/25 [&_strong]:font-semibold [&_strong]:text-ink">
-        <p class="tip-mark text-[0.94rem] md:text-[0.88rem] text-ink-mid leading-[1.85] max-w-[68ch]"><strong>⚠️ Prior Park 冇停車場：</strong>Day 2 架車泊喺 SouthGate 或 Charlotte Street，再由市中心搭巴士、taxi，或者行大約 25 分鐘上斜。</p>
+        <p class="tip-mark text-[0.94rem] md:text-[0.88rem] text-ink-mid leading-[1.85] max-w-[68ch]"><strong>⚠️ 兩晚都係食完晚飯先 check-in：</strong>Day 1 泊 Bath SouthGate，Day 2 泊 Bath Charlotte Street 再去 Bristol Wapping Wharf，行李成日留喺車尾箱。</p>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full border-collapse">
@@ -376,7 +376,7 @@
         </table>
       </div>
       <p class="mt-6 text-[0.9rem] md:text-[0.85rem] text-ink-mid max-w-[68ch] leading-[1.85]">
-        <strong class="text-ink font-semibold">Stonehenge 同 Longleat 都有大停車場。</strong>A303 一路少充電站，所以 Day 1 喺 Amesbury 叉夠電先入 Bath。
+        <strong class="text-ink font-semibold">Stonehenge 同 Longleat 都有大停車場。</strong>A303 一路少充電站，所以 Day 1 喺 Amesbury 叉夠電先入 Bath。Bath 同 Bristol 嘅泊車安排寫咗喺每日行程。
       </p>
     </div>
   </section>
@@ -448,7 +448,7 @@
       { value: "3", label: "晚數" },
       { value: "2", label: "個城市" },
       { value: "£617", label: "已付 ✓" },
-      { value: "£325–500", label: "餘下開支" }
+      { value: "£350–555", label: "餘下開支" }
     ],
     days: [
       {
@@ -483,86 +483,105 @@
       {
         num: "D2", city: "bath", isAlt: true,
         date: "週一，10月26日",
-        title: "Roman Baths · Victoria Park · Prior Park → Bristol",
-        sub: "架車泊喺市中心成日，行完 Bath 先去 Bristol。",
-        tipBox: "<strong>Prior Park 冇停車場：</strong>可以由市中心搭巴士或 taxi，或者行大約 25 分鐘上斜。入口有段斜路，記得著好行嘅鞋。<br><strong>Hotwells 喺 3 樓又冇電梯：</strong>搬行李要預多啲時間。",
+        title: "Roman Baths · Victoria Park → Bristol",
+        sub: "架車成日泊 Charlotte Street，行完 Bath 直接去 Bristol Harbourside 行吓、食晚飯，最後先 check-in。Bristol 學校今個星期放 half term，景點會多人。",
+        tipBox: "<strong>落雨點算：</strong>刪咗 Victoria Park，食完晏直接去 Bristol，喺 M Shed 耐啲。<br><strong>行李成日留喺車：</strong>全部收入車尾箱同前箱；Hotwells 喺 3 樓冇電梯，搬行李要預多啲時間。",
         mapPoints: [
           { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "08:40 check-out" },
+          { name: "Charlotte Street 停車場", lat: 51.3836, lng: -2.3666, color: "oklch(31% 0.030 222)", label: "09:00 泊車" },
           { name: "Roman Baths", lat: 51.3811, lng: -2.3590, color: "oklch(49% 0.142 42)", label: "09:30 ✓ 已訂" },
           { name: "Hondo Sushi", lat: 51.3800, lng: -2.3622, color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
-          { name: "Royal Victoria Park", lat: 51.3856, lng: -2.3703, color: "oklch(45% 0.052 148)", label: "13:00 遊樂場" },
-          { name: "Prior Park", lat: 51.3696, lng: -2.3510, color: "oklch(45% 0.052 148)", label: "14:15–15:30" },
-          { name: "Hotwells apartments, Bristol", lat: 51.4487, lng: -2.6195, color: "oklch(44% 0.082 215)", label: "15:00 後 check-in" }
+          { name: "Royal Crescent", lat: 51.3868, lng: -2.3681, color: "oklch(49% 0.142 42)", label: "12:55 經過" },
+          { name: "Royal Victoria Park 遊樂場", lat: 51.3856, lng: -2.3703, color: "oklch(45% 0.052 148)", label: "13:05–14:45 遊樂場" },
+          { name: "Wapping Wharf 停車場", lat: 51.4469, lng: -2.5985, color: "oklch(31% 0.030 222)", label: "~15:20 泊車" },
+          { name: "M Shed", lat: 51.4474, lng: -2.5983, color: "oklch(49% 0.142 42)", label: "15:30–17:00 · 日落" },
+          { name: "Seven Lucky Gods", lat: 51.4478, lng: -2.5979, color: "oklch(44% 0.082 215)", label: "17:30 晚餐" },
+          { name: "Hotwells apartments, Bristol", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "~19:00 check-in" }
         ],
         activities: [
-          { pt: 0, type: "move", icon: "fa-suitcase-rolling", title: "08:40 · The Annex check-out", desc: "揸車入城，泊 SouthGate 或 Charlotte Street 停車場，成日都泊喺度。", tag: "08:40" },
-          { pt: 1, type: "hi", icon: "fa-water", title: "09:30–11:30 · Roman Baths", desc: "記得攞小朋友版 audio guide，重點睇 Great Bath 同 curse tablets，走之前試飲溫泉水。", note: "✓ 已訂 09:30，family ticket £63", tag: "✓ 已訂" },
-          { pt: 2, type: "food", icon: "fa-utensils", title: "12:00 · 午餐：Hondo Sushi", desc: "St James Parade，由 Roman Baths 行 4 分鐘。細細間嘅獨立日本餐廳，手握壽司、拉麵、便當、丼飯，價錢抵。12:00 先開門，Roman Baths 出嚟可以喺 Abbey 附近行吓先。", note: "後備：itsu（Roman Baths 正對面）。", tag: "壽司・拉麵" },
-          { pt: 3, type: "fun", icon: "fa-child", title: "13:00–14:00 · Royal Victoria Park", desc: "去遊樂場俾女兒放電；順路行過 Royal Crescent 同 The Circus。", tag: "Free" },
-          { pt: 4, type: "fun", icon: "fa-leaf", title: "14:15–15:30 · Prior Park", desc: "睇 Palladian 橋同秋天山谷景色。冇停車場，要搭巴士、taxi 或者行上去。", tag: "National Trust" },
-          { pt: 5, type: "move", icon: "fa-key", title: "15:30 · 去 Bristol，Hotwells check-in", desc: "車程大約 20 分鐘。", note: "15:00 前唔入得；3 樓冇電梯。", tag: "15:00 後" },
-          { type: "food", icon: "fa-utensils", title: "晚餐", desc: "Seven Lucky Gods（行得到，日式小食、韓式炸雞）或 Mayflower（粵菜：燒鴨、脆皮燒肉）。", tag: "星期一照開" }
+          { pt: 1, type: "move", icon: "fa-square-parking", title: "08:40 → 09:00 · The Annex check-out，泊 Charlotte Street", desc: "揸 15–20 分鐘。Council 停車場，就喺 Royal Victoria Park 隔籬，出城又啱晒行 A4 去 Bristol。架車泊到 14:45。", note: "大約 £10–15（4 個鐘 £7.20–9.80），用 MiPermit app 或者現場俾錢。", tag: "泊車" },
+          { pt: 2, type: "hi", icon: "fa-water", title: "09:30–11:30 · Roman Baths", desc: "由 Charlotte Street 行 12 分鐘，09:15 前到。記得攞小朋友版 audio guide，重點睇 Great Bath 同 curse tablets，走之前試飲溫泉水。", note: "✓ 已訂 09:30，family ticket £63", tag: "✓ 已訂" },
+          { pt: 3, type: "food", icon: "fa-utensils", title: "12:00 · 午餐：Hondo Sushi", desc: "St James Parade，由 Roman Baths 行 4 分鐘。細細間嘅獨立日本餐廳，手握壽司、拉麵、便當、丼飯，價錢抵。12:00 先開門，Roman Baths 出嚟可以喺 Abbey 廣場睇吓街頭表演先。", note: "後備：itsu（Roman Baths 正對面）。", tag: "壽司・拉麵" },
+          { pt: 4, type: "fun", icon: "fa-landmark", title: "12:45–13:05 · The Circus → Royal Crescent", desc: "經 Milsom Street 上去，行 20 分鐘。先睇圓形嘅 The Circus，再去 Royal Crescent 前面草地影相，之後落去公園。", tag: "Free" },
+          { pt: 5, type: "fun", icon: "fa-child", title: "13:05–14:45 · Royal Victoria Park 遊樂場", desc: "大型遊樂場，有攀爬架、滑梯、鞦韆同沙池，免費，有廁所。俾女兒玩夠佢，大人坐低歇吓。", note: "泊車：架車朝早已經泊咗喺 Charlotte Street 停車場，行 5 分鐘就到遊樂場，可以順手返車攞嘢。", tag: "Free" },
+          { pt: 6, type: "move", icon: "fa-car-side", title: "14:50 → ~15:20 · 揸去 Bristol，泊 Wapping Wharf", desc: "行 A4，大約 25–30 分鐘，避開放工時間。Wapping Wharf 停車場係 council 嘅短期停車場，M Shed 同晚餐都喺隔籬。", note: "09:00–19:00 每個鐘 £2.70，最多泊 5 個鐘；19:00 前走，泊 4 個鐘 £10.80。用 RingGo 或現金。", tag: "泊車" },
+          { pt: 7, type: "fun", icon: "fa-building-columns", title: "15:30–17:00 · M Shed、碼頭日落", desc: "Bristol 歷史博物館，免費，half term 開到 17:00，可以慢慢行。有舊巴士、單車、玩具；頂樓望晒成個 harbour，16:45 左右日落。之後過 Pero's Bridge 睇碼頭夜景。", tag: "Free" },
+          { pt: 8, type: "food", icon: "fa-utensils", title: "17:30–18:45 · 晚餐：Seven Lucky Gods", desc: "Wapping Wharf（CARGO），就喺停車場隔籬。日式小食、壽司、韓式炸雞。星期一 12:00–22:00。", tag: "星期一有開" },
+          { pt: 9, type: "move", icon: "fa-key", title: "18:50 → ~19:00 · Hotwells check-in", desc: "揸 5 分鐘。到埗步驟同密碼見 host message（14:00 用 text + email send 嚟）。", note: "3 樓冇電梯。", tag: "夜晚 check-in" }
         ]
       },
       {
         num: "D3", city: "bristol", isAlt: false,
         date: "週二，10月27日",
-        title: "Bristol Harbourside",
-        sub: "今日唔使揸車，一出門就係 Harbourside，啱晒約朋友。",
-        tipBox: null,
+        title: "Bristol Harbourside · Clifton",
+        sub: "上晝沿碼頭行、睇 SS Great Britain、搭 ferry，下晝去 Clifton Suspension Bridge。Bristol 放 half term，ferry 每日都有船。",
+        tipBox: "<strong>落雨點算：</strong>下晝 Clifton 改去 We The Curious 科學館（half term 每日 10:00–17:00，大人大約 £21.20、小朋友 £14.50，要網上訂時段）。<br><strong>約朋友：</strong>上晝喺 harbour 或者晚飯最易夾；佢哋一齊食晚飯嘅話，記得改 Ramen Monster 訂位人數。",
         mapPoints: [
-          { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "出發" },
-          { name: "SS Great Britain", lat: 51.4490, lng: -2.6081, color: "oklch(44% 0.082 215)", label: "沿路經過" },
-          { name: "Bristol Harbourside", lat: 51.4482, lng: -2.5993, color: "oklch(49% 0.142 42)", label: "碼頭 + ferry" },
-          { name: "We The Curious", lat: 51.4500, lng: -2.5991, color: "oklch(45% 0.052 148)", label: "落雨後備" },
-          { name: "Clifton Suspension Bridge", lat: 51.4549, lng: -2.6278, color: "oklch(45% 0.052 148)", label: "天氣好就去" },
-          { name: "Ramen Monster", lat: 51.4538, lng: -2.5949, color: "oklch(44% 0.082 215)", label: "18:00 晚餐 · ✓ 已訂" }
+          { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "09:30 出門" },
+          { name: "Underfall Yard", lat: 51.4486, lng: -2.6146, color: "oklch(45% 0.052 148)", label: "09:40 船廠" },
+          { name: "SS Great Britain", lat: 51.4490, lng: -2.6081, color: "oklch(49% 0.142 42)", label: "10:00 鐵船 · ferry" },
+          { name: "St Nick's Market · FoodieVietnam", lat: 51.4549, lng: -2.5926, color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
+          { name: "Clifton Suspension Bridge", lat: 51.4549, lng: -2.6278, color: "oklch(49% 0.142 42)", label: "13:45 吊橋" },
+          { name: "Clifton Observatory", lat: 51.4565, lng: -2.6265, color: "oklch(45% 0.052 148)", label: "Giant's Cave" },
+          { name: "Ramen Monster", lat: 51.4538, lng: -2.5949, color: "oklch(44% 0.082 215)", label: "18:00 晚餐 · ✓ 已訂" },
+          { name: "We The Curious", lat: 51.4500, lng: -2.5991, color: "oklch(45% 0.052 148)", label: "落雨後備" }
         ],
         activities: [
-          { pt: 2, type: "fun", icon: "fa-ship", title: "上晝 · Harbourside + ferry", desc: "沿住碼頭行，經過 SS Great Britain，再搭一程 harbour ferry。", tag: "行得到" },
-          { type: "food", icon: "fa-utensils", title: "午餐", desc: "Dongnae（Michelin 韓式燒肉）或 FoodieVietnam（河粉）。", tag: "韓／越" },
-          { pt: 4, type: "fun", icon: "fa-cloud-sun-rain", title: "下晝 · 睇天氣", desc: "天氣好就去 Clifton Suspension Bridge（揸車 5 分鐘）；落雨就去 We The Curious 科學館。", tag: "彈性" },
-          { pt: 5, type: "food", icon: "fa-bowl-food", title: "18:00 · 晚餐：Ramen Monster", desc: "25 St Stephen's St，BS1 1JX。日式拉麵，招牌係 tsukemen 沾麵，主食大約 £14.50–16.90。由 Hotwells 行過去大約 30 分鐘，17:30 左右出門。", note: "✓ 已訂 10月27日 18:00", tag: "✓ 18:00 已訂" }
+          { pt: 1, type: "fun", icon: "fa-anchor", title: "09:30–09:50 · 沿碼頭行去 Underfall Yard", desc: "一出門向東行，Underfall Yard 係仲用緊嘅船廠，可以睇修船，有 café 同廁所。", tag: "Free" },
+          { pt: 2, type: "fun", icon: "fa-ship", title: "10:00–11:30 · SS Great Britain", desc: "Brunel 嘅大鐵船，可以落船底睇、上甲板，仲有扮船員嘅互動區，細路好鍾意。唔想入去就喺外面睇，直接搭 ferry。", note: "大人大約 £22，小朋友 £13.50；張飛一年內任入。", tag: "可選" },
+          { pt: 2, type: "fun", icon: "fa-ferry", title: "11:30–11:45 · 搭 ferry 去市中心", desc: "喺 SS Great Britain 旁邊碼頭上船，船票上船買，大約 10–15 分鐘。", tag: "Ferry" },
+          { pt: 3, type: "food", icon: "fa-utensils", title: "12:00 · 午餐：FoodieVietnam", desc: "St Nick's Market，由碼頭行 8 分鐘。牛肉河粉、越南法包；食完喺街市行吓。星期二 11:30–17:30。", note: "想食 Michelin 韓燒：Dongnae（Redland，星期二 12:00–15:00 有抵食 set lunch），搭 taxi 10 分鐘。", tag: "河粉" },
+          { type: "move", icon: "fa-ferry", title: "13:00 · 返 Hotwells", desc: "喺市中心搭 ferry 返 Mardyke（大約 20 分鐘），或者沿碼頭行 25 分鐘。", tag: "Ferry" },
+          { pt: 4, type: "fun", icon: "fa-bridge", title: "13:45–15:45 · Clifton Suspension Bridge", desc: "揸 5 分鐘，泊 Clifton Village 咪錶位（£1 一個鐘，最多 4 個鐘）；或者由屋企行 20 分鐘上斜。行過吊橋（行人免費），睇 visitor centre（免費，10:00–17:00）。", tag: "Free" },
+          { pt: 5, type: "fun", icon: "fa-mountain", title: "Clifton Observatory · Giant's Cave", desc: "就喺吊橋隔籬。經隧道行去懸崖中間個洞望吊橋，女兒一定鍾意（4 歲以上先入得）。收費，現場買。", tag: "可選" },
+          { type: "move", icon: "fa-house", title: "16:00 · 返屋企休息", desc: "16:45 左右日落，天黑前返屋企。", tag: "休息" },
+          { pt: 6, type: "food", icon: "fa-bowl-food", title: "18:00 · 晚餐：Ramen Monster", desc: "25 St Stephen's St。日式拉麵，招牌係 tsukemen 沾麵，主食大約 £14.50–16.90。由 Hotwells 行 30 分鐘，或者 taxi 10 分鐘（大約 £8–10），17:30 出門。", note: "✓ 已訂 10月27日 18:00", tag: "✓ 18:00 已訂" }
         ]
       },
       {
         num: "D4", city: "road", isAlt: true,
         date: "週三，10月28日",
         title: "Longleat → Kingston",
-        sub: "喺 Longleat 玩 5 個鐘，15:30 一定要走（大約 16:40 就天黑）。",
-        tipBox: "<strong>Monkey Temple 記得行 bypass 車道：</strong>啲馬騮會扯 wiper 同車邊膠條。<br><strong>時間唔夠就先刪迷宮</strong>；safari、Jungle Cruise 同 Koala Creek 就唔好刪。",
+        sub: "朝早喺 Bristol 叉電，喺 Longleat 玩成日，15:30 走，經 A303 返屋企，中途喺 Amesbury 再叉電。",
+        tipBox: "<strong>Monkey Temple 記得行 bypass 車道：</strong>啲馬騮會扯 wiper 同車邊膠條。<br><strong>時間唔夠就先刪迷宮</strong>；safari、Jungle Cruise 同 Koala Creek 就唔好刪。<br><strong>Longleat 有 7.4kW 慢叉：</strong>喺 Silver Birch 停車場，要自己帶 Type 2 線。有線嘅話，泊喺度玩 5 個鐘就叉到好多電，返程可以唔使停 Amesbury。",
         mapPoints: [
-          { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "09:15 出發" },
-          { name: "Longleat", lat: 51.1877, lng: -2.2679, color: "oklch(49% 0.142 42)", label: "10:00–15:30 ✓ 已訂" },
-          { name: "Membury Services", lat: 51.4336, lng: -1.5446, color: "oklch(45% 0.052 148)", label: "叉電 + 廁所" },
-          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "18:30–19:00" }
+          { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "08:45 check-out" },
+          { name: "Eastgate Supercharger", lat: 51.4745, lng: -2.5635, color: "oklch(45% 0.052 148)", label: "09:00 叉電" },
+          { name: "Longleat", lat: 51.1877, lng: -2.2679, color: "oklch(49% 0.142 42)", label: "10:35–15:30 ✓ 已訂" },
+          { name: "Amesbury Supercharger", lat: 51.1668, lng: -1.7473, color: "oklch(45% 0.052 148)", label: "16:10 叉電" },
+          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "~18:00 到屋企" }
         ],
         activities: [
-          { pt: 0, type: "move", icon: "fa-suitcase-rolling", title: "09:15 · Hotwells check-out", desc: "去 Longleat 大約 1 個鐘。", tag: "09:15" },
-          { pt: 1, type: "hi", icon: "fa-hippo", title: "10:00–11:45 · Safari Drive-Through", desc: "朝早啲動物最精神，又可以避開 half term 人潮。", note: "✓ 已訂 10月28日，£118.85", tag: "✓ 已訂" },
-          { pt: 1, type: "fun", icon: "fa-ship", title: "11:45–12:15 · Jungle Cruise", desc: "海獅、大猩猩島。", tag: "已包門票" },
-          { pt: 1, type: "food", icon: "fa-utensils", title: "12:15–13:00 · 午餐", desc: "園內解決。", tag: "園內" },
-          { pt: 1, type: "fun", icon: "fa-paw", title: "13:00–14:00 · Koala Creek", desc: "樹熊、企鵝、狐獴。", tag: "已包門票" },
-          { pt: 1, type: "fun", icon: "fa-chess-rook", title: "14:00–15:00 · Adventure Castle + Spooktacular", desc: "去遊樂場放電，再行 Shaun the Sheep 萬聖節 trail。", tag: "萬聖節" },
-          { pt: 1, type: "fun", icon: "fa-route", title: "15:00–15:30 · 樹籬迷宮（可選）", desc: "定好時限，一到 15:30 就走。", tag: "可選" },
-          { pt: 2, type: "charge", icon: "fa-bolt", title: "Membury Services", desc: "叉電兼去廁所，大約喺返程中間。", tag: "中途站" },
-          { pt: 3, type: "move", icon: "fa-home", title: "18:30–19:00 · 返到 Kingston", desc: "", tag: "到屋企" }
+          { pt: 0, type: "move", icon: "fa-suitcase-rolling", title: "08:45 · Hotwells check-out", desc: "10:00 前一定要走，唔可以遲。行李 08:30 前執好。", tag: "08:45" },
+          { pt: 1, type: "charge", icon: "fa-bolt", title: "09:00–09:25 · Eastgate Supercharger", desc: "揸 15 分鐘。叉到 90%，有廁所同 café。", tag: "叉電" },
+          { pt: 2, type: "move", icon: "fa-car-side", title: "09:25 → ~10:35 · 去 Longleat", desc: "經 Bath 行 A36，大約 1 小時 10 分鐘。Half term 期間 09:30–18:00 開，safari 最後入場 16:00。", tag: "1 小時 10 分" },
+          { pt: 2, type: "hi", icon: "fa-hippo", title: "10:45–12:30 · Safari Drive-Through", desc: "一到就先去 safari。Half term 人多，預 1.5–2 個鐘。", note: "✓ 已訂 10月28日，£118.85", tag: "✓ 已訂" },
+          { pt: 2, type: "food", icon: "fa-utensils", title: "12:30–13:15 · 午餐", desc: "園內解決。", tag: "園內" },
+          { pt: 2, type: "fun", icon: "fa-ship", title: "13:15–13:45 · Jungle Cruise", desc: "海獅、大猩猩島。", tag: "已包門票" },
+          { pt: 2, type: "fun", icon: "fa-paw", title: "13:45–14:30 · Koala Creek", desc: "樹熊、企鵝、狐獴。", tag: "已包門票" },
+          { pt: 2, type: "fun", icon: "fa-chess-rook", title: "14:30–15:15 · Adventure Castle + Spooktacular", desc: "去遊樂場放電，再行萬聖節 trail。", tag: "萬聖節" },
+          { pt: 2, type: "fun", icon: "fa-route", title: "15:15–15:30 · 樹籬迷宮（可選）", desc: "定好時限，一到 15:30 就走。", tag: "可選" },
+          { pt: 3, type: "charge", icon: "fa-bolt", title: "15:30 → 16:10 · Amesbury Supercharger", desc: "行 A303，大約 40 分鐘，就係 Day 1 嗰個站。叉 15–20 分鐘到 75% 左右，順便去廁所、買嘢食。", tag: "叉電" },
+          { pt: 4, type: "move", icon: "fa-home", title: "~18:00 · 返到 Kingston", desc: "A303 → M3，大約 1.5 個鐘。Half term 返程可能塞車，預 18:00–18:30 到。", tag: "到屋企" }
         ]
       }
     ],
     chargeStops: [
-      { when: "Day 1 · 10月25日", name: "Amesbury Supercharger", addr: "Solstice Park, SP4 7SQ", note: "16 個位，250kW，就喺 Stonehenge 隔籬。叉到 85–90% 就夠去 Bath。" },
-      { when: "Day 4 · 10月28日", name: "Membury Services（M4）", addr: "RG17 7TZ · 東行 6 位 / 西行 8 位", note: "150kW，有廁所同嘢食，大約喺 Longleat 返 Kingston 中間。" }
+      { when: "Day 1 · 10月25日", name: "Amesbury Supercharger", addr: "Solstice Park, SP4 7SQ", note: "16 個位，250kW，就喺 Stonehenge 隔籬。叉到 90%，到 Bath 大約仲有 70%。" },
+      { when: "Day 4 · 10月28日 朝早", name: "Eastgate Supercharger, Bristol", addr: "Eastgate Retail Park, BS5 6XX", note: "8 個位，250kW，有廁所同 café。到嗰陣大約剩 50%，叉到 90% 先去 Longleat。" },
+      { when: "Day 4 · 10月28日 返程", name: "Amesbury Supercharger", addr: "Solstice Park, SP4 7SQ · A303 順路", note: "由 Longleat 揸 40 分鐘，到嗰陣大約剩 45%。叉到 75% 左右，返到 Kingston 仲有大約 35%。" }
     ],
     chargeLegs: [],
     drivingRoutes: [
       { day: "D1", city: "road",    leg: "Kingston → Stonehenge", line: "A303（中途 Amesbury 叉電）", time: "1.5–2 小時" },
       { day: "D1", city: "bath",    leg: "Stonehenge → Bath 市中心", line: "A36，直接泊 SouthGate", time: "45 分鐘–1 小時" },
       { day: "D1", city: "bath",    leg: "SouthGate → Larkhall", line: "食完晚飯先去 check-in", time: "10–15 分鐘" },
-      { day: "D2", city: "bath",    leg: "Larkhall → Bath 市中心", line: "泊 SouthGate / Charlotte Street", time: "10–15 分鐘" },
-      { day: "D2", city: "bristol", leg: "Bath → Bristol", line: "A4", time: "約 20 分鐘" },
-      { day: "D4", city: "road",    leg: "Bristol → Longleat", line: "A36", time: "約 1 小時" },
-      { day: "D4", city: "road",    leg: "Longleat → Kingston", line: "A303 / M4（中途 Membury）", time: "2–2.5 小時" }
+      { day: "D2", city: "bath",    leg: "Larkhall → Charlotte Street", line: "泊到 14:45，就喺 Victoria Park 隔籬", time: "15–20 分鐘" },
+      { day: "D2", city: "bristol", leg: "Bath → Bristol Wapping Wharf", line: "A4，14:50 出發避開放工時間", time: "25–30 分鐘" },
+      { day: "D2", city: "bristol", leg: "Wapping Wharf → Hotwells", line: "食完晚飯先去 check-in", time: "約 5 分鐘" },
+      { day: "D3", city: "bristol", leg: "Hotwells → Clifton", line: "泊 Clifton Village 咪錶位", time: "約 5 分鐘" },
+      { day: "D4", city: "road",    leg: "Hotwells → Eastgate → Longleat", line: "Eastgate 叉電，再經 Bath 行 A36", time: "約 1.5 小時" },
+      { day: "D4", city: "road",    leg: "Longleat → Kingston", line: "A303（中途 Amesbury 叉電）→ M3", time: "2–2.5 小時" }
     ],
     checklistGroups: [
       { title: "而家", color: "oklch(49% 0.142 42)", items: [
@@ -571,7 +590,10 @@
       { title: "出發前一星期", color: "oklch(44% 0.082 215)", items: [
           { text: "查清楚 Longleat 開放時間同 safari 最後入場時間" },
           { text: "用 A Better Route Planner 再計一次電夠唔夠" },
-          { text: "回覆 Hotwells 大概幾點到（~15:45）" },
+          { text: "回覆 Hotwells 大概幾點到（~19:00）" },
+          { text: "話俾 Mark 知 25 號大約 20:15 先到" },
+          { text: "有冇 Type 2 叉電線？有就帶埋，Longleat 用得著" },
+          { text: "落雨嘅話，前一晚網上訂 We The Curious" },
           { text: "25 號朝早留意 Bath 密碼；26 號 14:00 留意 Bristol 密碼" },
           { text: "同 Bristol 朋友夾時間" },
           { text: "Download Google Maps offline" },
@@ -587,7 +609,9 @@
       { icon: "fa-bolt", name: "叉電", budget: 40, mid: 70 },
       { icon: "fa-utensils", name: "餐飲", budget: 220, mid: 320 },
       { icon: "fa-ship", name: "Harbour ferry", budget: 20, mid: 30 },
-      { icon: "fa-leaf", name: "泊車（Bath 兩日）", budget: 15, mid: 30 },
+      { icon: "fa-square-parking", name: "泊車（Bath、Bristol）", budget: 30, mid: 50 },
+      { icon: "fa-mountain", name: "Giant's Cave", budget: 10, mid: 15 },
+      { icon: "fa-taxi", name: "Taxi（Ramen Monster）", budget: 10, mid: 20 },
       { icon: "fa-bag-shopping", name: "手信、零食", budget: 30, mid: 50 }
     ],
     tips: [
@@ -601,7 +625,7 @@
           "水樽、摺遮、行山鞋"
       ] },
       { title: "住宿", items: [
-          "兩間都係用 lockbox，密碼到當日先 send",
+          "兩間都係用 lockbox，密碼到當日先 send；兩晚都係食完晚飯先 check-in",
           "Hotwells 喺 3 樓冇電梯，有洗衣機冇乾衣機"
       ] }
     ],
@@ -625,21 +649,21 @@
       {
         day: "Day 2 晚 · Bristol", city: "bristol",
         items: [
-          { name: "★ Seven Lucky Gods", type: "日式 Izakaya", note: "Wapping Wharf，由 Hotwells 行得到。", dish: "推介：韓式炸雞、壽司。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Seven+Lucky+Gods+Wapping+Wharf+Bristol" },
-          { name: "★ Mayflower", type: "粵菜", note: "Haymarket 老字號。", dish: "推介：燒鴨、脆皮燒肉、椒鹽鮮魷。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Mayflower+Chinese+restaurant+Haymarket+Walk+Bristol" }
+          { name: "★ Seven Lucky Gods", type: "日式 Izakaya", note: "Wapping Wharf（CARGO），就喺停車場隔籬。星期一 12:00–22:00。", dish: "推介：韓式炸雞、壽司。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Seven+Lucky+Gods+Wapping+Wharf+Bristol" }
         ]
       },
       {
         day: "Day 3 午 · Bristol", city: "bristol",
         items: [
-          { name: "★ Dongnae", type: "韓式燒肉", note: "Michelin 推介。", dish: "推介：燒肉拼盤、冷麵。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Dongnae+Bristol" },
-          { name: "FoodieVietnam", type: "越南菜", note: "St Nick's Market 隔籬。", dish: "推介：牛肉河粉。", mapUrl: "https://www.google.com/maps/search/?api=1&query=FoodieVietnam+Bristol" }
+          { name: "★ FoodieVietnam", type: "越南菜", note: "St Nick's Market 入面，由碼頭行 8 分鐘。星期二 11:30–17:30。", dish: "推介：牛肉河粉。", mapUrl: "https://www.google.com/maps/search/?api=1&query=FoodieVietnam+Bristol" },
+          { name: "Dongnae", type: "韓式燒肉", note: "Michelin 推介，喺 Redland，搭 taxi 10 分鐘。星期二 12:00–15:00 有抵食 set lunch。", dish: "推介：燒肉拼盤、冷麵。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Dongnae+Bristol" }
         ]
       },
       {
         day: "Day 3 晚 · Bristol", city: "bristol",
         items: [
           { name: "★ Ramen Monster（✓ 已訂 18:00）", type: "日式拉麵", note: "25 St Stephen's St，BS1 1JX。星期二 12:00–22:00。", dish: "推介：Tonkotsu tsukemen 沾麵（£16.90），其他拉麵 £14.75–15.35。", mapUrl: "https://maps.app.goo.gl/kwNhnzxbEgPjSmQd7" },
+          { name: "Mayflower", type: "粵菜", note: "Haymarket 老字號，星期二 17:30 開（星期一休息）。", dish: "推介：燒鴨、脆皮燒肉、椒鹽鮮魷。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Mayflower+Chinese+restaurant+Bristol" },
           { name: "Bokman", type: "韓國菜", note: "Michelin 推介，最好訂位。", dish: "推介：octopus bibim salad、韓式炸雞。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bokman+Bristol" },
           { name: "Tomo No Ramen", type: "拉麵", note: "Old Market。", dish: "推介：tonkotsu 拉麵。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Tomo+No+Ramen+Bristol" },
           { name: "Hao Wei", type: "中菜", note: "", dish: "", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hao+Wei+Chinese+restaurant+Bristol" },
