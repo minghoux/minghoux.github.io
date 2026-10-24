@@ -136,7 +136,18 @@
         radial-gradient(ellipse 70% 72% at 100% 100%, oklch(44% 0.082 215 / 0.15), transparent 62%);
     }
 
+    /* ── DAY NAV ──────────────────────────────────────────────────────
+       Slim slate bar continuing the stat ribbon; sticks under the iPhone
+       notch. z-index sits above Leaflet's panes (400) and controls (1000). */
+    :root { --nav-h: 46px; }
+    .day-nav { position: sticky; top: 0; z-index: 1100; padding-top: env(safe-area-inset-top); }
+    [data-nav-target] { scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top)); }
+    .nav-chip { min-height: 44px; min-width: 44px; border-bottom: 2px solid transparent; -webkit-tap-highlight-color: transparent; }
+    .nav-chip[aria-current="true"] { border-bottom-color: oklch(80% 0.068 80); color: oklch(80% 0.068 80); }
+    .nav-chip:focus-visible { outline: 2px solid oklch(80% 0.068 80); outline-offset: -4px; }
+
     @media print {
+      .day-nav { display: none !important; }
       .hero { height: auto !important; min-height: 0 !important; background-image: none !important; padding-top: 2rem; }
       .day-map, .leaflet-container { display: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -178,8 +189,20 @@
     </div>
   </div>
 
+  <!-- ── DAY NAV (generated from days + section list) ───────────────── -->
+  <nav class="day-nav bg-slate border-t border-slate-mid shadow-[0_2px_10px_oklch(21%_0.028_225_/_0.25)]" aria-label="跳去">
+    <div ref="navScroller" class="flex items-stretch overflow-x-auto scrollbar-none px-[clamp(0.75rem,4vw,5rem)] whitespace-nowrap">
+      <a v-for="n in navItems" :key="n.id" :href="'#' + n.id" :data-nav="n.id" :aria-current="activeNav === n.id ? 'true' : null" class="nav-chip shrink-0 flex items-center gap-1.5 px-3 font-sans text-[0.8rem] tracking-[0.04em] text-[oklch(86%_0.014_85)] hover:text-brass transition-colors" :class="n.kind === 'section' && n.first ? 'ml-2 pl-4 border-l border-l-slate-mid' : ''">
+        <span v-if="n.kind === 'day'" class="font-display font-bold">{{ n.label }}</span>
+        <span v-if="n.kind === 'day'" class="text-[0.72rem] opacity-80">{{ n.sub }}</span>
+        <span v-else>{{ n.label }}</span>
+        <span v-if="n.today" class="ml-0.5 text-[0.6rem] text-slate bg-brass px-1.5 leading-[1.5]">今日</span>
+      </a>
+    </div>
+  </nav>
+
   <!-- ── DAYS ─────────────────────────────────────────────────────── -->
-  <div v-for="day in days" :key="day.num" class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] border-b border-rule" :id="'day' + day.num" :class="day.isAlt ? 'bg-[oklch(89%_0.028_82_/_80%)]' : 'bg-[oklch(93.5%_0.022_85_/_70%)]'">
+  <div v-for="day in days" :key="day.num" class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] border-b border-rule" :id="'day' + day.num" data-nav-target :class="day.isAlt ? 'bg-[oklch(89%_0.028_82_/_80%)]' : 'bg-[oklch(93.5%_0.022_85_/_70%)]'">
     <div class="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <!-- Day header -->
       <div class="grid grid-cols-[clamp(3rem,6vw,5rem)_1fr] gap-[clamp(1rem,3vw,2.5rem)] items-start mb-[clamp(2rem,4vw,3.5rem)] pb-7 rule-strata">
@@ -217,7 +240,7 @@
         </div>
 
         <!-- Sticky map -->
-        <div v-if="day.mapPoints && day.mapPoints.length" class="mt-10 lg:mt-0 lg:sticky lg:top-6">
+        <div v-if="day.mapPoints && day.mapPoints.length" class="mt-10 lg:mt-0 lg:sticky lg:top-[calc(var(--nav-h)+1.5rem)]">
           <div class="flex items-center justify-between mb-3">
             <p class="font-sans text-[0.6rem] font-light tracking-[0.26em] uppercase text-harbour flex items-center gap-2">
               <i class="fas fa-map-marked-alt" :style="{ color: cityColor(day.city) }"></i> 今日路線
@@ -237,7 +260,7 @@
   </div>
 
   <!-- ── CHARGING PLAN ────────────────────────────────────────────── -->
-  <section class="reveal bg-slate py-[clamp(3.5rem,7vw,6rem)]">
+  <section id="charging" data-nav-target class="reveal bg-slate py-[clamp(3.5rem,7vw,6rem)]">
     <div class="max-w-[1100px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-brass mb-3 label-rule">Charging plan</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-[oklch(96%_0.014_85)] leading-[1.25] mb-4">⚡ 叉電計劃</h2>
@@ -261,7 +284,7 @@
   </section>
 
   <!-- ── CHECKLIST ────────────────────────────────────────────────── -->
-  <section class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(89%_0.028_82_/_80%)]">
+  <section id="checklist" data-nav-target class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(89%_0.028_82_/_80%)]">
     <div class="max-w-[1100px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Action required</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-10">訂票清單</h2>
@@ -290,7 +313,7 @@
   </section>
 
   <!-- ── BUDGET ───────────────────────────────────────────────────── -->
-  <section class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(93.5%_0.022_85_/_70%)]">
+  <section id="budget" data-nav-target class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(93.5%_0.022_85_/_70%)]">
     <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Financial planning</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-10">旅費預算</h2>
@@ -376,7 +399,7 @@
   </section>
 
   <!-- ── RESTAURANTS ──────────────────────────────────────────────── -->
-  <section class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(89%_0.028_82_/_80%)]">
+  <section id="restaurants" data-nav-target class="reveal stone-wash py-[clamp(3.5rem,7vw,6rem)] bg-[oklch(89%_0.028_82_/_80%)]">
     <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Where to eat</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">餐廳參考</h2>
@@ -633,6 +656,31 @@
       const chargeStops = ref(itineraryData.chargeStops);
       const chargeLegs = ref(itineraryData.chargeLegs);
 
+      // ── Day nav: chips come from the day data so they stay in sync.
+      const WEEKDAY = /週(.)，\d+月(\d+)日/;
+      const todayKey = (() => {
+        try {
+          const p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: 'numeric', day: 'numeric' }).formatToParts(new Date());
+          const g = (t) => +p.find(x => x.type === t).value;
+          return g('year') === 2026 && g('month') === 10 ? g('day') : null;
+        } catch (e) { return null; }
+      })();
+      const SECTIONS = [
+        { id: 'charging', label: '叉電' },
+        { id: 'checklist', label: '清單' },
+        { id: 'budget', label: '預算' },
+        { id: 'restaurants', label: '餐廳' }
+      ];
+      const navItems = computed(() => [
+        ...days.value.map(d => {
+          const m = WEEKDAY.exec(d.date) || [];
+          return { kind: 'day', id: 'day' + d.num, label: d.num, sub: m[1] ? `${m[1]} ${m[2]}` : '', today: !!m[2] && +m[2] === todayKey };
+        }),
+        ...SECTIONS.map((x, i) => ({ kind: 'section', first: i === 0, ...x }))
+      ]);
+      const activeNav = ref(null);
+      const navScroller = ref(null);
+
       const mapReg = {};
       const focused = ref({});
       const cityColor = (c) => (CITY[c] || CITY.road).color;
@@ -695,6 +743,27 @@
             });
           }, { threshold: 0.06 });
           document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+          // Scroll-spy: any target crossing the band just under the bar
+          // triggers a recompute of "last target whose top is above the line".
+          const targets = navItems.value.map(n => document.getElementById(n.id)).filter(Boolean);
+          const navH = () => (document.querySelector('.day-nav') || {}).offsetHeight || 46;
+          const spy = () => {
+            const line = navH() + 8;
+            let cur = null;
+            targets.forEach(t => { if (t.getBoundingClientRect().top <= line) cur = t.id; });
+            if (cur === activeNav.value) return;
+            activeNav.value = cur;
+            const sc = navScroller.value, chip = cur && sc && sc.querySelector(`[data-nav="${cur}"]`);
+            if (chip) {
+              const left = chip.offsetLeft - (sc.clientWidth - chip.offsetWidth) / 2;
+              sc.scrollTo({ left: Math.max(0, left), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+            }
+          };
+          const spyIo = new IntersectionObserver(spy, { rootMargin: `-${navH()}px 0px -55% 0px`, threshold: [0, 1] });
+          targets.forEach(t => spyIo.observe(t));
+          window.addEventListener('scroll', () => requestAnimationFrame(spy), { passive: true });
+          spy();
 
           days.value.forEach(day => {
             if (!day.mapPoints || !day.mapPoints.length) return;
@@ -767,6 +836,7 @@
 
       return {
         focused, focusPoint, resetMap, isFocused,
+        navItems, activeNav, navScroller,
         meta, stats, days, checklistGroups, budgetItems, tips,
         drivingRoutes, restaurants, chargeStops, chargeLegs,
         toggleCheck, totalLow, totalHigh, rowRange,
