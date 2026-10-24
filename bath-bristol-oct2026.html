@@ -380,7 +380,7 @@
     <div class="max-w-[1040px] mx-auto px-[clamp(1.5rem,5vw,5rem)]">
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Where to eat</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">餐廳參考</h2>
-      <p class="text-[0.93rem] md:text-[0.87rem] text-ink-mid mb-9 max-w-[68ch] leading-[1.85]">Bristol 最好嗰幾間韓／日餐廳（Bokman、Dongnae、Tomo No Ramen）星期一休息，所以排咗喺星期二食。Bokman 最好訂定位。</p>
+      <p class="text-[0.93rem] md:text-[0.87rem] text-ink-mid mb-9 max-w-[68ch] leading-[1.85]">Bristol 最好嗰幾間韓／日餐廳（Bokman、Dongnae、Tomo No Ramen）星期一休息，所以排咗喺星期二食。</p>
       <div class="flex flex-col gap-11">
         <div v-for="group in restaurants" :key="group.day">
           <p class="font-sans text-[0.62rem] font-light tracking-[0.26em] uppercase pb-[0.7rem] border-b mb-1" :style="{ color: cityColor(group.city), borderColor: cityColor(group.city) }">{{ group.day }}</p>
@@ -485,13 +485,14 @@
           { name: "SS Great Britain", lat: 51.4490, lng: -2.6081, color: "oklch(44% 0.082 215)", label: "沿路經過" },
           { name: "Bristol Harbourside", lat: 51.4482, lng: -2.5993, color: "oklch(49% 0.142 42)", label: "碼頭 + ferry" },
           { name: "We The Curious", lat: 51.4500, lng: -2.5991, color: "oklch(45% 0.052 148)", label: "落雨後備" },
-          { name: "Clifton Suspension Bridge", lat: 51.4549, lng: -2.6278, color: "oklch(45% 0.052 148)", label: "天氣好就去" }
+          { name: "Clifton Suspension Bridge", lat: 51.4549, lng: -2.6278, color: "oklch(45% 0.052 148)", label: "天氣好就去" },
+          { name: "Ramen Monster", lat: 51.4538, lng: -2.5949, color: "oklch(44% 0.082 215)", label: "晚餐 · 未訂" }
         ],
         activities: [
           { pt: 2, type: "fun", icon: "fa-ship", title: "上晝 · Harbourside + ferry", desc: "沿住碼頭行，經過 SS Great Britain，再搭一程 harbour ferry。", tag: "行得到" },
           { type: "food", icon: "fa-utensils", title: "午餐", desc: "Dongnae（Michelin 韓式燒肉）或 FoodieVietnam（河粉）。", tag: "韓／越" },
           { pt: 4, type: "fun", icon: "fa-cloud-sun-rain", title: "下晝 · 睇天氣", desc: "天氣好就去 Clifton Suspension Bridge（揸車 5 分鐘）；落雨就去 We The Curious 科學館。", tag: "彈性" },
-          { type: "food", icon: "fa-bowl-food", title: "晚餐", desc: "Bokman（Michelin 韓菜）或 Tomo No Ramen（拉麵）。兩間都係星期一休息，所以留返今晚。", note: "最好訂定位。", tag: "韓／日" }
+          { pt: 5, type: "food", icon: "fa-bowl-food", title: "晚餐：Ramen Monster", desc: "25 St Stephen's St，BS1 1JX。日式拉麵，招牌係 tsukemen 沾麵。星期二 12:00–22:00 開，主食大約 £14.50–16.90。", note: "未訂，walk-in。後備：Tomo No Ramen（拉麵）。", tag: "未訂 · walk-in" }
         ]
       },
       {
@@ -542,7 +543,6 @@
           { text: "回覆 Hotwells 大概幾點到（~15:45）" },
           { text: "25 號朝早留意 Bath 密碼；26 號 14:00 留意 Bristol 密碼" },
           { text: "同 Bristol 朋友夾時間" },
-          { text: "訂 Bokman" },
           { text: "Download Google Maps offline" },
           { text: "將所有門票同 booking confirmation 存喺手機" }
       ] }
@@ -608,7 +608,8 @@
       {
         day: "Day 3 晚 · Bristol", city: "bristol",
         items: [
-          { name: "★ Bokman", type: "韓國菜", note: "Michelin 推介，最好訂位。", dish: "推介：octopus bibim salad、韓式炸雞。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bokman+Bristol" },
+          { name: "★ Ramen Monster（未訂 · walk-in）", type: "日式拉麵", note: "25 St Stephen's St，BS1 1JX。星期二 12:00–22:00。網站有 reservation request，但我哋打算 walk-in。", dish: "推介：Tonkotsu tsukemen 沾麵（£16.90），其他拉麵 £14.75–15.35。", mapUrl: "https://maps.app.goo.gl/kwNhnzxbEgPjSmQd7" },
+          { name: "Bokman", type: "韓國菜", note: "Michelin 推介，最好訂位。", dish: "推介：octopus bibim salad、韓式炸雞。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bokman+Bristol" },
           { name: "Tomo No Ramen", type: "拉麵", note: "Old Market。", dish: "推介：tonkotsu 拉麵。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Tomo+No+Ramen+Bristol" },
           { name: "Hao Wei", type: "中菜", note: "", dish: "", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hao+Wei+Chinese+restaurant+Bristol" },
           { name: "The Saigon Kitchen", type: "越南菜", note: "Redland。", dish: "推介：pho。", mapUrl: "https://www.google.com/maps/search/?api=1&query=The+Saigon+Kitchen+Bristol" },
