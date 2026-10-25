@@ -368,7 +368,7 @@
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Getting around</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">自駕 · 泊車</h2>
       <div class="mb-9 p-[1.4rem_1.6rem] bg-oxide/[0.05] border-y border-oxide/25 [&_strong]:font-semibold [&_strong]:text-ink">
-        <p class="tip-mark text-[0.94rem] md:text-[0.88rem] text-ink-mid leading-[1.85] max-w-[68ch]"><strong>⚠️ 兩晚都係食完晚飯先 check-in：</strong>Day 1 泊 Bath SouthGate，Day 2 泊返 Bath SouthGate 再去 Bristol Wapping Wharf，行李成日留喺車尾箱。</p>
+        <p class="tip-mark text-[0.94rem] md:text-[0.88rem] text-ink-mid leading-[1.85] max-w-[68ch]"><strong>⚠️ 兩晚都係食完晚飯先 check-in：</strong>Day 1 泊 Bath SouthGate，Day 2 朝早泊 Bath SouthGate、中午移去 Charlotte Street，再去 Bristol Wapping Wharf，行李成日留喺車尾箱。</p>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full border-collapse">
@@ -499,31 +499,33 @@
       {
         num: "D2", city: "bath", isAlt: true,
         date: "週一，10月26日",
-        title: "Roman Baths · Victoria Park → Bristol",
-        sub: "朝早泊 SouthGate（有蓋，行 5 分鐘到 Roman Baths），行完 Bath 直接去 Bristol Harbourside 行吓、食晚飯，最後先 check-in。Bristol 學校今個星期放 half term，景點會多人。",
-        tipBox: "<strong>落雨方案（代替 Circus、Royal Crescent 同 Victoria Park）：</strong>① 食完晏由 SouthGate 行 7–8 分鐘去 Bath Sports & Leisure Centre 嘅 Better Play 室內 soft play（<a class='tip-nav' target='_blank' rel='noopener' href='https://www.google.com/maps/dir/?api=1&destination=Bath+Sports+and+Leisure+Centre%2C+North+Parade+Road%2C+Bath+BA2+4ET'><i class='fas fa-diamond-turn-right'></i>導航</a>，星期一 09:00–18:00；小朋友幾鎊，大人入場好平，價錢入去先問，電話 01225 486905）。架車繼續泊 SouthGate，14:45 揸去 Bristol。② 或者 13:15 直接去 Bristol，喺 M Shed 耐啲（免費）。Wapping Wharf 最多泊 5 個鐘，13:45 後先泊，先唔會食晚飯食到超時。<br><strong>行李成日留喺車：</strong>全部收入車尾箱同前箱；Hotwells 喺 3 樓冇電梯，搬行李要預多啲時間。",
+        title: "Roman Baths · Regency 下午茶 → Bristol",
+        sub: "朝早泊 SouthGate 去 Roman Baths，之後揸去 Charlotte Street，喺 Regency Tea Rooms 食 afternoon tea 當午餐。13:15 睇天氣：天乾就去 Royal Crescent 同 Victoria Park；仲落緊雨就早啲去 Bristol。食完晚飯最後先 check-in。Bristol 學校今個星期放 half term，景點會多人。",
+        tipBox: "<strong>13:15 睇天氣：</strong>天乾或者毛毛雨就行 ☀️ 路線；仲落緊雨就行 🌧️ 路線，直接去 Bristol，喺 M Shed 耐啲。<br><strong>行李成日留喺車：</strong>全部收入車尾箱同前箱；Hotwells 喺 3 樓冇電梯，搬行李要預多啲時間。",
         mapPoints: [
           { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "08:40 check-out" },
           { name: "SouthGate 停車場", lat: 51.3782, lng: -2.3595, nav: "SouthGate Car Park, Bath BA1 1TP", color: "oklch(31% 0.030 222)", label: "09:00 泊車" },
           { name: "Roman Baths", lat: 51.3811, lng: -2.3590, nav: "The Roman Baths, Stall Street, Bath BA1 1LZ", color: "oklch(49% 0.142 42)", label: "09:30 ✓ 已訂" },
-          { name: "Hondo Sushi", lat: 51.3795, lng: -2.3614, nav: "Hondo Sushi, St James's Parade, Bath BA1 1UL", color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
-          { name: "Royal Crescent", lat: 51.3868, lng: -2.3681, color: "oklch(49% 0.142 42)", label: "12:55 經過" },
-          { name: "The Regency Tea Rooms", lat: 51.3848, lng: -2.3627, nav: "Jane Austen Centre, 40 Gay Street, Bath BA1 2NT", color: "oklch(44% 0.082 215)", label: "13:10 下午茶（可選）" },
-          { name: "Royal Victoria Park 遊樂場", lat: 51.3856, lng: -2.3703, color: "oklch(45% 0.052 148)", label: "13:05–14:45 遊樂場" },
-          { name: "Wapping Wharf 停車場", lat: 51.4469, lng: -2.5985, color: "oklch(31% 0.030 222)", label: "~15:20 泊車" },
+          { name: "Charlotte Street 停車場", lat: 51.3836, lng: -2.3666, nav: "Charlotte Street Car Park, Bath BA1 2NE", color: "oklch(31% 0.030 222)", label: "~12:05 移車" },
+          { name: "The Regency Tea Rooms", lat: 51.3848, lng: -2.3627, nav: "Jane Austen Centre, 40 Gay Street, Bath BA1 2NT", color: "oklch(44% 0.082 215)", label: "12:15 下午茶午餐" },
+          { name: "Royal Crescent", lat: 51.3868, lng: -2.3681, color: "oklch(49% 0.142 42)", label: "☀️ 13:25 影相" },
+          { name: "Royal Victoria Park 遊樂場", lat: 51.3856, lng: -2.3703, color: "oklch(45% 0.052 148)", label: "☀️ 13:40–14:40 遊樂場" },
+          { name: "Wapping Wharf 停車場", lat: 51.4469, lng: -2.5985, color: "oklch(31% 0.030 222)", label: "~15:20 泊車（🌧️ ~14:00）" },
           { name: "M Shed", lat: 51.4474, lng: -2.5983, nav: "M Shed, Princes Wharf, Bristol BS1 4RN", color: "oklch(49% 0.142 42)", label: "15:30–17:00 · 日落" },
           { name: "Seven Lucky Gods", lat: 51.4473, lng: -2.5980, nav: "Seven Lucky Gods, Museum Street, Wapping Wharf, Bristol BS1 6WE", color: "oklch(44% 0.082 215)", label: "17:30 晚餐" },
           { name: "Hotwells apartments, Bristol", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "~19:00 check-in" }
         ],
         activities: [
-          { pt: 1, type: "move", icon: "fa-square-parking", title: "08:40 → 09:00 · The Annex check-out，泊 SouthGate", desc: "揸 15–20 分鐘，同 Day 1 一樣嘅停車場。有蓋，落雨都可以喺車旁邊執嘢、同女兒扣安全帶；出口直接上 A36 → A4 去 Bristol。", note: "電車用最平嗰個 band：4 個鐘 £7.60、6 個鐘 £11.40（比 Charlotte Street 貴 40–60p）。只收卡或 app，唔收現金；入口個牌以當日為準。", tag: "泊車" },
+          { pt: 1, type: "move", icon: "fa-square-parking", title: "08:40 → 09:00 · The Annex check-out，泊 SouthGate", desc: "揸 15–20 分鐘，同 Day 1 一樣嘅停車場。有蓋，落雨都可以喺車旁邊執嘢、同女兒扣安全帶。", note: "泊大約 3 個鐘：電車用最平嗰個 band，2 個鐘 £4.00、4 個鐘 £7.60。只收卡或 app，唔收現金；入口個牌以當日為準。", tag: "泊車" },
           { pt: 2, type: "hi", icon: "fa-water", title: "09:30–11:30 · Roman Baths", desc: "由 SouthGate 行 5 分鐘，09:15 前到。記得攞小朋友版 audio guide，重點睇 Great Bath 同 curse tablets，走之前試飲溫泉水。", note: "✓ 已訂 09:30，family ticket £63", tag: "✓ 已訂" },
-          { pt: 3, type: "food", icon: "fa-utensils", title: "12:00 · 午餐：Hondo Sushi", desc: "St James Parade，由 Roman Baths 行 4 分鐘。細細間嘅獨立日本餐廳，手握壽司、拉麵、便當、丼飯，價錢抵。12:00 先開門，Roman Baths 出嚟可以喺 Abbey 廣場睇吓街頭表演先。", note: "後備：itsu（Roman Baths 正對面）。", tag: "壽司・拉麵" },
-          { pt: 4, type: "fun", icon: "fa-landmark", title: "12:45–13:05 · The Circus → Royal Crescent", desc: "經 Milsom Street 上去，行 20 分鐘。先睇圓形嘅 The Circus，再去 Royal Crescent 前面草地影相，之後落去公園。", tag: "Free" },
-          { pt: 5, type: "food", icon: "fa-mug-hot", title: "13:10–13:50 · 下午茶：The Regency Tea Rooms（可選）", desc: "40 Gay Street，Jane Austen Centre 樓上，由 Royal Crescent 行 6 分鐘。啲侍應著攝政時期衫，啲茶杯茶碟故意配唔襯，女兒應該覺得好得意。食完晏唔使叫 afternoon tea，叫茶同 scone 就夠。", note: "去嘅話遊樂場就玩短啲。落雨可以用嚟代替遊樂場。星期一開唔開未確認，出發前上網或者打電話問咗先。", tag: "可選" },
-          { pt: 6, type: "fun", icon: "fa-child", title: "13:05–14:45 · Royal Victoria Park 遊樂場", desc: "大型遊樂場，有攀爬架、滑梯、鞦韆同沙池，免費，有廁所。俾女兒玩夠佢，大人坐低歇吓。", note: "泊車：架車泊咗喺 SouthGate，由遊樂場行返去要 20 分鐘，14:25 就要起身。", tag: "Free" },
-          { pt: 7, type: "move", icon: "fa-car-side", title: "14:50 → ~15:20 · 揸去 Bristol，泊 Wapping Wharf", desc: "由 SouthGate 出 A36 再接 A4，大約 25–30 分鐘，避開放工時間。Wapping Wharf 停車場係 council 嘅短期停車場，M Shed 同晚餐都喺隔籬。", note: "09:00–19:00 每個鐘 £2.70，最多泊 5 個鐘；19:00 前走，泊 4 個鐘 £10.80。用 RingGo 或現金。", tag: "泊車" },
-          { pt: 8, type: "fun", icon: "fa-building-columns", title: "15:30–17:00 · M Shed、碼頭日落", desc: "Bristol 歷史博物館，免費，half term 開到 17:00，可以慢慢行。有舊巴士、單車、玩具；頂樓望晒成個 harbour，16:45 左右日落。之後過 Pero's Bridge 睇碼頭夜景。", tag: "Free" },
+          { pt: 3, type: "move", icon: "fa-square-parking", title: "11:45 → ~12:05 · 揸去 Charlotte Street 停車場", desc: "行 5 分鐘返 SouthGate 攞車，揸 10 分鐘。下晝 The Circus、Royal Crescent、遊樂場同出 A4 去 Bristol 都喺隔籬，點都啱。", note: "4 個鐘內 £7.20（電車最平 band）。用 MiPermit app、啱錢現金，或者部分機收卡。", tag: "泊車" },
+          { pt: 4, type: "food", icon: "fa-mug-hot", title: "12:15–13:15 · 午餐：The Regency Tea Rooms", desc: "40 Gay Street，Jane Austen Centre 樓上，由 Charlotte Street 行 7 分鐘。侍應著攝政時期衫，茶杯茶碟故意配唔襯，女兒應該覺得好得意。叫全套 afternoon tea（三文治、scone、蛋糕）當午餐先夠飽，問吓有冇小朋友版。", note: "星期一開唔開未確認，今晚上網或者打電話問咗先，可以嘅話訂位。冇開就改返 12:00 Hondo Sushi（St James's Parade，由 Roman Baths 行 4 分鐘），食完先揸去 Charlotte Street。", tag: "下午茶" },
+          { nav: false, type: "move", icon: "fa-cloud-sun-rain", title: "13:15 · 睇天氣決定", desc: "天乾或者毛毛雨 → ☀️ 去 Royal Crescent 同遊樂場，14:50 先去 Bristol。仲落緊雨 → 🌧️ 13:30 直接去 Bristol。", tag: "決定" },
+          { pt: 5, type: "fun", icon: "fa-landmark", title: "☀️ 13:15–13:40 · The Circus → Royal Crescent", desc: "由 Gay Street 行上去 2 分鐘就係圓形嘅 The Circus，再行 5 分鐘去 Royal Crescent 前面草地影相，之後落去公園。", tag: "Free" },
+          { pt: 6, type: "fun", icon: "fa-child", title: "☀️ 13:40–14:40 · Royal Victoria Park 遊樂場", desc: "大型遊樂場，有攀爬架、滑梯、鞦韆同沙池，免費，有廁所。俾女兒玩夠佢，大人坐低歇吓。", note: "架車喺 Charlotte Street，行 5 分鐘就返到車。", tag: "Free" },
+          { pt: 7, type: "move", icon: "fa-car-side", title: "☀️ 14:50 → ~15:20 · 揸去 Bristol，泊 Wapping Wharf", desc: "由 Charlotte Street 直出 A4，大約 25–30 分鐘，避開放工時間。Wapping Wharf 停車場係 council 嘅短期停車場，M Shed 同晚餐都喺隔籬。", note: "09:00–19:00 每個鐘 £2.70，最多泊 5 個鐘；19:00 前走，泊 4 個鐘 £10.80。用 RingGo 或現金。", tag: "泊車" },
+          { pt: 7, type: "move", icon: "fa-car-side", title: "🌧️ 13:30 → ~14:00 · 早啲揸去 Bristol，泊 Wapping Wharf", desc: "由 Regency 行 7 分鐘返 Charlotte Street，出 A4，大約 25–30 分鐘。", note: "最多泊 5 個鐘：14:00 泊可以泊到 19:00，夠晒食完晚飯。5 個鐘 £13.50，用 RingGo 或現金。", tag: "落雨" },
+          { pt: 8, type: "fun", icon: "fa-building-columns", title: "15:30–17:00 · M Shed、碼頭日落（🌧️ 14:00 起）", desc: "Bristol 歷史博物館，免費，half term 開到 17:00。有舊巴士、單車、玩具；頂樓望晒成個 harbour，16:45 左右日落。之後過 Pero's Bridge 睇碼頭夜景。", note: "落雨早到就有 3 個鐘慢慢睇。想玩多啲：行 10 分鐘去 We The Curious 科學館，大人大約 £21.20、小朋友 £14.50，要網上訂時段。", tag: "Free" },
           { pt: 9, type: "food", icon: "fa-utensils", title: "17:30–18:45 · 晚餐：Seven Lucky Gods", desc: "Wapping Wharf（CARGO），就喺停車場隔籬。日式小食、壽司、韓式炸雞。星期一 12:00–22:00。", tag: "星期一有開" },
           { pt: 10, type: "move", icon: "fa-key", title: "18:50 → ~19:00 · Hotwells check-in", desc: "揸 5 分鐘。到埗步驟同密碼見 host message（14:00 用 text + email send 嚟）。", note: "3 樓冇電梯。", tag: "夜晚 check-in" }
         ]
@@ -594,8 +596,9 @@
       { day: "D1", city: "road",    leg: "Kingston → Stonehenge", line: "A303（中途 Amesbury 叉電）", time: "1.5–2 小時" },
       { day: "D1", city: "bath",    leg: "Stonehenge → Bath 市中心", line: "A36，直接泊 SouthGate", time: "45 分鐘–1 小時" },
       { day: "D1", city: "bath",    leg: "SouthGate → Larkhall", line: "食完晚飯先去 check-in", time: "10–15 分鐘" },
-      { day: "D2", city: "bath",    leg: "Larkhall → SouthGate", line: "有蓋停車場，落雨行少啲；出口直上 A36 → A4 去 Bristol", time: "15–20 分鐘" },
-      { day: "D2", city: "bristol", leg: "Bath → Bristol Wapping Wharf", line: "A4，14:50 出發避開放工時間", time: "25–30 分鐘" },
+      { day: "D2", city: "bath",    leg: "Larkhall → SouthGate", line: "有蓋停車場，行 5 分鐘到 Roman Baths", time: "15–20 分鐘" },
+      { day: "D2", city: "bath",    leg: "SouthGate → Charlotte Street", line: "午餐前移車，下晝 Crescent、公園同 A4 都喺隔籬", time: "約 10 分鐘" },
+      { day: "D2", city: "bristol", leg: "Bath → Bristol Wapping Wharf", line: "A4，☀️ 14:50／🌧️ 13:30 出發，避開放工時間", time: "25–30 分鐘" },
       { day: "D2", city: "bristol", leg: "Wapping Wharf → Hotwells", line: "食完晚飯先去 check-in", time: "約 5 分鐘" },
       { day: "D3", city: "bristol", leg: "Hotwells → Clifton", line: "泊 Clifton Village 咪錶位", time: "約 5 分鐘" },
       { day: "D4", city: "road",    leg: "Hotwells → Eastgate → Longleat", line: "Eastgate 叉電，再經 Bath 行 A36", time: "約 1.5 小時" },
@@ -660,7 +663,8 @@
       {
         day: "Day 2 午 · Bath", city: "bath",
         items: [
-          { nav: "Hondo Sushi, St James's Parade, Bath BA1 1UL", name: "★ Hondo Sushi", type: "壽司・拉麵", note: "8–9 St James Parade，由 Roman Baths 行 4 分鐘。星期一 12:00 開。", dish: "推介：手握壽司、便當。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hondo+Sushi+Bath" },
+          { nav: "Jane Austen Centre, 40 Gay Street, Bath BA1 2NT", name: "★ The Regency Tea Rooms", type: "英式下午茶", note: "40 Gay Street，Jane Austen Centre 樓上。侍應著攝政時期衫。星期一開唔開未確認。", dish: "推介：全套 afternoon tea 當午餐。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Regency+Tea+Rooms+Jane+Austen+Centre+Bath" },
+          { nav: "Hondo Sushi, St James's Parade, Bath BA1 1UL", name: "Hondo Sushi（後備）", type: "壽司・拉麵", note: "8–9 St James Parade，由 Roman Baths 行 4 分鐘。星期一 12:00 開。", dish: "推介：手握壽司、便當。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hondo+Sushi+Bath" },
           { name: "Thaikhun", type: "泰菜", note: "有花園位。", dish: "推介：Pad Thai、綠咖喱。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Thaikhun+Bath" }
         ]
       },
