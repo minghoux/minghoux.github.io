@@ -368,7 +368,7 @@
       <p class="font-sans text-[0.62rem] font-light tracking-[0.3em] uppercase text-harbour mb-3 label-rule">Getting around</p>
       <h2 class="font-display text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold text-ink leading-[1.25] mb-4">自駕 · 泊車</h2>
       <div class="mb-9 p-[1.4rem_1.6rem] bg-oxide/[0.05] border-y border-oxide/25 [&_strong]:font-semibold [&_strong]:text-ink">
-        <p class="tip-mark text-[0.94rem] md:text-[0.88rem] text-ink-mid leading-[1.85] max-w-[68ch]"><strong>⚠️ 兩晚都係食完晚飯先 check-in：</strong>Day 1 泊 Bath SouthGate，Day 2 泊 Bath Charlotte Street 再去 Bristol Wapping Wharf，行李成日留喺車尾箱。</p>
+        <p class="tip-mark text-[0.94rem] md:text-[0.88rem] text-ink-mid leading-[1.85] max-w-[68ch]"><strong>⚠️ 兩晚都係食完晚飯先 check-in：</strong>Day 1 泊 Bath SouthGate，Day 2 泊返 Bath SouthGate 再去 Bristol Wapping Wharf，行李成日留喺車尾箱。</p>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full border-collapse">
@@ -500,11 +500,11 @@
         num: "D2", city: "bath", isAlt: true,
         date: "週一，10月26日",
         title: "Roman Baths · Victoria Park → Bristol",
-        sub: "架車成日泊 Charlotte Street，行完 Bath 直接去 Bristol Harbourside 行吓、食晚飯，最後先 check-in。Bristol 學校今個星期放 half term，景點會多人。",
-        tipBox: "<strong>落雨點算：</strong>刪咗 Victoria Park，食完晏直接去 Bristol，喺 M Shed 耐啲。<br><strong>行李成日留喺車：</strong>全部收入車尾箱同前箱；Hotwells 喺 3 樓冇電梯，搬行李要預多啲時間。",
+        sub: "落雨日，架車泊 SouthGate（有蓋，行 5 分鐘到 Roman Baths），行完 Bath 直接去 Bristol Harbourside 行吓、食晚飯，最後先 check-in。Bristol 學校今個星期放 half term，景點會多人。",
+        tipBox: "<strong>落雨點算：</strong>刪咗 Victoria Park。食完晏可以去 Holburne Museum（星期一 10:00–17:00）或者 Bath Abbey，或者直接去 Bristol，喺 M Shed 耐啲。<br><strong>行李成日留喺車：</strong>全部收入車尾箱同前箱；Hotwells 喺 3 樓冇電梯，搬行李要預多啲時間。",
         mapPoints: [
           { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "08:40 check-out" },
-          { name: "Charlotte Street 停車場", lat: 51.3836, lng: -2.3666, nav: "Charlotte Street Car Park, Bath BA1 2NE", color: "oklch(31% 0.030 222)", label: "09:00 泊車" },
+          { name: "SouthGate 停車場", lat: 51.3782, lng: -2.3595, nav: "SouthGate Car Park, Bath BA1 1TP", color: "oklch(31% 0.030 222)", label: "09:00 泊車" },
           { name: "Roman Baths", lat: 51.3811, lng: -2.3590, nav: "The Roman Baths, Stall Street, Bath BA1 1LZ", color: "oklch(49% 0.142 42)", label: "09:30 ✓ 已訂" },
           { name: "Hondo Sushi", lat: 51.3795, lng: -2.3614, nav: "Hondo Sushi, St James's Parade, Bath BA1 1UL", color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
           { name: "Royal Crescent", lat: 51.3868, lng: -2.3681, color: "oklch(49% 0.142 42)", label: "12:55 經過" },
@@ -515,12 +515,12 @@
           { name: "Hotwells apartments, Bristol", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "~19:00 check-in" }
         ],
         activities: [
-          { pt: 1, type: "move", icon: "fa-square-parking", title: "08:40 → 09:00 · The Annex check-out，泊 Charlotte Street", desc: "揸 15–20 分鐘。Council 停車場，就喺 Royal Victoria Park 隔籬，出城又啱晒行 A4 去 Bristol。架車泊到 14:45。", note: "大約 £10–15（4 個鐘 £7.20–9.80），用 MiPermit app 或者現場俾錢。", tag: "泊車" },
-          { pt: 2, type: "hi", icon: "fa-water", title: "09:30–11:30 · Roman Baths", desc: "由 Charlotte Street 行 12 分鐘，09:15 前到。記得攞小朋友版 audio guide，重點睇 Great Bath 同 curse tablets，走之前試飲溫泉水。", note: "✓ 已訂 09:30，family ticket £63", tag: "✓ 已訂" },
+          { pt: 1, type: "move", icon: "fa-square-parking", title: "08:40 → 09:00 · The Annex check-out，泊 SouthGate", desc: "揸 15–20 分鐘，同 Day 1 一樣嘅停車場。有蓋，落雨都可以喺車旁邊執嘢、同女兒扣安全帶；出口直接上 A36 → A4 去 Bristol。", note: "電車用最平嗰個 band：4 個鐘 £7.60、6 個鐘 £11.40（比 Charlotte Street 貴 40–60p）。只收卡或 app，唔收現金；入口個牌以當日為準。", tag: "泊車" },
+          { pt: 2, type: "hi", icon: "fa-water", title: "09:30–11:30 · Roman Baths", desc: "由 SouthGate 行 5 分鐘，09:15 前到。記得攞小朋友版 audio guide，重點睇 Great Bath 同 curse tablets，走之前試飲溫泉水。", note: "✓ 已訂 09:30，family ticket £63", tag: "✓ 已訂" },
           { pt: 3, type: "food", icon: "fa-utensils", title: "12:00 · 午餐：Hondo Sushi", desc: "St James Parade，由 Roman Baths 行 4 分鐘。細細間嘅獨立日本餐廳，手握壽司、拉麵、便當、丼飯，價錢抵。12:00 先開門，Roman Baths 出嚟可以喺 Abbey 廣場睇吓街頭表演先。", note: "後備：itsu（Roman Baths 正對面）。", tag: "壽司・拉麵" },
           { pt: 4, type: "fun", icon: "fa-landmark", title: "12:45–13:05 · The Circus → Royal Crescent", desc: "經 Milsom Street 上去，行 20 分鐘。先睇圓形嘅 The Circus，再去 Royal Crescent 前面草地影相，之後落去公園。", tag: "Free" },
-          { pt: 5, type: "fun", icon: "fa-child", title: "13:05–14:45 · Royal Victoria Park 遊樂場", desc: "大型遊樂場，有攀爬架、滑梯、鞦韆同沙池，免費，有廁所。俾女兒玩夠佢，大人坐低歇吓。", note: "泊車：架車朝早已經泊咗喺 Charlotte Street 停車場，行 5 分鐘就到遊樂場，可以順手返車攞嘢。", tag: "Free" },
-          { pt: 6, type: "move", icon: "fa-car-side", title: "14:50 → ~15:20 · 揸去 Bristol，泊 Wapping Wharf", desc: "行 A4，大約 25–30 分鐘，避開放工時間。Wapping Wharf 停車場係 council 嘅短期停車場，M Shed 同晚餐都喺隔籬。", note: "09:00–19:00 每個鐘 £2.70，最多泊 5 個鐘；19:00 前走，泊 4 個鐘 £10.80。用 RingGo 或現金。", tag: "泊車" },
+          { pt: 5, type: "fun", icon: "fa-child", title: "13:05–14:45 · Royal Victoria Park 遊樂場", desc: "大型遊樂場，有攀爬架、滑梯、鞦韆同沙池，免費，有廁所。俾女兒玩夠佢，大人坐低歇吓。", note: "淨係天乾先去：由 SouthGate 行過嚟要 20 分鐘，14:25 就要行返去攞車。", tag: "Free" },
+          { pt: 6, type: "move", icon: "fa-car-side", title: "14:50 → ~15:20 · 揸去 Bristol，泊 Wapping Wharf", desc: "由 SouthGate 出 A36 再接 A4，大約 25–30 分鐘，避開放工時間。Wapping Wharf 停車場係 council 嘅短期停車場，M Shed 同晚餐都喺隔籬。", note: "09:00–19:00 每個鐘 £2.70，最多泊 5 個鐘；19:00 前走，泊 4 個鐘 £10.80。用 RingGo 或現金。", tag: "泊車" },
           { pt: 7, type: "fun", icon: "fa-building-columns", title: "15:30–17:00 · M Shed、碼頭日落", desc: "Bristol 歷史博物館，免費，half term 開到 17:00，可以慢慢行。有舊巴士、單車、玩具；頂樓望晒成個 harbour，16:45 左右日落。之後過 Pero's Bridge 睇碼頭夜景。", tag: "Free" },
           { pt: 8, type: "food", icon: "fa-utensils", title: "17:30–18:45 · 晚餐：Seven Lucky Gods", desc: "Wapping Wharf（CARGO），就喺停車場隔籬。日式小食、壽司、韓式炸雞。星期一 12:00–22:00。", tag: "星期一有開" },
           { pt: 9, type: "move", icon: "fa-key", title: "18:50 → ~19:00 · Hotwells check-in", desc: "揸 5 分鐘。到埗步驟同密碼見 host message（14:00 用 text + email send 嚟）。", note: "3 樓冇電梯。", tag: "夜晚 check-in" }
@@ -592,7 +592,7 @@
       { day: "D1", city: "road",    leg: "Kingston → Stonehenge", line: "A303（中途 Amesbury 叉電）", time: "1.5–2 小時" },
       { day: "D1", city: "bath",    leg: "Stonehenge → Bath 市中心", line: "A36，直接泊 SouthGate", time: "45 分鐘–1 小時" },
       { day: "D1", city: "bath",    leg: "SouthGate → Larkhall", line: "食完晚飯先去 check-in", time: "10–15 分鐘" },
-      { day: "D2", city: "bath",    leg: "Larkhall → Charlotte Street", line: "泊到 14:45，就喺 Victoria Park 隔籬", time: "15–20 分鐘" },
+      { day: "D2", city: "bath",    leg: "Larkhall → SouthGate", line: "有蓋停車場，落雨行少啲；出口直上 A36 → A4 去 Bristol", time: "15–20 分鐘" },
       { day: "D2", city: "bristol", leg: "Bath → Bristol Wapping Wharf", line: "A4，14:50 出發避開放工時間", time: "25–30 分鐘" },
       { day: "D2", city: "bristol", leg: "Wapping Wharf → Hotwells", line: "食完晚飯先去 check-in", time: "約 5 分鐘" },
       { day: "D3", city: "bristol", leg: "Hotwells → Clifton", line: "泊 Clifton Village 咪錶位", time: "約 5 分鐘" },
