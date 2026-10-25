@@ -146,8 +146,21 @@
     .nav-chip[aria-current="true"] { border-bottom-color: oklch(80% 0.068 80); color: oklch(80% 0.068 80); }
     .nav-chip:focus-visible { outline: 2px solid oklch(80% 0.068 80); outline-offset: -4px; }
 
+    /* Google Maps "導航" chips on stops, charge cards and restaurants. */
+    .go-chip { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 38px; padding: 0 0.95rem; border: 1px solid oklch(44% 0.082 215 / 0.45); border-radius: 999px; font-family: 'Archivo', 'PingFang TC', 'Noto Sans TC', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; color: oklch(44% 0.082 215); background: oklch(97% 0.012 85 / 0.6); text-decoration: none; -webkit-tap-highlight-color: transparent; transition: background-color .2s, color .2s; }
+    .go-chip i { font-size: 0.78rem; }
+    .go-chip:hover, .go-chip:active { background: oklch(44% 0.082 215); color: oklch(97% 0.012 85); }
+    .go-chip:focus-visible { outline: 2px solid oklch(44% 0.082 215); outline-offset: 2px; }
+    .go-chip--dark { color: oklch(80% 0.068 80); border-color: oklch(80% 0.068 80 / 0.5); background: transparent; }
+    .go-chip--dark:hover, .go-chip--dark:active { background: oklch(80% 0.068 80); color: oklch(25% 0.030 224); }
+    .go-chip--sm { min-height: 36px; padding: 0 0.8rem; font-size: 0.74rem; }
+    .tip-nav { white-space: nowrap; color: oklch(44% 0.082 215); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .tip-nav i { margin-right: 0.25rem; font-size: 0.8em; }
+    .map-popup-nav { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.45rem; padding: 0.35rem 0.7rem; border-radius: 999px; background: oklch(44% 0.082 215); color: #fff !important; font-size: 0.72rem; font-weight: 600; text-decoration: none; }
+
     @media print {
       .day-nav { display: none !important; }
+      .go-chip, .tip-nav, .map-popup-nav { display: none !important; }
       .hero { height: auto !important; min-height: 0 !important; background-image: none !important; padding-top: 2rem; }
       .day-map, .leaflet-container { display: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -228,8 +241,9 @@
               <p class="font-display text-[1.02rem] md:text-[1.05rem] font-bold text-ink leading-[1.45]">{{ act.title }}<i v-if="act.pt != null" class="fas fa-location-dot text-[0.7rem] ml-2 align-[0.1em] opacity-40 pin-hint" :class="isFocused(day, act.pt) ? 'opacity-100' : ''" :style="{ color: cityColor(day.city) }"></i></p>
               <p v-if="act.desc" class="text-[0.98rem] md:text-[0.93rem] text-ink-mid mt-2 leading-[1.8] max-w-[64ch]">{{ act.desc }}</p>
               <span v-if="act.note" class="block mt-[0.7rem] py-[0.55rem] px-[0.95rem] border-l-[3px] border-oxide bg-oxide/[0.07] text-[0.85rem] md:text-[0.8rem] text-oxide leading-[1.7] max-w-[62ch]">{{ act.note }}</span>
-              <div v-if="act.tag" class="mt-3 min-[601px]:hidden">
-                <span class="font-sans text-[0.66rem] font-light tracking-[0.14em] uppercase py-[0.25rem] px-[0.6rem] border inline-block" :class="tagClass(act.tag)">{{ act.tag }}</span>
+              <div v-if="actNav(day, act) || act.tag" class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2" :class="actNav(day, act) ? '' : 'min-[601px]:hidden'">
+                <a v-if="actNav(day, act)" :href="actNav(day, act)" target="_blank" rel="noopener" @click.stop @keydown.stop class="go-chip" :aria-label="'Google Maps 導航去 ' + act.title"><i class="fas fa-diamond-turn-right"></i>導航</a>
+                <span v-if="act.tag" class="min-[601px]:hidden font-sans text-[0.66rem] font-light tracking-[0.14em] uppercase py-[0.25rem] px-[0.6rem] border inline-block" :class="tagClass(act.tag)">{{ act.tag }}</span>
               </div>
             </div>
             <span v-if="act.tag" class="font-sans text-[0.62rem] font-light tracking-[0.14em] uppercase py-[0.3rem] px-[0.65rem] border whitespace-nowrap self-start mt-[0.3rem] shrink-0 max-[600px]:hidden" :class="tagClass(act.tag)">{{ act.tag }}</span>
@@ -274,6 +288,7 @@
           <p class="font-display text-[1.05rem] font-bold text-[oklch(96%_0.014_85)] leading-[1.4] mb-1">{{ c.name }}</p>
           <p class="font-sans text-[0.78rem] text-[oklch(70%_0.018_82)] mb-3">{{ c.addr }}</p>
           <p class="text-[0.9rem] md:text-[0.85rem] text-[oklch(80%_0.018_82)] leading-[1.8]">{{ c.note }}</p>
+          <a v-if="c.nav" :href="navUrl(c.nav)" target="_blank" rel="noopener" class="go-chip go-chip--dark mt-4" :aria-label="'Google Maps 導航去 ' + c.name"><i class="fas fa-diamond-turn-right"></i>導航</a>
         </div>
       </div>
 
@@ -410,6 +425,7 @@
           <div v-for="(r, idx) in group.items" :key="idx" class="flex flex-wrap gap-x-4 gap-y-1 items-baseline py-[0.85rem] border-b border-rule last:border-b-0">
             <a :href="r.mapUrl" target="_blank" rel="noopener" class="font-display text-[1rem] md:text-[0.98rem] font-bold text-ink hover:text-harbour transition-colors duration-200 underline decoration-rule underline-offset-4 hover:decoration-harbour">{{ r.name }}</a>
             <span class="font-sans text-[0.64rem] font-light tracking-[0.1em] uppercase text-harbour shrink-0">{{ r.type }}</span>
+            <a :href="restNav(r)" target="_blank" rel="noopener" class="go-chip go-chip--sm ml-auto self-center" :aria-label="'Google Maps 導航去 ' + r.name"><i class="fas fa-diamond-turn-right"></i>導航</a>
             <span v-if="r.note" class="basis-full text-[0.9rem] md:text-[0.85rem] text-ink-mid leading-[1.75] max-w-[64ch]">{{ r.note }}</span>
             <span v-if="r.dish" class="basis-full text-[0.9rem] md:text-[0.85rem] text-ink leading-[1.75] max-w-[64ch]"><i class="fas fa-utensils text-oxide text-[0.7rem] mr-1.5"></i>{{ r.dish }}</span>
           </div>
@@ -458,20 +474,20 @@
         sub: "朝早去 Stonehenge，之後直接入 Bath 泊 SouthGate，喺 Bath 東邊行吓，食完晚飯先 check-in。凌晨轉冬令時間，可以瞓多一個鐘。",
         tipBox: "<strong>Stonehenge 風好大：</strong>四圍冇遮擋，要着防風褸、帶帽同手套。<br><strong>落雨點算：</strong>Sydney Gardens 改去隔籬嘅 Holburne Museum（星期日 11:00–17:00，有 café），之後再去 Pulteney Bridge 睇日落。<br><strong>行李成日留喺車：</strong>全部收入車尾箱同前箱，車窗睇唔到；另外揹個袋放厚衫同女兒後備衫。",
         mapPoints: [
-          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "08:30 出發" },
-          { name: "Amesbury Supercharger", lat: 51.1668, lng: -1.7473, color: "oklch(45% 0.052 148)", label: "~10:15 叉電" },
-          { name: "Stonehenge", lat: 51.1789, lng: -1.8262, color: "oklch(49% 0.142 42)", label: "11:00 ✓ 已訂" },
-          { name: "SouthGate 停車場", lat: 51.3780, lng: -2.3593, color: "oklch(31% 0.030 222)", label: "~14:50 泊車" },
+          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, nav: false, color: "oklch(31% 0.030 222)", label: "08:30 出發" },
+          { name: "Amesbury Supercharger", lat: 51.1772, lng: -1.7564, color: "oklch(45% 0.052 148)", label: "~10:15 叉電" },
+          { name: "Stonehenge", lat: 51.1789, lng: -1.8262, nav: "Stonehenge Visitor Centre, Amesbury SP4 7DE", color: "oklch(49% 0.142 42)", label: "11:00 ✓ 已訂" },
+          { name: "SouthGate 停車場", lat: 51.3782, lng: -2.3595, color: "oklch(31% 0.030 222)", label: "~14:50 泊車" },
           { name: "Pulteney Bridge", lat: 51.3829, lng: -2.3573, color: "oklch(49% 0.142 42)", label: "15:00 · 16:45 日落" },
           { name: "Sydney Gardens", lat: 51.3858, lng: -2.3474, color: "oklch(45% 0.052 148)", label: "15:30 遊樂場" },
-          { name: "Opa", lat: 51.3807, lng: -2.3576, color: "oklch(44% 0.082 215)", label: "18:00 晚餐" },
+          { name: "Opa", lat: 51.3807, lng: -2.3556, nav: "Opa, 14 North Parade, Bath BA2 4AJ", color: "oklch(44% 0.082 215)", label: "18:00 晚餐" },
           { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "~20:15 check-in" }
         ],
         activities: [
           { pt: 0, type: "move", icon: "fa-car-side", title: "08:30 · Kingston 出發", desc: "行 A303，大約 1.5–2 個鐘。", tag: "08:30" },
           { pt: 1, type: "charge", icon: "fa-bolt", title: "~10:15 · Amesbury Supercharger", desc: "叉電到 85–90%，順便去廁所。呢度就喺 Stonehenge 隔籬，A303 之後少充電站，呢站唔好慳。", tag: "~10:15" },
           { pt: 2, type: "hi", icon: "fa-monument", title: "11:00–13:00 · Stonehenge", desc: "有 30 分鐘入場時間，入咗之後想留幾耐都得。先搭穿梭巴士去石陣（趁人少、女兒最有精神），再返遊客中心睇展覽同入新石器時代小屋。有大停車場。", note: "✓ 已訂 11:00，£71.60", tag: "✓ 已訂" },
-          { type: "food", icon: "fa-utensils", title: "13:00–13:40 · 午餐：Stonehenge Café", desc: "遊客中心入面，唔使再揸車。有湯、pasty、三文治，仲有小朋友午餐盒。", tag: "便餐" },
+          { nav: "Stonehenge Visitor Centre, Amesbury SP4 7DE", type: "food", icon: "fa-utensils", title: "13:00–13:40 · 午餐：Stonehenge Café", desc: "遊客中心入面，唔使再揸車。有湯、pasty、三文治，仲有小朋友午餐盒。", tag: "便餐" },
           { pt: 3, type: "move", icon: "fa-square-parking", title: "13:40 → ~14:50 · 直接揸車入 Bath，泊 SouthGate", desc: "行 A36，大約 1 個鐘。有蓋，24 小時開，架車泊到食完晚飯先攞。", note: "18:00 前照日間價錢計（睇 lift 大堂個牌），18:00 後每個鐘 50–65p；成日大約 £10–14。", tag: "泊車" },
           { pt: 4, type: "fun", icon: "fa-bridge-water", title: "15:00–15:30 · Pulteney Bridge、Great Pulteney Street", desc: "沿 Orange Grove 行 8 分鐘，喺 Grand Parade 睇水壩、影相，再行勻 Bath 最闊最靚嘅 Georgian 大街，去到 Holburne Museum。", tag: "Free" },
           { pt: 5, type: "fun", icon: "fa-child", title: "15:30–16:30 · Sydney Gardens", desc: "有遊樂場俾女兒玩；再沿 Kennet & Avon 運河行一段，睇鐵橋。", note: "可以加：Pulteney Cruisers 遊河 1 個鐘，大人大約 £12，喺 Pulteney Bridge 隔籬上船。有啲年份 10 月尾就停，當日睇吓有冇開。", tag: "Free" },
@@ -488,14 +504,14 @@
         tipBox: "<strong>落雨點算：</strong>刪咗 Victoria Park，食完晏直接去 Bristol，喺 M Shed 耐啲。<br><strong>行李成日留喺車：</strong>全部收入車尾箱同前箱；Hotwells 喺 3 樓冇電梯，搬行李要預多啲時間。",
         mapPoints: [
           { name: "The Annex, Larkhall", lat: 51.3931, lng: -2.3462, color: "oklch(31% 0.030 222)", label: "08:40 check-out" },
-          { name: "Charlotte Street 停車場", lat: 51.3836, lng: -2.3666, color: "oklch(31% 0.030 222)", label: "09:00 泊車" },
-          { name: "Roman Baths", lat: 51.3811, lng: -2.3590, color: "oklch(49% 0.142 42)", label: "09:30 ✓ 已訂" },
-          { name: "Hondo Sushi", lat: 51.3800, lng: -2.3622, color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
+          { name: "Charlotte Street 停車場", lat: 51.3836, lng: -2.3666, nav: "Charlotte Street Car Park, Bath BA1 2NE", color: "oklch(31% 0.030 222)", label: "09:00 泊車" },
+          { name: "Roman Baths", lat: 51.3811, lng: -2.3590, nav: "The Roman Baths, Stall Street, Bath BA1 1LZ", color: "oklch(49% 0.142 42)", label: "09:30 ✓ 已訂" },
+          { name: "Hondo Sushi", lat: 51.3795, lng: -2.3614, nav: "Hondo Sushi, St James's Parade, Bath BA1 1UL", color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
           { name: "Royal Crescent", lat: 51.3868, lng: -2.3681, color: "oklch(49% 0.142 42)", label: "12:55 經過" },
           { name: "Royal Victoria Park 遊樂場", lat: 51.3856, lng: -2.3703, color: "oklch(45% 0.052 148)", label: "13:05–14:45 遊樂場" },
           { name: "Wapping Wharf 停車場", lat: 51.4469, lng: -2.5985, color: "oklch(31% 0.030 222)", label: "~15:20 泊車" },
-          { name: "M Shed", lat: 51.4474, lng: -2.5983, color: "oklch(49% 0.142 42)", label: "15:30–17:00 · 日落" },
-          { name: "Seven Lucky Gods", lat: 51.4478, lng: -2.5979, color: "oklch(44% 0.082 215)", label: "17:30 晚餐" },
+          { name: "M Shed", lat: 51.4474, lng: -2.5983, nav: "M Shed, Princes Wharf, Bristol BS1 4RN", color: "oklch(49% 0.142 42)", label: "15:30–17:00 · 日落" },
+          { name: "Seven Lucky Gods", lat: 51.4473, lng: -2.5980, nav: "Seven Lucky Gods, Museum Street, Wapping Wharf, Bristol BS1 6WE", color: "oklch(44% 0.082 215)", label: "17:30 晚餐" },
           { name: "Hotwells apartments, Bristol", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "~19:00 check-in" }
         ],
         activities: [
@@ -515,26 +531,26 @@
         date: "週二，10月27日",
         title: "Bristol Harbourside · Clifton",
         sub: "上晝沿碼頭行、睇 SS Great Britain、搭 ferry，下晝去 Clifton Suspension Bridge。Bristol 放 half term，ferry 每日都有船。",
-        tipBox: "<strong>落雨點算：</strong>下晝 Clifton 改去 We The Curious 科學館（half term 每日 10:00–17:00，大人大約 £21.20、小朋友 £14.50，要網上訂時段）。<br><strong>約朋友：</strong>上晝喺 harbour 或者晚飯最易夾；佢哋一齊食晚飯嘅話，記得改 Ramen Monster 訂位人數。",
+        tipBox: "<strong>落雨點算：</strong>下晝 Clifton 改去 We The Curious 科學館（<a class='tip-nav' target='_blank' rel='noopener' href='https://www.google.com/maps/dir/?api=1&destination=We+The+Curious%2C+Anchor+Road%2C+Bristol+BS1+5DB'><i class='fas fa-diamond-turn-right'></i>導航</a>，half term 每日 10:00–17:00，大人大約 £21.20、小朋友 £14.50，要網上訂時段）。<br><strong>約朋友：</strong>上晝喺 harbour 或者晚飯最易夾；佢哋一齊食晚飯嘅話，記得改 Ramen Monster 訂位人數。",
         mapPoints: [
           { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "09:30 出門" },
           { name: "Underfall Yard", lat: 51.4486, lng: -2.6146, color: "oklch(45% 0.052 148)", label: "09:40 船廠" },
-          { name: "SS Great Britain", lat: 51.4490, lng: -2.6081, color: "oklch(49% 0.142 42)", label: "10:00 鐵船 · ferry" },
-          { name: "St Nick's Market · FoodieVietnam", lat: 51.4549, lng: -2.5926, color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
+          { name: "SS Great Britain", lat: 51.4490, lng: -2.6081, nav: "SS Great Britain, Great Western Dockyard, Bristol BS1 6TY", color: "oklch(49% 0.142 42)", label: "10:00 鐵船 · ferry" },
+          { name: "St Nick's Market · FoodieVietnam", lat: 51.4549, lng: -2.5926, nav: "St Nicholas Market, Corn Street, Bristol BS1 1JQ", color: "oklch(44% 0.082 215)", label: "12:00 午餐" },
           { name: "Clifton Suspension Bridge", lat: 51.4549, lng: -2.6278, color: "oklch(49% 0.142 42)", label: "13:45 吊橋" },
           { name: "Clifton Observatory", lat: 51.4565, lng: -2.6265, color: "oklch(45% 0.052 148)", label: "Giant's Cave" },
-          { name: "Ramen Monster", lat: 51.4538, lng: -2.5949, color: "oklch(44% 0.082 215)", label: "18:00 晚餐 · ✓ 已訂" },
-          { name: "We The Curious", lat: 51.4500, lng: -2.5991, color: "oklch(45% 0.052 148)", label: "落雨後備" }
+          { name: "Ramen Monster", lat: 51.4538, lng: -2.5949, nav: "Ramen Monster, 25 St Stephen's St, Bristol BS1 1JX", color: "oklch(44% 0.082 215)", label: "18:00 晚餐 · ✓ 已訂" },
+          { name: "We The Curious", lat: 51.4505, lng: -2.6001, nav: "We The Curious, Anchor Road, Bristol BS1 5DB", color: "oklch(45% 0.052 148)", label: "落雨後備" }
         ],
         activities: [
           { pt: 1, type: "fun", icon: "fa-anchor", title: "09:30–09:50 · 沿碼頭行去 Underfall Yard", desc: "一出門向東行，Underfall Yard 係仲用緊嘅船廠，可以睇修船，有 café 同廁所。", tag: "Free" },
           { pt: 2, type: "fun", icon: "fa-ship", title: "10:00–11:30 · SS Great Britain", desc: "Brunel 嘅大鐵船，可以落船底睇、上甲板，仲有扮船員嘅互動區，細路好鍾意。唔想入去就喺外面睇，直接搭 ferry。", note: "大人大約 £22，小朋友 £13.50；張飛一年內任入。", tag: "可選" },
-          { pt: 2, type: "fun", icon: "fa-ferry", title: "11:30–11:45 · 搭 ferry 去市中心", desc: "喺 SS Great Britain 旁邊碼頭上船，船票上船買，大約 10–15 分鐘。", tag: "Ferry" },
+          { pt: 2, nav: false, type: "fun", icon: "fa-ferry", title: "11:30–11:45 · 搭 ferry 去市中心", desc: "喺 SS Great Britain 旁邊碼頭上船，船票上船買，大約 10–15 分鐘。", tag: "Ferry" },
           { pt: 3, type: "food", icon: "fa-utensils", title: "12:00 · 午餐：FoodieVietnam", desc: "St Nick's Market，由碼頭行 8 分鐘。牛肉河粉、越南法包；食完喺街市行吓。星期二 11:30–17:30。", note: "想食 Michelin 韓燒：Dongnae（Redland，星期二 12:00–15:00 有抵食 set lunch），搭 taxi 10 分鐘。", tag: "河粉" },
-          { type: "move", icon: "fa-ferry", title: "13:00 · 返 Hotwells", desc: "喺市中心搭 ferry 返 Mardyke（大約 20 分鐘），或者沿碼頭行 25 分鐘。", tag: "Ferry" },
+          { nav: "51.4487,-2.6195", type: "move", icon: "fa-ferry", title: "13:00 · 返 Hotwells", desc: "喺市中心搭 ferry 返 Mardyke（大約 20 分鐘），或者沿碼頭行 25 分鐘。", tag: "Ferry" },
           { pt: 4, type: "fun", icon: "fa-bridge", title: "13:45–15:45 · Clifton Suspension Bridge", desc: "揸 5 分鐘，泊 Clifton Village 咪錶位（£1 一個鐘，最多 4 個鐘）；或者由屋企行 20 分鐘上斜。行過吊橋（行人免費），睇 visitor centre（免費，10:00–17:00）。", tag: "Free" },
           { pt: 5, type: "fun", icon: "fa-mountain", title: "Clifton Observatory · Giant's Cave", desc: "就喺吊橋隔籬。經隧道行去懸崖中間個洞望吊橋，女兒一定鍾意（4 歲以上先入得）。收費，現場買。", tag: "可選" },
-          { type: "move", icon: "fa-house", title: "16:00 · 返屋企休息", desc: "16:45 左右日落，天黑前返屋企。", tag: "休息" },
+          { nav: "51.4487,-2.6195", type: "move", icon: "fa-house", title: "16:00 · 返屋企休息", desc: "16:45 左右日落，天黑前返屋企。", tag: "休息" },
           { pt: 6, type: "food", icon: "fa-bowl-food", title: "18:00 · 晚餐：Ramen Monster", desc: "25 St Stephen's St。日式拉麵，招牌係 tsukemen 沾麵，主食大約 £14.50–16.90。由 Hotwells 行 30 分鐘，或者 taxi 10 分鐘（大約 £8–10），17:30 出門。", note: "✓ 已訂 10月27日 18:00", tag: "✓ 18:00 已訂" }
         ]
       },
@@ -546,30 +562,30 @@
         tipBox: "<strong>Monkey Temple 記得行 bypass 車道：</strong>啲馬騮會扯 wiper 同車邊膠條。<br><strong>時間唔夠就先刪迷宮</strong>；safari、Jungle Cruise 同 Koala Creek 就唔好刪。<br><strong>Longleat 有 7.4kW 慢叉：</strong>喺 Silver Birch 停車場，要自己帶 Type 2 線。有線嘅話，泊喺度玩 5 個鐘就叉到好多電，返程可以唔使停 Amesbury。",
         mapPoints: [
           { name: "Hotwells apartments", lat: 51.4487, lng: -2.6195, color: "oklch(31% 0.030 222)", label: "08:45 check-out" },
-          { name: "Eastgate Supercharger", lat: 51.4745, lng: -2.5635, color: "oklch(45% 0.052 148)", label: "09:00 叉電" },
-          { name: "Longleat", lat: 51.1877, lng: -2.2679, color: "oklch(49% 0.142 42)", label: "10:35–15:30 ✓ 已訂" },
-          { name: "Amesbury Supercharger", lat: 51.1668, lng: -1.7473, color: "oklch(45% 0.052 148)", label: "16:10 叉電" },
-          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, color: "oklch(31% 0.030 222)", label: "~18:00 到屋企" }
+          { name: "Eastgate Supercharger", lat: 51.4737, lng: -2.5650, color: "oklch(45% 0.052 148)", label: "09:00 叉電" },
+          { name: "Longleat", lat: 51.1877, lng: -2.2679, nav: "Longleat, Warminster BA12 7NW", color: "oklch(49% 0.142 42)", label: "10:35–15:30 ✓ 已訂" },
+          { name: "Amesbury Supercharger", lat: 51.1772, lng: -1.7564, color: "oklch(45% 0.052 148)", label: "16:10 叉電" },
+          { name: "Kingston upon Thames", lat: 51.4085, lng: -0.3064, nav: false, color: "oklch(31% 0.030 222)", label: "~18:00 到屋企" }
         ],
         activities: [
           { pt: 0, type: "move", icon: "fa-suitcase-rolling", title: "08:45 · Hotwells check-out", desc: "10:00 前一定要走，唔可以遲。行李 08:30 前執好。", tag: "08:45" },
           { pt: 1, type: "charge", icon: "fa-bolt", title: "09:00–09:25 · Eastgate Supercharger", desc: "揸 15 分鐘。叉到 90%，有廁所同 café。", tag: "叉電" },
           { pt: 2, type: "move", icon: "fa-car-side", title: "09:25 → ~10:35 · 去 Longleat", desc: "經 Bath 行 A36，大約 1 小時 10 分鐘。Half term 期間 09:30–18:00 開，safari 最後入場 16:00。", tag: "1 小時 10 分" },
-          { pt: 2, type: "hi", icon: "fa-hippo", title: "10:45–12:30 · Safari Drive-Through", desc: "一到就先去 safari。Half term 人多，預 1.5–2 個鐘。", note: "✓ 已訂 10月28日，£118.85", tag: "✓ 已訂" },
-          { pt: 2, type: "food", icon: "fa-utensils", title: "12:30–13:15 · 午餐", desc: "園內解決。", tag: "園內" },
-          { pt: 2, type: "fun", icon: "fa-ship", title: "13:15–13:45 · Jungle Cruise", desc: "海獅、大猩猩島。", tag: "已包門票" },
-          { pt: 2, type: "fun", icon: "fa-paw", title: "13:45–14:30 · Koala Creek", desc: "樹熊、企鵝、狐獴。", tag: "已包門票" },
-          { pt: 2, type: "fun", icon: "fa-chess-rook", title: "14:30–15:15 · Adventure Castle + Spooktacular", desc: "去遊樂場放電，再行萬聖節 trail。", tag: "萬聖節" },
-          { pt: 2, type: "fun", icon: "fa-route", title: "15:15–15:30 · 樹籬迷宮（可選）", desc: "定好時限，一到 15:30 就走。", tag: "可選" },
+          { pt: 2, nav: false, type: "hi", icon: "fa-hippo", title: "10:45–12:30 · Safari Drive-Through", desc: "一到就先去 safari。Half term 人多，預 1.5–2 個鐘。", note: "✓ 已訂 10月28日，£118.85", tag: "✓ 已訂" },
+          { pt: 2, nav: false, type: "food", icon: "fa-utensils", title: "12:30–13:15 · 午餐", desc: "園內解決。", tag: "園內" },
+          { pt: 2, nav: false, type: "fun", icon: "fa-ship", title: "13:15–13:45 · Jungle Cruise", desc: "海獅、大猩猩島。", tag: "已包門票" },
+          { pt: 2, nav: false, type: "fun", icon: "fa-paw", title: "13:45–14:30 · Koala Creek", desc: "樹熊、企鵝、狐獴。", tag: "已包門票" },
+          { pt: 2, nav: false, type: "fun", icon: "fa-chess-rook", title: "14:30–15:15 · Adventure Castle + Spooktacular", desc: "去遊樂場放電，再行萬聖節 trail。", tag: "萬聖節" },
+          { pt: 2, nav: false, type: "fun", icon: "fa-route", title: "15:15–15:30 · 樹籬迷宮（可選）", desc: "定好時限，一到 15:30 就走。", tag: "可選" },
           { pt: 3, type: "charge", icon: "fa-bolt", title: "15:30 → 16:10 · Amesbury Supercharger", desc: "行 A303，大約 40 分鐘，就係 Day 1 嗰個站。叉 15–20 分鐘到 75% 左右，順便去廁所、買嘢食。", tag: "叉電" },
           { pt: 4, type: "move", icon: "fa-home", title: "~18:00 · 返到 Kingston", desc: "A303 → M3，大約 1.5 個鐘。Half term 返程可能塞車，預 18:00–18:30 到。", tag: "到屋企" }
         ]
       }
     ],
     chargeStops: [
-      { when: "Day 1 · 10月25日", name: "Amesbury Supercharger", addr: "Solstice Park, SP4 7SQ", note: "16 個位，250kW，就喺 Stonehenge 隔籬。叉到 90%，到 Bath 大約仲有 70%。" },
-      { when: "Day 4 · 10月28日 朝早", name: "Eastgate Supercharger, Bristol", addr: "Eastgate Retail Park, BS5 6XX", note: "8 個位，250kW，有廁所同 café。到嗰陣大約剩 50%，叉到 90% 先去 Longleat。" },
-      { when: "Day 4 · 10月28日 返程", name: "Amesbury Supercharger", addr: "Solstice Park, SP4 7SQ · A303 順路", note: "由 Longleat 揸 40 分鐘，到嗰陣大約剩 45%。叉到 75% 左右，返到 Kingston 仲有大約 35%。" }
+      { nav: "51.1772,-1.7564", when: "Day 1 · 10月25日", name: "Amesbury Supercharger", addr: "Solstice Park, SP4 7SQ", note: "16 個位，250kW，就喺 Stonehenge 隔籬。叉到 90%，到 Bath 大約仲有 70%。" },
+      { nav: "51.4737,-2.5650", when: "Day 4 · 10月28日 朝早", name: "Eastgate Supercharger, Bristol", addr: "Eastgate Retail Park, BS5 6XX", note: "8 個位，250kW，有廁所同 café。到嗰陣大約剩 50%，叉到 90% 先去 Longleat。" },
+      { nav: "51.1772,-1.7564", when: "Day 4 · 10月28日 返程", name: "Amesbury Supercharger", addr: "Solstice Park, SP4 7SQ · A303 順路", note: "由 Longleat 揸 40 分鐘，到嗰陣大約剩 45%。叉到 75% 左右，返到 Kingston 仲有大約 35%。" }
     ],
     chargeLegs: [],
     drivingRoutes: [
@@ -633,8 +649,8 @@
       {
         day: "Day 1 晚 · Bath", city: "bath",
         items: [
-          { name: "★ Opa（✓ 已訂 18:00）", type: "希臘菜 Meze", note: "14 North Parade（地庫），BA2 4AJ。評價最好：Tripadvisor 4.2（1,400+ 評價）、OpenTable 4.5（1,000+）。星期日 12:00 開到夜。週末夜晚會變做夜店，所以早啲去食最好。", dish: "推介：meze 拼盤，份量大，啱一家人分嚟食。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Opa+Bath+14+North+Parade" },
-          { name: "★ East Meets West", type: "中菜（粵／京／川）", note: "33 Southgate Street，BA1 1TP。評分 4.1–4.2，review 讚正宗、份量足。星期日 11:00–22:00。", dish: "推介：粵菜、川菜、點心、餃子。", mapUrl: "https://www.google.com/maps/search/?api=1&query=East+Meets+West+33+Southgate+Street+Bath" },
+          { nav: "Opa, 14 North Parade, Bath BA2 4AJ", name: "★ Opa（✓ 已訂 18:00）", type: "希臘菜 Meze", note: "14 North Parade（地庫），BA2 4AJ。評價最好：Tripadvisor 4.2（1,400+ 評價）、OpenTable 4.5（1,000+）。星期日 12:00 開到夜。週末夜晚會變做夜店，所以早啲去食最好。", dish: "推介：meze 拼盤，份量大，啱一家人分嚟食。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Opa+Bath+14+North+Parade" },
+          { nav: "East Meets West, 33 Southgate Street, Bath BA1 1TP", name: "★ East Meets West", type: "中菜（粵／京／川）", note: "33 Southgate Street，BA1 1TP。評分 4.1–4.2，review 讚正宗、份量足。星期日 11:00–22:00。", dish: "推介：粵菜、川菜、點心、餃子。", mapUrl: "https://www.google.com/maps/search/?api=1&query=East+Meets+West+33+Southgate+Street+Bath" },
           { name: "Robun", type: "日式炭火", note: "Michelin Plate，OpenTable 4.3，但 Tripadvisor 只有 3.9，好多人話唔抵、出菜慢。", dish: "推介：wagyu、bulgogi、串燒。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Robun+Bath" },
           { name: "Noya's Kitchen（⚠️ 晚餐食唔到）", type: "越南菜", note: "7 St James's Parade，BA1 1UL。評價好高（4.7），但星期日最多只開午市 12:00–15:00（有啲網站話全日休息），你哋 14:30 先到 Bath，所以晚餐去唔到。", dish: "推介：pho、summer rolls、餃子。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Noya's+Kitchen+7+St+James's+Parade+Bath" }
         ]
@@ -642,27 +658,27 @@
       {
         day: "Day 2 午 · Bath", city: "bath",
         items: [
-          { name: "★ Hondo Sushi", type: "壽司・拉麵", note: "8–9 St James Parade，由 Roman Baths 行 4 分鐘。星期一 12:00 開。", dish: "推介：手握壽司、便當。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hondo+Sushi+Bath" },
+          { nav: "Hondo Sushi, St James's Parade, Bath BA1 1UL", name: "★ Hondo Sushi", type: "壽司・拉麵", note: "8–9 St James Parade，由 Roman Baths 行 4 分鐘。星期一 12:00 開。", dish: "推介：手握壽司、便當。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Hondo+Sushi+Bath" },
           { name: "Thaikhun", type: "泰菜", note: "有花園位。", dish: "推介：Pad Thai、綠咖喱。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Thaikhun+Bath" }
         ]
       },
       {
         day: "Day 2 晚 · Bristol", city: "bristol",
         items: [
-          { name: "★ Seven Lucky Gods", type: "日式 Izakaya", note: "Wapping Wharf（CARGO），就喺停車場隔籬。星期一 12:00–22:00。", dish: "推介：韓式炸雞、壽司。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Seven+Lucky+Gods+Wapping+Wharf+Bristol" }
+          { nav: "Seven Lucky Gods, Museum Street, Wapping Wharf, Bristol BS1 6WE", name: "★ Seven Lucky Gods", type: "日式 Izakaya", note: "Wapping Wharf（CARGO），就喺停車場隔籬。星期一 12:00–22:00。", dish: "推介：韓式炸雞、壽司。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Seven+Lucky+Gods+Wapping+Wharf+Bristol" }
         ]
       },
       {
         day: "Day 3 午 · Bristol", city: "bristol",
         items: [
-          { name: "★ FoodieVietnam", type: "越南菜", note: "St Nick's Market 入面，由碼頭行 8 分鐘。星期二 11:30–17:30。", dish: "推介：牛肉河粉。", mapUrl: "https://www.google.com/maps/search/?api=1&query=FoodieVietnam+Bristol" },
+          { nav: "St Nicholas Market, Corn Street, Bristol BS1 1JQ", name: "★ FoodieVietnam", type: "越南菜", note: "St Nick's Market 入面，由碼頭行 8 分鐘。星期二 11:30–17:30。", dish: "推介：牛肉河粉。", mapUrl: "https://www.google.com/maps/search/?api=1&query=FoodieVietnam+Bristol" },
           { name: "Dongnae", type: "韓式燒肉", note: "Michelin 推介，喺 Redland，搭 taxi 10 分鐘。星期二 12:00–15:00 有抵食 set lunch。", dish: "推介：燒肉拼盤、冷麵。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Dongnae+Bristol" }
         ]
       },
       {
         day: "Day 3 晚 · Bristol", city: "bristol",
         items: [
-          { name: "★ Ramen Monster（✓ 已訂 18:00）", type: "日式拉麵", note: "25 St Stephen's St，BS1 1JX。星期二 12:00–22:00。", dish: "推介：Tonkotsu tsukemen 沾麵（£16.90），其他拉麵 £14.75–15.35。", mapUrl: "https://maps.app.goo.gl/kwNhnzxbEgPjSmQd7" },
+          { nav: "Ramen Monster, 25 St Stephen's St, Bristol BS1 1JX", name: "★ Ramen Monster（✓ 已訂 18:00）", type: "日式拉麵", note: "25 St Stephen's St，BS1 1JX。星期二 12:00–22:00。", dish: "推介：Tonkotsu tsukemen 沾麵（£16.90），其他拉麵 £14.75–15.35。", mapUrl: "https://maps.app.goo.gl/kwNhnzxbEgPjSmQd7" },
           { name: "Mayflower", type: "粵菜", note: "Haymarket 老字號，星期二 17:30 開（星期一休息）。", dish: "推介：燒鴨、脆皮燒肉、椒鹽鮮魷。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Mayflower+Chinese+restaurant+Bristol" },
           { name: "Bokman", type: "韓國菜", note: "Michelin 推介，最好訂位。", dish: "推介：octopus bibim salad、韓式炸雞。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Bokman+Bristol" },
           { name: "Tomo No Ramen", type: "拉麵", note: "Old Market。", dish: "推介：tonkotsu 拉麵。", mapUrl: "https://www.google.com/maps/search/?api=1&query=Tomo+No+Ramen+Bristol" },
@@ -726,6 +742,23 @@
         move:   'oklch(31% 0.030 222)'
       };
       const actColor = (t) => ACT[t] || ACT.move;
+
+      // One-tap Google Maps directions (opens the Maps app on iOS/Android).
+      // A point can carry `nav` (address text, or "lat,lng") for a better
+      // destination than its pin, or `nav: false` to skip the button.
+      const navUrl = (dest) => 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(dest);
+      const actNav = (day, act) => {
+        if (act.nav === false) return null;
+        if (act.nav) return navUrl(act.nav);
+        const pt = act.pt != null && day.mapPoints && day.mapPoints[act.pt];
+        if (!pt || pt.nav === false) return null;
+        return navUrl(pt.nav || (pt.lat + ',' + pt.lng));
+      };
+      const restNav = (r) => {
+        if (r.nav) return navUrl(r.nav);
+        try { const q = new URL(r.mapUrl).searchParams.get('query'); if (q) return navUrl(q); } catch (e) {}
+        return r.mapUrl;
+      };
 
       // Free / outdoor tags read green; anything still unbooked reads oxide.
       const tagClass = (tag) => {
@@ -824,6 +857,7 @@
                 <div class="map-popup-inner">
                   <div class="map-popup-cat">${pt.label || ''}</div>
                   <div class="map-popup-title">${pt.name}</div>
+                  ${pt.nav === false ? '' : `<a class="map-popup-nav" target="_blank" rel="noopener" href="${navUrl(pt.nav || (pt.lat + ',' + pt.lng))}"><i class="fas fa-diamond-turn-right"></i> 導航</a>`}
                 </div>`;
               const mk = L.marker([pt.lat, pt.lng], { icon }).addTo(map).bindPopup(popupContent, { maxWidth: 240, minWidth: 160 });
               mk.on('click', () => { focused.value = { ...focused.value, [day.num]: idx }; });
@@ -872,7 +906,8 @@
         meta, stats, days, checklistGroups, budgetItems, tips,
         drivingRoutes, restaurants, chargeStops, chargeLegs,
         toggleCheck, totalLow, totalHigh, rowRange,
-        cityColor, cityLabel, actColor, tagClass
+        cityColor, cityLabel, actColor, tagClass,
+        navUrl, actNav, restNav
       };
     }
   }).mount('#app');
